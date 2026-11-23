@@ -1,6 +1,6 @@
 /* NUDGE design variables: review dashboard.
    Data: token JSON, inlined by Tokens/build-tokens.ps1 (works from file://).
-   Values shown/validated: the real computed CSS from ../styles/variables.css. */
+   Values shown/validated: the real computed CSS from ../Styles/variables.css. */
 (function () {
   'use strict';
   var DATA = JSON.parse(document.getElementById('token-data').textContent);
