@@ -1,0 +1,26 @@
+{
+    "id":  "back-to-top",
+    "page":  "shared",
+    "level":  "sub",
+    "name":  "Back to Top",
+    "properties":  [
+
+                   ],
+    "shopifyOnly":  [
+                        {
+                            "id":  "show_back_to_top",
+                            "setting":  "checkbox"
+                        }
+                    ],
+    "status":  "classified (D10 items pending)",
+    "accessibility":  "A link with visible text.",
+    "summary":  "A link at the end of the footer that returns to the top of the page.",
+    "tokens":  [
+                   "touch target",
+                   "inverse colours"
+               ],
+    "responsive":  "Full width below 600 px; inline from 600 px.",
+    "children":  [
+                     "components/base/icon"
+                 ]
+}

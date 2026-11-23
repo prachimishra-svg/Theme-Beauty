@@ -1,0 +1,13 @@
+{%- comment -%}
+  GENERATED from components/base/icon-button by 07-Component-Library/tools/generate-liquid-staging.ps1 (contract c4ac2ba2540fa942).
+  Do not edit here: change the library component, then regenerate. Text values are written raw; escape where Shopify data enters (| escape in the section).
+  Parameters (class: design = fixed, parent = passed in, merchant = set in a section, wireframe = not used):
+    variant (VARIANT, parent)
+    icon (INSTANCE_SWAP, parent)
+    label (TEXT, parent)
+    disabled (BOOLEAN, parent)
+    hook (TEXT, parent)
+    attrs (TEXT, parent)
+    extra (TEXT, parent)
+{%- endcomment -%}
+{%- if variant == nil -%}{%- assign variant = 'ds' -%}{%- endif -%}{%- if icon == nil -%}{%- assign icon = 'close' -%}{%- endif -%}{%- if label == nil -%}{%- assign label = 'Close' -%}{%- endif -%}{%- if disabled == nil -%}{%- assign disabled = false -%}{%- endif -%}{%- if hook == nil -%}{%- assign hook = '' -%}{%- endif -%}{%- if attrs == nil -%}{%- assign attrs = '' -%}{%- endif -%}{%- if extra == nil -%}{%- assign extra = '' -%}{%- endif -%}<button class="{% if hook != blank %}{{ hook }} {% endif %}{% case variant %}{% when 'ds' %}icon-btn{% when 'circle' %}inline-flex size-touch cursor-pointer items-center justify-center rounded-full border border-ink bg-transparent p-0 text-ink transition-colors duration-base enabled:hover:bg-ink enabled:hover:text-page disabled:cursor-default disabled:opacity-[.3]{% when 'circle-soft' %}inline-flex size-touch cursor-pointer items-center justify-center rounded-full border border-line-inverse bg-transparent p-0 text-ink transition-colors duration-base enabled:hover:border-ink disabled:cursor-default disabled:opacity-[.35]{% endcase %}{% if extra != blank %} {{ extra }}{% endif %}" type="button" aria-label="{{ label }}"{% if attrs != blank %} {{ attrs }}{% endif %}{% if disabled %} disabled{% endif %}>{% capture arg_1 %}{% case variant %}{% when 'ds' %}{% when 'circle' %}size-[18px]{% when 'circle-soft' %}size-[18px]{% endcase %}{% endcapture %}{% render 'icon', name: icon, icon_size: 'custom', extra: arg_1 %}</button>

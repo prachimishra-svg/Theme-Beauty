@@ -1,0 +1,144 @@
+{
+    "name":  "How to Use / Routine Steps",
+    "wireframeOnly":  [
+                          ".ann annotation block",
+                          "data-section attribute",
+                          "data-c review hooks",
+                          "step image placeholders"
+                      ],
+    "page":  "homepage",
+    "properties":  [
+                       {
+                           "name":  "eyebrow",
+                           "type":  "TEXT",
+                           "default":  "Your daily ritual",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "eyebrow",
+                                           "id":  "eyebrow",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "heading",
+                           "type":  "TEXT",
+                           "default":  "A simple ritual, step by step",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "heading",
+                                           "id":  "heading",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "text",
+                           "type":  "TEXT",
+                           "default":  "Four steps, in order, each with the product it uses.",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "text",
+                                           "id":  "text",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "note",
+                           "type":  "TEXT",
+                           "default":  "Optional closing tip, from the product labels.",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "note",
+                                           "id":  "note",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "anchor",
+                           "type":  "TEXT",
+                           "default":  "s11",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "anchor",
+                                           "id":  "anchor",
+                                           "setting":  "text"
+                                       },
+                           "note":  "In-page anchor id"
+                       },
+                       {
+                           "name":  "steps",
+                           "type":  "LIST",
+                           "default":  [
+                                           {
+                                               "product":  "Face Cleanser",
+                                               "name":  "Cleanse",
+                                               "desc":  "How to apply, from the Face Cleanser label.",
+                                               "n":  "01"
+                                           },
+                                           {
+                                               "product":  "Face Serum",
+                                               "name":  "Treat",
+                                               "desc":  "How to apply, from the Face Serum label.",
+                                               "n":  "02"
+                                           },
+                                           {
+                                               "product":  "Moisturiser",
+                                               "name":  "Moisturise",
+                                               "desc":  "How to apply, from the Moisturiser label.",
+                                               "n":  "03"
+                                           },
+                                           {
+                                               "product":  "Sunscreen",
+                                               "name":  "Protect",
+                                               "desc":  "How to apply, from the Sunscreen label.",
+                                               "n":  "04"
+                                           }
+                                       ],
+                           "itemFields":  [
+                                              "n",
+                                              "name",
+                                              "desc",
+                                              "product"
+                                          ],
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "steps",
+                                           "setting":  "blocks",
+                                           "blockType":  "step",
+                                           "maxBlocks":  4
+                                       },
+                           "note":  "One block per step"
+                       }
+                   ],
+    "tokens":  [
+                   "subtle background",
+                   "spacing",
+                   "type roles"
+               ],
+    "summary":  "A scrolling ritual of four steps, each with the product it uses. Maps to the ritual-steps section.",
+    "accessibility":  "Heading is an h2; the step list is a labelled, focusable region; the counter is announced.",
+    "id":  "ritual-section",
+    "level":  "main",
+    "status":  "classified (D10 items pending)",
+    "responsive":  "Steps scroll sideways below 1024 px and sit in a row from 1024 px.",
+    "exposes":  [
+                    {
+                        "child":  "components/homepage/ritual-step",
+                        "property":  "name",
+                        "via":  "steps.name"
+                    },
+                    {
+                        "child":  "components/homepage/ritual-step",
+                        "property":  "desc",
+                        "via":  "steps.text"
+                    },
+                    {
+                        "child":  "components/homepage/ritual-step",
+                        "property":  "product",
+                        "via":  "steps.product_label"
+                    }
+                ],
+    "children":  [
+                     "components/homepage/ritual-controls",
+                     "components/homepage/ritual-step"
+                 ]
+}

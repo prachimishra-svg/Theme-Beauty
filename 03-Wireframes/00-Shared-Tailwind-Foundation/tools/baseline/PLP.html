@@ -1,0 +1,825 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NUDGE Beauty Theme: PLP Wireframe</title>
+<!-- Design Variables (tokens) linked; styling is Tailwind utilities and the shared components, mapped to those tokens. -->
+<link rel="stylesheet" href="../../02-Design-Variables/Styles/variables.css">
+<link rel="stylesheet" href="../../01-Design-System/Styles/foundation.css"><!-- self-hosted fonts only -->
+<script src="../00-Shared-Tailwind-Foundation/tailwindcss-play-3.4.17.js"></script>
+<script src="../00-Shared-Tailwind-Foundation/tailwind.config.js"></script>
+<script src="../00-Shared-Tailwind-Foundation/currency.js" defer></script>
+<script src="../00-Shared-Tailwind-Foundation/nav.js" defer></script>
+<style type="text/tailwindcss">
+/* Shared Tailwind base for every wireframe. Injected inside <style type="text/tailwindcss"> by build.ps1 (partial "head").
+   It reproduces the element defaults of the Design System (01-Design-System/Styles/base.css) from the same tokens, so plain
+   headings and paragraphs look exactly as on the approved pages. The two warm greys are mixes of existing tokens. */
+@layer base {
+  :root{--warm:color-mix(in srgb,var(--color-border-strong) 14%,var(--color-bg-page));--warm-deep:color-mix(in srgb,var(--color-border-strong) 28%,var(--color-bg-page))}
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:var(--space-20)}
+  html.is-scroll-locked{overflow:hidden}
+  body{@apply bg-page font-body text-ink antialiased;font-size:var(--font-size-body);font-weight:var(--font-weight-regular);line-height:var(--line-height-normal);overflow-wrap:break-word;text-rendering:optimizeLegibility}
+  h1{font-family:var(--type-h1-font-family);font-size:var(--type-h1-font-size);font-weight:var(--type-h1-font-weight);line-height:var(--type-h1-line-height);letter-spacing:var(--type-h1-letter-spacing);text-wrap:balance}
+  h2{font-family:var(--type-h2-font-family);font-size:var(--type-h2-font-size);font-weight:var(--type-h2-font-weight);line-height:var(--type-h2-line-height);letter-spacing:var(--type-h2-letter-spacing);text-wrap:balance}
+  h3{font-family:var(--type-h3-font-family);font-size:var(--type-h3-font-size);font-weight:var(--type-h3-font-weight);line-height:var(--type-h3-line-height);letter-spacing:var(--type-h3-letter-spacing);text-wrap:balance}
+  h4{font-family:var(--type-h4-font-family);font-size:var(--type-h4-font-size);font-weight:var(--type-h4-font-weight);line-height:var(--type-h4-line-height);letter-spacing:var(--type-h4-letter-spacing)}
+  h5{font-family:var(--type-h5-font-family);font-size:var(--type-h5-font-size);font-weight:var(--type-h5-font-weight);line-height:var(--type-h5-line-height);letter-spacing:var(--type-h5-letter-spacing)}
+  h6{font-family:var(--type-h6-font-family);font-size:var(--type-h6-font-size);font-weight:var(--type-h6-font-weight);line-height:var(--type-h6-line-height);letter-spacing:var(--type-h6-letter-spacing)}
+  p{font-family:var(--type-body-font-family);font-size:var(--type-body-font-size);font-weight:var(--type-body-font-weight);line-height:var(--type-body-line-height);letter-spacing:var(--type-body-letter-spacing)}
+  input,button,select,textarea{letter-spacing:inherit}
+  [hidden]{display:none!important}
+  :focus-visible{outline:var(--focus-ring);outline-offset:var(--focus-ring-offset)}
+  :focus:not(:focus-visible){outline:none}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+}
+@layer components {
+  .icon{@apply size-5 shrink-0 fill-none stroke-current;stroke-width:var(--icon-stroke-width);stroke-linecap:round;stroke-linejoin:round} /* 20 px, as the Design System icon; chrome icons add size-6 */
+  .icon-filled{fill:currentColor}
+  /* media placeholders (labelled boxes; no photography) */
+  .ph{background:radial-gradient(110% 80% at 30% 20%,var(--color-bg-surface) 0%,transparent 60%),linear-gradient(160deg,var(--warm),var(--warm-deep))}
+  .ph-b{background:radial-gradient(100% 80% at 70% 25%,var(--color-bg-surface) 0%,transparent 55%),linear-gradient(200deg,var(--warm-deep),var(--warm))}
+  .ph-c{background:linear-gradient(180deg,var(--color-bg-surface),var(--warm))}
+  /* full type roles, same as the Design System role classes (family, size, weight, line height, letter spacing) */
+  .type-display{font-family:var(--type-display-font-family);font-size:var(--type-display-font-size);font-weight:var(--type-display-font-weight);line-height:var(--type-display-line-height);letter-spacing:var(--type-display-letter-spacing);text-wrap:balance}
+  .type-h1{font-family:var(--type-h1-font-family);font-size:var(--type-h1-font-size);font-weight:var(--type-h1-font-weight);line-height:var(--type-h1-line-height);letter-spacing:var(--type-h1-letter-spacing);text-wrap:balance}
+  .type-h2{font-family:var(--type-h2-font-family);font-size:var(--type-h2-font-size);font-weight:var(--type-h2-font-weight);line-height:var(--type-h2-line-height);letter-spacing:var(--type-h2-letter-spacing);text-wrap:balance}
+  .type-h3{font-family:var(--type-h3-font-family);font-size:var(--type-h3-font-size);font-weight:var(--type-h3-font-weight);line-height:var(--type-h3-line-height);letter-spacing:var(--type-h3-letter-spacing);text-wrap:balance}
+  .type-h4{font-family:var(--type-h4-font-family);font-size:var(--type-h4-font-size);font-weight:var(--type-h4-font-weight);line-height:var(--type-h4-line-height);letter-spacing:var(--type-h4-letter-spacing)}
+  .type-h5{font-family:var(--type-h5-font-family);font-size:var(--type-h5-font-size);font-weight:var(--type-h5-font-weight);line-height:var(--type-h5-line-height);letter-spacing:var(--type-h5-letter-spacing)}
+  .type-h6{font-family:var(--type-h6-font-family);font-size:var(--type-h6-font-size);font-weight:var(--type-h6-font-weight);line-height:var(--type-h6-line-height);letter-spacing:var(--type-h6-letter-spacing)}
+  .type-body{font-family:var(--type-body-font-family);font-size:var(--type-body-font-size);font-weight:var(--type-body-font-weight);line-height:var(--type-body-line-height);letter-spacing:var(--type-body-letter-spacing)}
+  .type-body-lg{font-family:var(--type-body-lg-font-family);font-size:var(--type-body-lg-font-size);font-weight:var(--type-body-lg-font-weight);line-height:var(--type-body-lg-line-height);letter-spacing:var(--type-body-lg-letter-spacing)}
+  .type-body-sm{font-family:var(--type-body-sm-font-family);font-size:var(--type-body-sm-font-size);font-weight:var(--type-body-sm-font-weight);line-height:var(--type-body-sm-line-height);letter-spacing:var(--type-body-sm-letter-spacing)}
+  .type-caption{font-family:var(--type-caption-font-family);font-size:var(--type-caption-font-size);font-weight:var(--type-caption-font-weight);line-height:var(--type-caption-line-height);letter-spacing:var(--type-caption-letter-spacing);color:var(--color-text-secondary)}
+  .type-overline{font-family:var(--type-overline-font-family);font-size:var(--type-overline-font-size);font-weight:var(--type-overline-font-weight);line-height:var(--type-overline-line-height);letter-spacing:var(--type-overline-letter-spacing);text-transform:var(--type-overline-text-transform);color:var(--color-brand-primary)}
+  .type-label{font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);font-weight:var(--type-label-font-weight);line-height:var(--type-label-line-height);letter-spacing:var(--type-label-letter-spacing)}
+  .type-utility{font-family:var(--type-utility-font-family);font-size:var(--type-utility-font-size);font-weight:var(--type-utility-font-weight);line-height:var(--type-utility-line-height);letter-spacing:var(--type-utility-letter-spacing);text-transform:var(--type-utility-text-transform)}
+  .type-nav{font-family:var(--type-nav-font-family);font-size:var(--type-nav-font-size);font-weight:var(--type-nav-font-weight);line-height:var(--type-nav-line-height);letter-spacing:var(--type-nav-letter-spacing)}
+  .type-product-title{font-family:var(--type-product-title-font-family);font-size:var(--type-product-title-font-size);font-weight:var(--type-product-title-font-weight);line-height:var(--type-product-title-line-height);letter-spacing:var(--type-product-title-letter-spacing)}
+  .type-price{font-family:var(--type-price-font-family);font-size:var(--type-price-font-size);font-weight:var(--type-price-font-weight);line-height:var(--type-price-line-height);letter-spacing:var(--type-price-letter-spacing);font-variant-numeric:tabular-nums}
+  .type-price-lg{font-family:var(--type-price-lg-font-family);font-size:var(--type-price-lg-font-size);font-weight:var(--type-price-lg-font-weight);line-height:var(--type-price-lg-line-height);letter-spacing:var(--type-price-lg-letter-spacing);font-variant-numeric:tabular-nums}
+  .type-validation{font-family:var(--type-validation-font-family);font-size:var(--type-validation-font-size);font-weight:var(--type-validation-font-weight);line-height:var(--type-validation-line-height);letter-spacing:var(--type-validation-letter-spacing)}
+  /* main headings (every h1) are shown in capitals, except the Homepage hero heading, which keeps its own case; h1[class] outranks the .type-* role classes so the tracking applies on every page */
+  h1:not(:where([data-section="Hero Banner"] h1)),h1[class]:not(:where([data-section="Hero Banner"] h1)){text-transform:uppercase;letter-spacing:.04em}
+  /* section headings (every h2) too, except inside rich text the merchant writes (article body, policy text), which keeps its own case */
+  h2:not(:where(#body h2,#body2 h2,#policy-body>section h2)),h2[class]:not(:where(#body h2,#body2 h2,#policy-body>section h2)){text-transform:uppercase;letter-spacing:.04em}
+}
+
+/* Shared component layer for every wireframe: the Design System components (01-Design-System/Styles/components.css)
+   expressed with Tailwind utilities and the mapped tokens. Same sizes, colours and states as the approved pages.
+   In the Shopify theme these become the shared @layer components of the compiled stylesheet and the markup lives in snippets. */
+@layer components {
+  /* ---- Buttons ---- */
+  .btn{@apply inline-flex min-h-control-md select-none items-center justify-center gap-2 rounded-control border border-transparent bg-transparent px-control-x text-center text-ink no-underline transition-colors duration-base;font-family:var(--type-button-font-family);font-size:var(--type-button-font-size);font-weight:var(--type-button-font-weight);line-height:var(--type-button-line-height);letter-spacing:var(--type-button-letter-spacing);text-transform:var(--type-button-text-transform);-webkit-tap-highlight-color:transparent}
+  .btn-primary{@apply border-btn-primary bg-btn-primary text-btn-primary-text hover:border-btn-primary-hover hover:bg-btn-primary-hover active:border-btn-primary-active active:bg-btn-primary-active}
+  .btn-secondary{@apply border-btn-secondary text-ink hover:bg-btn-secondary-hover hover:text-btn-secondary-hover-text}
+  .btn-secondary:active{opacity:var(--opacity-pressed)}
+  .btn-text{@apply min-h-touch px-1 text-link underline decoration-1 underline-offset-[0.35em] hover:text-link-hover hover:decoration-2}
+  .btn-sm{@apply relative min-h-control-sm min-w-touch px-control-x-sm}
+  .btn-sm::after{content:"";position:absolute;inset:calc((var(--control-height-sm) - var(--touch-target-min)) / 2 - var(--border-width-thin)) calc(var(--border-width-thin) * -1)}
+  .btn-lg{@apply min-h-control-lg px-control-x-lg}
+  .btn-block{@apply flex w-full}
+  .btn:disabled,.btn[aria-disabled="true"]{@apply cursor-not-allowed border-btn-disabled bg-btn-disabled text-btn-disabled-text;pointer-events:none}
+  .icon-btn{@apply relative inline-flex size-touch flex-none items-center justify-center rounded-control border border-transparent bg-transparent p-0 text-ink transition-colors duration-base hover:bg-subtle active:bg-brand-tint-strong aria-pressed:text-brand}
+  .icon-btn[aria-pressed="true"] .icon{fill:currentColor}
+  .icon-btn-filled{@apply rounded-pill bg-surface shadow-sm hover:bg-surface hover:shadow-md}
+  /* ---- Links, dividers ---- */
+  .link{@apply text-link underline decoration-1 underline-offset-[0.2em] transition-colors duration-fast hover:text-link-hover hover:decoration-2}
+  .link-standalone{@apply inline-flex min-h-touch items-center}
+  .divider{@apply m-0 w-full border-0 border-t border-line}
+  /* ---- Badges, messages ---- */
+  .badge{@apply inline-flex items-center gap-1 whitespace-nowrap rounded-badge bg-subtle px-2 py-1 font-semibold uppercase leading-snug tracking-wider text-ink;font-size:var(--font-size-utility)}
+  .badge-brand{@apply bg-brand text-ink-on-brand}
+  .badge-dark{@apply bg-inverse text-ink-inverse}
+  .badge-outline{@apply border border-line-strong bg-transparent}
+  .badge .icon{@apply size-4}
+  .message{@apply flex items-start gap-3 rounded-control border-l-thick border-current bg-subtle px-4 py-3 text-body-sm leading-normal text-ink}
+  .message .icon{margin-top:.1em}
+  .message-error{@apply bg-status-error-bg text-status-error}
+  .message-success{@apply bg-status-success-bg text-status-success}
+  .message-warning{@apply bg-status-warning-bg text-status-warning}
+  .message-error>*:not(.icon),.message-success>*:not(.icon),.message-warning>*:not(.icon){color:var(--color-text-primary)}
+  /* ---- Form fields ---- */
+  .field{@apply flex min-w-0 flex-col gap-2}
+  .field-label{@apply text-ink;font-size:var(--type-label-font-size);font-weight:var(--type-label-font-weight);line-height:var(--type-label-line-height)}
+  .input{@apply block min-h-control-md w-full appearance-none rounded-control border border-line-strong bg-surface px-4 py-3 text-input leading-normal text-ink transition-colors duration-fast placeholder:text-ink-muted hover:border-ink focus:border-brand focus-visible:border-brand disabled:cursor-not-allowed disabled:border-dashed disabled:bg-subtle disabled:text-ink-muted aria-[invalid=true]:border-status-error}
+  .select{@apply relative}
+  .select .input{@apply cursor-pointer pr-12}
+  .select-icon{@apply pointer-events-none absolute right-4 top-1/2 -translate-y-1/2}
+  /* ---- Quantity stepper ---- */
+  .qty{@apply inline-flex items-stretch rounded-control border border-line-strong bg-surface hover:border-ink focus-within:border-brand}
+  .qty-btn{@apply grid min-h-control-md w-touch place-items-center rounded-control border-0 bg-transparent p-0 text-ink transition-[background-color] duration-fast hover:bg-subtle active:bg-brand-tint-strong disabled:cursor-not-allowed disabled:bg-transparent disabled:text-ink-disabled}
+  .qty-input{@apply w-qty appearance-none border-0 bg-transparent p-0 text-center text-input font-medium focus-visible:outline-offset-[-4px];font-variant-numeric:tabular-nums;-moz-appearance:textfield}
+  .qty-input::-webkit-outer-spin-button,.qty-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+  /* ---- Price, rating ---- */
+  .price{@apply inline-flex flex-wrap items-baseline gap-x-3 gap-y-1;font-variant-numeric:tabular-nums}
+  .price-current{@apply text-price font-medium}
+  .price-lg .price-current{@apply text-price-lg font-medium}
+  .price-compare{@apply text-body-sm text-ink-secondary line-through decoration-1}
+  .price-sale .price-current{color:var(--color-price-sale)}
+  .price-unit{@apply text-caption text-ink-secondary}
+  .rating{@apply inline-flex items-center gap-2 text-caption text-ink-secondary}
+  .rating-stars{@apply inline-flex text-brand}
+  .rating-stars .icon{@apply size-4}
+  .rating-stars .icon:not(.icon-filled){@apply text-line-strong}
+  /* ---- Chip, chip row ---- */
+  .chip{@apply relative inline-flex min-h-control-sm min-w-touch items-center justify-center gap-2 whitespace-nowrap rounded-pill border border-line-strong bg-surface px-4 text-body-sm font-medium leading-snug text-ink transition-colors duration-base hover:border-ink aria-pressed:border-brand aria-pressed:bg-brand-tint aria-pressed:text-brand-active}
+  .chip::after{content:"";position:absolute;inset:calc((var(--control-height-sm) - var(--touch-target-min)) / 2 - var(--border-width-thin)) calc(var(--border-width-thin) * -1)}
+  .chip-row{@apply flex flex-nowrap items-center gap-3 overflow-x-auto py-1 sm:flex-wrap sm:overflow-x-visible sm:py-0;scrollbar-width:thin}
+  .chip-row>.chip{@apply flex-none}
+  .chip[aria-pressed="true"]::before{content:"";width:var(--icon-size-sm);height:var(--icon-size-sm);background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat}
+  .chip[aria-pressed="true"]:has(.icon)::before{content:none}
+  .chip:disabled{@apply cursor-not-allowed border-dashed bg-subtle text-ink-muted}
+  /* ---- Accordion (native details) ---- */
+  .accordion{@apply border-t border-line}
+  .accordion-item{@apply border-b border-line}
+  .accordion-summary{@apply flex min-h-touch cursor-pointer list-none items-center justify-between gap-4 py-4 text-body font-medium leading-snug hover:text-link}
+  .accordion-summary::-webkit-details-marker{display:none}
+  .accordion-summary::marker{content:""}
+  .accordion-summary .icon{@apply transition-transform duration-base}
+  .accordion-item[open]>.accordion-summary .icon{@apply rotate-180}
+  .accordion-panel{@apply max-w-text pb-5}
+  /* ---- Breadcrumb: phones show parent and current page on one line, tablets the full trail ---- */
+  .breadcrumb{@apply text-body-sm}
+  .breadcrumb-list{@apply m-0 flex list-none flex-nowrap items-center gap-x-2 p-0 sm:flex-wrap}
+  .breadcrumb-item{@apply inline-flex min-w-0 items-center gap-2}
+  .breadcrumb-item+.breadcrumb-item::before{content:"";width:var(--icon-size-sm);height:var(--icon-size-sm);flex:none;background:var(--color-text-muted);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 18 6-6-6-6'/%3E%3C/svg%3E") center / contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 18 6-6-6-6'/%3E%3C/svg%3E") center / contain no-repeat}
+  .breadcrumb a{@apply inline-flex min-h-touch min-w-touch items-center justify-center text-ink-secondary underline decoration-1 underline-offset-[0.2em] hover:text-link-hover hover:decoration-2}
+  .breadcrumb a[aria-current="page"]{@apply font-medium text-ink no-underline}
+  .breadcrumb-item:not(:nth-last-child(-n+2)){@apply hidden sm:inline-flex}
+  .breadcrumb-item:nth-last-child(2)::before{@apply hidden sm:block}
+  .breadcrumb-item:last-child{@apply flex-[1_1_0] sm:flex-[0_1_auto]}
+  .breadcrumb-item:last-child a{@apply block truncate leading-touch sm:inline-flex sm:overflow-visible sm:whitespace-normal sm:leading-[inherit]}
+  /* ---- Pagination ---- */
+  .pagination{@apply m-0 flex list-none flex-wrap items-center justify-center gap-1 p-0}
+  .pagination-link{@apply inline-flex min-h-touch min-w-touch items-center justify-center gap-2 rounded-control border border-transparent px-3 font-medium text-ink no-underline transition-colors duration-base hover:bg-subtle aria-[current=page]:border-btn-primary aria-[current=page]:bg-btn-primary aria-[current=page]:text-btn-primary-text aria-[disabled=true]:pointer-events-none aria-[disabled=true]:text-ink-muted aria-[disabled=true]:line-through;font-variant-numeric:tabular-nums}
+  .pagination-gap{@apply inline-grid min-w-touch place-items-center text-ink-muted}
+  /* ---- Drawer (native dialog; behaviour from 01-Design-System/Scripts/drawer.js) ---- */
+  .drawer{@apply fixed inset-y-0 right-0 left-auto m-0 h-full max-h-none w-drawer max-w-none flex-col overflow-hidden border-0 bg-surface p-0 text-ink shadow-lg backdrop:bg-scrim open:flex}
+  .drawer-head{@apply flex items-center justify-between gap-2 border-b border-line py-1 pl-4 pr-1}
+  .drawer-body{@apply min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-3}
+  .drawer-foot{@apply border-t border-line p-4}
+  /* ---- Page container, review annotations ---- */
+  .wrap{@apply mx-auto w-full px-gutter;max-width:calc(var(--container-max) + 2 * var(--layout-gutter))}
+  .ann{@apply hidden border border-dashed border-line-strong bg-subtle p-3 text-body-sm}
+  body.ann-on .ann{display:block}
+  .ann b{@apply mr-2 font-semibold}
+  .ann em{@apply mt-1 block not-italic text-ink-secondary}
+
+  /* ---- Mega menu panel entrance (reduced motion is handled globally in base.tw.css) ---- */
+  @keyframes mega-in{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  .mega-panel[data-open]{animation:mega-in var(--duration-base) var(--ease-out)}
+}
+</style>
+<style>
+body.embed .rv,body.embed #wp{display:none}
+.rv{background:#f1f1f1;border-bottom:1px solid #aaa;padding:12px 16px;font:14px/1.45 system-ui,sans-serif;color:#222}
+.rv .rvt{font:600 16px system-ui,sans-serif;margin:0 0 4px}.rv p{margin:0 0 8px;max-width:75ch}
+.rv .ctl{display:flex;flex-wrap:wrap;gap:8px}.rv button,.rv a.rvb{min-height:44px;padding:0 14px;border:1px solid #666;background:#fff;font:14px system-ui,sans-serif;cursor:pointer;color:#222;display:inline-flex;align-items:center;text-decoration:none}
+.rv button[aria-pressed="true"],.rv button.on{background:#222;color:#fff}
+.rv details{margin-top:8px}.rv summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:600}.rv li{margin:2px 0}.rv ul{margin:4px 0 8px;padding-left:20px;list-style:disc}
+.rv table{border-collapse:collapse;margin:6px 0 10px;font-size:13px}.rv th,.rv td{border:1px solid #bbb;padding:4px 8px;text-align:left;vertical-align:top}
+#wp{display:none;position:fixed;inset:0;background:#cfcfcf;z-index:1000;overflow:auto;font:14px system-ui,sans-serif;color:#222}#wp.open{display:block}
+#wp .bar2{position:sticky;top:0;z-index:2;background:#fff;border-bottom:1px solid #999;padding:8px 12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+#wp .bar2 button{min-height:44px;padding:0 16px;border:1px solid #666;background:#fff;cursor:pointer;font-size:14px;color:#222}#wp .bar2 button.on{background:#222;color:#fff}
+#wp .stage{padding:16px;display:flex;justify-content:center}#wp iframe{display:block;border:0;background:#fff;box-shadow:0 0 0 1px #888}
+
+</style>
+<style type="text/tailwindcss">
+/* PLP page-level layer: only what utilities cannot express (pseudo-elements, :checked states, hover-capable media query, keyframes).
+   Everything else on this page is utilities plus the shared components. Candidates to promote to the shared layer: .pm, .choice, .swatch. */
+@keyframes faceted-in{from{transform:translateX(-100%)}to{transform:none}}
+@layer components{
+  /* media placeholder: the Design System placeholder-media gradients (the shared .ph set is a different look) */
+  .pm{background:radial-gradient(120% 90% at 30% 20%,var(--color-bg-surface) 0%,transparent 55%),linear-gradient(160deg,var(--color-brand-tint-strong),var(--color-bg-subtle))}
+  .pm-b{background:radial-gradient(100% 80% at 70% 25%,var(--color-bg-surface) 0%,transparent 50%),linear-gradient(200deg,var(--color-bg-subtle),var(--color-brand-tint))}
+  .pm-c{background:linear-gradient(180deg,var(--color-bg-surface),var(--color-bg-subtle))}
+  /* collection banner background */
+  .banner-bg{background:radial-gradient(60% 100% at 80% 40%,color-mix(in srgb,var(--color-brand-accent) 45%,transparent),transparent 72%),linear-gradient(160deg,var(--color-bg-page) 0,var(--color-bg-subtle) 62%,color-mix(in srgb,var(--color-brand-secondary) 24%,var(--color-bg-subtle)) 100%)}
+  /* checkbox row (Design System .choice) */
+  .choice{@apply flex min-h-touch cursor-pointer items-start gap-3 py-1 text-body leading-snug}
+  .choice-input{appearance:none;-webkit-appearance:none;flex:none;position:relative;margin:0;margin-top:-.0625rem;width:var(--choice-size);height:var(--choice-size);background:var(--color-control-bg);border:var(--border-width-thin) solid var(--color-control-border);border-radius:var(--radius-sm);display:grid;place-content:center;cursor:pointer;transition:background-color var(--duration-fast) var(--ease-standard),border-color var(--duration-fast) var(--ease-standard)}
+  .choice-input::before{content:"";width:var(--choice-check-size);height:var(--choice-check-size);background:var(--color-text-on-brand);transform:scale(0);transition:transform var(--duration-fast) var(--ease-out);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat}
+  .choice-input:hover{border-color:var(--color-control-border-hover)}
+  .choice-input:checked{background:var(--color-control-selected);border-color:var(--color-control-selected)}
+  .choice-input:checked::before{transform:scale(1)}
+  /* colour swatch (Design System .swatch; selection is a ring, not colour alone) */
+  .swatch{@apply relative grid size-touch cursor-pointer place-items-center}
+  .swatch-input{@apply absolute inset-0 m-0 size-full cursor-pointer opacity-0}
+  .swatch-chip{width:var(--swatch-size);height:var(--swatch-size);border-radius:var(--swatch-radius);background:var(--swatch,var(--color-bg-subtle));box-shadow:inset 0 0 0 var(--border-width-thin) rgb(var(--shadow-color) / .25);outline:var(--swatch-ring-width) solid transparent;outline-offset:var(--swatch-ring-offset);transition:outline-color var(--duration-fast) var(--ease-standard)}
+  .swatch:hover .swatch-chip{outline-color:var(--color-border-strong)}
+  .swatch-input:checked+.swatch-chip{outline-color:var(--color-text-primary)}
+  .swatch-input:focus-visible+.swatch-chip{outline:var(--focus-ring);outline-offset:var(--swatch-ring-offset)}
+  .swatch-sm{width:var(--swatch-hit-sm);height:var(--swatch-hit-sm)}
+  .swatch-sm .swatch-chip{width:var(--swatch-size-sm);height:var(--swatch-size-sm)}
+  /* product card: whole card clickable through the title link; focus ring moves to the card */
+  .pc-link{color:inherit;text-decoration:none}
+  .pc-link::after{content:"";position:absolute;inset:0}
+  .pc-link:hover{color:var(--color-link);text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:var(--border-width-thin)}
+  .pc-link:focus-visible{outline:none}
+  .product-card:has(.pc-link:focus-visible){outline:var(--focus-ring);outline-offset:var(--focus-ring-offset);border-radius:var(--radius-card)}
+  .pc-alt{opacity:0;transition:opacity var(--duration-slow) var(--ease-standard)}
+  .product-card .pc-quick{display:none}
+  /* mouse screens: second image fades in, Quick view rises over the foot of the image (keyboard focus does the same); touch keeps the labelled button under the card */
+  @media (hover:hover) and (pointer:fine){
+    .product-card:hover .pc-alt,.product-card:focus-within .pc-alt{opacity:1}
+    .product-card:hover .pc-media,.product-card:focus-within .pc-media{box-shadow:var(--shadow-md)}
+    .pc-media{transition:box-shadow var(--duration-slow) var(--ease-standard)}
+    .product-card .pc-quick{display:inline-flex;position:absolute;left:var(--space-3);right:var(--space-3);bottom:var(--space-3);z-index:var(--z-raised);background:color-mix(in srgb,var(--color-bg-surface) 94%,transparent);opacity:0;transform:translateY(var(--space-2));transition:opacity var(--duration-base) var(--ease-standard),transform var(--duration-base) var(--ease-standard)}
+    .product-card:hover .pc-quick,.product-card:focus-within .pc-quick{opacity:1;transform:none}
+    .product-card .pc-action{display:none}
+  }
+}
+</style>
+</head>
+<body class="ann-on" id="top">
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+  <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="icon-account" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+  <symbol id="icon-bag" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></symbol>
+  <symbol id="icon-menu" viewBox="0 0 24 24"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></symbol>
+  <symbol id="icon-close" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+  <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+  <symbol id="icon-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="icon-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="icon-chevron-up" viewBox="0 0 24 24"><path d="m18 15-6-6-6 6"/></symbol>
+  <symbol id="icon-chevron-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+  <symbol id="icon-chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+  <symbol id="icon-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol>
+  <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="icon-filter" viewBox="0 0 24 24"><line x1="21" x2="14" y1="4" y2="4"/><line x1="10" x2="3" y1="4" y2="4"/><line x1="21" x2="12" y1="12" y2="12"/><line x1="8" x2="3" y1="12" y2="12"/><line x1="21" x2="16" y1="20" y2="20"/><line x1="12" x2="3" y1="20" y2="20"/><line x1="14" x2="14" y1="2" y2="6"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="16" x2="16" y1="18" y2="22"/></symbol>
+  <symbol id="icon-sort" viewBox="0 0 24 24"><path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/></symbol>
+  <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></symbol>
+  <symbol id="icon-star" viewBox="0 0 24 24"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></symbol>
+  <symbol id="icon-location" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="icon-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+  <symbol id="icon-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="icon-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="icon-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol>
+  <symbol id="icon-warning" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+  <symbol id="icon-eye" viewBox="0 0 24 24"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="icon-eye-off" viewBox="0 0 24 24"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"/><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/><path d="m2 2 20 20"/></symbol>
+  <symbol id="icon-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></symbol>
+  <symbol id="icon-instagram" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></symbol>
+  <symbol id="icon-facebook" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+  <symbol id="icon-youtube" viewBox="0 0 24 24"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></symbol>
+  <symbol id="icon-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+  <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="icon-zoom-in" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></symbol>
+  <symbol id="icon-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></symbol>
+  <symbol id="icon-truck" viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+  <symbol id="icon-rotate-ccw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
+  <symbol id="icon-shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="icon-store" viewBox="0 0 24 24"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/></symbol>
+  <symbol id="icon-loader" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></symbol>
+</svg>
+
+<a href="#results" class="sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-skip focus:rounded-control focus:bg-inverse focus:px-5 focus:py-3 focus:font-semibold focus:text-ink-inverse">Skip to products</a>
+<div class="rv">
+  <div class="rvt">NUDGE Beauty Theme: product listing page (PLP) wireframe &middot; revision 2 &middot; single responsive file</div>
+  <p>One collection page (sample collection: Skin care). Resize the window, or use the <b>Width preview</b> for 1920, 1440, 1024, 768, 390, 375 and 320 px. Built with Tailwind utilities and shared components mapped to the Design Variables; the announcement bar, header and footer are the shared sections. Products, prices, tags and copy are sample data. Placeholders only: no photography. <b>Revision 2:</b> filters are a left sidebar from 768 px and a left slide-in drawer below it; editorial product cards; refined pagination.</p>
+  <div class="ctl"><button id="t-ann" type="button" aria-pressed="true">Annotations</button><button id="t-wp" type="button">Width preview</button><button id="t-open" type="button">Open filters</button><button id="t-applied" type="button">Applied filters</button><button id="t-empty" type="button">Empty results</button><button id="t-quick" type="button">Quick view</button><button id="t-reset" type="button">Reset</button></div>
+<details><summary>Review notes: approved features, exclusions, decisions, Shopify, reuse, checks (open)</summary>
+<h3 class="mb-1 mt-4 font-body text-body-sm font-semibold">Approved Beauty PLP features (23 of 23 built)</h3>
+<p>Source: <b>Homepage_CRO_5_Theme_Final_Comparison_Revised_Final.xlsx</b>, sheet <i>Beauty - PLP, PDP &amp; Cart</i> (PLP: 23 kept, 7 not recommended). Evidence for each row is in <b>PLP-FEATURE-ANALYSIS.md</b> beside this file.</p>
+<div class="max-w-full overflow-x-auto"><table class="min-w-[44rem]"><thead><tr><th>#</th><th>Feature (revised workbook)</th><th>Role</th><th>Where in the wireframe</th></tr></thead><tbody>
+<tr><td>1</td><td>Breadcrumbs</td><td>Essential</td><td>Top of the banner (phones: parent and current page)</td></tr>
+<tr><td>2</td><td>Collection Banner (title, image, short intro)</td><td>Essential</td><td>Banner: the one H1, a two-line intro; image from 1024 px</td></tr>
+<tr><td>3</td><td>Sub-collection Links (chips)</td><td>Industry-specific</td><td>Chip row under the banner</td></tr>
+<tr><td>4</td><td>Sort and Product Count Bar</td><td>Essential</td><td>Toolbar above the grid: live count, sort; Filters button on phones</td></tr>
+<tr><td>5</td><td>Filters (availability, price, product type; phone-friendly)</td><td>Essential</td><td>Left sidebar from 768 px; left drawer below</td></tr>
+<tr><td>6</td><td>Filter by Concern / Skin Type / Goal</td><td>Industry-specific</td><td>First two sidebar groups (open); Benefits group</td></tr>
+<tr><td>7</td><td>Filter by Colour / Shade Swatches</td><td>Industry-specific</td><td>Shade group (only when the collection has shades)</td></tr>
+<tr><td>8</td><td>Filter by Size</td><td>Industry-specific</td><td>Size group (volume)</td></tr>
+<tr><td>9</td><td>Active Filter Chips &amp; Clear All</td><td>Essential</td><td>Above the grid; one line on phones</td></tr>
+<tr><td>10</td><td>Empty Filter Result State</td><td>Additional CRO</td><td>Replaces the grid: message, Clear all, category links</td></tr>
+<tr><td>11</td><td>Promo Tile in Grid</td><td>Optional (merchant)</td><td>One tile after the 8th product, page 1 only</td></tr>
+<tr><td>12</td><td>Product Grid (2 to 4 columns, consistent card size)</td><td>Essential</td><td>2 / 3 columns by width beside the sidebar, 4 from 1280 px</td></tr>
+<tr><td>13</td><td>Product Card: image, title, price, sale price and saving</td><td>Essential</td><td>Editorial card; percent badge on the image</td></tr>
+<tr><td>14</td><td>Product Rating on Card (display only)</td><td>Optional (merchant)</td><td>Stars and count under the supporting line; hidden under 5 reviews</td></tr>
+<tr><td>15</td><td>Unit Price</td><td>Industry-specific</td><td>Under the price where set</td></tr>
+<tr><td>16</td><td>Key Attribute Line on Card</td><td>Industry-specific</td><td>One line under the name</td></tr>
+<tr><td>17</td><td>Colour / Shade Swatches on Card</td><td>Industry-specific</td><td>Four dots and +N; names are in Quick view</td></tr>
+<tr><td>18</td><td>Product Badges</td><td>Essential</td><td>One quiet badge: sold out, sale, new arrival, bestseller, limited edition</td></tr>
+<tr><td>19</td><td>Low-Stock Message on Card (real inventory)</td><td>Optional (merchant)</td><td>Icon and words; two sample cards</td></tr>
+<tr><td>20</td><td>Quick View</td><td>Optional; after the first listing</td><td>Hover bar on mouse screens; labelled button on touch; opens the Drawer (right side panel)</td></tr>
+<tr><td>21</td><td>Numbered Pagination</td><td>Essential</td><td>Below the grid at every width</td></tr>
+<tr><td>22</td><td>Scroll Position Kept on Back</td><td>Essential</td><td>Behaviour, not drawn: filters and page live in the URL</td></tr>
+<tr><td>23</td><td>Collection SEO Description (below the grid)</td><td>Optional (merchant)</td><td>Text block under the pagination</td></tr>
+</tbody></table></div>
+<h3 class="mb-1 mt-4 font-body text-body-sm font-semibold">Not in the wireframe (marked No or Removed for Beauty)</h3>
+<ul class="[columns:2_14rem]"><li>Quick Add (No: a shade must be chosen first; Quick view is used)</li><li>Grid / list toggle</li><li>Compare bar</li><li>Related collections strip</li><li>Filter by brand (Removed: each theme is one brand's store)</li><li>Filter by pet type; by technical specification</li><li>Wishlist (needs an app)</li><li>Back-in-stock sign-up (needs an app)</li><li>Infinite scroll; Load more button</li><li>Recently viewed; best-seller strip; delivery or trust strip</li><li>Ratings from a review platform (needs an app)</li></ul>
+<h3 class="mb-1 mt-4 font-body text-body-sm font-semibold">Decisions to confirm (this revision follows your brief where it differs from the workbook)</h3>
+<ul>
+<li><b>Second image on hover</b> is marked No for Beauty in the workbook (touch has no hover). You asked for it, so it is built for mouse screens only (hover and fine pointer); touch screens show the first image. Setting: show second image.</li>
+<li><b>Key ingredients</b> and <b>Benefits</b> filters are not in the workbook's Beauty list (the CRO matrix names ingredient as a possible metafield group). Added at your request. <b>Brand</b> is Removed in the workbook (one brand per store), so it is not drawn.</li>
+<li><b>Limited edition</b> badge is not in the workbook's badge list (sale, new, best seller, sold out). Shown on one sample card; a merchant tag.</li>
+<li><b>Sticky filters.</b> Not used: Sticky Filters while scrolling is Removed (deferred) in the revised workbook, so the sidebar and the sort toolbar scroll with the page.</li>
+<li><b>Quick add vs Quick view.</b> Followed the workbook: Quick view with a shade chooser and Add to bag, not a one-tap add.</li>
+<li><b>Pagination</b> stays numbered (Load more and infinite scroll are Removed in the workbook; the Design System's phone Load more is not used).</li>
+</ul>
+<h3 class="mb-1 mt-4 font-body text-body-sm font-semibold">Shopify-native or app-dependent</h3>
+<div class="max-w-full overflow-x-auto"><table class="min-w-[44rem]"><thead><tr><th>Feature</th><th>Type</th></tr></thead><tbody>
+<tr><td>Filters, counts, price range, availability, URL state</td><td>Native Shopify platform feature: Search &amp; Discovery filters (set in admin); the theme supplies the sidebar and drawer</td></tr>
+<tr><td>Concern, skin type, ingredient, benefit, shade, size filters</td><td>Product tags or metafields exposed as filters (merchant sets up)</td></tr>
+<tr><td>Sort, pagination, unit price, compare-at price, badges, sold out</td><td>Native: collection and product data</td></tr>
+<tr><td>Second image on hover</td><td>Native: the product's second media item</td></tr>
+<tr><td>Rating and review count on the card</td><td>Native display only: values come from a product metafield; the theme builds no review system</td></tr>
+<tr><td>Low-stock message</td><td>Native, only with tracked inventory; never invented</td></tr>
+<tr><td>Quick view</td><td>Native theme: Liquid, product JSON and theme JavaScript</td></tr>
+<tr><td>Promo tile</td><td>Theme block (image or text card), merchant content</td></tr>
+</tbody></table></div>
+<h3 class="mb-1 mt-4 font-body text-body-sm font-semibold">Shopify build</h3>
+<p>Template <code>collection.json</code> with a <code>main-collection</code> section over the native <code>collection</code> object and Search &amp; Discovery filters; the banner, sub-collection links, filters, toolbar, product grid, promo tile, pagination and SEO description are blocks and snippets (<code>product-card</code>, <code>facet-group</code>, <code>quick-view</code>); the promo tile, filter groups and second-image setting are theme-editor settings. No app is involved. Tailwind utilities compile into one theme stylesheet from the same token-mapped config.</p>
+<h3 class="mb-1 mt-4 font-body text-body-sm font-semibold">Reused from the shared components (nothing duplicated)</h3>
+<p>Breadcrumb, Chip (toggle, removable and as a link), Button, Select, Drawer (mobile filters and quick view, with <code>drawer.js</code>), Accordion, Field, Badge, Price, Rating, Pagination, Message, text roles. Colours, spacing, type, radius, shadow, motion and z-index come from <code>variables.css</code> through the Tailwind theme. Page-level additions: placeholder gradients, checkbox row, colour swatch, product-card hover behaviour.</p>
+<h3 class="mb-1 mt-4 font-body text-body-sm font-semibold">Checks</h3>
+<p id="doc-checks">See PLP-FEATURE-ANALYSIS.md, section 6. In-page checks run with <code>?selftest=1</code>.</p>
+</details>
+</div>
+<div class="ann"><b>Global</b>Announcement bar, header and footer: the shared sections (rotating real messages; centred logo, four links, search, account, cart; Skin is the current link). Sub-categories appear as chips on this page (no mega menu).<em>Responsive: announcement bar one wrapping line, arrows from 600 px, dots below. Below 1024 px a one-row header with menu, search icon, logo, account and cart; links sit in the drawer. Footer groups are tap-to-open rows below 768 px, four columns from 768 px.</em></div>
+<div id="annbar" class="flex min-h-10 flex-wrap items-center justify-center gap-x-3 gap-y-[2px] bg-brand px-gutter py-2 text-center text-body-sm tracking-[0.03em] text-ink-inverse focus-within:[--color-focus-ring:var(--color-focus-ring-inverse)]">
+  <button id="ann-prev" type="button" aria-label="Previous message" class="hidden size-touch items-center justify-center sm:inline-flex"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-chevron-left"></use></svg></button>
+  <div id="ann-msg" class="min-w-0" aria-live="polite">Free shipping on orders over $50</div>
+  <button id="ann-next" type="button" aria-label="Next message" class="hidden size-touch items-center justify-center sm:inline-flex"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-chevron-right"></use></svg></button>
+  <div class="flex w-full justify-center gap-2 sm:hidden" aria-hidden="true"><i class="ann-dot size-[6px] rounded-pill border border-current bg-current opacity-100"></i><i class="ann-dot size-[6px] rounded-pill border border-current opacity-muted"></i><i class="ann-dot size-[6px] rounded-pill border border-current opacity-muted"></i></div>
+</div>
+
+<header id="site-header" class="sticky top-0 z-sticky border-b border-line bg-page [.nav-open_&]:z-drawer lg:[html_body.mega-open_&]:!bg-page ">
+  <div class="mx-auto grid w-full max-w-[calc(var(--container-max)+2*var(--layout-gutter))] grid-cols-[auto_auto_1fr_auto] items-center gap-x-1 px-gutter py-2 max-[359px]:grid-cols-[auto_1fr_auto] max-[359px]:gap-y-2 max-[359px]:pb-3 lg:min-h-[5.25rem] lg:grid-cols-[1fr_auto_1fr] lg:gap-x-grid-gap lg:py-0">
+    <button id="menu-btn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu" class="inline-flex size-touch items-center justify-center text-ink lg:hidden"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-menu"></use></svg></button>
+    <a href="#search" aria-label="Search" class="inline-flex size-touch items-center justify-center text-ink max-[359px]:hidden lg:hidden"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-search"></use></svg></a>
+    <a href="#top" aria-label="Store home" class="inline-flex min-h-touch items-center justify-center justify-self-center px-2 text-ink max-[374px]:px-1 lg:order-2"><svg viewBox="0 0 520 100" role="img" aria-label="NUDGE" fill="currentColor" class="block max-w-full h-5 w-auto max-[374px]:h-4 lg:h-6"><path d="M0 14H16V100H0ZM66 0H82V86H66ZM0 14H19L82 86H63Z"/><path d="M106 0H122V62A25 25 0 0 0 172 62V0H188V62A41 41 0 0 1 106 62Z"/><path fill-rule="evenodd" d="M212 0H252A50 50 0 0 1 252 100H212ZM228 16H252A34 34 0 0 1 252 84H228Z"/><path d="M378 42H426V58H378Z"/><path d="M450 0H520V16H466V42H510V58H466V84H520V100H450Z"/><path d="M410.4 25.9A42 42 0 1 0 418 50" fill="none" stroke="currentColor" stroke-width="16"/></svg></a>
+    <nav id="nav" aria-label="Main" class="invisible fixed inset-y-0 left-0 z-drawer flex w-full max-w-[26rem] -translate-x-full flex-col gap-3 overflow-y-auto border-r border-line-strong bg-page p-4 transition-transform duration-base [.nav-open_&]:visible [.nav-open_&]:translate-x-0 lg:visible lg:static lg:order-1 lg:w-auto lg:max-w-none lg:translate-x-0 lg:!transform-none lg:flex-row lg:tracking-[var(--type-nav-letter-spacing)] lg:items-center lg:gap-5 xl:gap-7 lg:overflow-visible lg:border-0 lg:bg-transparent lg:p-0">
+      <button id="nav-close" type="button" aria-label="Close menu" class="inline-flex min-h-touch min-w-touch items-center justify-center gap-2 self-end px-2 text-body-sm text-ink lg:hidden"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-close"></use></svg><span>Close</span></button>
+      <div class="flex flex-col lg:flex-row lg:gap-7">
+<div data-mega="skin" class="group/mega flex flex-col border-b border-line lg:border-0">
+<a href="#collection" aria-current="page" data-mega-link aria-haspopup="true" aria-expanded="false" aria-controls="mega-skin" class="group relative flex min-h-[3.25rem] flex-1 items-center justify-between text-body-lg font-medium text-ink no-underline lg:min-h-touch lg:flex-none lg:text-body lg:after:absolute lg:after:inset-x-0 lg:after:bottom-2 lg:after:h-px lg:after:origin-left lg:after:scale-x-0 lg:after:bg-brand lg:after:transition-transform lg:hover:after:scale-x-100 lg:group-data-[open]/mega:after:scale-x-100 lg:after:scale-x-100">Skin<svg class="icon size-6 transition-transform duration-fast group-data-[open]/mega:rotate-180 lg:hidden" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></a>
+<div id="mega-skin" data-mega-panel class="mega-panel hidden data-[open]:block lg:absolute lg:inset-x-0 lg:top-full lg:z-[1] lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto lg:border-b lg:border-line lg:bg-page lg:shadow-md">
+<div class="mx-auto flex w-full max-w-[calc(var(--container-max)+2*var(--layout-gutter))] flex-col pb-3 pl-3 lg:px-gutter lg:py-8 lg:pl-gutter">
+<a href="#collection-skin" class="flex min-h-touch items-center gap-2 text-body font-medium text-brand no-underline hover:underline lg:order-last lg:mt-4 lg:self-start lg:border-t-0 lg:text-body-sm">Shop all skin<svg class="icon size-5" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></a>
+<div class="lg:grid lg:grid-cols-[repeat(2,minmax(0,1fr))_minmax(0,1.2fr)] lg:gap-grid-gap">
+<div class="mb-2 lg:mb-0">
+<p class="pb-1 pt-3 text-overline font-medium uppercase tracking-uppercase text-ink-muted lg:pb-3 lg:pt-0">Shop by concern</p>
+<ul class="m-0 list-none p-0">
+<li><a href="#collection-skin-hydration" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Hydration</a></li><li><a href="#collection-skin-brightening" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Brightening</a></li><li><a href="#collection-skin-anti-ageing" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Anti-ageing</a></li><li><a href="#collection-skin-blemish-care" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Blemish care</a></li><li><a href="#collection-skin-sensitive-skin" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Sensitive skin</a></li></ul></div>
+<div class="mb-2 lg:mb-0">
+<p class="pb-1 pt-3 text-overline font-medium uppercase tracking-uppercase text-ink-muted lg:pb-3 lg:pt-0">Shop by step</p>
+<ul class="m-0 list-none p-0">
+<li><a href="#collection-skin-cleansers" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Cleansers</a></li><li><a href="#collection-skin-serums" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Serums</a></li><li><a href="#collection-skin-moisturisers" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Moisturisers</a></li><li><a href="#collection-skin-sun-care" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Sun care</a></li><li><a href="#collection-skin-masks" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Masks</a></li><li><a href="#collection-skin-eye-care" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Eye care</a></li></ul></div>
+<div class="hidden grid-cols-2 gap-4 lg:grid">
+<a href="#collection-skin-new-in-skin" class="group/card block min-w-0 no-underline"><div class="ph relative flex aspect-portrait items-start justify-start overflow-hidden rounded-card border border-line p-2 text-caption leading-snug text-ink-muted"><span>IMAGE PLACEHOLDER<br>4:5</span></div><p class="mt-3 text-body-sm font-medium text-ink group-hover/card:underline">New in skin</p><p class="flex items-center gap-1 text-caption text-ink-muted">Shop now<svg class="icon size-4" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></p></a>
+<a href="#collection-skin-skin-routines" class="group/card block min-w-0 no-underline"><div class="ph-b relative flex aspect-portrait items-start justify-start overflow-hidden rounded-card border border-line p-2 text-caption leading-snug text-ink-muted"><span>IMAGE PLACEHOLDER<br>4:5</span></div><p class="mt-3 text-body-sm font-medium text-ink group-hover/card:underline">Skin routines</p><p class="flex items-center gap-1 text-caption text-ink-muted">Shop now<svg class="icon size-4" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></p></a>
+</div>
+</div></div></div>
+</div>
+<div data-mega="makeup" class="group/mega flex flex-col border-b border-line lg:border-0">
+<a href="#collection"  data-mega-link aria-haspopup="true" aria-expanded="false" aria-controls="mega-makeup" class="group relative flex min-h-[3.25rem] flex-1 items-center justify-between text-body-lg font-medium text-ink no-underline lg:min-h-touch lg:flex-none lg:text-body lg:after:absolute lg:after:inset-x-0 lg:after:bottom-2 lg:after:h-px lg:after:origin-left lg:after:scale-x-0 lg:after:bg-brand lg:after:transition-transform lg:hover:after:scale-x-100 lg:group-data-[open]/mega:after:scale-x-100">Makeup<svg class="icon size-6 transition-transform duration-fast group-data-[open]/mega:rotate-180 lg:hidden" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></a>
+<div id="mega-makeup" data-mega-panel class="mega-panel hidden data-[open]:block lg:absolute lg:inset-x-0 lg:top-full lg:z-[1] lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto lg:border-b lg:border-line lg:bg-page lg:shadow-md">
+<div class="mx-auto flex w-full max-w-[calc(var(--container-max)+2*var(--layout-gutter))] flex-col pb-3 pl-3 lg:px-gutter lg:py-8 lg:pl-gutter">
+<a href="#collection-makeup" class="flex min-h-touch items-center gap-2 text-body font-medium text-brand no-underline hover:underline lg:order-last lg:mt-4 lg:self-start lg:border-t-0 lg:text-body-sm">Shop all makeup<svg class="icon size-5" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></a>
+<div class="lg:grid lg:grid-cols-[repeat(2,minmax(0,1fr))_minmax(0,1.2fr)] lg:gap-grid-gap">
+<div class="mb-2 lg:mb-0">
+<p class="pb-1 pt-3 text-overline font-medium uppercase tracking-uppercase text-ink-muted lg:pb-3 lg:pt-0">Face</p>
+<ul class="m-0 list-none p-0">
+<li><a href="#collection-makeup-foundation" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Foundation</a></li><li><a href="#collection-makeup-concealer" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Concealer</a></li><li><a href="#collection-makeup-blush" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Blush</a></li><li><a href="#collection-makeup-highlighter" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Highlighter</a></li><li><a href="#collection-makeup-primer" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Primer</a></li></ul></div>
+<div class="mb-2 lg:mb-0">
+<p class="pb-1 pt-3 text-overline font-medium uppercase tracking-uppercase text-ink-muted lg:pb-3 lg:pt-0">Eyes and lips</p>
+<ul class="m-0 list-none p-0">
+<li><a href="#collection-makeup-mascara" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Mascara</a></li><li><a href="#collection-makeup-eyeliner" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Eyeliner</a></li><li><a href="#collection-makeup-brows" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Brows</a></li><li><a href="#collection-makeup-lipstick" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Lipstick</a></li><li><a href="#collection-makeup-lip-care" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Lip care</a></li><li><a href="#collection-makeup-brushes-and-tools" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Brushes and tools</a></li></ul></div>
+<div class="hidden grid-cols-2 gap-4 lg:grid">
+<a href="#collection-makeup-new-in-makeup" class="group/card block min-w-0 no-underline"><div class="ph relative flex aspect-portrait items-start justify-start overflow-hidden rounded-card border border-line p-2 text-caption leading-snug text-ink-muted"><span>IMAGE PLACEHOLDER<br>4:5</span></div><p class="mt-3 text-body-sm font-medium text-ink group-hover/card:underline">New in makeup</p><p class="flex items-center gap-1 text-caption text-ink-muted">Shop now<svg class="icon size-4" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></p></a>
+<a href="#collection-makeup-complexion-edit" class="group/card block min-w-0 no-underline"><div class="ph-b relative flex aspect-portrait items-start justify-start overflow-hidden rounded-card border border-line p-2 text-caption leading-snug text-ink-muted"><span>IMAGE PLACEHOLDER<br>4:5</span></div><p class="mt-3 text-body-sm font-medium text-ink group-hover/card:underline">Complexion edit</p><p class="flex items-center gap-1 text-caption text-ink-muted">Shop now<svg class="icon size-4" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></p></a>
+</div>
+</div></div></div>
+</div>
+<div data-mega="hair" class="group/mega flex flex-col border-b border-line lg:border-0">
+<a href="#collection"  data-mega-link aria-haspopup="true" aria-expanded="false" aria-controls="mega-hair" class="group relative flex min-h-[3.25rem] flex-1 items-center justify-between text-body-lg font-medium text-ink no-underline lg:min-h-touch lg:flex-none lg:text-body lg:after:absolute lg:after:inset-x-0 lg:after:bottom-2 lg:after:h-px lg:after:origin-left lg:after:scale-x-0 lg:after:bg-brand lg:after:transition-transform lg:hover:after:scale-x-100 lg:group-data-[open]/mega:after:scale-x-100">Hair<svg class="icon size-6 transition-transform duration-fast group-data-[open]/mega:rotate-180 lg:hidden" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></a>
+<div id="mega-hair" data-mega-panel class="mega-panel hidden data-[open]:block lg:absolute lg:inset-x-0 lg:top-full lg:z-[1] lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto lg:border-b lg:border-line lg:bg-page lg:shadow-md">
+<div class="mx-auto flex w-full max-w-[calc(var(--container-max)+2*var(--layout-gutter))] flex-col pb-3 pl-3 lg:px-gutter lg:py-8 lg:pl-gutter">
+<a href="#collection-hair" class="flex min-h-touch items-center gap-2 text-body font-medium text-brand no-underline hover:underline lg:order-last lg:mt-4 lg:self-start lg:border-t-0 lg:text-body-sm">Shop all hair<svg class="icon size-5" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></a>
+<div class="lg:grid lg:grid-cols-[repeat(2,minmax(0,1fr))_minmax(0,1.2fr)] lg:gap-grid-gap">
+<div class="mb-2 lg:mb-0">
+<p class="pb-1 pt-3 text-overline font-medium uppercase tracking-uppercase text-ink-muted lg:pb-3 lg:pt-0">Shop by concern</p>
+<ul class="m-0 list-none p-0">
+<li><a href="#collection-hair-dryness" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Dryness</a></li><li><a href="#collection-hair-frizz" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Frizz</a></li><li><a href="#collection-hair-colour-care" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Colour care</a></li><li><a href="#collection-hair-scalp-care" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Scalp care</a></li><li><a href="#collection-hair-hair-loss" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Hair loss</a></li></ul></div>
+<div class="mb-2 lg:mb-0">
+<p class="pb-1 pt-3 text-overline font-medium uppercase tracking-uppercase text-ink-muted lg:pb-3 lg:pt-0">Shop by step</p>
+<ul class="m-0 list-none p-0">
+<li><a href="#collection-hair-shampoo" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Shampoo</a></li><li><a href="#collection-hair-conditioner" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Conditioner</a></li><li><a href="#collection-hair-treatments" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Treatments</a></li><li><a href="#collection-hair-styling" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Styling</a></li><li><a href="#collection-hair-tools" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Tools</a></li></ul></div>
+<div class="hidden grid-cols-2 gap-4 lg:grid">
+<a href="#collection-hair-new-in-hair" class="group/card block min-w-0 no-underline"><div class="ph relative flex aspect-portrait items-start justify-start overflow-hidden rounded-card border border-line p-2 text-caption leading-snug text-ink-muted"><span>IMAGE PLACEHOLDER<br>4:5</span></div><p class="mt-3 text-body-sm font-medium text-ink group-hover/card:underline">New in hair</p><p class="flex items-center gap-1 text-caption text-ink-muted">Shop now<svg class="icon size-4" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></p></a>
+<a href="#collection-hair-salon-at-home" class="group/card block min-w-0 no-underline"><div class="ph-b relative flex aspect-portrait items-start justify-start overflow-hidden rounded-card border border-line p-2 text-caption leading-snug text-ink-muted"><span>IMAGE PLACEHOLDER<br>4:5</span></div><p class="mt-3 text-body-sm font-medium text-ink group-hover/card:underline">Salon at home</p><p class="flex items-center gap-1 text-caption text-ink-muted">Shop now<svg class="icon size-4" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></p></a>
+</div>
+</div></div></div>
+</div>
+<div data-mega="body" class="group/mega flex flex-col border-b border-line lg:border-0">
+<a href="#collection"  data-mega-link aria-haspopup="true" aria-expanded="false" aria-controls="mega-body" class="group relative flex min-h-[3.25rem] flex-1 items-center justify-between text-body-lg font-medium text-ink no-underline lg:min-h-touch lg:flex-none lg:text-body lg:after:absolute lg:after:inset-x-0 lg:after:bottom-2 lg:after:h-px lg:after:origin-left lg:after:scale-x-0 lg:after:bg-brand lg:after:transition-transform lg:hover:after:scale-x-100 lg:group-data-[open]/mega:after:scale-x-100">Body<svg class="icon size-6 transition-transform duration-fast group-data-[open]/mega:rotate-180 lg:hidden" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></a>
+<div id="mega-body" data-mega-panel class="mega-panel hidden data-[open]:block lg:absolute lg:inset-x-0 lg:top-full lg:z-[1] lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto lg:border-b lg:border-line lg:bg-page lg:shadow-md">
+<div class="mx-auto flex w-full max-w-[calc(var(--container-max)+2*var(--layout-gutter))] flex-col pb-3 pl-3 lg:px-gutter lg:py-8 lg:pl-gutter">
+<a href="#collection-body" class="flex min-h-touch items-center gap-2 text-body font-medium text-brand no-underline hover:underline lg:order-last lg:mt-4 lg:self-start lg:border-t-0 lg:text-body-sm">Shop all body<svg class="icon size-5" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></a>
+<div class="lg:grid lg:grid-cols-[repeat(2,minmax(0,1fr))_minmax(0,1.2fr)] lg:gap-grid-gap">
+<div class="mb-2 lg:mb-0">
+<p class="pb-1 pt-3 text-overline font-medium uppercase tracking-uppercase text-ink-muted lg:pb-3 lg:pt-0">Bath and body</p>
+<ul class="m-0 list-none p-0">
+<li><a href="#collection-body-body-wash" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Body wash</a></li><li><a href="#collection-body-body-lotion" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Body lotion</a></li><li><a href="#collection-body-body-oil" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Body oil</a></li><li><a href="#collection-body-scrubs" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Scrubs</a></li><li><a href="#collection-body-hand-and-foot-care" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Hand and foot care</a></li></ul></div>
+<div class="mb-2 lg:mb-0">
+<p class="pb-1 pt-3 text-overline font-medium uppercase tracking-uppercase text-ink-muted lg:pb-3 lg:pt-0">Fragrance and more</p>
+<ul class="m-0 list-none p-0">
+<li><a href="#collection-body-perfume" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Perfume</a></li><li><a href="#collection-body-body-mist" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Body mist</a></li><li><a href="#collection-body-deodorant" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Deodorant</a></li><li><a href="#collection-body-sun-care" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Sun care</a></li><li><a href="#collection-body-gifts-and-sets" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Gifts and sets</a></li></ul></div>
+<div class="hidden grid-cols-2 gap-4 lg:grid">
+<a href="#collection-body-new-in-body" class="group/card block min-w-0 no-underline"><div class="ph relative flex aspect-portrait items-start justify-start overflow-hidden rounded-card border border-line p-2 text-caption leading-snug text-ink-muted"><span>IMAGE PLACEHOLDER<br>4:5</span></div><p class="mt-3 text-body-sm font-medium text-ink group-hover/card:underline">New in body</p><p class="flex items-center gap-1 text-caption text-ink-muted">Shop now<svg class="icon size-4" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></p></a>
+<a href="#collection-body-gift-sets" class="group/card block min-w-0 no-underline"><div class="ph-b relative flex aspect-portrait items-start justify-start overflow-hidden rounded-card border border-line p-2 text-caption leading-snug text-ink-muted"><span>IMAGE PLACEHOLDER<br>4:5</span></div><p class="mt-3 text-body-sm font-medium text-ink group-hover/card:underline">Gift sets</p><p class="flex items-center gap-1 text-caption text-ink-muted">Shop now<svg class="icon size-4" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></p></a>
+</div>
+</div></div></div>
+</div>
+</div>
+      <div class="relative self-start" id="market"><button type="button" id="market-btn" aria-haspopup="true" aria-expanded="false" aria-controls="market-menu" class="group inline-flex min-h-touch items-center gap-2 whitespace-nowrap rounded-pill border border-line-strong bg-transparent px-4 text-body-sm text-ink lg:px-3 xl:px-4"><svg class="icon size-[18px]" aria-hidden="true" focusable="false"><use href="#icon-location"></use></svg><span id="market-label">India (INR)</span><svg class="icon size-4 transition-transform duration-fast group-aria-[expanded=true]:rotate-180" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></button><div id="market-menu" role="group" aria-label="Choose country and currency" hidden class="mt-2 w-full min-w-[260px] rounded-control border border-line-strong bg-surface p-2 shadow-md lg:absolute lg:left-0 lg:top-full lg:z-[60] lg:mt-1 lg:w-auto"></div></div>
+    </nav>
+    <div class="flex items-center justify-end gap-3 lg:order-3">
+      <a href="#search" role="search" aria-label="Search products" class="hidden min-h-touch w-full max-w-[13rem] items-center gap-2 rounded-pill border border-line-strong bg-surface px-4 text-body-sm text-ink-muted no-underline lg:flex"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-search"></use></svg><span>Search products</span></a>
+      <div class="flex gap-[2px]">
+        <a href="#account" aria-label="Account" class="inline-flex min-h-touch min-w-touch items-center justify-center gap-2 whitespace-nowrap px-2 text-body-sm leading-[1.2] text-ink no-underline"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-account"></use></svg><span class="hidden lg:inline">Account</span></a>
+        <a href="#cart" aria-label="Cart, 0 items" class="relative inline-flex min-h-touch min-w-touch items-center justify-center gap-2 whitespace-nowrap px-2 text-ink no-underline"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-bag"></use></svg><span class="hidden lg:inline">Cart</span><b class="cnt h-[18px] min-w-[18px] rounded-pill bg-brand px-1 text-center text-caption leading-[20px] text-ink-on-brand">0</b></a>
+      </div>
+    </div>
+    <a href="#search" aria-label="Search products" class="col-span-full hidden min-h-touch items-center gap-2 rounded-pill border border-line-strong bg-surface px-4 text-body-sm text-ink-muted no-underline max-[359px]:flex"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-search"></use></svg><span>Search products</span></a>
+  </div>
+<div id="scrim" class="fixed inset-0 z-overlay hidden bg-scrim [.nav-open_&]:block lg:!hidden"></div>
+<div id="mega-scrim" class="absolute inset-x-0 top-full hidden h-screen bg-scrim lg:[.mega-open_&]:block"></div>
+</header>
+
+<main id="main">
+<section class="banner-bg relative overflow-hidden" id="banner" aria-labelledby="plp-title" data-section="Collection Banner">
+<div class="ann"><b>01 &middot; Orient</b>Breadcrumbs + Collection Banner (title, image, short intro) &mdash; CRO: Essential (CRO-CAT-003, CRO-CAT-006). Plan component: collection-banner, variant image-background. The one H1 and a two-line intro; the breadcrumb sits inside the band to save height. Title and intro are merchant content.<em>Responsive: text only below 1024 px (setting: show image on mobile, default off) so products start early; from 1024 px the image fills the right half (placeholder, 16:9, subject right). Breadcrumb shows parent and current page below 600 px.</em></div>
+<div class="wrap relative flex flex-col gap-2 pb-10 pt-2 lg:pb-16">
+<nav class="breadcrumb" aria-label="Breadcrumb"><ol class="breadcrumb-list"><li class="breadcrumb-item"><a href="#top">Home</a></li><li class="breadcrumb-item"><a href="#banner" aria-current="page">Skin care</a></li></ol></nav>
+<div class="flex max-w-text flex-col gap-3">
+<p class="type-overline">The collection</p>
+<h1 id="plp-title">Skin care</h1>
+<p class="type-body-lg text-ink">Cleansers, serums, moisturisers and sun care, chosen to work together.</p>
+</div>
+<div class="absolute inset-y-0 left-1/2 right-0 hidden flex-col items-center justify-center gap-1 text-center text-ink-secondary lg:flex" aria-hidden="true"><svg class="icon size-6"><use href="#icon-eye"></use></svg><span class="type-utility">Collection image</span><span class="type-caption">Desktop &middot; 16:9 &middot; 2880 &times; 1620 &middot; subject in the right half</span></div>
+</div>
+</section>
+<nav class="wrap pb-2 pt-6" id="subnav" aria-label="Skin care categories" data-section="Sub-collection Links">
+<div class="ann"><b>02 &middot; Navigate</b>Sub-collection Links (chips) &mdash; CRO: industry-specific; Plan: collection-list. Narrow by product category in one tap, before filtering. Names are merchant content.<em>Responsive: one scrolling line below 600 px (the cut-off chip shows it scrolls), wraps from 600 px. Current page is tint, thick border and bold.</em></div>
+<div class="chip-row"><a class="chip min-h-touch no-underline aria-[current=page]:border-thick aria-[current=page]:border-brand aria-[current=page]:bg-brand-tint aria-[current=page]:font-semibold aria-[current=page]:text-brand-active" href="#cat" aria-current="page">All skin care</a><a class="chip min-h-touch no-underline" href="#cat">Cleansers</a><a class="chip min-h-touch no-underline" href="#cat">Serums</a><a class="chip min-h-touch no-underline" href="#cat">Moisturisers</a><a class="chip min-h-touch no-underline" href="#cat">Sun care</a><a class="chip min-h-touch no-underline" href="#cat">Masks</a><a class="chip min-h-touch no-underline" href="#cat">Eye care</a></div>
+</nav>
+<div class="wrap grid grid-cols-[minmax(0,1fr)] gap-6 pb-14 pt-6 md:grid-cols-[calc(var(--space-12)*5)_minmax(0,1fr)] md:items-start md:gap-8 xl:gap-12" data-section="Filters and Product Grid">
+<aside class="hidden md:block md:pr-3" id="faceted-sidebar" aria-label="Filters">
+<div class="ann"><b>03 &middot; Narrow</b>Filters (left sidebar) &mdash; CRO: Essential (CRO-CAT-020 to 029, PLP-02, PLP-03). Collapsible groups in a single column: skin concern and skin type open first, then product type, ingredient, benefit, shade, size, price, availability. Choices apply at once with chips above the grid; counts show how many products each choice has. Brand is not shown (Removed in the workbook).<em>Responsive: left column from 768 px (about 240 px wide, scrolls with the page); below 768 px the same groups open in a left slide-in drawer with a sticky Apply filters button.</em></div>
+<div class="flex items-center justify-between gap-3 border-b border-ink pb-3"><h2 class="type-h5">Filters</h2><button class="btn btn-text btn-sm flex-none" type="button" id="f-clear-side" hidden>Clear all</button></div>
+<div id="f-slot-side"><form id="faceted-form" onsubmit="return false"><div class="accordion border-t-0" id="f-groups"></div></form></div>
+</aside>
+<div class="min-w-0" id="results" tabindex="-1">
+<section class="mb-6 border-b border-line pb-4" id="toolbar" aria-label="Sort and applied filters" data-section="Sort, Product Count and Applied Filters">
+<div class="ann"><b>04 &middot; Orient</b>Sort and Product Count Bar + Active Filter Chips &mdash; CRO: Essential (CRO-CAT-001, 002, 005, 024). The count updates live and is announced. Sort is a native select with a visible selected option, so any sort can be changed back (PLP-05). Applied chips and Clear all sit under the bar.<em>Responsive: from 768 px count left and sort right (filters are in the sidebar). Below 768 px Filters and Sort sit side by side at 48 px with the count beneath. Applied chips stay on one line below 600 px.</em></div>
+<div class="grid grid-cols-[repeat(2,minmax(0,1fr))] items-center gap-3 [grid-template-areas:'filter_sort''count_count'] sm:flex sm:gap-4">
+<button class="btn btn-secondary w-full [grid-area:filter] sm:order-1 sm:w-auto md:hidden" type="button" id="f-open" data-drawer-open="faceted-drawer" aria-haspopup="dialog"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-filter"></use></svg><span>Filters<span id="f-n"></span></span></button>
+<div class="select min-w-0 [grid-area:sort] sm:order-3 sm:w-[calc(var(--container-text)/3_+_var(--space-4))]"><label class="sr-only" for="sort">Sort products</label><select class="input max-[389px]:text-transparent max-[389px]:[&>option]:text-ink" id="sort"><option value="featured">Sort: Featured</option><option value="best">Sort: Best selling</option><option value="plh">Sort: Price, low to high</option><option value="phl">Sort: Price, high to low</option><option value="new">Sort: Newest</option></select><span class="pointer-events-none absolute left-4 top-1/2 hidden -translate-y-1/2 text-input leading-normal text-ink max-[389px]:block" aria-hidden="true" id="sort-short">Sort</span><svg class="icon select-icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></div>
+<p class="type-utility text-ink-secondary [grid-area:count] sm:order-2 sm:mr-auto" id="count" role="status" aria-live="polite">24 products</p>
+</div>
+<div class="flex items-center gap-3 pt-4" id="applied" hidden><div class="chip-row min-w-0 flex-1" id="chips" role="group" aria-label="Applied filters"></div><button class="btn btn-text flex-none" type="button" id="clear-all">Clear all</button></div>
+</section>
+<section id="grid-section" aria-labelledby="results-title" data-section="Product Grid">
+<div class="ann"><b>05 &middot; Choose</b>Product Grid + Product Card + Promo Tile + Pagination &mdash; CRO: Essential (CRO-CAT-008, 011 to 018, CRO-CAT-007). Uniform grid, one card size, square 4:5 image with one quiet badge. Card, top to bottom: category, name, key attribute line, optional rating, price with compare-at and unit price, shade dots, real low-stock line. Mouse screens: the second image fades in and Quick view rises over the foot of the image (Quick view opens a shade chooser and Add to bag; Quick add is No for Beauty). Touch screens: a labelled 44 px Quick view button under the card. No wishlist.<em>Responsive: 2 columns below 600 px, 3 from 600, then beside the sidebar 2 from 768, 3 from 1024, 4 from 1280. Promo tile spans the row on phones, two columns from 600 px. Numbered pagination at every width; Previous and Next show icons only on phones.</em></div>
+<h2 id="results-title" class="sr-only">Products</h2>
+<div class="grid grid-cols-2 gap-x-grid-gap gap-y-12 [grid-auto-flow:row_dense] sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" id="grid"></div>
+<div class="flex flex-col items-center gap-4 py-16 text-center" id="empty" hidden><svg class="icon size-8" aria-hidden="true" focusable="false"><use href="#icon-search"></use></svg><h3>No products match these filters</h3><p class="text-ink-secondary">Remove a filter or start from a category.</p><button class="btn btn-primary" type="button" id="empty-clear">Clear all filters</button><div class="flex flex-wrap justify-center gap-3"><a class="chip min-h-touch underline" href="#cat">Cleansers</a><a class="chip min-h-touch underline" href="#cat">Serums</a><a class="chip min-h-touch underline" href="#cat">Moisturisers</a></div></div>
+<div class="mt-14 flex flex-col items-center gap-3 border-t border-line pt-8" id="pager-wrap"><nav aria-label="Pagination"><ul class="pagination gap-2" id="pager"></ul></nav><p class="type-caption" id="pager-info"></p></div>
+</section>
+</div>
+</div>
+<section class="border-t border-line py-12" id="seo" data-section="Collection SEO Description">
+<div class="ann"><b>06 &middot; Support</b>Collection SEO Description &mdash; CRO: optional, merchant-controlled (CRO-CAT-006). Sits below the grid and the pagination so products stay first.<em>Responsive: reading width capped at the Design System text measure; same on every device.</em></div>
+<div class="wrap max-w-[calc(var(--container-narrow)_+_2_*_var(--layout-gutter))]"><div class="flex flex-col gap-3"><h2 class="type-h3">About our skin care</h2><p class="text-ink-secondary">Merchant text goes here. Explain in a few sentences how to choose between cleansers, serums, moisturisers and sun care, and link to the routine guide. Keep it below the products.</p><p class="text-ink-secondary">A second short paragraph can answer the questions shoppers ask most about this collection. Sample text only.</p></div></div>
+</section>
+</main>
+<footer class="bg-inverse text-ink-inverse">
+  <div class="mx-auto grid w-full max-w-[calc(var(--container-max)+2*var(--layout-gutter))] gap-6 px-gutter py-section md:grid-cols-[minmax(0,10rem)_minmax(0,1fr)] md:gap-[calc(var(--space-10)+var(--space-1))] lg:grid-cols-[3fr_8fr] lg:gap-16">
+        <div>
+      <a href="#top" class="mb-[14px] inline-flex min-h-touch items-center pr-2 text-ink-inverse"><svg viewBox="0 0 520 100" role="img" aria-label="NUDGE" fill="currentColor" class="block max-w-full h-7 w-auto"><path d="M0 14H16V100H0ZM66 0H82V86H66ZM0 14H19L82 86H63Z"/><path d="M106 0H122V62A25 25 0 0 0 172 62V0H188V62A41 41 0 0 1 106 62Z"/><path fill-rule="evenodd" d="M212 0H252A50 50 0 0 1 252 100H212ZM228 16H252A34 34 0 0 1 252 84H228Z"/><path d="M378 42H426V58H378Z"/><path d="M450 0H520V16H466V42H510V58H466V84H520V100H450Z"/><path d="M410.4 25.9A42 42 0 1 0 418 50" fill="none" stroke="currentColor" stroke-width="16"/></svg></a>
+      <p class="text-body-sm text-ink-inverse-secondary">One line about the brand.</p>
+      <div class="mt-4 flex flex-wrap gap-2"><a href="#" aria-label="Instagram" class="flex size-touch items-center justify-center rounded-pill border border-line-inverse-subtle text-ink-inverse transition-colors hover:bg-ink-inverse hover:text-ink"><svg class="icon size-5" aria-hidden="true" focusable="false"><use href="#icon-instagram"></use></svg></a><a href="#" aria-label="Facebook" class="flex size-touch items-center justify-center rounded-pill border border-line-inverse-subtle text-ink-inverse transition-colors hover:bg-ink-inverse hover:text-ink"><svg class="icon size-5" aria-hidden="true" focusable="false"><use href="#icon-facebook"></use></svg></a><a href="#" aria-label="YouTube" class="flex size-touch items-center justify-center rounded-pill border border-line-inverse-subtle text-ink-inverse transition-colors hover:bg-ink-inverse hover:text-ink"><svg class="icon size-5" aria-hidden="true" focusable="false"><use href="#icon-youtube"></use></svg></a></div>
+    </div>
+    <div class="md:grid md:grid-cols-[repeat(4,auto)] md:justify-between md:gap-grid-gap xl:grid-cols-4 xl:justify-normal">
+      <div class="fcol group border-t border-line-inverse-subtle md:border-t-0"><button type="button" aria-expanded="false" class="flex min-h-12 w-full items-center justify-between text-left type-h6 text-ink-inverse md:pointer-events-none md:mb-3 md:min-h-0"><span>Shop</span><svg class="icon size-6 md:hidden" aria-hidden="true" focusable="false"><use href="#icon-plus"></use></svg></button><div class="hidden flex-col pb-2 group-[.is-open]:flex md:flex md:pb-0"><a href="#collection" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Skin care</a><a href="#collection" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Makeup</a><a href="#collection" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Hair</a><a href="#collection" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Body</a><a href="#collection" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Gift sets</a></div></div>
+      <div class="fcol group border-t border-line-inverse-subtle md:border-t-0"><button type="button" aria-expanded="false" class="flex min-h-12 w-full items-center justify-between text-left type-h6 text-ink-inverse md:pointer-events-none md:mb-3 md:min-h-0"><span>About</span><svg class="icon size-6 md:hidden" aria-hidden="true" focusable="false"><use href="#icon-plus"></use></svg></button><div class="hidden flex-col pb-2 group-[.is-open]:flex md:flex md:pb-0"><a href="../08-NUDGE-Beauty-About-Wireframe/About_Page_Wireframe_v1.html" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">About us</a><a href="../09-NUDGE-Beauty-Story-Wireframe/Story_Page_Wireframe_v1.html" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Our story</a><a href="../14-NUDGE-Beauty-Blog-Listing-Wireframe/Blog_Listing_Wireframe_v1.html" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Journal</a><a href="../07-NUDGE-Beauty-FAQ-Wireframe/FAQ_Page_Wireframe_v1.html" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">FAQ</a></div></div>
+      <div class="fcol group border-t border-line-inverse-subtle md:border-t-0"><button type="button" aria-expanded="false" class="flex min-h-12 w-full items-center justify-between text-left type-h6 text-ink-inverse md:pointer-events-none md:mb-3 md:min-h-0"><span>Support</span><svg class="icon size-6 md:hidden" aria-hidden="true" focusable="false"><use href="#icon-plus"></use></svg></button><div class="hidden flex-col pb-2 group-[.is-open]:flex md:flex md:pb-0"><a href="../06-NUDGE-Beauty-Contact-Wireframe/Contact_Page_Wireframe_v1.html" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Contact us</a><a href="#help" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Support</a><a href="../10-NUDGE-Beauty-Shipping-Policy-Wireframe/Shipping_Policy_Wireframe_v1.html" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Shipping &amp; Delivery</a><a href="../11-NUDGE-Beauty-Returns-Policy-Wireframe/Returns_Policy_Wireframe_v1.html" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Returns &amp; Refunds</a></div></div>
+      <div class="fcol group border-t border-line-inverse-subtle md:border-t-0"><button type="button" aria-expanded="false" class="flex min-h-12 w-full items-center justify-between text-left type-h6 text-ink-inverse md:pointer-events-none md:mb-3 md:min-h-0"><span>Policies</span><svg class="icon size-6 md:hidden" aria-hidden="true" focusable="false"><use href="#icon-plus"></use></svg></button><div class="hidden flex-col pb-2 group-[.is-open]:flex md:flex md:pb-0"><a href="../12-NUDGE-Beauty-Privacy-Policy-Wireframe/Privacy_Policy_Wireframe_v1.html" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Privacy policy</a><a href="../13-NUDGE-Beauty-Terms-Wireframe/Terms_Conditions_Wireframe_v1.html" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Terms of service</a></div></div>
+    </div>
+    <div class="flex flex-col items-start gap-4 border-t border-line-inverse-subtle pt-5 md:col-span-full md:flex-row md:flex-wrap md:items-center md:justify-between">
+      <div class="flex flex-wrap gap-2" aria-label="Payment methods"><i class="border border-line-inverse-subtle px-3 py-1 text-caption font-medium not-italic text-ink-inverse-secondary">Visa</i><i class="border border-line-inverse-subtle px-3 py-1 text-caption font-medium not-italic text-ink-inverse-secondary">Mastercard</i><i class="border border-line-inverse-subtle px-3 py-1 text-caption font-medium not-italic text-ink-inverse-secondary">UPI</i><i class="border border-line-inverse-subtle px-3 py-1 text-caption font-medium not-italic text-ink-inverse-secondary">Wallet</i></div>
+      <div class="text-body-sm text-ink-inverse-secondary">Secure checkout. Easy returns. Support when you need it.</div>
+      <a href="#top" class="flex min-h-touch w-full items-center justify-center gap-2 border border-ink-inverse text-ink-inverse no-underline sm:w-auto sm:border-0 sm:px-1 sm:underline"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-chevron-up"></use></svg><span>Back to top</span></a>
+    </div>
+  </div>
+</footer>
+
+
+<dialog class="drawer faceted-drawer left-0 right-auto open:animate-[faceted-in_var(--duration-slow)_var(--ease-standard)]" id="faceted-drawer" aria-labelledby="faceted-title">
+<div class="drawer-head"><h2 class="type-h5" id="faceted-title">Filters</h2><button class="icon-btn" type="button" data-drawer-close aria-label="Close filters"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-close"></use></svg></button></div>
+<div class="drawer-body" id="f-slot-dlg"></div>
+<div class="drawer-foot grid grid-cols-[auto_minmax(0,1fr)] items-center gap-3"><button class="btn btn-text" type="button" id="f-clear">Clear all</button><button class="btn btn-primary btn-block" type="button" id="f-show" data-drawer-close>Apply filters (24)</button></div>
+</dialog>
+
+<dialog class="drawer quick-view" id="quick-view" aria-labelledby="qv-title">
+<div class="drawer-head"><h2 class="type-h5" id="qv-title">Quick view</h2><button class="icon-btn" type="button" data-drawer-close aria-label="Close quick view"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-close"></use></svg></button></div>
+<div class="drawer-body"><div class="flex flex-col gap-4" id="qv-body"></div></div>
+<div class="drawer-foot flex flex-col gap-2"><button class="btn btn-primary btn-block" type="button" id="qv-add">Add to bag</button><a class="btn btn-text btn-block" href="#pdp" id="qv-more">View full details</a></div>
+</dialog>
+<div id="wp" role="dialog" aria-label="Width preview"><div class="bar2"><b>Viewport:</b><span id="wp-btns"></span><label><input type="checkbox" id="wp-ann"> annotations</label><span id="wp-info"></span><button type="button" id="wp-close">Close</button></div><div class="stage"><div><iframe id="wp-f" title="Page at the chosen width"></iframe></div></div></div>
+<script>
+(function(){
+ var $=function(id){return document.getElementById(id)},t=$("t-wp");if(!t)return;
+ var wp=$("wp"),wf=$("wp-f"),cur=1440;
+ function wapply(){var avail=wp.clientWidth-32,sc=Math.min(1,avail/cur),h=Math.max(600,(wp.clientHeight-90)/sc);wf.style.width=cur+"px";wf.style.height=h+"px";wf.parentNode.style.width=cur+"px";wf.parentNode.style.height=h*sc+"px";wf.parentNode.style.transform="scale("+sc+")";wf.parentNode.style.transformOrigin="top left";$("wp-info").textContent=cur+" px wide, shown at "+Math.round(sc*100)+"%";var base=location.href.split("#")[0].split("?")[0];wf.src=base+"?embed=1"+($("wp-ann").checked?"":"&ann=0")}
+ [1920,1440,1280,1024,768,430,390,320].forEach(function(w){var bt=document.createElement("button");bt.type="button";bt.textContent=w;if(w===cur){bt.className="on"}bt.addEventListener("click",function(){cur=w;[].forEach.call($("wp-btns").children,function(x){x.className=""});bt.className="on";wapply()});$("wp-btns").appendChild(bt)});
+ t.addEventListener("click",function(){wp.classList.add("open");wapply()});$("wp-close").addEventListener("click",function(){wp.classList.remove("open")});$("wp-ann").addEventListener("change",wapply);
+ window.addEventListener("resize",function(){if(wp.classList.contains("open"))wapply()});
+ document.addEventListener("keydown",function(e){if(e.key==="Escape")wp.classList.remove("open")});
+})();
+</script>
+<script type="text/plain" id="selftest-src">
+(function(){
+ var EXPECT_COLS=function(w){return w>=1280?4:w>=1024?3:w>=768?2:w>=600?3:2};
+ function vis(el){var cs=getComputedStyle(el);if(cs.display==="none"||cs.visibility==="hidden")return false;var r=el.getBoundingClientRect();return r.width>0&&r.height>0}
+ function sel(el){var s=el.tagName.toLowerCase();if(el.id)s+="#"+el.id;if(el.className&&typeof el.className==="string")s+="."+el.className.trim().split(/\s+/).slice(0,2).join(".");return s}
+ function run(){
+  var W=window.innerWidth,de=document.documentElement,out={docHeight:de.scrollHeight,width:W,checks:{}},N=window.NudgePLP,SIDE=W>=768;
+  var st=document.createElement("style");st.textContent="*{transition:none!important;animation:none!important}";document.head.appendChild(st);void document.body.offsetHeight;
+  /* 0 Tailwind applied and web fonts loaded (not a fallback face) */
+  var side0=document.getElementById("faceted-sidebar"),twOk=getComputedStyle(document.getElementById("site-header")).position==="sticky"&&getComputedStyle(side0).display===(SIDE?"block":"none")&&getComputedStyle(document.querySelector(".product-card")).display==="flex"&&!document.querySelector('link[href*="components.css"],link[href*="base.css"]');
+  var fl=Array.from(document.fonts).some(function(x){return x.family.indexOf("Cormorant")>-1&&x.status==="loaded"})&&Array.from(document.fonts).some(function(x){return x.family.indexOf("DM Sans")>-1&&x.status==="loaded"});
+  out.checks.tailwindAndFonts={pass:twOk&&fl,detail:"Tailwind utilities applied, no Design System component stylesheet: "+twOk+"; Cormorant and DM Sans loaded: "+fl};
+  /* 1 overflow */
+  var off=[];document.querySelectorAll("main *,header *,footer *").forEach(function(el){if(el.closest(".chip-row")||el.closest(".sr-only")||el.closest(".drawer")||el.closest("#nav")&&W<1024)return;var r=el.getBoundingClientRect();if(r.width>0&&(r.right>W+1||r.left<-1))off.push(sel(el))});
+  out.checks.overflow={pass:de.scrollWidth<=W+1&&off.length===0,detail:"scrollWidth "+de.scrollWidth+" of "+W+(off.length?"; past the edge: "+off.slice(0,4).join(", "):"")};
+  /* 2 structure: one H1, headings in order, landmarks */
+  var hs=[].slice.call(document.querySelectorAll("h1,h2,h3,h4,h5,h6")).filter(function(h){return !h.closest(".rv")&&!h.closest("dialog")}),lv=0,skip=[];hs.forEach(function(h){var n=+h.tagName[1];if(lv&&n>lv+1)skip.push(h.tagName+" after H"+lv);lv=n});
+  var h1=document.querySelectorAll("h1").length;
+  out.checks.structure={pass:h1===1&&skip.length===0&&!!document.querySelector("main#main")&&!!document.querySelector("nav.breadcrumb")&&!!document.querySelector("nav[aria-label=Pagination]")&&!!document.getElementById("faceted-sidebar"),detail:"H1 "+h1+"; skipped levels: "+(skip.join(", ")||"none")+"; main, breadcrumb, sidebar, pagination present"};
+  /* 3 layout: sidebar left and grid right (768 px and up), grid columns, uniform cards */
+  var cards=[].slice.call(document.querySelectorAll(".product-card")).filter(vis),cols={},rat=[];cards.forEach(function(c){var r=c.getBoundingClientRect();cols[Math.round(r.left)]=1;var m=c.querySelector(".pc-ratio").getBoundingClientRect();rat.push(Math.round(m.height/m.width*100))});
+  var nc=Object.keys(cols).length,ws=cards.map(function(c){return Math.round(c.getBoundingClientRect().width)}),uni=ws.every(function(x){return Math.abs(x-ws[0])<=1}),rok=rat.every(function(x){return Math.abs(x-125)<=1});
+  var side=document.getElementById("faceted-sidebar"),sr=side.getBoundingClientRect(),gr=document.getElementById("grid").getBoundingClientRect(),fb=document.getElementById("f-open"),lay=true,ldet="below 768 px: sidebar hidden, Filters button shown";
+  if(SIDE){lay=vis(side)&&sr.right<=gr.left+1&&!vis(fb)&&side.querySelectorAll("details").length>=9&&sr.width>=200&&sr.width<=280;ldet="sidebar "+Math.round(sr.width)+" px wide ends at "+Math.round(sr.right)+", grid starts at "+Math.round(gr.left)+"; Filters button hidden: "+!vis(fb)}else{lay=!vis(side)&&vis(fb)}
+  out.checks.grid={pass:nc===EXPECT_COLS(W)&&uni&&rok&&cards.length>=8&&lay,detail:nc+" columns (expected "+EXPECT_COLS(W)+"), "+cards.length+" cards, widths "+(uni?"equal":"unequal")+", image ratio "+(rok?"4:5":"not 4:5")+"; "+ldet};
+  /* 4 card anatomy and exclusions */
+  var anat=cards.every(function(c){return c.querySelector(".product-card__title a")&&c.querySelector(".price-current")&&c.querySelector(".product-card__vendor")&&c.querySelector(".product-card__attr")&&(c.querySelector("[data-quick]")||c.querySelector("button[disabled]"))});
+  var noWish=!document.querySelector(".product-card__wishlist,[data-wishlist]"),noQuickAdd=![].some.call(document.querySelectorAll(".product-card button"),function(b){return /add to (bag|cart)/i.test(b.textContent)}),alt=cards.filter(function(c){return c.querySelector(".pc-alt")}).length,hov=window.matchMedia("(hover:hover) and (pointer:fine)").matches,oneBtn=cards.every(function(c){return [].filter.call(c.querySelectorAll("[data-quick]"),vis).length<=1});
+  out.checks.card={pass:anat&&noWish&&noQuickAdd&&alt>0&&oneBtn,detail:"category, name, attribute line, price and a quick view or sold-out control on every card; "+alt+" cards have a second image (mouse screens: "+hov+"); one visible quick view control per card; no wishlist, no add to cart on cards"};
+  /* 5 touch targets (small buttons are 40 px with a 44 px hit area, the documented Design System pattern) */
+  var small=[];[].slice.call(document.querySelectorAll("main a,main button,main select,main summary,main .choice,main .swatch,header a,header button,footer a,footer button")).filter(function(e){return vis(e)&&!e.closest(".drawer")&&!e.closest(".sr-only")&&!(W<1024&&e.closest("#nav"))&&!e.closest(".rv")&&!e.closest(".ann")}).forEach(function(e){var r=e.getBoundingClientRect(),hit=e.classList.contains("chip")||e.classList.contains("btn-sm")||e.classList.contains("swatch-sm"),min=hit?40:44;if(e.classList.contains("swatch")&&e.closest(".product-card"))return;if(e.closest(".product-card__title"))return;if(e.closest(".fcol")&&W>=768)return;if(e.tagName==="A"&&r.height>=44-.5)return;if(e.closest(".breadcrumb-item")&&r.width>=44&&r.height>=44)return;if(r.height<min-.5||r.width<44-.5&&!e.closest("p")&&!e.closest(".fcol"))small.push(sel(e)+" "+Math.round(r.width)+"x"+Math.round(r.height))});
+  out.checks.targets={pass:small.length===0,detail:small.length?small.slice(0,5).join("; "):"every visible control is 44 px (40 px small button has a 44 px hit area)"};
+  /* 6 filtering logic, including the extra ingredient and benefit groups */
+  var f1=false,f2=false,f3=false,f4=false,f5=false;
+  if(N){N.reset();var t0=N.count();N.apply({concern:["Dryness"]});var t1=N.count();f1=t1>0&&t1<t0&&document.querySelectorAll("#chips .chip").length===1&&!document.getElementById("applied").hidden;
+   N.apply({concern:["Dryness"],type:["Mask"],min:"1",max:"5"});f2=N.count()===0&&!document.getElementById("empty").hidden&&document.getElementById("grid").children.length===0;
+   N.reset();N.apply({sort:"plh"});var ps=[].map.call(document.querySelectorAll(".product-card .price-current"),function(e){return parseFloat(e.textContent.replace("$",""))});f3=ps.every(function(v,i){return i===0||v>=ps[i-1]});N.apply({sort:"featured"});f4=document.getElementById("sort").value==="featured";
+   N.reset();N.apply({ingredient:["Peptides"],benefit:["Smoothing"]});var c5=N.count();f5=c5>0&&c5<t0&&document.querySelectorAll("#chips .chip").length===2;N.reset()}
+  out.checks.filtering={pass:f1&&f2&&f3&&f4&&f5,detail:"one filter narrows and shows a chip: "+f1+"; impossible combination shows the empty state: "+f2+"; price low to high sorts: "+f3+"; sort can be changed back: "+f4+"; ingredient and benefit groups filter: "+f5};
+  /* 7 mobile drawer (below 768 px): opens from the LEFT, named, footer pinned, focus returns; sidebar groups (768 px and up) */
+  var d=document.getElementById("faceted-drawer"),op=document.getElementById("f-open"),dok=false,dd="";
+  if(SIDE){var sum=side.querySelectorAll("summary"),sok=sum.length>=9&&[].every.call(sum,function(s){return s.getBoundingClientRect().height>=44-.5}),opened=side.querySelectorAll("details[open]").length;dok=sok&&opened>=2&&getComputedStyle(side).position!=="sticky"&&!!side.querySelector("h2");dd="sidebar: "+sum.length+" groups, 44 px headers: "+sok+", "+opened+" open by default, scrolls with the page (not sticky): "+(getComputedStyle(side).position!=="sticky")}
+  else if(window.NudgeDrawer){op.focus();window.NudgeDrawer.open(d,op);var inside=d.open&&d.contains(document.activeElement),lab=d.getAttribute("aria-labelledby")&&document.getElementById(d.getAttribute("aria-labelledby")).textContent==="Filters",dr=d.getBoundingClientRect(),foot=d.querySelector(".drawer-foot").getBoundingClientRect(),left=Math.abs(dr.left)<=1,pin=Math.abs(foot.bottom-window.innerHeight)<=1,cl=d.querySelector(".icon-btn").getBoundingClientRect();window.NudgeDrawer.close(d);dok=inside&&lab&&left&&pin&&cl.width>=44-.5&&!d.open&&document.activeElement===op;dd="opens from the left (left edge "+Math.round(dr.left)+"): "+left+"; focus inside: "+inside+"; named: "+lab+"; Apply button pinned: "+pin+"; close control "+Math.round(cl.width)+" px; focus returns: "+(document.activeElement===op)}
+  out.checks.filters={pass:dok,detail:dd};
+  /* 8 quick view */
+  var qv=document.getElementById("quick-view"),qb=document.querySelector("[data-quick]"),qok=false;if(qb&&N){N.quick(13,qb);qok=qv.open&&document.getElementById("qv-title").textContent.length>0&&!!qv.querySelector(".price-current")&&!!qv.querySelector(".swatch-input");window.NudgeDrawer.close(qv)}
+  out.checks.quickview={pass:qok,detail:"opens the Drawer side panel with name, price, shade chooser and Add to bag"};
+  /* 9 pagination logic and look */
+  var pg=N?N.pager(20,10):"",pg2=N?N.pager(3,2):"",lk=document.querySelector(".pagination-link:not([aria-disabled])"),lr=lk?lk.getBoundingClientRect():{width:0,height:0};
+  out.checks.pagination={pass:/&hellip;/.test(pg)&&/aria-current="page"/.test(pg2)&&!/load/i.test(document.getElementById("pager-wrap").textContent)&&lr.width>=44-.5&&lr.height>=44-.5,detail:"20 pages collapse with gaps; current page marked; links "+Math.round(lr.width)+"x"+Math.round(lr.height)+" px; no Load more"};
+  /* 10 typography: Cormorant headings and card names, DM Sans UI */
+  var bad=[],fams={};[].slice.call(document.querySelectorAll("main h1,main h2,main h3,.product-card__title,.btn,.chip,.price-current,p")).filter(vis).forEach(function(e){var f=getComputedStyle(e).fontFamily.split(",")[0].replace(/["']/g,"").trim();fams[f]=1;var head=/^H[1-3]$/.test(e.tagName)||e.classList.contains("product-card__title");if(head&&f!=="Cormorant")bad.push(sel(e)+" "+f);if(!head&&f!=="DM Sans"&&f!=="Cormorant")bad.push(sel(e)+" "+f)});
+  out.checks.typography={pass:bad.length===0,detail:bad.length?bad.slice(0,4).join("; "):"headings and card names Cormorant, body and controls DM Sans; families in use: "+Object.keys(fams).join(", ")};
+  /* 11 filter flow with real clicks: sidebar applies at once (768 px and up); phones batch in the drawer */
+  var flow=false,fdet="";
+  if(N&&window.NudgeDrawer){N.reset();
+   if(SIDE){var cb=side.querySelector("input[name=concern][value=Dryness]");cb.click();var n1=N.count(),ok1=n1>0&&n1<24&&document.querySelectorAll("#chips .chip").length===1&&document.getElementById("count").textContent.indexOf(String(n1))===0&&!document.getElementById("f-clear-side").hidden;
+    document.querySelector("#chips .chip").click();var ok2=N.count()===24&&document.getElementById("applied").hidden&&cb.checked===false;flow=ok1&&ok2;fdet="ticking Dryness applies at once ("+n1+" products, chip shown, sidebar Clear all shown): "+ok1+"; removing the chip restores all 24 and unticks the box: "+ok2}
+   else{op.click();var cb2=d.querySelector("input[name=concern][value=Dryness]");cb2.click();var m=/\((\d+)\)/.exec(document.getElementById("f-show").textContent),staged=m?+m[1]:-1;document.getElementById("f-show").click();
+    var ok3=!d.open&&staged>0&&N.count()===staged&&document.querySelectorAll("#chips .chip").length===1&&document.getElementById("f-n").textContent.indexOf("1")>-1;document.querySelector("#chips .chip").click();var ok4=N.count()===24&&document.getElementById("applied").hidden;flow=ok3&&ok4;fdet="tick Dryness previews "+staged+" on Apply filters, Apply closes the drawer: "+ok3+"; removing the chip restores all 24: "+ok4}
+   N.reset()}
+  out.checks.filterFlow={pass:flow,detail:fdet};
+  var pre=document.createElement("pre");pre.id="selftest-result";pre.textContent=JSON.stringify(out);document.body.appendChild(pre);
+  if(window.parent!==window){window.parent.postMessage({selftest:out},"*")}
+ }
+ if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){setTimeout(run,900)})}else{setTimeout(run,1400)}
+})();
+</script>
+<script src="../../01-Design-System/Scripts/drawer.js"></script>
+<script src="../../01-Design-System/Scripts/chip-row.js"></script>
+<script>
+(function(){
+ var b=document.body,q=new URLSearchParams(location.search);
+ if(q.get("embed")){b.classList.add("embed")}
+ b.classList.toggle("ann-on",q.get("ann")!=="0");
+ function $(id){return document.getElementById(id)}
+ /* ---- global sections: mobile menu, announcement bar, footer groups ---- */
+ function navOpen(o){b.classList.toggle("nav-open",o);$("menu-btn").setAttribute("aria-expanded",o?"true":"false")}
+ $("menu-btn").addEventListener("click",function(){navOpen(true)});
+ $("nav-close").addEventListener("click",function(){navOpen(false)});
+ $("scrim").addEventListener("click",function(){navOpen(false)});
+ document.addEventListener("keydown",function(e){if(e.key==="Escape"){navOpen(false)}});
+ [].forEach.call(document.querySelectorAll(".fcol > button"),function(h){h.addEventListener("click",function(){var f=h.parentNode,o=!f.classList.contains("is-open");f.classList.toggle("is-open",o);h.setAttribute("aria-expanded",o?"true":"false")})});
+ var msgs=["Free shipping on orders over $50","New launches are in store","Free returns within 30 days"],mi=0;
+ function msg(d){mi=(mi+d+msgs.length)%msgs.length;$("ann-msg").textContent=msgs[mi];[].forEach.call(document.querySelectorAll(".ann-dot"),function(x,i){x.classList.toggle("bg-current",i===mi);x.classList.toggle("opacity-100",i===mi);x.classList.toggle("opacity-muted",i!==mi)})}
+ $("ann-prev").addEventListener("click",function(){msg(-1)});$("ann-next").addEventListener("click",function(){msg(1)});
+ document.addEventListener("click",function(e){var a=e.target.closest('a[href^="#"]:not([href="#main"]):not([href="#top"]):not([href="#results"])');if(a)e.preventDefault()});
+ /* ---- review controls ---- */
+ function toggle(btn,cls){var on=!b.classList.contains(cls);b.classList.toggle(cls,on);btn.setAttribute("aria-pressed",on?"true":"false");return on}
+ $("t-ann").addEventListener("click",function(){toggle(this,"ann-on")});
+ $("t-ann").setAttribute("aria-pressed",b.classList.contains("ann-on")?"true":"false");
+ /* ---- sample data (merchant content): name, type, ml, price, compare-at, concerns, skin types, attribute line, badge, rating, reviews, shades, low stock, sold out, unit price shown, ingredients ---- */
+ var ALL=["Dry","Normal","Oily","Combination","Sensitive"],FAM=[["Rose","#D99BAA"],["Berry","#8E3F5A"],["Peach","#EDB9A9"],["Mauve","#B48A9A"],["Coral","#E8907E"]],MINREV=5,PER=10;
+ var P=[
+  ["Face Cleanser","Cleanser",150,18,0,["Dullness","Texture"],ALL,"Best for: all skin types","Bestseller",4.8,212,[],0,0,1,["Ceramides"]],
+  ["Gel Cleanser","Cleanser",150,20,0,["Breakouts"],["Oily","Combination"],"Best for: oily skin","",4.6,96,[],0,0,0,["Niacinamide"]],
+  ["Cream Cleanser","Cleanser",150,20,0,["Dryness","Sensitivity"],["Dry","Sensitive"],"Best for: dry skin","New arrival",0,0,[],0,0,1,["Ceramides","Squalane"]],
+  ["Balm Cleanser","Cleanser",100,24,0,["Dryness"],["Dry","Normal"],"Rich balm texture","",4.7,58,[],0,1,0,["Squalane"]],
+  ["Face Serum","Serum",30,32,0,["Dullness","Uneven tone"],["Normal","Combination"],"Best for: dullness","Bestseller",4.9,340,[],3,0,1,["Vitamin C","Niacinamide"]],
+  ["Hydrating Serum","Serum",30,30,0,["Dryness"],["Dry","Normal","Sensitive"],"Best for: dry skin","",4.7,141,[],0,0,1,["Hyaluronic acid"]],
+  ["Brightening Serum","Serum",30,34,40,["Uneven tone","Dullness"],["Normal","Combination","Oily"],"Best for: uneven tone","",4.5,77,[],0,0,0,["Vitamin C"]],
+  ["Calming Serum","Serum",30,32,0,["Sensitivity"],["Sensitive","Dry"],"Best for: sensitive skin","",4.6,64,[],0,0,1,["Niacinamide","Ceramides"]],
+  ["Smoothing Serum","Serum",30,36,0,["Texture","Uneven tone"],["Normal","Oily","Combination"],"Best for: texture","",0,0,[],0,0,0,["Peptides"]],
+  ["Moisturiser","Moisturiser",50,28,0,["Dryness"],["Dry","Normal"],"Best for: dry skin","Bestseller",4.8,265,[],0,0,1,["Ceramides","Hyaluronic acid"]],
+  ["Gel Moisturiser","Moisturiser",50,26,0,["Breakouts","Texture"],["Oily","Combination"],"Light gel texture","",4.6,88,[],0,0,0,["Hyaluronic acid","Niacinamide"]],
+  ["Overnight Peptide Cream with a Deliberately Long Product Name","Moisturiser",50,34,42,["Dryness","Texture"],["Dry"],"Rich overnight texture","",4.7,52,[],0,0,1,["Peptides","Squalane"]],
+  ["Barrier Cream","Moisturiser",50,30,0,["Sensitivity","Dryness"],["Sensitive","Dry"],"Best for: sensitive skin","",4.8,119,[],2,0,0,["Ceramides"]],
+  ["Tinted Moisturiser","Moisturiser",50,32,0,["Uneven tone"],["Normal","Dry","Combination"],"Light tint, 5 shades","New arrival",4.4,31,[0,1,2,3,4],0,0,1,["Hyaluronic acid"]],
+  ["Daily Sunscreen","Sun care",50,26,0,["Dullness"],["Normal","Oily","Combination"],"Daily protection","Bestseller",4.7,198,[],0,0,1,["Niacinamide"]],
+  ["Tinted Sunscreen","Sun care",50,28,0,["Uneven tone"],["Normal","Dry","Combination"],"Light tint, 3 shades","",4.4,24,[2,0,3],0,0,0,["Niacinamide"]],
+  ["Mineral Sunscreen","Sun care",50,28,0,["Sensitivity"],["Sensitive","Dry","Normal"],"Best for: sensitive skin","",0,0,[],0,0,1,["Squalane"]],
+  ["Clay Mask","Mask",75,24,0,["Breakouts","Texture"],["Oily","Combination"],"Weekly use","",4.5,45,[],0,0,0,["Niacinamide"]],
+  ["Hydrating Mask","Mask",75,26,32,["Dryness","Dullness"],["Dry","Normal"],"Weekly use","",4.6,39,[],0,0,1,["Hyaluronic acid"]],
+  ["Overnight Mask","Mask",75,30,0,["Dryness"],["Dry","Sensitive"],"Overnight use","New arrival",0,0,[],0,0,0,["Ceramides","Peptides"]],
+  ["Eye Cream","Eye care",15,30,0,["Dullness"],ALL,"Light gel texture","",4.6,73,[],0,0,1,["Peptides","Vitamin C"]],
+  ["Eye Serum","Eye care",15,34,0,["Texture"],ALL,"Lightweight serum","",4.5,22,[],0,0,1,["Peptides"]],
+  ["Face Oil","Serum",30,36,0,["Dryness"],["Dry","Normal"],"Best for: dry skin","Limited edition",4.8,67,[],0,0,0,["Squalane"]],
+  ["Foaming Cleanser","Cleanser",150,22,28,["Texture","Dullness"],["Normal","Oily","Combination"],"Best for: combination skin","",4.5,84,[],0,0,0,["Niacinamide"]]
+ ];
+ var BEN={"Dryness":"Hydrating","Dullness":"Brightening","Uneven tone":"Brightening","Sensitivity":"Soothing","Texture":"Smoothing","Breakouts":"Clarifying"};
+ function bens(p){var r=[];p[5].forEach(function(c){if(BEN[c]&&r.indexOf(BEN[c])<0)r.push(BEN[c])});return r}
+ var KEYS=["concern","skin","type","ingredient","benefit","size","shade","avail"];
+ var G=[["concern","Skin concern",["Dryness","Dullness","Breakouts","Sensitivity","Uneven tone","Texture"]],["skin","Skin type",ALL],["type","Product type",["Cleanser","Serum","Moisturiser","Sun care","Mask","Eye care"]],["ingredient","Key ingredients",["Niacinamide","Hyaluronic acid","Ceramides","Peptides","Vitamin C","Squalane"]],["benefit","Benefits",["Hydrating","Brightening","Soothing","Smoothing","Clarifying"]],["shade","Shade",[0,1,2,3,4]],["size","Size",["15 ml","30 ml","50 ml","75 to 150 ml"]]];
+ function bucket(ml){return ml<=15?"15 ml":ml<=30?"30 ml":ml<=50?"50 ml":"75 to 150 ml"}
+ function money(n){return "$"+n.toFixed(2)}
+ function emptyState(){var s={min:"",max:"",sort:"featured",page:1};KEYS.forEach(function(k){s[k]=[]});return s}
+ var S=emptyState();
+ function match(p,s){
+  if(s.concern.length&&!s.concern.some(function(v){return p[5].indexOf(v)>-1}))return false;
+  if(s.skin.length&&!s.skin.some(function(v){return p[6].indexOf(v)>-1}))return false;
+  if(s.type.length&&s.type.indexOf(p[1])<0)return false;
+  if(s.ingredient.length&&!s.ingredient.some(function(v){return p[15].indexOf(v)>-1}))return false;
+  if(s.benefit.length&&!s.benefit.some(function(v){return bens(p).indexOf(v)>-1}))return false;
+  if(s.size.length&&s.size.indexOf(bucket(p[2]))<0)return false;
+  if(s.shade.length&&!s.shade.some(function(i){return p[11].indexOf(+i)>-1}))return false;
+  if(s.avail.length===1&&(s.avail[0]==="in")===!!p[13])return false;
+  if(s.min!==""&&p[3]<+s.min)return false;if(s.max!==""&&p[3]>+s.max)return false;
+  return true;
+ }
+ function pct(p){return p[4]>p[3]?Math.round((1-p[3]/p[4])*100):0}
+ function list(s){
+  var r=P.map(function(p,i){return {p:p,i:i}}).filter(function(o){return match(o.p,s)});
+  var by={featured:function(a,c){return a.i-c.i},best:function(a,c){return c.p[10]-a.p[10]},plh:function(a,c){return a.p[3]-c.p[3]||a.i-c.i},phl:function(a,c){return c.p[3]-a.p[3]||a.i-c.i},"new":function(a,c){return c.i-a.i}};
+  return r.sort(by[s.sort]||by.featured);
+ }
+ /* ---- class strings (Tailwind utilities and shared components) ---- */
+ var CHIP="chip min-h-touch",
+  BADGE="badge whitespace-normal border bg-surface font-medium",
+  VENDOR="product-card__vendor text-overline font-medium uppercase tracking-widest text-ink-secondary",
+  SUM="accordion-summary text-body-sm font-semibold uppercase tracking-uppercase",
+  PAN="accordion-panel max-w-none pb-4",
+  PGL="pagination-link rounded-pill font-regular hover:bg-subtle hover:text-ink aria-[current=page]:border-brand aria-[current=page]:bg-transparent aria-[current=page]:font-semibold aria-[current=page]:text-brand aria-[disabled=true]:text-ink-muted aria-[disabled=true]:no-underline";
+ function stars(v){var h="",k;for(k=1;k<=5;k++){h+='<svg class="icon'+(v>=k-.25?" icon-filled":"")+'" aria-hidden="true" focusable="false"><use href="#icon-star"></use></svg>'}return '<span class="rating-stars text-rating" role="img" aria-label="Rated '+v.toFixed(1)+' out of 5">'+h+'</span>'}
+ function priceHtml(p,card){
+  var sale=pct(p)>0,u=p[14]?'<span class="price-unit'+(card?" basis-full":"")+'">'+money(p[3]/p[2])+' / ml</span>':"",mt=card?" mt-1":"";
+  return sale?'<span class="price price-sale'+mt+'"><span class="sr-only">Sale price</span><span class="price-current">'+money(p[3])+'</span><span class="sr-only">Regular price</span><s class="price-compare">'+money(p[4])+'</s>'+u+'</span>':'<span class="price'+mt+'"><span class="price-current">'+money(p[3])+'</span>'+u+'</span>';
+ }
+ function cardHtml(o,k){
+  var p=o.p,i=o.i,sale=pct(p),badge=p[13]?'<span class="'+BADGE+' border-line-strong text-ink-secondary">Sold out</span>':sale?'<span class="'+BADGE+' border-brand text-brand"><span class="sr-only">Sale </span>&minus;'+sale+'%</span>':p[8]?'<span class="'+BADGE+' border-line text-ink">'+p[8]+'</span>':"";
+  var sw="";if(p[11].length){var dots=p[11].slice(0,4).map(function(s){return '<span class="swatch swatch-sm"><span class="swatch-chip" style="--swatch: '+FAM[s][1]+'"></span></span>'}).join("");sw='<div class="relative z-raised flex flex-wrap justify-start gap-1" role="group" aria-label="Available shades (preview)">'+dots+(p[11].length>4?'<span class="type-caption self-center">+'+(p[11].length-4)+'</span>':"")+'</div>'}
+  var stock=!p[13]&&p[12]?'<p class="inline-flex items-center gap-1 text-caption font-medium text-status-warning"><svg class="icon size-4" aria-hidden="true" focusable="false"><use href="#icon-warning"></use></svg>Only '+p[12]+' left</p>':"";
+  var qa='data-quick="'+i+'" aria-haspopup="dialog" aria-label="Quick view: '+p[0]+'"';
+  var overlay=p[13]?"":'<button class="pc-quick btn btn-secondary btn-sm min-h-touch" type="button" '+qa+'>Quick view</button>';
+  var act=p[13]?'<button class="btn btn-secondary btn-sm btn-block line-through" type="button" disabled>Sold out</button>':'<button class="btn btn-secondary btn-sm btn-block" type="button" '+qa+'>Quick view</button>';
+  var rating=p[10]>=MINREV?'<span class="rating mt-1">'+stars(p[9])+p[9].toFixed(1)+" ("+p[10]+")</span>":"";
+  var ph='<span class="absolute inset-x-0 bottom-3 px-2 text-center text-caption text-ink-secondary">';
+  var alt=i%4!==3?'<div class="pc-alt pm pm-b absolute inset-0">'+ph+'Second image &middot; 4:5</span></div>':"";
+  return '<article class="product-card relative flex min-w-0 flex-col gap-3 text-left'+(p[13]?" product-card--soldout":"")+'"><div class="pc-media relative overflow-hidden bg-surface"><div class="pc-ratio relative aspect-portrait overflow-hidden bg-subtle'+(p[13]?" opacity-muted":"")+'"><div class="pm'+(k%3===1?" pm-b":k%3===2?" pm-c":"")+' absolute inset-0"></div>'+ph+'Product photo &middot; 4:5</span>'+alt+'</div>'+(badge?'<div class="absolute left-3 top-3 z-raised flex max-w-[calc(100%_-_var(--space-3)_-_var(--touch-target-min)_-_var(--space-2))] flex-wrap gap-1">'+badge+'</div>':"")+overlay+'</div><div class="flex min-w-0 flex-col items-start gap-1 pt-1"><p class="'+VENDOR+'">'+p[1]+'</p><h3 class="product-card__title type-h4 line-clamp-3 [overflow-wrap:anywhere]"><a class="pc-link" href="#pdp">'+p[0]+'</a></h3><p class="product-card__attr type-caption">'+p[7]+'</p>'+rating+priceHtml(p,1)+'</div>'+sw+stock+'<div class="relative z-raised mt-auto pt-2 pc-action">'+act+'</div></article>';
+ }
+ var PROMO='<aside class="surface-inverse col-span-full flex flex-col justify-center gap-4 rounded-none p-8 sm:col-span-2" aria-label="Promotion"><p class="type-utility text-ink-secondary">Gift sets</p><h3>Gifts for every routine</h3><p class="text-ink-secondary">Real offer details and dates go here. Image, text card or video tile; 2 columns from 600 px.</p><a class="btn btn-secondary self-start" href="#cat">Shop gift sets</a></aside>';
+ var CHEV={prev:'<svg class="icon size-4" aria-hidden="true" focusable="false"><use href="#icon-chevron-left"></use></svg>',next:'<svg class="icon size-4" aria-hidden="true" focusable="false"><use href="#icon-chevron-right"></use></svg>'};
+ function pager(n,cur){
+  var items=[],add=function(x){items.push(x)};add({t:"prev",d:cur<=1});
+  var show={};[1,n,cur-1,cur,cur+1].forEach(function(x){if(x>=1&&x<=n)show[x]=1});
+  var last=0;Object.keys(show).map(Number).sort(function(a,c){return a-c}).forEach(function(x){if(last&&x-last>1)add({t:"gap"});add({t:"page",n:x});last=x});
+  add({t:"next",d:cur>=n});
+  return items.map(function(it){
+   if(it.t==="gap")return '<li><span class="pagination-gap" aria-hidden="true">&hellip;</span></li>';
+   if(it.t==="prev")return '<li><a class="'+PGL+' gap-1 text-ink" href="#results" data-page="'+(cur-1)+'"'+(it.d?' aria-disabled="true" tabindex="-1"':"")+'>'+CHEV.prev+'<span class="pagination__dir max-sm:sr-only">Previous</span></a></li>';
+   if(it.t==="next")return '<li><a class="'+PGL+' gap-1 text-ink" href="#results" data-page="'+(cur+1)+'"'+(it.d?' aria-disabled="true" tabindex="-1"':"")+'><span class="pagination__dir max-sm:sr-only">Next</span>'+CHEV.next+'</a></li>';
+   return '<li><a class="'+PGL+' text-ink-secondary" href="#results" data-page="'+it.n+'"'+(it.n===cur?' aria-current="page"':"")+'><span class="sr-only">Page </span>'+it.n+'</a></li>';
+  }).join("");
+ }
+ var LABEL={shade:function(i){return FAM[i][0]+" shade"},avail:function(v){return v==="in"?"In stock":"Out of stock"}};
+ function chipsOf(s){
+  var c=[];KEYS.forEach(function(k){s[k].forEach(function(v){c.push([k,v,LABEL[k]?LABEL[k](v):v])})});
+  if(s.min!==""||s.max!=="")c.push(["price","",(s.min!==""?"$"+s.min:"$0")+(s.max!==""?" to $"+s.max:" and up")]);
+  return c;
+ }
+ function render(){
+  var res=list(S),n=res.length,pages=Math.max(1,Math.ceil(n/PER));if(S.page>pages)S.page=pages;
+  var slice=res.slice((S.page-1)*PER,S.page*PER),html="";
+  slice.forEach(function(o,k){if(k===8&&S.page===1&&n>=9)html+=PROMO;html+=cardHtml(o,k)});
+  $("grid").innerHTML=html;$("grid").hidden=n===0;$("empty").hidden=n!==0;
+  $("count").textContent=n+(n===1?" product":" products");
+  $("pager-wrap").hidden=pages<2;$("pager").innerHTML=pager(pages,S.page);
+  $("pager-info").textContent="Page "+S.page+" of "+pages+" · Showing "+((S.page-1)*PER+1)+" to "+Math.min(S.page*PER,n)+" of "+n+" products";
+  var ch=chipsOf(S);$("applied").hidden=ch.length===0;$("f-clear-side").hidden=ch.length===0;
+  $("chips").innerHTML=ch.map(function(c){return '<button class="'+CHIP+'" type="button" aria-pressed="true" data-rm="'+c[0]+'" data-v="'+c[1]+'">'+c[2]+' <svg class="icon size-4" aria-hidden="true" focusable="false"><use href="#icon-close"></use></svg><span class="sr-only">Remove filter</span></button>'}).join("");
+  $("f-n").textContent=ch.length?" ("+ch.length+")":"";
+  $("sort").value=S.sort;syncForm(S);
+ }
+ /* ---- filters: one form, placed in the sidebar from 768 px and in the left drawer below ---- */
+ function counts(k,v){return P.filter(function(p){return k==="concern"?p[5].indexOf(v)>-1:k==="skin"?p[6].indexOf(v)>-1:k==="type"?p[1]===v:k==="ingredient"?p[15].indexOf(v)>-1:k==="benefit"?bens(p).indexOf(v)>-1:k==="size"?bucket(p[2])===v:k==="shade"?p[11].indexOf(+v)>-1:false}).length}
+ var CHV='<svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg>',
+  FSET='<fieldset class="m-0 flex min-w-0 flex-col border-0 p-0">',
+  OPT='flex flex-1 justify-between gap-2 text-ink-secondary group-has-[:checked]:font-medium group-has-[:checked]:text-brand-active',
+  NUM='ml-2 inline-block font-semibold text-brand';
+ function opt(name,value,label,n){return '<label class="choice group"><input class="choice-input" type="checkbox" name="'+name+'" value="'+value+'"><span class="'+OPT+'"><span>'+label+'</span><span class="type-caption">'+n+'</span></span></label>'}
+ function buildGroups(){
+  var h="",first=2;
+  G.forEach(function(g,gi){
+   var k=g[0],body="";
+   if(k==="shade"){body='<div class="flex flex-wrap gap-1 pb-1" role="group" aria-label="Shade">'+g[2].map(function(i){return '<label class="swatch"><input class="swatch-input" type="checkbox" name="shade" value="'+i+'"><span class="swatch-chip" style="--swatch: '+FAM[i][1]+'"></span><span class="sr-only">'+FAM[i][0]+' ('+counts(k,i)+')</span></label>'}).join("")+'</div>'}
+   else{body=FSET+'<legend class="sr-only">'+g[1]+'</legend>'+g[2].map(function(v){return opt(k,v,v,counts(k,v))}).join("")+'</fieldset>'}
+   h+='<details class="accordion-item" data-g="'+k+'"'+(gi<first?" open":"")+'><summary class="'+SUM+'"><span>'+g[1]+'<span class="'+NUM+'" data-n="'+k+'"></span></span>'+CHV+'</summary><div class="'+PAN+'">'+body+'</div></details>';
+  });
+  h+='<details class="accordion-item" data-g="price"><summary class="'+SUM+'"><span>Price<span class="'+NUM+'" data-n="price"></span></span>'+CHV+'</summary><div class="'+PAN+'"><div class="grid grid-cols-2 gap-3"><div class="field"><label class="field-label" for="f-min">Minimum ($)</label><input class="input" id="f-min" name="min" type="number" inputmode="numeric" min="0" placeholder="0"></div><div class="field"><label class="field-label" for="f-max">Maximum ($)</label><input class="input" id="f-max" name="max" type="number" inputmode="numeric" min="0" placeholder="40"></div></div></div></details>';
+  h+='<details class="accordion-item" data-g="avail"><summary class="'+SUM+'"><span>Availability<span class="'+NUM+'" data-n="avail"></span></span>'+CHV+'</summary><div class="'+PAN+'">'+FSET+'<legend class="sr-only">Availability</legend>'+opt("avail","in","In stock",P.filter(function(p){return !p[13]}).length)+opt("avail","out","Out of stock",P.filter(function(p){return p[13]}).length)+'</fieldset></div></details>';
+  $("f-groups").innerHTML=h;
+ }
+ var form=$("faceted-form"),dlg=$("faceted-drawer"),mq=window.matchMedia("(min-width:768px)");
+ function readForm(){
+  var s=emptyState();s.sort=S.sort;
+  [].forEach.call(form.querySelectorAll("input[type=checkbox]:checked"),function(i){s[i.name].push(i.value)});
+  s.min=$("f-min").value;s.max=$("f-max").value;return s;
+ }
+ function writeForm(s){
+  [].forEach.call(form.querySelectorAll("input[type=checkbox]"),function(i){i.checked=s[i.name].indexOf(i.value)>-1});
+  $("f-min").value=s.min;$("f-max").value=s.max;marks(s);
+ }
+ function marks(s){KEYS.concat(["price"]).forEach(function(k){var n=k==="price"?((s.min!==""||s.max!=="")?1:0):s[k].length,e=form.querySelector('[data-n="'+k+'"]');if(e)e.textContent=n?" ("+n+")":""})}
+ function syncForm(s){if(mq.matches||!dlg.open)writeForm(s)}
+ function preview(){var t=readForm(),n=list(t).length;marks(t);$("f-show").textContent="Apply filters ("+n+")"}
+ function commit(s){KEYS.forEach(function(k){S[k]=s[k]});S.min=s.min;S.max=s.max;S.page=1;render()}
+ function place(){
+  if(mq.matches){if(dlg.open)window.NudgeDrawer.close(dlg);$("f-slot-side").appendChild(form)}else{$("f-slot-dlg").appendChild(form)}
+  writeForm(S);preview();
+ }
+ buildGroups();
+ form.addEventListener("input",function(){if(mq.matches){commit(readForm())}else{preview()}});
+ form.addEventListener("change",function(){if(mq.matches){commit(readForm())}else{preview()}});
+ $("f-clear").addEventListener("click",function(){writeForm(emptyState());preview()});
+ $("f-show").addEventListener("click",function(){commit(readForm())});
+ dlg.addEventListener("drawer:open",function(){writeForm(S);preview()});
+ if(mq.addEventListener){mq.addEventListener("change",place)}else if(mq.addListener){mq.addListener(place)}
+ place();
+ /* ---- toolbar, chips, grid, pager ---- */
+ $("sort").addEventListener("change",function(){S.sort=this.value;S.page=1;render()});
+ function clearAll(){var so=S.sort;S=emptyState();S.sort=so;render()}
+ $("clear-all").addEventListener("click",clearAll);$("f-clear-side").addEventListener("click",clearAll);$("empty-clear").addEventListener("click",function(){clearAll();(mq.matches?document.querySelector("#faceted-sidebar summary"):$("f-open")).focus()});
+ $("chips").addEventListener("click",function(e){var c=e.target.closest("[data-rm]");if(!c)return;var k=c.getAttribute("data-rm"),v=c.getAttribute("data-v");if(k==="price"){S.min="";S.max=""}else{S[k]=S[k].filter(function(x){return String(x)!==v})}S.page=1;render();var nx=$("chips").querySelector(".chip");(nx||(mq.matches?document.querySelector("#faceted-sidebar summary"):$("f-open"))).focus()});
+ $("pager").addEventListener("click",function(e){var a=e.target.closest("[data-page]");if(!a)return;e.preventDefault();if(a.getAttribute("aria-disabled")==="true")return;S.page=+a.getAttribute("data-page");render();$("results").scrollIntoView({block:"start"});$("results").focus({preventScroll:true})});
+ /* ---- quick view (the Drawer as a right side panel) ---- */
+ var added=0;
+ function quick(i,opener){
+  var p=P[i];$("qv-title").textContent=p[0];
+  var sw=p[11].length?'<div class="flex flex-col gap-4"><p class="field-label">Shade: <strong class="font-semibold" id="qv-shade">'+FAM[p[11][0]][0]+'</strong></p><div class="flex flex-wrap gap-1" role="radiogroup" aria-label="Shade">'+p[11].map(function(s,k){return '<label class="swatch"><input class="swatch-input" type="radio" name="qv-shade" data-name="'+FAM[s][0]+'"'+(k===0?" checked":"")+'><span class="swatch-chip" style="--swatch: '+FAM[s][1]+'"></span><span class="sr-only">'+FAM[s][0]+'</span></label>'}).join("")+'</div></div>':"";
+  $("qv-body").innerHTML='<div class="overflow-hidden"><div class="relative aspect-square overflow-hidden bg-subtle"><div class="pm absolute inset-0"></div><span class="absolute inset-x-0 bottom-3 px-2 text-center text-caption text-ink-secondary">Product photo &middot; quick view image</span></div></div><div class="flex flex-col gap-2"><p class="'+VENDOR+'">'+p[1]+'</p>'+(p[10]>=MINREV?'<span class="rating">'+stars(p[9])+p[9].toFixed(1)+" ("+p[10]+")</span>":"")+priceHtml(p,0)+'<p class="text-ink-secondary">'+p[7]+" &middot; "+p[2]+' ml</p><p class="text-body-sm text-ink-secondary">Short description, key benefits and how to use come from the product. Sample text.</p></div>'+sw+'<p class="message message-success" id="qv-msg" role="status" hidden><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-check-circle"></use></svg><span>Added to your bag.</span></p>';
+  [].forEach.call($("qv-body").querySelectorAll("input[name=qv-shade]"),function(r){r.addEventListener("change",function(){$("qv-shade").textContent=r.getAttribute("data-name")})});
+  $("qv-add").disabled=!!p[13];window.NudgeDrawer.open($("quick-view"),opener||document.activeElement);
+ }
+ $("grid").addEventListener("click",function(e){var qb=e.target.closest("[data-quick]");if(qb)quick(+qb.getAttribute("data-quick"),qb)});
+ $("qv-add").addEventListener("click",function(){added++;var c=document.querySelector("#site-header .cnt");if(c)c.textContent=added;$("qv-msg").hidden=false});
+ /* ---- review buttons and test hooks ---- */
+ function apply(patch){S=Object.assign(emptyState(),S,patch);S.page=patch.page||1;render()}
+ $("t-open").addEventListener("click",function(){if(mq.matches){var s=document.querySelector("#faceted-sidebar summary");s.scrollIntoView({block:"center"});s.focus()}else{window.NudgeDrawer.open(dlg,this)}});
+ $("t-applied").addEventListener("click",function(){S=emptyState();apply({concern:["Dryness"],skin:["Dry"],max:"30"})});
+ $("t-empty").addEventListener("click",function(){S=emptyState();apply({concern:["Dryness"],type:["Mask"],min:"1",max:"5"})});
+ $("t-quick").addEventListener("click",function(){quick(13,this)});
+ $("t-reset").addEventListener("click",function(){S=emptyState();render()});
+ window.NudgePLP={apply:apply,reset:function(){S=emptyState();render()},count:function(){return list(S).length},pager:pager,quick:quick,state:function(){return S}};
+ if(q.get("state")==="applied"){S=emptyState();apply({concern:["Dryness"],skin:["Dry"],max:"30"})}else if(q.get("state")==="empty"){S=emptyState();apply({concern:["Dryness"],type:["Mask"],min:"1",max:"5"})}else{render()}
+ if(q.get("filters")==="open"&&!mq.matches){window.NudgeDrawer.open(dlg,$("f-open"))}
+ if(q.get("quick")==="open"){quick(13,$("f-open"))}
+ if(q.get("selftest")){var s=document.createElement("script");s.text=$("selftest-src").text;document.body.appendChild(s)}
+})();
+</script>
+</body>
+</html>

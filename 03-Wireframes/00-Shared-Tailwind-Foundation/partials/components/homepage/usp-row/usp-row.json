@@ -1,0 +1,91 @@
+{
+    "name":  "Benefits / USP Row",
+    "wireframeOnly":  [
+                          ".ann annotation block",
+                          "data-section attribute"
+                      ],
+    "page":  "homepage",
+    "properties":  [
+                       {
+                           "name":  "anchor",
+                           "type":  "TEXT",
+                           "default":  "s04",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "anchor",
+                                           "id":  "anchor",
+                                           "setting":  "text"
+                                       },
+                           "note":  "In-page anchor id"
+                       },
+                       {
+                           "name":  "items",
+                           "type":  "LIST",
+                           "default":  [
+                                           {
+                                               "icon":  "heart",
+                                               "title":  "Cruelty-free",
+                                               "text":  "Only if certified or verifiable"
+                                           },
+                                           {
+                                               "icon":  "check-circle",
+                                               "title":  "Clean",
+                                               "text":  "Define what clean means for the range"
+                                           },
+                                           {
+                                               "icon":  "location",
+                                               "title":  "Free shipping",
+                                               "text":  "On orders over $50"
+                                           },
+                                           {
+                                               "icon":  "arrow-left",
+                                               "title":  "Easy returns",
+                                               "text":  "Return within 30 days"
+                                           }
+                                       ],
+                           "itemFields":  [
+                                              "icon",
+                                              "title",
+                                              "text"
+                                          ],
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "items",
+                                           "setting":  "blocks",
+                                           "blockType":  "usp_item",
+                                           "maxBlocks":  4
+                                       },
+                           "note":  "One block per benefit"
+                       }
+                   ],
+    "tokens":  [
+                   "surface background",
+                   "spacing"
+               ],
+    "summary":  "A row of four benefits under the hero. Maps to the usp-row section in the Shopify theme.",
+    "accessibility":  "A group of short statements; no interactive elements.",
+    "id":  "usp-row",
+    "level":  "main",
+    "status":  "classified (D10 items pending)",
+    "responsive":  "Two columns below 600 px with dividers, four across from 600 px.",
+    "exposes":  [
+                    {
+                        "child":  "components/homepage/usp-item",
+                        "property":  "icon",
+                        "via":  "items.icon"
+                    },
+                    {
+                        "child":  "components/homepage/usp-item",
+                        "property":  "title",
+                        "via":  "items.title"
+                    },
+                    {
+                        "child":  "components/homepage/usp-item",
+                        "property":  "text",
+                        "via":  "items.text"
+                    }
+                ],
+    "children":  [
+                     "components/homepage/usp-item"
+                 ]
+}

@@ -1,0 +1,54 @@
+{
+  "radius": {
+    "none": { "$value": "0" },
+    "sm":   { "$value": "0.25rem", "$description": "4px: controls, badges" },
+    "md":   { "$value": "0.5rem",  "$description": "8px: cards, images" },
+    "lg":   { "$value": "1rem",    "$description": "16px: panels" },
+    "pill": { "$value": "999px",   "$description": "Chips, swatches" }
+  },
+
+  "border-width": {
+    "thin":  { "$value": "1px" },
+    "thick": { "$value": "2px", "$description": "Errors, selected, focus" }
+  },
+
+  "shadow": {
+    "color": { "$value": "41 33 38", "$description": "RGB triplet (Midnight Plum) for rgb(... / alpha)" },
+    "sm": { "$value": "0 1px 2px rgb({shadow.color} / 0.08)" },
+    "md": { "$value": "0 4px 12px rgb({shadow.color} / 0.08), 0 1px 3px rgb({shadow.color} / 0.06)" },
+    "lg": { "$value": "0 16px 40px rgb({shadow.color} / 0.12), 0 4px 10px rgb({shadow.color} / 0.06)" }
+  },
+
+  "opacity": {
+    "disabled": { "$value": "0.45", "$description": "Disabled swatches and imagery" },
+    "muted":    { "$value": "0.7",  "$description": "Sold-out product imagery" },
+    "pressed":  { "$value": "0.88", "$description": "Pressed secondary controls" },
+    "scrim":    { "$value": "0.5",  "$description": "Overlay behind drawers and modals" }
+  },
+
+  "duration": {
+    "fast": { "$value": "120ms" },
+    "base": { "$value": "200ms" },
+    "slow": { "$value": "320ms" }
+  },
+  "ease": {
+    "standard": { "$value": "cubic-bezier(0.2, 0, 0, 1)" },
+    "out":      { "$value": "cubic-bezier(0, 0, 0.2, 1)" }
+  },
+  "transition": {
+    "colors":    { "$value": "color {duration.base} {ease.standard}, background-color {duration.base} {ease.standard}, border-color {duration.base} {ease.standard}", "$description": "Buttons, links, inputs" },
+    "transform": { "$value": "transform {duration.slow} {ease.standard}", "$description": "Image zoom, lifts" }
+  },
+
+  "z": {
+    "base":     { "$value": "0" },
+    "raised":   { "$value": "10" },
+    "sticky":   { "$value": "100" },
+    "dropdown": { "$value": "200" },
+    "overlay":  { "$value": "300" },
+    "drawer":   { "$value": "400" },
+    "modal":    { "$value": "500" },
+    "toast":    { "$value": "600" },
+    "skip":     { "$value": "700" }
+  }
+}

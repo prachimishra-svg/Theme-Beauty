@@ -1,0 +1,664 @@
+{
+    "specVersion":  "1.0",
+    "kind":  "source",
+    "purpose":  "Component variables (collection Components). Only values shared across components or needed to stay in sync with the web tokens; not one variable per property.",
+    "valueSyntax":  "A value is a literal (hex colour, number in px unless stated, or text) or an alias written {collection-local/variable-name}. Colours are #RRGGBB or #RRGGBBAA. Every variable has one value per mode of its collection.",
+    "variables":  [
+                      {
+                          "name":  "touch-target/min",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Minimum interactive target (WCAG 2.2: 44 x 44px)",
+                          "scopes":  [
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  44
+                                     },
+                          "webToken":  "--touch-target-min",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "control/height/sm",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Small control height (visual; the hit area stays 44px)",
+                          "scopes":  [
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  40
+                                     },
+                          "webToken":  "--control-height-sm",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "control/height/md",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Default control height",
+                          "scopes":  [
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  48
+                                     },
+                          "webToken":  "--control-height-md",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "control/height/lg",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Large control height",
+                          "scopes":  [
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  56
+                                     },
+                          "webToken":  "--control-height-lg",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "control/padding-x/sm",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Small control horizontal padding",
+                          "scopes":  [
+                                         "GAP"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  "{space/4}"
+                                     },
+                          "webToken":  "--control-padding-x-sm",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "control/padding-x/md",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Default control horizontal padding",
+                          "scopes":  [
+                                         "GAP"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  "{space/6}"
+                                     },
+                          "webToken":  "--control-padding-x",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "control/padding-x/lg",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Large control horizontal padding",
+                          "scopes":  [
+                                         "GAP"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  "{space/8}"
+                                     },
+                          "webToken":  "--control-padding-x-lg",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "radius/control",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Buttons, inputs, chips use the pill or this radius per component",
+                          "scopes":  [
+                                         "CORNER_RADIUS"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  "{radius/sm}"
+                                     },
+                          "webToken":  "--radius-control",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "radius/card",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Cards and product images",
+                          "scopes":  [
+                                         "CORNER_RADIUS"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  "{radius/md}"
+                                     },
+                          "webToken":  "--radius-card",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "radius/badge",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Badges",
+                          "scopes":  [
+                                         "CORNER_RADIUS"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  "{radius/sm}"
+                                     },
+                          "webToken":  "--radius-badge",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "icon/size/sm",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Icon 16px",
+                          "scopes":  [
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  16
+                                     },
+                          "webToken":  "--icon-size-sm",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "icon/size/md",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Icon 20px",
+                          "scopes":  [
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  20
+                                     },
+                          "webToken":  "--icon-size-md",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "icon/size/lg",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Icon 24px (icon buttons)",
+                          "scopes":  [
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  24
+                                     },
+                          "webToken":  "--icon-size-lg",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "icon/size/xl",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Icon 32px",
+                          "scopes":  [
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  32
+                                     },
+                          "webToken":  "--icon-size-xl",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "icon/stroke",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Icon stroke width",
+                          "scopes":  [
+                                         "STROKE_FLOAT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  1.5
+                                     },
+                          "webToken":  "--icon-stroke-width",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "button/gap",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Gap between a button label and its icon",
+                          "scopes":  [
+                                         "GAP"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  "{space/2}"
+                                     },
+                          "webToken":  "--button-gap",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "input/padding-x",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Input horizontal padding",
+                          "scopes":  [
+                                         "GAP"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  "{space/4}"
+                                     },
+                          "webToken":  "--input-padding-x",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "input/padding-y",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Input vertical padding",
+                          "scopes":  [
+                                         "GAP"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  "{space/3}"
+                                     },
+                          "webToken":  "--input-padding-y",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "input/textarea-min-height",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Textarea minimum height",
+                          "scopes":  [
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  112
+                                     },
+                          "webToken":  "--input-textarea-min-height",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "form/field-gap",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Gap between form fields",
+                          "scopes":  [
+                                         "GAP"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  "{space/6}"
+                                     },
+                          "webToken":  "--form-field-gap",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "form/label-gap",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Gap between a label and its control",
+                          "scopes":  [
+                                         "GAP"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  "{space/2}"
+                                     },
+                          "webToken":  "--form-label-gap",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "choice/size",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Checkbox and radio box (24px; was 22px)",
+                          "scopes":  [
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  24
+                                     },
+                          "webToken":  "--choice-size",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "choice/gap",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Gap between a choice box and its label",
+                          "scopes":  [
+                                         "GAP"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  "{space/3}"
+                                     },
+                          "webToken":  "--choice-gap",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "choice/check-size",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Check mark",
+                          "scopes":  [
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  16
+                                     },
+                          "webToken":  "--choice-check-size",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "choice/dot-size",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Radio dot (12px; was 10px)",
+                          "scopes":  [
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  12
+                                     },
+                          "webToken":  "--choice-dot-size",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "qty/input-width",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Quantity input width",
+                          "scopes":  [
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  48
+                                     },
+                          "webToken":  "--qty-input-width",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "swatch/size",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Swatch",
+                          "scopes":  [
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  32
+                                     },
+                          "webToken":  "--swatch-size",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "swatch/size-sm",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Mini swatch on cards (decorative)",
+                          "scopes":  [
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  16
+                                     },
+                          "webToken":  "--swatch-size-sm",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "swatch/ring-width",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Selected swatch ring",
+                          "scopes":  [
+                                         "STROKE_FLOAT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  "{border-width/thick}"
+                                     },
+                          "webToken":  "--swatch-ring-width",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "swatch/ring-offset",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Gap between swatch and ring",
+                          "scopes":  [
+                                         "GAP"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  "{space/1}"
+                                     },
+                          "webToken":  "--swatch-ring-offset",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "badge/padding-x",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Badge horizontal padding",
+                          "scopes":  [
+                                         "GAP"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  "{space/2}"
+                                     },
+                          "webToken":  "--badge-padding-x",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "badge/padding-y",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Badge vertical padding",
+                          "scopes":  [
+                                         "GAP"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  "{space/1}"
+                                     },
+                          "webToken":  "--badge-padding-y",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "icon-button/count-size",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Count bubble on the bag button (20px; was 18px)",
+                          "scopes":  [
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  20
+                                     },
+                          "webToken":  "--icon-button-count-size",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "card/gap",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Gap inside a card",
+                          "scopes":  [
+                                         "GAP"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  "{space/3}"
+                                     },
+                          "webToken":  "--card-gap",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "product-card/gap",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Gap between media and body of a product card",
+                          "scopes":  [
+                                         "GAP"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  "{space/3}"
+                                     },
+                          "webToken":  "--product-card-gap",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "product-card/badge-offset",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Badge offset inside a product image",
+                          "scopes":  [
+                                         "GAP"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  "{space/3}"
+                                     },
+                          "webToken":  "--product-card-badge-offset",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "product-image/thumb-size",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Gallery thumbnail",
+                          "scopes":  [
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  64
+                                     },
+                          "webToken":  "--product-image-thumb-size",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "product-image/thumb-gap",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Gap between thumbnails",
+                          "scopes":  [
+                                         "GAP"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  "{space/2}"
+                                     },
+                          "webToken":  "--product-image-thumb-gap",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "focus/ring-width",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Focus ring width",
+                          "scopes":  [
+                                         "STROKE_FLOAT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  2
+                                     },
+                          "webToken":  "--focus-ring-width",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "focus/ring-offset",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Focus ring offset",
+                          "scopes":  [
+                                         "GAP"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  2
+                                     },
+                          "webToken":  "--focus-ring-offset",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "rating/gap",
+                          "collection":  "Components",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Gap between stars and the count",
+                          "scopes":  [
+                                         "GAP"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Value":  "{space/2}"
+                                     },
+                          "webToken":  "--rating-gap",
+                          "webRelation":  "shared"
+                      }
+                  ]
+}

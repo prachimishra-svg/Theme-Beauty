@@ -1,0 +1,46 @@
+{
+    "id":  "mega-menu",
+    "page":  "shared",
+    "level":  "sub",
+    "name":  "Mega Menu",
+    "properties":  [
+                       {
+                           "name":  "key",
+                           "type":  "TEXT",
+                           "default":  "skin",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "key",
+                                           "setting":  "select"
+                                       },
+                           "note":  "Which menu panel to show: skin, makeup, hair or body"
+                       },
+                       {
+                           "name":  "name",
+                           "type":  "TEXT",
+                           "default":  "Skin",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "name"
+                                       },
+                           "data":  "linklist link title",
+                           "note":  "Menu title used in the Shop all link"
+                       }
+                   ],
+    "accessibility":  "A panel opened by its navigation item; closes on Escape and outside click (script).",
+    "status":  "classified (D10 items pending)",
+    "summary":  "The dropdown panel under a navigation item: link columns, two promotional cards and a Shop all link. The panel for each key is an explicit branch, because Liquid cannot render a snippet by variable name.",
+    "tokens":  [
+                   "page background",
+                   "shadow",
+                   "z-index"
+               ],
+    "responsive":  "Full-width dropdown from 1024 px; an inline accordion panel below 1024 px.",
+    "children":  [
+                     "components/base/icon",
+                     "components/header/menus/skin",
+                     "components/header/menus/makeup",
+                     "components/header/menus/hair",
+                     "components/header/menus/body"
+                 ]
+}

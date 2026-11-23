@@ -1,0 +1,19 @@
+{
+    "id":  "ritual-controls",
+    "page":  "homepage",
+    "level":  "sub",
+    "name":  "Ritual Controls",
+    "properties":  [
+
+                   ],
+    "accessibility":  "The counter is a polite live region; buttons have names.",
+    "status":  "classified (D10 items pending)",
+    "summary":  "The step counter and the previous and next buttons of the ritual scroller. The script updates the counter and disables the buttons at the ends.",
+    "tokens":  [
+                   "spacing"
+               ],
+    "responsive":  "Shown only while the steps scroll.",
+    "children":  [
+                     "components/base/icon-button"
+                 ]
+}

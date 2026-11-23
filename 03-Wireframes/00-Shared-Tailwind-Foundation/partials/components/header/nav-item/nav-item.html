@@ -1,0 +1,4 @@
+<div data-mega="{{key}}" class="group/mega flex flex-col border-b border-line lg:border-0">
+<a href="#collection" {{if current}}aria-current="page"{{/if}} data-mega-link aria-haspopup="true" aria-expanded="false" aria-controls="mega-{{key}}" class="group relative flex min-h-[3.25rem] flex-1 items-center justify-between text-body-lg font-medium text-ink no-underline lg:min-h-touch lg:flex-none lg:text-body lg:after:absolute lg:after:inset-x-0 lg:after:bottom-2 lg:after:h-px lg:after:origin-left lg:after:scale-x-0 lg:after:bg-brand lg:after:transition-transform lg:hover:after:scale-x-100 lg:group-data-[open]/mega:after:scale-x-100{{if current}} lg:after:scale-x-100{{/if}}">{{name}}@@PARTIAL components/base/icon name=chevron-down size=lg extra="transition-transform duration-fast group-data-[open]/mega:rotate-180 lg:hidden"@@</a>
+@@PARTIAL components/header/mega-menu key={{key}} name="{{name}}"@@
+</div>

@@ -1,0 +1,145 @@
+{
+    "name":  "Shop the Look",
+    "wireframeOnly":  [
+                          ".ann annotation block",
+                          "data-section attribute",
+                          "data-c review hooks",
+                          "look photo placeholder captions"
+                      ],
+    "page":  "homepage",
+    "properties":  [
+                       {
+                           "name":  "heading",
+                           "type":  "TEXT",
+                           "default":  "Shop the look",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "heading",
+                                           "id":  "heading",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "text",
+                           "type":  "TEXT",
+                           "default":  "Everyday makeup, with the products used.",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "text",
+                                           "id":  "text",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "anchor",
+                           "type":  "TEXT",
+                           "default":  "s09",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "anchor",
+                                           "id":  "anchor",
+                                           "setting":  "text"
+                                       },
+                           "note":  "In-page anchor id"
+                       },
+                       {
+                           "name":  "pins",
+                           "type":  "LIST",
+                           "default":  [
+                                           {
+                                               "left":  "40%",
+                                               "top":  "24%",
+                                               "tip":  "Foundation \u0026middot; $30.00"
+                                           },
+                                           {
+                                               "left":  "58%",
+                                               "top":  "48%",
+                                               "tip":  "Blush \u0026middot; $20.00"
+                                           },
+                                           {
+                                               "left":  "34%",
+                                               "top":  "70%",
+                                               "tip":  "Lip Colour \u0026middot; $16.00"
+                                           }
+                                       ],
+                           "itemFields":  [
+                                              "top",
+                                              "left",
+                                              "tip"
+                                          ],
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "pins",
+                                           "setting":  "blocks",
+                                           "blockType":  "pin"
+                                       },
+                           "note":  "One block per pin: a product and its position on the photo"
+                       },
+                       {
+                           "name":  "rows",
+                           "type":  "LIST",
+                           "default":  [
+                                           {
+                                               "price":  "$30.00",
+                                               "tone":  "",
+                                               "name":  "Foundation"
+                                           },
+                                           {
+                                               "price":  "$20.00",
+                                               "tone":  "t2",
+                                               "name":  "Blush"
+                                           },
+                                           {
+                                               "price":  "$16.00",
+                                               "tone":  "t3",
+                                               "name":  "Lip Colour"
+                                           }
+                                       ],
+                           "itemFields":  [
+                                              "tone",
+                                              "name",
+                                              "price"
+                                          ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "rows"
+                                       },
+                           "data":  "pins.product",
+                           "note":  "The product list under the heading. In Shopify it is built from the pins products, never typed"
+                       }
+                   ],
+    "tokens":  [
+                   "page background",
+                   "spacing"
+               ],
+    "summary":  "A look photo with numbered product pins and the list of those products. Maps to the shop-the-look section.",
+    "accessibility":  "Heading is an h2; pins are buttons with names.",
+    "id":  "look-section",
+    "shopifyOnly":  [
+                        {
+                            "id":  "image",
+                            "setting":  "image_picker",
+                            "replaces":  "look photo placeholder",
+                            "note":  "The look photograph"
+                        }
+                    ],
+    "level":  "main",
+    "status":  "classified (D10 items pending)",
+    "responsive":  "Photo above the list below 768 px, side by side from 768 px; two photo crops.",
+    "exposes":  [
+                    {
+                        "child":  "components/homepage/look-pin",
+                        "property":  "top",
+                        "via":  "pins.y"
+                    },
+                    {
+                        "child":  "components/homepage/look-pin",
+                        "property":  "left",
+                        "via":  "pins.x"
+                    }
+                ],
+    "children":  [
+                     "components/homepage/look-pin",
+                     "components/homepage/look-row"
+                 ]
+}

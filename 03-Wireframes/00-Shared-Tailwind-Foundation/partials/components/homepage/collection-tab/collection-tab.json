@@ -1,0 +1,65 @@
+{
+    "id":  "collection-tab",
+    "page":  "homepage",
+    "level":  "sub",
+    "name":  "Collection Tab",
+    "properties":  [
+                       {
+                           "name":  "on",
+                           "type":  "BOOLEAN",
+                           "default":  false,
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "on"
+                                       },
+                           "note":  "Active tab class"
+                       },
+                       {
+                           "name":  "selected",
+                           "type":  "VARIANT",
+                           "default":  "false",
+                           "values":  [
+                                          "true",
+                                          "false"
+                                      ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "selected"
+                                       },
+                           "note":  "aria-selected value"
+                       },
+                       {
+                           "name":  "set",
+                           "type":  "TEXT",
+                           "default":  "0",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "set"
+                                       },
+                           "note":  "Index of the product set this tab shows (script wiring)"
+                       },
+                       {
+                           "name":  "label",
+                           "type":  "TEXT",
+                           "default":  "Best sellers",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "label",
+                                           "id":  "label",
+                                           "setting":  "text"
+                                       },
+                           "note":  "Tab label"
+                       }
+                   ],
+    "accessibility":  "role=tab with aria-selected; 44 px minimum height.",
+    "status":  "classified (D10 items pending)",
+    "summary":  "One tab of the featured-collection tab list.",
+    "tokens":  [
+                   "brand colour",
+                   "type roles"
+               ],
+    "responsive":  "Same at all widths.",
+    "children":  [
+
+                 ]
+}

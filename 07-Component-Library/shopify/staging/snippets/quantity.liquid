@@ -1,0 +1,10 @@
+{%- comment -%}
+  GENERATED from components/base/quantity by 07-Component-Library/tools/generate-liquid-staging.ps1 (contract 3f454e9c1e39c206).
+  Do not edit here: change the library component, then regenerate. Text values are written raw; escape where Shopify data enters (| escape in the section).
+  Parameters (class: design = fixed, parent = passed in, merchant = set in a section, wireframe = not used):
+    value (TEXT, parent)
+    label (TEXT, parent)
+    minus_disabled (BOOLEAN, parent)
+    plus_disabled (BOOLEAN, parent)
+{%- endcomment -%}
+{%- if value == nil -%}{%- assign value = '1' -%}{%- endif -%}{%- if label == nil -%}{%- assign label = 'Quantity' -%}{%- endif -%}{%- if minus_disabled == nil -%}{%- assign minus_disabled = true -%}{%- endif -%}{%- if plus_disabled == nil -%}{%- assign plus_disabled = false -%}{%- endif -%}<div class="qty" role="group" aria-label="{{ label }}"><button class="qty-btn" type="button" data-minus aria-label="Decrease quantity"{% if minus_disabled %} disabled{% endif %}>{% render 'icon', name: 'minus', icon_size: 'custom', extra: '' %}</button><input class="qty-input" type="text" inputmode="numeric" pattern="[0-9]*" value="{{ value }}" aria-label="Quantity" data-q><button class="qty-btn" type="button" data-plus aria-label="Increase quantity"{% if plus_disabled %} disabled{% endif %}>{% render 'icon', name: 'plus', icon_size: 'custom', extra: '' %}</button></div>

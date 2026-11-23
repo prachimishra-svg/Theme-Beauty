@@ -1,0 +1,29 @@
+{
+  "container": {
+    "max":    { "$value": "80rem", "$description": "1280px: page content cap" },
+    "wide":   { "$value": "90rem", "$description": "1440px: wide sections" },
+    "narrow": { "$value": "56rem", "$description": "896px: forms, editorial" },
+    "text":   { "$value": "40rem", "$description": "640px: reading measure, ~65ch" }
+  },
+
+  "layout": {
+    "gutter":   { "$value": { "mobile": "{space.4}", "tablet": "{space.6}", "desktop": "{space.10}" }, "$description": "Page side padding. Tier (stepped, not fluid): it changes at the same breakpoints as the grid so margins and columns stay aligned" },
+    "grid-gap": { "$value": { "mobile": "{space.4}", "tablet": "{space.6}", "desktop": "{space.8}"  }, "$description": "Gap between grid cells. Tier: moves with the gutter and the column count" },
+    "header-height":       { "$value": { "mobile": "4rem", "tablet": "4rem", "desktop": "5rem" }, "$description": "Use as min-height: the header content decides the final height. Tier: 64px, 80px once the inline navigation appears (the Design System's shipped behavior)" },
+    "drawer-width":        { "$value": { "mobile": "100%", "tablet": "26rem", "desktop": "26rem" }, "$description": "Width of a cart / menu / filter drawer, set on a panel anchored to the viewport edge. Tier: below 600px it is a full-width sheet (a 26rem cap alone is already full width up to 416px but leaves a 1 to 44px sliver of page between 417 and 460px, 12px at 430px, and a fixed 44px peek strip is an undiscoverable dismiss target); from 600px a 26rem side panel (416px, always leaving page visible). The sheet needs a visible close button, a scrolling body and a visible primary action (all present in the dashboard specimen); Escape, focus trap and focus return are JavaScript, not yet built" }
+  },
+
+  "grid": {
+    "columns": {
+      "products": { "$value": { "mobile": "2", "tablet": "3", "desktop": "4" }, "$description": "Collection / search product grid. Tier: 2 columns on phones give a card 136px wide at 320px, 156px at 360px and 171px at 390px (16px gutter and gap); 3 and 4 follow as width allows. Other page grids are decided in the wireframe phase" }
+    }
+  },
+
+  "aspect": {
+    "portrait":  { "$value": "4 / 5",  "$description": "The 4:5 product canvas: the provisional default for product-card images only (not validated: no real photography has been supplied). The PDP gallery follows it by default through its own token; hero, editorial, collection tiles and banners use the other ratios" },
+    "square":    { "$value": "1 / 1",  "$description": "Thumbnails" },
+    "landscape": { "$value": "3 / 2",  "$description": "Editorial, blog" },
+    "tall":      { "$value": "3 / 4",  "$description": "Collection tiles" },
+    "wide":      { "$value": "16 / 9", "$description": "Banners" }
+  }
+}

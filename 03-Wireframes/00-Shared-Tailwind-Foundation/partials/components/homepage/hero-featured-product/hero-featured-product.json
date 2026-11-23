@@ -1,0 +1,91 @@
+{
+    "id":  "hero-featured-product",
+    "page":  "homepage",
+    "level":  "sub",
+    "name":  "Hero Featured Product",
+    "properties":  [
+                       {
+                           "name":  "href",
+                           "type":  "TEXT",
+                           "default":  "#s06",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "href",
+                                           "id":  "featured_url",
+                                           "setting":  "url"
+                                       },
+                           "note":  "Link when no product is chosen"
+                       },
+                       {
+                           "name":  "label",
+                           "type":  "TEXT",
+                           "default":  "Featured",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "label",
+                                           "id":  "featured_label",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "title",
+                           "type":  "TEXT",
+                           "default":  "Face Serum",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "title",
+                                           "id":  "featured_title",
+                                           "setting":  "text"
+                                       },
+                           "data":  "featured_product.title",
+                           "note":  "Empty means the chosen product title"
+                       },
+                       {
+                           "name":  "meta",
+                           "type":  "TEXT",
+                           "default":  "30 ml \u0026middot; $32.00",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "meta",
+                                           "id":  "featured_meta",
+                                           "setting":  "text"
+                                       },
+                           "data":  "featured_product.price",
+                           "note":  "Empty means size and price of the chosen product"
+                       },
+                       {
+                           "name":  "ariaLabel",
+                           "type":  "TEXT",
+                           "default":  "Featured in the campaign: Face Serum, 30 ml, $32.00. Shop now",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "aria_label"
+                                       },
+                           "note":  "Accessible name, built from the title, meta and the Shop now locale string"
+                       }
+                   ],
+    "shopifyOnly":  [
+                        {
+                            "id":  "featured_product",
+                            "setting":  "product",
+                            "note":  "Product shown in the card; fills title, meta and link"
+                        },
+                        {
+                            "id":  "packshot",
+                            "setting":  "image_picker",
+                            "replaces":  "packshot placeholder"
+                        }
+                    ],
+    "status":  "classified (D10 items pending)",
+    "accessibility":  "One link with a full accessible name.",
+    "summary":  "The small product card in the hero: packshot, label, name, size and price, linking to the product.",
+    "tokens":  [
+                   "surface colours",
+                   "type roles",
+                   "spacing"
+               ],
+    "responsive":  "Bottom right of the hero from 1024 px; a row below the stage on smaller screens.",
+    "children":  [
+                     "components/base/icon"
+                 ]
+}

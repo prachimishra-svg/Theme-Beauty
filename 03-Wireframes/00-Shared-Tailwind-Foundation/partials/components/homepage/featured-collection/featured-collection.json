@@ -1,0 +1,191 @@
+{
+    "name":  "Featured Collection",
+    "wireframeOnly":  [
+                          ".ann annotation block",
+                          "data-section attribute",
+                          "data-c hooks",
+                          "sample products and their placeholder photos"
+                      ],
+    "page":  "homepage",
+    "properties":  [
+                       {
+                           "name":  "heading",
+                           "type":  "TEXT",
+                           "default":  "Shop our favourites",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "heading",
+                                           "id":  "heading",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "anchor",
+                           "type":  "TEXT",
+                           "default":  "s06",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "anchor",
+                                           "id":  "anchor",
+                                           "setting":  "text"
+                                       },
+                           "note":  "In-page anchor id"
+                       },
+                       {
+                           "name":  "buttonLabel",
+                           "type":  "TEXT",
+                           "default":  "View all best sellers",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "button_label",
+                                           "id":  "button_label",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "buttonHref",
+                           "type":  "TEXT",
+                           "default":  "#",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "button_href",
+                                           "id":  "button_link",
+                                           "setting":  "url"
+                                       }
+                       },
+                       {
+                           "name":  "products",
+                           "type":  "LIST",
+                           "default":  [
+                                           {
+                                               "tone":  "t4",
+                                               "attr":  "Best for: all skin types",
+                                               "size":  "150 ml",
+                                               "price":  "$18.00",
+                                               "rating":  "4.6 (112)",
+                                               "hideSwatches":  "1",
+                                               "badgeStyle":  "neutral",
+                                               "badge":  "Bestseller",
+                                               "href":  "#",
+                                               "title":  "Face Cleanser",
+                                               "was":  "",
+                                               "photo":  "Face Cleanser (studio, soft shadow)"
+                                           },
+                                           {
+                                               "tone":  "t2",
+                                               "attr":  "Best for: dullness",
+                                               "size":  "30 ml",
+                                               "price":  "$32.00",
+                                               "rating":  "4.7 (141)",
+                                               "hideSwatches":  "1",
+                                               "badgeStyle":  "brand",
+                                               "badge":  "15% off",
+                                               "href":  "#",
+                                               "title":  "Face Serum",
+                                               "was":  "$38.00",
+                                               "photo":  "Face Serum (studio, soft shadow)"
+                                           },
+                                           {
+                                               "tone":  "t4",
+                                               "attr":  "Best for: dry skin",
+                                               "size":  "50 ml",
+                                               "price":  "$28.00",
+                                               "rating":  "4.8 (119)",
+                                               "hideSwatches":  "1",
+                                               "badgeStyle":  "neutral",
+                                               "badge":  "",
+                                               "href":  "#",
+                                               "title":  "Moisturiser",
+                                               "was":  "",
+                                               "photo":  "Moisturiser (studio, soft shadow)"
+                                           },
+                                           {
+                                               "tone":  "t2",
+                                               "attr":  "Satin finish, 6 shades",
+                                               "size":  "3.5 g",
+                                               "price":  "$16.00",
+                                               "rating":  "4.5 (64)",
+                                               "hideSwatches":  "0",
+                                               "badgeStyle":  "neutral",
+                                               "badge":  "New",
+                                               "href":  "#",
+                                               "title":  "Lip Colour",
+                                               "was":  "",
+                                               "photo":  "Lip Colour (studio, soft shadow)"
+                                           }
+                                       ],
+                           "itemFields":  [
+                                              "tone",
+                                              "photo",
+                                              "badge",
+                                              "badgeStyle",
+                                              "title",
+                                              "size",
+                                              "attr",
+                                              "rating",
+                                              "hideSwatches",
+                                              "price",
+                                              "was",
+                                              "href"
+                                          ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "products"
+                                       },
+                           "data":  "collection.products",
+                           "pending":  true,
+                           "note":  "Sample products standing in for the collection. In Shopify this is data from the chosen collection, never typed"
+                       }
+                   ],
+    "tokens":  [
+                   "page background",
+                   "grid gap",
+                   "type roles"
+               ],
+    "summary":  "Best sellers, new launches and sets as tabs over a product grid, with a View all button. Maps to the featured-collection section.",
+    "accessibility":  "Heading is an h2; tabs follow the tab pattern; each card is one link.",
+    "id":  "featured-collection",
+    "shopifyOnly":  [
+                        {
+                            "id":  "products_to_show",
+                            "setting":  "range",
+                            "note":  "How many products the grid shows"
+                        },
+                        {
+                            "id":  "collection",
+                            "setting":  "collection",
+                            "note":  "Per tab: the collection whose products fill the grid"
+                        }
+                    ],
+    "level":  "main",
+    "status":  "classified (D10 items pending)",
+    "responsive":  "Two product columns below 768 px, four from 768 px.",
+    "exposes":  [
+                    {
+                        "child":  "components/base/section-heading",
+                        "property":  "title",
+                        "via":  "heading"
+                    },
+                    {
+                        "child":  "components/homepage/collection-tabs",
+                        "property":  "tabs",
+                        "via":  "tab blocks (label, collection)"
+                    },
+                    {
+                        "child":  "components/base/button",
+                        "property":  "label",
+                        "via":  "buttonLabel"
+                    },
+                    {
+                        "child":  "components/base/button",
+                        "property":  "href",
+                        "via":  "buttonHref"
+                    }
+                ],
+    "children":  [
+                     "components/base/section-heading",
+                     "components/homepage/collection-tabs",
+                     "components/homepage/product-card",
+                     "components/base/button"
+                 ]
+}

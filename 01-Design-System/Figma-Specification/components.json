@@ -1,0 +1,2332 @@
+{
+    "specVersion":  "1.0",
+    "kind":  "source",
+    "purpose":  "Figma component architecture. Source specification (hand-maintained). The Markdown component docs and the preview data are generated from this file; every variable named here must exist in Figma Variables (checked by validate-figma-variables.ps1).",
+    "icons":  [
+                  "account",
+                  "arrow-left",
+                  "arrow-right",
+                  "bag",
+                  "check-circle",
+                  "check",
+                  "chevron-down",
+                  "chevron-left",
+                  "chevron-right",
+                  "chevron-up",
+                  "close",
+                  "eye-off",
+                  "eye",
+                  "filter",
+                  "heart",
+                  "info",
+                  "location",
+                  "menu",
+                  "minus",
+                  "plus",
+                  "search",
+                  "sort",
+                  "star",
+                  "warning"
+              ],
+    "iconNote":  "One Icon component set (24px, stroke from icon/stroke) with one variant per icon; the Icon instance-swap property points at it. The web system has 24 icons in 05-Assets/Icons.",
+    "components":  [
+                       {
+                           "id":  "button",
+                           "name":  "Button",
+                           "webComponent":  ".btn, .btn--primary, .btn--secondary, .btn--text",
+                           "priority":  "core",
+                           "summary":  "Primary, secondary and text actions. The one component that carries most interactions.",
+                           "properties":  [
+                                              {
+                                                  "name":  "Variant",
+                                                  "type":  "VARIANT",
+                                                  "values":  [
+                                                                 "Primary",
+                                                                 "Secondary",
+                                                                 "Text"
+                                                             ],
+                                                  "default":  "Primary",
+                                                  "note":  "Visual hierarchy of the action"
+                                              },
+                                              {
+                                                  "name":  "Size",
+                                                  "type":  "VARIANT",
+                                                  "values":  [
+                                                                 "Sm",
+                                                                 "Md",
+                                                                 "Lg"
+                                                             ],
+                                                  "default":  "Md",
+                                                  "note":  "Sm and Lg exist in the web system"
+                                              },
+                                              {
+                                                  "name":  "State",
+                                                  "type":  "VARIANT",
+                                                  "values":  [
+                                                                 "Default",
+                                                                 "Hover",
+                                                                 "Pressed",
+                                                                 "Focus",
+                                                                 "Disabled"
+                                                             ],
+                                                  "default":  "Default",
+                                                  "note":  "Interactive states"
+                                              },
+                                              {
+                                                  "name":  "Label",
+                                                  "type":  "TEXT",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "Add to bag",
+                                                  "note":  "Button label"
+                                              },
+                                              {
+                                                  "name":  "Show leading icon",
+                                                  "type":  "BOOLEAN",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "false",
+                                                  "note":  "Icon before the label"
+                                              },
+                                              {
+                                                  "name":  "Show trailing icon",
+                                                  "type":  "BOOLEAN",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "false",
+                                                  "note":  "Icon after the label"
+                                              },
+                                              {
+                                                  "name":  "Icon",
+                                                  "type":  "INSTANCE_SWAP",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "Icon/arrow-right",
+                                                  "note":  "Swaps the icon shown in either slot"
+                                              }
+                                          ],
+                           "layout":  {
+                                          "direction":  "HORIZONTAL",
+                                          "widthSizing":  "HUG (set to FILL on phones for primary actions)",
+                                          "heightSizing":  "FIXED from {control/height/*}",
+                                          "padding":  "{control/padding-x/*} left and right, 0 top and bottom",
+                                          "gap":  "{button/gap}",
+                                          "align":  "centre, centre",
+                                          "minWidth":  "{touch-target/min}"
+                                      },
+                           "bindings":  [
+                                            {
+                                                "element":  "frame",
+                                                "property":  "height",
+                                                "variable":  "control/height/md"
+                                            },
+                                            {
+                                                "element":  "frame",
+                                                "property":  "cornerRadius",
+                                                "variable":  "radius/control"
+                                            },
+                                            {
+                                                "element":  "frame",
+                                                "property":  "itemSpacing",
+                                                "variable":  "button/gap"
+                                            },
+                                            {
+                                                "element":  "frame",
+                                                "property":  "minWidth",
+                                                "variable":  "touch-target/min"
+                                            },
+                                            {
+                                                "element":  "frame",
+                                                "property":  "paddingLeft/Right",
+                                                "variable":  "control/padding-x/md"
+                                            },
+                                            {
+                                                "element":  "icon",
+                                                "property":  "width/height",
+                                                "variable":  "icon/size/sm"
+                                            },
+                                            {
+                                                "element":  "focus ring",
+                                                "property":  "strokeWeight",
+                                                "variable":  "focus/ring-width"
+                                            },
+                                            {
+                                                "element":  "focus ring",
+                                                "property":  "offset",
+                                                "variable":  "focus/ring-offset"
+                                            },
+                                            {
+                                                "element":  "focus ring",
+                                                "property":  "stroke",
+                                                "variable":  "color/focus/ring"
+                                            }
+                                        ],
+                           "textStyle":  "Label/Button",
+                           "stateStyles":  [
+                                               {
+                                                   "variant":  {
+                                                                   "Variant":  "Primary"
+                                                               },
+                                                   "state":  "Default",
+                                                   "fill":  "color/button/primary-bg",
+                                                   "stroke":  null,
+                                                   "strokeWidth":  null,
+                                                   "text":  "color/button/primary-text",
+                                                   "focusRing":  false,
+                                                   "strokeStyle":  ""
+                                               },
+                                               {
+                                                   "variant":  {
+                                                                   "Variant":  "Secondary"
+                                                               },
+                                                   "state":  "Default",
+                                                   "fill":  null,
+                                                   "stroke":  "color/button/secondary-border",
+                                                   "strokeWidth":  "border-width/thin",
+                                                   "text":  "color/text/primary",
+                                                   "focusRing":  false,
+                                                   "strokeStyle":  ""
+                                               },
+                                               {
+                                                   "variant":  {
+                                                                   "Variant":  "Text"
+                                                               },
+                                                   "state":  "Default",
+                                                   "fill":  null,
+                                                   "stroke":  null,
+                                                   "strokeWidth":  null,
+                                                   "text":  "color/link/default",
+                                                   "focusRing":  false,
+                                                   "strokeStyle":  ""
+                                               },
+                                               {
+                                                   "variant":  {
+                                                                   "Variant":  "Primary"
+                                                               },
+                                                   "state":  "Hover",
+                                                   "fill":  "color/button/primary-bg-hover",
+                                                   "stroke":  null,
+                                                   "strokeWidth":  null,
+                                                   "text":  "color/button/primary-text",
+                                                   "focusRing":  false,
+                                                   "strokeStyle":  ""
+                                               },
+                                               {
+                                                   "variant":  {
+                                                                   "Variant":  "Secondary"
+                                                               },
+                                                   "state":  "Hover",
+                                                   "fill":  "color/button/secondary-bg-hover",
+                                                   "stroke":  "color/button/secondary-border",
+                                                   "strokeWidth":  "border-width/thin",
+                                                   "text":  "color/button/secondary-text-hover",
+                                                   "focusRing":  false,
+                                                   "strokeStyle":  ""
+                                               },
+                                               {
+                                                   "variant":  {
+                                                                   "Variant":  "Text"
+                                                               },
+                                                   "state":  "Hover",
+                                                   "fill":  null,
+                                                   "stroke":  null,
+                                                   "strokeWidth":  null,
+                                                   "text":  "color/link/hover",
+                                                   "focusRing":  false,
+                                                   "strokeStyle":  ""
+                                               },
+                                               {
+                                                   "variant":  {
+                                                                   "Variant":  "Primary"
+                                                               },
+                                                   "state":  "Pressed",
+                                                   "fill":  "color/button/primary-bg-active",
+                                                   "stroke":  null,
+                                                   "strokeWidth":  null,
+                                                   "text":  "color/button/primary-text",
+                                                   "focusRing":  false,
+                                                   "strokeStyle":  ""
+                                               },
+                                               {
+                                                   "variant":  {
+                                                                   "Variant":  "Secondary"
+                                                               },
+                                                   "state":  "Pressed",
+                                                   "fill":  "color/button/secondary-bg-hover",
+                                                   "stroke":  "color/button/secondary-border",
+                                                   "strokeWidth":  "border-width/thin",
+                                                   "text":  "color/button/secondary-text-hover",
+                                                   "focusRing":  false,
+                                                   "strokeStyle":  ""
+                                               },
+                                               {
+                                                   "variant":  {
+                                                                   "Variant":  "Text"
+                                                               },
+                                                   "state":  "Pressed",
+                                                   "fill":  null,
+                                                   "stroke":  null,
+                                                   "strokeWidth":  null,
+                                                   "text":  "color/brand/primary-active",
+                                                   "focusRing":  false,
+                                                   "strokeStyle":  ""
+                                               },
+                                               {
+                                                   "variant":  {
+                                                                   "Variant":  "Primary"
+                                                               },
+                                                   "state":  "Focus",
+                                                   "fill":  "color/button/primary-bg",
+                                                   "stroke":  null,
+                                                   "strokeWidth":  null,
+                                                   "text":  "color/button/primary-text",
+                                                   "focusRing":  true,
+                                                   "strokeStyle":  ""
+                                               },
+                                               {
+                                                   "variant":  {
+                                                                   "Variant":  "Secondary"
+                                                               },
+                                                   "state":  "Focus",
+                                                   "fill":  null,
+                                                   "stroke":  "color/button/secondary-border",
+                                                   "strokeWidth":  "border-width/thin",
+                                                   "text":  "color/text/primary",
+                                                   "focusRing":  true,
+                                                   "strokeStyle":  ""
+                                               },
+                                               {
+                                                   "variant":  {
+                                                                   "Variant":  "Text"
+                                                               },
+                                                   "state":  "Focus",
+                                                   "fill":  null,
+                                                   "stroke":  null,
+                                                   "strokeWidth":  null,
+                                                   "text":  "color/link/default",
+                                                   "focusRing":  true,
+                                                   "strokeStyle":  ""
+                                               },
+                                               {
+                                                   "variant":  {
+                                                                   "Variant":  "Primary"
+                                                               },
+                                                   "state":  "Disabled",
+                                                   "fill":  "color/button/disabled-bg",
+                                                   "stroke":  null,
+                                                   "strokeWidth":  null,
+                                                   "text":  "color/button/disabled-text",
+                                                   "focusRing":  false,
+                                                   "strokeStyle":  ""
+                                               },
+                                               {
+                                                   "variant":  {
+                                                                   "Variant":  "Secondary"
+                                                               },
+                                                   "state":  "Disabled",
+                                                   "fill":  "color/button/disabled-bg",
+                                                   "stroke":  null,
+                                                   "strokeWidth":  null,
+                                                   "text":  "color/button/disabled-text",
+                                                   "focusRing":  false,
+                                                   "strokeStyle":  ""
+                                               },
+                                               {
+                                                   "variant":  {
+                                                                   "Variant":  "Text"
+                                                               },
+                                                   "state":  "Disabled",
+                                                   "fill":  null,
+                                                   "stroke":  null,
+                                                   "strokeWidth":  null,
+                                                   "text":  "color/text/disabled",
+                                                   "focusRing":  false,
+                                                   "strokeStyle":  ""
+                                               }
+                                           ],
+                           "variantNote":  "3 x 3 x 5 = 45 variants. The state axis is a variant property (not a boolean) because each state changes fills and strokes.",
+                           "responsive":  "Width is Hug on tablet and desktop; on phones the primary action is usually Fill container (the web has .btn--block-mobile). Height does not change by tier.",
+                           "accessibility":  "Visual height 40, 48 or 56px; the 40px Sm button must keep a 44px hit area (place a transparent 44px frame behind it or add padding in the layout). Focus state shows a 2px ring with a 2px offset in color/focus/ring (color/focus/ring-inverse on the Inverse mode). The disabled label uses color/button/disabled-text on color/button/disabled-bg; disabled controls are exempt from contrast rules but stay legible.",
+                           "handoff":  "Maps to .btn with .btn--primary, .btn--secondary or .btn--text and .btn--sm or .btn--lg. Use aria-disabled rather than disabled when focus must stay (loading). The web has no button loading state yet (open finding); do not design one here without approval.",
+                           "notRepresentedInFigma":  [
+                                                         "aria-busy and loading (not designed in the web system)",
+                                                         "real keyboard focus order"
+                                                     ],
+                           "status":  "stable",
+                           "statusNote":  ""
+                       },
+                       {
+                           "id":  "icon-button",
+                           "name":  "Icon Button",
+                           "webComponent":  ".icon-btn",
+                           "priority":  "core",
+                           "summary":  "Icon-only actions (search, account, bag, wishlist, close).",
+                           "properties":  [
+                                              {
+                                                  "name":  "State",
+                                                  "type":  "VARIANT",
+                                                  "values":  [
+                                                                 "Default",
+                                                                 "Hover",
+                                                                 "Pressed",
+                                                                 "Focus",
+                                                                 "Disabled"
+                                                             ],
+                                                  "default":  "Default",
+                                                  "note":  ""
+                                              },
+                                              {
+                                                  "name":  "Selected",
+                                                  "type":  "VARIANT",
+                                                  "values":  [
+                                                                 "false",
+                                                                 "true"
+                                                             ],
+                                                  "default":  "false",
+                                                  "note":  "Pressed toggle, for example the wishlist heart (filled icon)"
+                                              },
+                                              {
+                                                  "name":  "Icon",
+                                                  "type":  "INSTANCE_SWAP",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "Icon/search",
+                                                  "note":  "Which icon"
+                                              },
+                                              {
+                                                  "name":  "Show count",
+                                                  "type":  "BOOLEAN",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "false",
+                                                  "note":  "Count bubble, for the bag"
+                                              },
+                                              {
+                                                  "name":  "Count",
+                                                  "type":  "TEXT",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "2",
+                                                  "note":  "Number inside the bubble"
+                                              },
+                                              {
+                                                  "name":  "Accessible name",
+                                                  "type":  "TEXT",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "Search",
+                                                  "note":  "aria-label for developers; not visible"
+                                              }
+                                          ],
+                           "layout":  {
+                                          "direction":  "HORIZONTAL",
+                                          "widthSizing":  "FIXED {touch-target/min}",
+                                          "heightSizing":  "FIXED {touch-target/min}",
+                                          "padding":  "centred icon",
+                                          "gap":  "0",
+                                          "align":  "centre, centre",
+                                          "minWidth":  "{touch-target/min}"
+                                      },
+                           "bindings":  [
+                                            {
+                                                "element":  "frame",
+                                                "property":  "width/height",
+                                                "variable":  "touch-target/min"
+                                            },
+                                            {
+                                                "element":  "icon",
+                                                "property":  "width/height",
+                                                "variable":  "icon/size/lg"
+                                            },
+                                            {
+                                                "element":  "count bubble",
+                                                "property":  "width/height",
+                                                "variable":  "icon-button/count-size"
+                                            },
+                                            {
+                                                "element":  "focus ring",
+                                                "property":  "stroke",
+                                                "variable":  "color/focus/ring"
+                                            }
+                                        ],
+                           "textStyle":  "Label/Utility",
+                           "variantNote":  "5 x 2 = 10 variants.",
+                           "responsive":  "Fixed 44px square at every size.",
+                           "accessibility":  "Always needs an accessible name; Figma cannot enforce it, so the \"Accessible name\" text property exists to carry it into the handoff.",
+                           "handoff":  "Maps to .icon-btn with aria-label and aria-pressed for toggles.",
+                           "notRepresentedInFigma":  [
+                                                         "aria-label is documentation only"
+                                                     ],
+                           "status":  "stable",
+                           "statusNote":  ""
+                       },
+                       {
+                           "id":  "input-field",
+                           "name":  "Input Field",
+                           "webComponent":  ".field, .input, .select, .textarea",
+                           "priority":  "core",
+                           "summary":  "Label, control, hint and message for text, select and textarea.",
+                           "properties":  [
+                                              {
+                                                  "name":  "Type",
+                                                  "type":  "VARIANT",
+                                                  "values":  [
+                                                                 "Text",
+                                                                 "Select",
+                                                                 "Textarea"
+                                                             ],
+                                                  "default":  "Text",
+                                                  "note":  ""
+                                              },
+                                              {
+                                                  "name":  "State",
+                                                  "type":  "VARIANT",
+                                                  "values":  [
+                                                                 "Default",
+                                                                 "Focus",
+                                                                 "Error",
+                                                                 "Disabled"
+                                                             ],
+                                                  "default":  "Default",
+                                                  "note":  ""
+                                              },
+                                              {
+                                                  "name":  "Label",
+                                                  "type":  "TEXT",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "Email",
+                                                  "note":  "Always visible; no placeholder-only fields"
+                                              },
+                                              {
+                                                  "name":  "Value",
+                                                  "type":  "TEXT",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "",
+                                                  "note":  "Content or placeholder"
+                                              },
+                                              {
+                                                  "name":  "Hint",
+                                                  "type":  "TEXT",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "",
+                                                  "note":  "Helper text"
+                                              },
+                                              {
+                                                  "name":  "Error message",
+                                                  "type":  "TEXT",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "Enter a valid email",
+                                                  "note":  "Shown in the Error state"
+                                              },
+                                              {
+                                                  "name":  "Show hint",
+                                                  "type":  "BOOLEAN",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "false",
+                                                  "note":  ""
+                                              },
+                                              {
+                                                  "name":  "Required",
+                                                  "type":  "BOOLEAN",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "false",
+                                                  "note":  "Adds the required marker to the label"
+                                              }
+                                          ],
+                           "layout":  {
+                                          "direction":  "VERTICAL",
+                                          "widthSizing":  "FILL",
+                                          "heightSizing":  "HUG (control FIXED {control/height/md}; textarea min {input/textarea-min-height})",
+                                          "padding":  "{input/padding-x} left and right, {input/padding-y} top and bottom inside the control",
+                                          "gap":  "{form/label-gap} between label and control",
+                                          "align":  "start",
+                                          "minWidth":  ""
+                                      },
+                           "bindings":  [
+                                            {
+                                                "element":  "control",
+                                                "property":  "height",
+                                                "variable":  "control/height/md"
+                                            },
+                                            {
+                                                "element":  "control",
+                                                "property":  "cornerRadius",
+                                                "variable":  "radius/control"
+                                            },
+                                            {
+                                                "element":  "control",
+                                                "property":  "paddingLeft/Right",
+                                                "variable":  "input/padding-x"
+                                            },
+                                            {
+                                                "element":  "control",
+                                                "property":  "paddingTop/Bottom",
+                                                "variable":  "input/padding-y"
+                                            },
+                                            {
+                                                "element":  "field",
+                                                "property":  "itemSpacing",
+                                                "variable":  "form/label-gap"
+                                            },
+                                            {
+                                                "element":  "textarea",
+                                                "property":  "minHeight",
+                                                "variable":  "input/textarea-min-height"
+                                            }
+                                        ],
+                           "textStyle":  "Form/Input (value), Label/Default (label), Body/Small (hint), Form/Validation (error)",
+                           "stateStyles":  [
+                                               {
+                                                   "variant":  {
+                                                                   "State":  "Default"
+                                                               },
+                                                   "state":  "Default",
+                                                   "fill":  "color/control/bg",
+                                                   "stroke":  "color/control/border",
+                                                   "strokeWidth":  "border-width/thin",
+                                                   "text":  "color/text/primary",
+                                                   "focusRing":  false,
+                                                   "strokeStyle":  ""
+                                               },
+                                               {
+                                                   "variant":  {
+                                                                   "State":  "Focus"
+                                                               },
+                                                   "state":  "Focus",
+                                                   "fill":  "color/control/bg",
+                                                   "stroke":  "color/control/border",
+                                                   "strokeWidth":  "border-width/thin",
+                                                   "text":  "color/text/primary",
+                                                   "focusRing":  true,
+                                                   "strokeStyle":  ""
+                                               },
+                                               {
+                                                   "variant":  {
+                                                                   "State":  "Error"
+                                                               },
+                                                   "state":  "Error",
+                                                   "fill":  "color/control/bg",
+                                                   "stroke":  "color/status/error",
+                                                   "strokeWidth":  "border-width/thick",
+                                                   "text":  "color/text/primary",
+                                                   "focusRing":  false,
+                                                   "strokeStyle":  ""
+                                               },
+                                               {
+                                                   "variant":  {
+                                                                   "State":  "Disabled"
+                                                               },
+                                                   "state":  "Disabled",
+                                                   "fill":  "color/bg/subtle",
+                                                   "stroke":  "color/control/border",
+                                                   "strokeWidth":  "border-width/thin",
+                                                   "text":  "color/text/disabled",
+                                                   "focusRing":  false,
+                                                   "strokeStyle":  "dashed"
+                                               }
+                                           ],
+                           "variantNote":  "3 x 4 = 12 variants.",
+                           "responsive":  "Fill width; two fields may sit side by side from the Tablet mode (the web uses .grid--2 from 600px).",
+                           "accessibility":  "The value text style is 16px (Form/Input) so iOS does not zoom on focus. An error is shown by a thicker error-coloured border plus an icon plus text, never colour alone. Control borders use color/control/border (3:1 or more on ivory and white); do not place a control directly on color/bg/subtle (2.8:1).",
+                           "handoff":  "Maps to .field with .input, .select or .textarea; errors link through aria-describedby and aria-invalid.",
+                           "notRepresentedInFigma":  [
+                                                         "browser-native select and date pickers",
+                                                         "live validation timing"
+                                                     ],
+                           "status":  "stable",
+                           "statusNote":  ""
+                       },
+                       {
+                           "id":  "choice",
+                           "name":  "Choice",
+                           "webComponent":  ".choice, .choice__input",
+                           "priority":  "core",
+                           "summary":  "Checkbox and radio with a visible label.",
+                           "properties":  [
+                                              {
+                                                  "name":  "Type",
+                                                  "type":  "VARIANT",
+                                                  "values":  [
+                                                                 "Checkbox",
+                                                                 "Radio"
+                                                             ],
+                                                  "default":  "Checkbox",
+                                                  "note":  ""
+                                              },
+                                              {
+                                                  "name":  "Checked",
+                                                  "type":  "VARIANT",
+                                                  "values":  [
+                                                                 "false",
+                                                                 "true"
+                                                             ],
+                                                  "default":  "false",
+                                                  "note":  "A variant (not a boolean) because it changes the box fill, stroke and mark"
+                                              },
+                                              {
+                                                  "name":  "State",
+                                                  "type":  "VARIANT",
+                                                  "values":  [
+                                                                 "Default",
+                                                                 "Focus",
+                                                                 "Disabled"
+                                                             ],
+                                                  "default":  "Default",
+                                                  "note":  ""
+                                              },
+                                              {
+                                                  "name":  "Label",
+                                                  "type":  "TEXT",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "Hydration",
+                                                  "note":  ""
+                                              }
+                                          ],
+                           "layout":  {
+                                          "direction":  "HORIZONTAL",
+                                          "widthSizing":  "FILL",
+                                          "heightSizing":  "HUG, minimum {touch-target/min}",
+                                          "padding":  "vertical padding so the whole row is a 44px target",
+                                          "gap":  "{choice/gap}",
+                                          "align":  "start, centre",
+                                          "minWidth":  ""
+                                      },
+                           "bindings":  [
+                                            {
+                                                "element":  "box",
+                                                "property":  "width/height",
+                                                "variable":  "choice/size"
+                                            },
+                                            {
+                                                "element":  "check",
+                                                "property":  "width/height",
+                                                "variable":  "choice/check-size"
+                                            },
+                                            {
+                                                "element":  "dot",
+                                                "property":  "width/height",
+                                                "variable":  "choice/dot-size"
+                                            },
+                                            {
+                                                "element":  "row",
+                                                "property":  "itemSpacing",
+                                                "variable":  "choice/gap"
+                                            },
+                                            {
+                                                "element":  "row",
+                                                "property":  "minHeight",
+                                                "variable":  "touch-target/min"
+                                            }
+                                        ],
+                           "textStyle":  "Body/Default",
+                           "stateStyles":  [
+                                               {
+                                                   "variant":  {
+                                                                   "Checked":  "false"
+                                                               },
+                                                   "state":  "Default",
+                                                   "fill":  "color/control/bg",
+                                                   "stroke":  "color/control/border",
+                                                   "strokeWidth":  "border-width/thin",
+                                                   "text":  "color/text/primary",
+                                                   "focusRing":  false,
+                                                   "strokeStyle":  ""
+                                               },
+                                               {
+                                                   "variant":  {
+                                                                   "Checked":  "false"
+                                                               },
+                                                   "state":  "Focus",
+                                                   "fill":  "color/control/bg",
+                                                   "stroke":  "color/control/border",
+                                                   "strokeWidth":  "border-width/thin",
+                                                   "text":  "color/text/primary",
+                                                   "focusRing":  true,
+                                                   "strokeStyle":  ""
+                                               },
+                                               {
+                                                   "variant":  {
+                                                                   "Checked":  "false"
+                                                               },
+                                                   "state":  "Disabled",
+                                                   "fill":  "color/control/bg",
+                                                   "stroke":  "color/control/border",
+                                                   "strokeWidth":  "border-width/thin",
+                                                   "text":  "color/text/disabled",
+                                                   "focusRing":  false,
+                                                   "strokeStyle":  "dashed"
+                                               },
+                                               {
+                                                   "variant":  {
+                                                                   "Checked":  "true"
+                                                               },
+                                                   "state":  "Default",
+                                                   "fill":  "color/control/selected",
+                                                   "stroke":  "color/control/selected",
+                                                   "strokeWidth":  "border-width/thin",
+                                                   "text":  "color/text/primary",
+                                                   "focusRing":  false,
+                                                   "strokeStyle":  ""
+                                               },
+                                               {
+                                                   "variant":  {
+                                                                   "Checked":  "true"
+                                                               },
+                                                   "state":  "Focus",
+                                                   "fill":  "color/control/selected",
+                                                   "stroke":  "color/control/selected",
+                                                   "strokeWidth":  "border-width/thin",
+                                                   "text":  "color/text/primary",
+                                                   "focusRing":  true,
+                                                   "strokeStyle":  ""
+                                               },
+                                               {
+                                                   "variant":  {
+                                                                   "Checked":  "true"
+                                                               },
+                                                   "state":  "Disabled",
+                                                   "fill":  "color/control/selected",
+                                                   "stroke":  "color/control/selected",
+                                                   "strokeWidth":  "border-width/thin",
+                                                   "text":  "color/text/disabled",
+                                                   "focusRing":  false,
+                                                   "strokeStyle":  "dashed"
+                                               }
+                                           ],
+                           "variantNote":  "2 x 2 x 3 = 12 variants.",
+                           "responsive":  "Same at every size; the row fills its container.",
+                           "accessibility":  "The 24px box sits inside a row that is at least 44px high, so the whole row is the target. Checked state is a fill change plus a mark (shape), not colour alone.",
+                           "handoff":  "Maps to .choice with a native input; groups use fieldset and legend (not representable in Figma: add a Group Label text layer and note it).",
+                           "notRepresentedInFigma":  [
+                                                         "fieldset and legend semantics",
+                                                         "indeterminate state (not in the web system)"
+                                                     ],
+                           "status":  "stable",
+                           "statusNote":  ""
+                       },
+                       {
+                           "id":  "chip",
+                           "name":  "Chip",
+                           "webComponent":  ".chip",
+                           "priority":  "core",
+                           "summary":  "Filter toggle and removable applied-filter pill.",
+                           "properties":  [
+                                              {
+                                                  "name":  "Selected",
+                                                  "type":  "VARIANT",
+                                                  "values":  [
+                                                                 "false",
+                                                                 "true"
+                                                             ],
+                                                  "default":  "false",
+                                                  "note":  "Selected adds a check mark (shape) as well as a tint"
+                                              },
+                                              {
+                                                  "name":  "State",
+                                                  "type":  "VARIANT",
+                                                  "values":  [
+                                                                 "Default",
+                                                                 "Hover",
+                                                                 "Focus",
+                                                                 "Disabled"
+                                                             ],
+                                                  "default":  "Default",
+                                                  "note":  ""
+                                              },
+                                              {
+                                                  "name":  "Label",
+                                                  "type":  "TEXT",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "Hydration",
+                                                  "note":  ""
+                                              },
+                                              {
+                                                  "name":  "Removable",
+                                                  "type":  "BOOLEAN",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "false",
+                                                  "note":  "Shows the close icon (applied filters) and hides the check mark"
+                                              }
+                                          ],
+                           "layout":  {
+                                          "direction":  "HORIZONTAL",
+                                          "widthSizing":  "HUG",
+                                          "heightSizing":  "FIXED {control/height/sm}",
+                                          "padding":  "{space/4} left and right",
+                                          "gap":  "{space/2}",
+                                          "align":  "centre, centre",
+                                          "minWidth":  "{touch-target/min}"
+                                      },
+                           "bindings":  [
+                                            {
+                                                "element":  "frame",
+                                                "property":  "height",
+                                                "variable":  "control/height/sm"
+                                            },
+                                            {
+                                                "element":  "frame",
+                                                "property":  "cornerRadius",
+                                                "variable":  "radius/pill"
+                                            },
+                                            {
+                                                "element":  "frame",
+                                                "property":  "paddingLeft/Right",
+                                                "variable":  "space/4"
+                                            },
+                                            {
+                                                "element":  "frame",
+                                                "property":  "itemSpacing",
+                                                "variable":  "space/2"
+                                            },
+                                            {
+                                                "element":  "frame",
+                                                "property":  "minWidth",
+                                                "variable":  "touch-target/min"
+                                            },
+                                            {
+                                                "element":  "icon",
+                                                "property":  "width/height",
+                                                "variable":  "icon/size/sm"
+                                            }
+                                        ],
+                           "textStyle":  "Label/Default",
+                           "stateStyles":  [
+                                               {
+                                                   "variant":  {
+                                                                   "Selected":  "false"
+                                                               },
+                                                   "state":  "Default",
+                                                   "fill":  "color/control/bg",
+                                                   "stroke":  "color/control/border",
+                                                   "strokeWidth":  "border-width/thin",
+                                                   "text":  "color/text/primary",
+                                                   "focusRing":  false,
+                                                   "strokeStyle":  ""
+                                               },
+                                               {
+                                                   "variant":  {
+                                                                   "Selected":  "false"
+                                                               },
+                                                   "state":  "Hover",
+                                                   "fill":  "color/control/bg",
+                                                   "stroke":  "color/control/border-hover",
+                                                   "strokeWidth":  "border-width/thin",
+                                                   "text":  "color/text/primary",
+                                                   "focusRing":  false,
+                                                   "strokeStyle":  ""
+                                               },
+                                               {
+                                                   "variant":  {
+                                                                   "Selected":  "false"
+                                                               },
+                                                   "state":  "Focus",
+                                                   "fill":  "color/control/bg",
+                                                   "stroke":  "color/control/border",
+                                                   "strokeWidth":  "border-width/thin",
+                                                   "text":  "color/text/primary",
+                                                   "focusRing":  true,
+                                                   "strokeStyle":  ""
+                                               },
+                                               {
+                                                   "variant":  {
+                                                                   "Selected":  "false"
+                                                               },
+                                                   "state":  "Disabled",
+                                                   "fill":  "color/bg/subtle",
+                                                   "stroke":  "color/control/border",
+                                                   "strokeWidth":  "border-width/thin",
+                                                   "text":  "color/text/disabled",
+                                                   "focusRing":  false,
+                                                   "strokeStyle":  "dashed"
+                                               },
+                                               {
+                                                   "variant":  {
+                                                                   "Selected":  "true"
+                                                               },
+                                                   "state":  "Default",
+                                                   "fill":  "color/brand/tint",
+                                                   "stroke":  "color/brand/primary",
+                                                   "strokeWidth":  "border-width/thick",
+                                                   "text":  "color/brand/primary-active",
+                                                   "focusRing":  false,
+                                                   "strokeStyle":  ""
+                                               },
+                                               {
+                                                   "variant":  {
+                                                                   "Selected":  "true"
+                                                               },
+                                                   "state":  "Hover",
+                                                   "fill":  "color/brand/tint",
+                                                   "stroke":  "color/brand/primary",
+                                                   "strokeWidth":  "border-width/thick",
+                                                   "text":  "color/brand/primary-active",
+                                                   "focusRing":  false,
+                                                   "strokeStyle":  ""
+                                               },
+                                               {
+                                                   "variant":  {
+                                                                   "Selected":  "true"
+                                                               },
+                                                   "state":  "Focus",
+                                                   "fill":  "color/brand/tint",
+                                                   "stroke":  "color/brand/primary",
+                                                   "strokeWidth":  "border-width/thick",
+                                                   "text":  "color/brand/primary-active",
+                                                   "focusRing":  true,
+                                                   "strokeStyle":  ""
+                                               },
+                                               {
+                                                   "variant":  {
+                                                                   "Selected":  "true"
+                                                               },
+                                                   "state":  "Disabled",
+                                                   "fill":  "color/bg/subtle",
+                                                   "stroke":  "color/control/border",
+                                                   "strokeWidth":  "border-width/thick",
+                                                   "text":  "color/text/disabled",
+                                                   "focusRing":  false,
+                                                   "strokeStyle":  "dashed"
+                                               }
+                                           ],
+                           "variantNote":  "2 x 4 = 8 variants.",
+                           "responsive":  "On phones the choice row is a single horizontally scrolling line of chips (approved web decision 2): build it as an Auto Layout row with clipping on and padding above and below so the focus ring is not cut. From Tablet it wraps. Applied filters always wrap.",
+                           "accessibility":  "Visual height 40px with a 44px hit area (add a transparent 44px frame). Selected is a tint plus a check mark plus a 2px border. A chip cut off at the row edge signals that the row scrolls.",
+                           "handoff":  "Maps to .chip with aria-pressed; the scrolling row is .chip-row with chip-row.js, which keeps a focused chip fully visible.",
+                           "notRepresentedInFigma":  [
+                                                         "horizontal scrolling and scroll-into-view on focus (prototype with a scrolling frame to show intent)"
+                                                     ],
+                           "status":  "stable",
+                           "statusNote":  ""
+                       },
+                       {
+                           "id":  "swatch",
+                           "name":  "Swatch",
+                           "webComponent":  ".swatch",
+                           "priority":  "core",
+                           "summary":  "Shade and colour chooser; the colour is product data.",
+                           "properties":  [
+                                              {
+                                                  "name":  "Size",
+                                                  "type":  "VARIANT",
+                                                  "values":  [
+                                                                 "Md",
+                                                                 "Sm"
+                                                             ],
+                                                  "default":  "Md",
+                                                  "note":  "Sm is the decorative mini swatch on cards (not interactive)"
+                                              },
+                                              {
+                                                  "name":  "Selected",
+                                                  "type":  "VARIANT",
+                                                  "values":  [
+                                                                 "false",
+                                                                 "true"
+                                                             ],
+                                                  "default":  "false",
+                                                  "note":  "Selected draws a 2px ring with an offset"
+                                              },
+                                              {
+                                                  "name":  "State",
+                                                  "type":  "VARIANT",
+                                                  "values":  [
+                                                                 "Default",
+                                                                 "Focus",
+                                                                 "Disabled"
+                                                             ],
+                                                  "default":  "Default",
+                                                  "note":  "Disabled shows a diagonal strike"
+                                              },
+                                              {
+                                                  "name":  "Shade name",
+                                                  "type":  "TEXT",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "Rosewood",
+                                                  "note":  "Displayed next to the group, not inside the swatch"
+                                              }
+                                          ],
+                           "layout":  {
+                                          "direction":  "HORIZONTAL",
+                                          "widthSizing":  "FIXED {swatch/size}",
+                                          "heightSizing":  "FIXED {swatch/size}",
+                                          "padding":  "0",
+                                          "gap":  "{swatch/ring-offset}",
+                                          "align":  "centre",
+                                          "minWidth":  "{touch-target/min} hit area for Md"
+                                      },
+                           "bindings":  [
+                                            {
+                                                "element":  "chip",
+                                                "property":  "width/height",
+                                                "variable":  "swatch/size"
+                                            },
+                                            {
+                                                "element":  "mini chip",
+                                                "property":  "width/height",
+                                                "variable":  "swatch/size-sm"
+                                            },
+                                            {
+                                                "element":  "ring",
+                                                "property":  "strokeWeight",
+                                                "variable":  "swatch/ring-width"
+                                            },
+                                            {
+                                                "element":  "ring",
+                                                "property":  "offset",
+                                                "variable":  "swatch/ring-offset"
+                                            },
+                                            {
+                                                "element":  "ring",
+                                                "property":  "stroke",
+                                                "variable":  "color/text/primary"
+                                            }
+                                        ],
+                           "textStyle":  "Body/Small",
+                           "variantNote":  "2 x 2 x 3 = 12 variants. The swatch fill is a per-instance override of product data, deliberately NOT a variable (as in the web system, where it is an inline --swatch property).",
+                           "responsive":  "Same at every size.",
+                           "accessibility":  "The selection ring (not the swatch colour) carries the 3:1 requirement, and the selected shade name is displayed as text.",
+                           "handoff":  "Maps to .swatch with --swatch set inline from product data.",
+                           "notRepresentedInFigma":  [
+                                                         "real product colours",
+                                                         "radio-group keyboard behaviour (arrow keys)"
+                                                     ],
+                           "status":  "stable",
+                           "statusNote":  ""
+                       },
+                       {
+                           "id":  "badge",
+                           "name":  "Badge",
+                           "webComponent":  ".badge",
+                           "priority":  "core",
+                           "summary":  "Short status or promotional label (Sale, New, Sold out, status tones).",
+                           "properties":  [
+                                              {
+                                                  "name":  "Tone",
+                                                  "type":  "VARIANT",
+                                                  "values":  [
+                                                                 "Neutral",
+                                                                 "Brand",
+                                                                 "Dark",
+                                                                 "Outline",
+                                                                 "Success",
+                                                                 "Warning",
+                                                                 "Error"
+                                                             ],
+                                                  "default":  "Neutral",
+                                                  "note":  ""
+                                              },
+                                              {
+                                                  "name":  "Label",
+                                                  "type":  "TEXT",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "New",
+                                                  "note":  ""
+                                              },
+                                              {
+                                                  "name":  "Show icon",
+                                                  "type":  "BOOLEAN",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "false",
+                                                  "note":  ""
+                                              }
+                                          ],
+                           "layout":  {
+                                          "direction":  "HORIZONTAL",
+                                          "widthSizing":  "HUG",
+                                          "heightSizing":  "HUG",
+                                          "padding":  "{badge/padding-x} x {badge/padding-y}",
+                                          "gap":  "{space/1}",
+                                          "align":  "centre, centre",
+                                          "minWidth":  ""
+                                      },
+                           "bindings":  [
+                                            {
+                                                "element":  "frame",
+                                                "property":  "paddingLeft/Right",
+                                                "variable":  "badge/padding-x"
+                                            },
+                                            {
+                                                "element":  "frame",
+                                                "property":  "paddingTop/Bottom",
+                                                "variable":  "badge/padding-y"
+                                            },
+                                            {
+                                                "element":  "frame",
+                                                "property":  "cornerRadius",
+                                                "variable":  "radius/badge"
+                                            },
+                                            {
+                                                "element":  "frame",
+                                                "property":  "fill (Brand)",
+                                                "variable":  "color/brand/primary"
+                                            },
+                                            {
+                                                "element":  "text (Brand)",
+                                                "property":  "fill",
+                                                "variable":  "color/text/on-brand"
+                                            },
+                                            {
+                                                "element":  "frame",
+                                                "property":  "fill (Dark)",
+                                                "variable":  "color/bg/inverse"
+                                            },
+                                            {
+                                                "element":  "text (Dark)",
+                                                "property":  "fill",
+                                                "variable":  "color/text/inverse"
+                                            },
+                                            {
+                                                "element":  "frame",
+                                                "property":  "fill (Neutral)",
+                                                "variable":  "color/bg/subtle"
+                                            },
+                                            {
+                                                "element":  "frame",
+                                                "property":  "stroke (Outline)",
+                                                "variable":  "color/border/strong"
+                                            },
+                                            {
+                                                "element":  "frame",
+                                                "property":  "fill (Success)",
+                                                "variable":  "color/status/success-bg"
+                                            },
+                                            {
+                                                "element":  "text (Success)",
+                                                "property":  "fill",
+                                                "variable":  "color/status/success"
+                                            },
+                                            {
+                                                "element":  "frame",
+                                                "property":  "fill (Warning)",
+                                                "variable":  "color/status/warning-bg"
+                                            },
+                                            {
+                                                "element":  "text (Warning)",
+                                                "property":  "fill",
+                                                "variable":  "color/status/warning"
+                                            },
+                                            {
+                                                "element":  "frame",
+                                                "property":  "fill (Error)",
+                                                "variable":  "color/status/error-bg"
+                                            },
+                                            {
+                                                "element":  "text (Error)",
+                                                "property":  "fill",
+                                                "variable":  "color/status/error"
+                                            }
+                                        ],
+                           "textStyle":  "Label/Utility",
+                           "variantNote":  "7 variants (one axis).",
+                           "responsive":  "Same at every size. On a 129 to 136px product card the Sale badge wraps onto two lines so it never runs under the wishlist button (web fix); keep Hug width and allow the label to wrap.",
+                           "accessibility":  "A badge is text, so each tone must keep 4.5:1 between its text and fill (the status text colours are measured on their own tints at 5.3:1 or more).",
+                           "handoff":  "Maps to .badge with .badge--brand, --dark, --outline, --success, --warning, --error.",
+                           "notRepresentedInFigma":  [
+
+                                                     ],
+                           "status":  "stable",
+                           "statusNote":  "",
+                           "toneStyles":  [
+                                              {
+                                                  "tone":  "Neutral",
+                                                  "fill":  "color/bg/subtle",
+                                                  "stroke":  null,
+                                                  "strokeWidth":  null,
+                                                  "text":  "color/text/primary",
+                                                  "icon":  null
+                                              },
+                                              {
+                                                  "tone":  "Brand",
+                                                  "fill":  "color/brand/primary",
+                                                  "stroke":  null,
+                                                  "strokeWidth":  null,
+                                                  "text":  "color/text/on-brand",
+                                                  "icon":  null
+                                              },
+                                              {
+                                                  "tone":  "Dark",
+                                                  "fill":  "color/bg/inverse",
+                                                  "stroke":  null,
+                                                  "strokeWidth":  null,
+                                                  "text":  "color/text/inverse",
+                                                  "icon":  null
+                                              },
+                                              {
+                                                  "tone":  "Outline",
+                                                  "fill":  null,
+                                                  "stroke":  "color/border/strong",
+                                                  "strokeWidth":  "border-width/thin",
+                                                  "text":  "color/text/primary",
+                                                  "icon":  null
+                                              },
+                                              {
+                                                  "tone":  "Success",
+                                                  "fill":  "color/status/success-bg",
+                                                  "stroke":  null,
+                                                  "strokeWidth":  null,
+                                                  "text":  "color/status/success",
+                                                  "icon":  null
+                                              },
+                                              {
+                                                  "tone":  "Warning",
+                                                  "fill":  "color/status/warning-bg",
+                                                  "stroke":  null,
+                                                  "strokeWidth":  null,
+                                                  "text":  "color/status/warning",
+                                                  "icon":  null
+                                              },
+                                              {
+                                                  "tone":  "Error",
+                                                  "fill":  "color/status/error-bg",
+                                                  "stroke":  null,
+                                                  "strokeWidth":  null,
+                                                  "text":  "color/status/error",
+                                                  "icon":  null
+                                              }
+                                          ]
+                       },
+                       {
+                           "id":  "message",
+                           "name":  "Message",
+                           "webComponent":  ".message",
+                           "priority":  "core",
+                           "summary":  "Inline feedback with an icon and text (error, success, warning).",
+                           "properties":  [
+                                              {
+                                                  "name":  "Tone",
+                                                  "type":  "VARIANT",
+                                                  "values":  [
+                                                                 "Error",
+                                                                 "Success",
+                                                                 "Warning"
+                                                             ],
+                                                  "default":  "Error",
+                                                  "note":  ""
+                                              },
+                                              {
+                                                  "name":  "Text",
+                                                  "type":  "TEXT",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "Could not load more products. Check your connection and try again.",
+                                                  "note":  ""
+                                              },
+                                              {
+                                                  "name":  "Icon",
+                                                  "type":  "INSTANCE_SWAP",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "Icon/warning",
+                                                  "note":  ""
+                                              },
+                                              {
+                                                  "name":  "Show action",
+                                                  "type":  "BOOLEAN",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "false",
+                                                  "note":  "Optional action slot, for example Try again"
+                                              }
+                                          ],
+                           "layout":  {
+                                          "direction":  "HORIZONTAL",
+                                          "widthSizing":  "FILL",
+                                          "heightSizing":  "HUG",
+                                          "padding":  "{space/3} {space/4}",
+                                          "gap":  "{space/3}",
+                                          "align":  "start, start",
+                                          "minWidth":  ""
+                                      },
+                           "bindings":  [
+                                            {
+                                                "element":  "frame",
+                                                "property":  "fill (Error)",
+                                                "variable":  "color/status/error-bg"
+                                            },
+                                            {
+                                                "element":  "icon (Error)",
+                                                "property":  "fill",
+                                                "variable":  "color/status/error"
+                                            },
+                                            {
+                                                "element":  "frame",
+                                                "property":  "cornerRadius",
+                                                "variable":  "radius/control"
+                                            },
+                                            {
+                                                "element":  "frame",
+                                                "property":  "paddingTop/Bottom",
+                                                "variable":  "space/3"
+                                            },
+                                            {
+                                                "element":  "frame",
+                                                "property":  "paddingLeft/Right",
+                                                "variable":  "space/4"
+                                            },
+                                            {
+                                                "element":  "frame",
+                                                "property":  "itemSpacing",
+                                                "variable":  "space/3"
+                                            }
+                                        ],
+                           "textStyle":  "Body/Small",
+                           "variantNote":  "3 variants.",
+                           "responsive":  "Fill width.",
+                           "accessibility":  "Never colour alone: icon plus text. Errors announce as alerts in the web implementation (role=\"alert\").",
+                           "handoff":  "Maps to .message with --error, --success, --warning.",
+                           "notRepresentedInFigma":  [
+                                                         "role=\"alert\" announcement"
+                                                     ],
+                           "status":  "stable",
+                           "statusNote":  "",
+                           "toneStyles":  [
+                                              {
+                                                  "tone":  "Error",
+                                                  "fill":  "color/status/error-bg",
+                                                  "stroke":  null,
+                                                  "strokeWidth":  null,
+                                                  "text":  "color/text/primary",
+                                                  "icon":  "color/status/error"
+                                              },
+                                              {
+                                                  "tone":  "Success",
+                                                  "fill":  "color/status/success-bg",
+                                                  "stroke":  null,
+                                                  "strokeWidth":  null,
+                                                  "text":  "color/text/primary",
+                                                  "icon":  "color/status/success"
+                                              },
+                                              {
+                                                  "tone":  "Warning",
+                                                  "fill":  "color/status/warning-bg",
+                                                  "stroke":  null,
+                                                  "strokeWidth":  null,
+                                                  "text":  "color/text/primary",
+                                                  "icon":  "color/status/warning"
+                                              }
+                                          ]
+                       },
+                       {
+                           "id":  "quantity",
+                           "name":  "Quantity Selector",
+                           "webComponent":  ".qty",
+                           "priority":  "secondary",
+                           "summary":  "Minus, number, plus.",
+                           "properties":  [
+                                              {
+                                                  "name":  "State",
+                                                  "type":  "VARIANT",
+                                                  "values":  [
+                                                                 "Default",
+                                                                 "Focus",
+                                                                 "Disabled"
+                                                             ],
+                                                  "default":  "Default",
+                                                  "note":  ""
+                                              },
+                                              {
+                                                  "name":  "Value",
+                                                  "type":  "TEXT",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "1",
+                                                  "note":  ""
+                                              },
+                                              {
+                                                  "name":  "Minus disabled",
+                                                  "type":  "BOOLEAN",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "false",
+                                                  "note":  "At the minimum"
+                                              },
+                                              {
+                                                  "name":  "Plus disabled",
+                                                  "type":  "BOOLEAN",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "false",
+                                                  "note":  "At the maximum"
+                                              }
+                                          ],
+                           "layout":  {
+                                          "direction":  "HORIZONTAL",
+                                          "widthSizing":  "HUG",
+                                          "heightSizing":  "FIXED {control/height/md}",
+                                          "padding":  "0",
+                                          "gap":  "0",
+                                          "align":  "centre, centre",
+                                          "minWidth":  ""
+                                      },
+                           "bindings":  [
+                                            {
+                                                "element":  "input",
+                                                "property":  "width",
+                                                "variable":  "qty/input-width"
+                                            },
+                                            {
+                                                "element":  "frame",
+                                                "property":  "height",
+                                                "variable":  "control/height/md"
+                                            },
+                                            {
+                                                "element":  "buttons",
+                                                "property":  "width/height",
+                                                "variable":  "touch-target/min"
+                                            },
+                                            {
+                                                "element":  "frame",
+                                                "property":  "cornerRadius",
+                                                "variable":  "radius/control"
+                                            },
+                                            {
+                                                "element":  "frame",
+                                                "property":  "stroke",
+                                                "variable":  "color/control/border"
+                                            }
+                                        ],
+                           "textStyle":  "Form/Input",
+                           "variantNote":  "3 variants plus two booleans.",
+                           "responsive":  "Same at every size.",
+                           "accessibility":  "Each button is 44px; the value is a labelled number input.",
+                           "handoff":  "Maps to .qty with data-qty buttons.",
+                           "notRepresentedInFigma":  [
+                                                         "min and max clamping"
+                                                     ],
+                           "status":  "stable",
+                           "statusNote":  ""
+                       },
+                       {
+                           "id":  "rating",
+                           "name":  "Rating",
+                           "webComponent":  ".rating",
+                           "priority":  "secondary",
+                           "summary":  "Stars with an optional count.",
+                           "properties":  [
+                                              {
+                                                  "name":  "Value",
+                                                  "type":  "VARIANT",
+                                                  "values":  [
+                                                                 "0",
+                                                                 "1",
+                                                                 "2",
+                                                                 "3",
+                                                                 "4",
+                                                                 "5"
+                                                             ],
+                                                  "default":  "5",
+                                                  "note":  "Filled stars (half stars are not in the web system)"
+                                              },
+                                              {
+                                                  "name":  "Show count",
+                                                  "type":  "BOOLEAN",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "true",
+                                                  "note":  ""
+                                              },
+                                              {
+                                                  "name":  "Count",
+                                                  "type":  "TEXT",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "(86)",
+                                                  "note":  ""
+                                              }
+                                          ],
+                           "layout":  {
+                                          "direction":  "HORIZONTAL",
+                                          "widthSizing":  "HUG",
+                                          "heightSizing":  "HUG",
+                                          "padding":  "0",
+                                          "gap":  "{rating/gap}",
+                                          "align":  "start, centre",
+                                          "minWidth":  ""
+                                      },
+                           "bindings":  [
+                                            {
+                                                "element":  "star",
+                                                "property":  "fill (filled)",
+                                                "variable":  "color/rating/star"
+                                            },
+                                            {
+                                                "element":  "star",
+                                                "property":  "fill (empty)",
+                                                "variable":  "color/rating/star-empty"
+                                            },
+                                            {
+                                                "element":  "star",
+                                                "property":  "width/height",
+                                                "variable":  "icon/size/sm"
+                                            },
+                                            {
+                                                "element":  "row",
+                                                "property":  "itemSpacing",
+                                                "variable":  "rating/gap"
+                                            }
+                                        ],
+                           "textStyle":  "Body/Caption",
+                           "variantNote":  "6 variants.",
+                           "responsive":  "Same at every size.",
+                           "accessibility":  "The stars are one image in the web implementation, named like \"Rated 4 out of 5\"; the filled and empty stars also differ by fill shape, not only colour.",
+                           "handoff":  "Maps to .rating with a role=\"img\" label.",
+                           "notRepresentedInFigma":  [
+                                                         "role=\"img\" label"
+                                                     ],
+                           "status":  "stable",
+                           "statusNote":  ""
+                       },
+                       {
+                           "id":  "accordion-item",
+                           "name":  "Accordion Item",
+                           "webComponent":  ".accordion__item",
+                           "priority":  "core",
+                           "summary":  "A disclosure row; several can be open at once (approved web decision 3).",
+                           "properties":  [
+                                              {
+                                                  "name":  "Open",
+                                                  "type":  "VARIANT",
+                                                  "values":  [
+                                                                 "false",
+                                                                 "true"
+                                                             ],
+                                                  "default":  "false",
+                                                  "note":  "Chevron rotates when open"
+                                              },
+                                              {
+                                                  "name":  "State",
+                                                  "type":  "VARIANT",
+                                                  "values":  [
+                                                                 "Default",
+                                                                 "Hover",
+                                                                 "Focus"
+                                                             ],
+                                                  "default":  "Default",
+                                                  "note":  ""
+                                              },
+                                              {
+                                                  "name":  "Title",
+                                                  "type":  "TEXT",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "Key ingredients",
+                                                  "note":  ""
+                                              },
+                                              {
+                                                  "name":  "Content",
+                                                  "type":  "INSTANCE_SWAP",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "Content/Text block",
+                                                  "note":  "Slot for the panel content"
+                                              }
+                                          ],
+                           "layout":  {
+                                          "direction":  "VERTICAL",
+                                          "widthSizing":  "FILL",
+                                          "heightSizing":  "HUG",
+                                          "padding":  "summary row at least {touch-target/min} high; panel padding {space/5} bottom",
+                                          "gap":  "0",
+                                          "align":  "start",
+                                          "minWidth":  ""
+                                      },
+                           "bindings":  [
+                                            {
+                                                "element":  "summary",
+                                                "property":  "minHeight",
+                                                "variable":  "touch-target/min"
+                                            },
+                                            {
+                                                "element":  "summary",
+                                                "property":  "stroke (bottom)",
+                                                "variable":  "color/border/subtle"
+                                            },
+                                            {
+                                                "element":  "chevron",
+                                                "property":  "width/height",
+                                                "variable":  "icon/size/md"
+                                            },
+                                            {
+                                                "element":  "panel",
+                                                "property":  "paddingBottom",
+                                                "variable":  "space/5"
+                                            },
+                                            {
+                                                "element":  "panel",
+                                                "property":  "maxWidth",
+                                                "variable":  "layout/container/text"
+                                            }
+                                        ],
+                           "textStyle":  "Heading/H5 (title), Body/Default (content)",
+                           "variantNote":  "2 x 3 = 6 variants. Rows are independent; there is no exclusive group in Figma either.",
+                           "responsive":  "Fill width; the panel is capped at the reading measure.",
+                           "accessibility":  "The whole summary row is the target (44px or more). Open and closed are shown by the chevron and the content, not colour.",
+                           "handoff":  "Maps to native details and summary. Do not add a name attribute (exclusive behaviour) unless a documented use case needs it.",
+                           "notRepresentedInFigma":  [
+                                                         "native details toggling"
+                                                     ],
+                           "status":  "stable",
+                           "statusNote":  ""
+                       },
+                       {
+                           "id":  "breadcrumb",
+                           "name":  "Breadcrumb",
+                           "webComponent":  ".breadcrumb",
+                           "priority":  "core",
+                           "summary":  "Trail to the current page.",
+                           "properties":  [
+                                              {
+                                                  "name":  "Layout",
+                                                  "type":  "VARIANT",
+                                                  "values":  [
+                                                                 "Full",
+                                                                 "Compact"
+                                                             ],
+                                                  "default":  "Full",
+                                                  "note":  "Compact is the phone pattern: parent plus current page on one line, the current page truncated (approved web decision 1)"
+                                              },
+                                              {
+                                                  "name":  "Items",
+                                                  "type":  "TEXT",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "Home / Skincare / Serums / Rosewater Barrier Serum",
+                                                  "note":  "Documentation of the trail; build real items from Breadcrumb Item instances"
+                                              },
+                                              {
+                                                  "name":  "Truncate current",
+                                                  "type":  "BOOLEAN",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "true",
+                                                  "note":  "Ellipsis on the last item (Compact)"
+                                              }
+                                          ],
+                           "layout":  {
+                                          "direction":  "HORIZONTAL",
+                                          "widthSizing":  "FILL",
+                                          "heightSizing":  "HUG, minimum {touch-target/min}",
+                                          "padding":  "0",
+                                          "gap":  "{space/2}",
+                                          "align":  "start, centre",
+                                          "minWidth":  ""
+                                      },
+                           "bindings":  [
+                                            {
+                                                "element":  "item",
+                                                "property":  "minHeight",
+                                                "variable":  "touch-target/min"
+                                            },
+                                            {
+                                                "element":  "row",
+                                                "property":  "itemSpacing",
+                                                "variable":  "space/2"
+                                            },
+                                            {
+                                                "element":  "separator",
+                                                "property":  "width/height",
+                                                "variable":  "icon/size/sm"
+                                            },
+                                            {
+                                                "element":  "separator",
+                                                "property":  "fill",
+                                                "variable":  "color/text/muted"
+                                            },
+                                            {
+                                                "element":  "link",
+                                                "property":  "fill",
+                                                "variable":  "color/text/secondary"
+                                            },
+                                            {
+                                                "element":  "current",
+                                                "property":  "fill",
+                                                "variable":  "color/text/primary"
+                                            }
+                                        ],
+                           "textStyle":  "Body/Small",
+                           "variantNote":  "2 variants. Place Breadcrumb in the Mobile mode frame with Layout = Compact, in Tablet and Desktop with Layout = Full.",
+                           "responsive":  "Compact below the Tablet tier, Full from Tablet. Compact hides the ancestors above the parent (they are also absent from the accessibility tree on phones: an open point for screen-reader testing).",
+                           "accessibility":  "Each link keeps a 44px target. The current page is plain text, not a link style.",
+                           "handoff":  "Maps to nav.breadcrumb with an ordered list; the phone behaviour is CSS only in the web system.",
+                           "notRepresentedInFigma":  [
+                                                         "the hidden ancestors on phones"
+                                                     ],
+                           "status":  "stable",
+                           "statusNote":  ""
+                       },
+                       {
+                           "id":  "pagination",
+                           "name":  "Pagination",
+                           "webComponent":  ".pagination, .load-more, .pagination-switch",
+                           "priority":  "core",
+                           "summary":  "Numbered pagination (tablet and desktop) and Load more (phones). PROVISIONAL: nothing is verified against Shopify.",
+                           "properties":  [
+                                              {
+                                                  "name":  "Pattern",
+                                                  "type":  "VARIANT",
+                                                  "values":  [
+                                                                 "Numbered",
+                                                                 "Load more"
+                                                             ],
+                                                  "default":  "Numbered",
+                                                  "note":  "Load more is the phone pattern; Numbered the tablet and desktop pattern"
+                                              },
+                                              {
+                                                  "name":  "Load more state",
+                                                  "type":  "VARIANT",
+                                                  "values":  [
+                                                                 "Default",
+                                                                 "Loading",
+                                                                 "Error",
+                                                                 "Done"
+                                                             ],
+                                                  "default":  "Default",
+                                                  "note":  "Only used when Pattern = Load more"
+                                              },
+                                              {
+                                                  "name":  "Status text",
+                                                  "type":  "TEXT",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "Showing 24 of 96 products",
+                                                  "note":  "Announced politely in the web implementation"
+                                              },
+                                              {
+                                                  "name":  "Current page",
+                                                  "type":  "TEXT",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "1",
+                                                  "note":  "Numbered only"
+                                              }
+                                          ],
+                           "layout":  {
+                                          "direction":  "HORIZONTAL (Numbered), VERTICAL (Load more)",
+                                          "widthSizing":  "FILL",
+                                          "heightSizing":  "HUG",
+                                          "padding":  "0",
+                                          "gap":  "{space/1} between page links; {space/3} in Load more",
+                                          "align":  "centre, centre",
+                                          "minWidth":  ""
+                                      },
+                           "bindings":  [
+                                            {
+                                                "element":  "page link",
+                                                "property":  "width/height (min)",
+                                                "variable":  "touch-target/min"
+                                            },
+                                            {
+                                                "element":  "row",
+                                                "property":  "itemSpacing",
+                                                "variable":  "space/1"
+                                            },
+                                            {
+                                                "element":  "load more",
+                                                "property":  "itemSpacing",
+                                                "variable":  "space/3"
+                                            },
+                                            {
+                                                "element":  "current page",
+                                                "property":  "fill",
+                                                "variable":  "color/button/primary-bg"
+                                            },
+                                            {
+                                                "element":  "current page",
+                                                "property":  "text",
+                                                "variable":  "color/button/primary-text"
+                                            },
+                                            {
+                                                "element":  "disabled link",
+                                                "property":  "text",
+                                                "variable":  "color/text/muted"
+                                            },
+                                            {
+                                                "element":  "load more error",
+                                                "property":  "fill",
+                                                "variable":  "color/status/error-bg"
+                                            }
+                                        ],
+                           "textStyle":  "Label/Default (page numbers), Body/Caption (status)",
+                           "variantNote":  "2 patterns; Load more has 4 states (Load more reuses Button and Message instances). 2 + 4 = 6 variants, not 8: Numbered has no loading states.",
+                           "responsive":  "Load more on Mobile frames, Numbered from Tablet. A phone in landscape (600px or wider) gets the Numbered pattern.",
+                           "accessibility":  "Page links keep 44px targets; the current page is a fill plus bold text, not colour alone. Loading is announced and focus stays on the button in the web implementation.",
+                           "handoff":  "Maps to .pagination-switch (CSS shows one pattern), .load-more and load-more.js. Real URLs (?page=N) must stay as links. Recovery from a mid-list URL (Load previous) is NOT designed because it is undecided (web foundations.md section 14, risk A).",
+                           "notRepresentedInFigma":  [
+                                                         "URL synchronisation, reload, shared links, back and forward, scroll restoration (all unverified in the web system)",
+                                                         "focus moving to the first new item"
+                                                     ],
+                           "status":  "provisional",
+                           "statusNote":  "Load more on phones is provisional: nothing is verified against Shopify and no Load previous recovery is designed."
+                       },
+                       {
+                           "id":  "drawer",
+                           "name":  "Drawer",
+                           "webComponent":  ".drawer",
+                           "priority":  "core",
+                           "summary":  "Filter and sort panel: a full-width sheet on phones, a 416px side panel from tablet (approved web decision 5).",
+                           "properties":  [
+                                              {
+                                                  "name":  "Presentation",
+                                                  "type":  "VARIANT",
+                                                  "values":  [
+                                                                 "Sheet",
+                                                                 "Panel"
+                                                             ],
+                                                  "default":  "Sheet",
+                                                  "note":  "Sheet = Mobile; Panel = Tablet and Desktop"
+                                              },
+                                              {
+                                                  "name":  "Title",
+                                                  "type":  "TEXT",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "Filters",
+                                                  "note":  "Becomes the dialog name"
+                                              },
+                                              {
+                                                  "name":  "Body",
+                                                  "type":  "INSTANCE_SWAP",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "Content/Filter options",
+                                                  "note":  "Scrolling content slot"
+                                              },
+                                              {
+                                                  "name":  "Primary action",
+                                                  "type":  "TEXT",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "Show 24 products",
+                                                  "note":  "Pinned footer action"
+                                              },
+                                              {
+                                                  "name":  "Show footer",
+                                                  "type":  "BOOLEAN",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "true",
+                                                  "note":  ""
+                                              },
+                                              {
+                                                  "name":  "Show scrim",
+                                                  "type":  "BOOLEAN",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "true",
+                                                  "note":  "Scrim beside the Panel (the Sheet covers the viewport)"
+                                              }
+                                          ],
+                           "layout":  {
+                                          "direction":  "VERTICAL",
+                                          "widthSizing":  "Sheet: FILL the viewport; Panel: FIXED {layout/drawer-width}",
+                                          "heightSizing":  "FILL the viewport",
+                                          "padding":  "head {space/1} {space/1} {space/1} {space/4}; body {space/3} {space/4}; footer {space/4}",
+                                          "gap":  "0 (head, body and footer are separate regions; only the body scrolls)",
+                                          "align":  "start",
+                                          "minWidth":  ""
+                                      },
+                           "bindings":  [
+                                            {
+                                                "element":  "panel",
+                                                "property":  "width (Panel)",
+                                                "variable":  "layout/drawer-width"
+                                            },
+                                            {
+                                                "element":  "panel",
+                                                "property":  "fill",
+                                                "variable":  "color/bg/surface"
+                                            },
+                                            {
+                                                "element":  "scrim",
+                                                "property":  "fill",
+                                                "variable":  "color/overlay/scrim"
+                                            },
+                                            {
+                                                "element":  "head",
+                                                "property":  "stroke (bottom)",
+                                                "variable":  "color/border/subtle"
+                                            },
+                                            {
+                                                "element":  "footer",
+                                                "property":  "stroke (top)",
+                                                "variable":  "color/border/subtle"
+                                            },
+                                            {
+                                                "element":  "close button",
+                                                "property":  "width/height",
+                                                "variable":  "touch-target/min"
+                                            },
+                                            {
+                                                "element":  "body",
+                                                "property":  "paddingLeft/Right",
+                                                "variable":  "space/4"
+                                            },
+                                            {
+                                                "element":  "footer",
+                                                "property":  "padding",
+                                                "variable":  "space/4"
+                                            }
+                                        ],
+                           "textStyle":  "Heading/H5 (title)",
+                           "variantNote":  "2 variants. Contains instances of Icon Button, Button and Choice.",
+                           "responsive":  "Sheet in the Mobile mode, Panel in Tablet and Desktop. The Layout collection variable layout/drawer-width is reference-only on Mobile (the sheet fills the screen).",
+                           "accessibility":  "A close button (44px) and a pinned primary action are always visible. In the web implementation the drawer is a modal dialog with a focus trap, Escape, scroll lock and focus restore; Figma shows none of that, so document it on the component and test it in a browser.",
+                           "handoff":  "Maps to dialog.drawer with drawer.js. aria-labelledby points at the title.",
+                           "notRepresentedInFigma":  [
+                                                         "focus trap, Escape, background scroll lock, focus restore (implemented and tested in Chromium only; manual tests pending)"
+                                                     ],
+                           "status":  "stable",
+                           "statusNote":  ""
+                       },
+                       {
+                           "id":  "product-card",
+                           "name":  "Product Card",
+                           "webComponent":  ".product-card",
+                           "priority":  "core",
+                           "summary":  "Collection and search result card: image, badges, wishlist, brand, title, rating, price, swatches, quick action.",
+                           "properties":  [
+                                              {
+                                                  "name":  "State",
+                                                  "type":  "VARIANT",
+                                                  "values":  [
+                                                                 "Default",
+                                                                 "Hover",
+                                                                 "Focus"
+                                                             ],
+                                                  "default":  "Default",
+                                                  "note":  "Hover zooms the image slightly on pointer devices only"
+                                              },
+                                              {
+                                                  "name":  "Sold out",
+                                                  "type":  "BOOLEAN",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "false",
+                                                  "note":  "Muted image plus a Sold out badge; the action becomes disabled"
+                                              },
+                                              {
+                                                  "name":  "Image",
+                                                  "type":  "INSTANCE_SWAP",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "Image/Product 4:5",
+                                                  "note":  "The 4:5 canvas is the PROVISIONAL default (no real photography yet)"
+                                              },
+                                              {
+                                                  "name":  "Show badge",
+                                                  "type":  "BOOLEAN",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "false",
+                                                  "note":  ""
+                                              },
+                                              {
+                                                  "name":  "Show rating",
+                                                  "type":  "BOOLEAN",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "true",
+                                                  "note":  ""
+                                              },
+                                              {
+                                                  "name":  "Show swatches",
+                                                  "type":  "BOOLEAN",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "false",
+                                                  "note":  ""
+                                              },
+                                              {
+                                                  "name":  "Brand",
+                                                  "type":  "TEXT",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "NUDGE",
+                                                  "note":  ""
+                                              },
+                                              {
+                                                  "name":  "Title",
+                                                  "type":  "TEXT",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "Rosewater Barrier Serum",
+                                                  "note":  ""
+                                              },
+                                              {
+                                                  "name":  "Price",
+                                                  "type":  "TEXT",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "$48.00",
+                                                  "note":  ""
+                                              },
+                                              {
+                                                  "name":  "Compare price",
+                                                  "type":  "TEXT",
+                                                  "values":  [
+
+                                                             ],
+                                                  "default":  "$58.00",
+                                                  "note":  "Struck through when present"
+                                              }
+                                          ],
+                           "layout":  {
+                                          "direction":  "VERTICAL",
+                                          "widthSizing":  "FILL (grid cell)",
+                                          "heightSizing":  "HUG",
+                                          "padding":  "0 (the image is flush)",
+                                          "gap":  "{product-card/gap}",
+                                          "align":  "start",
+                                          "minWidth":  ""
+                                      },
+                           "bindings":  [
+                                            {
+                                                "element":  "card",
+                                                "property":  "itemSpacing",
+                                                "variable":  "product-card/gap"
+                                            },
+                                            {
+                                                "element":  "image",
+                                                "property":  "cornerRadius",
+                                                "variable":  "radius/card"
+                                            },
+                                            {
+                                                "element":  "image",
+                                                "property":  "fill (placeholder)",
+                                                "variable":  "color/bg/subtle"
+                                            },
+                                            {
+                                                "element":  "badges",
+                                                "property":  "offset",
+                                                "variable":  "product-card/badge-offset"
+                                            },
+                                            {
+                                                "element":  "wishlist",
+                                                "property":  "width/height",
+                                                "variable":  "touch-target/min"
+                                            },
+                                            {
+                                                "element":  "swatches",
+                                                "property":  "width/height",
+                                                "variable":  "swatch/size-sm"
+                                            },
+                                            {
+                                                "element":  "sale price",
+                                                "property":  "fill",
+                                                "variable":  "color/price/sale"
+                                            },
+                                            {
+                                                "element":  "focus ring (whole card)",
+                                                "property":  "stroke",
+                                                "variable":  "color/focus/ring"
+                                            }
+                                        ],
+                           "textStyle":  "Product/Title, Product/Price, Label/Overline (brand), Body/Caption",
+                           "variantNote":  "3 variants plus booleans for optional parts. No combinatorial explosion: optionality is booleans, not variants.",
+                           "responsive":  "Placed in a 2, 3 or 4 column grid from the Layout modes (gutter and gap follow the mode). A phone card is 129 to 136px wide at 320px (171px at 390px): the badge area reserves room for the 44px wishlist button and the badge label wraps.",
+                           "accessibility":  "One link target (the title); the whole card shows the focus ring where the browser supports :has(), otherwise the title link shows it. Do not place text directly on photography without a solid panel or scrim.",
+                           "handoff":  "Maps to .product-card; the image is a .ratio frame (4:5 provisional). Hover zoom is a prototype interaction only.",
+                           "notRepresentedInFigma":  [
+                                                         "real photography (none supplied): crop, focal point and packaging visibility are awaiting representative assets",
+                                                         "hover zoom timing"
+                                                     ],
+                           "status":  "provisional",
+                           "statusNote":  "The 4:5 image canvas is a provisional default: no real photography has been supplied."
+                       }
+                   ],
+    "patterns":  [
+                     {
+                         "name":  "Filter row",
+                         "uses":  [
+                                      "Chip"
+                                  ],
+                         "note":  "Choice chips scroll horizontally on Mobile and wrap from Tablet; applied-filter chips always wrap."
+                     },
+                     {
+                         "name":  "Product grid",
+                         "uses":  [
+                                      "Product Card",
+                                      "Pagination"
+                                  ],
+                         "note":  "2, 3 or 4 columns from the Layout modes; Load more on Mobile, Numbered from Tablet."
+                     },
+                     {
+                         "name":  "Filter drawer",
+                         "uses":  [
+                                      "Drawer",
+                                      "Choice",
+                                      "Button"
+                                  ],
+                         "note":  "Sheet on Mobile, Panel from Tablet; the footer action shows the result count."
+                     },
+                     {
+                         "name":  "Product detail information",
+                         "uses":  [
+                                      "Accordion Item",
+                                      "Rating",
+                                      "Swatch",
+                                      "Quantity Selector",
+                                      "Button"
+                                  ],
+                         "note":  "Accordion rows open independently."
+                     }
+                 ],
+    "notComponents":  [
+                          "Header, navigation, mobile menu, footer (page sections, not in the web system yet)",
+                          "Toast and cart drawer content (deferred in the web system)",
+                          "Tabs, search with suggestions, skeleton loaders (not needed or Shopify features)"
+                      ],
+    "provisionalDecisions":  [
+                                 {
+                                     "id":  "load-more",
+                                     "title":  "Load more on phones (web decision 4)",
+                                     "status":  "Provisional",
+                                     "reason":  "No Shopify theme exists. The default fetch loader, URL synchronisation, reload, shared links, back and forward, scroll restoration and a Load previous (or equivalent) recovery are unverified or undecided.",
+                                     "evidenceNeeded":  "A Shopify theme with a collection of more than three pages, tested in Chrome, Safari and Firefox on a real phone; an owner decision on the recovery mechanism."
+                                 },
+                                 {
+                                     "id":  "image-canvas",
+                                     "title":  "4:5 product image canvas (web decision 6)",
+                                     "status":  "Provisional",
+                                     "reason":  "No real product photography has been supplied. Crop, focal point, packaging visibility, responsive fit and loading are unvalidated.",
+                                     "evidenceNeeded":  "Representative product assets (tallest and widest packaging, a white-background product, a lifestyle and a hero image) reviewed in the card, gallery and thumbnail at 320 to 1280px with real srcset delivery."
+                                 },
+                                 {
+                                     "id":  "fluid-sampling",
+                                     "title":  "Fluid sizes sampled in three modes",
+                                     "status":  "Approximation",
+                                     "reason":  "Figma cannot interpolate. The nine fluid web font sizes and the section spacing are held as three sampled values and can differ from the web between the sample widths (up to 8.6px for Display, 13px for section spacing).",
+                                     "evidenceNeeded":  "An owner decision on whether the approximation is acceptable."
+                                 },
+                                 {
+                                     "id":  "not-in-figma",
+                                     "title":  "Nothing has been created in Figma",
+                                     "status":  "Not done",
+                                     "reason":  "No target file was approved, and the only connected account is a Dev seat with a guest role on a shared company team.",
+                                     "evidenceNeeded":  "Approval of an empty new Figma design file where you can edit."
+                                 },
+                                 {
+                                     "id":  "text-style-binding",
+                                     "title":  "Variables bound to Text Style properties",
+                                     "status":  "Unverified",
+                                     "reason":  "The specification binds font family, weight and size to variables inside Text Styles. This has not been tried in Figma.",
+                                     "evidenceNeeded":  "Create one Text Style in the new file and read the bindings back."
+                                 },
+                                 {
+                                     "id":  "font-style-names",
+                                     "title":  "Font weight numbers to Figma style names",
+                                     "status":  "Unverified",
+                                     "reason":  "Weights are numbers (400, 500, 600, 700); Figma applies style names (Regular, Medium, SemiBold, Bold) that depend on the installed font.",
+                                     "evidenceNeeded":  "Install the fonts in Figma and compare the style names."
+                                 },
+                                 {
+                                     "id":  "opacity-unit",
+                                     "title":  "Opacity variable unit",
+                                     "status":  "Unverified",
+                                     "reason":  "Opacity is stored as a fraction (0 to 1) like the web; Figma may present 0 to 100.",
+                                     "evidenceNeeded":  "Create one opacity variable and bind it to a layer."
+                                 },
+                                 {
+                                     "id":  "mode-limit",
+                                     "title":  "Plan limit on modes per collection",
+                                     "status":  "Unverified",
+                                     "reason":  "The proposal needs up to three modes in a collection; the limit on the account plan was not checked.",
+                                     "evidenceNeeded":  "Check the plan, or create the collections in a new file."
+                                 }
+                             ],
+    "pendingItems":  [
+                         {
+                             "name":  "Card (generic)",
+                             "status":  "Not defined",
+                             "note":  "Only Product Card is specified; no generic Card component exists in the specification."
+                         },
+                         {
+                             "name":  "Header, navigation, mobile menu, footer",
+                             "status":  "Not defined",
+                             "note":  "Page sections, not part of the web Design System yet."
+                         },
+                         {
+                             "name":  "Toast and cart drawer content",
+                             "status":  "Deferred",
+                             "note":  "Deferred in the web system."
+                         },
+                         {
+                             "name":  "Dark mode",
+                             "status":  "Not defined",
+                             "note":  "The web system has no site-wide dark mode; none is invented."
+                         },
+                         {
+                             "name":  "12-column page grid",
+                             "status":  "Not defined",
+                             "note":  "A proposed 4/8/12 grid was not adopted in the web system; only the product grid has Grid Styles."
+                         },
+                         {
+                             "name":  "Button loading state",
+                             "status":  "Not defined",
+                             "note":  "An open finding in the web audit; not designed here."
+                         },
+                         {
+                             "name":  "Load previous recovery pattern",
+                             "status":  "Not defined",
+                             "note":  "Undecided (see the Load more decision)."
+                         }
+                     ]
+}

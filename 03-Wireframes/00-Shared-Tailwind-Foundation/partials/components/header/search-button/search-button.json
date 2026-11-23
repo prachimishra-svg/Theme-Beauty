@@ -1,0 +1,78 @@
+{
+    "id":  "search-button",
+    "page":  "shared",
+    "level":  "sub",
+    "name":  "Search Button",
+    "properties":  [
+                       {
+                           "name":  "placement",
+                           "type":  "VARIANT",
+                           "default":  "mobile",
+                           "values":  [
+                                          "mobile",
+                                          "desktop",
+                                          "bar"
+                                      ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "placement",
+                                           "setting":  "select"
+                                       },
+                           "note":  "Where it sits: mobile icon, desktop field, or navigation bar",
+                           "classes":  {
+                                           "mobile":  "inline-flex size-touch items-center justify-center text-ink max-[359px]:hidden lg:hidden",
+                                           "desktop":  "hidden min-h-touch w-full max-w-[13rem] items-center gap-2 rounded-pill border border-line-strong bg-surface px-4 text-body-sm text-ink-muted no-underline lg:flex",
+                                           "bar":  "col-span-full hidden min-h-touch items-center gap-2 rounded-pill border border-line-strong bg-surface px-4 text-body-sm text-ink-muted no-underline max-[359px]:flex"
+                                       }
+                       },
+                       {
+                           "name":  "label",
+                           "type":  "TEXT",
+                           "default":  "Search",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "label"
+                                       },
+                           "note":  "Accessible name, from a locale string"
+                       },
+                       {
+                           "name":  "role",
+                           "type":  "BOOLEAN",
+                           "default":  false,
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "role"
+                                       },
+                           "note":  "Marks the desktop field as the search landmark"
+                       },
+                       {
+                           "name":  "text",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "text"
+                                       },
+                           "note":  "Visible text, from a locale string; empty shows the icon only"
+                       }
+                   ],
+    "shopifyOnly":  [
+                        {
+                            "id":  "show_search",
+                            "setting":  "checkbox",
+                            "note":  "Show or hide search"
+                        }
+                    ],
+    "status":  "classified (D10 items pending)",
+    "accessibility":  "A link named by its label; the desktop field carries role search.",
+    "summary":  "The search entry in the header. One component, three placements: an icon on small screens, a labelled field-style button in the header on large screens, and a full-width bar in the navigation panel.",
+    "tokens":  [
+                   "touch target",
+                   "type roles",
+                   "border colours"
+               ],
+    "responsive":  "mobile: icon below 1024 px; desktop: field from 1024 px; bar: inside the navigation panel.",
+    "children":  [
+                     "components/base/icon"
+                 ]
+}

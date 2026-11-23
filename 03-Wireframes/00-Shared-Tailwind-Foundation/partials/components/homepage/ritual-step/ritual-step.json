@@ -1,0 +1,94 @@
+{
+    "id":  "ritual-step",
+    "page":  "homepage",
+    "level":  "sub",
+    "name":  "Ritual Step",
+    "properties":  [
+                       {
+                           "name":  "n",
+                           "type":  "TEXT",
+                           "default":  "01",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "n"
+                                       },
+                           "note":  "Zero-padded step number, from the position"
+                       },
+                       {
+                           "name":  "num",
+                           "type":  "TEXT",
+                           "default":  "1",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "num"
+                                       },
+                           "note":  "Step number for assistive text, from the position"
+                       },
+                       {
+                           "name":  "name",
+                           "type":  "TEXT",
+                           "default":  "Cleanse",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "name",
+                                           "id":  "name",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "desc",
+                           "type":  "TEXT",
+                           "default":  "How to apply, from the Face Cleanser label.",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "desc",
+                                           "id":  "text",
+                                           "setting":  "textarea"
+                                       }
+                       },
+                       {
+                           "name":  "product",
+                           "type":  "TEXT",
+                           "default":  "Face Cleanser",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "product",
+                                           "id":  "product_label",
+                                           "setting":  "text"
+                                       },
+                           "note":  "Product link text"
+                       }
+                   ],
+    "shopifyOnly":  [
+                        {
+                            "id":  "product",
+                            "setting":  "product",
+                            "note":  "Product the step links to"
+                        },
+                        {
+                            "id":  "image",
+                            "setting":  "image_picker",
+                            "replaces":  "step image placeholder"
+                        },
+                        {
+                            "id":  "tip",
+                            "setting":  "text"
+                        },
+                        {
+                            "id":  "time",
+                            "setting":  "text"
+                        }
+                    ],
+    "status":  "classified (D10 items pending)",
+    "accessibility":  "A list item; the step number is spoken as Step N before the name.",
+    "summary":  "One step: image, number, name, how to apply, and the product it uses.",
+    "tokens":  [
+                   "border colour",
+                   "type roles",
+                   "spacing"
+               ],
+    "responsive":  "Steps scroll sideways on small screens.",
+    "children":  [
+                     "components/base/icon"
+                 ]
+}

@@ -1,0 +1,179 @@
+{
+    "id":  "quick-view-body",
+    "page":  "plp",
+    "wireframeOnly":  [
+                          "image placeholder and its caption",
+                          "sample description text"
+                      ],
+    "level":  "sub",
+    "name":  "Quick View Content",
+    "properties":  [
+                       {
+                           "name":  "type",
+                           "type":  "TEXT",
+                           "default":  "Cleanser",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "type"
+                                       },
+                           "data":  "product.type"
+                       },
+                       {
+                           "name":  "showRating",
+                           "type":  "BOOLEAN",
+                           "default":  true,
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "show_rating"
+                                       },
+                           "data":  "reviews.rating_count",
+                           "pending":  true
+                       },
+                       {
+                           "name":  "ratingStars",
+                           "type":  "VARIANT",
+                           "default":  "5",
+                           "values":  [
+                                          "0",
+                                          "1",
+                                          "2",
+                                          "3",
+                                          "4",
+                                          "5"
+                                      ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "rating_stars"
+                                       }
+                       },
+                       {
+                           "name":  "ratingValue",
+                           "type":  "TEXT",
+                           "default":  "4.8",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "rating_value"
+                                       },
+                           "data":  "reviews.rating",
+                           "pending":  true
+                       },
+                       {
+                           "name":  "ratingText",
+                           "type":  "TEXT",
+                           "default":  "4.8 (212)",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "rating_text"
+                                       },
+                           "data":  "reviews.rating, reviews.rating_count",
+                           "pending":  true
+                       },
+                       {
+                           "name":  "priceVariant",
+                           "type":  "VARIANT",
+                           "default":  "regular",
+                           "values":  [
+                                          "regular",
+                                          "sale"
+                                      ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "price_variant"
+                                       }
+                       },
+                       {
+                           "name":  "price",
+                           "type":  "TEXT",
+                           "default":  "$18.00",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "price"
+                                       },
+                           "data":  "product.price"
+                       },
+                       {
+                           "name":  "compare",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "compare"
+                                       },
+                           "data":  "product.compare_at_price"
+                       },
+                       {
+                           "name":  "unit",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "unit"
+                                       },
+                           "data":  "variant.unit_price"
+                       },
+                       {
+                           "name":  "attr",
+                           "type":  "TEXT",
+                           "default":  "Best for: all skin types",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "attr"
+                                       },
+                           "data":  "product.metafields.custom.highlight",
+                           "pending":  true
+                       },
+                       {
+                           "name":  "ml",
+                           "type":  "TEXT",
+                           "default":  "150",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "ml"
+                                       },
+                           "data":  "product.metafields.custom.size",
+                           "pending":  true,
+                           "note":  "Size in millilitres"
+                       },
+                       {
+                           "name":  "firstShade",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "first_shade"
+                                       },
+                           "note":  "Name of the selected shade"
+                       },
+                       {
+                           "name":  "shades",
+                           "type":  "LIST",
+                           "default":  [
+
+                                       ],
+                           "itemFields":  [
+                                              "name",
+                                              "hex",
+                                              "checked"
+                                          ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "shades"
+                                       },
+                           "data":  "product option values (colour)",
+                           "note":  "Shade choices"
+                       }
+                   ],
+    "accessibility":  "Shade choices are radios inside a radiogroup; the added message is a status region.",
+    "status":  "classified",
+    "summary":  "The content of the Quick view side panel: image, category, rating, price, key line, short description and, when the product has shades, a shade chooser. The panel itself (title, Add to bag, close) is the quick view drawer.",
+    "tokens":  [
+                   "type roles",
+                   "swatch styles"
+               ],
+    "responsive":  "A right side panel at every width.",
+    "children":  [
+                     "components/base/rating",
+                     "components/base/price",
+                     "components/base/icon"
+                 ]
+}

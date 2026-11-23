@@ -1,0 +1,78 @@
+{
+    "id":  "price",
+    "name":  "Price",
+    "level":  "base",
+    "page":  "shared",
+    "status":  "ready",
+    "summary":  "A price, or a sale price with the regular price struck through, and an optional unit price.",
+    "properties":  [
+                       {
+                           "name":  "variant",
+                           "type":  "VARIANT",
+                           "default":  "regular",
+                           "values":  [
+                                          "regular",
+                                          "sale"
+                                      ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "variant",
+                                           "setting":  "select"
+                                       }
+                       },
+                       {
+                           "name":  "price",
+                           "type":  "TEXT",
+                           "default":  "$32.00",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "price"
+                                       }
+                       },
+                       {
+                           "name":  "compare",
+                           "type":  "TEXT",
+                           "default":  "$38.00",
+                           "note":  "Regular price (sale only)",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "compare"
+                                       }
+                       },
+                       {
+                           "name":  "unit",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "note":  "Unit price, for example $1.07 / ml",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "unit"
+                                       }
+                       },
+                       {
+                           "name":  "extra",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "extra"
+                                       },
+                           "note":  "Layout utilities set by the parent (for example top margin)"
+                       },
+                       {
+                           "name":  "unitExtra",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "unit_extra"
+                                       },
+                           "note":  "Layout utilities for the unit price line (for example basis-full inside a card)"
+                       }
+                   ],
+    "accessibility":  "Screen-reader text names the sale and regular price.",
+    "tokens":  [
+                   "price type",
+                   "muted text colour"
+               ]
+}

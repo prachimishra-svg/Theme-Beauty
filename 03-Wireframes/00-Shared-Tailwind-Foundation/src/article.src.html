@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NUDGE Beauty Theme: Blog Article Wireframe</title>
+<!-- Design Variables (tokens) linked; styling is Tailwind utilities and the shared components, mapped to those tokens. -->
+@@PARTIAL head@@
+<style>
+@@PARTIAL review-css@@
+</style>
+</head>
+<body class="ann-on" id="top">
+@@PARTIAL sprite@@
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-skip focus:bg-surface focus:p-3">Skip to content</a>
+<div class="rv">
+  <div class="rvt">NUDGE Beauty Theme: blog article wireframe (v4, standard Shopify article) &middot; single responsive file</div>
+  <p>The native Shopify article page (<code>article.json</code>) in the shape every Shopify blog post has: title and details, featured image, article text, tags and share, optional comments, previous and next. Built with Tailwind utilities and the shared components mapped to the Design Variables. The announcement bar, header and footer are the shared sections. Title, text, names and dates are <b>sample content</b> in brackets; image areas are <b>labelled placeholders</b> (no photography). Use <b>Width preview</b> for 1920, 1440, 1280, 1024, 768, 430, 390 and 320 px.</p>
+  <div class="ctl"><button id="t-ann" type="button" aria-pressed="true">Annotations</button><button id="t-wp" type="button">Width preview</button><button id="s-com" type="button" aria-pressed="false">Comments on</button></div>
+<details><summary>Review notes: what changed, how it maps to Shopify, decisions (open)</summary>
+<h3>Why the earlier versions did not feel like a Shopify article</h3>
+<ul><li>They added things a Shopify article does not have: a split hero with a byline block, a contents list, a quote band, a shop strip, an ingredient card, a newsletter band and a related-articles grid with a feature card. Shopify's article template is plain by design: the article object and, optionally, the comment form.</li><li>A merchant writes an article in the rich-text editor, so the page has to look right for whatever they type: headings, paragraphs, lists, images and quotes. Anything that needs special blocks inside the text cannot be expected from the editor.</li></ul>
+<h3>New structure (everything below is a native Shopify field)</h3>
+<ul><li>Breadcrumb back to the journal</li><li>Details: tag, <code>article.title</code>, <code>article.author</code>, <code>article.published_at</code>, reading time computed in Liquid</li><li>Featured image: <code>article.image</code></li><li>Text: <code>article.content</code> (the editor's H2, H3, paragraphs, lists, images, quotes)</li><li>Tags (<code>article.tags</code>) and one Share button (copy link or the browser's share sheet; no counters)</li><li>Comments: only if the blog has comments on, with the native form</li><li>Previous and next: <code>blog.previous_article</code> and <code>blog.next_article</code></li></ul>
+<h3>Decisions to confirm</h3>
+<ul><li>Related articles, contents list, newsletter, shop strip and a separate author card are removed. None is part of Shopify's standard article, and each added length. They can come back as optional sections in the theme editor.</li><li>No separate summary line: <code>article.excerpt</code> exists but is used on the journal cards, not repeated on the article.</li><li>The title sits above the image so the topic is clear in the first screen.</li><li>The Comments button in the review bar shows the optional comments block; by default it is off, as it is on a store with comments disabled.</li></ul>
+<h3>Not drawn</h3>
+<ul><li>Social share counters, reactions, popular posts, shoppable video and review widgets (each needs an app)</li></ul>
+<h3>Shopify build</h3>
+<p>Template <code>article.json</code> with one <code>main-article</code> section. Blocks in the theme editor: details (title, author, date), featured image, content, tags and share, comments (<code>article.comments</code> and <code>{% form 'new_comment', article %}</code>, shown when <code>blog.comments_enabled?</code>) and previous and next. Structured data (<code>Article</code> JSON-LD) comes from the same fields. No app is involved.</p>
+</details>
+</div>
+<div class="ann"><b>Global</b>Announcement bar, header (sticky) and footer: the shared sections. Responsive: below 1024 px a one-row header with the menu in a left drawer; footer groups are tap-to-open rows below 768 px.</div>
+@@PARTIAL annbar@@
+@@PARTIAL header CART=link NAV=none@@
+<main id="main" class="pb-16 md:pb-24">
+<article class="wrap pt-2" id="article" data-section="Article">
+<div class="ann"><b>01 &middot; Details</b>Breadcrumb, tag, title and details (T1) &mdash; the standard top of a Shopify article: breadcrumb, one tag, the title, then author, date and reading time on one line. Centred, with nothing else, so the topic reads at once.<em>Responsive: the title steps down with the Design System scale; the details line wraps on narrow screens.</em></div>
+<nav class="breadcrumb mb-6 lg:mb-8" aria-label="Breadcrumb"><ol class="breadcrumb-list"><li class="breadcrumb-item"><a href="#home">Home</a></li><li class="breadcrumb-item"><a href="#blog">Journal</a></li><li class="breadcrumb-item"><a href="#article" aria-current="page">[Article title]</a></li></ol></nav>
+<header class="mx-auto flex max-w-[768px] flex-col items-center gap-3 text-center md:gap-4" id="details">
+<a class="type-overline inline-flex min-h-touch items-center no-underline" href="#tag">Routines</a>
+<h1 class="type-h1 -mt-2" id="art-h">[Sample title: the layered morning routine, step by step]</h1>
+<p class="m-0 text-body-sm text-ink-secondary" id="meta">By [Author name] &middot; [Date] &middot; [x] min read</p>
+</header>
+<div class="ann"><b>02 &middot; Image</b>Featured image (T1) &mdash; <code>article.image</code>, one wide image under the details, a labelled placeholder here. Wider than the text, as on a Shopify article, and short enough that the whole top of the page fits one screen.<em>Responsive: 4:3 on phones, 16:9 from 768 px, 3:1 from 1024 px so the whole top, with a three-line capitals title, fits a 900 px screen.</em></div>
+<div class="mx-auto mt-8 max-w-[960px] md:mt-10" id="hero-img-wrap"><div class="relative aspect-[4/3] overflow-hidden md:aspect-[16/9] lg:aspect-[3/1]" role="img" aria-label="Image placeholder: featured image" id="hero-img"><div class="ph absolute inset-0"></div><span class="absolute inset-0 grid place-items-center p-4 text-center text-caption text-ink-secondary">Image placeholder: featured image</span></div></div>
+<div class="ann"><b>03 &middot; Text</b>Article text (T1) &mdash; <code>article.content</code>, the merchant's rich text in one reading column: paragraphs, H2 and H3, a bullet list, a quote and an image. Every element an editor can add is styled; nothing else is added around it.<em>Responsive: one column at the reading width; images in the text take the column width.</em></div>
+<div class="mx-auto mt-10 flex max-w-text flex-col gap-6 md:mt-12" id="body">
+<p class="m-0 text-body-lg text-ink-secondary">[Opening paragraph: sets the scene and promises something useful in the first two sentences.]</p>
+<h2 class="type-h3 mt-6">[Section heading]</h2>
+<p class="m-0 text-ink-secondary">[Body paragraph: plain, practical wording written by the merchant.]</p>
+<p class="m-0 text-ink-secondary">[A second short paragraph.]</p>
+<figure class="m-0 flex flex-col gap-3" id="inline"><div class="relative aspect-[3/2] overflow-hidden" role="img" aria-label="Image placeholder: image in the text"><div class="ph ph-b absolute inset-0"></div><span class="absolute inset-0 grid place-items-center p-4 text-center text-caption text-ink-secondary">Image placeholder: image in the text</span></div><figcaption class="text-caption text-ink-secondary">[Image caption]</figcaption></figure>
+<h2 class="type-h3 mt-6">[Section heading]</h2>
+<ul class="m-0 flex list-disc flex-col gap-2 pl-6 text-ink-secondary marker:text-brand"><li>[List item one]</li><li>[List item two]</li><li>[List item three]</li></ul>
+<blockquote class="m-0 border-l-thick border-brand py-1 pl-6 font-heading text-h4 leading-snug text-ink">[A short quote from the article.]</blockquote>
+<h3 class="type-h5 mt-2">[Sub-heading]</h3>
+<p class="m-0 text-ink-secondary">[Closing paragraph that brings the article to an end.]</p>
+</div>
+<div class="ann"><b>04 &middot; Tags and share</b>Tags and share (T1) &mdash; one row under a hairline: <code>article.tags</code> as links to the tag pages on the left, one Share button on the right (copies the link, or opens the browser's share sheet). No counters, no icons for networks.<em>Responsive: one row; the Share button drops under the tags on very narrow screens.</em></div>
+<div class="mx-auto mt-10 flex max-w-text flex-wrap items-center justify-between gap-4 border-t border-line pt-6 md:mt-12" id="tools"><div class="flex flex-wrap items-center gap-2" aria-label="Article tags"><a class="chip" href="#tag">Routines</a><a class="chip" href="#tag">Skincare</a></div><button class="btn btn-secondary btn-sm" type="button" id="share"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-share"></use></svg><span id="share-t">Share</span></button></div>
+<section class="mx-auto mt-14 max-w-text md:mt-16" id="comments" aria-labelledby="com-h" hidden data-section="Comments">
+<div class="ann"><b>05 &middot; Comments</b>Comments (optional, native) &mdash; shown only when the blog has comments turned on: the approved comments, then Shopify's own form with name, email and comment. Held for review when the blog is moderated. Hidden by default here.<em>Responsive: one column; name and email share a row from 600 px.</em></div>
+<h2 class="type-h4 mb-6" id="com-h">Comments</h2>
+<ul class="m-0 flex list-none flex-col p-0"><li class="flex flex-col gap-1 border-t border-line py-5"><p class="m-0 font-medium">[Commenter name]</p><p class="m-0 text-caption text-ink-secondary">[Date]</p><p class="m-0 text-ink-secondary">[Comment text.]</p></li><li class="flex flex-col gap-1 border-y border-line py-5"><p class="m-0 font-medium">[Commenter name]</p><p class="m-0 text-caption text-ink-secondary">[Date]</p><p class="m-0 text-ink-secondary">[Comment text.]</p></li></ul>
+<form class="mt-8 grid grid-cols-[minmax(0,1fr)] gap-x-6 gap-y-5 sm:grid-cols-2" action="#" method="post" novalidate id="cform"><h3 class="type-h5 sm:col-span-2">Leave a comment</h3><div class="field"><label class="field-label" for="c-name">Name</label><input class="input" id="c-name" name="comment[author]" type="text" autocomplete="name" required></div><div class="field"><label class="field-label" for="c-email">Email</label><input class="input" id="c-email" name="comment[email]" type="email" autocomplete="email" required></div><div class="field sm:col-span-2"><label class="field-label" for="c-body">Comment</label><textarea class="input" id="c-body" name="comment[body]" rows="5" required></textarea></div><div class="flex flex-col gap-3 sm:col-span-2 sm:flex-row sm:items-center sm:gap-6"><button class="btn btn-primary w-full sm:w-auto" type="submit">Post comment</button><p class="m-0 text-caption text-ink-secondary">[Moderation note, shown if comments are held for review.]</p></div></form>
+</section>
+<div class="ann"><b>06 &middot; Previous and next</b>Previous and next article (T1) &mdash; Shopify's <code>blog.previous_article</code> and <code>blog.next_article</code>: two text links with a label and the title, side by side, with a link back to the journal below. A side is left out when there is no article. No images, so it stays quiet.<em>Responsive: stacked on phones; side by side from 768 px, next on the right.</em></div>
+<nav class="mx-auto mt-14 max-w-[768px] md:mt-16" aria-label="Article navigation" id="pn"><div class="grid grid-cols-[minmax(0,1fr)] border-y border-line md:grid-cols-2"><a class="group flex flex-col gap-1 py-6 text-ink no-underline md:pr-8" href="#prev"><span class="type-overline inline-flex items-center gap-1"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-left"></use></svg>Previous article</span><span class="font-heading text-h4 leading-snug group-hover:underline">[Sample title: previous article]</span></a><a class="group flex flex-col gap-1 border-t border-line py-6 text-ink no-underline md:border-l md:border-t-0 md:pl-8 md:text-right" href="#next"><span class="type-overline inline-flex items-center gap-1 md:self-end">Next article<svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></span><span class="font-heading text-h4 leading-snug group-hover:underline">[Sample title: next article]</span></a></div><div class="mt-6 flex justify-center"><a class="link link-standalone" href="#blog">Back to the journal</a></div></nav>
+</article>
+</main>
+@@PARTIAL footer@@
+@@PARTIAL width-preview@@
+<script type="text/plain" id="selftest-src">
+(function(){
+ function vis(el){var cs=getComputedStyle(el);if(cs.display==="none"||cs.visibility==="hidden")return false;var r=el.getBoundingClientRect();return r.width>0&&r.height>0}
+ function sel(el){var s=el.tagName.toLowerCase();if(el.id)s+="#"+el.id;if(el.className&&typeof el.className==="string")s+="."+el.className.trim().split(/\s+/).slice(0,2).join(".");return s}
+ function $(id){return document.getElementById(id)}
+ async function run(){
+  var W=window.innerWidth,H=window.innerHeight,de=document.documentElement,out={docHeight:de.scrollHeight,width:W,checks:{}},LG=W>=1024,MD=W>=768,N=window.NudgeArticle;
+  var st=document.createElement("style");st.textContent="*{transition:none!important}";document.head.appendChild(st);de.style.scrollBehavior="auto";N.comments(false);void document.body.offsetHeight;
+  var twOk=getComputedStyle($("site-header")).position==="sticky"&&!document.querySelector('link[href*="components.css"],link[href*="base.css"]');
+  var fl=Array.from(document.fonts).some(function(x){return x.family.indexOf("Cormorant")>-1&&x.status==="loaded"})&&Array.from(document.fonts).some(function(x){return x.family.indexOf("DM Sans")>-1&&x.status==="loaded"});
+  out.checks.tailwindAndFonts={pass:twOk&&fl,detail:"Tailwind utilities applied, no Design System component stylesheet: "+twOk+"; Cormorant and DM Sans loaded: "+fl};
+  var off=[];document.querySelectorAll("main *,header *,footer *").forEach(function(el){if(el.closest(".sr-only")||el.closest("#nav")&&W<1024)return;var r=el.getBoundingClientRect();if(r.width>0&&(r.right>W+1||r.left<-1))off.push(sel(el))});
+  out.checks.overflow={pass:de.scrollWidth<=W+1&&off.length===0,detail:"scrollWidth "+de.scrollWidth+" of "+W+(off.length?"; past the edge: "+off.slice(0,4).join(", "):"")};
+  var hs=[].slice.call(document.querySelectorAll("h1")).filter(function(h){return !h.closest(".rv")&&vis(h)});
+  out.checks.structure={pass:hs.length===1&&!!document.querySelector("main#main article#article")&&!document.querySelector("main img"),detail:"visible H1: "+hs.length+"; one article element; no photographs (placeholders only): "+!document.querySelector("main img")};
+  var kids=[].slice.call($("article").children).filter(function(e){return vis(e)&&!e.classList.contains("ann")}).map(function(e){return e.id||e.tagName.toLowerCase()}),expect=["breadcrumb","details","hero-img-wrap","body","tools","pn"];
+  var ordered=expect.every(function(id,i){return id==="breadcrumb"?kids[i]==="nav":kids[i]===id});
+  out.checks.shopifyOrder={pass:ordered&&kids.length===6,detail:"visible order: "+kids.join(" > ")+" (comments hidden by default)"};
+  var order=true,last=1;[].slice.call(document.querySelectorAll("main h1,main h2,main h3")).filter(vis).forEach(function(h){var n=+h.tagName[1];if(n>last+1)order=false;last=n});
+  out.checks.headingOrder={pass:order,detail:"headings never skip a level: "+order};
+  var dt=$("details").getBoundingClientRect(),hi=$("hero-img").getBoundingClientRect(),hd=$("site-header").getBoundingClientRect(),meta=$("meta").getBoundingClientRect();
+  var fold=LG?(hi.bottom<=H-8):(meta.bottom<=H-8&&hi.top<=H-120);
+  out.checks.firstFold={pass:fold&&dt.bottom<=hi.top,detail:"title, details and "+(LG?"the whole image end at "+Math.round(hi.bottom)+" px of a "+H+" px screen":"the start of the image are on screen (details end "+Math.round(meta.bottom)+" px of "+H+" px)")+": "+fold};
+  var want=LG?3:MD?16/9:4/3,rt=hi.width/hi.height,aw=$("article").getBoundingClientRect(),cw=Math.abs((dt.left+dt.width/2)-(aw.left+aw.width/2))<4&&getComputedStyle($("art-h")).textAlign==="center";
+  out.checks.imageAndAlign={pass:Math.abs(rt-want)<0.03&&cw,detail:"image ratio "+rt.toFixed(2)+" (expected "+want.toFixed(2)+"); title block centred: "+cw};
+  var h1s=parseFloat(getComputedStyle($("art-h")).fontSize);
+  out.checks.titleScale={pass:h1s<=72&&$("art-h").getBoundingClientRect().height<=(LG?260:W<360?340:240),detail:"title "+h1s+" px, "+Math.round($("art-h").getBoundingClientRect().height)+" px tall"};
+  var ps=[].slice.call($("body").querySelectorAll("p")),pw=Math.max.apply(null,ps.map(function(p){return p.getBoundingClientRect().width})),ar=$("body").getBoundingClientRect().width,inl=$("inline").getBoundingClientRect().width,wi=$("hero-img").getBoundingClientRect().width;
+  out.checks.readingWidth={pass:pw<=720+1&&Math.abs(inl-ar)<2&&wi>=ar-2&&(W<600?Math.abs(wi-ar)<2:true),detail:"text "+Math.round(pw)+" px (max 720); image in text "+Math.round(inl)+" px; featured image "+Math.round(wi)+" px"};
+  var fs=parseFloat(getComputedStyle(ps[1]).fontSize),lh=parseFloat(getComputedStyle(ps[1]).lineHeight);
+  out.checks.readability={pass:fs>=16&&lh/fs>=1.5,detail:"body "+fs+" px, line height "+(lh/fs).toFixed(2)};
+  var els=["h2","h3","ul","blockquote","figure","figcaption","p"].every(function(t){return !!$("body").querySelector(t)});
+  out.checks.editorElements={pass:els,detail:"every editor element is styled (H2, H3, paragraph, list, quote, image with caption): "+els};
+  var stick=[].slice.call(document.querySelectorAll("main *")).filter(function(e){var p=getComputedStyle(e).position;return(p==="sticky"||p==="fixed")&&vis(e)});
+  out.checks.noStickyExtras={pass:stick.length===0,detail:"sticky or fixed elements inside the page: "+stick.length};
+  var tl=$("tools"),tr=tl.children[0].getBoundingClientRect(),sb=$("share").getBoundingClientRect(),shareH=sb.height>=40-.5,row=Math.abs((tr.top+tr.height/2)-(sb.top+sb.height/2))<30||sb.top>=tr.bottom-1;
+  out.checks.tagsAndShare={pass:shareH&&row&&tl.querySelectorAll("a.chip").length===2&&!document.querySelector("#tools [class*=count]"),detail:"tags and one Share button on a row, 40 px button with a 44 px hit area, no counters: "+(shareH&&row)};
+  var a=$("pn").querySelectorAll("a")[0].getBoundingClientRect(),b2=$("pn").querySelectorAll("a")[1].getBoundingClientRect(),pnOk=MD?(Math.abs(a.top-b2.top)<4&&b2.left>=a.right-1):(b2.top>=a.bottom-1),back=!!$("pn").querySelector("a.link");
+  out.checks.prevNext={pass:pnOk&&back,detail:"previous and next "+(MD?"side by side":"stacked")+", plus a back link: "+(pnOk&&back)};
+  N.comments(true);var cOn=!$("comments").hidden&&vis($("cform"))&&[].slice.call($("cform").querySelectorAll("input,textarea")).every(function(i){return i.id&&document.querySelector('label[for="'+i.id+'"]')});var cIdx=[].slice.call($("article").children).indexOf($("comments"))<[].slice.call($("article").children).indexOf($("pn"))&&[].slice.call($("article").children).indexOf($("comments"))>[].slice.call($("article").children).indexOf($("tools"));N.comments(false);var cOff=$("comments").hidden;
+  out.checks.comments={pass:cOn&&cIdx&&cOff,detail:"optional comments appear between tags and previous/next with labelled fields: "+(cOn&&cIdx)+"; hidden by default: "+cOff};
+  var txt=$("main").innerText.toLowerCase(),bad=[];["clinically proven","cures","heals","guaranteed","newsletter","subscribe","discount","% off","related articles","keep reading"].forEach(function(w){if(txt.indexOf(w)>-1)bad.push(w)});
+  out.checks.exclusions={pass:bad.length===0,detail:"claim, offer or removed-section wording: "+(bad.join(", ")||"none")};
+  var small=[];[].slice.call(document.querySelectorAll("main a,main button,main input,header a,header button,footer a,footer button")).filter(function(e){return vis(e)&&!e.closest(".sr-only")&&!e.closest(".rv")&&!e.closest(".ann")&&!(W<1024&&e.closest("#nav"))}).forEach(function(e){var r=e.getBoundingClientRect();if(e.closest(".fcol")&&W>=768)return;if(e.classList.contains("chip")||e.classList.contains("btn-sm"))return;if(e.tagName==="A"&&r.height>=44-.5)return;if(e.closest(".breadcrumb")&&e.tagName==="A")return;if(r.height<44-.5)small.push(sel(e)+" "+Math.round(r.width)+"x"+Math.round(r.height))});
+  var tb=[];[].slice.call(document.querySelectorAll("main h1,main h2,main h3,main p,main figcaption,main blockquote")).filter(vis).forEach(function(e){var fm=getComputedStyle(e).fontFamily.split(",")[0].replace(/["']/g,"").trim(),head=/^H[1-6]$/.test(e.tagName)||e.tagName==="BLOCKQUOTE"||e.classList.contains("font-heading");if(e.classList.contains("type-overline"))return;if(head&&fm!=="Cormorant")tb.push(sel(e)+" "+fm);if(!head&&fm!=="DM Sans")tb.push(sel(e)+" "+fm)});
+  out.checks.targetsAndType={pass:small.length===0&&tb.length===0,detail:(small.length?"small targets: "+small.slice(0,5).join("; "):"every visible control is 44 px or has a 44 px hit area")+"; "+(tb.length?"fonts: "+tb.slice(0,3).join("; "):"headings Cormorant, UI DM Sans")};
+  window.scrollTo(0,0);var pre=document.createElement("pre");pre.id="selftest-result";pre.textContent=JSON.stringify(out);document.body.appendChild(pre);
+  if(window.parent!==window){window.parent.postMessage({selftest:out},"*")}
+ }
+ if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){setTimeout(run,900)})}else{setTimeout(run,1400)}
+})();
+</script>
+<script>
+(function(){
+ var b=document.body,q=new URLSearchParams(location.search),$=function(id){return document.getElementById(id)};
+ if(q.get("embed")){b.classList.add("embed")}
+ b.classList.toggle("ann-on",q.get("ann")!=="0");
+ function navOpen(o){b.classList.toggle("nav-open",o);$("menu-btn").setAttribute("aria-expanded",o?"true":"false")}
+ $("menu-btn").addEventListener("click",function(){navOpen(true)});$("nav-close").addEventListener("click",function(){navOpen(false)});$("scrim").addEventListener("click",function(){navOpen(false)});
+ document.addEventListener("keydown",function(e){if(e.key==="Escape")navOpen(false)});
+ [].forEach.call(document.querySelectorAll(".fcol > button"),function(h){h.addEventListener("click",function(){var f=h.parentNode,o=!f.classList.contains("is-open");f.classList.toggle("is-open",o);h.setAttribute("aria-expanded",o?"true":"false")})});
+ var msgs=["Free shipping on orders over $50","New launches are in store","Free returns within 30 days"],mi=0;
+ function msg(d){mi=(mi+d+msgs.length)%msgs.length;$("ann-msg").textContent=msgs[mi];[].forEach.call(document.querySelectorAll(".ann-dot"),function(x,i){x.classList.toggle("bg-current",i===mi);x.classList.toggle("opacity-100",i===mi);x.classList.toggle("opacity-muted",i!==mi)})}
+ $("ann-prev").addEventListener("click",function(){msg(-1)});$("ann-next").addEventListener("click",function(){msg(1)});
+ document.addEventListener("click",function(e){var a=e.target.closest('a[href^="#"]:not([href="#main"]):not([href="#top"])');if(a)e.preventDefault()});
+ $("t-ann").addEventListener("click",function(){var on=!b.classList.contains("ann-on");b.classList.toggle("ann-on",on);this.setAttribute("aria-pressed",on?"true":"false")});
+ $("t-ann").setAttribute("aria-pressed",b.classList.contains("ann-on")?"true":"false");
+ function comments(on){$("comments").hidden=!on;$("s-com").setAttribute("aria-pressed",on?"true":"false")}
+ $("s-com").addEventListener("click",function(){comments($("comments").hidden)});
+ $("cform").addEventListener("submit",function(e){e.preventDefault()});
+ /* share: copies the link (or opens the browser share sheet where there is one); no network counters */
+ $("share").addEventListener("click",function(){var t=$("share-t");try{if(navigator.share){navigator.share({title:document.title,url:location.href})}else if(navigator.clipboard){navigator.clipboard.writeText(location.href);t.textContent="Link copied";setTimeout(function(){t.textContent="Share"},2000)}}catch(e){}});
+ window.NudgeArticle={comments:comments};comments(q.get("comments")==="1");
+ if(q.get("selftest")){var s=document.createElement("script");s.text=$("selftest-src").text;document.body.appendChild(s)}
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{%- comment -%}
+  GENERATED from components/base/chip by 07-Component-Library/tools/generate-liquid-staging.ps1 (contract 3961ada54f3922c3).
+  Do not edit here: change the library component, then regenerate. Text values are written raw; escape where Shopify data enters (| escape in the section).
+  Parameters (class: design = fixed, parent = passed in, merchant = set in a section, wireframe = not used):
+    variant (VARIANT, parent)
+    element (VARIANT, parent)
+    label (TEXT, parent)
+    selected (BOOLEAN, parent)
+    href (TEXT, parent)
+    extra (TEXT, parent)
+{%- endcomment -%}
+{%- if variant == nil -%}{%- assign variant = 'ds' -%}{%- endif -%}{%- if element == nil -%}{%- assign element = 'button' -%}{%- endif -%}{%- if label == nil -%}{%- assign label = 'Hydration' -%}{%- endif -%}{%- if selected == nil -%}{%- assign selected = false -%}{%- endif -%}{%- if href == nil -%}{%- assign href = '#' -%}{%- endif -%}{%- if extra == nil -%}{%- assign extra = '' -%}{%- endif -%}{%- assign edit_hook = '' -%}{% if element == 'button' %}<button class="{% case variant %}{% when 'ds' %}chip{% when 'editorial' %}hp-chip{% when 'editorial-tag' %}hp-chip chip--tag min-h-8 cursor-default px-4 hover:border-line-inverse{% endcase %}{% if selected %}{% case variant %}{% when 'ds' %}{% when 'editorial' %} on{% when 'editorial-tag' %}{% endcase %}{% endif %}{% if extra != blank %} {{ extra }}{% endif %}" type="button"{% if selected %}{% case variant %}{% when 'ds' %} aria-pressed="true"{% when 'editorial' %}{% when 'editorial-tag' %}{% endcase %}{% endif %}>{{ label }}</button>{% endif %}{% if element == 'span' %}<span class="{% case variant %}{% when 'ds' %}chip{% when 'editorial' %}hp-chip{% when 'editorial-tag' %}hp-chip chip--tag min-h-8 cursor-default px-4 hover:border-line-inverse{% endcase %}{% if extra != blank %} {{ extra }}{% endif %}"><span{% if edit_hook != blank %} data-c="{{ edit_hook }}"{% endif %}>{{ label }}</span></span>{% endif %}{% if element == 'link' %}<a class="{% case variant %}{% when 'ds' %}chip{% when 'editorial' %}hp-chip{% when 'editorial-tag' %}hp-chip chip--tag min-h-8 cursor-default px-4 hover:border-line-inverse{% endcase %}{% if extra != blank %} {{ extra }}{% endif %}" href="{{ href }}">{{ label }}</a>{% endif %}

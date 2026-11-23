@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NUDGE Interactive Prototype</title>
+<!-- Launcher: switches interactive mode on for this browser and opens the Homepage. The wireframes themselves are not changed; opened directly (without this flag) they behave exactly as before. -->
+<link rel="stylesheet" href="../02-Design-Variables/Styles/variables.css">
+<style>
+ body{margin:0;font:16px/1.5 var(--font-body,system-ui,sans-serif);background:var(--color-bg-page);color:var(--color-text-primary);display:grid;place-items:center;min-height:100vh;padding:24px}
+ main{max-width:34rem}
+ h1{font-size:24px;margin:0 0 8px} p{margin:0 0 16px}
+ a.btn{display:inline-block;background:var(--color-bg-inverse);color:var(--color-text-inverse);padding:12px 24px;border-radius:var(--radius-pill);text-decoration:none;min-height:24px}
+ a.q{display:block;margin-top:8px;color:var(--color-text-primary)}
+</style>
+</head>
+<body>
+<main>
+ <h1>NUDGE interactive prototype</h1>
+ <p>This opens the existing wireframes with links, search, cart and quantity changes working across pages. Checkout, accounts, payments and wishlist are not simulated.</p>
+ <p><a class="btn" id="go" href="../03-Wireframes/01-NUDGE-Beauty-Homepage-Wireframe/Homepage.html?ix=1">Open the prototype</a></p>
+ <a class="q" href="documentation/missing-pages-and-interactions.md">What is missing or not supported</a>
+ <a class="q" href="documentation/interaction-testing-report.md">Interaction test report</a>
+</main>
+<script>try{localStorage.setItem('nudge.interactive','1')}catch(e){}window.name='nudge-ix';</script>
+</body>
+</html>

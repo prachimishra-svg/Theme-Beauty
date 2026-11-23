@@ -1,0 +1,46 @@
+{
+    "name":  "Custom Liquid Section",
+    "wireframeOnly":  [
+                          ".ann annotation block",
+                          "data-section attribute",
+                          "data-c review hooks",
+                          "the placeholder card text"
+                      ],
+    "page":  "homepage",
+    "properties":  [
+                       {
+                           "name":  "anchor",
+                           "type":  "TEXT",
+                           "default":  "s18",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "anchor",
+                                           "id":  "anchor",
+                                           "setting":  "text"
+                                       },
+                           "note":  "In-page anchor id"
+                       }
+                   ],
+    "tokens":  [
+                   "spacing"
+               ],
+    "summary":  "An optional, empty-by-default slot where the merchant can add their own Liquid. The wireframe shows a placeholder card; shoppers see nothing until code is added.",
+    "accessibility":  "Depends on the merchant code.",
+    "id":  "custom-liquid-section",
+    "shopifyOnly":  [
+                        {
+                            "id":  "custom_liquid",
+                            "setting":  "liquid",
+                            "note":  "The merchant code; replaces the placeholder card"
+                        }
+                    ],
+    "level":  "main",
+    "status":  "classified (D10 items pending)",
+    "responsive":  "Depends on the merchant code.",
+    "exposes":  [
+
+                ],
+    "children":  [
+
+                 ]
+}

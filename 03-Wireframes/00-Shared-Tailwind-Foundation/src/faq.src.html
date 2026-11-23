@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NUDGE Beauty Theme: FAQ Wireframe</title>
+<!-- Design Variables (tokens) linked; styling is Tailwind utilities and the shared components, mapped to those tokens. -->
+@@PARTIAL head@@
+<style>
+@@PARTIAL review-css@@
+</style>
+</head>
+<body class="ann-on" id="top">
+@@PARTIAL sprite@@
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-skip focus:bg-surface focus:p-3">Skip to content</a>
+<div class="rv">
+  <div class="rvt">NUDGE Beauty Theme: FAQ wireframe &middot; single responsive file</div>
+  <p>Phase 1, page 2 of 25. A native Shopify page with grouped questions, built with Tailwind utilities and the shared components (accordion, chips, buttons) mapped to the Design Variables. The announcement bar, header and footer are the shared sections. Questions and answers are <b>sample content</b> with bracketed values the merchant fills in; no policy, time or price is invented. Placeholders only: no photography. Use <b>Width preview</b> for 1920, 1440, 1280, 1024, 768, 430, 390 and 320 px.</p>
+  <div class="ctl"><button id="t-ann" type="button" aria-pressed="true">Annotations</button><button id="t-wp" type="button">Width preview</button><button id="s-first" type="button">First answer open</button><button id="s-closed" type="button">All closed</button><button id="s-all" type="button">All open</button></div>
+<details><summary>Review notes: purpose, sections, decisions, Shopify (open)</summary>
+<h3>Purpose</h3>
+<p>Answer the questions that stop a purchase or create a support message, grouped by topic and quick to scan, with a clear way to reach a person when the answer is not here.</p>
+<h3>Sections, top to bottom</h3>
+<ul><li>Title and short intro</li><li>Topic chips that jump to each group (Orders and delivery, Returns, Products and skin, Account and payment)</li><li>Question groups as native accordions, one open at a time is not forced</li><li>Still need help: link to the contact page</li></ul>
+<h3>Decisions to confirm</h3>
+<ul><li>All answers carry bracketed values (delivery times, return window, payment methods). They must match the real policies before launch.</li><li>Skin advice answers stay general and never promise a result or a medical outcome.</li><li>No in-page FAQ search: native store search does not index a page's accordion text, and an app is out of scope.</li></ul>
+<h3>Not drawn</h3>
+<ul><li>Chatbot, helpdesk widget, ticket status, voting on answers (all need an app)</li></ul>
+<h3>Shopify build</h3>
+<p>Template <code>page.faq.json</code> with a <code>main-page</code> intro and a <code>faq</code> section. Each group is a block with a heading; each question is a nested block (question text, rich-text answer). The accordion is native <code>&lt;details&gt;</code>, so it works without JavaScript. Optional <code>FAQPage</code> structured data is output from the same blocks. Chips are anchor links built from the group headings. No app is involved.</p>
+</details>
+</div>
+<div class="ann"><b>Global</b>Announcement bar, header (sticky) and footer: the shared sections. Responsive: below 1024 px a one-row header with the menu in a left drawer; footer groups are tap-to-open rows below 768 px.</div>
+@@PARTIAL annbar@@
+@@PARTIAL header CART=link NAV=none@@
+<main id="main" class="wrap pb-20 pt-2 md:pb-24">
+<div class="ann"><b>01 &middot; Orient</b>Breadcrumb and title (T1) &mdash; Essential: a single H1 and one sentence that says what is here and that a person is available.<em>Responsive: breadcrumb shows parent and current page on phones; title and intro stay in the reading width.</em></div>
+<nav class="breadcrumb mb-4" aria-label="Breadcrumb"><ol class="breadcrumb-list"><li class="breadcrumb-item"><a href="#home">Home</a></li><li class="breadcrumb-item"><a href="#faq" aria-current="page">FAQ</a></li></ol></nav>
+<header class="mb-8 flex max-w-text flex-col gap-3">
+<h1 class="type-h1">Frequently asked questions</h1>
+<p class="m-0 text-body-lg text-ink-secondary">Quick answers about orders, returns and your products. Cannot find what you need? We are happy to help.</p>
+</header>
+<div class="ann"><b>02 &middot; Jump</b>Topic chips (T1) &mdash; Essential: four chips jump to a group so a visitor on a long page reaches their topic in one tap. They are links, not filters; the whole list stays on the page.<em>Responsive: one scrolling row below 600 px, wrapping from 600 px.</em></div>
+<div class="chip-row mb-12" aria-label="Jump to a topic" id="chips"><a class="chip" href="#g-orders">Orders and delivery</a><a class="chip" href="#g-returns">Returns</a><a class="chip" href="#g-products">Products and skin</a><a class="chip" href="#g-account">Account and payment</a></div>
+<div class="grid grid-cols-[minmax(0,1fr)] gap-12 lg:grid-cols-[minmax(0,7fr)_minmax(0,4fr)] lg:items-start lg:gap-16">
+<div class="flex flex-col gap-12" id="groups" data-section="Question groups">
+<div class="ann"><b>03 &middot; Answer</b>Question groups (T1) &mdash; Essential: each group has a heading and native accordion rows. Questions are written the way customers ask them; answers are short, with bracketed values to be filled from the real policies. Rows are at least 44 px tall and the whole row toggles.<em>Responsive: single column at every width; answers keep the reading width.</em></div>
+<section id="g-orders" aria-labelledby="h-orders" class="scroll-mt-24"><h2 class="type-h3 mb-4" id="h-orders">Orders and delivery</h2>
+<div class="accordion">
+<details class="accordion-item"><summary class="accordion-summary">How long will my order take to arrive?<svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></summary><div class="accordion-panel"><p class="m-0 text-ink-secondary">Orders are packed within [processing time] and delivered in [delivery time] depending on where you live. You will see the estimate at checkout and in your shipping email.</p></div></details>
+<details class="accordion-item"><summary class="accordion-summary">Do you offer free shipping?<svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></summary><div class="accordion-panel"><p class="m-0 text-ink-secondary">Shipping is free on orders over [threshold]. Below that, the rate is shown at checkout before you pay.</p></div></details>
+<details class="accordion-item"><summary class="accordion-summary">How can I track my order?<svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></summary><div class="accordion-panel"><p class="m-0 text-ink-secondary">When your order ships we email a tracking link. You can also see its status in your account under Orders.</p></div></details>
+<details class="accordion-item"><summary class="accordion-summary">Can I change or cancel my order?<svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></summary><div class="accordion-panel"><p class="m-0 text-ink-secondary">Contact us as soon as you can with your order number. We can change or cancel an order until it is packed ([cut-off time]).</p></div></details>
+</div></section>
+<section id="g-returns" aria-labelledby="h-returns" class="scroll-mt-24"><h2 class="type-h3 mb-4" id="h-returns">Returns</h2>
+<div class="accordion">
+<details class="accordion-item"><summary class="accordion-summary">What is your returns policy?<svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></summary><div class="accordion-panel"><p class="m-0 text-ink-secondary">You can return [eligible items] within [return window] of delivery. The full terms are on the <a class="link" href="#returns">returns and refunds page</a>.</p></div></details>
+<details class="accordion-item"><summary class="accordion-summary">How do I start a return?<svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></summary><div class="accordion-panel"><p class="m-0 text-ink-secondary">Send us your order number through the <a class="link" href="#contact">contact page</a> and we will reply with the next steps.</p></div></details>
+<details class="accordion-item"><summary class="accordion-summary">When will I get my refund?<svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></summary><div class="accordion-panel"><p class="m-0 text-ink-secondary">Refunds go back to your original payment method within [refund time] after we receive the item.</p></div></details>
+</div></section>
+<section id="g-products" aria-labelledby="h-products" class="scroll-mt-24"><h2 class="type-h3 mb-4" id="h-products">Products and skin</h2>
+<div class="accordion">
+<details class="accordion-item"><summary class="accordion-summary">How do I choose the right product for my skin?<svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></summary><div class="accordion-panel"><p class="m-0 text-ink-secondary">Each product page lists who it is for, the key ingredients and how to use it. Browse by concern in the collections, or ask us for help.</p></div></details>
+<details class="accordion-item"><summary class="accordion-summary">Where can I find the full ingredient list?<svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></summary><div class="accordion-panel"><p class="m-0 text-ink-secondary">The full list is on every product page under Ingredients. Patch-test new products if you have sensitive skin.</p></div></details>
+<details class="accordion-item"><summary class="accordion-summary">How should I store my products?<svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></summary><div class="accordion-panel"><p class="m-0 text-ink-secondary">Keep products closed, away from direct sun and heat. The period after opening is printed on each pack ([symbol and months]).</p></div></details>
+</div></section>
+<section id="g-account" aria-labelledby="h-account" class="scroll-mt-24"><h2 class="type-h3 mb-4" id="h-account">Account and payment</h2>
+<div class="accordion">
+<details class="accordion-item"><summary class="accordion-summary">Which payment methods do you accept?<svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></summary><div class="accordion-panel"><p class="m-0 text-ink-secondary">We accept [payment methods enabled in the store]. All payments are processed at checkout.</p></div></details>
+<details class="accordion-item"><summary class="accordion-summary">Do I need an account to order?<svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></summary><div class="accordion-panel"><p class="m-0 text-ink-secondary">No. You can check out as a guest. An account lets you see past orders and save your addresses.</p></div></details>
+<details class="accordion-item"><summary class="accordion-summary">How do I reset my password?<svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></summary><div class="accordion-panel"><p class="m-0 text-ink-secondary">Use Forgot password on the sign in page and we will email you a reset link.</p></div></details>
+</div></section>
+</div>
+<aside class="flex flex-col gap-4 bg-surface p-6 lg:sticky lg:top-[calc(var(--sticky-top,0px)+var(--space-6))]" id="help" aria-labelledby="help-h" data-section="Still need help">
+<div class="ann"><b>04 &middot; Escalate</b>Still need help (T1) &mdash; Essential: a quiet panel with one button to the contact page, so no visitor reaches a dead end. Sticky beside the questions on wide screens.<em>Responsive: beside the groups from 1024 px, under them below that.</em></div>
+<h2 class="type-h5" id="help-h">Still need help?</h2>
+<p class="m-0 text-ink-secondary">Our team replies within [reply time]. Have your order number ready if your question is about an order.</p>
+<a class="btn btn-primary btn-block sm:w-auto lg:w-full" href="#contact">Contact us</a>
+</aside>
+</div>
+</main>
+@@PARTIAL footer@@
+@@PARTIAL width-preview@@
+<script type="text/plain" id="selftest-src">
+(function(){
+ function vis(el){var cs=getComputedStyle(el);if(cs.display==="none"||cs.visibility==="hidden")return false;var r=el.getBoundingClientRect();return r.width>0&&r.height>0}
+ function sel(el){var s=el.tagName.toLowerCase();if(el.id)s+="#"+el.id;if(el.className&&typeof el.className==="string")s+="."+el.className.trim().split(/\s+/).slice(0,2).join(".");return s}
+ function $(id){return document.getElementById(id)}
+ async function run(){
+  var W=window.innerWidth,de=document.documentElement,out={docHeight:de.scrollHeight,width:W,checks:{}},N=window.NudgeFaq,TWO=W>=1024;
+  var st=document.createElement("style");st.textContent="*{transition:none!important}";document.head.appendChild(st);de.style.scrollBehavior="auto";
+  N.state("closed");void document.body.offsetHeight;
+  var twOk=getComputedStyle($("site-header")).position==="sticky"&&!document.querySelector('link[href*="components.css"],link[href*="base.css"]');
+  var fl=Array.from(document.fonts).some(function(x){return x.family.indexOf("Cormorant")>-1&&x.status==="loaded"})&&Array.from(document.fonts).some(function(x){return x.family.indexOf("DM Sans")>-1&&x.status==="loaded"});
+  out.checks.tailwindAndFonts={pass:twOk&&fl,detail:"Tailwind utilities applied, no Design System component stylesheet: "+twOk+"; Cormorant and DM Sans loaded: "+fl};
+  var off=[];document.querySelectorAll("main *,header *,footer *").forEach(function(el){if(el.closest(".sr-only")||el.closest(".chip-row")||el.closest("#nav")&&W<1024)return;var r=el.getBoundingClientRect();if(r.width>0&&(r.right>W+1||r.left<-1))off.push(sel(el))});
+  out.checks.overflow={pass:de.scrollWidth<=W+1&&off.length===0,detail:"scrollWidth "+de.scrollWidth+" of "+W+(off.length?"; past the edge: "+off.slice(0,4).join(", "):"")};
+  var hs=[].slice.call(document.querySelectorAll("h1")).filter(function(h){return !h.closest(".rv")&&vis(h)}),items=document.querySelectorAll("#groups details").length,groups=document.querySelectorAll("#groups section").length;
+  out.checks.structure={pass:hs.length===1&&!!document.querySelector("main#main")&&groups===4&&items===13,detail:"visible H1: "+hs.length+"; groups: "+groups+"; questions: "+items};
+  var g=$("groups").getBoundingClientRect(),h=$("help").getBoundingClientRect(),lay=TWO?(g.right<=h.left+1&&getComputedStyle($("help")).position==="sticky"):(h.top>=g.bottom-1);
+  out.checks.layout={pass:lay,detail:TWO?"questions left of the help panel (sticky): "+lay:"help panel follows the questions: "+lay};
+  var open0=document.querySelectorAll("#groups details[open]").length===0;document.querySelector("#groups summary").click();var o1=document.querySelector("#groups details").open;document.querySelector("#groups summary").click();var o2=!document.querySelector("#groups details").open;
+  out.checks.accordion={pass:open0&&o1&&o2,detail:"closed at start: "+open0+"; row opens on click: "+o1+"; closes again: "+o2};
+  var fine=[];document.querySelectorAll("#groups summary").forEach(function(s){var r=s.getBoundingClientRect();if(r.height<44-.5)fine.push(Math.round(r.height))});
+  out.checks.rowHeight={pass:fine.length===0,detail:"every question row is at least 44 px tall: "+(fine.length===0)};
+  var chips=[].slice.call(document.querySelectorAll("#chips a")),ok=chips.length===4&&chips.every(function(c){return !!$(c.getAttribute("href").slice(1))});
+  out.checks.chips={pass:ok,detail:"four chips, each linking to an existing group: "+ok};
+  N.state("all");var allOpen=document.querySelectorAll("#groups details[open]").length===13;N.state("first");var one=document.querySelectorAll("#groups details[open]").length===1;N.state("closed");
+  out.checks.states={pass:allOpen&&one,detail:"all open: "+allOpen+"; first open: "+one};
+  var txt=$("main").innerText.toLowerCase(),bad=[];["live chat","chatbot","ticket","was this helpful","vote"].forEach(function(w){if(txt.indexOf(w)>-1)bad.push(w)});
+  out.checks.exclusions={pass:bad.length===0,detail:"app-dependent wording: "+(bad.join(", ")||"none")};
+  var small=[];[].slice.call(document.querySelectorAll("main a,main button,main summary,header a,header button,footer a,footer button")).filter(function(e){return vis(e)&&!e.closest(".sr-only")&&!e.closest(".rv")&&!e.closest(".ann")&&!(W<1024&&e.closest("#nav"))}).forEach(function(e){var r=e.getBoundingClientRect();if(e.closest(".fcol")&&W>=768)return;if(e.classList.contains("chip"))return;if(e.closest("p")&&e.tagName==="A")return;if(e.tagName==="A"&&r.height>=44-.5)return;if(r.height<44-.5)small.push(sel(e)+" "+Math.round(r.width)+"x"+Math.round(r.height))});
+  var tb=[];[].slice.call(document.querySelectorAll("main h1,main h2,main p,main summary,main a.btn")).filter(vis).forEach(function(e){var fm=getComputedStyle(e).fontFamily.split(",")[0].replace(/["']/g,"").trim(),head=/^H[1-6]$/.test(e.tagName);if(head&&fm!=="Cormorant")tb.push(sel(e)+" "+fm);if(!head&&fm!=="DM Sans")tb.push(sel(e)+" "+fm)});
+  out.checks.targetsAndType={pass:small.length===0&&tb.length===0,detail:(small.length?"small targets: "+small.slice(0,5).join("; "):"every visible control is 44 px or has a 44 px hit area")+"; "+(tb.length?"fonts: "+tb.slice(0,3).join("; "):"headings Cormorant, UI DM Sans")};
+  window.scrollTo(0,0);var pre=document.createElement("pre");pre.id="selftest-result";pre.textContent=JSON.stringify(out);document.body.appendChild(pre);
+  if(window.parent!==window){window.parent.postMessage({selftest:out},"*")}
+ }
+ if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){setTimeout(run,900)})}else{setTimeout(run,1400)}
+})();
+</script>
+<script>
+(function(){
+ var b=document.body,q=new URLSearchParams(location.search),$=function(id){return document.getElementById(id)};
+ if(q.get("embed")){b.classList.add("embed")}
+ b.classList.toggle("ann-on",q.get("ann")!=="0");
+ function navOpen(o){b.classList.toggle("nav-open",o);$("menu-btn").setAttribute("aria-expanded",o?"true":"false")}
+ $("menu-btn").addEventListener("click",function(){navOpen(true)});$("nav-close").addEventListener("click",function(){navOpen(false)});$("scrim").addEventListener("click",function(){navOpen(false)});
+ document.addEventListener("keydown",function(e){if(e.key==="Escape")navOpen(false)});
+ [].forEach.call(document.querySelectorAll(".fcol > button"),function(h){h.addEventListener("click",function(){var f=h.parentNode,o=!f.classList.contains("is-open");f.classList.toggle("is-open",o);h.setAttribute("aria-expanded",o?"true":"false")})});
+ var msgs=["Free shipping on orders over $50","New launches are in store","Free returns within 30 days"],mi=0;
+ function msg(d){mi=(mi+d+msgs.length)%msgs.length;$("ann-msg").textContent=msgs[mi];[].forEach.call(document.querySelectorAll(".ann-dot"),function(x,i){x.classList.toggle("bg-current",i===mi);x.classList.toggle("opacity-100",i===mi);x.classList.toggle("opacity-muted",i!==mi)})}
+ $("ann-prev").addEventListener("click",function(){msg(-1)});$("ann-next").addEventListener("click",function(){msg(1)});
+ var jump=["#g-orders","#g-returns","#g-products","#g-account"];
+ document.addEventListener("click",function(e){var a=e.target.closest('a[href^="#"]:not([href="#main"]):not([href="#top"])');if(a&&jump.indexOf(a.getAttribute("href"))<0)e.preventDefault()});
+ $("t-ann").addEventListener("click",function(){var on=!b.classList.contains("ann-on");b.classList.toggle("ann-on",on);this.setAttribute("aria-pressed",on?"true":"false")});
+ $("t-ann").setAttribute("aria-pressed",b.classList.contains("ann-on")?"true":"false");
+ function state(s){[].forEach.call(document.querySelectorAll("#groups details"),function(d,i){d.open=s==="all"||(s==="first"&&i===0)})}
+ [["s-first","first"],["s-closed","closed"],["s-all","all"]].forEach(function(p){$(p[0]).addEventListener("click",function(){state(p[1])})});
+ window.NudgeFaq={state:state};
+ state(["first","all"].indexOf(q.get("state"))>-1?q.get("state"):"closed");
+ if(q.get("selftest")){var s=document.createElement("script");s.text=$("selftest-src").text;document.body.appendChild(s)}
+})();
+</script>
+</body>
+</html>

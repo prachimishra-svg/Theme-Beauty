@@ -1,0 +1,49 @@
+{
+  "specVersion": "1.0",
+  "kind": "source",
+  "note": "SOURCE SPECIFICATION (hand-maintained). Defines the Figma Variable collections and modes. Everything in variable-map.json and collections.md is generated from this file and the other source files.",
+  "collections": [
+    {
+      "name": "Primitives",
+      "modes": ["Value"],
+      "defaultMode": "Value",
+      "purpose": "Raw values: the colour palette, the 4px spacing scale, radius, stroke, opacity, font families and weights. Hidden from publishing and from pickers so designers bind semantic or component variables instead.",
+      "modeRationale": "No modes. Raw values never change by context."
+    },
+    {
+      "name": "Semantic",
+      "modes": ["Default", "Inverse"],
+      "defaultMode": "Default",
+      "purpose": "What a colour is FOR (background, text, border, link, focus, status, button). Aliases to Primitives.",
+      "modeRationale": "Inverse mirrors the web system's .surface-inverse scope (footer, promo bar, dark sections): 11 roles change, the rest keep their value. Set a frame's variable mode to Inverse and every bound fill, stroke and text colour inside re-resolves, including dependents (the web build had to re-declare those by hand). There is no site-wide dark mode in the web system, so there is no Dark mode here either."
+    },
+    {
+      "name": "Layout",
+      "modes": ["Mobile", "Tablet", "Desktop"],
+      "defaultMode": "Mobile",
+      "purpose": "Page gutters, grid gaps, header height, section spacing, containers and the reference frame widths.",
+      "modeRationale": "The web system has exactly three layout tiers (0 to 599, 600 to 1023, 1024 and up) and six tokens that change by tier. Figma has no media queries, so the three modes stand for those tiers: set the mode on a page frame and every bound gutter, gap and section padding follows. Fluid values (section spacing) are sampled at the reference widths 360, 768 and 1280."
+    },
+    {
+      "name": "Typography",
+      "modes": ["Mobile", "Tablet", "Desktop"],
+      "defaultMode": "Mobile",
+      "purpose": "Font sizes in px, one variable per text role.",
+      "modeRationale": "The nine web font sizes are fluid (clamp), and Figma has no equivalent: each is sampled at the three reference widths and rounded to a whole pixel. The twelve static sizes hold the same value in every mode. Kept separate from Layout so a text frame and a layout frame can be set to different modes if a design needs it."
+    },
+    {
+      "name": "Components",
+      "modes": ["Value"],
+      "defaultMode": "Value",
+      "purpose": "Only component-specific values that are shared across components or must stay in sync with the web tokens: touch target, control heights, icon sizes, choice and swatch sizes, focus ring.",
+      "modeRationale": "No modes. Component values do not change by context; responsive differences come from the Layout collection."
+    }
+  ],
+  "modeDecisions": [
+    { "candidate": "Light and Dark", "decision": "Not created", "reason": "The web system defines no site-wide dark mode, only the inverse surface scope. A Dark mode would be an invented design decision." },
+    { "candidate": "Inverse surface", "decision": "Created (Semantic)", "reason": "Demonstrated need: the web scope re-maps 11 colour roles for the footer and promotional bar." },
+    { "candidate": "One mode per viewport on every collection", "decision": "Rejected", "reason": "Only Layout and Typography have values that change by tier." },
+    { "candidate": "Mobile, Tablet, Desktop (Layout, Typography)", "decision": "Created", "reason": "Six tier tokens and nine fluid sizes change by tier in the web system; designers build one frame per tier." },
+    { "candidate": "Brand or merchant colour modes", "decision": "Not created", "reason": "Merchant colour overrides are a theme-settings concern in the web system (they map onto the palette primitives), not a design-file mode." }
+  ]
+}

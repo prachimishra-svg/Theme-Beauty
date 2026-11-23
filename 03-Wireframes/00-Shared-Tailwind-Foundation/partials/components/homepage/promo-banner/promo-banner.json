@@ -1,0 +1,119 @@
+{
+    "name":  "Promotional Banner",
+    "wireframeOnly":  [
+                          ".ann annotation block",
+                          "data-section attribute",
+                          "data-c review hooks"
+                      ],
+    "page":  "homepage",
+    "properties":  [
+                       {
+                           "name":  "anchor",
+                           "type":  "TEXT",
+                           "default":  "s17",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "anchor",
+                                           "id":  "anchor",
+                                           "setting":  "text"
+                                       },
+                           "note":  "In-page anchor id"
+                       },
+                       {
+                           "name":  "eyebrow",
+                           "type":  "TEXT",
+                           "default":  "Gift sets",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "eyebrow",
+                                           "id":  "eyebrow",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "heading",
+                           "type":  "TEXT",
+                           "default":  "Gift sets for every routine",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "heading",
+                                           "id":  "heading",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "text",
+                           "type":  "TEXT",
+                           "default":  "Real offer details and dates go here.",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "text",
+                                           "id":  "text",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "buttonLabel",
+                           "type":  "TEXT",
+                           "default":  "Shop gift sets",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "button_label",
+                                           "id":  "button_label",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "buttonHref",
+                           "type":  "TEXT",
+                           "default":  "#",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "button_href",
+                                           "id":  "button_link",
+                                           "setting":  "url"
+                                       }
+                       }
+                   ],
+    "tokens":  [
+                   "brand background",
+                   "spacing"
+               ],
+    "summary":  "A campaign banner: image, copy and one button. Maps to the promo-banner section. Offer details and dates must be real.",
+    "accessibility":  "Heading is an h2.",
+    "id":  "promo-banner",
+    "level":  "main",
+    "status":  "classified (D10 items pending)",
+    "responsive":  "Stacked below 768 px, side by side from 768 px.",
+    "exposes":  [
+                    {
+                        "child":  "components/homepage/promo-copy",
+                        "property":  "eyebrow",
+                        "via":  "eyebrow"
+                    },
+                    {
+                        "child":  "components/homepage/promo-copy",
+                        "property":  "heading",
+                        "via":  "heading"
+                    },
+                    {
+                        "child":  "components/homepage/promo-copy",
+                        "property":  "text",
+                        "via":  "text"
+                    },
+                    {
+                        "child":  "components/homepage/promo-copy",
+                        "property":  "buttonLabel",
+                        "via":  "button_label"
+                    },
+                    {
+                        "child":  "components/homepage/promo-copy",
+                        "property":  "buttonHref",
+                        "via":  "button_link"
+                    }
+                ],
+    "children":  [
+                     "components/homepage/promo-media",
+                     "components/homepage/promo-copy"
+                 ]
+}

@@ -1,0 +1,42 @@
+{%- assign prev_label = 'sections.logos.previous' | t -%}
+{%- assign next_label = 'sections.logos.next' | t -%}
+<section class="sec bg-surface text-ink" id="{{ section.settings.anchor | default: 's16' }}">
+  <div class="sec__in sec__in--tight py-[calc(var(--space-section)/2)]">
+    <div class="wrap">
+      <div class="rec group grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 [grid-template-areas:'label_nav'_'track_track'] lg:grid-cols-[12rem_minmax(0,1fr)_auto] lg:gap-12 lg:[grid-template-areas:'label_track_nav']" data-scroller>
+        {%- if section.settings.label != blank -%}<div class="rec__label text-caption font-semibold uppercase tracking-widest text-ink [grid-area:label]" role="heading" aria-level="2"><span class="text-brand">{{ section.settings.label | escape }}</span></div>{%- endif -%}
+        {% render 'scroller-controls', hook: 'rec', prev: prev_label, next: next_label %}
+        <ul class="rec__track m-0 flex list-none overflow-x-auto overscroll-x-contain scroll-smooth p-0 [grid-area:track] [scroll-snap-type:x_mandatory] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden [&>li]:flex-[0_0_40%] [&>li]:snap-start sm:[&>li]:basis-1/4 lg:[&>li]:basis-[calc(100%/6)]" aria-label="{{ section.settings.region_label | escape }}" tabindex="0">
+          {%- for block in section.blocks -%}{% render 'logo-item', block: block %}{%- endfor -%}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Logo list",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Label", "default": "As recognised by" },
+    { "type": "text", "id": "region_label", "label": "Accessible name of the list", "default": "Certifications, awards and press" },
+    { "type": "text", "id": "anchor", "label": "Anchor id", "default": "s16" }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Logo", "info": "2:1, 360 x 180 px, SVG or PNG with transparent background." },
+        { "type": "text", "id": "label", "label": "Placeholder label", "default": "Certification logo" },
+        { "type": "text", "id": "tag", "label": "Type", "default": "Certification", "info": "For example Certification, Award or Press." },
+        { "type": "text", "id": "aria_label", "label": "Accessible name", "default": "Certification (placeholder): verify the certificate", "info": "Read by screen readers. Say what the logo is and what the link does." },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [ { "name": "Logo list", "blocks": [ { "type": "logo" }, { "type": "logo" }, { "type": "logo" }, { "type": "logo" }, { "type": "logo" }, { "type": "logo" } ] } ]
+}
+{% endschema %}

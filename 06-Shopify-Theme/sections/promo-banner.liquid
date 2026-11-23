@@ -1,0 +1,40 @@
+<section class="sec bg-brand text-ink" id="{{ section.settings.anchor | default: 's17' }}">
+  <div class="sec__in py-section">
+    <div class="wrap">
+      <div class="promo grid grid-cols-[minmax(0,1fr)] md:grid-cols-12 md:items-center">
+        <div class="promo__imgwrap min-w-0 md:col-[5/-1] md:row-[1]">
+          <div class="img promo__img t3 [&_.ratio]:pt-[70%] md:[&_.ratio]:h-[432px] md:[&_.ratio]:pt-0 lg:[&_.ratio]:h-[520px]"><i class="ratio"></i>
+            {%- if section.settings.image != blank -%}
+              {{ section.settings.image | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '600, 900, 1200, 1400', sizes: '(min-width: 768px) 55vw, 100vw', class: 'absolute inset-0 size-full object-cover', alt: section.settings.image.alt }}
+            {%- else -%}
+              <div class="in"><span class="lbl">{{ 'sections.promo.photo' | t }}</span><span class="dim dim--s md:hidden">{{ 'sections.promo.dim_mobile' | t }}</span><span class="dim dim--l hidden md:inline">{{ 'sections.promo.dim_desktop' | t }}</span></div>
+            {%- endif -%}
+          </div>
+        </div>
+        <div class="promo__txt relative z-[2] -mt-8 flex flex-col items-start justify-center gap-1 bg-surface px-5 pb-8 pt-7 shadow-lg md:col-[1/span_6] md:row-[1] md:m-0 md:p-10 lg:p-14">
+          {%- if section.settings.eyebrow != blank -%}<div class="eyebrow type-overline mb-3 text-brand-secondary"><span>{{ section.settings.eyebrow | escape }}</span></div>{%- endif -%}
+          <h2><span>{{ section.settings.heading | escape }}</span></h2>
+          {%- if section.settings.text != blank -%}<p class="lead mt-3 max-w-[38rem] text-ink-secondary"><span>{{ section.settings.text | escape }}</span></p>{%- endif -%}
+          {%- if section.settings.button_label != blank -%}{% render 'button-editorial', class: 'hp-btn mt-5', url: section.settings.button_link, label: section.settings.button_label %}{%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Promotional banner",
+  "tag": "section",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image", "info": "7:8, 1400 x 1200 px (10:7, 1200 x 840 px, on phones)." },
+    { "type": "text", "id": "eyebrow", "label": "Label", "default": "Gift sets" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Gift sets for every routine" },
+    { "type": "text", "id": "text", "label": "Text", "default": "Real offer details and dates go here." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop gift sets" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "text", "id": "anchor", "label": "Anchor id", "default": "s17" }
+  ],
+  "presets": [ { "name": "Promotional banner" } ]
+}
+{% endschema %}

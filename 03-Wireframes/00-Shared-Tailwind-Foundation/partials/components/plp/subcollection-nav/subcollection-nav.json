@@ -1,0 +1,95 @@
+{
+    "name":  "Sub-collection Links",
+    "wireframeOnly":  [
+                          ".ann annotation block",
+                          "data-section attribute"
+                      ],
+    "page":  "plp",
+    "properties":  [
+                       {
+                           "name":  "label",
+                           "type":  "TEXT",
+                           "default":  "Skin care categories",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "label"
+                                       },
+                           "note":  "Accessible name of the navigation"
+                       },
+                       {
+                           "name":  "items",
+                           "type":  "LIST",
+                           "default":  [
+                                           {
+                                               "label":  "All skin care",
+                                               "href":  "#cat",
+                                               "current":  "1"
+                                           },
+                                           {
+                                               "label":  "Cleansers",
+                                               "href":  "#cat",
+                                               "current":  ""
+                                           },
+                                           {
+                                               "label":  "Serums",
+                                               "href":  "#cat",
+                                               "current":  ""
+                                           },
+                                           {
+                                               "label":  "Moisturisers",
+                                               "href":  "#cat",
+                                               "current":  ""
+                                           },
+                                           {
+                                               "label":  "Sun care",
+                                               "href":  "#cat",
+                                               "current":  ""
+                                           },
+                                           {
+                                               "label":  "Masks",
+                                               "href":  "#cat",
+                                               "current":  ""
+                                           },
+                                           {
+                                               "label":  "Eye care",
+                                               "href":  "#cat",
+                                               "current":  ""
+                                           }
+                                       ],
+                           "itemFields":  [
+                                              "label",
+                                              "href",
+                                              "current"
+                                          ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "items"
+                                       },
+                           "data":  "collection list or link list",
+                           "note":  "One chip per sub-collection; the current one is marked"
+                       }
+                   ],
+    "tokens":  [
+                   "chip tokens",
+                   "spacing"
+               ],
+    "summary":  "A row of chips that narrows the collection by category in one tap, before filtering. One scrolling line on phones, wrapping from 600 px.",
+    "accessibility":  "A labelled navigation; the current chip has aria-current.",
+    "id":  "subcollection-nav",
+    "shopifyOnly":  [
+                        {
+                            "id":  "menu",
+                            "setting":  "link_list",
+                            "note":  "The links shown as chips"
+                        }
+                    ],
+    "level":  "main",
+    "status":  "classified",
+    "responsive":  "One scrolling line below 600 px; wraps from 600 px.",
+    "exposes":  [
+
+                ],
+    "children":  [
+
+                 ]
+}

@@ -1,0 +1,144 @@
+{
+    "id":  "icon-button",
+    "name":  "Icon Button",
+    "level":  "base",
+    "page":  "shared",
+    "status":  "ready",
+    "summary":  "A square or round button that holds only an icon: the Design System icon button and the round Homepage controls (scrollers, ritual steps).",
+    "properties":  [
+                       {
+                           "name":  "variant",
+                           "type":  "VARIANT",
+                           "default":  "ds",
+                           "tables":  {
+                                          "iconClass":  {
+                                                            "ds":  "",
+                                                            "circle":  "size-[18px]",
+                                                            "circle-soft":  "size-[18px]"
+                                                        }
+                                      },
+                           "values":  [
+                                          "ds",
+                                          "circle",
+                                          "circle-soft"
+                                      ],
+                           "note":  "ds = Design System; circle = dark outline (ritual steps); circle-soft = light outline (scrollers)",
+                           "classes":  {
+                                           "ds":  "icon-btn",
+                                           "circle":  "inline-flex size-touch cursor-pointer items-center justify-center rounded-full border border-ink bg-transparent p-0 text-ink transition-colors duration-base enabled:hover:bg-ink enabled:hover:text-page disabled:cursor-default disabled:opacity-[.3]",
+                                           "circle-soft":  "inline-flex size-touch cursor-pointer items-center justify-center rounded-full border border-line-inverse bg-transparent p-0 text-ink transition-colors duration-base enabled:hover:border-ink disabled:cursor-default disabled:opacity-[.35]"
+                                       },
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "variant",
+                                           "setting":  "select"
+                                       }
+                       },
+                       {
+                           "name":  "icon",
+                           "type":  "INSTANCE_SWAP",
+                           "default":  "close",
+                           "options":  [
+                                           "search",
+                                           "account",
+                                           "bag",
+                                           "menu",
+                                           "close",
+                                           "plus",
+                                           "minus",
+                                           "chevron-down",
+                                           "chevron-up",
+                                           "chevron-left",
+                                           "chevron-right",
+                                           "arrow-left",
+                                           "arrow-right",
+                                           "filter",
+                                           "sort",
+                                           "heart",
+                                           "star",
+                                           "location",
+                                           "lock",
+                                           "check",
+                                           "check-circle",
+                                           "info",
+                                           "warning",
+                                           "eye",
+                                           "eye-off",
+                                           "share",
+                                           "instagram",
+                                           "facebook",
+                                           "youtube",
+                                           "mail",
+                                           "phone",
+                                           "clock",
+                                           "zoom-in",
+                                           "play",
+                                           "truck",
+                                           "rotate-ccw",
+                                           "shield-check",
+                                           "store",
+                                           "loader"
+                                       ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "icon",
+                                           "setting":  "select"
+                                       }
+                       },
+                       {
+                           "name":  "label",
+                           "type":  "TEXT",
+                           "default":  "Close",
+                           "note":  "Accessible name (aria-label); not visible",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "label"
+                                       }
+                       },
+                       {
+                           "name":  "disabled",
+                           "type":  "BOOLEAN",
+                           "default":  false,
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "disabled"
+                                       }
+                       },
+                       {
+                           "name":  "hook",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "note":  "Class hook used by scripts, for example rit__prev",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "hook"
+                                       }
+                       },
+                       {
+                           "name":  "attrs",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "attrs"
+                                       }
+                       },
+                       {
+                           "name":  "extra",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "extra"
+                                       }
+                       }
+                   ],
+    "children":  [
+                     "components/base/icon"
+                 ],
+    "accessibility":  "aria-label is required: the icon alone has no name. 44 px target.",
+    "tokens":  [
+                   "touch target",
+                   "border colours"
+               ]
+}

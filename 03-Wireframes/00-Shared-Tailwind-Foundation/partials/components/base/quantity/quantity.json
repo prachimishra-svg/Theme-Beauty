@@ -1,0 +1,55 @@
+{
+    "id":  "quantity",
+    "name":  "Quantity Selector",
+    "level":  "base",
+    "page":  "shared",
+    "status":  "ready",
+    "summary":  "Minus, number, plus. Disabled at the limits.",
+    "properties":  [
+                       {
+                           "name":  "value",
+                           "type":  "TEXT",
+                           "default":  "1",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "value"
+                                       }
+                       },
+                       {
+                           "name":  "label",
+                           "type":  "TEXT",
+                           "default":  "Quantity",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "label"
+                                       }
+                       },
+                       {
+                           "name":  "minusDisabled",
+                           "type":  "BOOLEAN",
+                           "default":  true,
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "minus_disabled"
+                                       }
+                       },
+                       {
+                           "name":  "plusDisabled",
+                           "type":  "BOOLEAN",
+                           "default":  false,
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "plus_disabled"
+                                       }
+                       }
+                   ],
+    "children":  [
+                     "components/base/icon"
+                 ],
+    "accessibility":  "Group with a label; buttons have names; numeric keypad on touch.",
+    "tokens":  [
+                   "control border",
+                   "radius",
+                   "touch target"
+               ]
+}

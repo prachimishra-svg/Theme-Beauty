@@ -1,0 +1,75 @@
+{
+    "id":  "quick-view-drawer",
+    "page":  "plp",
+    "level":  "main",
+    "name":  "Quick View Drawer",
+    "properties":  [
+                       {
+                           "name":  "title",
+                           "type":  "TEXT",
+                           "default":  "Quick view",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "title"
+                                       },
+                           "note":  "Replaced with the product name by the page script"
+                       },
+                       {
+                           "name":  "closeLabel",
+                           "type":  "TEXT",
+                           "default":  "Close quick view",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "close_label"
+                                       },
+                           "note":  "Locale string"
+                       },
+                       {
+                           "name":  "addLabel",
+                           "type":  "TEXT",
+                           "default":  "Add to bag",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "add_label"
+                                       },
+                           "note":  "Locale string"
+                       },
+                       {
+                           "name":  "moreLabel",
+                           "type":  "TEXT",
+                           "default":  "View full details",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "more_label"
+                                       },
+                           "note":  "Locale string"
+                       },
+                       {
+                           "name":  "moreHref",
+                           "type":  "TEXT",
+                           "default":  "#pdp",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "more_href"
+                                       },
+                           "data":  "product.url",
+                           "note":  "Product page link"
+                       }
+                   ],
+    "accessibility":  "A native dialog labelled by its title; focus is trapped while open and returns to the opener.",
+    "status":  "classified",
+    "tokens":  [
+                   "drawer tokens",
+                   "z-index"
+               ],
+    "summary":  "The right side panel for Quick view: a title, the product content (rendered by the Quick View Content component), Add to bag and a link to the full product page.",
+    "exposes":  [
+
+                ],
+    "responsive":  "A right side panel at every width.",
+    "children":  [
+                     "components/base/icon-button",
+                     "components/base/button",
+                     "components/plp/quick-view-body"
+                 ]
+}

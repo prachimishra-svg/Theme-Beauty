@@ -1,0 +1,60 @@
+{
+    "id":  "message",
+    "name":  "Message",
+    "level":  "base",
+    "page":  "shared",
+    "status":  "ready",
+    "summary":  "A short status message with an icon: success, error or warning.",
+    "properties":  [
+                       {
+                           "name":  "variant",
+                           "type":  "VARIANT",
+                           "default":  "success",
+                           "tables":  {
+                                          "role":  {
+                                                       "success":  "status",
+                                                       "error":  "alert",
+                                                       "warning":  "alert"
+                                                   },
+                                          "icon":  {
+                                                       "success":  "check-circle",
+                                                       "error":  "warning",
+                                                       "warning":  "warning"
+                                                   }
+                                      },
+                           "values":  [
+                                          "success",
+                                          "error",
+                                          "warning"
+                                      ],
+                           "classes":  {
+                                           "success":  "message-success",
+                                           "error":  "message-error",
+                                           "warning":  "message-warning"
+                                       },
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "variant",
+                                           "setting":  "select"
+                                       }
+                       },
+                       {
+                           "name":  "text",
+                           "type":  "TEXT",
+                           "default":  "Added to your bag.",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "text",
+                                           "setting":  "text"
+                                       }
+                       }
+                   ],
+    "children":  [
+                     "components/base/icon"
+                 ],
+    "accessibility":  "role=\"status\" for success, role=\"alert\" for errors and warnings; never colour alone (icon and text).",
+    "tokens":  [
+                   "status colours",
+                   "border-left thick"
+               ]
+}

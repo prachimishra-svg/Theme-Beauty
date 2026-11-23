@@ -1,0 +1,135 @@
+{
+    "name":  "Header group",
+    "type":  "header",
+    "sections":  {
+                     "announcement-bar":  {
+                                              "type":  "announcement-bar",
+                                              "settings":  {
+                                                               "autoplay":  false,
+                                                               "interval":  5
+                                                           },
+                                              "blocks":  {
+                                                             "m1":  {
+                                                                        "settings":  {
+                                                                                         "text":  "Free shipping on orders over $50"
+                                                                                     },
+                                                                        "type":  "message"
+                                                                    },
+                                                             "m2":  {
+                                                                        "settings":  {
+                                                                                         "text":  "New launches are in store"
+                                                                                     },
+                                                                        "type":  "message"
+                                                                    },
+                                                             "m3":  {
+                                                                        "settings":  {
+                                                                                         "text":  "Free returns within 30 days"
+                                                                                     },
+                                                                        "type":  "message"
+                                                                    }
+                                                         },
+                                              "block_order":  [
+                                                                  "m1",
+                                                                  "m2",
+                                                                  "m3"
+                                                              ]
+                                          },
+                     "header":  {
+                                    "type":  "header",
+                                    "settings":  {
+                                                     "menu":  "main-menu",
+                                                     "transparent_on_home":  true,
+                                                     "show_search":  true,
+                                                     "show_account":  true
+                                                 },
+                                    "blocks":  {
+                                                   "skin_1":  {
+                                                                  "settings":  {
+                                                                                   "menu_item":  "Skin",
+                                                                                   "title":  "New in skin",
+                                                                                   "link":  "#collection-skin-new-in-skin",
+                                                                                   "tone":  "ph"
+                                                                               },
+                                                                  "type":  "mega_card"
+                                                              },
+                                                   "skin_2":  {
+                                                                  "settings":  {
+                                                                                   "menu_item":  "Skin",
+                                                                                   "title":  "Skin routines",
+                                                                                   "link":  "#collection-skin-skin-routines",
+                                                                                   "tone":  "ph-b"
+                                                                               },
+                                                                  "type":  "mega_card"
+                                                              },
+                                                   "makeup_1":  {
+                                                                    "settings":  {
+                                                                                     "menu_item":  "Makeup",
+                                                                                     "title":  "New in makeup",
+                                                                                     "link":  "#collection-makeup-new-in-makeup",
+                                                                                     "tone":  "ph"
+                                                                                 },
+                                                                    "type":  "mega_card"
+                                                                },
+                                                   "makeup_2":  {
+                                                                    "settings":  {
+                                                                                     "menu_item":  "Makeup",
+                                                                                     "title":  "Complexion edit",
+                                                                                     "link":  "#collection-makeup-complexion-edit",
+                                                                                     "tone":  "ph-b"
+                                                                                 },
+                                                                    "type":  "mega_card"
+                                                                },
+                                                   "hair_1":  {
+                                                                  "settings":  {
+                                                                                   "menu_item":  "Hair",
+                                                                                   "title":  "New in hair",
+                                                                                   "link":  "#collection-hair-new-in-hair",
+                                                                                   "tone":  "ph"
+                                                                               },
+                                                                  "type":  "mega_card"
+                                                              },
+                                                   "hair_2":  {
+                                                                  "settings":  {
+                                                                                   "menu_item":  "Hair",
+                                                                                   "title":  "Salon at home",
+                                                                                   "link":  "#collection-hair-salon-at-home",
+                                                                                   "tone":  "ph-b"
+                                                                               },
+                                                                  "type":  "mega_card"
+                                                              },
+                                                   "body_1":  {
+                                                                  "settings":  {
+                                                                                   "menu_item":  "Body",
+                                                                                   "title":  "New in body",
+                                                                                   "link":  "#collection-body-new-in-body",
+                                                                                   "tone":  "ph"
+                                                                               },
+                                                                  "type":  "mega_card"
+                                                              },
+                                                   "body_2":  {
+                                                                  "settings":  {
+                                                                                   "menu_item":  "Body",
+                                                                                   "title":  "Gift sets",
+                                                                                   "link":  "#collection-body-gift-sets",
+                                                                                   "tone":  "ph-b"
+                                                                               },
+                                                                  "type":  "mega_card"
+                                                              }
+                                               },
+                                    "block_order":  [
+                                                        "skin_1",
+                                                        "skin_2",
+                                                        "makeup_1",
+                                                        "makeup_2",
+                                                        "hair_1",
+                                                        "hair_2",
+                                                        "body_1",
+                                                        "body_2"
+                                                    ]
+                                }
+                 },
+    "order":  [
+                  "announcement-bar",
+                  "header"
+              ]
+}

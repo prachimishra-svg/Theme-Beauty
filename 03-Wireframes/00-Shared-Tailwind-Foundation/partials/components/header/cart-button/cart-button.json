@@ -1,0 +1,41 @@
+{
+    "id":  "cart-button",
+    "page":  "shared",
+    "level":  "sub",
+    "name":  "Cart Button",
+    "properties":  [
+                       {
+                           "name":  "variant",
+                           "type":  "VARIANT",
+                           "default":  "link",
+                           "values":  [
+                                          "link",
+                                          "page",
+                                          "drawer"
+                                      ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "variant",
+                                           "setting":  "select"
+                                       },
+                           "note":  "link goes to the cart page; page marks the cart page as current; drawer opens the cart drawer"
+                       }
+                   ],
+    "shopifyOnly":  [
+                        {
+                            "id":  "cart_type",
+                            "setting":  "select",
+                            "note":  "Theme setting that chooses page or drawer, as in the existing theme"
+                        }
+                    ],
+    "status":  "classified (D10 items pending)",
+    "accessibility":  "A link or a button with an accessible name that includes the count; the drawer button announces a dialog.",
+    "summary":  "The cart control in the header. A link to the cart page, the same link when the cart page is current, or a button that opens the cart drawer.",
+    "tokens":  [
+                   "touch target"
+               ],
+    "responsive":  "See Cart Button Content.",
+    "children":  [
+                     "components/header/cart-button-content"
+                 ]
+}

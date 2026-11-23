@@ -1,0 +1,33 @@
+{
+    "id":  "skin",
+    "page":  "shared",
+    "level":  "sub",
+    "name":  "Mega Menu Content: Skin",
+    "properties":  [
+
+                   ],
+    "shopifyOnly":  [
+                        {
+                            "id":  "menu",
+                            "setting":  "link_list",
+                            "note":  "Columns come from the children of the navigation link list"
+                        },
+                        {
+                            "id":  "mega_card",
+                            "setting":  "blocks",
+                            "note":  "Promotional cards are blocks (menu item, title, call to action, link, image)"
+                        }
+                    ],
+    "status":  "classified (D10 items pending)",
+    "accessibility":  "Plain lists of links.",
+    "summary":  "The link columns and the two promotional cards inside the skin mega menu. In the wireframe the links are fixed sample content.",
+    "tokens":  [
+                   "spacing",
+                   "type roles"
+               ],
+    "responsive":  "Columns sit side by side from 1024 px.",
+    "children":  [
+                     "components/header/mega-column",
+                     "components/header/mega-cards"
+                 ]
+}

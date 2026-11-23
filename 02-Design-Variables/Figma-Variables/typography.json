@@ -1,0 +1,716 @@
+{
+    "specVersion":  "1.0",
+    "kind":  "source",
+    "purpose":  "Typography: font family and weight primitives (collection Primitives), font sizes in px (collection Typography, three modes), and the Text Style definitions. Font sizes are px; no point units.",
+    "valueSyntax":  "A value is a literal (hex colour, number in px unless stated, or text) or an alias written {collection-local/variable-name}. Colours are #RRGGBB or #RRGGBBAA. Every variable has one value per mode of its collection.",
+    "variables":  [
+                      {
+                          "name":  "font/family/heading",
+                          "collection":  "Primitives",
+                          "type":  "STRING",
+                          "layer":  "primitive",
+                          "description":  "Heading family. The web stack also lists Iowan Old Style, Palatino, Georgia, serif as fallbacks; Figma has no fallback stack.",
+                          "scopes":  [
+                                         "FONT_FAMILY"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  "Cormorant"
+                                     },
+                          "webToken":  "--font-family-heading",
+                          "webRelation":  "mapped"
+                      },
+                      {
+                          "name":  "font/family/body",
+                          "collection":  "Primitives",
+                          "type":  "STRING",
+                          "layer":  "primitive",
+                          "description":  "Body family. The web stack also lists system-ui and others as fallbacks; Figma has no fallback stack.",
+                          "scopes":  [
+                                         "FONT_FAMILY"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  "DM Sans"
+                                     },
+                          "webToken":  "--font-family-body",
+                          "webRelation":  "mapped"
+                      },
+                      {
+                          "name":  "font/weight/regular",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "Font weight 400",
+                          "scopes":  [
+                                         "FONT_WEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  400
+                                     },
+                          "webToken":  "--font-weight-regular",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "font/weight/medium",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "Font weight 500",
+                          "scopes":  [
+                                         "FONT_WEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  500
+                                     },
+                          "webToken":  "--font-weight-medium",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "font/weight/semibold",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "Font weight 600",
+                          "scopes":  [
+                                         "FONT_WEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  600
+                                     },
+                          "webToken":  "--font-weight-semibold",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "font/weight/bold",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "Font weight 700",
+                          "scopes":  [
+                                         "FONT_WEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  700
+                                     },
+                          "webToken":  "--font-weight-bold",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "font-size/display",
+                          "collection":  "Typography",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Display (hero only) size in px. Tier value from the web system (mobile; tablet from 600px; desktop from 1024px): whole, even px on the 4px type scale.",
+                          "scopes":  [
+                                         "FONT_SIZE"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  44,
+                                         "Tablet":  60,
+                                         "Desktop":  80
+                                     },
+                          "webToken":  "--font-size-display",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "font-size/h1",
+                          "collection":  "Typography",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Heading 1 size in px. Tier value from the web system (mobile; tablet from 600px; desktop from 1024px): whole, even px on the 4px type scale.",
+                          "scopes":  [
+                                         "FONT_SIZE"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  36,
+                                         "Tablet":  48,
+                                         "Desktop":  60
+                                     },
+                          "webToken":  "--font-size-h1",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "font-size/h2",
+                          "collection":  "Typography",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Heading 2 size in px. Tier value from the web system (mobile; tablet from 600px; desktop from 1024px): whole, even px on the 4px type scale.",
+                          "scopes":  [
+                                         "FONT_SIZE"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  32,
+                                         "Tablet":  36,
+                                         "Desktop":  44
+                                     },
+                          "webToken":  "--font-size-h2",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "font-size/h3",
+                          "collection":  "Typography",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Heading 3 size in px. Tier value from the web system (mobile; tablet from 600px; desktop from 1024px): whole, even px on the 4px type scale.",
+                          "scopes":  [
+                                         "FONT_SIZE"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  24,
+                                         "Tablet":  28,
+                                         "Desktop":  32
+                                     },
+                          "webToken":  "--font-size-h3",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "font-size/h4",
+                          "collection":  "Typography",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Heading 4 size in px. Tier value from the web system (mobile; tablet from 600px; desktop from 1024px): whole, even px on the 4px type scale.",
+                          "scopes":  [
+                                         "FONT_SIZE"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  20,
+                                         "Tablet":  24,
+                                         "Desktop":  24
+                                     },
+                          "webToken":  "--font-size-h4",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "font-size/h5",
+                          "collection":  "Typography",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Heading 5 size in px: 16px in every mode (web static token), so h4 \u003e body large (18px) \u003e h5 holds.",
+                          "scopes":  [
+                                         "FONT_SIZE"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  16,
+                                         "Tablet":  16,
+                                         "Desktop":  16
+                                     },
+                          "webToken":  "--font-size-h5",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "font-size/body-lg",
+                          "collection":  "Typography",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Body large size in px. Tier value from the web system (mobile; tablet from 600px; desktop from 1024px): whole, even px on the 4px type scale.",
+                          "scopes":  [
+                                         "FONT_SIZE"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  18,
+                                         "Tablet":  18,
+                                         "Desktop":  18
+                                     },
+                          "webToken":  "--font-size-body-lg",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "font-size/product-title",
+                          "collection":  "Typography",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Product title size in px. Tier value from the web system (mobile; tablet from 600px; desktop from 1024px): whole, even px on the 4px type scale.",
+                          "scopes":  [
+                                         "FONT_SIZE"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  16,
+                                         "Tablet":  16,
+                                         "Desktop":  18
+                                     },
+                          "webToken":  "--font-size-product-title",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "font-size/price-lg",
+                          "collection":  "Typography",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Large price size in px. Tier value from the web system (mobile; tablet from 600px; desktop from 1024px): whole, even px on the 4px type scale.",
+                          "scopes":  [
+                                         "FONT_SIZE"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  20,
+                                         "Tablet":  24,
+                                         "Desktop":  24
+                                     },
+                          "webToken":  "--font-size-price-lg",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "font-size/h6",
+                          "collection":  "Typography",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Heading 6 size in px (static: the same in every mode).",
+                          "scopes":  [
+                                         "FONT_SIZE"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  16,
+                                         "Tablet":  16,
+                                         "Desktop":  16
+                                     },
+                          "webToken":  "--font-size-h6",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "font-size/body",
+                          "collection":  "Typography",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Body size in px (static: the same in every mode).",
+                          "scopes":  [
+                                         "FONT_SIZE"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  16,
+                                         "Tablet":  16,
+                                         "Desktop":  16
+                                     },
+                          "webToken":  "--font-size-body",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "font-size/body-sm",
+                          "collection":  "Typography",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Body small size in px (static: the same in every mode).",
+                          "scopes":  [
+                                         "FONT_SIZE"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  14,
+                                         "Tablet":  14,
+                                         "Desktop":  14
+                                     },
+                          "webToken":  "--font-size-body-sm",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "font-size/caption",
+                          "collection":  "Typography",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Caption size in px (static: the same in every mode). Even px on the 4px type scale.",
+                          "scopes":  [
+                                         "FONT_SIZE"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  12,
+                                         "Tablet":  12,
+                                         "Desktop":  12
+                                     },
+                          "webToken":  "--font-size-caption",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "font-size/overline",
+                          "collection":  "Typography",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Overline size in px (static: the same in every mode).",
+                          "scopes":  [
+                                         "FONT_SIZE"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  12,
+                                         "Tablet":  12,
+                                         "Desktop":  12
+                                     },
+                          "webToken":  "--font-size-overline",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "font-size/label",
+                          "collection":  "Typography",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Label size in px (static: the same in every mode).",
+                          "scopes":  [
+                                         "FONT_SIZE"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  14,
+                                         "Tablet":  14,
+                                         "Desktop":  14
+                                     },
+                          "webToken":  "--font-size-label",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "font-size/button",
+                          "collection":  "Typography",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Button label size in px (static: the same in every mode). Even px on the 4px type scale.",
+                          "scopes":  [
+                                         "FONT_SIZE"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  14,
+                                         "Tablet":  14,
+                                         "Desktop":  14
+                                     },
+                          "webToken":  "--font-size-button",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "font-size/nav",
+                          "collection":  "Typography",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Navigation size in px (static: the same in every mode). Even px on the 4px type scale.",
+                          "scopes":  [
+                                         "FONT_SIZE"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  16,
+                                         "Tablet":  16,
+                                         "Desktop":  16
+                                     },
+                          "webToken":  "--font-size-nav",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "font-size/utility",
+                          "collection":  "Typography",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Utility size in px (static: the same in every mode).",
+                          "scopes":  [
+                                         "FONT_SIZE"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  12,
+                                         "Tablet":  12,
+                                         "Desktop":  12
+                                     },
+                          "webToken":  "--font-size-utility",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "font-size/input",
+                          "collection":  "Typography",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Form input (16px prevents iOS zoom on focus) size in px (static: the same in every mode).",
+                          "scopes":  [
+                                         "FONT_SIZE"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  16,
+                                         "Tablet":  16,
+                                         "Desktop":  16
+                                     },
+                          "webToken":  "--font-size-input",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "font-size/validation",
+                          "collection":  "Typography",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Validation message size in px (static: the same in every mode). Even px on the 4px type scale.",
+                          "scopes":  [
+                                         "FONT_SIZE"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  14,
+                                         "Tablet":  14,
+                                         "Desktop":  14
+                                     },
+                          "webToken":  "--font-size-validation",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "font-size/price",
+                          "collection":  "Typography",
+                          "type":  "FLOAT",
+                          "layer":  "component",
+                          "description":  "Price size in px (static: the same in every mode).",
+                          "scopes":  [
+                                         "FONT_SIZE"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  16,
+                                         "Tablet":  16,
+                                         "Desktop":  16
+                                     },
+                          "webToken":  "--font-size-price",
+                          "webRelation":  "shared"
+                      }
+                  ],
+    "textStyles":  [
+                       {
+                           "name":  "Display",
+                           "webRole":  "display",
+                           "fontFamily":  "{font/family/heading}",
+                           "fontWeight":  "{font/weight/medium}",
+                           "fontSize":  "{font-size/display}",
+                           "lineHeightPercent":  110,
+                           "letterSpacingPercent":  -1.5,
+                           "textCase":  "ORIGINAL",
+                           "usage":  "Hero headline, one per page"
+                       },
+                       {
+                           "name":  "Heading/H1",
+                           "webRole":  "h1",
+                           "fontFamily":  "{font/family/heading}",
+                           "fontWeight":  "{font/weight/medium}",
+                           "fontSize":  "{font-size/h1}",
+                           "lineHeightPercent":  110,
+                           "letterSpacingPercent":  -1,
+                           "textCase":  "ORIGINAL",
+                           "usage":  "Page title, one per page"
+                       },
+                       {
+                           "name":  "Heading/H2",
+                           "webRole":  "h2",
+                           "fontFamily":  "{font/family/heading}",
+                           "fontWeight":  "{font/weight/medium}",
+                           "fontSize":  "{font-size/h2}",
+                           "lineHeightPercent":  110,
+                           "letterSpacingPercent":  -1,
+                           "textCase":  "ORIGINAL",
+                           "usage":  "Section title"
+                       },
+                       {
+                           "name":  "Heading/H3",
+                           "webRole":  "h3",
+                           "fontFamily":  "{font/family/heading}",
+                           "fontWeight":  "{font/weight/medium}",
+                           "fontSize":  "{font-size/h3}",
+                           "lineHeightPercent":  125,
+                           "letterSpacingPercent":  0,
+                           "textCase":  "ORIGINAL",
+                           "usage":  "Sub-section, feature title"
+                       },
+                       {
+                           "name":  "Heading/H4",
+                           "webRole":  "h4",
+                           "fontFamily":  "{font/family/heading}",
+                           "fontWeight":  "{font/weight/semibold}",
+                           "fontSize":  "{font-size/h4}",
+                           "lineHeightPercent":  125,
+                           "letterSpacingPercent":  0,
+                           "textCase":  "ORIGINAL",
+                           "usage":  "Card title"
+                       },
+                       {
+                           "name":  "Heading/H5",
+                           "webRole":  "h5",
+                           "fontFamily":  "{font/family/heading}",
+                           "fontWeight":  "{font/weight/bold}",
+                           "fontSize":  "{font-size/h5}",
+                           "lineHeightPercent":  125,
+                           "letterSpacingPercent":  0,
+                           "textCase":  "ORIGINAL",
+                           "usage":  "Small heading (Cormorant bold, for legibility at small sizes)"
+                       },
+                       {
+                           "name":  "Heading/H6",
+                           "webRole":  "h6",
+                           "fontFamily":  "{font/family/heading}",
+                           "fontWeight":  "{font/weight/bold}",
+                           "fontSize":  "{font-size/h6}",
+                           "lineHeightPercent":  125,
+                           "letterSpacingPercent":  4,
+                           "textCase":  "ORIGINAL",
+                           "usage":  "Minor group label"
+                       },
+                       {
+                           "name":  "Body/Large",
+                           "webRole":  "body-lg",
+                           "fontFamily":  "{font/family/body}",
+                           "fontWeight":  "{font/weight/regular}",
+                           "fontSize":  "{font-size/body-lg}",
+                           "lineHeightPercent":  160,
+                           "letterSpacingPercent":  0,
+                           "textCase":  "ORIGINAL",
+                           "usage":  "Introductions and lead paragraphs"
+                       },
+                       {
+                           "name":  "Body/Default",
+                           "webRole":  "body",
+                           "fontFamily":  "{font/family/body}",
+                           "fontWeight":  "{font/weight/regular}",
+                           "fontSize":  "{font-size/body}",
+                           "lineHeightPercent":  160,
+                           "letterSpacingPercent":  0,
+                           "textCase":  "ORIGINAL",
+                           "usage":  "Running text (never below 16px)"
+                       },
+                       {
+                           "name":  "Body/Small",
+                           "webRole":  "body-sm",
+                           "fontFamily":  "{font/family/body}",
+                           "fontWeight":  "{font/weight/regular}",
+                           "fontSize":  "{font-size/body-sm}",
+                           "lineHeightPercent":  150,
+                           "letterSpacingPercent":  0,
+                           "textCase":  "ORIGINAL",
+                           "usage":  "Secondary text, notes"
+                       },
+                       {
+                           "name":  "Body/Caption",
+                           "webRole":  "caption",
+                           "fontFamily":  "{font/family/body}",
+                           "fontWeight":  "{font/weight/regular}",
+                           "fontSize":  "{font-size/caption}",
+                           "lineHeightPercent":  150,
+                           "letterSpacingPercent":  0,
+                           "textCase":  "ORIGINAL",
+                           "usage":  "Captions and fine print"
+                       },
+                       {
+                           "name":  "Label/Overline",
+                           "webRole":  "overline",
+                           "fontFamily":  "{font/family/body}",
+                           "fontWeight":  "{font/weight/semibold}",
+                           "fontSize":  "{font-size/overline}",
+                           "lineHeightPercent":  150,
+                           "letterSpacingPercent":  14,
+                           "textCase":  "UPPER",
+                           "usage":  "Eyebrow above a heading"
+                       },
+                       {
+                           "name":  "Label/Default",
+                           "webRole":  "label",
+                           "fontFamily":  "{font/family/body}",
+                           "fontWeight":  "{font/weight/medium}",
+                           "fontSize":  "{font-size/label}",
+                           "lineHeightPercent":  125,
+                           "letterSpacingPercent":  0,
+                           "textCase":  "ORIGINAL",
+                           "usage":  "Form labels"
+                       },
+                       {
+                           "name":  "Label/Button",
+                           "webRole":  "button",
+                           "fontFamily":  "{font/family/body}",
+                           "fontWeight":  "{font/weight/semibold}",
+                           "fontSize":  "{font-size/button}",
+                           "lineHeightPercent":  125,
+                           "letterSpacingPercent":  8,
+                           "textCase":  "UPPER",
+                           "usage":  "Button label"
+                       },
+                       {
+                           "name":  "Label/Navigation",
+                           "webRole":  "nav",
+                           "fontFamily":  "{font/family/body}",
+                           "fontWeight":  "{font/weight/medium}",
+                           "fontSize":  "{font-size/nav}",
+                           "lineHeightPercent":  125,
+                           "letterSpacingPercent":  4,
+                           "textCase":  "ORIGINAL",
+                           "usage":  "Navigation links"
+                       },
+                       {
+                           "name":  "Label/Utility",
+                           "webRole":  "utility",
+                           "fontFamily":  "{font/family/body}",
+                           "fontWeight":  "{font/weight/medium}",
+                           "fontSize":  "{font-size/utility}",
+                           "lineHeightPercent":  150,
+                           "letterSpacingPercent":  8,
+                           "textCase":  "UPPER",
+                           "usage":  "Announcement bar, small utility text"
+                       },
+                       {
+                           "name":  "Form/Input",
+                           "webRole":  "input",
+                           "fontFamily":  "{font/family/body}",
+                           "fontWeight":  "{font/weight/regular}",
+                           "fontSize":  "{font-size/input}",
+                           "lineHeightPercent":  150,
+                           "letterSpacingPercent":  0,
+                           "textCase":  "ORIGINAL",
+                           "usage":  "Text typed into a field"
+                       },
+                       {
+                           "name":  "Form/Validation",
+                           "webRole":  "validation",
+                           "fontFamily":  "{font/family/body}",
+                           "fontWeight":  "{font/weight/medium}",
+                           "fontSize":  "{font-size/validation}",
+                           "lineHeightPercent":  150,
+                           "letterSpacingPercent":  0,
+                           "textCase":  "ORIGINAL",
+                           "usage":  "Field error and success text"
+                       },
+                       {
+                           "name":  "Product/Title",
+                           "webRole":  "product-title",
+                           "fontFamily":  "{font/family/body}",
+                           "fontWeight":  "{font/weight/medium}",
+                           "fontSize":  "{font-size/product-title}",
+                           "lineHeightPercent":  125,
+                           "letterSpacingPercent":  0,
+                           "textCase":  "ORIGINAL",
+                           "usage":  "Product name on a card (DM Sans)"
+                       },
+                       {
+                           "name":  "Product/Price",
+                           "webRole":  "price",
+                           "fontFamily":  "{font/family/body}",
+                           "fontWeight":  "{font/weight/medium}",
+                           "fontSize":  "{font-size/price}",
+                           "lineHeightPercent":  125,
+                           "letterSpacingPercent":  0,
+                           "textCase":  "ORIGINAL",
+                           "usage":  "Price"
+                       },
+                       {
+                           "name":  "Product/Price Large",
+                           "webRole":  "price-lg",
+                           "fontFamily":  "{font/family/body}",
+                           "fontWeight":  "{font/weight/medium}",
+                           "fontSize":  "{font-size/price-lg}",
+                           "lineHeightPercent":  125,
+                           "letterSpacingPercent":  0,
+                           "textCase":  "ORIGINAL",
+                           "usage":  "Price on the product page"
+                       }
+                   ],
+    "textStyleNotes":  "A Text Style is not a Variable. A style stores a bundle (family, weight, size, line height, letter spacing, case). Family, weight and size are bound to the variables above; line height and letter spacing are stored in the style as percentages because the web values are unitless ratios and em values, which a px variable cannot express without a per-style conversion."
+}

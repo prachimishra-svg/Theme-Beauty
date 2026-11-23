@@ -1,0 +1,51 @@
+{
+    "name":  "Announcement Bar",
+    "page":  "shared",
+    "properties":  [
+                       {
+                           "name":  "message",
+                           "type":  "TEXT",
+                           "default":  "Free shipping on orders over $50",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "message",
+                                           "id":  "text",
+                                           "setting":  "text",
+                                           "blockType":  "message"
+                                       },
+                           "note":  "The message shown"
+                       }
+                   ],
+    "tokens":  [
+                   "brand background",
+                   "type roles"
+               ],
+    "summary":  "A one-line message above the header with previous and next controls. Maps to the announcement-bar section.",
+    "accessibility":  "The message sits in a polite live region; the controls are buttons.",
+    "id":  "announcement-bar",
+    "shopifyOnly":  [
+                        {
+                            "id":  "link",
+                            "setting":  "url",
+                            "note":  "Optional link on the message"
+                        },
+                        {
+                            "id":  "autoplay",
+                            "setting":  "checkbox"
+                        },
+                        {
+                            "id":  "interval",
+                            "setting":  "range"
+                        }
+                    ],
+    "level":  "main",
+    "status":  "classified (D10 items pending)",
+    "responsive":  "Arrows from 600 px; dots below 600 px.",
+    "exposes":  [
+
+                ],
+    "children":  [
+                     "components/layout/announcement-arrow",
+                     "components/layout/announcement-dots"
+                 ]
+}

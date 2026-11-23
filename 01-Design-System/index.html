@@ -1,0 +1,929 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NUDGE Beauty Theme Design System</title>
+  <meta name="description" content="NUDGE Beauty Theme — design tokens, typography, components and icons for a premium beauty and skincare Shopify theme.">
+  <link rel="stylesheet" href="../02-Design-Variables/Styles/variables.css">
+  <link rel="stylesheet" href="Styles/base.css">
+  <link rel="stylesheet" href="Styles/components.css">
+  <link rel="stylesheet" href="Styles/preview.css">
+  <link rel="icon" href="../05-Assets/Logos/nudge-favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../05-Assets/Logos/nudge-favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="../05-Assets/Logos/nudge-apple-touch-icon.png">
+</head>
+<body>
+
+<!-- ICON-SPRITE:START -->
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+  <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="icon-account" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+  <symbol id="icon-bag" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></symbol>
+  <symbol id="icon-menu" viewBox="0 0 24 24"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></symbol>
+  <symbol id="icon-close" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+  <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+  <symbol id="icon-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="icon-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="icon-chevron-up" viewBox="0 0 24 24"><path d="m18 15-6-6-6 6"/></symbol>
+  <symbol id="icon-chevron-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+  <symbol id="icon-chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+  <symbol id="icon-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol>
+  <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="icon-filter" viewBox="0 0 24 24"><line x1="21" x2="14" y1="4" y2="4"/><line x1="10" x2="3" y1="4" y2="4"/><line x1="21" x2="12" y1="12" y2="12"/><line x1="8" x2="3" y1="12" y2="12"/><line x1="21" x2="16" y1="20" y2="20"/><line x1="12" x2="3" y1="20" y2="20"/><line x1="14" x2="14" y1="2" y2="6"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="16" x2="16" y1="18" y2="22"/></symbol>
+  <symbol id="icon-sort" viewBox="0 0 24 24"><path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/></symbol>
+  <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></symbol>
+  <symbol id="icon-star" viewBox="0 0 24 24"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></symbol>
+  <symbol id="icon-location" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="icon-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+  <symbol id="icon-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="icon-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="icon-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol>
+  <symbol id="icon-warning" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+  <symbol id="icon-eye" viewBox="0 0 24 24"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="icon-eye-off" viewBox="0 0 24 24"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"/><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/><path d="m2 2 20 20"/></symbol>
+  <symbol id="icon-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></symbol>
+  <symbol id="icon-instagram" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></symbol>
+  <symbol id="icon-facebook" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+  <symbol id="icon-youtube" viewBox="0 0 24 24"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></symbol>
+  <symbol id="icon-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+  <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="icon-zoom-in" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></symbol>
+  <symbol id="icon-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></symbol>
+  <symbol id="icon-truck" viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+  <symbol id="icon-rotate-ccw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
+  <symbol id="icon-shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="icon-store" viewBox="0 0 24 24"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/></symbol>
+  <symbol id="icon-loader" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></symbol>
+</svg>
+<!-- ICON-SPRITE:END -->
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="ds-header">
+  <div class="container ds-header__inner">
+    <a class="ds-brand" href="#top">
+      <svg class="ds-brand__logo" viewBox="0 0 520 100" role="img" aria-label="NUDGE" fill="currentColor"><path d="M0 14H16V100H0ZM66 0H82V86H66ZM0 14H19L82 86H63Z"/><path d="M106 0H122V62A25 25 0 0 0 172 62V0H188V62A41 41 0 0 1 106 62Z"/><path fill-rule="evenodd" d="M212 0H252A50 50 0 0 1 252 100H212ZM228 16H252A34 34 0 0 1 252 84H228Z"/><path d="M378 42H426V58H378Z"/><path d="M450 0H520V16H466V42H510V58H466V84H520V100H450Z"/><path d="M410.4 25.9A42 42 0 1 0 418 50" fill="none" stroke="currentColor" stroke-width="16"/></svg>
+      <span class="ds-brand__tag">Design System v0.1</span>
+    </a>
+    <nav class="ds-nav" aria-label="Design system sections">
+      <ul>
+        <li><a href="#colors">Color</a></li>
+        <li><a href="#typography">Typography</a></li>
+        <li><a href="#spacing">Spacing &amp; tokens</a></li>
+        <li><a href="#buttons">Buttons</a></li>
+        <li><a href="#forms">Forms</a></li>
+        <li><a href="#badges-cards">Badges &amp; cards</a></li>
+        <li><a href="#navigation">Navigation &amp; disclosure</a></li>
+        <li><a href="#icons">Icons</a></li>
+        <li><a href="#product-card">Product card</a></li>
+        <li><a href="#responsive">Responsive</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===================== INTRO ===================== -->
+  <section class="ds-hero" id="top">
+    <div class="container ds-hero__grid">
+      <div class="stack" style="--stack-gap: var(--space-5)">
+        <p class="text-overline">Premium beauty &amp; skincare</p>
+        <h1 class="text-display">A calm, editorial foundation for beauty storefronts.</h1>
+        <p class="text-body-lg text-secondary measure">NUDGE is a token-driven design system: Rich Burgundy and Luxury Rose on Pearl Pink and Rose Quartz with Midnight Plum type, a refined serif paired with a clean sans, and accessible components ready to move into a Shopify theme.</p>
+        <div class="cluster">
+          <a class="btn btn--primary" href="#colors">Explore the system</a>
+          <a class="btn btn--text" href="Documentation/README.md">Read the docs</a>
+        </div>
+      </div>
+      <dl class="ds-hero__meta">
+        <div><dt>Status</dt><dd>Design foundation — storefront pages not started. Working name, not a cleared trademark.</dd></div>
+        <div><dt>Source of truth</dt><dd><span class="ds-code">02-Design-Variables/Tokens/*.json</span>, generated into <span class="ds-code">variables.css</span>. Every swatch, size and spacing value on this page reads from it.</dd></div>
+        <div><dt>This viewport</dt><dd><span class="ds-live" data-vw>—</span> wide · <span class="ds-live" data-cols>—</span> product columns · <span class="ds-live" data-gutter>—</span> gutter</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ===================== COLOR ===================== -->
+  <section class="section section--surface" id="colors">
+    <div class="container">
+      <div class="ds-section__head">
+        <p class="text-overline">01 · Color</p>
+        <h2>Rose, burgundy, pearl and plum.</h2>
+        <p class="text-secondary">Rich Burgundy is the CTA and active-state colour. Luxury Rose marks recognisable brand moments (eyebrows, ratings, heading rules, large serif accents). Blush Rose is a decorative accent. Pearl Pink, white and Rose Quartz carry most of the page; Midnight Plum carries the type and the dark bands. Components use <em>semantic</em> tokens; only the <em>primitive</em> layer holds raw hex values.</p>
+      </div>
+
+      <h3 class="ds-label" style="margin-bottom: var(--space-4)">Primitive tokens — brand</h3>
+      <div class="grid grid--auto ds-colors">
+        <div class="ds-color"><div class="ds-color__chip" style="--chip: var(--palette-rose-700); --chip-ink: var(--palette-white)">Brand</div><div class="ds-color__body"><strong>Rich Burgundy</strong><span class="ds-code">--palette-rose-700</span><code data-token-value="--palette-rose-700"></code></div></div>
+        <div class="ds-color"><div class="ds-color__chip" style="--chip: var(--palette-rose-800); --chip-ink: var(--palette-white)">Hover</div><div class="ds-color__body"><strong>Rose 800</strong><span class="ds-code">--palette-rose-800</span><code data-token-value="--palette-rose-800"></code></div></div>
+        <div class="ds-color"><div class="ds-color__chip" style="--chip: var(--palette-rose-900); --chip-ink: var(--palette-white)">Active</div><div class="ds-color__body"><strong>Rose 900</strong><span class="ds-code">--palette-rose-900</span><code data-token-value="--palette-rose-900"></code></div></div>
+        <div class="ds-color"><div class="ds-color__chip" style="--chip: var(--palette-rose-100)">Tint</div><div class="ds-color__body"><strong>Rose 100</strong><span class="ds-code">--palette-rose-100</span><code data-token-value="--palette-rose-100"></code></div></div>
+        <div class="ds-color"><div class="ds-color__chip" style="--chip: var(--palette-rose-500); --chip-ink: var(--palette-white)">Brand</div><div class="ds-color__body"><strong>Luxury Rose</strong><span class="ds-code">--palette-rose-500</span><code data-token-value="--palette-rose-500"></code></div></div>
+        <div class="ds-color"><div class="ds-color__chip" style="--chip: var(--palette-rose-400)">Accent</div><div class="ds-color__body"><strong>Blush Rose</strong><span class="ds-code">--palette-rose-400</span><code data-token-value="--palette-rose-400"></code></div></div>
+        <div class="ds-color"><div class="ds-color__chip" style="--chip: var(--palette-rose-50)">Tint</div><div class="ds-color__body"><strong>Rose 50</strong><span class="ds-code">--palette-rose-50</span><code data-token-value="--palette-rose-50"></code></div></div>
+      </div>
+
+      <h3 class="ds-label" style="margin: var(--space-8) 0 var(--space-4)">Primitive tokens — neutrals</h3>
+      <div class="grid grid--auto ds-colors">
+        <div class="ds-color"><div class="ds-color__chip" style="--chip: var(--palette-ivory)">Page</div><div class="ds-color__body"><strong>Pearl Pink</strong><span class="ds-code">--palette-ivory</span><code data-token-value="--palette-ivory"></code></div></div>
+        <div class="ds-color"><div class="ds-color__chip" style="--chip: var(--palette-white)">Surface</div><div class="ds-color__body"><strong>White</strong><span class="ds-code">--palette-white</span><code data-token-value="--palette-white"></code></div></div>
+        <div class="ds-color"><div class="ds-color__chip" style="--chip: var(--palette-blush)">Subtle</div><div class="ds-color__body"><strong>Rose Quartz</strong><span class="ds-code">--palette-blush</span><code data-token-value="--palette-blush"></code></div></div>
+        <div class="ds-color"><div class="ds-color__chip" style="--chip: var(--palette-charcoal); --chip-ink: var(--palette-ivory)">Text</div><div class="ds-color__body"><strong>Midnight Plum</strong><span class="ds-code">--palette-charcoal</span><code data-token-value="--palette-charcoal"></code></div></div>
+        <div class="ds-color"><div class="ds-color__chip" style="--chip: var(--palette-neutral-600); --chip-ink: var(--palette-white)">Derived</div><div class="ds-color__body"><strong>Neutral 600</strong><span class="ds-code">--palette-neutral-600</span><code data-token-value="--palette-neutral-600"></code></div></div>
+        <div class="ds-color"><div class="ds-color__chip" style="--chip: var(--palette-neutral-500); --chip-ink: var(--palette-white)">Derived</div><div class="ds-color__body"><strong>Neutral 500</strong><span class="ds-code">--palette-neutral-500</span><code data-token-value="--palette-neutral-500"></code></div></div>
+        <div class="ds-color"><div class="ds-color__chip" style="--chip: var(--palette-neutral-400)"><span class="badge badge--dark">Derived</span></div><div class="ds-color__body"><strong>Neutral 400</strong><span class="ds-code">--palette-neutral-400</span><code data-token-value="--palette-neutral-400"></code></div></div>
+        <div class="ds-color"><div class="ds-color__chip" style="--chip: var(--palette-neutral-300)">Derived</div><div class="ds-color__body"><strong>Neutral 300</strong><span class="ds-code">--palette-neutral-300</span><code data-token-value="--palette-neutral-300"></code></div></div>
+      </div>
+
+      <h3 class="ds-label" style="margin: var(--space-8) 0 var(--space-4)">Primitive tokens — status (semantic need only)</h3>
+      <div class="grid grid--auto ds-colors">
+        <div class="ds-color"><div class="ds-color__chip" style="--chip: var(--palette-red-50); --chip-ink: var(--palette-red-700)">Error</div><div class="ds-color__body"><strong>Error</strong><span class="ds-code">--palette-red-700</span><code data-token-value="--palette-red-700"></code></div></div>
+        <div class="ds-color"><div class="ds-color__chip" style="--chip: var(--palette-green-50); --chip-ink: var(--palette-green-700)">Success</div><div class="ds-color__body"><strong>Success</strong><span class="ds-code">--palette-green-700</span><code data-token-value="--palette-green-700"></code></div></div>
+        <div class="ds-color"><div class="ds-color__chip" style="--chip: var(--palette-amber-50); --chip-ink: var(--palette-amber-700)">Warning</div><div class="ds-color__body"><strong>Warning</strong><span class="ds-code">--palette-amber-700</span><code data-token-value="--palette-amber-700"></code></div></div>
+      </div>
+      <p class="ds-note" style="margin-top: var(--space-3)">Status colors exist only because errors, success and warnings need distinguishable meaning. They are never used decoratively and always appear with an icon and text.</p>
+
+      <div class="ds-sub">
+        <h3>Semantic tokens in use</h3>
+        <p class="ds-note">Semantic tokens say what a color is <em>for</em>. Swapping the primitive behind <span class="ds-code">--color-brand-primary</span> re-themes everything below.</p>
+        <div class="ds-usage">
+          <div class="ds-usage__demo ds-usage__demo--page">
+            <span class="ds-label">bg-page · text-primary</span>
+            <p class="text-product-title">Page background</p>
+            <p class="text-secondary text-body-sm">Secondary text on Pearl Pink (<span class="ds-code">--color-text-secondary</span>).</p>
+            <a class="link link--standalone" href="#colors">A link on the page</a>
+          </div>
+          <div class="ds-usage__demo ds-usage__demo--surface">
+            <span class="ds-label">bg-surface · border-subtle</span>
+            <p class="text-product-title">Surface (cards, inputs)</p>
+            <p class="text-muted text-body-sm">Muted text: AA on Pearl Pink, white and Rose Quartz (<span class="ds-code">--color-text-muted</span>).</p>
+            <button class="btn btn--primary btn--sm" type="button">Primary action</button>
+          </div>
+          <div class="ds-usage__demo ds-usage__demo--subtle">
+            <span class="ds-label">bg-subtle</span>
+            <p class="text-product-title">Subtle band</p>
+            <p class="text-body-sm">Midnight Plum on Rose Quartz. Do not put bare control borders here.</p>
+          </div>
+          <div class="ds-usage__demo surface-inverse">
+            <span class="ds-label" style="color: var(--color-text-secondary)">.surface-inverse</span>
+            <p class="text-product-title">Inverse surface</p>
+            <p class="text-body-sm" style="color: var(--color-text-secondary)">Footer / promo bar context. Semantic tokens are re-mapped, including the focus ring (Rose Quartz), secondary button and form controls. Tab to the controls to see the ring.</p>
+            <div class="cluster"><a class="link link--standalone" href="#colors">Link on dark</a><button class="btn btn--secondary btn--sm" type="button">Secondary</button></div>
+            <div class="field"><label class="field__label" for="inv-email">Email on dark</label><input class="input" id="inv-email" type="email" placeholder="you@example.com"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-sub">
+        <h3>Contrast — measured, not assumed</h3>
+        <p class="ds-note">WCAG 2.x relative-luminance ratios computed from the actual hex values of the canonical tokens (2026-11-11, after the Luxury Rose and Rich Burgundy palette; the live, always-current version is the Validation panel of the Design Variables dashboard). Text needs ≥ 4.5:1 (≥ 3:1 for large text); UI boundaries and focus indicators need ≥ 3:1. White-on-burgundy was calculated, not assumed. Blush Rose is decorative only on light surfaces.</p>
+        <div class="ds-table-wrap" tabindex="0" role="region" aria-label="Contrast ratios (scrollable)">
+          <table class="ds-table">
+            <thead><tr><th scope="col">Combination</th><th scope="col">Used for</th><th scope="col">Ratio</th><th scope="col">Result</th></tr></thead>
+            <tbody>
+              <tr><th scope="row" style="font-weight: var(--font-weight-medium)">White on Rich Burgundy</th><td>Primary button, sale badge</td><td>9.18:1</td><td><span class="ds-pass"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#icon-check"/></svg>AA &amp; AAA</span></td></tr>
+              <tr><th scope="row" style="font-weight: var(--font-weight-medium)">White on Rose 800 / 900</th><td>Button hover / active</td><td>11.23 / 13.47:1</td><td><span class="ds-pass"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#icon-check"/></svg>AAA</span></td></tr>
+              <tr><th scope="row" style="font-weight: var(--font-weight-medium)">Rich Burgundy on Pearl / White / Rose Quartz</th><td>Links, focus ring, selected, active navigation</td><td>8.58 / 9.18 / 6.70:1</td><td><span class="ds-pass"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#icon-check"/></svg>AA</span></td></tr>
+              <tr><th scope="row" style="font-weight: var(--font-weight-medium)">Midnight Plum on Pearl / White / Rose Quartz</th><td>Primary text</td><td>14.65 / 15.67 / 11.44:1</td><td><span class="ds-pass"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#icon-check"/></svg>AAA</span></td></tr>
+              <tr><th scope="row" style="font-weight: var(--font-weight-medium)">Neutral 600 on Pearl / White / Rose Quartz</th><td>Secondary text</td><td>7.65 / 8.18 / 5.97:1</td><td><span class="ds-pass"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#icon-check"/></svg>AA</span></td></tr>
+              <tr><th scope="row" style="font-weight: var(--font-weight-medium)">Neutral 500 on Pearl / White / Rose Quartz</th><td>Muted text, placeholders</td><td>5.88 / 6.29 / 4.59:1</td><td><span class="ds-pass"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#icon-check"/></svg>AA</span></td></tr>
+              <tr><th scope="row" style="font-weight: var(--font-weight-medium)">Neutral 400 border on Pearl / White</th><td>Input &amp; control boundaries</td><td>3.49 / 3.73:1</td><td><span class="ds-pass"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#icon-check"/></svg>≥ 3:1</span></td></tr>
+              <tr><th scope="row" style="font-weight: var(--font-weight-medium)">Neutral 400 border on Rose Quartz</th><td><strong>Not allowed</strong> (no controls bare on Rose Quartz)</td><td>2.72:1</td><td><span style="color: var(--color-status-error); font-weight: var(--font-weight-semibold)" class="cluster"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#icon-warning"/></svg>Fails 3:1 — rule</span></td></tr>
+              <tr><th scope="row" style="font-weight: var(--font-weight-medium)">Error / Success / Warning on tint</th><td>Messages, badges</td><td>5.79 / 5.55 / 5.28:1</td><td><span class="ds-pass"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#icon-check"/></svg>AA</span></td></tr>
+              <tr><th scope="row" style="font-weight: var(--font-weight-medium)">Luxury Rose on Pearl / White / Rose Quartz</th><td>Eyebrows and ratings on Pearl and white; large text and marks only on Rose Quartz</td><td>4.67 / 4.99 / 3.65:1</td><td><span class="ds-pass"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#icon-check"/></svg>AA (large only on Quartz)</span></td></tr><td><span style="color: var(--color-status-error); font-weight: var(--font-weight-semibold)" class="cluster"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#icon-warning"/></svg>Not for text</span></td></tr>
+              <tr><th scope="row" style="font-weight: var(--font-weight-medium)">Rich Burgundy on Midnight Plum</th><td><strong>Not allowed</strong> (links and focus ring on dark surfaces)</td><td>1.71:1</td><td><span style="color: var(--color-status-error); font-weight: var(--font-weight-semibold)" class="cluster"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#icon-warning"/></svg>Fails: use Rose Quartz (.surface-inverse)</span></td></tr>
+              <tr><th scope="row" style="font-weight: var(--font-weight-medium)">Rose Quartz / Pearl on Midnight Plum</th><td>Inverse surface text &amp; focus ring</td><td>11.44 / 14.65:1</td><td><span class="ds-pass"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#icon-check"/></svg>AAA</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TYPOGRAPHY ===================== -->
+  <section class="section" id="typography">
+    <div class="container">
+      <div class="ds-section__head">
+        <p class="text-overline">02 · Typography</p>
+        <h2>Cormorant &amp; DM Sans</h2>
+        <p class="text-secondary">A refined serif for every heading, a clear sans for everything you read and tap, product names included. Sizes are whole, even px; the larger roles step up at 600 and 1024px. Resize the window across those widths and watch the live values change. Fonts are self-hosted (SIL OFL) with <span class="ds-code">font-display: swap</span> and system fallbacks.</p>
+      </div>
+
+      <div class="ds-panel">
+        <div class="ds-spec"><div class="ds-spec__sample"><p class="text-display" data-spec>Display hero</p></div><div class="ds-spec__meta"><span><b>text-display</b> · Cormorant 500 · LH 1.1 · LS −0.015em</span><span>44 / 60 / 80px · now <span class="ds-live"></span></span><span>Hero headlines only; one per page.</span></div></div>
+        <div class="ds-spec"><div class="ds-spec__sample"><p class="h1" data-spec>Heading one</p></div><div class="ds-spec__meta"><span><b>h1 / .h1</b> · Cormorant 500 · LH 1.1 · LS −0.01em</span><span>36 / 48 / 60px · now <span class="ds-live"></span></span><span>Page title; one per page.</span></div></div>
+        <div class="ds-spec"><div class="ds-spec__sample"><h2 data-spec>Heading two</h2></div><div class="ds-spec__meta"><span><b>h2</b> · Cormorant 500 · LH 1.1 · LS −0.01em</span><span>32 / 36 / 44px · now <span class="ds-live"></span></span><span>Section titles.</span></div></div>
+        <div class="ds-spec"><div class="ds-spec__sample"><h3 data-spec>Heading three</h3></div><div class="ds-spec__meta"><span><b>h3</b> · Cormorant 500 · LH 1.25</span><span>24 / 28 / 32px · now <span class="ds-live"></span></span><span>Sub-sections, feature titles.</span></div></div>
+        <div class="ds-spec"><div class="ds-spec__sample"><h4 data-spec>Heading four</h4></div><div class="ds-spec__meta"><span><b>h4</b> · Cormorant 600 · LH 1.25</span><span>20 / 24 / 24px · now <span class="ds-live"></span></span><span>Card titles. Weight 600 for legibility at small size.</span></div></div>
+        <div class="ds-spec"><div class="ds-spec__sample"><h5 data-spec>Heading five</h5></div><div class="ds-spec__meta"><span><b>h5</b> · Cormorant 700 · LH 1.25</span><span>fixed 16px · now <span class="ds-live"></span></span><span>Bold keeps the serif legible at small sizes.</span></div></div>
+        <div class="ds-spec"><div class="ds-spec__sample"><h6 data-spec>Heading six</h6></div><div class="ds-spec__meta"><span><b>h6</b> · Cormorant 700 · LH 1.25 · LS 0.04em</span><span>fixed 16px · now <span class="ds-live"></span></span><span>Minor group labels.</span></div></div>
+        <div class="ds-spec"><div class="ds-spec__sample"><h2 class="heading-caps" data-spec>Uppercase heading</h2></div><div class="ds-spec__meta"><span><b>.heading-caps</b> on any heading · uppercase · LS 0.06em</span><span>size follows the heading · now <span class="ds-live"></span></span><span>Hero and section headings. Never on body text, product names or navigation.</span></div></div>
+        <div class="ds-spec"><div class="ds-spec__sample"><p class="text-body-lg" data-spec>Body large — introductions and lead paragraphs read comfortably at this size.</p></div><div class="ds-spec__meta"><span><b>text-body-lg</b> · DM Sans 400 · LH 1.6</span><span>fixed 18px · now <span class="ds-live"></span></span><span>Lead paragraphs, editorial intros.</span></div></div>
+        <div class="ds-spec"><div class="ds-spec__sample"><p data-spec>Body — the default reading size for descriptions, ingredients, and policies. Line length is capped near 65 characters.</p></div><div class="ds-spec__meta"><span><b>p / text-body</b> · DM Sans 400 · LH 1.6</span><span>fixed 16px · now <span class="ds-live"></span></span><span>Default. Never smaller on mobile.</span></div></div>
+        <div class="ds-spec"><div class="ds-spec__sample"><p class="text-body-sm" data-spec>Body small — secondary descriptions and dense lists.</p></div><div class="ds-spec__meta"><span><b>text-body-sm</b> · DM Sans 400 · LH 1.5</span><span>fixed 14px · now <span class="ds-live"></span></span><span>Supporting copy.</span></div></div>
+        <div class="ds-spec"><div class="ds-spec__sample"><p class="text-caption" data-spec>Caption — image credits, fine print, helper text.</p></div><div class="ds-spec__meta"><span><b>text-caption</b> · DM Sans 400 · LH 1.5</span><span>fixed 12px · now <span class="ds-live"></span></span><span>Smallest body-level text.</span></div></div>
+        <div class="ds-spec"><div class="ds-spec__sample"><p class="text-overline" data-spec>Overline / eyebrow</p></div><div class="ds-spec__meta"><span><b>text-overline</b> · DM Sans 600 · uppercase · LS 0.14em</span><span>fixed 12px · now <span class="ds-live"></span></span><span>Eyebrow above headings. Brand color.</span></div></div>
+        <div class="ds-spec"><div class="ds-spec__sample"><p class="text-label" data-spec>Form label</p></div><div class="ds-spec__meta"><span><b>text-label</b> · DM Sans 500 · LH 1.25</span><span>fixed 14px · now <span class="ds-live"></span></span><span>Field labels, legends.</span></div></div>
+        <div class="ds-spec"><div class="ds-spec__sample"><span class="btn btn--secondary" data-spec style="pointer-events:none">Button text</span></div><div class="ds-spec__meta"><span><b>btn</b> · DM Sans 600 · uppercase · LS 0.08em</span><span>fixed 14px · now <span class="ds-live"></span></span><span>All buttons.</span></div></div>
+        <div class="ds-spec"><div class="ds-spec__sample"><p class="text-nav" data-spec>Navigation link</p></div><div class="ds-spec__meta"><span><b>text-nav</b> · DM Sans 500 · LS 0.04em</span><span>fixed 16px · now <span class="ds-live"></span></span><span>Header &amp; menu links.</span></div></div>
+        <div class="ds-spec"><div class="ds-spec__sample"><p class="text-product-title" data-spec>Rosewater Barrier Serum</p></div><div class="ds-spec__meta"><span><b>text-product-title</b> · DM Sans 500 · LH 1.25</span><span>16 / 16 / 18px · now <span class="ds-live"></span></span><span>Product names on cards and PDP.</span></div></div>
+        <div class="ds-spec"><div class="ds-spec__sample"><p class="text-price" data-spec>$48.00</p></div><div class="ds-spec__meta"><span><b>text-price</b> · DM Sans 500 · tabular numerals</span><span>fixed 16px · now <span class="ds-live"></span></span><span>Card prices.</span></div></div>
+        <div class="ds-spec"><div class="ds-spec__sample"><p class="text-price-lg" data-spec>$48.00</p></div><div class="ds-spec__meta"><span><b>text-price-lg</b> · DM Sans 500 · tabular numerals</span><span>20 / 24 / 24px · now <span class="ds-live"></span></span><span>PDP price.</span></div></div>
+        <div class="ds-spec"><div class="ds-spec__sample"><p class="text-validation" style="color: var(--color-status-error)" data-spec>Enter a valid email address.</p></div><div class="ds-spec__meta"><span><b>text-validation</b> · DM Sans 500 · LH 1.5</span><span>fixed 14px · now <span class="ds-live"></span></span><span>Always with icon + words.</span></div></div>
+        <div class="ds-spec"><div class="ds-spec__sample"><p class="text-utility" data-spec>Free shipping over $60</p></div><div class="ds-spec__meta"><span><b>text-utility</b> · DM Sans 500 · uppercase · LS 0.08em</span><span>fixed 12px · now <span class="ds-live"></span></span><span>Promo bar, badges, utility strips.</span></div></div>
+      </div>
+
+      <div class="ds-sub">
+        <h3>Reading styles</h3>
+        <div class="grid grid--2">
+          <div class="rte measure">
+            <h3>Rich text, handled</h3>
+            <p>Merchant-authored content inherits sensible spacing, a comfortable measure, and accessible links like <a href="#typography">this one</a>.</p>
+            <ul><li>Ingredient lists wrap cleanly</li><li>Long unbroken strings such as hydroxypropyltrimethylammoniumchloride never cause horizontal scroll</li></ul>
+          </div>
+          <div class="ds-panel" style="align-self: start"><p class="ds-label">Why two families</p><p class="text-body-sm" style="margin-top: var(--space-2)">Loaded: Cormorant 400–700 as one variable file (500, 600 and 700 are used) plus italic 500, and DM Sans 400–700 as one variable file. Three font files, ~98&nbsp;KB total. Request only weights inside those ranges.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SPACING & TOKENS ===================== -->
+  <section class="section section--surface" id="spacing">
+    <div class="container">
+      <div class="ds-section__head">
+        <p class="text-overline">03 · Spacing &amp; tokens</p>
+        <h2>A 4px rhythm, shared by every component.</h2>
+        <p class="text-secondary">Spacing, radius, shadow, border, motion and layering all come from tokens. Components never invent their own values.</p>
+      </div>
+
+      <div class="grid grid--2" style="gap: var(--space-10)">
+        <div>
+          <h3 class="ds-label" style="margin-bottom: var(--space-4)">Spacing scale</h3>
+          <div class="ds-space">
+            <div class="ds-space__row"><span class="ds-code">space-1</span><span>4px</span><span class="ds-space__bar" style="--w: var(--space-1)"></span></div>
+            <div class="ds-space__row"><span class="ds-code">space-2</span><span>8px</span><span class="ds-space__bar" style="--w: var(--space-2)"></span></div>
+            <div class="ds-space__row"><span class="ds-code">space-3</span><span>12px</span><span class="ds-space__bar" style="--w: var(--space-3)"></span></div>
+            <div class="ds-space__row"><span class="ds-code">space-4</span><span>16px</span><span class="ds-space__bar" style="--w: var(--space-4)"></span></div>
+            <div class="ds-space__row"><span class="ds-code">space-5</span><span>20px</span><span class="ds-space__bar" style="--w: var(--space-5)"></span></div>
+            <div class="ds-space__row"><span class="ds-code">space-6</span><span>24px</span><span class="ds-space__bar" style="--w: var(--space-6)"></span></div>
+            <div class="ds-space__row"><span class="ds-code">space-8</span><span>32px</span><span class="ds-space__bar" style="--w: var(--space-8)"></span></div>
+            <div class="ds-space__row"><span class="ds-code">space-10</span><span>40px</span><span class="ds-space__bar" style="--w: var(--space-10)"></span></div>
+            <div class="ds-space__row"><span class="ds-code">space-12</span><span>48px</span><span class="ds-space__bar" style="--w: var(--space-12)"></span></div>
+            <div class="ds-space__row"><span class="ds-code">space-16</span><span>64px</span><span class="ds-space__bar" style="--w: var(--space-16)"></span></div>
+            <div class="ds-space__row"><span class="ds-code">space-20</span><span>80px</span><span class="ds-space__bar" style="--w: var(--space-20)"></span></div>
+            <div class="ds-space__row"><span class="ds-code">space-24</span><span>96px</span><span class="ds-space__bar" style="--w: var(--space-24)"></span></div>
+          </div>
+          <p class="ds-note" style="margin-top: var(--space-4)">Stepped by tier (4px grid): <span class="ds-code">--space-section</span> 48 / 64 / 96px, <span class="ds-code">--layout-gutter</span> 16 / 24 / 40px, <span class="ds-code">--layout-grid-gap</span> 16 / 24 / 32px.</p>
+        </div>
+
+        <div class="stack" style="--stack-gap: var(--space-8)">
+          <div>
+            <h3 class="ds-label" style="margin-bottom: var(--space-4)">Radius</h3>
+            <div class="grid grid--auto ds-tokens-grid">
+              <div class="ds-token-tile"><div class="ds-token-tile__box" style="border-radius: var(--radius-sm)"></div><span class="ds-code">radius-sm</span> 4px · controls, badges</div>
+              <div class="ds-token-tile"><div class="ds-token-tile__box" style="border-radius: var(--radius-md)"></div><span class="ds-code">radius-md</span> 8px · cards</div>
+              <div class="ds-token-tile"><div class="ds-token-tile__box" style="border-radius: var(--radius-lg)"></div><span class="ds-code">radius-lg</span> 16px · panels</div>
+              <div class="ds-token-tile"><div class="ds-token-tile__box" style="border-radius: var(--radius-pill)"></div><span class="ds-code">radius-pill</span> chips, swatches</div>
+            </div>
+          </div>
+          <div>
+            <h3 class="ds-label" style="margin-bottom: var(--space-4)">Shadow</h3>
+            <div class="grid grid--auto ds-tokens-grid" style="background: var(--color-bg-page); padding: var(--space-4); border-radius: var(--radius-card)">
+              <div class="ds-token-tile"><div class="ds-token-tile__box" style="box-shadow: var(--shadow-sm); border-radius: var(--radius-card)"></div><span class="ds-code">shadow-sm</span></div>
+              <div class="ds-token-tile"><div class="ds-token-tile__box" style="box-shadow: var(--shadow-md); border-radius: var(--radius-card)"></div><span class="ds-code">shadow-md</span></div>
+              <div class="ds-token-tile"><div class="ds-token-tile__box" style="box-shadow: var(--shadow-lg); border-radius: var(--radius-card)"></div><span class="ds-code">shadow-lg</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-sub">
+        <h3>Other token groups</h3>
+        <div class="ds-table-wrap" tabindex="0" role="region" aria-label="Token groups (scrollable)">
+          <table class="ds-table">
+            <thead><tr><th scope="col">Group</th><th scope="col">Tokens</th><th scope="col">Notes</th></tr></thead>
+            <tbody>
+              <tr><th scope="row" style="font-weight: var(--font-weight-medium)">Border width</th><td><span class="ds-code">--border-width-thin</span> 1px · <span class="ds-code">--border-width-thick</span> 2px</td><td>Thick = errors, selected, focus.</td></tr>
+              <tr><th scope="row" style="font-weight: var(--font-weight-medium)">Containers</th><td><span class="ds-code">--container-max</span> 1280 · <span class="ds-code">-wide</span> 1440 · <span class="ds-code">-narrow</span> 896 · <span class="ds-code">-text</span> 640</td><td>Content never stretches past max; extra width becomes margin.</td></tr>
+              <tr><th scope="row" style="font-weight: var(--font-weight-medium)">Breakpoints</th><td><span class="ds-code">--breakpoint-tablet</span> 600 · <span class="ds-code">--breakpoint-desktop</span> 1024 · <span class="ds-code">--breakpoint-wide</span> 1440</td><td>Reference only — <span class="ds-code">@media</span> cannot read custom properties.</td></tr>
+              <tr><th scope="row" style="font-weight: var(--font-weight-medium)">Icon sizes</th><td><span class="ds-code">--icon-size-sm/md/lg/xl</span> 16/20/24/32 · <span class="ds-code">--icon-stroke-width</span> 1.5</td><td>24 × 24 viewBox, stroke scales with the icon.</td></tr>
+              <tr><th scope="row" style="font-weight: var(--font-weight-medium)">Control sizing</th><td><span class="ds-code">--control-height-sm/md/lg</span> 40/48/56 · <span class="ds-code">--touch-target-min</span> 44</td><td>Default 48px; 40px only in dense desktop UI.</td></tr>
+              <tr><th scope="row" style="font-weight: var(--font-weight-medium)">Z-index</th><td><span class="ds-code">--z-raised</span> 10 · <span class="ds-code">-sticky</span> 100 · <span class="ds-code">-dropdown</span> 200 · <span class="ds-code">-overlay</span> 300 · <span class="ds-code">-drawer</span> 400 · <span class="ds-code">-modal</span> 500 · <span class="ds-code">-toast</span> 600 · <span class="ds-code">-skip</span> 700</td><td>Never use raw z-index numbers.</td></tr>
+              <tr><th scope="row" style="font-weight: var(--font-weight-medium)">Motion</th><td><span class="ds-code">--duration-fast/base/slow</span> 120/200/320ms · <span class="ds-code">--ease-standard</span> · <span class="ds-code">--ease-out</span></td><td>Disabled under <span class="ds-code">prefers-reduced-motion</span>.</td></tr>
+              <tr><th scope="row" style="font-weight: var(--font-weight-medium)">Focus ring</th><td><span class="ds-code">--focus-ring</span> = 2px solid <span class="ds-code">--color-focus-ring</span>, offset 2px</td><td>Visible on every interactive element; inverse surfaces switch to Blush.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BUTTONS ===================== -->
+  <section class="section" id="buttons">
+    <div class="container">
+      <div class="ds-section__head">
+        <p class="text-overline">04 · Buttons</p>
+        <h2>Buttons &amp; links</h2>
+        <p class="text-secondary">Three variants, three sizes. Minimum height 48px by default (40px small, 56px large); all tap targets are at least 44px. States are shown forced below; real buttons respond to hover, focus and press.</p>
+      </div>
+
+      <div class="ds-panel stack" style="--stack-gap: var(--space-8)">
+        <div>
+          <p class="ds-label" style="margin-bottom: var(--space-3)">Variants · default</p>
+          <div class="cluster">
+            <button class="btn btn--primary" type="button">Add to bag</button>
+            <button class="btn btn--secondary" type="button">Shop all</button>
+            <button class="btn btn--text" type="button">Learn more</button>
+            <button class="btn btn--primary" type="button"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#icon-bag"/></svg>With icon</button>
+            <a class="btn btn--secondary" href="#buttons">Link as button <svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"/></svg></a>
+          </div>
+        </div>
+        <hr class="divider">
+        <div>
+          <p class="ds-label" style="margin-bottom: var(--space-3)">States (forced for documentation)</p>
+          <div class="ds-states">
+            <div><span class="text-caption">Default</span><button class="btn btn--primary" type="button">Primary</button></div>
+            <div><span class="text-caption">Hover</span><button class="btn btn--primary is-hover" type="button">Primary</button></div>
+            <div><span class="text-caption">Active</span><button class="btn btn--primary is-active" type="button">Primary</button></div>
+            <div><span class="text-caption">Focus</span><button class="btn btn--primary is-focus" type="button">Primary</button></div>
+            <div><span class="text-caption">Disabled</span><button class="btn btn--primary" type="button" disabled>Primary</button></div>
+          </div>
+          <div class="ds-states" style="margin-top: var(--space-5)">
+            <div><span class="text-caption">Default</span><button class="btn btn--secondary" type="button">Secondary</button></div>
+            <div><span class="text-caption">Hover</span><button class="btn btn--secondary is-hover" type="button">Secondary</button></div>
+            <div><span class="text-caption">Active</span><button class="btn btn--secondary is-active" type="button">Secondary</button></div>
+            <div><span class="text-caption">Focus</span><button class="btn btn--secondary is-focus" type="button">Secondary</button></div>
+            <div><span class="text-caption">Disabled</span><button class="btn btn--secondary" type="button" disabled>Secondary</button></div>
+          </div>
+          <p class="ds-note" style="margin-top: var(--space-3)">Disabled buttons use a strike-through as well as a muted fill, so the state is not communicated by color alone. Tab through the page to see the real focus ring.</p>
+        </div>
+        <hr class="divider">
+        <div>
+          <p class="ds-label" style="margin-bottom: var(--space-3)">Sizes &amp; layout</p>
+          <div class="cluster">
+            <button class="btn btn--primary btn--sm" type="button">Small · 40</button>
+            <button class="btn btn--primary" type="button">Medium · 48</button>
+            <button class="btn btn--primary btn--lg" type="button">Large · 56</button>
+          </div>
+          <div style="margin-top: var(--space-4); max-width: 24rem" class="stack">
+            <button class="btn btn--primary btn--block" type="button">Block (full width)</button>
+            <button class="btn btn--secondary btn--block-mobile" type="button">Full width on phones only</button>
+          </div>
+        </div>
+        <hr class="divider">
+        <div>
+          <p class="ds-label" style="margin-bottom: var(--space-3)">Icon buttons · 44 × 44 minimum, always labeled</p>
+          <div class="cluster">
+            <button class="icon-btn" type="button" aria-label="Search"><svg class="icon icon--lg" aria-hidden="true" focusable="false"><use href="#icon-search"/></svg></button>
+            <button class="icon-btn" type="button" aria-label="Account"><svg class="icon icon--lg" aria-hidden="true" focusable="false"><use href="#icon-account"/></svg></button>
+            <button class="icon-btn" type="button" aria-label="Bag, 2 items"><svg class="icon icon--lg" aria-hidden="true" focusable="false"><use href="#icon-bag"/></svg><span class="icon-btn__count" aria-hidden="true">2</span></button>
+            <button class="icon-btn icon-btn--filled" type="button" aria-label="Add to wishlist" aria-pressed="false" data-wishlist><svg class="icon icon--lg" aria-hidden="true" focusable="false"><use href="#icon-heart"/></svg></button>
+            <button class="icon-btn" type="button" aria-label="Close" disabled><svg class="icon icon--lg" aria-hidden="true" focusable="false"><use href="#icon-close"/></svg></button>
+          </div>
+          <p class="ds-note" style="margin-top: var(--space-3)">The heart toggles <span class="ds-code">aria-pressed</span> and fills — pressed state is shape + color. Disabled is shown on the last button.</p>
+        </div>
+        <hr class="divider">
+        <div>
+          <p class="ds-label" style="margin-bottom: var(--space-3)">Links</p>
+          <div class="cluster" style="gap: var(--space-8)">
+            <a class="link link--standalone" href="#buttons">Standard link</a>
+            <a class="link link--subtle link--standalone" href="#buttons">Subtle link (underline on hover)</a>
+            <a class="link link--arrow" href="#buttons">Arrow link <svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"/></svg></a>
+          </div>
+          <p class="text-body" style="margin-top: var(--space-4)">Inline links in a sentence — <a class="link" href="#buttons">always underlined</a> so they are not identified by color alone.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FORMS ===================== -->
+  <section class="section section--surface" id="forms">
+    <div class="container">
+      <div class="ds-section__head">
+        <p class="text-overline">05 · Forms</p>
+        <h2>Form controls &amp; validation</h2>
+        <p class="text-secondary">Labels are always visible. Inputs are 16px so iOS doesn't zoom. Errors combine a thicker border, an icon, and a text message, never color alone.</p>
+      </div>
+
+      <div class="grid grid--2" style="gap: var(--space-10); align-items: start">
+        <div class="stack" style="--stack-gap: var(--space-6)">
+          <div class="field">
+            <label class="field__label" for="f-default">Full name</label>
+            <input class="input" id="f-default" type="text" autocomplete="name" placeholder="Ada Lovelace">
+          </div>
+          <div class="field">
+            <label class="field__label" for="f-hint">Email <span class="field__optional">(optional)</span></label>
+            <input class="input" id="f-hint" type="email" autocomplete="email" aria-describedby="f-hint-t" placeholder="you@example.com">
+            <p class="field__hint" id="f-hint-t">We'll only use this for order updates.</p>
+          </div>
+          <div class="field field--error">
+            <label class="field__label" for="f-error">Postcode</label>
+            <input class="input" id="f-error" type="text" value="12" aria-invalid="true" aria-describedby="f-error-m">
+            <p class="field__message field__message--error" id="f-error-m"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-warning"/></svg><span>Enter a valid postcode, such as 90210.</span></p>
+          </div>
+          <div class="field field--success">
+            <label class="field__label" for="f-success">Discount code</label>
+            <input class="input" id="f-success" type="text" value="GLOW10" aria-describedby="f-success-m">
+            <p class="field__message field__message--success" id="f-success-m"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-check-circle"/></svg><span>Code applied: 10% off.</span></p>
+          </div>
+          <div class="field">
+            <label class="field__label" for="f-disabled">Gift message</label>
+            <input class="input" id="f-disabled" type="text" value="Unavailable for this item" disabled>
+          </div>
+          <div class="field">
+            <label class="field__label" for="f-pw">Password</label>
+            <div class="input-affix">
+              <input class="input" id="f-pw" type="password" value="nudgeglow" autocomplete="current-password">
+              <button class="icon-btn input-affix__action" type="button" aria-label="Show password" aria-pressed="false" data-toggle-password="f-pw"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-eye"/></svg></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="stack" style="--stack-gap: var(--space-6)">
+          <div class="field">
+            <label class="field__label" for="f-select">Skin type</label>
+            <div class="select">
+              <select class="input" id="f-select"><option>Normal</option><option>Dry</option><option>Oily</option><option>Combination</option><option>Sensitive</option></select>
+              <svg class="icon select__icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"/></svg>
+            </div>
+          </div>
+          <div class="field">
+            <label class="field__label" for="f-text">Tell us about your routine</label>
+            <textarea class="input" id="f-text" rows="3"></textarea>
+          </div>
+          <fieldset class="fieldset">
+            <legend class="fieldset__legend">Concerns</legend>
+            <label class="choice"><input class="choice__input" type="checkbox" checked><span>Hydration</span></label>
+            <label class="choice"><input class="choice__input" type="checkbox"><span>Fine lines</span></label>
+            <label class="choice"><input class="choice__input" type="checkbox" disabled><span>Out-of-stock concern (disabled)</span></label>
+            <label class="choice"><input class="choice__input" type="checkbox" disabled checked><span>Disabled, checked</span></label>
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset__legend">Delivery</legend>
+            <label class="choice"><input class="choice__input" type="radio" name="delivery" checked><span>Standard · 3–5 days</span></label>
+            <label class="choice"><input class="choice__input" type="radio" name="delivery"><span>Express · next day</span></label>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="ds-sub">
+        <h3>Live validation demo</h3>
+        <p class="ds-note">Submit empty to see the error pattern: error summary, per-field icon + text, thicker border, focus moved to the first error.</p>
+        <form id="demo-form" class="ds-panel stack" style="max-width: var(--container-narrow)" novalidate>
+          <div class="message message--error" id="demo-form-summary" role="alert" hidden><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-warning"/></svg><p>Please fix the highlighted fields.</p></div>
+          <div class="grid grid--2">
+            <div class="field">
+              <label class="field__label" for="d-name">Name</label>
+              <input class="input" id="d-name" type="text" data-required aria-describedby="d-name-e">
+              <p class="field__message field__message--error" id="d-name-e"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-warning"/></svg><span>Enter your name.</span></p>
+              <p class="field__message field__message--success"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-check-circle"/></svg><span>Looks good.</span></p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="d-email">Email</label>
+              <input class="input" id="d-email" type="email" data-required aria-describedby="d-email-e">
+              <p class="field__message field__message--error" id="d-email-e"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-warning"/></svg><span>Enter an email like name@example.com.</span></p>
+              <p class="field__message field__message--success"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-check-circle"/></svg><span>Looks good.</span></p>
+            </div>
+          </div>
+          <div class="cluster"><button class="btn btn--primary btn--block-mobile" type="submit">Join the list</button></div>
+        </form>
+      </div>
+
+      <div class="ds-sub">
+        <h3>Quantity selector &amp; swatches</h3>
+        <div class="grid grid--2" style="gap: var(--space-10); align-items: start">
+          <div class="stack">
+            <span class="field__label" id="qty-label">Quantity</span>
+            <div class="qty" role="group" aria-labelledby="qty-label">
+              <button class="qty__btn" type="button" data-qty="-1" aria-label="Decrease quantity"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-minus"/></svg></button>
+              <input class="qty__input" type="text" inputmode="numeric" pattern="[0-9]*" value="1" min="1" max="10" aria-label="Quantity">
+              <button class="qty__btn" type="button" data-qty="1" aria-label="Increase quantity"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-plus"/></svg></button>
+            </div>
+            <p class="text-caption">Minus is disabled at 1; plus at 10.</p>
+          </div>
+          <div class="stack">
+            <p class="field__label">Shade: <strong id="shade-name" style="font-weight: var(--font-weight-semibold)">Rosewood</strong></p>
+            <div class="swatches" role="radiogroup" aria-label="Shade" data-swatch-group="shade-name">
+              <label class="swatch"><input class="swatch__input" type="radio" name="shade" data-name="Rosewood" checked><span class="swatch__chip" style="--swatch: #B87A80"></span><span class="visually-hidden">Rosewood</span></label>
+              <label class="swatch"><input class="swatch__input" type="radio" name="shade" data-name="Petal"><span class="swatch__chip" style="--swatch: #E6B8B0"></span><span class="visually-hidden">Petal</span></label>
+              <label class="swatch"><input class="swatch__input" type="radio" name="shade" data-name="Clay"><span class="swatch__chip" style="--swatch: #A8674F"></span><span class="visually-hidden">Clay</span></label>
+              <label class="swatch"><input class="swatch__input" type="radio" name="shade" data-name="Cocoa"><span class="swatch__chip" style="--swatch: #5A3A32"></span><span class="visually-hidden">Cocoa</span></label>
+              <label class="swatch"><input class="swatch__input" type="radio" name="shade" data-name="Sheer (sold out)" disabled><span class="swatch__chip" style="--swatch: #F2DCCB"></span><span class="visually-hidden">Sheer, sold out</span></label>
+            </div>
+            <p class="text-caption">Selected = ring + gap + name above. Sold out = diagonal line + reduced opacity. Swatch colors come from merchant data, not tokens.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BADGES & CARDS ===================== -->
+  <section class="section" id="badges-cards">
+    <div class="container">
+      <div class="ds-section__head">
+        <p class="text-overline">06 · Badges, price &amp; cards</p>
+        <h2>Small components</h2>
+      </div>
+
+      <div class="ds-panel stack" style="--stack-gap: var(--space-8)">
+        <div>
+          <p class="ds-label" style="margin-bottom: var(--space-3)">Badges &amp; labels</p>
+          <div class="cluster">
+            <span class="badge">New</span>
+            <span class="badge badge--brand">Sale −20%</span>
+            <span class="badge badge--dark">Sold out</span>
+            <span class="badge badge--outline">Vegan</span>
+            <span class="badge badge--success"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-check-circle"/></svg>In stock</span>
+            <span class="badge badge--warning"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-warning"/></svg>Low stock</span>
+            <span class="badge badge--error"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-warning"/></svg>Unavailable</span>
+          </div>
+        </div>
+        <hr class="divider">
+        <div>
+          <p class="ds-label" style="margin-bottom: var(--space-3)">Messages</p>
+          <div class="stack" style="max-width: var(--container-narrow)">
+            <div class="message"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-info"/></svg><p>Free shipping on orders over $60.</p></div>
+            <div class="message message--success"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-check-circle"/></svg><p>Added to your bag.</p></div>
+            <div class="message message--warning"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-warning"/></svg><p>Only 2 left in this shade.</p></div>
+            <div class="message message--error"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-warning"/></svg><p>We couldn't apply that code.</p></div>
+          </div>
+        </div>
+        <hr class="divider">
+        <div>
+          <p class="ds-label" style="margin-bottom: var(--space-3)">Price &amp; rating</p>
+          <div class="cluster" style="gap: var(--space-10); align-items: flex-start">
+            <span class="price"><span class="price__current">$48.00</span></span>
+            <span class="price price--sale"><span class="visually-hidden">Sale price</span><span class="price__current">$38.00</span><span class="visually-hidden">Regular price</span><s class="price__compare">$48.00</s></span>
+            <span class="price price--lg"><span class="price__current">$62.00</span><span class="price__unit">$1.24 / ml</span></span>
+            <span class="rating"><span class="rating__stars" role="img" aria-label="Rated 4 out of 5"><svg class="icon icon--filled" aria-hidden="true" focusable="false"><use href="#icon-star"/></svg><svg class="icon icon--filled" aria-hidden="true" focusable="false"><use href="#icon-star"/></svg><svg class="icon icon--filled" aria-hidden="true" focusable="false"><use href="#icon-star"/></svg><svg class="icon icon--filled" aria-hidden="true" focusable="false"><use href="#icon-star"/></svg><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-star"/></svg></span>4.0 (128 reviews)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-sub">
+        <h3>Cards &amp; dividers</h3>
+        <div class="grid grid--auto" style="--grid-min: 15rem">
+          <article class="card"><div class="card__body"><p class="text-overline">Default</p><h4 class="card__title">Bordered card</h4><p class="text-body-sm text-secondary">Surface white, subtle border, 8px radius.</p></div></article>
+          <article class="card card--raised"><div class="card__body"><p class="text-overline">Raised</p><h4 class="card__title">Shadowed card</h4><p class="text-body-sm text-secondary">For popovers and featured content.</p></div></article>
+          <article class="card card--interactive"><div class="card__body"><p class="text-overline">Interactive</p><h4 class="card__title"><a class="link link--subtle link--standalone" href="#badges-cards" style="text-decoration:none">Lifts on hover</a></h4><p class="text-body-sm text-secondary">Motion respects reduced-motion settings.</p></div></article>
+        </div>
+        <div style="max-width: var(--container-narrow)"><hr class="divider"><p class="ds-note" style="margin-block: var(--space-3)">Divider · subtle (decorative) / strong (structural).</p><hr class="divider divider--strong"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== NAVIGATION & DISCLOSURE ===================== -->
+  <section class="section" id="navigation">
+    <div class="container">
+      <div class="ds-section__head">
+        <p class="text-overline">07 · Navigation &amp; disclosure</p>
+        <h2>Breadcrumb, accordion, chips, pagination</h2>
+        <p class="text-secondary">Small, reusable patterns for collection and product pages. Built on native elements (<span class="ds-code">&lt;nav&gt;</span>, <span class="ds-code">&lt;details&gt;</span>, <span class="ds-code">&lt;button&gt;</span>, <span class="ds-code">&lt;a&gt;</span>), with no JavaScript required except to toggle chip state.</p>
+      </div>
+
+      <div class="ds-panel stack" style="--stack-gap: var(--space-8)">
+        <div>
+          <p class="ds-label" style="margin-bottom: var(--space-3)">Breadcrumb</p>
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <ol class="breadcrumb__list">
+              <li class="breadcrumb__item"><a href="#navigation">Home</a></li>
+              <li class="breadcrumb__item"><a href="#navigation">Skincare</a></li>
+              <li class="breadcrumb__item"><a href="#navigation">Serums</a></li>
+              <li class="breadcrumb__item"><a href="#navigation" aria-current="page">Rosewater Barrier Serum with a Deliberately Long Product Name</a></li>
+            </ol>
+          </nav>
+          <p class="ds-note" style="margin-top: var(--space-3)">Below 600px the trail collapses to one line: the parent and the current page, which truncates with an ellipsis. From 600px the full trail shows and wraps.</p>
+        </div>
+        <hr class="divider">
+        <div>
+          <p class="ds-label" style="margin-bottom: var(--space-3)">Filter chips: toggle and active filters</p>
+          <div class="chip-row" role="group" aria-label="Skin concern">
+            <button class="chip" type="button" aria-pressed="true" data-chip>Hydration</button>
+            <button class="chip" type="button" aria-pressed="false" data-chip>Fine lines</button>
+            <button class="chip" type="button" aria-pressed="false" data-chip>Sensitive skin</button>
+            <button class="chip" type="button" disabled>Out of stock</button>
+          </div>
+          <div class="cluster" style="margin-top: var(--space-4)" aria-label="Active filters" role="group">
+            <span class="text-caption">Active:</span>
+            <button class="chip" type="button" aria-pressed="true">Dry skin <svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#icon-close"/></svg><span class="visually-hidden">Remove filter</span></button>
+            <button class="chip" type="button" aria-pressed="true">Under $50 <svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#icon-close"/></svg><span class="visually-hidden">Remove filter</span></button>
+            <button class="btn btn--text" type="button">Clear all</button>
+          </div>
+          <p class="ds-note" style="margin-top: var(--space-3)">Selected = tint + border + check mark, with <span class="ds-code">aria-pressed</span>. Chips are 40px on mouse devices and 44px on touch devices. The choice row (<span class="ds-code">.chip-row</span>) scrolls sideways on phones and wraps from 600px; the applied-filters row (<span class="ds-code">.cluster</span>) always wraps so every applied filter stays visible.</p>
+        </div>
+        <hr class="divider">
+        <div>
+          <p class="ds-label" style="margin-bottom: var(--space-3)">Accordion (native details)</p>
+          <div class="accordion" style="max-width: var(--container-narrow)">
+            <details class="accordion__item" open>
+              <summary class="accordion__summary">Key ingredients <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"/></svg></summary>
+              <div class="accordion__panel"><p>Niacinamide, ceramides and rose-hip extract. Long ingredient lists such as hydroxypropyltrimethylammoniumchloride wrap instead of overflowing.</p></div>
+            </details>
+            <details class="accordion__item">
+              <summary class="accordion__summary">How to use <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"/></svg></summary>
+              <div class="accordion__panel"><p>Apply two drops to clean skin morning and evening, before moisturiser.</p></div>
+            </details>
+            <details class="accordion__item">
+              <summary class="accordion__summary">Shipping &amp; returns <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"/></svg></summary>
+              <div class="accordion__panel"><p>Free shipping over $60. Returns accepted within 30 days.</p></div>
+            </details>
+          </div>
+          <p class="ds-note" style="margin-top: var(--space-3)">Rows open independently, so ingredients and usage can be read side by side. One-at-a-time is a documented option (<span class="ds-code">name</span> on each <span class="ds-code">details</span>), not the default.</p>
+        </div>
+        <hr class="divider">
+        <div>
+          <p class="ds-label" style="margin-bottom: var(--space-3)">Pagination</p>
+          <ul class="grid grid--auto" id="demo-results" style="--grid-min: 9rem; list-style: none; padding: 0; margin: 0 0 var(--space-5)">
+            <li class="card"><a class="link link--standalone" href="#navigation">Demo product 1</a><p class="text-caption">$31</p></li>
+            <li class="card"><a class="link link--standalone" href="#navigation">Demo product 2</a><p class="text-caption">$32</p></li>
+            <li class="card"><a class="link link--standalone" href="#navigation">Demo product 3</a><p class="text-caption">$33</p></li>
+            <li class="card"><a class="link link--standalone" href="#navigation">Demo product 4</a><p class="text-caption">$34</p></li>
+          </ul>
+          <div class="pagination-switch">
+            <nav class="pagination-switch__numbered" aria-label="Pagination">
+            <ul class="pagination">
+              <li><a class="pagination__link" href="#navigation" aria-disabled="true" tabindex="-1">Previous</a></li>
+              <li><a class="pagination__link" href="#navigation" aria-current="page"><span class="visually-hidden">Page </span>1</a></li>
+              <li><a class="pagination__link" href="#navigation"><span class="visually-hidden">Page </span>2</a></li>
+              <li><a class="pagination__link" href="#navigation"><span class="visually-hidden">Page </span>3</a></li>
+              <li><span class="pagination__gap" aria-hidden="true">…</span></li>
+              <li><a class="pagination__link" href="#navigation"><span class="visually-hidden">Page </span>12</a></li>
+              <li><a class="pagination__link" href="#navigation">Next</a></li>
+            </ul>
+          </nav>
+            <div class="load-more" data-load-more data-load-more-target="demo-results" data-total="16" data-noun="products">
+              <p class="text-caption" data-load-more-status role="status">Showing 4 of 16 products</p>
+              <a class="btn btn--secondary" href="?page=2" data-load-more-button>Load more products</a>
+              <div class="message message--error" role="alert" data-load-more-error hidden>
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-warning"/></svg>
+                <p>Couldn't load more products. Check your connection and try again.</p>
+              </div>
+              <!-- showcase-only control: makes the demo loader fail once so the error state can be seen -->
+              <button class="btn btn--text" type="button" data-demo-fail>Simulate an error on the next load</button>
+            </div>          </div>
+          <p class="ds-note" style="margin-top: var(--space-3)">Phones (below 600px) show <strong>Load more</strong>; tablet and up show numbered pagination. Both are real links, so each works without JavaScript. Load more here uses a demo loader (no server): it shows the loading, success and error states, moves focus to the first new item and updates the address bar.</p>
+        </div>
+        <hr class="divider">
+        <div>
+          <p class="ds-label" style="margin-bottom: var(--space-3)">Drawer (filters): full-width sheet on phones, 26rem panel from 600px</p>
+          <button class="btn btn--secondary" type="button" data-drawer-open="demo-filters" aria-haspopup="dialog">Filters</button>
+          <p class="ds-note" style="margin-top: var(--space-3)">A native <span class="ds-code">&lt;dialog&gt;</span> with <span class="ds-code">Scripts/drawer.js</span>: the page behind is inert, Tab stays inside, Escape or the close button or the action closes it, the page does not scroll behind it, and focus returns to this button. Only the middle scrolls.</p>
+          <dialog class="drawer" id="demo-filters" aria-labelledby="demo-filters-title">
+            <div class="drawer__head">
+              <h2 class="drawer__title h5" id="demo-filters-title">Filters</h2>
+              <button class="icon-btn" type="button" data-drawer-close aria-label="Close filters"><svg class="icon icon--lg" aria-hidden="true" focusable="false"><use href="#icon-close"/></svg></button>
+            </div>
+            <div class="drawer__body">
+              <div class="stack" role="group" aria-label="Skin concern" style="--stack-gap: var(--space-1)">
+              <label class="choice"><input class="choice__input" type="checkbox"><span>Hydration</span></label>
+              <label class="choice"><input class="choice__input" type="checkbox"><span>Fine lines</span></label>
+              <label class="choice"><input class="choice__input" type="checkbox"><span>Sensitive skin</span></label>
+              <label class="choice"><input class="choice__input" type="checkbox"><span>Brightening</span></label>
+              <label class="choice"><input class="choice__input" type="checkbox"><span>Acne-prone</span></label>
+              <label class="choice"><input class="choice__input" type="checkbox"><span>Dryness</span></label>
+              <label class="choice"><input class="choice__input" type="checkbox"><span>Redness</span></label>
+              <label class="choice"><input class="choice__input" type="checkbox"><span>Dark spots</span></label>
+              <label class="choice"><input class="choice__input" type="checkbox"><span>Dullness</span></label>
+              <label class="choice"><input class="choice__input" type="checkbox"><span>Large pores</span></label>
+              <label class="choice"><input class="choice__input" type="checkbox"><span>Uneven texture</span></label>
+              <label class="choice"><input class="choice__input" type="checkbox"><span>Dark circles</span></label>
+              <label class="choice"><input class="choice__input" type="checkbox"><span>Pigmentation</span></label>
+              <label class="choice"><input class="choice__input" type="checkbox"><span>Eczema-prone</span></label>
+              <label class="choice"><input class="choice__input" type="checkbox"><span>Rosacea</span></label>
+              <label class="choice"><input class="choice__input" type="checkbox"><span>Oiliness</span></label>
+              <label class="choice"><input class="choice__input" type="checkbox"><span>Blackheads</span></label>
+              <label class="choice"><input class="choice__input" type="checkbox"><span>Sun damage</span></label>
+              <label class="choice"><input class="choice__input" type="checkbox"><span>Firmness</span></label>
+              <label class="choice"><input class="choice__input" type="checkbox"><span>Puffiness</span></label>
+              </div>
+            </div>
+            <div class="drawer__foot"><button class="btn btn--primary btn--block" type="button" data-drawer-close>Show 24 products</button></div>
+          </dialog>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ===================== ICONS ===================== -->
+  <section class="section section--surface" id="icons">
+    <div class="container">
+      <div class="ds-section__head">
+        <p class="text-overline">08 · Icons</p>
+        <h2>One icon family</h2>
+        <p class="text-secondary">24 × 24 grid, 1.5 stroke, round caps and joins, inherits <span class="ds-code">currentColor</span>. Lucide icons (ISC licence, v0.469.0), only the ones listed here, built by <span class="ds-code">05-Assets/Icons/build-icons.ps1</span> into a sprite and standalone files. No other icon library.</p>
+      </div>
+
+      <div class="ds-icons">
+        <div class="ds-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-search"/></svg>search</div>
+        <div class="ds-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-account"/></svg>account</div>
+        <div class="ds-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-bag"/></svg>bag</div>
+        <div class="ds-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-menu"/></svg>menu</div>
+        <div class="ds-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-close"/></svg>close</div>
+        <div class="ds-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-plus"/></svg>plus</div>
+        <div class="ds-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-minus"/></svg>minus</div>
+        <div class="ds-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"/></svg>chevron-down</div>
+        <div class="ds-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-up"/></svg>chevron-up</div>
+        <div class="ds-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-left"/></svg>chevron-left</div>
+        <div class="ds-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-right"/></svg>chevron-right</div>
+        <div class="ds-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-left"/></svg>arrow-left</div>
+        <div class="ds-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"/></svg>arrow-right</div>
+        <div class="ds-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-filter"/></svg>filter</div>
+        <div class="ds-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-sort"/></svg>sort</div>
+        <div class="ds-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-heart"/></svg>heart</div>
+        <div class="ds-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-star"/></svg>star</div>
+        <div class="ds-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-location"/></svg>location</div>
+        <div class="ds-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-check"/></svg>check</div>
+        <div class="ds-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-check-circle"/></svg>check-circle</div>
+        <div class="ds-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-info"/></svg>info</div>
+        <div class="ds-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-warning"/></svg>warning</div>
+        <div class="ds-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-eye"/></svg>eye</div>
+        <div class="ds-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-eye-off"/></svg>eye-off</div>
+<div class="ds-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-share"/></svg>share</div>
+<div class="ds-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-instagram"/></svg>instagram</div>
+<div class="ds-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-facebook"/></svg>facebook</div>
+<div class="ds-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-youtube"/></svg>youtube</div>
+      </div>
+
+      <div class="ds-sub">
+        <h3>Sizes &amp; usage</h3>
+        <div class="grid grid--2" style="gap: var(--space-8)">
+          <div class="ds-panel stack">
+            <p class="ds-label">Size tokens</p>
+            <div class="cluster" style="gap: var(--space-8); align-items: flex-end">
+              <div class="stack" style="align-items:center; --stack-gap: var(--space-2)"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#icon-heart"/></svg><span class="text-caption">sm 16</span></div>
+              <div class="stack" style="align-items:center; --stack-gap: var(--space-2)"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-heart"/></svg><span class="text-caption">md 20</span></div>
+              <div class="stack" style="align-items:center; --stack-gap: var(--space-2)"><svg class="icon icon--lg" aria-hidden="true" focusable="false"><use href="#icon-heart"/></svg><span class="text-caption">lg 24</span></div>
+              <div class="stack" style="align-items:center; --stack-gap: var(--space-2)"><svg class="icon icon--xl" aria-hidden="true" focusable="false"><use href="#icon-heart"/></svg><span class="text-caption">xl 32</span></div>
+              <div class="stack" style="align-items:center; --stack-gap: var(--space-2)"><svg class="icon icon--xl icon--filled" aria-hidden="true" focusable="false" style="color: var(--color-brand-primary)"><use href="#icon-heart"/></svg><span class="text-caption">filled</span></div>
+            </div>
+            <p class="text-body">Inline with text: <svg class="icon icon--inline" aria-hidden="true" focusable="false"><use href="#icon-location"/></svg> Find a store, or <svg class="icon icon--inline" aria-hidden="true" focusable="false"><use href="#icon-check"/></svg> free returns.</p>
+          </div>
+          <div class="ds-panel stack">
+            <p class="ds-label">Accessibility patterns</p>
+            <div class="stack" style="--stack-gap: var(--space-3)">
+              <p class="text-body-sm"><b>Decorative</b> (next to visible text): <span class="ds-code">aria-hidden="true" focusable="false"</span></p>
+              <p class="text-body-sm"><b>Icon button:</b> label on the button, icon hidden — <span class="ds-code">&lt;button aria-label="Search"&gt;</span></p>
+              <p class="text-body-sm"><b>Meaningful standalone:</b> <span class="ds-code">role="img" aria-label="…"</span> on the svg, or a <span class="ds-code">.visually-hidden</span> sibling.</p>
+              <p class="text-body-sm">Interactive icons are wrapped in a 44 × 44 button; the glyph stays 20–24px.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PRODUCT CARD ===================== -->
+  <section class="section" id="product-card">
+    <div class="container">
+      <div class="ds-section__head">
+        <p class="text-overline">09 · Product card foundation</p>
+        <h2>Product card</h2>
+        <p class="text-secondary">The reusable foundation for future collection and search grids. Whole card is one link target (title link), with wishlist, swatches and quick add above it. Images use a 4:5 ratio; placeholders stand in for photography.</p>
+      </div>
+
+      <div class="grid grid--products">
+        <article class="product-card">
+          <div class="product-card__media"><div class="ratio ratio--portrait"><div class="placeholder-media"></div></div></div>
+          <button class="icon-btn icon-btn--filled product-card__wishlist" type="button" aria-label="Add to wishlist" aria-pressed="false" data-wishlist><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-heart"/></svg></button>
+          <div class="product-card__body">
+            <p class="product-card__vendor">NUDGE</p>
+            <h3 class="text-product-title product-card__title"><a href="#product-card">Rosewater Barrier Serum</a></h3>
+            <span class="rating"><span class="rating__stars" role="img" aria-label="Rated 5 out of 5"><svg class="icon icon--filled" aria-hidden="true" focusable="false"><use href="#icon-star"/></svg><svg class="icon icon--filled" aria-hidden="true" focusable="false"><use href="#icon-star"/></svg><svg class="icon icon--filled" aria-hidden="true" focusable="false"><use href="#icon-star"/></svg><svg class="icon icon--filled" aria-hidden="true" focusable="false"><use href="#icon-star"/></svg><svg class="icon icon--filled" aria-hidden="true" focusable="false"><use href="#icon-star"/></svg></span>5.0 (86)</span>
+            <span class="price"><span class="price__current">$48.00</span></span>
+          </div>
+          <div class="product-card__action"><button class="btn btn--secondary btn--sm btn--block" type="button">Add to bag</button></div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-card__media"><div class="ratio ratio--portrait"><div class="placeholder-media placeholder-media--b"></div></div></div>
+          <div class="product-card__badges"><span class="badge badge--brand">Sale −20%</span></div>
+          <button class="icon-btn icon-btn--filled product-card__wishlist" type="button" aria-label="Add to wishlist" aria-pressed="false" data-wishlist><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-heart"/></svg></button>
+          <div class="product-card__body">
+            <p class="product-card__vendor">NUDGE</p>
+            <h3 class="text-product-title product-card__title"><a href="#product-card">Overnight Peptide Cream with a Deliberately Long Name</a></h3>
+            <span class="price price--sale"><span class="visually-hidden">Sale price</span><span class="price__current">$38.00</span><span class="visually-hidden">Regular price</span><s class="price__compare">$48.00</s></span>
+          </div>
+          <div class="product-card__action"><button class="btn btn--secondary btn--sm btn--block" type="button">Add to bag</button></div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-card__media"><div class="ratio ratio--portrait"><div class="placeholder-media placeholder-media--c"></div></div></div>
+          <div class="product-card__badges"><span class="badge">New</span></div>
+          <button class="icon-btn icon-btn--filled product-card__wishlist" type="button" aria-label="Add to wishlist" aria-pressed="false" data-wishlist><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-heart"/></svg></button>
+          <div class="product-card__body">
+            <p class="product-card__vendor">NUDGE</p>
+            <h3 class="text-product-title product-card__title"><a href="#product-card">Velvet Tint Lip Balm</a></h3>
+            <span class="price"><span class="price__current">$24.00</span></span>
+          </div>
+          <div class="product-card__swatches swatches" role="group" aria-label="Available shades (decorative preview)">
+            <span class="swatch swatch--sm"><span class="swatch__chip" style="--swatch: #B87A80"></span></span>
+            <span class="swatch swatch--sm"><span class="swatch__chip" style="--swatch: #E6B8B0"></span></span>
+            <span class="swatch swatch--sm"><span class="swatch__chip" style="--swatch: #A8674F"></span></span>
+            <span class="text-caption" style="align-self: center">+2 shades</span>
+          </div>
+          <div class="product-card__action"><button class="btn btn--secondary btn--sm btn--block" type="button">Choose shade</button></div>
+        </article>
+
+        <article class="product-card product-card--soldout">
+          <div class="product-card__media"><div class="ratio ratio--portrait"><div class="placeholder-media"></div></div></div>
+          <div class="product-card__badges"><span class="badge badge--dark">Sold out</span></div>
+          <button class="icon-btn icon-btn--filled product-card__wishlist" type="button" aria-label="Add to wishlist" aria-pressed="false" data-wishlist><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-heart"/></svg></button>
+          <div class="product-card__body">
+            <p class="product-card__vendor">NUDGE</p>
+            <h3 class="text-product-title product-card__title"><a href="#product-card">Cloud Cleansing Balm</a></h3>
+            <span class="price"><span class="price__current">$32.00</span></span>
+          </div>
+          <div class="product-card__action"><button class="btn btn--secondary btn--sm btn--block" type="button" disabled>Sold out</button></div>
+        </article>
+      </div>
+      <p class="ds-note" style="margin-top: var(--space-4)">Sample content only. Grid: 2 columns on phones, 3 from 600px, 4 from 1024px. Resize to watch it reflow.</p>
+    </div>
+  </section>
+
+  <!-- ===================== RESPONSIVE ===================== -->
+  <section class="section section--surface" id="responsive">
+    <div class="container">
+      <div class="ds-section__head">
+        <p class="text-overline">10 · Responsive behavior</p>
+        <h2>Layouts change, not just shrink.</h2>
+        <p class="text-secondary">Mobile-first, three breakpoints. Components switch arrangement when usability demands it, rather than being scaled down.</p>
+      </div>
+
+      <p class="ds-readout" aria-live="off">Viewport <b data-vw>—</b> · product columns <b data-cols>—</b> · gutter <b data-gutter>—</b></p>
+
+      <div class="ds-sub">
+        <h3>Breakpoints</h3>
+        <div class="ds-bp-list">
+          <div class="ds-panel"><p class="ds-label">Base · 0–599</p><p class="text-body-sm" style="margin-top: var(--space-2)">Single-column flow, 2-up product grid, full-width primary buttons, menu in a drawer, stacked forms.</p></div>
+          <div class="ds-panel"><p class="ds-label">Tablet · 600+</p><p class="text-body-sm" style="margin-top: var(--space-2)">3-up product grid, two-column forms, buttons return to natural width.</p></div>
+          <div class="ds-panel"><p class="ds-label">Laptop · 1024+</p><p class="text-body-sm" style="margin-top: var(--space-2)">4-up grid, inline desktop navigation, split product layout (gallery + details), content capped at 1280px.</p></div>
+        </div>
+      </div>
+
+      <div class="ds-sub">
+        <h3>Grid &amp; split layouts</h3>
+        <div class="ds-panel stack">
+          <p class="ds-label">Product grid (2 → 3 → 4)</p>
+          <div class="grid grid--products">
+            <div class="ds-demo-box">1</div><div class="ds-demo-box">2</div><div class="ds-demo-box">3</div><div class="ds-demo-box">4</div>
+            <div class="ds-demo-box">5</div><div class="ds-demo-box">6</div><div class="ds-demo-box">7</div><div class="ds-demo-box">8</div>
+          </div>
+        </div>
+        <div class="ds-panel stack">
+          <p class="ds-label">Split layout (stacks until 1024)</p>
+          <div class="grid grid--split">
+            <div class="ds-demo-box" style="min-height: 12rem">Gallery — on mobile: swipeable full-bleed carousel; on desktop: thumbnails + large image</div>
+            <div class="ds-demo-box" style="min-height: 12rem">Details — title, price, options, add to bag</div>
+          </div>
+        </div>
+        <div class="ds-panel stack">
+          <p class="ds-label">Auto-fit grid (content-driven, no breakpoint)</p>
+          <div class="grid grid--auto" style="--grid-min: 12rem"><div class="ds-demo-box">A</div><div class="ds-demo-box">B</div><div class="ds-demo-box">C</div><div class="ds-demo-box">D</div></div>
+        </div>
+      </div>
+
+      <div class="ds-sub">
+        <h3>Image aspect ratios</h3>
+        <div class="grid grid--auto" style="--grid-min: 9rem; align-items: start">
+          <div class="stack" style="--stack-gap: var(--space-2)"><div class="ratio ratio--portrait"><div class="placeholder-media"></div></div><span class="text-caption"><b>4:5</b> product cards, PDP</span></div>
+          <div class="stack" style="--stack-gap: var(--space-2)"><div class="ratio ratio--square"><div class="placeholder-media placeholder-media--b"></div></div><span class="text-caption"><b>1:1</b> thumbnails</span></div>
+          <div class="stack" style="--stack-gap: var(--space-2)"><div class="ratio ratio--landscape"><div class="placeholder-media placeholder-media--c"></div></div><span class="text-caption"><b>3:2</b> editorial, blog</span></div>
+          <div class="stack" style="--stack-gap: var(--space-2)"><div class="ratio ratio--tall"><div class="placeholder-media"></div></div><span class="text-caption"><b>3:4</b> collection tiles</span></div>
+          <div class="stack" style="--stack-gap: var(--space-2)"><div class="ratio ratio--wide"><div class="placeholder-media placeholder-media--b"></div></div><span class="text-caption"><b>16:9</b> hero (desktop)</span></div>
+        </div>
+      </div>
+
+      <div class="ds-sub">
+        <h3>Rules at a glance</h3>
+        <div class="ds-table-wrap" tabindex="0" role="region" aria-label="Responsive rules (scrollable)">
+          <table class="ds-table">
+            <thead><tr><th scope="col">Topic</th><th scope="col">Behavior</th></tr></thead>
+            <tbody>
+              <tr><th scope="row" style="font-weight: var(--font-weight-medium)">Touch targets</th><td>≥ 44 × 44px for every tappable element, with ≥ 4px between neighbours.</td></tr>
+              <tr><th scope="row" style="font-weight: var(--font-weight-medium)">Navigation</th><td>Below 1024px: icon buttons + drawer menu. From 1024px: inline links. Same markup source, different arrangement.</td></tr>
+              <tr><th scope="row" style="font-weight: var(--font-weight-medium)">Forms</th><td>Stacked on phones, two columns from 600px. Inputs always full width of their field; 16px text.</td></tr>
+              <tr><th scope="row" style="font-weight: var(--font-weight-medium)">Text-heavy components</th><td>No fixed heights. Min-height only; content decides size. Long words wrap (<span class="ds-code">overflow-wrap</span>).</td></tr>
+              <tr><th scope="row" style="font-weight: var(--font-weight-medium)">Overflow</th><td><span class="ds-code">min-width: 0</span> on grid/flex children, <span class="ds-code">minmax(0, 1fr)</span> columns, images max-width 100%. Tables scroll inside their own container.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="surface-inverse ds-footer">
+  <div class="container cluster" style="justify-content: space-between">
+    <p>NUDGE design system · working name, not a cleared trademark</p>
+    <p><a class="link" href="Documentation/README.md">Documentation</a> · <a class="link" href="Documentation/accessibility.md">Accessibility checklist</a></p>
+  </div>
+</footer>
+
+<script src="Scripts/drawer.js"></script>
+  <script src="Scripts/load-more.js"></script>
+  <script src="Scripts/chip-row.js"></script>
+  <script src="Scripts/preview.js"></script>
+</body>
+</html>

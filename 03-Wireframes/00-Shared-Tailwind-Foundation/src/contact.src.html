@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NUDGE Beauty Theme: Contact Us Wireframe</title>
+<!-- Design Variables (tokens) linked; styling is Tailwind utilities and the shared components, mapped to those tokens. -->
+@@PARTIAL head@@
+<style>
+@@PARTIAL review-css@@
+</style>
+</head>
+<body class="ann-on" id="top">
+@@PARTIAL sprite@@
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-skip focus:bg-surface focus:p-3">Skip to content</a>
+<div class="rv">
+  <div class="rvt">NUDGE Beauty Theme: Contact us wireframe &middot; single responsive file</div>
+  <p>Phase 1, page 1 of 25. A native Shopify contact page (<code>page.contact</code>) built with Tailwind utilities and the shared components mapped to the Design Variables. The announcement bar, header and footer are the shared sections. Contact details, hours and reply time are <b>sample content</b> that the merchant sets in the theme editor. Placeholders only: no photography. Use <b>Width preview</b> for 1920, 1440, 1280, 1024, 768, 430, 390 and 320 px.</p>
+  <div class="ctl"><button id="t-ann" type="button" aria-pressed="true">Annotations</button><button id="t-wp" type="button">Width preview</button><button id="s-default" type="button">Form: empty</button><button id="s-error" type="button">Form: errors</button><button id="s-success" type="button">Form: sent</button></div>
+<details><summary>Review notes: purpose, sections, decisions, Shopify (open)</summary>
+<h3>Purpose</h3>
+<p>Give a customer the quickest route to a person, and deflect common questions to self-service pages first (FAQ, shipping, returns) so the form is the last step, not the first.</p>
+<h3>Sections, top to bottom</h3>
+<ul><li>Page title and short intro</li><li>Contact form (name, email, optional phone, topic, optional order number, message)</li><li>Contact details: email, phone, hours, address (each one hidden when empty)</li><li>Quick answers: links to FAQ, shipping and returns</li><li>Social links stay in the shared footer</li></ul>
+<h3>Decisions to confirm</h3>
+<ul><li>Reply time, phone, hours and address are bracketed placeholders; nothing is promised until the merchant fills them in.</li><li>Topic list is a theme-editor setting (sample: Order, Product advice, Returns, Something else).</li><li>No live chat, no booking or consultation widget, no map embed (each needs an app or an external service).</li></ul>
+<h3>Not drawn</h3>
+<ul><li>Live chat, WhatsApp widget, appointment booking, store-locator map (a separate page, only if the store has locations)</li><li>File upload (not supported by the native contact form)</li></ul>
+<h3>Shopify build</h3>
+<p>Template <code>page.contact.json</code> with a <code>main-page</code> intro section and a <code>contact-form</code> section built on the native <code>{% form 'contact' %}</code>. Success uses <code>form.posted_successfully?</code> and errors use <code>form.errors</code>; extra fields post as <code>contact[Topic]</code> and <code>contact[Order number]</code>. Spam protection is Shopify's own. Details are blocks (email, phone, hours, address) and settings; quick-answer links are a menu or link-list setting. No app is involved.</p>
+</details>
+</div>
+<div class="ann"><b>Global</b>Announcement bar, header (sticky) and footer: the shared sections. Responsive: below 1024 px a one-row header with the menu in a left drawer; footer groups are tap-to-open rows below 768 px.</div>
+@@PARTIAL annbar@@
+@@PARTIAL header CART=link NAV=none@@
+<main id="main" class="wrap pb-20 pt-2 md:pb-24">
+<div class="ann"><b>01 &middot; Orient</b>Breadcrumb and title (T1) &mdash; Essential: tells the visitor where they are and what the page is for in one line. A single H1 and one intro sentence; the intro names the fastest route (self-service first, then the form).<em>Responsive: breadcrumb shows parent and current page on phones, the full trail from 600 px; title and intro stay in a text column no wider than the reading width.</em></div>
+<nav class="breadcrumb mb-4" aria-label="Breadcrumb"><ol class="breadcrumb-list"><li class="breadcrumb-item"><a href="#home">Home</a></li><li class="breadcrumb-item"><a href="#contact" aria-current="page">Contact us</a></li></ol></nav>
+<header class="mb-10 flex max-w-text flex-col gap-3 lg:mb-12">
+<h1 class="type-h1">Contact us</h1>
+<p class="m-0 text-body-lg text-ink-secondary">Questions about an order, a product or your skin? Check the quick answers first, or send us a message and a real person will reply.</p>
+</header>
+<div class="grid grid-cols-[minmax(0,1fr)] gap-12 lg:grid-cols-[minmax(0,7fr)_minmax(0,4fr)] lg:items-start lg:gap-16">
+<section id="form-col" aria-labelledby="form-h" data-section="Contact form">
+<div class="ann"><b>02 &middot; Ask</b>Contact form (T1) &mdash; Essential: native Shopify contact form. Few fields, labels above, optional fields marked, one dominant button. Topic helps route the message; order number is optional and only asked for. Errors sit under each field and in a summary at the top; success replaces the form with a clear message, never a silent reload.<em>Responsive: name and email share a row from 600 px; everything stacks on phones; the button is full width on phones.</em></div>
+<h2 class="type-h4 mb-6" id="form-h">Send us a message</h2>
+<div id="f-summary" class="mb-6" role="alert" hidden><p class="message message-error"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-warning"></use></svg><span>Please fix the 2 fields marked below.</span></p></div>
+<div id="f-ok" class="flex flex-col items-start gap-4 bg-surface p-6 md:p-8" role="status" hidden>
+<svg class="icon size-8 text-status-success" aria-hidden="true" focusable="false"><use href="#icon-check-circle"></use></svg>
+<h3 class="type-h4">Thanks, your message is on its way</h3>
+<p class="m-0 text-ink-secondary">We have sent a copy to the email address you gave. We will reply within [reply time, set by the merchant].</p>
+<div class="flex flex-wrap gap-3"><a class="btn btn-secondary" href="#faq">Read the FAQ</a><a class="btn btn-text" href="#shop">Continue shopping</a></div>
+</div>
+<form id="f" class="grid grid-cols-[minmax(0,1fr)] gap-x-6 gap-y-5 sm:grid-cols-2" action="#" method="post" novalidate>
+<div class="field"><label class="field-label" for="f-name">Name</label><input class="input" id="f-name" name="contact[name]" type="text" autocomplete="name" required><p class="m-0 type-validation text-status-error" id="f-name-e" hidden>Enter your name.</p></div>
+<div class="field"><label class="field-label" for="f-email">Email</label><input class="input" id="f-email" name="contact[email]" type="email" autocomplete="email" required aria-describedby="f-email-e"><p class="m-0 type-validation text-status-error" id="f-email-e" hidden>Enter an email address like name@example.com.</p></div>
+<div class="field"><label class="field-label" for="f-phone">Phone <span class="font-regular text-ink-secondary">(optional)</span></label><input class="input" id="f-phone" name="contact[phone]" type="tel" autocomplete="tel"></div>
+<div class="field"><label class="field-label" for="f-topic">What is this about?</label><div class="select"><select class="input" id="f-topic" name="contact[Topic]"><option>An order</option><option>Product advice</option><option>Returns or refunds</option><option>Something else</option></select><svg class="icon select-icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></div></div>
+<div class="field sm:col-span-2"><label class="field-label" for="f-order">Order number <span class="font-regular text-ink-secondary">(optional)</span></label><input class="input" id="f-order" name="contact[Order number]" type="text" placeholder="For example #1001" inputmode="text"></div>
+<div class="field sm:col-span-2"><label class="field-label" for="f-msg">Message</label><textarea class="input" id="f-msg" name="contact[body]" rows="6" required aria-describedby="f-msg-e"></textarea><p class="m-0 type-validation text-status-error" id="f-msg-e" hidden>Tell us how we can help.</p></div>
+<div class="flex flex-col gap-3 sm:col-span-2 sm:flex-row sm:items-center sm:gap-6"><button class="btn btn-primary btn-lg w-full sm:w-auto" type="submit" id="f-send">Send message</button><p class="m-0 text-caption text-ink-secondary">We only use your details to reply. See the <a class="link" href="#privacy">privacy policy</a>.</p></div>
+</form>
+</section>
+<aside class="flex flex-col gap-10" aria-label="Other ways to reach us">
+<section id="details" aria-labelledby="det-h" data-section="Contact details">
+<div class="ann"><b>03 &middot; Reach</b>Contact details (T1) &mdash; Essential: email, phone, hours and address as blocks; each one is hidden when its setting is empty so nothing is invented. Phone and email are real links (tel and mailto).<em>Responsive: sits beside the form from 1024 px, under it below that.</em></div>
+<h2 class="type-h5 mb-4" id="det-h">Other ways to reach us</h2>
+<ul class="m-0 flex list-none flex-col p-0">
+<li class="flex items-start gap-4 border-t border-line py-4"><svg class="icon mt-1" aria-hidden="true" focusable="false"><use href="#icon-mail"></use></svg><div class="flex flex-col"><span class="type-label">Email</span><a class="link inline-flex min-h-touch items-center" href="#mail">[support email address]</a></div></li>
+<li class="flex items-start gap-4 border-t border-line py-4"><svg class="icon mt-1" aria-hidden="true" focusable="false"><use href="#icon-phone"></use></svg><div class="flex flex-col"><span class="type-label">Phone</span><a class="link inline-flex min-h-touch items-center" href="#tel">[phone number]</a></div></li>
+<li class="flex items-start gap-4 border-t border-line py-4"><svg class="icon mt-1" aria-hidden="true" focusable="false"><use href="#icon-clock"></use></svg><div class="flex flex-col"><span class="type-label">Hours</span><span class="text-ink-secondary">[days and hours]</span></div></li>
+<li class="flex items-start gap-4 border-y border-line py-4"><svg class="icon mt-1" aria-hidden="true" focusable="false"><use href="#icon-location"></use></svg><div class="flex flex-col"><span class="type-label">Address</span><span class="text-ink-secondary">[studio or returns address, optional]</span></div></li>
+</ul>
+</section>
+<section id="quick" aria-labelledby="q-h" class="bg-surface p-6" data-section="Quick answers">
+<div class="ann"><b>04 &middot; Deflect</b>Quick answers (T1) &mdash; additional: three links to pages that answer the most common questions, so many visitors never need the form. Links come from a menu setting.<em>Responsive: stacked list at every width.</em></div>
+<h2 class="type-h5 mb-2" id="q-h">Quick answers</h2>
+<ul class="m-0 flex list-none flex-col p-0">
+<li><a class="flex min-h-touch items-center justify-between gap-4 border-b border-line text-ink no-underline hover:text-link" href="#faq"><span>Frequently asked questions</span><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></a></li>
+<li><a class="flex min-h-touch items-center justify-between gap-4 border-b border-line text-ink no-underline hover:text-link" href="#shipping"><span>Shipping and delivery</span><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></a></li>
+<li><a class="flex min-h-touch items-center justify-between gap-4 text-ink no-underline hover:text-link" href="#returns"><span>Returns and refunds</span><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></a></li>
+</ul>
+</section>
+</aside>
+</div>
+</main>
+@@PARTIAL footer@@
+@@PARTIAL width-preview@@
+<script type="text/plain" id="selftest-src">
+(function(){
+ function vis(el){var cs=getComputedStyle(el);if(cs.display==="none"||cs.visibility==="hidden")return false;var r=el.getBoundingClientRect();return r.width>0&&r.height>0}
+ function sel(el){var s=el.tagName.toLowerCase();if(el.id)s+="#"+el.id;if(el.className&&typeof el.className==="string")s+="."+el.className.trim().split(/\s+/).slice(0,2).join(".");return s}
+ function $(id){return document.getElementById(id)}
+ async function run(){
+  var W=window.innerWidth,de=document.documentElement,out={docHeight:de.scrollHeight,width:W,checks:{}},N=window.NudgeContact,TWO=W>=1024;
+  var st=document.createElement("style");st.textContent="*{transition:none!important}";document.head.appendChild(st);de.style.scrollBehavior="auto";
+  N.state("default");void document.body.offsetHeight;
+  var twOk=getComputedStyle($("site-header")).position==="sticky"&&!document.querySelector('link[href*="components.css"],link[href*="base.css"]');
+  var fl=Array.from(document.fonts).some(function(x){return x.family.indexOf("Cormorant")>-1&&x.status==="loaded"})&&Array.from(document.fonts).some(function(x){return x.family.indexOf("DM Sans")>-1&&x.status==="loaded"});
+  out.checks.tailwindAndFonts={pass:twOk&&fl,detail:"Tailwind utilities applied, no Design System component stylesheet: "+twOk+"; Cormorant and DM Sans loaded: "+fl};
+  var off=[];document.querySelectorAll("main *,header *,footer *").forEach(function(el){if(el.closest(".sr-only")||el.closest("#nav")&&W<1024)return;var r=el.getBoundingClientRect();if(r.width>0&&(r.right>W+1||r.left<-1))off.push(sel(el))});
+  out.checks.overflow={pass:de.scrollWidth<=W+1&&off.length===0,detail:"scrollWidth "+de.scrollWidth+" of "+W+(off.length?"; past the edge: "+off.slice(0,4).join(", "):"")};
+  var hs=[].slice.call(document.querySelectorAll("h1")).filter(function(h){return !h.closest(".rv")&&vis(h)});
+  out.checks.structure={pass:hs.length===1&&!!document.querySelector("main#main")&&!!$("f")&&$("f").getAttribute("action")!==null,detail:"visible H1: "+hs.length+"; contact form present: "+!!$("f")};
+  var f=$("form-col").getBoundingClientRect(),d=$("details").getBoundingClientRect(),lay=TWO?(f.right<=d.left+1&&Math.abs(f.top-d.top)<260):(d.top>=f.bottom-1);
+  out.checks.layout={pass:lay,detail:TWO?"form left of the details: "+lay:"details follow the form: "+lay};
+  var nm=$("f-name").getBoundingClientRect(),em=$("f-email").getBoundingClientRect(),row=W>=600?(Math.abs(nm.top-em.top)<4&&em.left>=nm.right):(em.top>=nm.bottom);
+  out.checks.fieldRows={pass:row,detail:W>=600?"name and email share a row: "+row:"fields stacked: "+row};
+  var labels=[].slice.call($("f").querySelectorAll("input,select,textarea")).every(function(i){return i.id&&document.querySelector('label[for="'+i.id+'"]')});
+  out.checks.labels={pass:labels,detail:"every field has a visible label: "+labels};
+  N.state("error");var e1=!$("f-summary").hidden&&!$("f-name-e").hidden&&!$("f-email-e").hidden&&$("f-name").getAttribute("aria-invalid")==="true"&&$("f-msg-e").hidden;
+  out.checks.errors={pass:e1,detail:"summary and per-field messages with aria-invalid on the two bad fields: "+e1};
+  N.state("success");var ok=!$("f-ok").hidden&&$("f").hidden&&$("f-summary").hidden&&!!$("f-ok").querySelector("a.btn");
+  out.checks.success={pass:ok,detail:"sent message replaces the form with next steps: "+ok};
+  N.state("default");var txt=$("main").innerText.toLowerCase(),bad=[];["live chat","whatsapp","book a","appointment","upload","chatbot"].forEach(function(w){if(txt.indexOf(w)>-1)bad.push(w)});
+  out.checks.exclusions={pass:bad.length===0,detail:"app-dependent wording: "+(bad.join(", ")||"none")};
+  var small=[];[].slice.call(document.querySelectorAll("main a,main button,main summary,main input,main select,main textarea,header a,header button,footer a,footer button")).filter(function(e){return vis(e)&&!e.closest(".sr-only")&&!e.closest(".rv")&&!e.closest(".ann")&&!(W<1024&&e.closest("#nav"))}).forEach(function(e){var r=e.getBoundingClientRect();if(e.closest(".fcol")&&W>=768)return;if(e.tagName==="A"&&r.height>=44-.5)return;if(e.closest("p")&&e.tagName==="A")return;if(r.height<44-.5)small.push(sel(e)+" "+Math.round(r.width)+"x"+Math.round(r.height))});
+  var tb=[];[].slice.call(document.querySelectorAll("main h1,main h2,main h3,main p,main button,main label")).filter(vis).forEach(function(e){var fm=getComputedStyle(e).fontFamily.split(",")[0].replace(/["']/g,"").trim(),head=/^H[1-6]$/.test(e.tagName);if(head&&fm!=="Cormorant")tb.push(sel(e)+" "+fm);if(!head&&fm!=="DM Sans")tb.push(sel(e)+" "+fm)});
+  out.checks.targetsAndType={pass:small.length===0&&tb.length===0,detail:(small.length?"small targets: "+small.slice(0,5).join("; "):"every visible control is 44 px or has a 44 px hit area")+"; "+(tb.length?"fonts: "+tb.slice(0,3).join("; "):"headings Cormorant, UI DM Sans")};
+  window.scrollTo(0,0);var pre=document.createElement("pre");pre.id="selftest-result";pre.textContent=JSON.stringify(out);document.body.appendChild(pre);
+  if(window.parent!==window){window.parent.postMessage({selftest:out},"*")}
+ }
+ if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){setTimeout(run,900)})}else{setTimeout(run,1400)}
+})();
+</script>
+<script>
+(function(){
+ var b=document.body,q=new URLSearchParams(location.search),$=function(id){return document.getElementById(id)};
+ if(q.get("embed")){b.classList.add("embed")}
+ b.classList.toggle("ann-on",q.get("ann")!=="0");
+ function navOpen(o){b.classList.toggle("nav-open",o);$("menu-btn").setAttribute("aria-expanded",o?"true":"false")}
+ $("menu-btn").addEventListener("click",function(){navOpen(true)});$("nav-close").addEventListener("click",function(){navOpen(false)});$("scrim").addEventListener("click",function(){navOpen(false)});
+ document.addEventListener("keydown",function(e){if(e.key==="Escape")navOpen(false)});
+ [].forEach.call(document.querySelectorAll(".fcol > button"),function(h){h.addEventListener("click",function(){var f=h.parentNode,o=!f.classList.contains("is-open");f.classList.toggle("is-open",o);h.setAttribute("aria-expanded",o?"true":"false")})});
+ var msgs=["Free shipping on orders over $50","New launches are in store","Free returns within 30 days"],mi=0;
+ function msg(d){mi=(mi+d+msgs.length)%msgs.length;$("ann-msg").textContent=msgs[mi];[].forEach.call(document.querySelectorAll(".ann-dot"),function(x,i){x.classList.toggle("bg-current",i===mi);x.classList.toggle("opacity-100",i===mi);x.classList.toggle("opacity-muted",i!==mi)})}
+ $("ann-prev").addEventListener("click",function(){msg(-1)});$("ann-next").addEventListener("click",function(){msg(1)});
+ document.addEventListener("click",function(e){var a=e.target.closest('a[href^="#"]:not([href="#main"]):not([href="#top"])');if(a)e.preventDefault()});
+ $("t-ann").addEventListener("click",function(){var on=!b.classList.contains("ann-on");b.classList.toggle("ann-on",on);this.setAttribute("aria-pressed",on?"true":"false")});
+ $("t-ann").setAttribute("aria-pressed",b.classList.contains("ann-on")?"true":"false");
+ var bad=[["f-name","f-name-e"],["f-email","f-email-e"]],all=[["f-name","f-name-e"],["f-email","f-email-e"],["f-msg","f-msg-e"]];
+ function state(s){
+  var err=s==="error",ok=s==="success";
+  $("f").hidden=ok;$("f-ok").hidden=!ok;$("f-summary").hidden=!err;
+  all.forEach(function(p){var bd=err&&bad.some(function(x){return x[0]===p[0]});$(p[1]).hidden=!bd;if(bd){$(p[0]).setAttribute("aria-invalid","true")}else{$(p[0]).removeAttribute("aria-invalid")}});
+  if(err){$("f-name").value="";$("f-email").value="anna@example";$("f-msg").value="Hello, I have a question about my order."}
+  else if(s==="default"){$("f-name").value="";$("f-email").value="";$("f-msg").value=""}
+ }
+ /* the live form validates on submit: required fields and a simple email pattern, then shows the same error states */
+ $("f").addEventListener("submit",function(e){e.preventDefault();var bads=[];if(!$("f-name").value.trim())bads.push("f-name");if(!/^\S+@\S+\.\S+$/.test($("f-email").value))bads.push("f-email");if(!$("f-msg").value.trim())bads.push("f-msg");
+  all.forEach(function(p){var x=bads.indexOf(p[0])>-1;$(p[1]).hidden=!x;if(x)$(p[0]).setAttribute("aria-invalid","true");else $(p[0]).removeAttribute("aria-invalid")});
+  $("f-summary").hidden=!bads.length;if(bads.length){$("f-summary").querySelector("span").textContent="Please fix the "+bads.length+" field"+(bads.length>1?"s":"")+" marked below.";$(bads[0]).focus()}else{state("success")}});
+ [["s-default","default"],["s-error","error"],["s-success","success"]].forEach(function(p){$(p[0]).addEventListener("click",function(){state(p[1])})});
+ window.NudgeContact={state:state};
+ state(["error","success"].indexOf(q.get("state"))>-1?q.get("state"):"default");
+ if(q.get("selftest")){var s=document.createElement("script");s.text=$("selftest-src").text;document.body.appendChild(s)}
+})();
+</script>
+</body>
+</html>

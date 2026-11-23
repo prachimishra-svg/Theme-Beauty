@@ -1,0 +1,74 @@
+{
+    "id":  "promo-tile",
+    "page":  "plp",
+    "level":  "sub",
+    "name":  "Promo Tile",
+    "properties":  [
+                       {
+                           "name":  "eyebrow",
+                           "type":  "TEXT",
+                           "default":  "Gift sets",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "eyebrow",
+                                           "id":  "eyebrow",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "heading",
+                           "type":  "TEXT",
+                           "default":  "Gifts for every routine",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "heading",
+                                           "id":  "heading",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "text",
+                           "type":  "TEXT",
+                           "default":  "Real offer details and dates go here. Image, text card or video tile; 2 columns from 600 px.",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "text",
+                                           "id":  "text",
+                                           "setting":  "textarea"
+                                       }
+                       },
+                       {
+                           "name":  "buttonLabel",
+                           "type":  "TEXT",
+                           "default":  "Shop gift sets",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "button_label",
+                                           "id":  "button_label",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "buttonHref",
+                           "type":  "TEXT",
+                           "default":  "#cat",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "button_href",
+                                           "id":  "button_link",
+                                           "setting":  "url"
+                                       }
+                       }
+                   ],
+    "accessibility":  "An aside landmark labelled Promotion.",
+    "status":  "classified",
+    "summary":  "An optional merchant tile in the product grid, after the eighth product on page one: a text card with a button.",
+    "tokens":  [
+                   "inverse surface",
+                   "spacing"
+               ],
+    "responsive":  "Spans two columns from 600 px.",
+    "children":  [
+                     "components/base/button"
+                 ]
+}

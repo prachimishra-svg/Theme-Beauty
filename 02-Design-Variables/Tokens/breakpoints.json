@@ -1,0 +1,7 @@
+{
+  "breakpoint": {
+    "tablet":  { "$value": "37.5rem", "$description": "600px: tablet tier begins (min-width)" },
+    "desktop": { "$value": "64rem",   "$description": "1024px: desktop tier begins (min-width)" },
+    "wide":    { "$value": "90rem",   "$description": "1440px: reference only; content stays capped, no token overrides" }
+  }
+}

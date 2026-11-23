@@ -1,0 +1,39 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "NUDGE Beauty",
+    "theme_version": "0.1.0",
+    "theme_author": "Growisto",
+    "theme_documentation_url": "",
+    "theme_support_url": ""
+  },
+  {
+    "name": "Branding",
+    "settings": [
+      { "type": "paragraph", "content": "Colours, type, spacing and radius come from the Design Variables (assets/variables.css) and are not editable here, so every page stays on the same system." },
+      { "type": "image_picker", "id": "logo", "label": "Logo image", "info": "Leave empty to use the NUDGE wordmark." },
+      { "type": "range", "id": "logo_height", "min": 16, "max": 48, "step": 4, "unit": "px", "label": "Logo height", "default": 24 },
+      { "type": "image_picker", "id": "favicon", "label": "Favicon", "info": "Square PNG, at least 32 x 32 px." }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      { "type": "url", "id": "social_instagram", "label": "Instagram" },
+      { "type": "url", "id": "social_facebook", "label": "Facebook" },
+      { "type": "url", "id": "social_youtube", "label": "YouTube" }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      { "type": "select", "id": "cart_type", "label": "Cart type", "options": [ { "value": "page", "label": "Cart page" }, { "value": "drawer", "label": "Cart drawer" } ], "default": "page" }
+    ]
+  },
+  {
+    "name": "Country and currency",
+    "settings": [
+      { "type": "checkbox", "id": "show_localization", "label": "Show the country and currency selector", "default": true, "info": "Uses Shopify Markets. Add countries under Settings > Markets." }
+    ]
+  }
+]

@@ -1,0 +1,132 @@
+{
+    "id":  "media",
+    "name":  "Media",
+    "level":  "base",
+    "page":  "shared",
+    "status":  "ready",
+    "summary":  "An image area with a fixed shape and ratio. Without an image it shows the labelled placeholder used in the wireframes (label and size, no artwork).",
+    "properties":  [
+                       {
+                           "name":  "shape",
+                           "type":  "VARIANT",
+                           "default":  "rect",
+                           "values":  [
+                                          "rect",
+                                          "circle"
+                                      ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "shape"
+                                       }
+                       },
+                       {
+                           "name":  "ratio",
+                           "type":  "VARIANT",
+                           "default":  "portrait",
+                           "values":  [
+                                          "portrait",
+                                          "square",
+                                          "landscape",
+                                          "wide"
+                                      ],
+                           "note":  "portrait 4:5, square 1:1, landscape 16:9, wide 2:1",
+                           "classes":  {
+                                           "portrait":  "r45",
+                                           "square":  "r11",
+                                           "landscape":  "r169",
+                                           "wide":  "r21"
+                                       },
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "ratio"
+                                       },
+                           "approved":  "D10 (2026-11-17)"
+                       },
+                       {
+                           "name":  "tone",
+                           "type":  "VARIANT",
+                           "default":  "t1",
+                           "values":  [
+                                          "t1",
+                                          "t2",
+                                          "t3",
+                                          "t4"
+                                      ],
+                           "note":  "Placeholder tint",
+                           "classes":  {
+                                           "t1":  "",
+                                           "t2":  "t2",
+                                           "t3":  "t3",
+                                           "t4":  "t4"
+                                       },
+                           "scope":  "wireframe",
+                           "shopify":  {
+                                           "param":  "tone"
+                                       }
+                       },
+                       {
+                           "name":  "label",
+                           "type":  "TEXT",
+                           "default":  "Product photo: Face Serum",
+                           "note":  "Placeholder label; empty = no placeholder text",
+                           "scope":  "wireframe",
+                           "shopify":  {
+                                           "param":  "label"
+                                       }
+                       },
+                       {
+                           "name":  "dim",
+                           "type":  "TEXT",
+                           "default":  "4:5, 800 x 1000",
+                           "scope":  "wireframe",
+                           "shopify":  {
+                                           "param":  "dim"
+                                       }
+                       },
+                       {
+                           "name":  "image",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "note":  "Image URL; when set the image replaces the placeholder look",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "image",
+                                           "setting":  "image_picker"
+                                       }
+                       },
+                       {
+                           "name":  "alt",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "alt"
+                                       },
+                           "approved":  "D10 (2026-11-17)"
+                       },
+                       {
+                           "name":  "nodim",
+                           "type":  "BOOLEAN",
+                           "default":  false,
+                           "note":  "Hide the size line",
+                           "scope":  "wireframe",
+                           "shopify":  {
+                                           "param":  "nodim"
+                                       }
+                       },
+                       {
+                           "name":  "extra",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "extra"
+                                       }
+                       }
+                   ],
+    "accessibility":  "Images need alt text; the placeholder is decorative.",
+    "tokens":  [
+                   "placeholder tints (warm colours)",
+                   "aspect ratio tokens"
+               ]
+}

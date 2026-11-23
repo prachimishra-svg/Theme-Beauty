@@ -1,0 +1,112 @@
+{
+    "id":  "chip",
+    "name":  "Chip",
+    "level":  "base",
+    "page":  "shared",
+    "status":  "ready",
+    "summary":  "A pill for filtering and tags: the Design System chip (toggle or link) and the Homepage Editorial chip (selectable) and tag (static).",
+    "properties":  [
+                       {
+                           "name":  "variant",
+                           "type":  "VARIANT",
+                           "default":  "ds",
+                           "tables":  {
+                                          "selectedClass":  {
+                                                                "ds":  "",
+                                                                "editorial":  " on",
+                                                                "editorial-tag":  ""
+                                                            },
+                                          "selectedAttr":  {
+                                                               "ds":  " aria-pressed=\"true\"",
+                                                               "editorial":  "",
+                                                               "editorial-tag":  ""
+                                                           }
+                                      },
+                           "values":  [
+                                          "ds",
+                                          "editorial",
+                                          "editorial-tag"
+                                      ],
+                           "classes":  {
+                                           "ds":  "chip",
+                                           "editorial":  "hp-chip",
+                                           "editorial-tag":  "hp-chip chip--tag min-h-8 cursor-default px-4 hover:border-line-inverse"
+                                       },
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "variant",
+                                           "setting":  "select"
+                                       },
+                           "approved":  "D10 (2026-11-17)"
+                       },
+                       {
+                           "name":  "element",
+                           "type":  "VARIANT",
+                           "default":  "button",
+                           "values":  [
+                                          "button",
+                                          "span",
+                                          "link"
+                                      ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "element"
+                                       }
+                       },
+                       {
+                           "name":  "label",
+                           "type":  "TEXT",
+                           "default":  "Hydration",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "label"
+                                       },
+                           "approved":  "D10 (2026-11-17)"
+                       },
+                       {
+                           "name":  "selected",
+                           "type":  "BOOLEAN",
+                           "default":  false,
+                           "note":  "Selected state (Design System: aria-pressed; Editorial: tinted)",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "selected"
+                                       }
+                       },
+                       {
+                           "name":  "href",
+                           "type":  "TEXT",
+                           "default":  "#",
+                           "note":  "element = link",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "href"
+                                       },
+                           "approved":  "D10 (2026-11-17)"
+                       },
+                       {
+                           "name":  "extra",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "extra"
+                                       }
+                       },
+                       {
+                           "name":  "editHook",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "scope":  "wireframe",
+                           "shopify":  {
+                                           "param":  "edit_hook"
+                                       }
+                       }
+                   ],
+    "accessibility":  "Toggle chips expose the pressed state. 44 px hit area.",
+    "tokens":  [
+                   "brand tint",
+                   "border colours",
+                   "pill radius"
+               ]
+}

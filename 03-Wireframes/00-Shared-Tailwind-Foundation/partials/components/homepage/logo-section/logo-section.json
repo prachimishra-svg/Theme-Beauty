@@ -1,0 +1,131 @@
+{
+    "name":  "Logo List",
+    "wireframeOnly":  [
+                          ".ann annotation block",
+                          "data-section attribute",
+                          "data-c review hooks",
+                          "logo placeholder captions"
+                      ],
+    "page":  "homepage",
+    "properties":  [
+                       {
+                           "name":  "label",
+                           "type":  "TEXT",
+                           "default":  "As recognised by",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "label",
+                                           "id":  "label",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "regionLabel",
+                           "type":  "TEXT",
+                           "default":  "Certifications, awards and press",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "region_label",
+                                           "id":  "region_label",
+                                           "setting":  "text"
+                                       },
+                           "note":  "Accessible name of the list"
+                       },
+                       {
+                           "name":  "anchor",
+                           "type":  "TEXT",
+                           "default":  "s16",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "anchor",
+                                           "id":  "anchor",
+                                           "setting":  "text"
+                                       },
+                           "note":  "In-page anchor id"
+                       },
+                       {
+                           "name":  "logos",
+                           "type":  "LIST",
+                           "default":  [
+                                           {
+                                               "aria":  "Certification 1 (placeholder): verify the certificate",
+                                               "lbl":  "Certification logo",
+                                               "tag":  "Certification"
+                                           },
+                                           {
+                                               "aria":  "Certification 2 (placeholder): verify the certificate",
+                                               "lbl":  "Certification logo",
+                                               "tag":  "Certification"
+                                           },
+                                           {
+                                               "aria":  "Certification 3 (placeholder): verify the certificate",
+                                               "lbl":  "Certification logo",
+                                               "tag":  "Certification"
+                                           },
+                                           {
+                                               "aria":  "Award 4 (placeholder): view the award",
+                                               "lbl":  "Award logo",
+                                               "tag":  "Award"
+                                           },
+                                           {
+                                               "aria":  "Award 5 (placeholder): view the award",
+                                               "lbl":  "Award logo",
+                                               "tag":  "Award"
+                                           },
+                                           {
+                                               "aria":  "Press 6 (placeholder): read the article",
+                                               "lbl":  "Publication logo",
+                                               "tag":  "Press"
+                                           },
+                                           {
+                                               "aria":  "Press 7 (placeholder): read the article",
+                                               "lbl":  "Publication logo",
+                                               "tag":  "Press"
+                                           },
+                                           {
+                                               "aria":  "Press 8 (placeholder): read the article",
+                                               "lbl":  "Publication logo",
+                                               "tag":  "Press"
+                                           }
+                                       ],
+                           "itemFields":  [
+                                              "aria",
+                                              "lbl",
+                                              "tag"
+                                          ],
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "logos",
+                                           "setting":  "blocks",
+                                           "blockType":  "logo"
+                                       },
+                           "note":  "One block per logo"
+                       }
+                   ],
+    "tokens":  [
+                   "surface background",
+                   "spacing"
+               ],
+    "summary":  "A sideways-scrolling row of certification, award and press logos. Maps to the logo-list section. Every logo must be verifiable by the merchant.",
+    "accessibility":  "The heading role and level are set explicitly; the list is a labelled, focusable region.",
+    "id":  "logo-section",
+    "level":  "main",
+    "status":  "classified (D10 items pending)",
+    "responsive":  "Scrolls sideways with controls on small screens.",
+    "exposes":  [
+                    {
+                        "child":  "components/homepage/logo-item",
+                        "property":  "aria",
+                        "via":  "logos.aria_label"
+                    },
+                    {
+                        "child":  "components/homepage/logo-item",
+                        "property":  "tag",
+                        "via":  "logos.tag"
+                    }
+                ],
+    "children":  [
+                     "components/common/scroller-controls",
+                     "components/homepage/logo-item"
+                 ]
+}

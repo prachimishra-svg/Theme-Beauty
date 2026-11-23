@@ -1,0 +1,8 @@
+{%- comment -%}
+  GENERATED from components/base/message by 07-Component-Library/tools/generate-liquid-staging.ps1 (contract 435f7cbe8fcff290).
+  Do not edit here: change the library component, then regenerate. Text values are written raw; escape where Shopify data enters (| escape in the section).
+  Parameters (class: design = fixed, parent = passed in, merchant = set in a section, wireframe = not used):
+    variant (VARIANT, parent)
+    text (TEXT, merchant)
+{%- endcomment -%}
+{%- if variant == nil -%}{%- assign variant = 'success' -%}{%- endif -%}{%- if text == nil -%}{%- assign text = 'Added to your bag.' -%}{%- endif -%}<p class="message {% case variant %}{% when 'success' %}message-success{% when 'error' %}message-error{% when 'warning' %}message-warning{% endcase %}" role="{% case variant %}{% when 'success' %}status{% when 'error' %}alert{% when 'warning' %}alert{% endcase %}">{% capture arg_1 %}{% case variant %}{% when 'success' %}check-circle{% when 'error' %}warning{% when 'warning' %}warning{% endcase %}{% endcapture %}{% render 'icon', name: arg_1, icon_size: 'custom', extra: '' %}<span>{{ text }}</span></p>

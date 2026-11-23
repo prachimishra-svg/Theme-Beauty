@@ -1,0 +1,65 @@
+{%- assign steps = section.blocks | where: 'type', 'step' -%}
+{%- assign total_label = steps.size | prepend: '0' | slice: -2, 2 -%}
+{%- assign prev_label = 'sections.ritual.previous' | t -%}
+{%- assign next_label = 'sections.ritual.next' | t -%}
+<section class="sec bg-subtle text-ink" id="{{ section.settings.anchor | default: 's11' }}">
+  <div class="sec__in py-section">
+    <div class="wrap">
+      <div class="rit" data-ritual>
+        <div class="rit__head mb-8 flex flex-col items-center text-center sm:mb-[calc(var(--space-10)+var(--space-1))] lg:mb-14">
+          {%- if section.settings.eyebrow != blank -%}<div class="eyebrow type-overline mb-3"><span>{{ section.settings.eyebrow | escape }}</span></div>{%- endif -%}
+          <h2><span>{{ section.settings.heading | escape }}</span></h2>
+          {%- if section.settings.text != blank -%}<p class="lead mx-auto mt-4 max-w-[30rem] text-ink-secondary"><span>{{ section.settings.text | escape }}</span></p>{%- endif -%}
+        </div>
+        <div class="rit__bar mb-4 flex items-center justify-between gap-4 lg:hidden">
+          <span class="rit__count text-caption font-semibold tracking-[0.14em] text-ink" aria-live="polite">01 / {{ total_label }}</span>
+          <span class="rit__nav flex gap-2">
+            <button class="rit__prev inline-flex size-touch cursor-pointer items-center justify-center rounded-full border border-ink bg-transparent p-0 text-ink transition-colors duration-base enabled:hover:bg-ink enabled:hover:text-page disabled:cursor-default disabled:opacity-[.3]" type="button" aria-label="{{ prev_label }}" disabled>{% render 'icon', name: 'arrow-left', class: 'icon size-[18px]' %}</button>
+            <button class="rit__next inline-flex size-touch cursor-pointer items-center justify-center rounded-full border border-ink bg-transparent p-0 text-ink transition-colors duration-base enabled:hover:bg-ink enabled:hover:text-page disabled:cursor-default disabled:opacity-[.3]" type="button" aria-label="{{ next_label }}">{% render 'icon', name: 'arrow-right', class: 'icon size-[18px]' %}</button>
+          </span>
+        </div>
+        <ol class="rit__track -mx-gutter m-0 flex list-none gap-4 overflow-x-auto overscroll-x-contain scroll-smooth px-gutter [scroll-padding:0_var(--layout-gutter)] [scroll-snap-type:x_mandatory] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:max-lg:gap-grid-gap lg:mx-0 lg:grid lg:grid-cols-4 lg:gap-grid-gap lg:overflow-visible lg:p-0" aria-label="{{ 'sections.ritual.steps_label' | t }}" tabindex="0">
+          {%- for block in steps -%}
+            {%- assign number_label = forloop.index | prepend: '0' | slice: -2, 2 -%}
+            {% render 'ritual-step', block: block, number: forloop.index, number_label: number_label %}
+          {%- endfor -%}
+        </ol>
+        {%- if section.settings.note != blank -%}<p class="rit__note mt-7 text-center text-body-sm text-ink-secondary sm:mt-10 lg:mt-12"><span>{{ section.settings.note | escape }}</span></p>{%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ritual steps",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Label", "default": "Your daily ritual" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "A simple ritual, step by step" },
+    { "type": "text", "id": "text", "label": "Text", "default": "Four steps, in order, each with the product it uses." },
+    { "type": "text", "id": "note", "label": "Closing tip", "default": "Optional closing tip, from the product labels." },
+    { "type": "text", "id": "anchor", "label": "Anchor id", "default": "s11" }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image", "info": "Portrait 4:5, 1200 x 1500 px." },
+        { "type": "text", "id": "name", "label": "Step name", "default": "Cleanse" },
+        { "type": "textarea", "id": "text", "label": "How to apply", "default": "How to apply, from the product label." },
+        { "type": "text", "id": "tip", "label": "Tip", "default": "from the label" },
+        { "type": "text", "id": "time", "label": "Time", "default": "from the label" },
+        { "type": "product", "id": "product", "label": "Product" },
+        { "type": "text", "id": "product_label", "label": "Product link text" },
+        { "type": "url", "id": "product_link", "label": "Product link", "info": "Leave empty to use the product link." }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    { "name": "Ritual steps", "blocks": [ { "type": "step", "settings": { "name": "Cleanse" } }, { "type": "step", "settings": { "name": "Treat" } }, { "type": "step", "settings": { "name": "Moisturise" } }, { "type": "step", "settings": { "name": "Protect" } } ] }
+  ]
+}
+{% endschema %}

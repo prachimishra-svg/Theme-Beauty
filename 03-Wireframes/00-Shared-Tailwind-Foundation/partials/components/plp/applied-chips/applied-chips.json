@@ -1,0 +1,51 @@
+{
+    "id":  "applied-chips",
+    "page":  "plp",
+    "level":  "sub",
+    "name":  "Applied Filter Chips",
+    "properties":  [
+                       {
+                           "name":  "chips",
+                           "type":  "LIST",
+                           "default":  [
+                                           {
+                                               "label":  "Dryness",
+                                               "key":  "concern",
+                                               "value":  "Dryness"
+                                           },
+                                           {
+                                               "label":  "Dry",
+                                               "key":  "skin",
+                                               "value":  "Dry"
+                                           },
+                                           {
+                                               "label":  "$0 to $30",
+                                               "key":  "price",
+                                               "value":  ""
+                                           }
+                                       ],
+                           "itemFields":  [
+                                              "key",
+                                              "value",
+                                              "label"
+                                          ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "chips"
+                                       },
+                           "data":  "collection.filters.active_values",
+                           "note":  "One chip per applied filter"
+                       }
+                   ],
+    "accessibility":  "Each chip is a toggle button with the words Remove filter for screen readers.",
+    "status":  "classified",
+    "summary":  "The removable chips for the filters that are applied, one per choice.",
+    "tokens":  [
+                   "chip tokens",
+                   "spacing"
+               ],
+    "responsive":  "One scrolling line on phones; wraps from 600 px.",
+    "children":  [
+                     "components/base/icon"
+                 ]
+}

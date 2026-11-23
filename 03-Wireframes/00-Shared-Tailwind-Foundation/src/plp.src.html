@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NUDGE Beauty Theme: PLP Wireframe</title>
+<!-- Design Variables (tokens) linked; styling is Tailwind utilities and the shared components, mapped to those tokens. -->
+@@PARTIAL head@@
+<style>
+@@PARTIAL review-css@@
+</style>
+<style type="text/tailwindcss">
+/* PLP page-level layer: only what utilities cannot express (pseudo-elements, :checked states, hover-capable media query, keyframes).
+   Everything else on this page is utilities plus the shared components. Candidates to promote to the shared layer: .pm, .choice, .swatch. */
+@keyframes faceted-in{from{transform:translateX(-100%)}to{transform:none}}
+@layer components{
+  /* media placeholder: the Design System placeholder-media gradients (the shared .ph set is a different look) */
+  .pm{background:radial-gradient(120% 90% at 30% 20%,var(--color-bg-surface) 0%,transparent 55%),linear-gradient(160deg,var(--color-brand-tint-strong),var(--color-bg-subtle))}
+  .pm-b{background:radial-gradient(100% 80% at 70% 25%,var(--color-bg-surface) 0%,transparent 50%),linear-gradient(200deg,var(--color-bg-subtle),var(--color-brand-tint))}
+  .pm-c{background:linear-gradient(180deg,var(--color-bg-surface),var(--color-bg-subtle))}
+  /* collection banner background */
+  .banner-bg{background:radial-gradient(60% 100% at 80% 40%,color-mix(in srgb,var(--color-brand-accent) 45%,transparent),transparent 72%),linear-gradient(160deg,var(--color-bg-page) 0,var(--color-bg-subtle) 62%,color-mix(in srgb,var(--color-brand-secondary) 24%,var(--color-bg-subtle)) 100%)}
+  /* checkbox row (Design System .choice) */
+  .choice{@apply flex min-h-touch cursor-pointer items-start gap-3 py-1 text-body leading-snug}
+  .choice-input{appearance:none;-webkit-appearance:none;flex:none;position:relative;margin:0;margin-top:-.0625rem;width:var(--choice-size);height:var(--choice-size);background:var(--color-control-bg);border:var(--border-width-thin) solid var(--color-control-border);border-radius:var(--radius-sm);display:grid;place-content:center;cursor:pointer;transition:background-color var(--duration-fast) var(--ease-standard),border-color var(--duration-fast) var(--ease-standard)}
+  .choice-input::before{content:"";width:var(--choice-check-size);height:var(--choice-check-size);background:var(--color-text-on-brand);transform:scale(0);transition:transform var(--duration-fast) var(--ease-out);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat}
+  .choice-input:hover{border-color:var(--color-control-border-hover)}
+  .choice-input:checked{background:var(--color-control-selected);border-color:var(--color-control-selected)}
+  .choice-input:checked::before{transform:scale(1)}
+  /* colour swatch (Design System .swatch; selection is a ring, not colour alone) */
+  .swatch{@apply relative grid size-touch cursor-pointer place-items-center}
+  .swatch-input{@apply absolute inset-0 m-0 size-full cursor-pointer opacity-0}
+  .swatch-chip{width:var(--swatch-size);height:var(--swatch-size);border-radius:var(--swatch-radius);background:var(--swatch,var(--color-bg-subtle));box-shadow:inset 0 0 0 var(--border-width-thin) rgb(var(--shadow-color) / .25);outline:var(--swatch-ring-width) solid transparent;outline-offset:var(--swatch-ring-offset);transition:outline-color var(--duration-fast) var(--ease-standard)}
+  .swatch:hover .swatch-chip{outline-color:var(--color-border-strong)}
+  .swatch-input:checked+.swatch-chip{outline-color:var(--color-text-primary)}
+  .swatch-input:focus-visible+.swatch-chip{outline:var(--focus-ring);outline-offset:var(--swatch-ring-offset)}
+  .swatch-sm{width:var(--swatch-hit-sm);height:var(--swatch-hit-sm)}
+  .swatch-sm .swatch-chip{width:var(--swatch-size-sm);height:var(--swatch-size-sm)}
+  /* product card: whole card clickable through the title link; focus ring moves to the card */
+  .pc-link{color:inherit;text-decoration:none}
+  .pc-link::after{content:"";position:absolute;inset:0}
+  .pc-link:hover{color:var(--color-link);text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:var(--border-width-thin)}
+  .pc-link:focus-visible{outline:none}
+  .product-card:has(.pc-link:focus-visible){outline:var(--focus-ring);outline-offset:var(--focus-ring-offset);border-radius:var(--radius-card)}
+  .pc-alt{opacity:0;transition:opacity var(--duration-slow) var(--ease-standard)}
+  .product-card .pc-quick{display:none}
+  /* mouse screens: second image fades in, Quick view rises over the foot of the image (keyboard focus does the same); touch keeps the labelled button under the card */
+  @media (hover:hover) and (pointer:fine){
+    .product-card:hover .pc-alt,.product-card:focus-within .pc-alt{opacity:1}
+    .product-card:hover .pc-media,.product-card:focus-within .pc-media{box-shadow:var(--shadow-md)}
+    .pc-media{transition:box-shadow var(--duration-slow) var(--ease-standard)}
+    .product-card .pc-quick{display:inline-flex;position:absolute;left:var(--space-3);right:var(--space-3);bottom:var(--space-3);z-index:var(--z-raised);background:color-mix(in srgb,var(--color-bg-surface) 94%,transparent);opacity:0;transform:translateY(var(--space-2));transition:opacity var(--duration-base) var(--ease-standard),transform var(--duration-base) var(--ease-standard)}
+    .product-card:hover .pc-quick,.product-card:focus-within .pc-quick{opacity:1;transform:none}
+    .product-card .pc-action{display:none}
+  }
+}
+</style>
+</head>
+<body class="ann-on" id="top">
+@@PARTIAL sprite@@
+<a href="#results" class="sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-skip focus:rounded-control focus:bg-inverse focus:px-5 focus:py-3 focus:font-semibold focus:text-ink-inverse">Skip to products</a>
+<div class="rv">
+  <div class="rvt">NUDGE Beauty Theme: product listing page (PLP) wireframe &middot; revision 2 &middot; single responsive file</div>
+  <p>One collection page (sample collection: Skin care). Resize the window, or use the <b>Width preview</b> for 1920, 1440, 1024, 768, 390, 375 and 320 px. Built with Tailwind utilities and shared components mapped to the Design Variables; the announcement bar, header and footer are the shared sections. Products, prices, tags and copy are sample data. Placeholders only: no photography. <b>Revision 2:</b> filters are a left sidebar from 768 px and a left slide-in drawer below it; editorial product cards; refined pagination.</p>
+  <div class="ctl"><button id="t-ann" type="button" aria-pressed="true">Annotations</button><button id="t-wp" type="button">Width preview</button><button id="t-open" type="button">Open filters</button><button id="t-applied" type="button">Applied filters</button><button id="t-empty" type="button">Empty results</button><button id="t-quick" type="button">Quick view</button><button id="t-reset" type="button">Reset</button></div>
+<details><summary>Review notes: approved features, exclusions, decisions, Shopify, reuse, checks (open)</summary>
+<h3 class="mb-1 mt-4 font-body text-body-sm font-semibold">Approved Beauty PLP features (23 of 23 built)</h3>
+<p>Source: <b>Homepage_CRO_5_Theme_Final_Comparison_Revised_Final.xlsx</b>, sheet <i>Beauty - PLP, PDP &amp; Cart</i> (PLP: 23 kept, 7 not recommended). Evidence for each row is in <b>PLP-FEATURE-ANALYSIS.md</b> beside this file.</p>
+<div class="max-w-full overflow-x-auto"><table class="min-w-[44rem]"><thead><tr><th>#</th><th>Feature (revised workbook)</th><th>Role</th><th>Where in the wireframe</th></tr></thead><tbody>
+<tr><td>1</td><td>Breadcrumbs</td><td>Essential</td><td>Top of the banner (phones: parent and current page)</td></tr>
+<tr><td>2</td><td>Collection Banner (title, image, short intro)</td><td>Essential</td><td>Banner: the one H1, a two-line intro; image from 1024 px</td></tr>
+<tr><td>3</td><td>Sub-collection Links (chips)</td><td>Industry-specific</td><td>Chip row under the banner</td></tr>
+<tr><td>4</td><td>Sort and Product Count Bar</td><td>Essential</td><td>Toolbar above the grid: live count, sort; Filters button on phones</td></tr>
+<tr><td>5</td><td>Filters (availability, price, product type; phone-friendly)</td><td>Essential</td><td>Left sidebar from 768 px; left drawer below</td></tr>
+<tr><td>6</td><td>Filter by Concern / Skin Type / Goal</td><td>Industry-specific</td><td>First two sidebar groups (open); Benefits group</td></tr>
+<tr><td>7</td><td>Filter by Colour / Shade Swatches</td><td>Industry-specific</td><td>Shade group (only when the collection has shades)</td></tr>
+<tr><td>8</td><td>Filter by Size</td><td>Industry-specific</td><td>Size group (volume)</td></tr>
+<tr><td>9</td><td>Active Filter Chips &amp; Clear All</td><td>Essential</td><td>Above the grid; one line on phones</td></tr>
+<tr><td>10</td><td>Empty Filter Result State</td><td>Additional CRO</td><td>Replaces the grid: message, Clear all, category links</td></tr>
+<tr><td>11</td><td>Promo Tile in Grid</td><td>Optional (merchant)</td><td>One tile after the 8th product, page 1 only</td></tr>
+<tr><td>12</td><td>Product Grid (2 to 4 columns, consistent card size)</td><td>Essential</td><td>2 / 3 columns by width beside the sidebar, 4 from 1280 px</td></tr>
+<tr><td>13</td><td>Product Card: image, title, price, sale price and saving</td><td>Essential</td><td>Editorial card; percent badge on the image</td></tr>
+<tr><td>14</td><td>Product Rating on Card (display only)</td><td>Optional (merchant)</td><td>Stars and count under the supporting line; hidden under 5 reviews</td></tr>
+<tr><td>15</td><td>Unit Price</td><td>Industry-specific</td><td>Under the price where set</td></tr>
+<tr><td>16</td><td>Key Attribute Line on Card</td><td>Industry-specific</td><td>One line under the name</td></tr>
+<tr><td>17</td><td>Colour / Shade Swatches on Card</td><td>Industry-specific</td><td>Four dots and +N; names are in Quick view</td></tr>
+<tr><td>18</td><td>Product Badges</td><td>Essential</td><td>One quiet badge: sold out, sale, new arrival, bestseller, limited edition</td></tr>
+<tr><td>19</td><td>Low-Stock Message on Card (real inventory)</td><td>Optional (merchant)</td><td>Icon and words; two sample cards</td></tr>
+<tr><td>20</td><td>Quick View</td><td>Optional; after the first listing</td><td>Hover bar on mouse screens; labelled button on touch; opens the Drawer (right side panel)</td></tr>
+<tr><td>21</td><td>Numbered Pagination</td><td>Essential</td><td>Below the grid at every width</td></tr>
+<tr><td>22</td><td>Scroll Position Kept on Back</td><td>Essential</td><td>Behaviour, not drawn: filters and page live in the URL</td></tr>
+<tr><td>23</td><td>Collection SEO Description (below the grid)</td><td>Optional (merchant)</td><td>Text block under the pagination</td></tr>
+</tbody></table></div>
+<h3 class="mb-1 mt-4 font-body text-body-sm font-semibold">Not in the wireframe (marked No or Removed for Beauty)</h3>
+<ul class="[columns:2_14rem]"><li>Quick Add (No: a shade must be chosen first; Quick view is used)</li><li>Grid / list toggle</li><li>Compare bar</li><li>Related collections strip</li><li>Filter by brand (Removed: each theme is one brand's store)</li><li>Filter by pet type; by technical specification</li><li>Wishlist (needs an app)</li><li>Back-in-stock sign-up (needs an app)</li><li>Infinite scroll; Load more button</li><li>Recently viewed; best-seller strip; delivery or trust strip</li><li>Ratings from a review platform (needs an app)</li></ul>
+<h3 class="mb-1 mt-4 font-body text-body-sm font-semibold">Decisions to confirm (this revision follows your brief where it differs from the workbook)</h3>
+<ul>
+<li><b>Second image on hover</b> is marked No for Beauty in the workbook (touch has no hover). You asked for it, so it is built for mouse screens only (hover and fine pointer); touch screens show the first image. Setting: show second image.</li>
+<li><b>Key ingredients</b> and <b>Benefits</b> filters are not in the workbook's Beauty list (the CRO matrix names ingredient as a possible metafield group). Added at your request. <b>Brand</b> is Removed in the workbook (one brand per store), so it is not drawn.</li>
+<li><b>Limited edition</b> badge is not in the workbook's badge list (sale, new, best seller, sold out). Shown on one sample card; a merchant tag.</li>
+<li><b>Sticky filters.</b> Not used: Sticky Filters while scrolling is Removed (deferred) in the revised workbook, so the sidebar and the sort toolbar scroll with the page.</li>
+<li><b>Quick add vs Quick view.</b> Followed the workbook: Quick view with a shade chooser and Add to bag, not a one-tap add.</li>
+<li><b>Pagination</b> stays numbered (Load more and infinite scroll are Removed in the workbook; the Design System's phone Load more is not used).</li>
+</ul>
+<h3 class="mb-1 mt-4 font-body text-body-sm font-semibold">Shopify-native or app-dependent</h3>
+<div class="max-w-full overflow-x-auto"><table class="min-w-[44rem]"><thead><tr><th>Feature</th><th>Type</th></tr></thead><tbody>
+<tr><td>Filters, counts, price range, availability, URL state</td><td>Native Shopify platform feature: Search &amp; Discovery filters (set in admin); the theme supplies the sidebar and drawer</td></tr>
+<tr><td>Concern, skin type, ingredient, benefit, shade, size filters</td><td>Product tags or metafields exposed as filters (merchant sets up)</td></tr>
+<tr><td>Sort, pagination, unit price, compare-at price, badges, sold out</td><td>Native: collection and product data</td></tr>
+<tr><td>Second image on hover</td><td>Native: the product's second media item</td></tr>
+<tr><td>Rating and review count on the card</td><td>Native display only: values come from a product metafield; the theme builds no review system</td></tr>
+<tr><td>Low-stock message</td><td>Native, only with tracked inventory; never invented</td></tr>
+<tr><td>Quick view</td><td>Native theme: Liquid, product JSON and theme JavaScript</td></tr>
+<tr><td>Promo tile</td><td>Theme block (image or text card), merchant content</td></tr>
+</tbody></table></div>
+<h3 class="mb-1 mt-4 font-body text-body-sm font-semibold">Shopify build</h3>
+<p>Template <code>collection.json</code> with a <code>main-collection</code> section over the native <code>collection</code> object and Search &amp; Discovery filters; the banner, sub-collection links, filters, toolbar, product grid, promo tile, pagination and SEO description are blocks and snippets (<code>product-card</code>, <code>facet-group</code>, <code>quick-view</code>); the promo tile, filter groups and second-image setting are theme-editor settings. No app is involved. Tailwind utilities compile into one theme stylesheet from the same token-mapped config.</p>
+<h3 class="mb-1 mt-4 font-body text-body-sm font-semibold">Reused from the shared components (nothing duplicated)</h3>
+<p>Breadcrumb, Chip (toggle, removable and as a link), Button, Select, Drawer (mobile filters and quick view, with <code>drawer.js</code>), Accordion, Field, Badge, Price, Rating, Pagination, Message, text roles. Colours, spacing, type, radius, shadow, motion and z-index come from <code>variables.css</code> through the Tailwind theme. Page-level additions: placeholder gradients, checkbox row, colour swatch, product-card hover behaviour.</p>
+<h3 class="mb-1 mt-4 font-body text-body-sm font-semibold">Checks</h3>
+<p id="doc-checks">See PLP-FEATURE-ANALYSIS.md, section 6. In-page checks run with <code>?selftest=1</code>.</p>
+</details>
+</div>
+<div class="ann"><b>Global</b>Announcement bar, header and footer: the shared sections (rotating real messages; centred logo, four links, search, account, cart; Skin is the current link). Sub-categories appear as chips on this page (no mega menu).<em>Responsive: announcement bar one wrapping line, arrows from 600 px, dots below. Below 1024 px a one-row header with menu, search icon, logo, account and cart; links sit in the drawer. Footer groups are tap-to-open rows below 768 px, four columns from 768 px.</em></div>
+@@PARTIAL annbar@@
+@@PARTIAL header CART=link NAV=skin@@
+<main id="main">
+@@PARTIAL components/plp/collection-banner@@
+@@PARTIAL components/plp/subcollection-nav@@
+<div class="wrap grid grid-cols-[minmax(0,1fr)] gap-6 pb-14 pt-6 md:grid-cols-[calc(var(--space-12)*5)_minmax(0,1fr)] md:items-start md:gap-8 xl:gap-12" data-section="Filters and Product Grid">
+@@PARTIAL components/plp/filters-sidebar@@
+<div class="min-w-0" id="results" tabindex="-1">
+@@PARTIAL components/plp/toolbar@@
+@@PARTIAL components/plp/product-grid@@
+</div>
+</div>
+@@PARTIAL components/plp/seo-block@@
+</main>
+@@PARTIAL footer@@
+
+@@PARTIAL components/plp/filters-drawer@@
+
+@@PARTIAL components/plp/quick-view-drawer@@
+@@PARTIAL width-preview@@
+<script type="text/plain" id="selftest-src">
+(function(){
+ var EXPECT_COLS=function(w){return w>=1280?4:w>=1024?3:w>=768?2:w>=600?3:2};
+ function vis(el){var cs=getComputedStyle(el);if(cs.display==="none"||cs.visibility==="hidden")return false;var r=el.getBoundingClientRect();return r.width>0&&r.height>0}
+ function sel(el){var s=el.tagName.toLowerCase();if(el.id)s+="#"+el.id;if(el.className&&typeof el.className==="string")s+="."+el.className.trim().split(/\s+/).slice(0,2).join(".");return s}
+ function run(){
+  var W=window.innerWidth,de=document.documentElement,out={docHeight:de.scrollHeight,width:W,checks:{}},N=window.NudgePLP,SIDE=W>=768;
+  var st=document.createElement("style");st.textContent="*{transition:none!important;animation:none!important}";document.head.appendChild(st);void document.body.offsetHeight;
+  /* 0 Tailwind applied and web fonts loaded (not a fallback face) */
+  var side0=document.getElementById("faceted-sidebar"),twOk=getComputedStyle(document.getElementById("site-header")).position==="sticky"&&getComputedStyle(side0).display===(SIDE?"block":"none")&&getComputedStyle(document.querySelector(".product-card")).display==="flex"&&!document.querySelector('link[href*="components.css"],link[href*="base.css"]');
+  var fl=Array.from(document.fonts).some(function(x){return x.family.indexOf("Cormorant")>-1&&x.status==="loaded"})&&Array.from(document.fonts).some(function(x){return x.family.indexOf("DM Sans")>-1&&x.status==="loaded"});
+  out.checks.tailwindAndFonts={pass:twOk&&fl,detail:"Tailwind utilities applied, no Design System component stylesheet: "+twOk+"; Cormorant and DM Sans loaded: "+fl};
+  /* 1 overflow */
+  var off=[];document.querySelectorAll("main *,header *,footer *").forEach(function(el){if(el.closest(".chip-row")||el.closest(".sr-only")||el.closest(".drawer")||el.closest("#nav")&&W<1024)return;var r=el.getBoundingClientRect();if(r.width>0&&(r.right>W+1||r.left<-1))off.push(sel(el))});
+  out.checks.overflow={pass:de.scrollWidth<=W+1&&off.length===0,detail:"scrollWidth "+de.scrollWidth+" of "+W+(off.length?"; past the edge: "+off.slice(0,4).join(", "):"")};
+  /* 2 structure: one H1, headings in order, landmarks */
+  var hs=[].slice.call(document.querySelectorAll("h1,h2,h3,h4,h5,h6")).filter(function(h){return !h.closest(".rv")&&!h.closest("dialog")}),lv=0,skip=[];hs.forEach(function(h){var n=+h.tagName[1];if(lv&&n>lv+1)skip.push(h.tagName+" after H"+lv);lv=n});
+  var h1=document.querySelectorAll("h1").length;
+  out.checks.structure={pass:h1===1&&skip.length===0&&!!document.querySelector("main#main")&&!!document.querySelector("nav.breadcrumb")&&!!document.querySelector("nav[aria-label=Pagination]")&&!!document.getElementById("faceted-sidebar"),detail:"H1 "+h1+"; skipped levels: "+(skip.join(", ")||"none")+"; main, breadcrumb, sidebar, pagination present"};
+  /* 3 layout: sidebar left and grid right (768 px and up), grid columns, uniform cards */
+  var cards=[].slice.call(document.querySelectorAll(".product-card")).filter(vis),cols={},rat=[];cards.forEach(function(c){var r=c.getBoundingClientRect();cols[Math.round(r.left)]=1;var m=c.querySelector(".pc-ratio").getBoundingClientRect();rat.push(Math.round(m.height/m.width*100))});
+  var nc=Object.keys(cols).length,ws=cards.map(function(c){return Math.round(c.getBoundingClientRect().width)}),uni=ws.every(function(x){return Math.abs(x-ws[0])<=1}),rok=rat.every(function(x){return Math.abs(x-125)<=1});
+  var side=document.getElementById("faceted-sidebar"),sr=side.getBoundingClientRect(),gr=document.getElementById("grid").getBoundingClientRect(),fb=document.getElementById("f-open"),lay=true,ldet="below 768 px: sidebar hidden, Filters button shown";
+  if(SIDE){lay=vis(side)&&sr.right<=gr.left+1&&!vis(fb)&&side.querySelectorAll("details").length>=9&&sr.width>=200&&sr.width<=280;ldet="sidebar "+Math.round(sr.width)+" px wide ends at "+Math.round(sr.right)+", grid starts at "+Math.round(gr.left)+"; Filters button hidden: "+!vis(fb)}else{lay=!vis(side)&&vis(fb)}
+  out.checks.grid={pass:nc===EXPECT_COLS(W)&&uni&&rok&&cards.length>=8&&lay,detail:nc+" columns (expected "+EXPECT_COLS(W)+"), "+cards.length+" cards, widths "+(uni?"equal":"unequal")+", image ratio "+(rok?"4:5":"not 4:5")+"; "+ldet};
+  /* 4 card anatomy and exclusions */
+  var anat=cards.every(function(c){return c.querySelector(".product-card__title a")&&c.querySelector(".price-current")&&c.querySelector(".product-card__vendor")&&c.querySelector(".product-card__attr")&&(c.querySelector("[data-quick]")||c.querySelector("button[disabled]"))});
+  var noWish=!document.querySelector(".product-card__wishlist,[data-wishlist]"),noQuickAdd=![].some.call(document.querySelectorAll(".product-card button"),function(b){return /add to (bag|cart)/i.test(b.textContent)}),alt=cards.filter(function(c){return c.querySelector(".pc-alt")}).length,hov=window.matchMedia("(hover:hover) and (pointer:fine)").matches,oneBtn=cards.every(function(c){return [].filter.call(c.querySelectorAll("[data-quick]"),vis).length<=1});
+  out.checks.card={pass:anat&&noWish&&noQuickAdd&&alt>0&&oneBtn,detail:"category, name, attribute line, price and a quick view or sold-out control on every card; "+alt+" cards have a second image (mouse screens: "+hov+"); one visible quick view control per card; no wishlist, no add to cart on cards"};
+  /* 5 touch targets (small buttons are 40 px with a 44 px hit area, the documented Design System pattern) */
+  var small=[];[].slice.call(document.querySelectorAll("main a,main button,main select,main summary,main .choice,main .swatch,header a,header button,footer a,footer button")).filter(function(e){return vis(e)&&!e.closest(".drawer")&&!e.closest(".sr-only")&&!(W<1024&&e.closest("#nav"))&&!e.closest(".rv")&&!e.closest(".ann")}).forEach(function(e){var r=e.getBoundingClientRect(),hit=e.classList.contains("chip")||e.classList.contains("btn-sm")||e.classList.contains("swatch-sm"),min=hit?40:44;if(e.classList.contains("swatch")&&e.closest(".product-card"))return;if(e.closest(".product-card__title"))return;if(e.closest(".fcol")&&W>=768)return;if(e.tagName==="A"&&r.height>=44-.5)return;if(e.closest(".breadcrumb-item")&&r.width>=44&&r.height>=44)return;if(r.height<min-.5||r.width<44-.5&&!e.closest("p")&&!e.closest(".fcol"))small.push(sel(e)+" "+Math.round(r.width)+"x"+Math.round(r.height))});
+  out.checks.targets={pass:small.length===0,detail:small.length?small.slice(0,5).join("; "):"every visible control is 44 px (40 px small button has a 44 px hit area)"};
+  /* 6 filtering logic, including the extra ingredient and benefit groups */
+  var f1=false,f2=false,f3=false,f4=false,f5=false;
+  if(N){N.reset();var t0=N.count();N.apply({concern:["Dryness"]});var t1=N.count();f1=t1>0&&t1<t0&&document.querySelectorAll("#chips .chip").length===1&&!document.getElementById("applied").hidden;
+   N.apply({concern:["Dryness"],type:["Mask"],min:"1",max:"5"});f2=N.count()===0&&!document.getElementById("empty").hidden&&document.getElementById("grid").children.length===0;
+   N.reset();N.apply({sort:"plh"});var ps=[].map.call(document.querySelectorAll(".product-card .price-current"),function(e){return parseFloat(e.textContent.replace("$",""))});f3=ps.every(function(v,i){return i===0||v>=ps[i-1]});N.apply({sort:"featured"});f4=document.getElementById("sort").value==="featured";
+   N.reset();N.apply({ingredient:["Peptides"],benefit:["Smoothing"]});var c5=N.count();f5=c5>0&&c5<t0&&document.querySelectorAll("#chips .chip").length===2;N.reset()}
+  out.checks.filtering={pass:f1&&f2&&f3&&f4&&f5,detail:"one filter narrows and shows a chip: "+f1+"; impossible combination shows the empty state: "+f2+"; price low to high sorts: "+f3+"; sort can be changed back: "+f4+"; ingredient and benefit groups filter: "+f5};
+  /* 7 mobile drawer (below 768 px): opens from the LEFT, named, footer pinned, focus returns; sidebar groups (768 px and up) */
+  var d=document.getElementById("faceted-drawer"),op=document.getElementById("f-open"),dok=false,dd="";
+  if(SIDE){var sum=side.querySelectorAll("summary"),sok=sum.length>=9&&[].every.call(sum,function(s){return s.getBoundingClientRect().height>=44-.5}),opened=side.querySelectorAll("details[open]").length;dok=sok&&opened>=2&&getComputedStyle(side).position!=="sticky"&&!!side.querySelector("h2");dd="sidebar: "+sum.length+" groups, 44 px headers: "+sok+", "+opened+" open by default, scrolls with the page (not sticky): "+(getComputedStyle(side).position!=="sticky")}
+  else if(window.NudgeDrawer){op.focus();window.NudgeDrawer.open(d,op);var inside=d.open&&d.contains(document.activeElement),lab=d.getAttribute("aria-labelledby")&&document.getElementById(d.getAttribute("aria-labelledby")).textContent==="Filters",dr=d.getBoundingClientRect(),foot=d.querySelector(".drawer-foot").getBoundingClientRect(),left=Math.abs(dr.left)<=1,pin=Math.abs(foot.bottom-window.innerHeight)<=1,cl=d.querySelector(".icon-btn").getBoundingClientRect();window.NudgeDrawer.close(d);dok=inside&&lab&&left&&pin&&cl.width>=44-.5&&!d.open&&document.activeElement===op;dd="opens from the left (left edge "+Math.round(dr.left)+"): "+left+"; focus inside: "+inside+"; named: "+lab+"; Apply button pinned: "+pin+"; close control "+Math.round(cl.width)+" px; focus returns: "+(document.activeElement===op)}
+  out.checks.filters={pass:dok,detail:dd};
+  /* 8 quick view */
+  var qv=document.getElementById("quick-view"),qb=document.querySelector("[data-quick]"),qok=false;if(qb&&N){N.quick(13,qb);qok=qv.open&&document.getElementById("qv-title").textContent.length>0&&!!qv.querySelector(".price-current")&&!!qv.querySelector(".swatch-input");window.NudgeDrawer.close(qv)}
+  out.checks.quickview={pass:qok,detail:"opens the Drawer side panel with name, price, shade chooser and Add to bag"};
+  /* 9 pagination logic and look */
+  var pg=N?N.pager(20,10):"",pg2=N?N.pager(3,2):"",lk=document.querySelector(".pagination-link:not([aria-disabled])"),lr=lk?lk.getBoundingClientRect():{width:0,height:0};
+  out.checks.pagination={pass:/&hellip;/.test(pg)&&/aria-current="page"/.test(pg2)&&!/load/i.test(document.getElementById("pager-wrap").textContent)&&lr.width>=44-.5&&lr.height>=44-.5,detail:"20 pages collapse with gaps; current page marked; links "+Math.round(lr.width)+"x"+Math.round(lr.height)+" px; no Load more"};
+  /* 10 typography: Cormorant headings and card names, DM Sans UI */
+  var bad=[],fams={};[].slice.call(document.querySelectorAll("main h1,main h2,main h3,.product-card__title,.btn,.chip,.price-current,p")).filter(vis).forEach(function(e){var f=getComputedStyle(e).fontFamily.split(",")[0].replace(/["']/g,"").trim();fams[f]=1;var head=/^H[1-3]$/.test(e.tagName)||e.classList.contains("product-card__title");if(head&&f!=="Cormorant")bad.push(sel(e)+" "+f);if(!head&&f!=="DM Sans"&&f!=="Cormorant")bad.push(sel(e)+" "+f)});
+  out.checks.typography={pass:bad.length===0,detail:bad.length?bad.slice(0,4).join("; "):"headings and card names Cormorant, body and controls DM Sans; families in use: "+Object.keys(fams).join(", ")};
+  /* 11 filter flow with real clicks: sidebar applies at once (768 px and up); phones batch in the drawer */
+  var flow=false,fdet="";
+  if(N&&window.NudgeDrawer){N.reset();
+   if(SIDE){var cb=side.querySelector("input[name=concern][value=Dryness]");cb.click();var n1=N.count(),ok1=n1>0&&n1<24&&document.querySelectorAll("#chips .chip").length===1&&document.getElementById("count").textContent.indexOf(String(n1))===0&&!document.getElementById("f-clear-side").hidden;
+    document.querySelector("#chips .chip").click();var ok2=N.count()===24&&document.getElementById("applied").hidden&&cb.checked===false;flow=ok1&&ok2;fdet="ticking Dryness applies at once ("+n1+" products, chip shown, sidebar Clear all shown): "+ok1+"; removing the chip restores all 24 and unticks the box: "+ok2}
+   else{op.click();var cb2=d.querySelector("input[name=concern][value=Dryness]");cb2.click();var m=/\((\d+)\)/.exec(document.getElementById("f-show").textContent),staged=m?+m[1]:-1;document.getElementById("f-show").click();
+    var ok3=!d.open&&staged>0&&N.count()===staged&&document.querySelectorAll("#chips .chip").length===1&&document.getElementById("f-n").textContent.indexOf("1")>-1;document.querySelector("#chips .chip").click();var ok4=N.count()===24&&document.getElementById("applied").hidden;flow=ok3&&ok4;fdet="tick Dryness previews "+staged+" on Apply filters, Apply closes the drawer: "+ok3+"; removing the chip restores all 24: "+ok4}
+   N.reset()}
+  out.checks.filterFlow={pass:flow,detail:fdet};
+  var pre=document.createElement("pre");pre.id="selftest-result";pre.textContent=JSON.stringify(out);document.body.appendChild(pre);
+  if(window.parent!==window){window.parent.postMessage({selftest:out},"*")}
+ }
+ if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){setTimeout(run,900)})}else{setTimeout(run,1400)}
+})();
+</script>
+<script src="../../01-Design-System/Scripts/drawer.js"></script>
+<script src="../../01-Design-System/Scripts/chip-row.js"></script>
+@@PARTIAL runtime-components roots="components/plp/product-card components/plp/promo-tile components/plp/pagination components/plp/applied-chips components/plp/facet-groups components/plp/quick-view-body"@@
+<script>
+(function(){
+ var b=document.body,q=new URLSearchParams(location.search);
+ if(q.get("embed")){b.classList.add("embed")}
+ b.classList.toggle("ann-on",q.get("ann")!=="0");
+ function $(id){return document.getElementById(id)}
+ /* ---- global sections: mobile menu, announcement bar, footer groups ---- */
+ function navOpen(o){b.classList.toggle("nav-open",o);$("menu-btn").setAttribute("aria-expanded",o?"true":"false")}
+ $("menu-btn").addEventListener("click",function(){navOpen(true)});
+ $("nav-close").addEventListener("click",function(){navOpen(false)});
+ $("scrim").addEventListener("click",function(){navOpen(false)});
+ document.addEventListener("keydown",function(e){if(e.key==="Escape"){navOpen(false)}});
+ [].forEach.call(document.querySelectorAll(".fcol > button"),function(h){h.addEventListener("click",function(){var f=h.parentNode,o=!f.classList.contains("is-open");f.classList.toggle("is-open",o);h.setAttribute("aria-expanded",o?"true":"false")})});
+ var msgs=["Free shipping on orders over $50","New launches are in store","Free returns within 30 days"],mi=0;
+ function msg(d){mi=(mi+d+msgs.length)%msgs.length;$("ann-msg").textContent=msgs[mi];[].forEach.call(document.querySelectorAll(".ann-dot"),function(x,i){x.classList.toggle("bg-current",i===mi);x.classList.toggle("opacity-100",i===mi);x.classList.toggle("opacity-muted",i!==mi)})}
+ $("ann-prev").addEventListener("click",function(){msg(-1)});$("ann-next").addEventListener("click",function(){msg(1)});
+ document.addEventListener("click",function(e){var a=e.target.closest('a[href^="#"]:not([href="#main"]):not([href="#top"]):not([href="#results"])');if(a)e.preventDefault()});
+ /* ---- review controls ---- */
+ function toggle(btn,cls){var on=!b.classList.contains(cls);b.classList.toggle(cls,on);btn.setAttribute("aria-pressed",on?"true":"false");return on}
+ $("t-ann").addEventListener("click",function(){toggle(this,"ann-on")});
+ $("t-ann").setAttribute("aria-pressed",b.classList.contains("ann-on")?"true":"false");
+ /* ---- sample data (merchant content): name, type, ml, price, compare-at, concerns, skin types, attribute line, badge, rating, reviews, shades, low stock, sold out, unit price shown, ingredients ---- */
+ var ALL=["Dry","Normal","Oily","Combination","Sensitive"],FAM=[["Rose","#D99BAA"],["Berry","#8E3F5A"],["Peach","#EDB9A9"],["Mauve","#B48A9A"],["Coral","#E8907E"]],MINREV=5,PER=10;
+ var P=[
+  ["Face Cleanser","Cleanser",150,18,0,["Dullness","Texture"],ALL,"Best for: all skin types","Bestseller",4.8,212,[],0,0,1,["Ceramides"]],
+  ["Gel Cleanser","Cleanser",150,20,0,["Breakouts"],["Oily","Combination"],"Best for: oily skin","",4.6,96,[],0,0,0,["Niacinamide"]],
+  ["Cream Cleanser","Cleanser",150,20,0,["Dryness","Sensitivity"],["Dry","Sensitive"],"Best for: dry skin","New arrival",0,0,[],0,0,1,["Ceramides","Squalane"]],
+  ["Balm Cleanser","Cleanser",100,24,0,["Dryness"],["Dry","Normal"],"Rich balm texture","",4.7,58,[],0,1,0,["Squalane"]],
+  ["Face Serum","Serum",30,32,0,["Dullness","Uneven tone"],["Normal","Combination"],"Best for: dullness","Bestseller",4.9,340,[],3,0,1,["Vitamin C","Niacinamide"]],
+  ["Hydrating Serum","Serum",30,30,0,["Dryness"],["Dry","Normal","Sensitive"],"Best for: dry skin","",4.7,141,[],0,0,1,["Hyaluronic acid"]],
+  ["Brightening Serum","Serum",30,34,40,["Uneven tone","Dullness"],["Normal","Combination","Oily"],"Best for: uneven tone","",4.5,77,[],0,0,0,["Vitamin C"]],
+  ["Calming Serum","Serum",30,32,0,["Sensitivity"],["Sensitive","Dry"],"Best for: sensitive skin","",4.6,64,[],0,0,1,["Niacinamide","Ceramides"]],
+  ["Smoothing Serum","Serum",30,36,0,["Texture","Uneven tone"],["Normal","Oily","Combination"],"Best for: texture","",0,0,[],0,0,0,["Peptides"]],
+  ["Moisturiser","Moisturiser",50,28,0,["Dryness"],["Dry","Normal"],"Best for: dry skin","Bestseller",4.8,265,[],0,0,1,["Ceramides","Hyaluronic acid"]],
+  ["Gel Moisturiser","Moisturiser",50,26,0,["Breakouts","Texture"],["Oily","Combination"],"Light gel texture","",4.6,88,[],0,0,0,["Hyaluronic acid","Niacinamide"]],
+  ["Overnight Peptide Cream with a Deliberately Long Product Name","Moisturiser",50,34,42,["Dryness","Texture"],["Dry"],"Rich overnight texture","",4.7,52,[],0,0,1,["Peptides","Squalane"]],
+  ["Barrier Cream","Moisturiser",50,30,0,["Sensitivity","Dryness"],["Sensitive","Dry"],"Best for: sensitive skin","",4.8,119,[],2,0,0,["Ceramides"]],
+  ["Tinted Moisturiser","Moisturiser",50,32,0,["Uneven tone"],["Normal","Dry","Combination"],"Light tint, 5 shades","New arrival",4.4,31,[0,1,2,3,4],0,0,1,["Hyaluronic acid"]],
+  ["Daily Sunscreen","Sun care",50,26,0,["Dullness"],["Normal","Oily","Combination"],"Daily protection","Bestseller",4.7,198,[],0,0,1,["Niacinamide"]],
+  ["Tinted Sunscreen","Sun care",50,28,0,["Uneven tone"],["Normal","Dry","Combination"],"Light tint, 3 shades","",4.4,24,[2,0,3],0,0,0,["Niacinamide"]],
+  ["Mineral Sunscreen","Sun care",50,28,0,["Sensitivity"],["Sensitive","Dry","Normal"],"Best for: sensitive skin","",0,0,[],0,0,1,["Squalane"]],
+  ["Clay Mask","Mask",75,24,0,["Breakouts","Texture"],["Oily","Combination"],"Weekly use","",4.5,45,[],0,0,0,["Niacinamide"]],
+  ["Hydrating Mask","Mask",75,26,32,["Dryness","Dullness"],["Dry","Normal"],"Weekly use","",4.6,39,[],0,0,1,["Hyaluronic acid"]],
+  ["Overnight Mask","Mask",75,30,0,["Dryness"],["Dry","Sensitive"],"Overnight use","New arrival",0,0,[],0,0,0,["Ceramides","Peptides"]],
+  ["Eye Cream","Eye care",15,30,0,["Dullness"],ALL,"Light gel texture","",4.6,73,[],0,0,1,["Peptides","Vitamin C"]],
+  ["Eye Serum","Eye care",15,34,0,["Texture"],ALL,"Lightweight serum","",4.5,22,[],0,0,1,["Peptides"]],
+  ["Face Oil","Serum",30,36,0,["Dryness"],["Dry","Normal"],"Best for: dry skin","Limited edition",4.8,67,[],0,0,0,["Squalane"]],
+  ["Foaming Cleanser","Cleanser",150,22,28,["Texture","Dullness"],["Normal","Oily","Combination"],"Best for: combination skin","",4.5,84,[],0,0,0,["Niacinamide"]]
+ ];
+ var BEN={"Dryness":"Hydrating","Dullness":"Brightening","Uneven tone":"Brightening","Sensitivity":"Soothing","Texture":"Smoothing","Breakouts":"Clarifying"};
+ function bens(p){var r=[];p[5].forEach(function(c){if(BEN[c]&&r.indexOf(BEN[c])<0)r.push(BEN[c])});return r}
+ var KEYS=["concern","skin","type","ingredient","benefit","size","shade","avail"];
+ var G=[["concern","Skin concern",["Dryness","Dullness","Breakouts","Sensitivity","Uneven tone","Texture"]],["skin","Skin type",ALL],["type","Product type",["Cleanser","Serum","Moisturiser","Sun care","Mask","Eye care"]],["ingredient","Key ingredients",["Niacinamide","Hyaluronic acid","Ceramides","Peptides","Vitamin C","Squalane"]],["benefit","Benefits",["Hydrating","Brightening","Soothing","Smoothing","Clarifying"]],["shade","Shade",[0,1,2,3,4]],["size","Size",["15 ml","30 ml","50 ml","75 to 150 ml"]]];
+ function bucket(ml){return ml<=15?"15 ml":ml<=30?"30 ml":ml<=50?"50 ml":"75 to 150 ml"}
+ function money(n){return "$"+n.toFixed(2)}
+ function emptyState(){var s={min:"",max:"",sort:"featured",page:1};KEYS.forEach(function(k){s[k]=[]});return s}
+ var S=emptyState();
+ function match(p,s){
+  if(s.concern.length&&!s.concern.some(function(v){return p[5].indexOf(v)>-1}))return false;
+  if(s.skin.length&&!s.skin.some(function(v){return p[6].indexOf(v)>-1}))return false;
+  if(s.type.length&&s.type.indexOf(p[1])<0)return false;
+  if(s.ingredient.length&&!s.ingredient.some(function(v){return p[15].indexOf(v)>-1}))return false;
+  if(s.benefit.length&&!s.benefit.some(function(v){return bens(p).indexOf(v)>-1}))return false;
+  if(s.size.length&&s.size.indexOf(bucket(p[2]))<0)return false;
+  if(s.shade.length&&!s.shade.some(function(i){return p[11].indexOf(+i)>-1}))return false;
+  if(s.avail.length===1&&(s.avail[0]==="in")===!!p[13])return false;
+  if(s.min!==""&&p[3]<+s.min)return false;if(s.max!==""&&p[3]>+s.max)return false;
+  return true;
+ }
+ function pct(p){return p[4]>p[3]?Math.round((1-p[3]/p[4])*100):0}
+ function list(s){
+  var r=P.map(function(p,i){return {p:p,i:i}}).filter(function(o){return match(o.p,s)});
+  var by={featured:function(a,c){return a.i-c.i},best:function(a,c){return c.p[10]-a.p[10]},plh:function(a,c){return a.p[3]-c.p[3]||a.i-c.i},phl:function(a,c){return c.p[3]-a.p[3]||a.i-c.i},"new":function(a,c){return c.i-a.i}};
+  return r.sort(by[s.sort]||by.featured);
+ }
+ /* ---- components: the markup of the product card, promo tile, pagination, applied chips, filter groups and quick view lives in the component templates (partials/components/plp),
+    rendered here with the same engine the build and the library use. This script only turns the sample data into the properties those components take. ---- */
+ var E=new NudgeEngine(window.NUDGE_RT.components,{pages:{}});
+ function R(n,a){return E.render("components/plp/"+n,a)}
+ function filled(v){return Math.max(0,Math.min(5,Math.floor(v+.25)))}
+ function unitOf(p){return p[14]?money(p[3]/p[2])+" / ml":""}
+ function cardHtml(o,k){
+  var p=o.p,i=o.i,sale=pct(p),sold=!!p[13],kind=sold?"soldout":sale?"sale":p[8]?"label":"none";
+  return R("product-card",{index:String(i),title:p[0],type:p[1],attr:p[7],soldOut:sold?"1":"0",hasBadge:kind!=="none"?"1":"0",badgeKind:kind,badgeText:p[8],salePct:String(sale),
+   showRating:p[10]>=MINREV?"1":"0",ratingStars:String(filled(p[9])),ratingValue:p[9].toFixed(1),ratingText:p[9].toFixed(1)+" ("+p[10]+")",
+   swatches:p[11].slice(0,4).map(function(s){return {hex:FAM[s][1]}}),swatchMore:p[11].length>4?String(p[11].length-4):"",
+   lowStock:(!sold&&p[12])?String(p[12]):"",priceVariant:sale>0?"sale":"regular",price:money(p[3]),compare:money(p[4]),unit:unitOf(p),
+   secondImage:i%4!==3?"1":"0",tone:k%3===1?"b":k%3===2?"c":"a"});
+ }
+ var PROMO=R("promo-tile",{});
+ function pager(n,cur){
+  var items=[],add=function(x){items.push(x)};add({t:"prev",d:cur<=1});
+  var show={};[1,n,cur-1,cur,cur+1].forEach(function(x){if(x>=1&&x<=n)show[x]=1});
+  var last=0;Object.keys(show).map(Number).sort(function(a,c){return a-c}).forEach(function(x){if(last&&x-last>1)add({t:"gap"});add({t:"page",n:x});last=x});
+  add({t:"next",d:cur>=n});
+  return R("pagination",{items:items.map(function(it){return {kind:it.t,page:String(it.t==="prev"?cur-1:it.t==="next"?cur+1:it.n||""),disabled:it.d?"1":"",current:it.t==="page"&&it.n===cur?"1":""}})});
+ }
+ var LABEL={shade:function(i){return FAM[i][0]+" shade"},avail:function(v){return v==="in"?"In stock":"Out of stock"}};
+ function chipsOf(s){
+  var c=[];KEYS.forEach(function(k){s[k].forEach(function(v){c.push([k,v,LABEL[k]?LABEL[k](v):v])})});
+  if(s.min!==""||s.max!=="")c.push(["price","",(s.min!==""?"$"+s.min:"$0")+(s.max!==""?" to $"+s.max:" and up")]);
+  return c;
+ }
+ function render(){
+  var res=list(S),n=res.length,pages=Math.max(1,Math.ceil(n/PER));if(S.page>pages)S.page=pages;
+  var slice=res.slice((S.page-1)*PER,S.page*PER),html="";
+  slice.forEach(function(o,k){if(k===8&&S.page===1&&n>=9)html+=PROMO;html+=cardHtml(o,k)});
+  $("grid").innerHTML=html;$("grid").hidden=n===0;$("empty").hidden=n!==0;
+  $("count").textContent=n+(n===1?" product":" products");
+  $("pager-wrap").hidden=pages<2;$("pager").innerHTML=pager(pages,S.page);
+  $("pager-info").textContent="Page "+S.page+" of "+pages+" · Showing "+((S.page-1)*PER+1)+" to "+Math.min(S.page*PER,n)+" of "+n+" products";
+  var ch=chipsOf(S);$("applied").hidden=ch.length===0;$("f-clear-side").hidden=ch.length===0;
+ $("chips").innerHTML=R("applied-chips",{chips:ch.map(function(c){return {key:c[0],value:String(c[1]),label:c[2]}})});
+  $("f-n").textContent=ch.length?" ("+ch.length+")":"";
+  $("sort").value=S.sort;syncForm(S);
+ }
+ /* ---- filters: one form, placed in the sidebar from 768 px and in the left drawer below ---- */
+ function counts(k,v){return P.filter(function(p){return k==="concern"?p[5].indexOf(v)>-1:k==="skin"?p[6].indexOf(v)>-1:k==="type"?p[1]===v:k==="ingredient"?p[15].indexOf(v)>-1:k==="benefit"?bens(p).indexOf(v)>-1:k==="size"?bucket(p[2])===v:k==="shade"?p[11].indexOf(+v)>-1:false}).length}
+ function buildGroups(){
+  var gs=G.map(function(g,gi){var k=g[0],open=gi<2?"1":"";
+   if(k==="shade")return {kind:"swatches",key:k,title:g[1],open:open,options:g[2].map(function(i){return {value:String(i),hex:FAM[i][1],name:FAM[i][0],count:String(counts(k,i))}})};
+   return {kind:"options",key:k,title:g[1],open:open,options:g[2].map(function(v){return {name:k,value:String(v),label:String(v),count:String(counts(k,v))}})}});
+  gs.push({kind:"price",key:"price",title:"Price",open:"",options:[]});
+  gs.push({kind:"options",key:"avail",title:"Availability",open:"",options:[{name:"avail",value:"in",label:"In stock",count:String(P.filter(function(p){return !p[13]}).length)},{name:"avail",value:"out",label:"Out of stock",count:String(P.filter(function(p){return p[13]}).length)}]});
+  $("f-groups").innerHTML=R("facet-groups",{groups:gs});
+ }
+ var form=$("faceted-form"),dlg=$("faceted-drawer"),mq=window.matchMedia("(min-width:768px)");
+ function readForm(){
+  var s=emptyState();s.sort=S.sort;
+  [].forEach.call(form.querySelectorAll("input[type=checkbox]:checked"),function(i){s[i.name].push(i.value)});
+  s.min=$("f-min").value;s.max=$("f-max").value;return s;
+ }
+ function writeForm(s){
+  [].forEach.call(form.querySelectorAll("input[type=checkbox]"),function(i){i.checked=s[i.name].indexOf(i.value)>-1});
+  $("f-min").value=s.min;$("f-max").value=s.max;marks(s);
+ }
+ function marks(s){KEYS.concat(["price"]).forEach(function(k){var n=k==="price"?((s.min!==""||s.max!=="")?1:0):s[k].length,e=form.querySelector('[data-n="'+k+'"]');if(e)e.textContent=n?" ("+n+")":""})}
+ function syncForm(s){if(mq.matches||!dlg.open)writeForm(s)}
+ function preview(){var t=readForm(),n=list(t).length;marks(t);$("f-show").textContent="Apply filters ("+n+")"}
+ function commit(s){KEYS.forEach(function(k){S[k]=s[k]});S.min=s.min;S.max=s.max;S.page=1;render()}
+ function place(){
+  if(mq.matches){if(dlg.open)window.NudgeDrawer.close(dlg);$("f-slot-side").appendChild(form)}else{$("f-slot-dlg").appendChild(form)}
+  writeForm(S);preview();
+ }
+ buildGroups();
+ form.addEventListener("input",function(){if(mq.matches){commit(readForm())}else{preview()}});
+ form.addEventListener("change",function(){if(mq.matches){commit(readForm())}else{preview()}});
+ $("f-clear").addEventListener("click",function(){writeForm(emptyState());preview()});
+ $("f-show").addEventListener("click",function(){commit(readForm())});
+ dlg.addEventListener("drawer:open",function(){writeForm(S);preview()});
+ if(mq.addEventListener){mq.addEventListener("change",place)}else if(mq.addListener){mq.addListener(place)}
+ place();
+ /* ---- toolbar, chips, grid, pager ---- */
+ $("sort").addEventListener("change",function(){S.sort=this.value;S.page=1;render()});
+ function clearAll(){var so=S.sort;S=emptyState();S.sort=so;render()}
+ $("clear-all").addEventListener("click",clearAll);$("f-clear-side").addEventListener("click",clearAll);$("empty-clear").addEventListener("click",function(){clearAll();(mq.matches?document.querySelector("#faceted-sidebar summary"):$("f-open")).focus()});
+ $("chips").addEventListener("click",function(e){var c=e.target.closest("[data-rm]");if(!c)return;var k=c.getAttribute("data-rm"),v=c.getAttribute("data-v");if(k==="price"){S.min="";S.max=""}else{S[k]=S[k].filter(function(x){return String(x)!==v})}S.page=1;render();var nx=$("chips").querySelector(".chip");(nx||(mq.matches?document.querySelector("#faceted-sidebar summary"):$("f-open"))).focus()});
+ $("pager").addEventListener("click",function(e){var a=e.target.closest("[data-page]");if(!a)return;e.preventDefault();if(a.getAttribute("aria-disabled")==="true")return;S.page=+a.getAttribute("data-page");render();$("results").scrollIntoView({block:"start"});$("results").focus({preventScroll:true})});
+ /* ---- quick view (the Drawer as a right side panel) ---- */
+ var added=0;
+ function quick(i,opener){
+  var p=P[i];$("qv-title").textContent=p[0];
+ var sale=pct(p);$("qv-body").innerHTML=R("quick-view-body",{type:p[1],showRating:p[10]>=MINREV?"1":"0",ratingStars:String(filled(p[9])),ratingValue:p[9].toFixed(1),ratingText:p[9].toFixed(1)+" ("+p[10]+")",priceVariant:sale>0?"sale":"regular",price:money(p[3]),compare:money(p[4]),unit:unitOf(p),attr:p[7],ml:String(p[2]),firstShade:p[11].length?FAM[p[11][0]][0]:"",shades:p[11].map(function(s,k){return {name:FAM[s][0],hex:FAM[s][1],checked:k===0?"1":""}})});
+  [].forEach.call($("qv-body").querySelectorAll("input[name=qv-shade]"),function(r){r.addEventListener("change",function(){$("qv-shade").textContent=r.getAttribute("data-name")})});
+  $("qv-add").disabled=!!p[13];window.NudgeDrawer.open($("quick-view"),opener||document.activeElement);
+ }
+ $("grid").addEventListener("click",function(e){var qb=e.target.closest("[data-quick]");if(qb)quick(+qb.getAttribute("data-quick"),qb)});
+ $("qv-add").addEventListener("click",function(){added++;var c=document.querySelector("#site-header .cnt");if(c)c.textContent=added;$("qv-msg").hidden=false});
+ /* ---- review buttons and test hooks ---- */
+ function apply(patch){S=Object.assign(emptyState(),S,patch);S.page=patch.page||1;render()}
+ $("t-open").addEventListener("click",function(){if(mq.matches){var s=document.querySelector("#faceted-sidebar summary");s.scrollIntoView({block:"center"});s.focus()}else{window.NudgeDrawer.open(dlg,this)}});
+ $("t-applied").addEventListener("click",function(){S=emptyState();apply({concern:["Dryness"],skin:["Dry"],max:"30"})});
+ $("t-empty").addEventListener("click",function(){S=emptyState();apply({concern:["Dryness"],type:["Mask"],min:"1",max:"5"})});
+ $("t-quick").addEventListener("click",function(){quick(13,this)});
+ $("t-reset").addEventListener("click",function(){S=emptyState();render()});
+ window.NudgePLP={apply:apply,reset:function(){S=emptyState();render()},count:function(){return list(S).length},pager:pager,quick:quick,state:function(){return S}};
+ if(q.get("state")==="applied"){S=emptyState();apply({concern:["Dryness"],skin:["Dry"],max:"30"})}else if(q.get("state")==="empty"){S=emptyState();apply({concern:["Dryness"],type:["Mask"],min:"1",max:"5"})}else{render()}
+ if(q.get("filters")==="open"&&!mq.matches){window.NudgeDrawer.open(dlg,$("f-open"))}
+ if(q.get("quick")==="open"){quick(13,$("f-open"))}
+ if(q.get("selftest")){var s=document.createElement("script");s.text=$("selftest-src").text;document.body.appendChild(s)}
+})();
+</script>
+</body>
+</html>

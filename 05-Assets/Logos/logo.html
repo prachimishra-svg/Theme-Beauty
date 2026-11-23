@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NUDGE Logo</title>
+  <meta name="description" content="NUDGE logo variants on light and dark backgrounds, clear space, minimum sizes and favicon sizes.">
+  <link rel="stylesheet" href="../../02-Design-Variables/Styles/variables.css">
+  <link rel="stylesheet" href="../../01-Design-System/Styles/base.css">
+  <link rel="icon" href="nudge-favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="nudge-apple-touch-icon.png">
+  <style>
+    .lg-wrap { max-width: 64rem; margin-inline: auto; padding: var(--space-6, 2rem) var(--space-4, 1rem); }
+    .lg-grid { display: grid; gap: var(--space-4, 1rem); grid-template-columns: 1fr; }
+    @media (min-width: 37.5rem) { .lg-grid--2 { grid-template-columns: 1fr 1fr; } }
+    .lg-tile { display: flex; align-items: center; justify-content: center; min-height: 9rem; padding: var(--space-5, 1.5rem); border: 1px solid var(--color-border-subtle); }
+    .lg-tile--ivory { background: #FFF5F5; color: #292126; }
+    .lg-tile--white { background: #FFFFFF; color: #292126; }
+    .lg-tile--blush { background: #F2D5DC; color: #292126; }
+    .lg-tile--charcoal { background: #292126; color: #FFF5F5; }
+    .lg-tile img, .lg-tile svg { display: block; }
+    .lg-cap { margin-top: var(--space-2, .5rem); font-size: .875rem; color: var(--color-text-secondary); }
+    .lg-sizes { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--space-5, 1.5rem); }
+    .lg-clear { position: relative; display: inline-block; padding: 12px; outline: 1px dashed #713448; outline-offset: 0; }
+    h1, h2 { margin: 0 0 var(--space-3, .75rem); }
+    section { margin-block: var(--space-7, 3rem); }
+    code { font-size: 12px; }
+  </style>
+</head>
+<body>
+<main class="lg-wrap" id="main">
+  <h1>NUDGE logo</h1>
+  <p class="text-secondary">Working name, not a cleared trademark. Rules and file list: <a href="../../01-Design-System/Documentation/brand.md">brand.md</a>.</p>
+
+  <section aria-labelledby="h-primary">
+    <h2 id="h-primary">Primary wordmark</h2>
+    <div class="lg-grid lg-grid--2">
+      <div><div class="lg-tile lg-tile--ivory"><img src="nudge-wordmark.svg" alt="NUDGE" height="40"></div><p class="lg-cap">On Pearl Pink (14.7:1). <code>nudge-wordmark.svg</code></p></div>
+      <div><div class="lg-tile lg-tile--charcoal"><img src="nudge-wordmark-light.svg" alt="NUDGE" height="40"></div><p class="lg-cap">On Midnight Plum (14.7:1). <code>nudge-wordmark-light.svg</code></p></div>
+      <div><div class="lg-tile lg-tile--white"><img src="nudge-wordmark.svg" alt="NUDGE" height="40"></div><p class="lg-cap">On White (15.7:1)</p></div>
+      <div><div class="lg-tile lg-tile--blush"><img src="nudge-wordmark.svg" alt="NUDGE" height="40"></div><p class="lg-cap">On Rose Quartz (11.4:1)</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-mono">
+    <h2 id="h-mono">Monogram and favicon</h2>
+    <div class="lg-grid lg-grid--2">
+      <div><div class="lg-tile lg-tile--ivory"><img src="nudge-monogram.svg" alt="NUDGE" height="72"></div><p class="lg-cap"><code>nudge-monogram.svg</code></p></div>
+      <div><div class="lg-tile lg-tile--charcoal"><img src="nudge-monogram-light.svg" alt="NUDGE" height="72"></div><p class="lg-cap"><code>nudge-monogram-light.svg</code></p></div>
+    </div>
+    <div class="lg-sizes" style="margin-top:1.5rem">
+      <figure style="margin:0"><img src="nudge-favicon.svg" alt="NUDGE favicon" width="64" height="64"><figcaption class="lg-cap">64 px</figcaption></figure>
+      <figure style="margin:0"><img src="nudge-favicon.svg" alt="" width="32" height="32"><figcaption class="lg-cap">32 px</figcaption></figure>
+      <figure style="margin:0"><img src="nudge-favicon.svg" alt="" width="16" height="16"><figcaption class="lg-cap">16 px</figcaption></figure>
+      <figure style="margin:0"><img src="nudge-apple-touch-icon.png" alt="" width="60" height="60"><figcaption class="lg-cap">Apple touch (square)</figcaption></figure>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-use">
+    <h2 id="h-use">Sizes in use</h2>
+    <div class="lg-sizes">
+      <figure style="margin:0"><img src="nudge-wordmark.svg" alt="NUDGE" height="28"><figcaption class="lg-cap">Desktop header, 28 px high</figcaption></figure>
+      <figure style="margin:0"><img src="nudge-wordmark.svg" alt="NUDGE" height="20"><figcaption class="lg-cap">Mobile header, 20 px</figcaption></figure>
+      <figure style="margin:0"><img src="nudge-wordmark.svg" alt="NUDGE" height="16"><figcaption class="lg-cap">Minimum, 16 px</figcaption></figure>
+      <figure style="margin:0"><img src="nudge-monogram.svg" alt="NUDGE" height="24"><figcaption class="lg-cap">Monogram, 24 px</figcaption></figure>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-clear">
+    <h2 id="h-clear">Clear space</h2>
+    <p class="text-secondary">Keep half the wordmark height free on every side (12 px here, for a 24 px wordmark).</p>
+    <div class="lg-tile lg-tile--ivory"><span class="lg-clear"><img src="nudge-wordmark.svg" alt="NUDGE" height="24"></span></div>
+  </section>
+
+  <section aria-labelledby="h-cc">
+    <h2 id="h-cc">Inline, follows text colour</h2>
+    <p class="text-secondary"><code>nudge-wordmark-currentcolor.svg</code> must be inlined to inherit colour. The two tiles below use the same markup; only the container colour differs.</p>
+    <div class="lg-grid lg-grid--2">
+      <div class="lg-tile lg-tile--ivory"><svg viewBox="0 0 520 100" height="28" role="img" aria-label="NUDGE" fill="currentColor"><path d="M0 14H16V100H0ZM66 0H82V86H66ZM0 14H19L82 86H63Z"/><path d="M106 0H122V62A25 25 0 0 0 172 62V0H188V62A41 41 0 0 1 106 62Z"/><path fill-rule="evenodd" d="M212 0H252A50 50 0 0 1 252 100H212ZM228 16H252A34 34 0 0 1 252 84H228Z"/><path d="M378 42H426V58H378Z"/><path d="M450 0H520V16H466V42H510V58H466V84H520V100H450Z"/><path d="M410.4 25.9A42 42 0 1 0 418 50" fill="none" stroke="currentColor" stroke-width="16"/></svg></div>
+      <div class="lg-tile lg-tile--charcoal"><svg viewBox="0 0 520 100" height="28" role="img" aria-label="NUDGE" fill="currentColor"><path d="M0 14H16V100H0ZM66 0H82V86H66ZM0 14H19L82 86H63Z"/><path d="M106 0H122V62A25 25 0 0 0 172 62V0H188V62A41 41 0 0 1 106 62Z"/><path fill-rule="evenodd" d="M212 0H252A50 50 0 0 1 252 100H212ZM228 16H252A34 34 0 0 1 252 84H228Z"/><path d="M378 42H426V58H378Z"/><path d="M450 0H520V16H466V42H510V58H466V84H520V100H450Z"/><path d="M410.4 25.9A42 42 0 1 0 418 50" fill="none" stroke="currentColor" stroke-width="16"/></svg></div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

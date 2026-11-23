@@ -1,0 +1,11 @@
+body.embed .rv,body.embed #wp{display:none}
+.rv{background:#f1f1f1;border-bottom:1px solid #aaa;padding:12px 16px;font:14px/1.45 system-ui,sans-serif;color:#222}
+.rv .rvt{font:600 16px system-ui,sans-serif;margin:0 0 4px}.rv p{margin:0 0 8px;max-width:75ch}
+.rv .ctl{display:flex;flex-wrap:wrap;gap:8px}.rv button,.rv a.rvb{min-height:44px;padding:0 14px;border:1px solid #666;background:#fff;font:14px system-ui,sans-serif;cursor:pointer;color:#222;display:inline-flex;align-items:center;text-decoration:none}
+.rv button[aria-pressed="true"],.rv button.on{background:#222;color:#fff}
+.rv details{margin-top:8px}.rv summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:600}.rv li{margin:2px 0}.rv ul{margin:4px 0 8px;padding-left:20px;list-style:disc}
+.rv table{border-collapse:collapse;margin:6px 0 10px;font-size:13px}.rv th,.rv td{border:1px solid #bbb;padding:4px 8px;text-align:left;vertical-align:top}
+#wp{display:none;position:fixed;inset:0;background:#cfcfcf;z-index:1000;overflow:auto;font:14px system-ui,sans-serif;color:#222}#wp.open{display:block}
+#wp .bar2{position:sticky;top:0;z-index:2;background:#fff;border-bottom:1px solid #999;padding:8px 12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+#wp .bar2 button{min-height:44px;padding:0 16px;border:1px solid #666;background:#fff;cursor:pointer;font-size:14px;color:#222}#wp .bar2 button.on{background:#222;color:#fff}
+#wp .stage{padding:16px;display:flex;justify-content:center}#wp iframe{display:block;border:0;background:#fff;box-shadow:0 0 0 1px #888}

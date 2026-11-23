@@ -1,0 +1,35 @@
+{
+    "name":  "Hero Media",
+    "page":  "homepage",
+    "properties":  [
+
+                   ],
+    "tokens":  [
+                   "overlay colours"
+               ],
+    "summary":  "The campaign image behind the hero text, with the soft ivory fade. Wireframe placeholder today.",
+    "accessibility":  "Decorative background image.",
+    "id":  "hero-media",
+    "shopifyOnly":  [
+                        {
+                            "id":  "image",
+                            "setting":  "image_picker",
+                            "replaces":  "placeholder",
+                            "note":  "Campaign image"
+                        },
+                        {
+                            "id":  "image_mobile",
+                            "setting":  "image_picker",
+                            "note":  "Portrait crop for small screens"
+                        }
+                    ],
+    "level":  "sub",
+    "status":  "classified (D10 items pending)",
+    "responsive":  "Portrait stage below 768 px, landscape from 768 px.",
+    "wireframeOnly":  [
+                          "placeholder captions"
+                      ],
+    "children":  [
+
+                 ]
+}

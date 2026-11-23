@@ -1,0 +1,142 @@
+{
+    "id":  "category-card",
+    "name":  "Category Card",
+    "level":  "sub",
+    "page":  "homepage",
+    "status":  "classified (D10 items pending)",
+    "summary":  "One photo tile with title, subtitle and a link, used in the Shop by Category mosaic. The four positions of the mosaic are one component with a layout variant.",
+    "properties":  [
+                       {
+                           "name":  "layout",
+                           "type":  "VARIANT",
+                           "default":  "tall",
+                           "values":  [
+                                          "tall",
+                                          "top-middle",
+                                          "top-right",
+                                          "wide"
+                                      ],
+                           "tables":  {
+                                          "tile":  {
+                                                       "tall":  "tile group relative col-span-2 block overflow-hidden text-ink no-underline md:col-[1] md:row-[1/span_2]",
+                                                       "top-middle":  "tile group relative block overflow-hidden text-ink no-underline md:col-[2] md:row-[1]",
+                                                       "top-right":  "tile group relative block overflow-hidden text-ink no-underline md:col-[3] md:row-[1]",
+                                                       "wide":  "tile group relative col-span-2 block overflow-hidden text-ink no-underline md:col-[2/span_2] md:row-[2]"
+                                                   },
+                                          "img":  {
+                                                      "tall":  "img t2 transition-transform [transition:transform_.5s_var(--ease-standard)] group-hover:scale-[1.03] md:absolute md:inset-0 md:h-full",
+                                                      "top-middle":  "img t3 [transition:transform_.5s_var(--ease-standard)] group-hover:scale-[1.03] md:absolute md:inset-0 md:h-full",
+                                                      "top-right":  "img t4 [transition:transform_.5s_var(--ease-standard)] group-hover:scale-[1.03] md:absolute md:inset-0 md:h-full",
+                                                      "wide":  "img [transition:transform_.5s_var(--ease-standard)] group-hover:scale-[1.03] md:absolute md:inset-0 md:h-full"
+                                                  },
+                                          "ratio":  {
+                                                        "tall":  "ratio pt-[62%] md:hidden",
+                                                        "top-middle":  "ratio md:hidden",
+                                                        "top-right":  "ratio md:hidden",
+                                                        "wide":  "ratio pt-[62%] md:hidden"
+                                                    }
+                                      },
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "layout",
+                                           "id":  "layout",
+                                           "setting":  "select",
+                                           "valueMap":  {
+                                                            "top-middle":  "top_middle",
+                                                            "top-right":  "top_right"
+                                                        }
+                                       },
+                           "note":  "Position in the four-tile mosaic; the section sets it per card. It is a layout choice, exposed to merchants as a select in the existing theme"
+                       },
+                       {
+                           "name":  "href",
+                           "type":  "TEXT",
+                           "default":  "#",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "href",
+                                           "id":  "link",
+                                           "setting":  "url"
+                                       },
+                           "note":  "Link target; empty means the collection link in Shopify"
+                       },
+                       {
+                           "name":  "title",
+                           "type":  "TEXT",
+                           "default":  "Skin care",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "title",
+                                           "id":  "title",
+                                           "setting":  "text"
+                                       },
+                           "note":  "Empty means the collection title in Shopify"
+                       },
+                       {
+                           "name":  "subtitle",
+                           "type":  "TEXT",
+                           "default":  "Cleansers, serums and moisturisers",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "subtitle",
+                                           "id":  "subtitle",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "linkText",
+                           "type":  "TEXT",
+                           "default":  "Shop now",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "link_text",
+                                           "id":  "link_text",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "photo",
+                           "type":  "TEXT",
+                           "default":  "Category photo",
+                           "scope":  "wireframe",
+                           "shopify":  {
+                                           "param":  "photo"
+                                       },
+                           "note":  "Wireframe placeholder caption; replaced by the image setting in Shopify"
+                       },
+                       {
+                           "name":  "dim",
+                           "type":  "TEXT",
+                           "default":  "4:5, 800 x 1000",
+                           "scope":  "wireframe",
+                           "shopify":  {
+                                           "param":  "dim"
+                                       },
+                           "note":  "Wireframe placeholder size caption"
+                       }
+                   ],
+    "children":  [
+                     "components/base/icon"
+                 ],
+    "shopifyOnly":  [
+                        {
+                            "id":  "collection",
+                            "setting":  "collection",
+                            "note":  "When set, resolves the title and the link"
+                        },
+                        {
+                            "id":  "image",
+                            "setting":  "image_picker",
+                            "replaces":  "photo, dim",
+                            "note":  "Real image in place of the wireframe placeholder"
+                        }
+                    ],
+    "accessibility":  "The whole tile is one link; the visible title names it. Image alt text comes from the image.",
+    "responsive":  "Below 768 px: caption under the image, wide tiles span two columns. From 768 px: caption sits on the image and the tile takes its mosaic cell.",
+    "tokens":  [
+                   "page and text colours",
+                   "type roles",
+                   "spacing",
+                   "motion"
+               ]
+}

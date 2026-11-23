@@ -1,0 +1,8 @@
+{%- comment -%}
+  GENERATED from components/base/section-heading by 07-Component-Library/tools/generate-liquid-staging.ps1 (contract c9c41c9f1756b190).
+  Do not edit here: change the library component, then regenerate. Text values are written raw; escape where Shopify data enters (| escape in the section).
+  Parameters (class: design = fixed, parent = passed in, merchant = set in a section, wireframe = not used):
+    title (TEXT, merchant)
+    lead (TEXT, merchant)
+{%- endcomment -%}
+{%- if title == nil -%}{%- assign title = 'Shop by category' -%}{%- endif -%}{%- if lead == nil -%}{%- assign lead = '' -%}{%- endif -%}{%- assign edit_hook = '' -%}<div class="shead mb-6 flex flex-col items-center text-center after:order-9 after:mt-5 after:block after:h-px after:w-10 after:bg-brand-secondary after:content-[''] sm:mb-9 lg:mb-12"><h2><span{% if edit_hook != blank %} data-c="{{ edit_hook }}"{% endif %}>{{ title }}</span></h2>{% if lead != blank %}<p class="lead mx-auto mt-3 max-w-[38rem] text-ink-secondary"><span{% if edit_hook != blank %} data-c="{{ edit_hook }}"{% endif %}>{{ lead }}</span></p>{% endif %}</div>

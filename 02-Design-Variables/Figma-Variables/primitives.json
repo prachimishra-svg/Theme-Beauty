@@ -1,0 +1,344 @@
+{
+    "specVersion":  "1.0",
+    "kind":  "source",
+    "purpose":  "Colour primitives (collection Primitives). Raw palette; never bound directly in components. Hidden from publishing.",
+    "valueSyntax":  "A value is a literal (hex colour, number in px unless stated, or text) or an alias written {collection-local/variable-name}. Colours are #RRGGBB or #RRGGBBAA. Every variable has one value per mode of its collection.",
+    "variables":  [
+                      {
+                          "name":  "palette/rose/50",
+                          "collection":  "Primitives",
+                          "type":  "COLOR",
+                          "layer":  "primitive",
+                          "description":  "Rose tint: selected and subtle fills",
+                          "scopes":  [
+                                         "ALL_SCOPES"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  "#FBEAEE"
+                                     },
+                          "webToken":  "--palette-rose-50",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "palette/rose/100",
+                          "collection":  "Primitives",
+                          "type":  "COLOR",
+                          "layer":  "primitive",
+                          "description":  "Rose tint: borders on selected, pressed icon buttons",
+                          "scopes":  [
+                                         "ALL_SCOPES"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  "#F0D2DA"
+                                     },
+                          "webToken":  "--palette-rose-100",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "palette/rose/400",
+                          "collection":  "Primitives",
+                          "type":  "COLOR",
+                          "layer":  "primitive",
+                          "description":  "Blush Rose: decorative accent on light surfaces (2.1:1 on Pearl Pink); links and marks on Midnight Plum (6.9:1)",
+                          "scopes":  [
+                                         "ALL_SCOPES"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  "#D99BAA"
+                                     },
+                          "webToken":  "--palette-rose-400",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "palette/rose/500",
+                          "collection":  "Primitives",
+                          "type":  "COLOR",
+                          "layer":  "primitive",
+                          "description":  "Luxury Rose: recognisable brand elements. Text only on Pearl Pink or white (4.7 / 5.0:1); large text or marks on Rose Quartz (3.7:1)",
+                          "scopes":  [
+                                         "ALL_SCOPES"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  "#AD526D"
+                                     },
+                          "webToken":  "--palette-rose-500",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "palette/rose/700",
+                          "collection":  "Primitives",
+                          "type":  "COLOR",
+                          "layer":  "primitive",
+                          "description":  "BRAND: Rich Burgundy, primary CTA, active and selected states",
+                          "scopes":  [
+                                         "ALL_SCOPES"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  "#713448"
+                                     },
+                          "webToken":  "--palette-rose-700",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "palette/rose/800",
+                          "collection":  "Primitives",
+                          "type":  "COLOR",
+                          "layer":  "primitive",
+                          "description":  "Rich Burgundy hover",
+                          "scopes":  [
+                                         "ALL_SCOPES"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  "#5E2A3B"
+                                     },
+                          "webToken":  "--palette-rose-800",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "palette/rose/900",
+                          "collection":  "Primitives",
+                          "type":  "COLOR",
+                          "layer":  "primitive",
+                          "description":  "Rich Burgundy active / pressed",
+                          "scopes":  [
+                                         "ALL_SCOPES"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  "#4B2130"
+                                     },
+                          "webToken":  "--palette-rose-900",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "palette/white",
+                          "collection":  "Primitives",
+                          "type":  "COLOR",
+                          "layer":  "primitive",
+                          "description":  "White",
+                          "scopes":  [
+                                         "ALL_SCOPES"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  "#FFFFFF"
+                                     },
+                          "webToken":  "--palette-white",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "palette/ivory",
+                          "collection":  "Primitives",
+                          "type":  "COLOR",
+                          "layer":  "primitive",
+                          "description":  "Pearl Pink (page). Name kept from the earlier palette",
+                          "scopes":  [
+                                         "ALL_SCOPES"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  "#FFF5F5"
+                                     },
+                          "webToken":  "--palette-ivory",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "palette/blush",
+                          "collection":  "Primitives",
+                          "type":  "COLOR",
+                          "layer":  "primitive",
+                          "description":  "Rose Quartz (secondary backgrounds)",
+                          "scopes":  [
+                                         "ALL_SCOPES"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  "#F2D5DC"
+                                     },
+                          "webToken":  "--palette-blush",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "palette/charcoal",
+                          "collection":  "Primitives",
+                          "type":  "COLOR",
+                          "layer":  "primitive",
+                          "description":  "Midnight Plum (text, dark surfaces). Name kept from the earlier palette",
+                          "scopes":  [
+                                         "ALL_SCOPES"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  "#292126"
+                                     },
+                          "webToken":  "--palette-charcoal",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "palette/neutral/300",
+                          "collection":  "Primitives",
+                          "type":  "COLOR",
+                          "layer":  "primitive",
+                          "description":  "Disabled text, inverse border",
+                          "scopes":  [
+                                         "ALL_SCOPES"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  "#BFB1B7"
+                                     },
+                          "webToken":  "--palette-neutral-300",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "palette/neutral/400",
+                          "collection":  "Primitives",
+                          "type":  "COLOR",
+                          "layer":  "primitive",
+                          "description":  "Strong border (3.5:1 on Pearl Pink)",
+                          "scopes":  [
+                                         "ALL_SCOPES"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  "#908088"
+                                     },
+                          "webToken":  "--palette-neutral-400",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "palette/neutral/500",
+                          "collection":  "Primitives",
+                          "type":  "COLOR",
+                          "layer":  "primitive",
+                          "description":  "Muted text (AA on Pearl Pink, white and Rose Quartz)",
+                          "scopes":  [
+                                         "ALL_SCOPES"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  "#6B5C64"
+                                     },
+                          "webToken":  "--palette-neutral-500",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "palette/neutral/600",
+                          "collection":  "Primitives",
+                          "type":  "COLOR",
+                          "layer":  "primitive",
+                          "description":  "Secondary text",
+                          "scopes":  [
+                                         "ALL_SCOPES"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  "#5A4B53"
+                                     },
+                          "webToken":  "--palette-neutral-600",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "palette/red/50",
+                          "collection":  "Primitives",
+                          "type":  "COLOR",
+                          "layer":  "primitive",
+                          "description":  "Error tint",
+                          "scopes":  [
+                                         "ALL_SCOPES"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  "#FDECEA"
+                                     },
+                          "webToken":  "--palette-red-50",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "palette/red/700",
+                          "collection":  "Primitives",
+                          "type":  "COLOR",
+                          "layer":  "primitive",
+                          "description":  "Error",
+                          "scopes":  [
+                                         "ALL_SCOPES"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  "#A93226"
+                                     },
+                          "webToken":  "--palette-red-700",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "palette/green/50",
+                          "collection":  "Primitives",
+                          "type":  "COLOR",
+                          "layer":  "primitive",
+                          "description":  "Success tint",
+                          "scopes":  [
+                                         "ALL_SCOPES"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  "#E9F3EE"
+                                     },
+                          "webToken":  "--palette-green-50",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "palette/green/700",
+                          "collection":  "Primitives",
+                          "type":  "COLOR",
+                          "layer":  "primitive",
+                          "description":  "Success",
+                          "scopes":  [
+                                         "ALL_SCOPES"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  "#2F6B4F"
+                                     },
+                          "webToken":  "--palette-green-700",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "palette/amber/50",
+                          "collection":  "Primitives",
+                          "type":  "COLOR",
+                          "layer":  "primitive",
+                          "description":  "Warning tint",
+                          "scopes":  [
+                                         "ALL_SCOPES"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  "#FBF1DC"
+                                     },
+                          "webToken":  "--palette-amber-50",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "palette/amber/700",
+                          "collection":  "Primitives",
+                          "type":  "COLOR",
+                          "layer":  "primitive",
+                          "description":  "Warning",
+                          "scopes":  [
+                                         "ALL_SCOPES"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  "#8A5A00"
+                                     },
+                          "webToken":  "--palette-amber-700",
+                          "webRelation":  "shared"
+                      }
+                  ]
+}

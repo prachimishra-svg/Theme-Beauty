@@ -1,0 +1,522 @@
+{
+    "specVersion":  "1.0",
+    "kind":  "source",
+    "purpose":  "Spacing scale, radius, stroke and opacity primitives (collection Primitives), all in px or fractions.",
+    "valueSyntax":  "A value is a literal (hex colour, number in px unless stated, or text) or an alias written {collection-local/variable-name}. Colours are #RRGGBB or #RRGGBBAA. Every variable has one value per mode of its collection.",
+    "variables":  [
+                      {
+                          "name":  "space/0",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "Spacing scale step 0 x 4px",
+                          "scopes":  [
+                                         "GAP",
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  0
+                                     },
+                          "webToken":  "--space-0",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "space/1",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "Spacing scale step 1 x 4px",
+                          "scopes":  [
+                                         "GAP",
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  4
+                                     },
+                          "webToken":  "--space-1",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "space/2",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "Spacing scale step 2 x 4px",
+                          "scopes":  [
+                                         "GAP",
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  8
+                                     },
+                          "webToken":  "--space-2",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "space/3",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "Spacing scale step 3 x 4px",
+                          "scopes":  [
+                                         "GAP",
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  12
+                                     },
+                          "webToken":  "--space-3",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "space/4",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "Spacing scale step 4 x 4px",
+                          "scopes":  [
+                                         "GAP",
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  16
+                                     },
+                          "webToken":  "--space-4",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "space/5",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "Spacing scale step 5 x 4px",
+                          "scopes":  [
+                                         "GAP",
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  20
+                                     },
+                          "webToken":  "--space-5",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "space/6",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "Spacing scale step 6 x 4px",
+                          "scopes":  [
+                                         "GAP",
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  24
+                                     },
+                          "webToken":  "--space-6",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "space/7",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "28px (4px scale)",
+                          "scopes":  [
+                                         "GAP",
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  28
+                                     },
+                          "webToken":  "--space-7",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "space/8",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "Spacing scale step 8 x 4px",
+                          "scopes":  [
+                                         "GAP",
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  32
+                                     },
+                          "webToken":  "--space-8",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "space/9",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "36px (4px scale)",
+                          "scopes":  [
+                                         "GAP",
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  36
+                                     },
+                          "webToken":  "--space-9",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "space/10",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "Spacing scale step 10 x 4px",
+                          "scopes":  [
+                                         "GAP",
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  40
+                                     },
+                          "webToken":  "--space-10",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "space/12",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "Spacing scale step 12 x 4px",
+                          "scopes":  [
+                                         "GAP",
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  48
+                                     },
+                          "webToken":  "--space-12",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "space/14",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "56px (4px scale)",
+                          "scopes":  [
+                                         "GAP",
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  56
+                                     },
+                          "webToken":  "--space-14",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "space/16",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "Spacing scale step 16 x 4px",
+                          "scopes":  [
+                                         "GAP",
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  64
+                                     },
+                          "webToken":  "--space-16",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "space/20",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "Spacing scale step 20 x 4px",
+                          "scopes":  [
+                                         "GAP",
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  80
+                                     },
+                          "webToken":  "--space-20",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "space/24",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "Spacing scale step 24 x 4px",
+                          "scopes":  [
+                                         "GAP",
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  96
+                                     },
+                          "webToken":  "--space-24",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "radius/none",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "Corner radius none",
+                          "scopes":  [
+                                         "CORNER_RADIUS"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  0
+                                     },
+                          "webToken":  "--radius-none",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "radius/sm",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "Corner radius sm",
+                          "scopes":  [
+                                         "CORNER_RADIUS"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  4
+                                     },
+                          "webToken":  "--radius-sm",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "radius/md",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "Corner radius md",
+                          "scopes":  [
+                                         "CORNER_RADIUS"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  8
+                                     },
+                          "webToken":  "--radius-md",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "radius/lg",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "Corner radius lg",
+                          "scopes":  [
+                                         "CORNER_RADIUS"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  16
+                                     },
+                          "webToken":  "--radius-lg",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "radius/pill",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "Corner radius pill",
+                          "scopes":  [
+                                         "CORNER_RADIUS"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  999
+                                     },
+                          "webToken":  "--radius-pill",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "border-width/thin",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "Hairline stroke",
+                          "scopes":  [
+                                         "STROKE_FLOAT"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  1
+                                     },
+                          "webToken":  "--border-width-thin",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "border-width/thick",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "Emphasis stroke (errors, selection)",
+                          "scopes":  [
+                                         "STROKE_FLOAT"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  2
+                                     },
+                          "webToken":  "--border-width-thick",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "opacity/disabled",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "Opacity disabled as a fraction 0 to 1 (same as the web value). Unit to confirm in Figma: the Plugin API uses 0 to 1, some UI shows 0 to 100.",
+                          "scopes":  [
+                                         "OPACITY"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  0.45
+                                     },
+                          "webToken":  "--opacity-disabled",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "opacity/muted",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "Opacity muted as a fraction 0 to 1 (same as the web value). Unit to confirm in Figma: the Plugin API uses 0 to 1, some UI shows 0 to 100.",
+                          "scopes":  [
+                                         "OPACITY"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  0.7
+                                     },
+                          "webToken":  "--opacity-muted",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "opacity/pressed",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "Opacity pressed as a fraction 0 to 1 (same as the web value). Unit to confirm in Figma: the Plugin API uses 0 to 1, some UI shows 0 to 100.",
+                          "scopes":  [
+                                         "OPACITY"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  0.88
+                                     },
+                          "webToken":  "--opacity-pressed",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "opacity/scrim",
+                          "collection":  "Primitives",
+                          "type":  "FLOAT",
+                          "layer":  "primitive",
+                          "description":  "Opacity scrim as a fraction 0 to 1 (same as the web value). Unit to confirm in Figma: the Plugin API uses 0 to 1, some UI shows 0 to 100.",
+                          "scopes":  [
+                                         "OPACITY"
+                                     ],
+                          "hiddenFromPublishing":  true,
+                          "values":  {
+                                         "Value":  0.5
+                                     },
+                          "webToken":  "--opacity-scrim",
+                          "webRelation":  "shared"
+                      }
+                  ],
+    "effectStyles":  [
+                         {
+                             "name":  "Elevation/Small",
+                             "webToken":  "--shadow-sm",
+                             "layers":  [
+                                            {
+                                                "type":  "DROP_SHADOW",
+                                                "x":  0,
+                                                "y":  1,
+                                                "blur":  2,
+                                                "spread":  0,
+                                                "color":  "{palette/charcoal}",
+                                                "alpha":  0.08
+                                            }
+                                        ]
+                         },
+                         {
+                             "name":  "Elevation/Medium",
+                             "webToken":  "--shadow-md",
+                             "layers":  [
+                                            {
+                                                "type":  "DROP_SHADOW",
+                                                "x":  0,
+                                                "y":  4,
+                                                "blur":  12,
+                                                "spread":  0,
+                                                "color":  "{palette/charcoal}",
+                                                "alpha":  0.08
+                                            },
+                                            {
+                                                "type":  "DROP_SHADOW",
+                                                "x":  0,
+                                                "y":  1,
+                                                "blur":  3,
+                                                "spread":  0,
+                                                "color":  "{palette/charcoal}",
+                                                "alpha":  0.06
+                                            }
+                                        ]
+                         },
+                         {
+                             "name":  "Elevation/Large",
+                             "webToken":  "--shadow-lg",
+                             "layers":  [
+                                            {
+                                                "type":  "DROP_SHADOW",
+                                                "x":  0,
+                                                "y":  16,
+                                                "blur":  40,
+                                                "spread":  0,
+                                                "color":  "{palette/charcoal}",
+                                                "alpha":  0.12
+                                            },
+                                            {
+                                                "type":  "DROP_SHADOW",
+                                                "x":  0,
+                                                "y":  4,
+                                                "blur":  10,
+                                                "spread":  0,
+                                                "color":  "{palette/charcoal}",
+                                                "alpha":  0.06
+                                            }
+                                        ]
+                         }
+                     ],
+    "effectStyleNote":  "Shadows are Effect Styles, not Variables: a shadow is a bundle of offsets, blur and colour, and Variables cannot hold it. The shadow colour is bound to palette/charcoal where Figma allows binding a colour; the alpha is stored in the style."
+}

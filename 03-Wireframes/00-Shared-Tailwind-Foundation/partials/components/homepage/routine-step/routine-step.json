@@ -1,0 +1,49 @@
+{
+    "id":  "routine-step",
+    "page":  "homepage",
+    "level":  "sub",
+    "name":  "Routine Step",
+    "properties":  [
+                       {
+                           "name":  "n",
+                           "type":  "TEXT",
+                           "default":  "1",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "n"
+                                       },
+                           "note":  "Step number, derived from the position in the list"
+                       },
+                       {
+                           "name":  "label",
+                           "type":  "TEXT",
+                           "default":  "Cleanse",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "label",
+                                           "id":  "label",
+                                           "setting":  "text"
+                                       },
+                           "note":  "Step label"
+                       }
+                   ],
+    "shopifyOnly":  [
+                        {
+                            "id":  "collection",
+                            "setting":  "collection",
+                            "note":  "Resolves the link"
+                        }
+                    ],
+    "status":  "classified (D10 items pending)",
+    "accessibility":  "A link; the number is part of the visible label.",
+    "summary":  "A numbered pill linking to a routine step.",
+    "tokens":  [
+                   "brand colour",
+                   "radius",
+                   "spacing"
+               ],
+    "responsive":  "Pills wrap on small screens.",
+    "children":  [
+
+                 ]
+}

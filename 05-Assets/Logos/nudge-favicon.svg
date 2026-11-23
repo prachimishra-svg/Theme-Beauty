@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="nudge-fav-title">
+  <title id="nudge-fav-title">NUDGE</title>
+  <rect width="64" height="64" rx="14" fill="#292126"/>
+  <path fill="#FFF5F5" transform="translate(17.25 14) scale(.36)" d="M0 14H16V100H0ZM66 0H82V86H66ZM0 14H19L82 86H63Z"/>
+</svg>

@@ -1,0 +1,64 @@
+{
+    "id":  "logo-item",
+    "page":  "homepage",
+    "level":  "sub",
+    "name":  "Logo Item",
+    "properties":  [
+                       {
+                           "name":  "aria",
+                           "type":  "TEXT",
+                           "default":  "Certification 1 (placeholder): verify the certificate",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "aria",
+                                           "id":  "aria_label",
+                                           "setting":  "text"
+                                       },
+                           "note":  "Accessible name of the link"
+                       },
+                       {
+                           "name":  "lbl",
+                           "type":  "TEXT",
+                           "default":  "Certification logo",
+                           "scope":  "wireframe",
+                           "shopify":  {
+                                           "param":  "lbl"
+                                       },
+                           "note":  "Placeholder caption; replaced by the logo image in Shopify"
+                       },
+                       {
+                           "name":  "tag",
+                           "type":  "TEXT",
+                           "default":  "Certification",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "tag",
+                                           "id":  "tag",
+                                           "setting":  "text"
+                                       },
+                           "note":  "Type tag: Certification, Award or Press"
+                       }
+                   ],
+    "shopifyOnly":  [
+                        {
+                            "id":  "image",
+                            "setting":  "image_picker",
+                            "replaces":  "placeholder"
+                        },
+                        {
+                            "id":  "link",
+                            "setting":  "url"
+                        }
+                    ],
+    "status":  "classified (D10 items pending)",
+    "accessibility":  "A link named by its accessible name; the logo is decorative.",
+    "summary":  "One certification, award or press logo with a small type tag.",
+    "tokens":  [
+                   "border colours",
+                   "type roles"
+               ],
+    "responsive":  "Scrolls sideways with the list.",
+    "children":  [
+
+                 ]
+}

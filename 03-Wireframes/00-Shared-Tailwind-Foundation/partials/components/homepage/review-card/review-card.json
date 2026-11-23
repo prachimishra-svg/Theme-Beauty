@@ -1,0 +1,61 @@
+{
+    "id":  "review-card",
+    "page":  "homepage",
+    "level":  "sub",
+    "name":  "Review Card",
+    "properties":  [
+                       {
+                           "name":  "quote",
+                           "type":  "TEXT",
+                           "default":  "Easy to find what I needed, and it arrived quickly.",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "quote",
+                                           "id":  "quote",
+                                           "setting":  "textarea"
+                                       }
+                       },
+                       {
+                           "name":  "name",
+                           "type":  "TEXT",
+                           "default":  "Customer name",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "name",
+                                           "id":  "name",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "product",
+                           "type":  "TEXT",
+                           "default":  "Face Cleanser",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "product",
+                                           "id":  "product_label",
+                                           "setting":  "text"
+                                       },
+                           "note":  "Product link text"
+                       }
+                   ],
+    "shopifyOnly":  [
+                        {
+                            "id":  "product_link",
+                            "setting":  "url"
+                        }
+                    ],
+    "status":  "classified (D10 items pending)",
+    "accessibility":  "A figure with a blockquote and a caption.",
+    "summary":  "One customer quote with the name and a link to the product.",
+    "tokens":  [
+                   "page colours",
+                   "type roles",
+                   "spacing"
+               ],
+    "responsive":  "Cards scroll sideways on small screens.",
+    "children":  [
+                     "components/homepage/review-stars",
+                     "components/base/icon"
+                 ]
+}

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="{{ canonical_url }}">
+  {%- if settings.favicon != blank -%}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+  {%- endif -%}
+  <title>{{ page_title }}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}</title>
+  {%- if page_description != blank -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+  {{ content_for_header }}
+  {% render 'fonts' %}
+  {{ 'variables.css' | asset_url | stylesheet_tag }}
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+  {{ 'theme-shopify.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'theme.js' | asset_url }}" defer></script>
+  <script src="{{ 'nav.js' | asset_url }}" defer></script>
+  {%- if settings.cart_type == 'drawer' %}
+  <script src="{{ 'drawer.js' | asset_url }}" defer></script>
+  <script src="{{ 'cart.js' | asset_url }}" defer></script>
+  {%- endif %}
+  {%- if request.page_type == 'index' %}
+  <script src="{{ 'homepage.js' | asset_url }}" defer></script>
+  {%- endif %}
+  {%- if settings.show_localization %}
+  <script src="{{ 'localization.js' | asset_url }}" defer></script>
+  {%- endif %}
+</head>
+<body{% if request.page_type == 'index' %} class="leading-relaxed"{% endif %} id="top">
+  {% render 'icon-sprite' %}
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-skip focus:bg-surface focus:p-3">{{ 'accessibility.skip_to_content' | t }}</a>
+  {% sections 'header-group' %}
+  <main id="main"{% if request.page_type == 'index' %} class="leading-relaxed"{% endif %} role="main" tabindex="-1">
+    {{ content_for_layout }}
+  </main>
+  {% sections 'footer-group' %}
+  {%- if settings.cart_type == 'drawer' -%}{% section 'cart-drawer' %}{%- endif -%}
+</body>
+</html>

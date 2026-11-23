@@ -1,0 +1,6 @@
+<div id="annbar" class="flex min-h-10 flex-wrap items-center justify-center gap-x-3 gap-y-[2px] bg-brand px-gutter py-2 text-center text-body-sm tracking-[0.03em] text-ink-inverse focus-within:[--color-focus-ring:var(--color-focus-ring-inverse)]">
+  @@PARTIAL components/layout/announcement-arrow id=ann-prev label="Previous message" icon=chevron-left@@
+  <div id="ann-msg" class="min-w-0" aria-live="polite">{{message}}</div>
+  @@PARTIAL components/layout/announcement-arrow id=ann-next label="Next message" icon=chevron-right@@
+  @@PARTIAL components/layout/announcement-dots@@
+</div>

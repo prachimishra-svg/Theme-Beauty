@@ -1,0 +1,307 @@
+{
+    "id":  "product-card",
+    "page":  "plp",
+    "wireframeOnly":  [
+                          "tone and placeholder captions (the image area)"
+                      ],
+    "level":  "sub",
+    "name":  "Product Card (PLP)",
+    "properties":  [
+                       {
+                           "name":  "index",
+                           "type":  "TEXT",
+                           "default":  "0",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "index"
+                                       },
+                           "note":  "Position of the product in the sample data; Quick view opens this product. In Shopify: the product id or handle"
+                       },
+                       {
+                           "name":  "title",
+                           "type":  "TEXT",
+                           "default":  "Face Cleanser",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "title"
+                                       },
+                           "data":  "product.title"
+                       },
+                       {
+                           "name":  "type",
+                           "type":  "TEXT",
+                           "default":  "Cleanser",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "type"
+                                       },
+                           "data":  "product.type",
+                           "note":  "Small category line above the title"
+                       },
+                       {
+                           "name":  "attr",
+                           "type":  "TEXT",
+                           "default":  "Best for: all skin types",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "attr"
+                                       },
+                           "data":  "product.metafields.custom.highlight",
+                           "pending":  true,
+                           "note":  "Key attribute line"
+                       },
+                       {
+                           "name":  "soldOut",
+                           "type":  "BOOLEAN",
+                           "default":  false,
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "sold_out"
+                                       },
+                           "data":  "product.available",
+                           "note":  "Sold out: dims the image, shows the Sold out badge and a disabled button"
+                       },
+                       {
+                           "name":  "hasBadge",
+                           "type":  "BOOLEAN",
+                           "default":  true,
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "has_badge"
+                                       },
+                           "note":  "Whether a badge is shown (derived from the badge kind)"
+                       },
+                       {
+                           "name":  "badgeKind",
+                           "type":  "VARIANT",
+                           "default":  "label",
+                           "values":  [
+                                          "none",
+                                          "soldout",
+                                          "sale",
+                                          "label"
+                                      ],
+                           "tables":  {
+                                          "extra":  {
+                                                        "none":  "",
+                                                        "soldout":  "whitespace-normal border bg-surface font-medium border-line-strong text-ink-secondary",
+                                                        "sale":  "whitespace-normal border bg-surface font-medium border-brand text-brand",
+                                                        "label":  "whitespace-normal border bg-surface font-medium border-line text-ink"
+                                                    }
+                                      },
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "badge_kind"
+                                       },
+                           "note":  "One quiet badge: sold out, sale percentage, or a merchant label"
+                       },
+                       {
+                           "name":  "badgeText",
+                           "type":  "TEXT",
+                           "default":  "Bestseller",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "badge_text"
+                                       },
+                           "data":  "product.tags (badge:\u003ctext\u003e)",
+                           "pending":  true,
+                           "note":  "Label text for the label badge"
+                       },
+                       {
+                           "name":  "salePct",
+                           "type":  "TEXT",
+                           "default":  "0",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "sale_pct"
+                                       },
+                           "data":  "compare_at_price and price",
+                           "note":  "Percentage saved, for the sale badge"
+                       },
+                       {
+                           "name":  "showRating",
+                           "type":  "BOOLEAN",
+                           "default":  true,
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "show_rating"
+                                       },
+                           "data":  "product.metafields.reviews.rating_count",
+                           "pending":  true,
+                           "note":  "Shown only when the product has enough reviews"
+                       },
+                       {
+                           "name":  "ratingStars",
+                           "type":  "VARIANT",
+                           "default":  "5",
+                           "values":  [
+                                          "0",
+                                          "1",
+                                          "2",
+                                          "3",
+                                          "4",
+                                          "5"
+                                      ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "rating_stars"
+                                       },
+                           "note":  "Filled stars, 0 to 5"
+                       },
+                       {
+                           "name":  "ratingValue",
+                           "type":  "TEXT",
+                           "default":  "4.8",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "rating_value"
+                                       },
+                           "data":  "product.metafields.reviews.rating",
+                           "pending":  true,
+                           "note":  "Rating for assistive technology"
+                       },
+                       {
+                           "name":  "ratingText",
+                           "type":  "TEXT",
+                           "default":  "4.8 (212)",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "rating_text"
+                                       },
+                           "data":  "reviews.rating, reviews.rating_count",
+                           "pending":  true,
+                           "note":  "Rating and count shown after the stars"
+                       },
+                       {
+                           "name":  "swatches",
+                           "type":  "LIST",
+                           "default":  [
+
+                                       ],
+                           "itemFields":  [
+                                              "hex"
+                                          ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "swatches"
+                                       },
+                           "data":  "product option values (colour)",
+                           "note":  "Up to four shade dots"
+                       },
+                       {
+                           "name":  "swatchMore",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "swatch_more"
+                                       },
+                           "note":  "How many more shades there are, empty for none"
+                       },
+                       {
+                           "name":  "lowStock",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "low_stock"
+                                       },
+                           "data":  "variant.inventory_quantity",
+                           "note":  "Units left, shown only with tracked inventory; empty hides the line"
+                       },
+                       {
+                           "name":  "priceVariant",
+                           "type":  "VARIANT",
+                           "default":  "regular",
+                           "values":  [
+                                          "regular",
+                                          "sale"
+                                      ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "price_variant"
+                                       },
+                           "note":  "regular or sale"
+                       },
+                       {
+                           "name":  "price",
+                           "type":  "TEXT",
+                           "default":  "$18.00",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "price"
+                                       },
+                           "data":  "product.price"
+                       },
+                       {
+                           "name":  "compare",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "compare"
+                                       },
+                           "data":  "product.compare_at_price",
+                           "note":  "Compare-at price, for the sale variant"
+                       },
+                       {
+                           "name":  "unit",
+                           "type":  "TEXT",
+                           "default":  "$0.12 / ml",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "unit"
+                                       },
+                           "data":  "variant.unit_price",
+                           "note":  "Unit price; empty hides it"
+                       },
+                       {
+                           "name":  "secondImage",
+                           "type":  "BOOLEAN",
+                           "default":  true,
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "second_image"
+                                       },
+                           "data":  "product.media (second item)",
+                           "note":  "Second image that fades in on mouse screens"
+                       },
+                       {
+                           "name":  "tone",
+                           "type":  "VARIANT",
+                           "default":  "a",
+                           "values":  [
+                                          "a",
+                                          "b",
+                                          "c"
+                                      ],
+                           "classes":  {
+                                           "a":  "",
+                                           "b":  "pm-b",
+                                           "c":  "pm-c"
+                                       },
+                           "scope":  "wireframe",
+                           "shopify":  {
+                                           "param":  "tone"
+                                       },
+                           "note":  "Placeholder tone"
+                       }
+                   ],
+    "accessibility":  "The whole card is one link (the title); the Quick view control is a separate labelled button; rating text and prices have screen reader text.",
+    "status":  "classified",
+    "summary":  "The collection page product card: image with one badge, category, title, key attribute, rating, price with compare-at and unit price, shade dots, low-stock line and a Quick view action. Separate from the Homepage product card by decision; they share only base parts (icon, badge, price, rating, button).",
+    "tokens":  [
+                   "type roles",
+                   "colours",
+                   "spacing",
+                   "radius"
+               ],
+    "responsive":  "Hover and fine pointer: second image fades in and Quick view rises over the image. Touch: the labelled button sits under the card.",
+    "children":  [
+                     "components/base/badge",
+                     "components/base/button",
+                     "components/base/rating",
+                     "components/base/price",
+                     "components/base/icon"
+                 ]
+}

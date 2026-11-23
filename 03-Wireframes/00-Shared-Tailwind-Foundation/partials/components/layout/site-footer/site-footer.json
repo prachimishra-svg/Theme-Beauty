@@ -1,0 +1,92 @@
+{
+    "name":  "Footer",
+    "wireframeOnly":  [
+                          "data-c review hooks"
+                      ],
+    "page":  "shared",
+    "properties":  [
+                       {
+                           "name":  "brandText",
+                           "type":  "TEXT",
+                           "default":  "One line about the brand.",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "brand_text",
+                                           "id":  "brand_text",
+                                           "setting":  "textarea"
+                                       }
+                       },
+                       {
+                           "name":  "paymentMethods",
+                           "type":  "LIST",
+                           "default":  "Visa|Mastercard|UPI|Wallet",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "payment_methods",
+                                           "id":  "payment_methods",
+                                           "setting":  "textarea"
+                                       },
+                           "note":  "One method per line"
+                       },
+                       {
+                           "name":  "trustText",
+                           "type":  "TEXT",
+                           "default":  "Secure checkout. Easy returns. Support when you need it.",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "trust_text",
+                                           "id":  "trust_text",
+                                           "setting":  "text"
+                                       }
+                       }
+                   ],
+    "tokens":  [
+                   "inverse background",
+                   "spacing",
+                   "type roles"
+               ],
+    "summary":  "The site footer: brand and social links, four link groups, payment methods, a trust line and Back to top. Maps to the footer section in the Shopify footer group.",
+    "accessibility":  "A contentinfo landmark; link groups are accordions on small screens.",
+    "id":  "site-footer",
+    "shopifyOnly":  [
+                        {
+                            "id":  "show_social",
+                            "setting":  "checkbox"
+                        },
+                        {
+                            "id":  "show_back_to_top",
+                            "setting":  "checkbox"
+                        },
+                        {
+                            "id":  "link_list",
+                            "setting":  "blocks",
+                            "note":  "One block per footer link group (heading and menu)"
+                        }
+                    ],
+    "level":  "main",
+    "status":  "classified (D10 items pending)",
+    "responsive":  "Link groups stack as accordions below 768 px and sit in columns from 768 px.",
+    "exposes":  [
+                    {
+                        "child":  "components/layout/footer-brand",
+                        "property":  "text",
+                        "via":  "brand_text"
+                    },
+                    {
+                        "child":  "components/layout/footer-payments",
+                        "property":  "methods",
+                        "via":  "payment_methods"
+                    },
+                    {
+                        "child":  "components/layout/footer-column",
+                        "property":  "title",
+                        "via":  "link_list blocks (heading)"
+                    }
+                ],
+    "children":  [
+                     "components/layout/footer-brand",
+                     "components/layout/footer-column",
+                     "components/layout/footer-payments",
+                     "components/layout/back-to-top"
+                 ]
+}

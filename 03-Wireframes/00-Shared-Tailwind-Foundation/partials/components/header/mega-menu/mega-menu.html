@@ -1,0 +1,6 @@
+<div id="mega-{{key}}" data-mega-panel class="mega-panel hidden data-[open]:block lg:absolute lg:inset-x-0 lg:top-full lg:z-[1] lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto lg:border-b lg:border-line lg:bg-page lg:shadow-md">
+<div class="mx-auto flex w-full max-w-[calc(var(--container-max)+2*var(--layout-gutter))] flex-col pb-3 pl-3 lg:px-gutter lg:py-8 lg:pl-gutter">
+<a href="#collection-{{key}}" class="flex min-h-touch items-center gap-2 text-body font-medium text-brand no-underline hover:underline lg:order-last lg:mt-4 lg:self-start lg:border-t-0 lg:text-body-sm">Shop all {{lower:name}}@@PARTIAL components/base/icon name=arrow-right size=md@@</a>
+<div class="lg:grid lg:grid-cols-[repeat(2,minmax(0,1fr))_minmax(0,1.2fr)] lg:gap-grid-gap">
+{{if key=skin}}@@PARTIAL components/header/menus/skin@@{{/if}}{{if key=makeup}}@@PARTIAL components/header/menus/makeup@@{{/if}}{{if key=hair}}@@PARTIAL components/header/menus/hair@@{{/if}}{{if key=body}}@@PARTIAL components/header/menus/body@@{{/if}}
+</div></div></div>

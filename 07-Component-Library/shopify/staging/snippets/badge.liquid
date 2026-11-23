@@ -1,0 +1,10 @@
+{%- comment -%}
+  GENERATED from components/base/badge by 07-Component-Library/tools/generate-liquid-staging.ps1 (contract 86d7d7ac45d08664).
+  Do not edit here: change the library component, then regenerate. Text values are written raw; escape where Shopify data enters (| escape in the section).
+  Parameters (class: design = fixed, parent = passed in, merchant = set in a section, wireframe = not used):
+    variant (VARIANT, parent)
+    label (TEXT, parent)
+    label_wrap (VARIANT, parent)
+    extra (TEXT, parent)
+{%- endcomment -%}
+{%- if variant == nil -%}{%- assign variant = 'ds' -%}{%- endif -%}{%- if label == nil -%}{%- assign label = 'Bestseller' -%}{%- endif -%}{%- if label_wrap == nil -%}{%- assign label_wrap = 'plain' -%}{%- endif -%}{%- if extra == nil -%}{%- assign extra = '' -%}{%- endif -%}{%- assign edit_hook = '' -%}<span class="{% case variant %}{% when 'ds' %}badge{% when 'ds-brand' %}badge badge-brand{% when 'ds-dark' %}badge badge-dark{% when 'ds-outline' %}badge badge-outline{% when 'overlay' %}absolute left-[10px] top-[10px] z-[4] px-2 py-1 text-caption font-semibold tracking-[0.06em] bg-page text-ink{% when 'overlay-sale' %}absolute left-[10px] top-[10px] z-[4] px-2 py-1 text-caption font-semibold tracking-[0.06em] bg-brand text-ink-on-brand{% endcase %}{% if extra != blank %} {{ extra }}{% endif %}">{% if label_wrap == 'span' %}<span{% if edit_hook != blank %} data-c="{{ edit_hook }}"{% endif %}>{{ label }}</span>{% endif %}{% if label_wrap == 'plain' %}{{ label }}{% endif %}</span>

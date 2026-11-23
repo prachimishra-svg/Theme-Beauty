@@ -1,0 +1,12 @@
+<div id="wp" role="dialog" aria-label="Width preview"><div class="bar2"><b>Viewport:</b><span id="wp-btns"></span><label><input type="checkbox" id="wp-ann"> annotations</label><span id="wp-info"></span><button type="button" id="wp-close">Close</button></div><div class="stage"><div><iframe id="wp-f" title="Page at the chosen width"></iframe></div></div></div>
+<script>
+(function(){
+ var $=function(id){return document.getElementById(id)},t=$("t-wp");if(!t)return;
+ var wp=$("wp"),wf=$("wp-f"),cur=1440;
+ function wapply(){var avail=wp.clientWidth-32,sc=Math.min(1,avail/cur),h=Math.max(600,(wp.clientHeight-90)/sc);wf.style.width=cur+"px";wf.style.height=h+"px";wf.parentNode.style.width=cur+"px";wf.parentNode.style.height=h*sc+"px";wf.parentNode.style.transform="scale("+sc+")";wf.parentNode.style.transformOrigin="top left";$("wp-info").textContent=cur+" px wide, shown at "+Math.round(sc*100)+"%";var base=location.href.split("#")[0].split("?")[0];wf.src=base+"?embed=1"+($("wp-ann").checked?"":"&ann=0")}
+ [1920,1440,1280,1024,768,430,390,320].forEach(function(w){var bt=document.createElement("button");bt.type="button";bt.textContent=w;if(w===cur){bt.className="on"}bt.addEventListener("click",function(){cur=w;[].forEach.call($("wp-btns").children,function(x){x.className=""});bt.className="on";wapply()});$("wp-btns").appendChild(bt)});
+ t.addEventListener("click",function(){wp.classList.add("open");wapply()});$("wp-close").addEventListener("click",function(){wp.classList.remove("open")});$("wp-ann").addEventListener("change",wapply);
+ window.addEventListener("resize",function(){if(wp.classList.contains("open"))wapply()});
+ document.addEventListener("keydown",function(e){if(e.key==="Escape")wp.classList.remove("open")});
+})();
+</script>

@@ -1,0 +1,63 @@
+{
+    "id":  "filters-drawer",
+    "page":  "plp",
+    "level":  "main",
+    "name":  "Filters Drawer",
+    "properties":  [
+                       {
+                           "name":  "title",
+                           "type":  "TEXT",
+                           "default":  "Filters",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "title"
+                                       },
+                           "note":  "Locale string"
+                       },
+                       {
+                           "name":  "closeLabel",
+                           "type":  "TEXT",
+                           "default":  "Close filters",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "close_label"
+                                       },
+                           "note":  "Locale string"
+                       },
+                       {
+                           "name":  "clearLabel",
+                           "type":  "TEXT",
+                           "default":  "Clear all",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "clear_label"
+                                       },
+                           "note":  "Locale string"
+                       },
+                       {
+                           "name":  "applyLabel",
+                           "type":  "TEXT",
+                           "default":  "Apply filters (24)",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "apply_label"
+                                       },
+                           "note":  "Locale string with the live count"
+                       }
+                   ],
+    "accessibility":  "A native dialog labelled by its title; focus is trapped while open and returns to the opener.",
+    "status":  "classified",
+    "tokens":  [
+                   "drawer tokens",
+                   "z-index"
+               ],
+    "summary":  "The left slide-in drawer that holds the filter form below 768 px, with Clear all and Apply filters (the count is kept current by the page script).",
+    "exposes":  [
+
+                ],
+    "responsive":  "Used below 768 px only; above it the form sits in the sidebar.",
+    "children":  [
+                     "components/base/icon-button",
+                     "components/base/button"
+                 ]
+}

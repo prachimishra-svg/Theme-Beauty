@@ -1,0 +1,10 @@
+# Evaluates a JavaScript expression inside a rendered page (iframe at the given width) after load and prints the JSON result.
+# Usage: .\tools\probe.ps1 -File <html> -Width 1440 -Js "document.querySelector('#s11').getBoundingClientRect().bottom + scrollY" [-WaitMs 2500]
+param([Parameter(Mandatory = $true)][string]$File, [int]$Width = 1440, [Parameter(Mandatory = $true)][string]$Js, [int]$WaitMs = 2500, [string]$Query = '')
+$utf8 = New-Object Text.UTF8Encoding($false); $f = (Resolve-Path $File).Path; $u = 'file:///' + (($f -replace '\\', '/') -replace ' ', '%20') + $Query
+$tmp = Join-Path ([IO.Path]::GetTempPath()) 'nudge-probe'; New-Item -ItemType Directory -Force $tmp | Out-Null
+$code = "var w=document.getElementById('f').contentWindow,d=w.document,scrollY=0;try{var r=(function(){with(w){return ($Js)}})();document.getElementById('o').textContent=JSON.stringify(r)}catch(e){document.getElementById('o').textContent='ERR '+e.message}"
+$page = "<!doctype html><html><body style=`"margin:0`"><iframe id=`"f`" src=`"$u`" style=`"width:${Width}px;height:900px;border:0`"></iframe><pre id=`"o`">pending</pre><script>document.getElementById('f').onload=function(){setTimeout(function(){$($code.Replace('</', '<\/'))},$WaitMs)}</script></body></html>"
+$pg = Join-Path $tmp 'probe.html'; [IO.File]::WriteAllText($pg, $page, $utf8); $dump = Join-Path $tmp 'probe-dump.html'
+Start-Process -FilePath 'C:\Program Files\Google\Chrome\Application\chrome.exe' -ArgumentList @('--headless=new', '--disable-gpu', '--allow-file-access-from-files', "--window-size=$($Width + 20),940", '--virtual-time-budget=15000', '--dump-dom', "`"file:///$(($pg -replace '\\','/') -replace ' ','%20')`"") -RedirectStandardOutput $dump -RedirectStandardError "$dump.err" -Wait -NoNewWindow
+[System.Net.WebUtility]::HtmlDecode([regex]::Match([IO.File]::ReadAllText($dump, $utf8), '<pre id="o">([\s\S]*?)</pre>').Groups[1].Value)

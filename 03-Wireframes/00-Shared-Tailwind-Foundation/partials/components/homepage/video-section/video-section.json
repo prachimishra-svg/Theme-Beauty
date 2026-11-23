@@ -1,0 +1,119 @@
+{
+    "name":  "Video Section",
+    "wireframeOnly":  [
+                          ".ann annotation block",
+                          "data-section attribute",
+                          "data-c review hooks"
+                      ],
+    "page":  "homepage",
+    "properties":  [
+                       {
+                           "name":  "anchor",
+                           "type":  "TEXT",
+                           "default":  "s12",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "anchor",
+                                           "id":  "anchor",
+                                           "setting":  "text"
+                                       },
+                           "note":  "In-page anchor id"
+                       },
+                       {
+                           "name":  "eyebrow",
+                           "type":  "TEXT",
+                           "default":  "Tutorial",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "eyebrow",
+                                           "id":  "eyebrow",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "heading",
+                           "type":  "TEXT",
+                           "default":  "Watch: building a simple routine",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "heading",
+                                           "id":  "heading",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "text",
+                           "type":  "TEXT",
+                           "default":  "A short tutorial that shows the steps in order.",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "text",
+                                           "id":  "text",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "buttonLabel",
+                           "type":  "TEXT",
+                           "default":  "Shop the products",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "button_label",
+                                           "id":  "button_label",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "buttonHref",
+                           "type":  "TEXT",
+                           "default":  "#s06",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "button_href",
+                                           "id":  "button_link",
+                                           "setting":  "url"
+                                       }
+                       }
+                   ],
+    "tokens":  [
+                   "inverse background",
+                   "spacing"
+               ],
+    "summary":  "A tutorial video poster with a short text and a button. Maps to the video-section section.",
+    "accessibility":  "Heading is an h2; the play control is a button.",
+    "id":  "video-section",
+    "level":  "main",
+    "status":  "classified (D10 items pending)",
+    "responsive":  "Stacked below 768 px, side by side from 768 px.",
+    "exposes":  [
+                    {
+                        "child":  "components/homepage/video-copy",
+                        "property":  "eyebrow",
+                        "via":  "eyebrow"
+                    },
+                    {
+                        "child":  "components/homepage/video-copy",
+                        "property":  "heading",
+                        "via":  "heading"
+                    },
+                    {
+                        "child":  "components/homepage/video-copy",
+                        "property":  "text",
+                        "via":  "text"
+                    },
+                    {
+                        "child":  "components/homepage/video-copy",
+                        "property":  "buttonLabel",
+                        "via":  "button_label"
+                    },
+                    {
+                        "child":  "components/homepage/video-copy",
+                        "property":  "buttonHref",
+                        "via":  "button_link"
+                    }
+                ],
+    "children":  [
+                     "components/homepage/video-poster",
+                     "components/homepage/video-copy"
+                 ]
+}

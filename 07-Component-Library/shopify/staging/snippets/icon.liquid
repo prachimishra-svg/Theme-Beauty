@@ -1,0 +1,9 @@
+{%- comment -%}
+  GENERATED from components/base/icon by 07-Component-Library/tools/generate-liquid-staging.ps1 (contract 3a3333a2c3e46b32).
+  Do not edit here: change the library component, then regenerate. Text values are written raw; escape where Shopify data enters (| escape in the section).
+  Parameters (class: design = fixed, parent = passed in, merchant = set in a section, wireframe = not used):
+    name (INSTANCE_SWAP, parent)
+    icon_size (VARIANT, parent)
+    extra (TEXT, parent)
+{%- endcomment -%}
+{%- if name == nil -%}{%- assign name = 'arrow-right' -%}{%- endif -%}{%- if icon_size == nil -%}{%- assign icon_size = 'md' -%}{%- endif -%}{%- if extra == nil -%}{%- assign extra = '' -%}{%- endif -%}<svg class="icon {% case icon_size %}{% when 'sm' %}size-4{% when 'md' %}size-5{% when 'lg' %}size-6{% when 'custom' %}{% endcase %}{% if extra != blank %} {{ extra }}{% endif %}" aria-hidden="true" focusable="false"><use href="#icon-{{ name }}"></use></svg>

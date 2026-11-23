@@ -1,0 +1,27 @@
+{
+    "id":  "market-selector",
+    "page":  "shared",
+    "level":  "sub",
+    "name":  "Market Selector",
+    "properties":  [
+
+                   ],
+    "shopifyOnly":  [
+                        {
+                            "id":  "localization",
+                            "setting":  "data",
+                            "note":  "localization.available_countries, rendered by the theme country form"
+                        }
+                    ],
+    "status":  "classified (D10 items pending)",
+    "accessibility":  "A disclosure button with aria-expanded; the menu is a labelled group.",
+    "summary":  "The country and currency pill with its dropdown. The list is filled by the currency script from the markets in use.",
+    "tokens":  [
+                   "border colours",
+                   "type roles"
+               ],
+    "responsive":  "Inside the mobile navigation below 1024 px; in the header bar from 1024 px.",
+    "children":  [
+
+                 ]
+}

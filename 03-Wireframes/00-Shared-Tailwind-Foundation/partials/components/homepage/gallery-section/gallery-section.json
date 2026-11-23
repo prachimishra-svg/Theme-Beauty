@@ -1,0 +1,118 @@
+{
+    "name":  "Customer Photo Gallery",
+    "wireframeOnly":  [
+                          ".ann annotation block",
+                          "data-section attribute",
+                          "data-c review hooks"
+                      ],
+    "page":  "homepage",
+    "properties":  [
+                       {
+                           "name":  "heading",
+                           "type":  "TEXT",
+                           "default":  "Customer photos",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "heading",
+                                           "id":  "heading",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "lead",
+                           "type":  "TEXT",
+                           "default":  "Photos from customers, uploaded by the merchant.",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "lead",
+                                           "id":  "lead",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "anchor",
+                           "type":  "TEXT",
+                           "default":  "s15",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "anchor",
+                                           "id":  "anchor",
+                                           "setting":  "text"
+                                       },
+                           "note":  "In-page anchor id"
+                       },
+                       {
+                           "name":  "photos",
+                           "type":  "LIST",
+                           "default":  [
+                                           {
+                                               "tone":  "t3",
+                                               "size":  "large"
+                                           },
+                                           {
+                                               "tone":  "t4",
+                                               "size":  "normal"
+                                           },
+                                           {
+                                               "tone":  "",
+                                               "size":  "normal"
+                                           },
+                                           {
+                                               "tone":  "t2",
+                                               "size":  "normal"
+                                           },
+                                           {
+                                               "tone":  "t3",
+                                               "size":  "normal"
+                                           },
+                                           {
+                                               "tone":  "t4",
+                                               "size":  "wide"
+                                           }
+                                       ],
+                           "itemFields":  [
+                                              "tone",
+                                              "size"
+                                          ],
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "photos",
+                                           "setting":  "blocks",
+                                           "blockType":  "photo",
+                                           "maxBlocks":  6
+                                       },
+                           "note":  "One block per photo"
+                       }
+                   ],
+    "tokens":  [
+                   "page background",
+                   "grid gap"
+               ],
+    "summary":  "A mosaic of customer photos uploaded by the merchant. Maps to the customer-gallery section.",
+    "accessibility":  "Heading is an h2; photos need alt text from the image.",
+    "id":  "gallery-section",
+    "level":  "main",
+    "status":  "classified (D10 items pending)",
+    "responsive":  "Two columns below 768 px; a six-tile mosaic from 768 px.",
+    "exposes":  [
+                    {
+                        "child":  "components/base/section-heading",
+                        "property":  "title",
+                        "via":  "heading"
+                    },
+                    {
+                        "child":  "components/base/section-heading",
+                        "property":  "lead",
+                        "via":  "lead"
+                    },
+                    {
+                        "child":  "components/homepage/gallery-tile",
+                        "property":  "size",
+                        "via":  "photos.size"
+                    }
+                ],
+    "children":  [
+                     "components/base/section-heading",
+                     "components/homepage/gallery-tile"
+                 ]
+}

@@ -1,0 +1,164 @@
+{
+    "id":  "product-card",
+    "page":  "homepage",
+    "wireframeOnly":  [
+                          "tone and photo placeholder",
+                          "data-c review hooks"
+                      ],
+    "level":  "sub",
+    "name":  "Product Card (Homepage)",
+    "properties":  [
+                       {
+                           "name":  "tone",
+                           "type":  "TEXT",
+                           "default":  "t4",
+                           "scope":  "wireframe",
+                           "shopify":  {
+                                           "param":  "tone"
+                                       },
+                           "note":  "Placeholder tint class"
+                       },
+                       {
+                           "name":  "photo",
+                           "type":  "TEXT",
+                           "default":  "Product (studio, soft shadow)",
+                           "scope":  "wireframe",
+                           "shopify":  {
+                                           "param":  "photo"
+                                       },
+                           "note":  "Placeholder caption; replaced by the product image in Shopify"
+                       },
+                       {
+                           "name":  "badge",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "badge"
+                                       },
+                           "data":  "product.tags (badge:\u003ctext\u003e)",
+                           "pending":  true,
+                           "note":  "Badge text. Empty hides the badge"
+                       },
+                       {
+                           "name":  "badgeStyle",
+                           "type":  "VARIANT",
+                           "default":  "neutral",
+                           "values":  [
+                                          "neutral",
+                                          "brand"
+                                      ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "badge_style",
+                                           "setting":  "select"
+                                       },
+                           "note":  "Badge colour: neutral for labels, brand for offers",
+                           "classes":  {
+                                           "neutral":  "bg-page text-ink",
+                                           "brand":  "bg-brand text-ink-on-brand"
+                                       }
+                       },
+                       {
+                           "name":  "title",
+                           "type":  "TEXT",
+                           "default":  "Face Cleanser",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "title"
+                                       },
+                           "data":  "product.title"
+                       },
+                       {
+                           "name":  "size",
+                           "type":  "TEXT",
+                           "default":  "150 ml",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "product_card_size"
+                                       },
+                           "data":  "product.metafields.custom.size",
+                           "pending":  true,
+                           "note":  "Size line"
+                       },
+                       {
+                           "name":  "attr",
+                           "type":  "TEXT",
+                           "default":  "Best for: all skin types",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "attr"
+                                       },
+                           "data":  "product.metafields.custom.highlight",
+                           "pending":  true,
+                           "note":  "Highlight line"
+                       },
+                       {
+                           "name":  "rating",
+                           "type":  "TEXT",
+                           "default":  "4.6 (112)",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "rating"
+                                       },
+                           "data":  "product.metafields.reviews.rating, reviews.rating_count",
+                           "pending":  true,
+                           "note":  "Rating and count shown together"
+                       },
+                       {
+                           "name":  "hideSwatches",
+                           "type":  "BOOLEAN",
+                           "default":  true,
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "hide_swatches"
+                                       },
+                           "data":  "product.options",
+                           "note":  "Swatches show only when the product has colour options"
+                       },
+                       {
+                           "name":  "price",
+                           "type":  "TEXT",
+                           "default":  "$18.00",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "price"
+                                       },
+                           "data":  "product.price"
+                       },
+                       {
+                           "name":  "was",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "was"
+                                       },
+                           "data":  "product.compare_at_price",
+                           "note":  "Compare-at price. Empty hides it"
+                       },
+                       {
+                           "name":  "href",
+                           "type":  "TEXT",
+                           "default":  "#",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "href"
+                                       },
+                           "data":  "product.url",
+                           "note":  "Product link"
+                       }
+                   ],
+    "accessibility":  "The whole card is one link named by the product title (stretched link). Rating icon is decorative; the rating text is visible.",
+    "status":  "classified (D10 items pending)",
+    "summary":  "The Homepage product card: photo, badge, title, size, key attribute, rating, optional swatches and price. Separate from the PLP card by decision; they share only base parts.",
+    "tokens":  [
+                   "type roles",
+                   "colour tokens",
+                   "spacing"
+               ],
+    "responsive":  "Two columns below 768 px, four from 768 px.",
+    "children":  [
+                     "components/base/icon"
+                 ]
+}

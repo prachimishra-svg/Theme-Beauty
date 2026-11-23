@@ -1,0 +1,65 @@
+{
+    "name":  "Collection Description",
+    "wireframeOnly":  [
+                          ".ann annotation block",
+                          "data-section attribute"
+                      ],
+    "page":  "plp",
+    "properties":  [
+                       {
+                           "name":  "heading",
+                           "type":  "TEXT",
+                           "default":  "About our skin care",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "heading",
+                                           "id":  "heading",
+                                           "setting":  "text"
+                                       },
+                           "note":  "Heading of the block"
+                       },
+                       {
+                           "name":  "paragraphs",
+                           "type":  "LIST",
+                           "default":  [
+                                           {
+                                               "text":  "Merchant text goes here. Explain in a few sentences how to choose between cleansers, serums, moisturisers and sun care, and link to the routine guide. Keep it below the products."
+                                           },
+                                           {
+                                               "text":  "A second short paragraph can answer the questions shoppers ask most about this collection. Sample text only."
+                                           }
+                                       ],
+                           "itemFields":  [
+                                              "text"
+                                          ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "paragraphs"
+                                       },
+                           "data":  "collection.description",
+                           "note":  "Paragraphs of the collection description"
+                       }
+                   ],
+    "tokens":  [
+                   "type roles",
+                   "spacing"
+               ],
+    "summary":  "A reading-width text block under the grid and pagination, so products stay first. In Shopify it is the collection description.",
+    "accessibility":  "A heading and plain paragraphs.",
+    "id":  "seo-block",
+    "shopifyOnly":  [
+                        {
+                            "id":  "show_description",
+                            "setting":  "checkbox"
+                        }
+                    ],
+    "level":  "main",
+    "status":  "classified",
+    "responsive":  "Reading width capped at the Design System text measure at every size.",
+    "exposes":  [
+
+                ],
+    "children":  [
+
+                 ]
+}

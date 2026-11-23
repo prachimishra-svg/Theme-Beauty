@@ -1,0 +1,127 @@
+{
+    "name":  "Testimonials",
+    "wireframeOnly":  [
+                          ".ann annotation block",
+                          "data-section attribute",
+                          "data-c review hooks",
+                          "the note line about typed reviews"
+                      ],
+    "page":  "homepage",
+    "properties":  [
+                       {
+                           "name":  "heading",
+                           "type":  "TEXT",
+                           "default":  "What customers say",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "heading",
+                                           "id":  "heading",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "anchor",
+                           "type":  "TEXT",
+                           "default":  "s14",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "anchor",
+                                           "id":  "anchor",
+                                           "setting":  "text"
+                                       },
+                           "note":  "In-page anchor id"
+                       },
+                       {
+                           "name":  "reviews",
+                           "type":  "LIST",
+                           "default":  [
+                                           {
+                                               "product":  "Face Cleanser",
+                                               "name":  "Customer name",
+                                               "quote":  "Easy to find what I needed, and it arrived quickly."
+                                           },
+                                           {
+                                               "product":  "Moisturiser",
+                                               "name":  "Customer name",
+                                               "quote":  "The packaging felt thoughtful."
+                                           },
+                                           {
+                                               "product":  "Face Serum",
+                                               "name":  "Customer name",
+                                               "quote":  "A good range for building a routine."
+                                           },
+                                           {
+                                               "product":  "Daily Sunscreen",
+                                               "name":  "Customer name",
+                                               "quote":  "Clear directions and a lovely texture."
+                                           },
+                                           {
+                                               "product":  "Eye Cream",
+                                               "name":  "Customer name",
+                                               "quote":  "Simple to follow, and I kept using it."
+                                           },
+                                           {
+                                               "product":  "Lip Balm",
+                                               "name":  "Customer name",
+                                               "quote":  "Exactly what I was looking for."
+                                           }
+                                       ],
+                           "itemFields":  [
+                                              "quote",
+                                              "name",
+                                              "product"
+                                          ],
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "reviews",
+                                           "setting":  "blocks",
+                                           "blockType":  "review"
+                                       },
+                           "note":  "One block per quote"
+                       }
+                   ],
+    "tokens":  [
+                   "surface background",
+                   "spacing"
+               ],
+    "summary":  "A sideways-scrolling row of customer quotes typed by the merchant. Maps to the testimonials section.",
+    "accessibility":  "Heading is an h2; the list is a labelled, focusable region with previous and next buttons.",
+    "id":  "testimonials-section",
+    "shopifyOnly":  [
+                        {
+                            "id":  "rating",
+                            "setting":  "range",
+                            "note":  "Stars shown per review"
+                        }
+                    ],
+    "level":  "main",
+    "status":  "classified (D10 items pending)",
+    "responsive":  "Scrolls sideways with controls; several cards visible from 1024 px.",
+    "exposes":  [
+                    {
+                        "child":  "components/base/section-heading",
+                        "property":  "title",
+                        "via":  "heading"
+                    },
+                    {
+                        "child":  "components/homepage/review-card",
+                        "property":  "quote",
+                        "via":  "reviews.quote"
+                    },
+                    {
+                        "child":  "components/homepage/review-card",
+                        "property":  "name",
+                        "via":  "reviews.name"
+                    },
+                    {
+                        "child":  "components/homepage/review-card",
+                        "property":  "product",
+                        "via":  "reviews.product_label"
+                    }
+                ],
+    "children":  [
+                     "components/base/section-heading",
+                     "components/common/scroller-controls",
+                     "components/homepage/review-card"
+                 ]
+}

@@ -1,0 +1,131 @@
+{
+    "name":  "Sort and Count Toolbar",
+    "wireframeOnly":  [
+                          ".ann annotation block",
+                          "data-section attribute"
+                      ],
+    "page":  "plp",
+    "properties":  [
+                       {
+                           "name":  "filtersLabel",
+                           "type":  "TEXT",
+                           "default":  "Filters",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "filters_label"
+                                       },
+                           "note":  "Filters button text from a locale string"
+                       },
+                       {
+                           "name":  "sortLabel",
+                           "type":  "TEXT",
+                           "default":  "Sort products",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "sort_label"
+                                       },
+                           "note":  "Accessible name of the sort select"
+                       },
+                       {
+                           "name":  "sortOptions",
+                           "type":  "LIST",
+                           "default":  [
+                                           {
+                                               "value":  "featured",
+                                               "label":  "Sort: Featured"
+                                           },
+                                           {
+                                               "value":  "best",
+                                               "label":  "Sort: Best selling"
+                                           },
+                                           {
+                                               "value":  "plh",
+                                               "label":  "Sort: Price, low to high"
+                                           },
+                                           {
+                                               "value":  "phl",
+                                               "label":  "Sort: Price, high to low"
+                                           },
+                                           {
+                                               "value":  "new",
+                                               "label":  "Sort: Newest"
+                                           }
+                                       ],
+                           "itemFields":  [
+                                              "value",
+                                              "label"
+                                          ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "sort_options"
+                                       },
+                           "data":  "collection.sort_options",
+                           "note":  "Sort choices"
+                       },
+                       {
+                           "name":  "sortShort",
+                           "type":  "TEXT",
+                           "default":  "Sort",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "sort_short"
+                                       },
+                           "note":  "Short word shown on very narrow screens"
+                       },
+                       {
+                           "name":  "count",
+                           "type":  "TEXT",
+                           "default":  "24 products",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "count"
+                                       },
+                           "data":  "collection.products_count",
+                           "note":  "Live product count; the page script keeps it current"
+                       },
+                       {
+                           "name":  "appliedLabel",
+                           "type":  "TEXT",
+                           "default":  "Applied filters",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "applied_label"
+                                       },
+                           "note":  "Accessible name of the chip group"
+                       },
+                       {
+                           "name":  "clearLabel",
+                           "type":  "TEXT",
+                           "default":  "Clear all",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "clear_label"
+                                       },
+                           "note":  "Button text from a locale string"
+                       }
+                   ],
+    "tokens":  [
+                   "control tokens",
+                   "spacing"
+               ],
+    "summary":  "The bar above the grid: the Filters button (phones), the sort select, the live product count, and the applied filter chips with Clear all.",
+    "accessibility":  "The count is a polite status region; the sort is a native select with a label.",
+    "id":  "toolbar",
+    "shopifyOnly":  [
+                        {
+                            "id":  "sort_by",
+                            "setting":  "data",
+                            "note":  "Native Shopify sorting"
+                        }
+                    ],
+    "level":  "main",
+    "status":  "classified",
+    "responsive":  "From 768 px: count left, sort right. Below 768 px: Filters and Sort side by side, count beneath.",
+    "exposes":  [
+
+                ],
+    "children":  [
+                     "components/base/button",
+                     "components/base/icon"
+                 ]
+}

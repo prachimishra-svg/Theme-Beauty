@@ -1,0 +1,26 @@
+{
+    "id":  "logo",
+    "page":  "shared",
+    "level":  "sub",
+    "name":  "Logo",
+    "properties":  [
+
+                   ],
+    "shopifyOnly":  [
+                        {
+                            "id":  "logo",
+                            "setting":  "image_picker",
+                            "note":  "Optional uploaded logo; the inline wordmark is the default"
+                        }
+                    ],
+    "status":  "classified (D10 items pending)",
+    "accessibility":  "The SVG has role img and the name NUDGE; the link is named Store home.",
+    "summary":  "The N-U-D-G-E wordmark as an inline SVG linking to the top of the page. In Shopify it links to the shop home.",
+    "tokens":  [
+                   "ink colour"
+               ],
+    "responsive":  "Centred on small screens, left from 1024 px.",
+    "children":  [
+
+                 ]
+}

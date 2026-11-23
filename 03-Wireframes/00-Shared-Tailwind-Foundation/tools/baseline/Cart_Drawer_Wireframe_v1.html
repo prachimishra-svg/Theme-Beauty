@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NUDGE Beauty Theme: Cart Drawer Wireframe</title>
+<!-- Design Variables (tokens) linked; styling is Tailwind utilities and the shared components, mapped to those tokens. -->
+<link rel="stylesheet" href="../../02-Design-Variables/Styles/variables.css">
+<link rel="stylesheet" href="../../01-Design-System/Styles/foundation.css"><!-- self-hosted fonts only -->
+<script src="../00-Shared-Tailwind-Foundation/tailwindcss-play-3.4.17.js"></script>
+<script src="../00-Shared-Tailwind-Foundation/tailwind.config.js"></script>
+<script src="../00-Shared-Tailwind-Foundation/currency.js" defer></script>
+<script src="../00-Shared-Tailwind-Foundation/nav.js" defer></script>
+<style type="text/tailwindcss">
+/* Shared Tailwind base for every wireframe. Injected inside <style type="text/tailwindcss"> by build.ps1 (partial "head").
+   It reproduces the element defaults of the Design System (01-Design-System/Styles/base.css) from the same tokens, so plain
+   headings and paragraphs look exactly as on the approved pages. The two warm greys are mixes of existing tokens. */
+@layer base {
+  :root{--warm:color-mix(in srgb,var(--color-border-strong) 14%,var(--color-bg-page));--warm-deep:color-mix(in srgb,var(--color-border-strong) 28%,var(--color-bg-page))}
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:var(--space-20)}
+  html.is-scroll-locked{overflow:hidden}
+  body{@apply bg-page font-body text-ink antialiased;font-size:var(--font-size-body);font-weight:var(--font-weight-regular);line-height:var(--line-height-normal);overflow-wrap:break-word;text-rendering:optimizeLegibility}
+  h1{font-family:var(--type-h1-font-family);font-size:var(--type-h1-font-size);font-weight:var(--type-h1-font-weight);line-height:var(--type-h1-line-height);letter-spacing:var(--type-h1-letter-spacing);text-wrap:balance}
+  h2{font-family:var(--type-h2-font-family);font-size:var(--type-h2-font-size);font-weight:var(--type-h2-font-weight);line-height:var(--type-h2-line-height);letter-spacing:var(--type-h2-letter-spacing);text-wrap:balance}
+  h3{font-family:var(--type-h3-font-family);font-size:var(--type-h3-font-size);font-weight:var(--type-h3-font-weight);line-height:var(--type-h3-line-height);letter-spacing:var(--type-h3-letter-spacing);text-wrap:balance}
+  h4{font-family:var(--type-h4-font-family);font-size:var(--type-h4-font-size);font-weight:var(--type-h4-font-weight);line-height:var(--type-h4-line-height);letter-spacing:var(--type-h4-letter-spacing)}
+  h5{font-family:var(--type-h5-font-family);font-size:var(--type-h5-font-size);font-weight:var(--type-h5-font-weight);line-height:var(--type-h5-line-height);letter-spacing:var(--type-h5-letter-spacing)}
+  h6{font-family:var(--type-h6-font-family);font-size:var(--type-h6-font-size);font-weight:var(--type-h6-font-weight);line-height:var(--type-h6-line-height);letter-spacing:var(--type-h6-letter-spacing)}
+  p{font-family:var(--type-body-font-family);font-size:var(--type-body-font-size);font-weight:var(--type-body-font-weight);line-height:var(--type-body-line-height);letter-spacing:var(--type-body-letter-spacing)}
+  input,button,select,textarea{letter-spacing:inherit}
+  [hidden]{display:none!important}
+  :focus-visible{outline:var(--focus-ring);outline-offset:var(--focus-ring-offset)}
+  :focus:not(:focus-visible){outline:none}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+}
+@layer components {
+  .icon{@apply size-5 shrink-0 fill-none stroke-current;stroke-width:var(--icon-stroke-width);stroke-linecap:round;stroke-linejoin:round} /* 20 px, as the Design System icon; chrome icons add size-6 */
+  .icon-filled{fill:currentColor}
+  /* media placeholders (labelled boxes; no photography) */
+  .ph{background:radial-gradient(110% 80% at 30% 20%,var(--color-bg-surface) 0%,transparent 60%),linear-gradient(160deg,var(--warm),var(--warm-deep))}
+  .ph-b{background:radial-gradient(100% 80% at 70% 25%,var(--color-bg-surface) 0%,transparent 55%),linear-gradient(200deg,var(--warm-deep),var(--warm))}
+  .ph-c{background:linear-gradient(180deg,var(--color-bg-surface),var(--warm))}
+  /* full type roles, same as the Design System role classes (family, size, weight, line height, letter spacing) */
+  .type-display{font-family:var(--type-display-font-family);font-size:var(--type-display-font-size);font-weight:var(--type-display-font-weight);line-height:var(--type-display-line-height);letter-spacing:var(--type-display-letter-spacing);text-wrap:balance}
+  .type-h1{font-family:var(--type-h1-font-family);font-size:var(--type-h1-font-size);font-weight:var(--type-h1-font-weight);line-height:var(--type-h1-line-height);letter-spacing:var(--type-h1-letter-spacing);text-wrap:balance}
+  .type-h2{font-family:var(--type-h2-font-family);font-size:var(--type-h2-font-size);font-weight:var(--type-h2-font-weight);line-height:var(--type-h2-line-height);letter-spacing:var(--type-h2-letter-spacing);text-wrap:balance}
+  .type-h3{font-family:var(--type-h3-font-family);font-size:var(--type-h3-font-size);font-weight:var(--type-h3-font-weight);line-height:var(--type-h3-line-height);letter-spacing:var(--type-h3-letter-spacing);text-wrap:balance}
+  .type-h4{font-family:var(--type-h4-font-family);font-size:var(--type-h4-font-size);font-weight:var(--type-h4-font-weight);line-height:var(--type-h4-line-height);letter-spacing:var(--type-h4-letter-spacing)}
+  .type-h5{font-family:var(--type-h5-font-family);font-size:var(--type-h5-font-size);font-weight:var(--type-h5-font-weight);line-height:var(--type-h5-line-height);letter-spacing:var(--type-h5-letter-spacing)}
+  .type-h6{font-family:var(--type-h6-font-family);font-size:var(--type-h6-font-size);font-weight:var(--type-h6-font-weight);line-height:var(--type-h6-line-height);letter-spacing:var(--type-h6-letter-spacing)}
+  .type-body{font-family:var(--type-body-font-family);font-size:var(--type-body-font-size);font-weight:var(--type-body-font-weight);line-height:var(--type-body-line-height);letter-spacing:var(--type-body-letter-spacing)}
+  .type-body-lg{font-family:var(--type-body-lg-font-family);font-size:var(--type-body-lg-font-size);font-weight:var(--type-body-lg-font-weight);line-height:var(--type-body-lg-line-height);letter-spacing:var(--type-body-lg-letter-spacing)}
+  .type-body-sm{font-family:var(--type-body-sm-font-family);font-size:var(--type-body-sm-font-size);font-weight:var(--type-body-sm-font-weight);line-height:var(--type-body-sm-line-height);letter-spacing:var(--type-body-sm-letter-spacing)}
+  .type-caption{font-family:var(--type-caption-font-family);font-size:var(--type-caption-font-size);font-weight:var(--type-caption-font-weight);line-height:var(--type-caption-line-height);letter-spacing:var(--type-caption-letter-spacing);color:var(--color-text-secondary)}
+  .type-overline{font-family:var(--type-overline-font-family);font-size:var(--type-overline-font-size);font-weight:var(--type-overline-font-weight);line-height:var(--type-overline-line-height);letter-spacing:var(--type-overline-letter-spacing);text-transform:var(--type-overline-text-transform);color:var(--color-brand-primary)}
+  .type-label{font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);font-weight:var(--type-label-font-weight);line-height:var(--type-label-line-height);letter-spacing:var(--type-label-letter-spacing)}
+  .type-utility{font-family:var(--type-utility-font-family);font-size:var(--type-utility-font-size);font-weight:var(--type-utility-font-weight);line-height:var(--type-utility-line-height);letter-spacing:var(--type-utility-letter-spacing);text-transform:var(--type-utility-text-transform)}
+  .type-nav{font-family:var(--type-nav-font-family);font-size:var(--type-nav-font-size);font-weight:var(--type-nav-font-weight);line-height:var(--type-nav-line-height);letter-spacing:var(--type-nav-letter-spacing)}
+  .type-product-title{font-family:var(--type-product-title-font-family);font-size:var(--type-product-title-font-size);font-weight:var(--type-product-title-font-weight);line-height:var(--type-product-title-line-height);letter-spacing:var(--type-product-title-letter-spacing)}
+  .type-price{font-family:var(--type-price-font-family);font-size:var(--type-price-font-size);font-weight:var(--type-price-font-weight);line-height:var(--type-price-line-height);letter-spacing:var(--type-price-letter-spacing);font-variant-numeric:tabular-nums}
+  .type-price-lg{font-family:var(--type-price-lg-font-family);font-size:var(--type-price-lg-font-size);font-weight:var(--type-price-lg-font-weight);line-height:var(--type-price-lg-line-height);letter-spacing:var(--type-price-lg-letter-spacing);font-variant-numeric:tabular-nums}
+  .type-validation{font-family:var(--type-validation-font-family);font-size:var(--type-validation-font-size);font-weight:var(--type-validation-font-weight);line-height:var(--type-validation-line-height);letter-spacing:var(--type-validation-letter-spacing)}
+  /* main headings (every h1) are shown in capitals, except the Homepage hero heading, which keeps its own case; h1[class] outranks the .type-* role classes so the tracking applies on every page */
+  h1:not(:where([data-section="Hero Banner"] h1)),h1[class]:not(:where([data-section="Hero Banner"] h1)){text-transform:uppercase;letter-spacing:.04em}
+  /* section headings (every h2) too, except inside rich text the merchant writes (article body, policy text), which keeps its own case */
+  h2:not(:where(#body h2,#body2 h2,#policy-body>section h2)),h2[class]:not(:where(#body h2,#body2 h2,#policy-body>section h2)){text-transform:uppercase;letter-spacing:.04em}
+}
+
+/* Shared component layer for every wireframe: the Design System components (01-Design-System/Styles/components.css)
+   expressed with Tailwind utilities and the mapped tokens. Same sizes, colours and states as the approved pages.
+   In the Shopify theme these become the shared @layer components of the compiled stylesheet and the markup lives in snippets. */
+@layer components {
+  /* ---- Buttons ---- */
+  .btn{@apply inline-flex min-h-control-md select-none items-center justify-center gap-2 rounded-control border border-transparent bg-transparent px-control-x text-center text-ink no-underline transition-colors duration-base;font-family:var(--type-button-font-family);font-size:var(--type-button-font-size);font-weight:var(--type-button-font-weight);line-height:var(--type-button-line-height);letter-spacing:var(--type-button-letter-spacing);text-transform:var(--type-button-text-transform);-webkit-tap-highlight-color:transparent}
+  .btn-primary{@apply border-btn-primary bg-btn-primary text-btn-primary-text hover:border-btn-primary-hover hover:bg-btn-primary-hover active:border-btn-primary-active active:bg-btn-primary-active}
+  .btn-secondary{@apply border-btn-secondary text-ink hover:bg-btn-secondary-hover hover:text-btn-secondary-hover-text}
+  .btn-secondary:active{opacity:var(--opacity-pressed)}
+  .btn-text{@apply min-h-touch px-1 text-link underline decoration-1 underline-offset-[0.35em] hover:text-link-hover hover:decoration-2}
+  .btn-sm{@apply relative min-h-control-sm min-w-touch px-control-x-sm}
+  .btn-sm::after{content:"";position:absolute;inset:calc((var(--control-height-sm) - var(--touch-target-min)) / 2 - var(--border-width-thin)) calc(var(--border-width-thin) * -1)}
+  .btn-lg{@apply min-h-control-lg px-control-x-lg}
+  .btn-block{@apply flex w-full}
+  .btn:disabled,.btn[aria-disabled="true"]{@apply cursor-not-allowed border-btn-disabled bg-btn-disabled text-btn-disabled-text;pointer-events:none}
+  .icon-btn{@apply relative inline-flex size-touch flex-none items-center justify-center rounded-control border border-transparent bg-transparent p-0 text-ink transition-colors duration-base hover:bg-subtle active:bg-brand-tint-strong aria-pressed:text-brand}
+  .icon-btn[aria-pressed="true"] .icon{fill:currentColor}
+  .icon-btn-filled{@apply rounded-pill bg-surface shadow-sm hover:bg-surface hover:shadow-md}
+  /* ---- Links, dividers ---- */
+  .link{@apply text-link underline decoration-1 underline-offset-[0.2em] transition-colors duration-fast hover:text-link-hover hover:decoration-2}
+  .link-standalone{@apply inline-flex min-h-touch items-center}
+  .divider{@apply m-0 w-full border-0 border-t border-line}
+  /* ---- Badges, messages ---- */
+  .badge{@apply inline-flex items-center gap-1 whitespace-nowrap rounded-badge bg-subtle px-2 py-1 font-semibold uppercase leading-snug tracking-wider text-ink;font-size:var(--font-size-utility)}
+  .badge-brand{@apply bg-brand text-ink-on-brand}
+  .badge-dark{@apply bg-inverse text-ink-inverse}
+  .badge-outline{@apply border border-line-strong bg-transparent}
+  .badge .icon{@apply size-4}
+  .message{@apply flex items-start gap-3 rounded-control border-l-thick border-current bg-subtle px-4 py-3 text-body-sm leading-normal text-ink}
+  .message .icon{margin-top:.1em}
+  .message-error{@apply bg-status-error-bg text-status-error}
+  .message-success{@apply bg-status-success-bg text-status-success}
+  .message-warning{@apply bg-status-warning-bg text-status-warning}
+  .message-error>*:not(.icon),.message-success>*:not(.icon),.message-warning>*:not(.icon){color:var(--color-text-primary)}
+  /* ---- Form fields ---- */
+  .field{@apply flex min-w-0 flex-col gap-2}
+  .field-label{@apply text-ink;font-size:var(--type-label-font-size);font-weight:var(--type-label-font-weight);line-height:var(--type-label-line-height)}
+  .input{@apply block min-h-control-md w-full appearance-none rounded-control border border-line-strong bg-surface px-4 py-3 text-input leading-normal text-ink transition-colors duration-fast placeholder:text-ink-muted hover:border-ink focus:border-brand focus-visible:border-brand disabled:cursor-not-allowed disabled:border-dashed disabled:bg-subtle disabled:text-ink-muted aria-[invalid=true]:border-status-error}
+  .select{@apply relative}
+  .select .input{@apply cursor-pointer pr-12}
+  .select-icon{@apply pointer-events-none absolute right-4 top-1/2 -translate-y-1/2}
+  /* ---- Quantity stepper ---- */
+  .qty{@apply inline-flex items-stretch rounded-control border border-line-strong bg-surface hover:border-ink focus-within:border-brand}
+  .qty-btn{@apply grid min-h-control-md w-touch place-items-center rounded-control border-0 bg-transparent p-0 text-ink transition-[background-color] duration-fast hover:bg-subtle active:bg-brand-tint-strong disabled:cursor-not-allowed disabled:bg-transparent disabled:text-ink-disabled}
+  .qty-input{@apply w-qty appearance-none border-0 bg-transparent p-0 text-center text-input font-medium focus-visible:outline-offset-[-4px];font-variant-numeric:tabular-nums;-moz-appearance:textfield}
+  .qty-input::-webkit-outer-spin-button,.qty-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+  /* ---- Price, rating ---- */
+  .price{@apply inline-flex flex-wrap items-baseline gap-x-3 gap-y-1;font-variant-numeric:tabular-nums}
+  .price-current{@apply text-price font-medium}
+  .price-lg .price-current{@apply text-price-lg font-medium}
+  .price-compare{@apply text-body-sm text-ink-secondary line-through decoration-1}
+  .price-sale .price-current{color:var(--color-price-sale)}
+  .price-unit{@apply text-caption text-ink-secondary}
+  .rating{@apply inline-flex items-center gap-2 text-caption text-ink-secondary}
+  .rating-stars{@apply inline-flex text-brand}
+  .rating-stars .icon{@apply size-4}
+  .rating-stars .icon:not(.icon-filled){@apply text-line-strong}
+  /* ---- Chip, chip row ---- */
+  .chip{@apply relative inline-flex min-h-control-sm min-w-touch items-center justify-center gap-2 whitespace-nowrap rounded-pill border border-line-strong bg-surface px-4 text-body-sm font-medium leading-snug text-ink transition-colors duration-base hover:border-ink aria-pressed:border-brand aria-pressed:bg-brand-tint aria-pressed:text-brand-active}
+  .chip::after{content:"";position:absolute;inset:calc((var(--control-height-sm) - var(--touch-target-min)) / 2 - var(--border-width-thin)) calc(var(--border-width-thin) * -1)}
+  .chip-row{@apply flex flex-nowrap items-center gap-3 overflow-x-auto py-1 sm:flex-wrap sm:overflow-x-visible sm:py-0;scrollbar-width:thin}
+  .chip-row>.chip{@apply flex-none}
+  .chip[aria-pressed="true"]::before{content:"";width:var(--icon-size-sm);height:var(--icon-size-sm);background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat}
+  .chip[aria-pressed="true"]:has(.icon)::before{content:none}
+  .chip:disabled{@apply cursor-not-allowed border-dashed bg-subtle text-ink-muted}
+  /* ---- Accordion (native details) ---- */
+  .accordion{@apply border-t border-line}
+  .accordion-item{@apply border-b border-line}
+  .accordion-summary{@apply flex min-h-touch cursor-pointer list-none items-center justify-between gap-4 py-4 text-body font-medium leading-snug hover:text-link}
+  .accordion-summary::-webkit-details-marker{display:none}
+  .accordion-summary::marker{content:""}
+  .accordion-summary .icon{@apply transition-transform duration-base}
+  .accordion-item[open]>.accordion-summary .icon{@apply rotate-180}
+  .accordion-panel{@apply max-w-text pb-5}
+  /* ---- Breadcrumb: phones show parent and current page on one line, tablets the full trail ---- */
+  .breadcrumb{@apply text-body-sm}
+  .breadcrumb-list{@apply m-0 flex list-none flex-nowrap items-center gap-x-2 p-0 sm:flex-wrap}
+  .breadcrumb-item{@apply inline-flex min-w-0 items-center gap-2}
+  .breadcrumb-item+.breadcrumb-item::before{content:"";width:var(--icon-size-sm);height:var(--icon-size-sm);flex:none;background:var(--color-text-muted);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 18 6-6-6-6'/%3E%3C/svg%3E") center / contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 18 6-6-6-6'/%3E%3C/svg%3E") center / contain no-repeat}
+  .breadcrumb a{@apply inline-flex min-h-touch min-w-touch items-center justify-center text-ink-secondary underline decoration-1 underline-offset-[0.2em] hover:text-link-hover hover:decoration-2}
+  .breadcrumb a[aria-current="page"]{@apply font-medium text-ink no-underline}
+  .breadcrumb-item:not(:nth-last-child(-n+2)){@apply hidden sm:inline-flex}
+  .breadcrumb-item:nth-last-child(2)::before{@apply hidden sm:block}
+  .breadcrumb-item:last-child{@apply flex-[1_1_0] sm:flex-[0_1_auto]}
+  .breadcrumb-item:last-child a{@apply block truncate leading-touch sm:inline-flex sm:overflow-visible sm:whitespace-normal sm:leading-[inherit]}
+  /* ---- Pagination ---- */
+  .pagination{@apply m-0 flex list-none flex-wrap items-center justify-center gap-1 p-0}
+  .pagination-link{@apply inline-flex min-h-touch min-w-touch items-center justify-center gap-2 rounded-control border border-transparent px-3 font-medium text-ink no-underline transition-colors duration-base hover:bg-subtle aria-[current=page]:border-btn-primary aria-[current=page]:bg-btn-primary aria-[current=page]:text-btn-primary-text aria-[disabled=true]:pointer-events-none aria-[disabled=true]:text-ink-muted aria-[disabled=true]:line-through;font-variant-numeric:tabular-nums}
+  .pagination-gap{@apply inline-grid min-w-touch place-items-center text-ink-muted}
+  /* ---- Drawer (native dialog; behaviour from 01-Design-System/Scripts/drawer.js) ---- */
+  .drawer{@apply fixed inset-y-0 right-0 left-auto m-0 h-full max-h-none w-drawer max-w-none flex-col overflow-hidden border-0 bg-surface p-0 text-ink shadow-lg backdrop:bg-scrim open:flex}
+  .drawer-head{@apply flex items-center justify-between gap-2 border-b border-line py-1 pl-4 pr-1}
+  .drawer-body{@apply min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-3}
+  .drawer-foot{@apply border-t border-line p-4}
+  /* ---- Page container, review annotations ---- */
+  .wrap{@apply mx-auto w-full px-gutter;max-width:calc(var(--container-max) + 2 * var(--layout-gutter))}
+  .ann{@apply hidden border border-dashed border-line-strong bg-subtle p-3 text-body-sm}
+  body.ann-on .ann{display:block}
+  .ann b{@apply mr-2 font-semibold}
+  .ann em{@apply mt-1 block not-italic text-ink-secondary}
+
+  /* ---- Mega menu panel entrance (reduced motion is handled globally in base.tw.css) ---- */
+  @keyframes mega-in{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  .mega-panel[data-open]{animation:mega-in var(--duration-base) var(--ease-out)}
+}
+</style>
+<style>
+body.embed .rv,body.embed #wp{display:none}
+.rv{background:#f1f1f1;border-bottom:1px solid #aaa;padding:12px 16px;font:14px/1.45 system-ui,sans-serif;color:#222}
+.rv .rvt{font:600 16px system-ui,sans-serif;margin:0 0 4px}.rv p{margin:0 0 8px;max-width:75ch}
+.rv .ctl{display:flex;flex-wrap:wrap;gap:8px}.rv button,.rv a.rvb{min-height:44px;padding:0 14px;border:1px solid #666;background:#fff;font:14px system-ui,sans-serif;cursor:pointer;color:#222;display:inline-flex;align-items:center;text-decoration:none}
+.rv button[aria-pressed="true"],.rv button.on{background:#222;color:#fff}
+.rv details{margin-top:8px}.rv summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:600}.rv li{margin:2px 0}.rv ul{margin:4px 0 8px;padding-left:20px;list-style:disc}
+.rv table{border-collapse:collapse;margin:6px 0 10px;font-size:13px}.rv th,.rv td{border:1px solid #bbb;padding:4px 8px;text-align:left;vertical-align:top}
+#wp{display:none;position:fixed;inset:0;background:#cfcfcf;z-index:1000;overflow:auto;font:14px system-ui,sans-serif;color:#222}#wp.open{display:block}
+#wp .bar2{position:sticky;top:0;z-index:2;background:#fff;border-bottom:1px solid #999;padding:8px 12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+#wp .bar2 button{min-height:44px;padding:0 16px;border:1px solid #666;background:#fff;cursor:pointer;font-size:14px;color:#222}#wp .bar2 button.on{background:#222;color:#fff}
+#wp .stage{padding:16px;display:flex;justify-content:center}#wp iframe{display:block;border:0;background:#fff;box-shadow:0 0 0 1px #888}
+
+</style>
+</head>
+<body class="ann-on" id="top">
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+  <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="icon-account" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+  <symbol id="icon-bag" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></symbol>
+  <symbol id="icon-menu" viewBox="0 0 24 24"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></symbol>
+  <symbol id="icon-close" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+  <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+  <symbol id="icon-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="icon-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="icon-chevron-up" viewBox="0 0 24 24"><path d="m18 15-6-6-6 6"/></symbol>
+  <symbol id="icon-chevron-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+  <symbol id="icon-chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+  <symbol id="icon-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol>
+  <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="icon-filter" viewBox="0 0 24 24"><line x1="21" x2="14" y1="4" y2="4"/><line x1="10" x2="3" y1="4" y2="4"/><line x1="21" x2="12" y1="12" y2="12"/><line x1="8" x2="3" y1="12" y2="12"/><line x1="21" x2="16" y1="20" y2="20"/><line x1="12" x2="3" y1="20" y2="20"/><line x1="14" x2="14" y1="2" y2="6"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="16" x2="16" y1="18" y2="22"/></symbol>
+  <symbol id="icon-sort" viewBox="0 0 24 24"><path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/></symbol>
+  <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></symbol>
+  <symbol id="icon-star" viewBox="0 0 24 24"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></symbol>
+  <symbol id="icon-location" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="icon-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+  <symbol id="icon-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="icon-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="icon-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol>
+  <symbol id="icon-warning" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+  <symbol id="icon-eye" viewBox="0 0 24 24"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="icon-eye-off" viewBox="0 0 24 24"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"/><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/><path d="m2 2 20 20"/></symbol>
+  <symbol id="icon-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></symbol>
+  <symbol id="icon-instagram" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></symbol>
+  <symbol id="icon-facebook" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+  <symbol id="icon-youtube" viewBox="0 0 24 24"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></symbol>
+  <symbol id="icon-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+  <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="icon-zoom-in" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></symbol>
+  <symbol id="icon-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></symbol>
+  <symbol id="icon-truck" viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+  <symbol id="icon-rotate-ccw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
+  <symbol id="icon-shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="icon-store" viewBox="0 0 24 24"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/></symbol>
+  <symbol id="icon-loader" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></symbol>
+</svg>
+
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-skip focus:bg-surface focus:p-3">Skip to content</a>
+<div class="rv">
+  <div class="rvt">NUDGE Beauty Theme: cart drawer wireframe &middot; single responsive file</div>
+  <p>The slide-in cart that opens from the header cart icon (a native <code>&lt;dialog&gt;</code>, behaviour from the Design System's <code>drawer.js</code>), built with Tailwind utilities and the shared components mapped to the Design Variables. It opens over any page, so the page behind it here is only a labelled stand-in. Products, prices and the free-shipping threshold are <b>sample content</b> standing in for the Shopify cart. Placeholders only: no photography. Pick a cart state below; the drawer opens with it. <b>Close the drawer</b> (close button, Esc or the dim area) to reach these buttons again. Use <b>Width preview</b> for 1920, 1440, 1280, 1024, 768, 430, 390 and 320 px.</p>
+  <div class="ctl"><button id="t-ann" type="button" aria-pressed="true">Annotations</button><button id="t-wp" type="button">Width preview</button><button id="s-multi" type="button">3 items</button><button id="s-one" type="button">1 item</button><button id="s-free" type="button">Free shipping reached</button><button id="s-long" type="button">Long cart (6)</button><button id="s-undo" type="button">Remove, with undo</button><button id="s-empty" type="button">Empty cart</button></div>
+<details><summary>Review notes: anatomy, decisions, what stays on the cart page, Shopify (open)</summary>
+<h3>Purpose</h3>
+<p>Let a shopper check, adjust and leave the cart in one or two taps without losing their place on the page. The drawer is the quick view; the full cart page stays the place for the order note, delivery estimate and express checkout.</p>
+<h3>Anatomy, top to bottom</h3>
+<ol><li><b>Header:</b> "Cart" with the item count, and a 44 px close button. Stays fixed.</li><li><b>Free-shipping progress:</b> one line and a thin bar that fills as the cart grows. Only shown when a threshold is set.</li><li><b>Lines:</b> small image area, name, variant, price, quantity stepper and Remove. Removing is one tap with an Undo message, no confirmation dialog. Real low-stock notes only; a typed quantity above stock is capped with a message.</li><li><b>One add-on:</b> a single low-priced item the merchant picks, with an Add button. Hidden when already in the cart.</li><li><b>Footer (fixed):</b> subtotal, saving (when there is one), the tax and shipping note, one dominant Checkout button with a lock icon, and a quiet View cart link.</li><li><b>Empty state:</b> a short message, a Continue shopping button and collection links.</li></ol>
+<h3>Decisions to confirm</h3>
+<ul><li>Kept light on purpose: the order note, gift message, delivery estimate, express-checkout buttons and policy links stay on the cart page (the approved cart decisions).</li><li>No discount-code box (Shopify takes codes at checkout), no timer, no save for later, no installment line, no gift-wrap upsell.</li><li>One add-on, not a carousel: the drawer is narrow and the checkout button must stay in view.</li><li>The drawer opens when the header cart icon is tapped or when an item is added from a product page. After an add, the new line is shown first.</li></ul>
+<h3>Not drawn</h3>
+<ul><li>Cart-recommendation widgets, subscription or shipping-protection add-ons, loyalty points (each needs an app)</li></ul>
+<h3>Shopify build</h3>
+<p>A <code>cart-drawer</code> section rendered in the header group, over the native <code>cart</code> object and the Cart Ajax API (<code>/cart/change.js</code> to change or remove, <code>/cart/add.js</code> for the add-on, then re-render the section with the Section Rendering API). Free-shipping threshold, the add-on product and the cart link are theme-editor settings. A native <code>&lt;dialog&gt;</code> with the shared <code>drawer.js</code> gives focus handling, Esc, scroll lock and focus return. No app is involved.</p>
+</details>
+</div>
+<div class="ann"><b>Global</b>Announcement bar and header (sticky): the shared sections; the cart icon is a button that opens this drawer. The footer is the shared footer. Responsive: a full-width sheet below 600 px, a 416 px panel on the right from 600 px.</div>
+<div id="annbar" class="flex min-h-10 flex-wrap items-center justify-center gap-x-3 gap-y-[2px] bg-brand px-gutter py-2 text-center text-body-sm tracking-[0.03em] text-ink-inverse focus-within:[--color-focus-ring:var(--color-focus-ring-inverse)]">
+  <button id="ann-prev" type="button" aria-label="Previous message" class="hidden size-touch items-center justify-center sm:inline-flex"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-chevron-left"></use></svg></button>
+  <div id="ann-msg" class="min-w-0" aria-live="polite">Free shipping on orders over $50</div>
+  <button id="ann-next" type="button" aria-label="Next message" class="hidden size-touch items-center justify-center sm:inline-flex"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-chevron-right"></use></svg></button>
+  <div class="flex w-full justify-center gap-2 sm:hidden" aria-hidden="true"><i class="ann-dot size-[6px] rounded-pill border border-current bg-current opacity-100"></i><i class="ann-dot size-[6px] rounded-pill border border-current opacity-muted"></i><i class="ann-dot size-[6px] rounded-pill border border-current opacity-muted"></i></div>
+</div>
+
+<header id="site-header" class="sticky top-0 z-sticky border-b border-line bg-page [.nav-open_&]:z-drawer lg:[html_body.mega-open_&]:!bg-page ">
+  <div class="mx-auto grid w-full max-w-[calc(var(--container-max)+2*var(--layout-gutter))] grid-cols-[auto_auto_1fr_auto] items-center gap-x-1 px-gutter py-2 max-[359px]:grid-cols-[auto_1fr_auto] max-[359px]:gap-y-2 max-[359px]:pb-3 lg:min-h-[5.25rem] lg:grid-cols-[1fr_auto_1fr] lg:gap-x-grid-gap lg:py-0">
+    <button id="menu-btn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu" class="inline-flex size-touch items-center justify-center text-ink lg:hidden"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-menu"></use></svg></button>
+    <a href="#search" aria-label="Search" class="inline-flex size-touch items-center justify-center text-ink max-[359px]:hidden lg:hidden"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-search"></use></svg></a>
+    <a href="#top" aria-label="Store home" class="inline-flex min-h-touch items-center justify-center justify-self-center px-2 text-ink max-[374px]:px-1 lg:order-2"><svg viewBox="0 0 520 100" role="img" aria-label="NUDGE" fill="currentColor" class="block max-w-full h-5 w-auto max-[374px]:h-4 lg:h-6"><path d="M0 14H16V100H0ZM66 0H82V86H66ZM0 14H19L82 86H63Z"/><path d="M106 0H122V62A25 25 0 0 0 172 62V0H188V62A41 41 0 0 1 106 62Z"/><path fill-rule="evenodd" d="M212 0H252A50 50 0 0 1 252 100H212ZM228 16H252A34 34 0 0 1 252 84H228Z"/><path d="M378 42H426V58H378Z"/><path d="M450 0H520V16H466V42H510V58H466V84H520V100H450Z"/><path d="M410.4 25.9A42 42 0 1 0 418 50" fill="none" stroke="currentColor" stroke-width="16"/></svg></a>
+    <nav id="nav" aria-label="Main" class="invisible fixed inset-y-0 left-0 z-drawer flex w-full max-w-[26rem] -translate-x-full flex-col gap-3 overflow-y-auto border-r border-line-strong bg-page p-4 transition-transform duration-base [.nav-open_&]:visible [.nav-open_&]:translate-x-0 lg:visible lg:static lg:order-1 lg:w-auto lg:max-w-none lg:translate-x-0 lg:!transform-none lg:flex-row lg:tracking-[var(--type-nav-letter-spacing)] lg:items-center lg:gap-5 xl:gap-7 lg:overflow-visible lg:border-0 lg:bg-transparent lg:p-0">
+      <button id="nav-close" type="button" aria-label="Close menu" class="inline-flex min-h-touch min-w-touch items-center justify-center gap-2 self-end px-2 text-body-sm text-ink lg:hidden"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-close"></use></svg><span>Close</span></button>
+      <div class="flex flex-col lg:flex-row lg:gap-7">
+<div data-mega="skin" class="group/mega flex flex-col border-b border-line lg:border-0">
+<a href="#collection"  data-mega-link aria-haspopup="true" aria-expanded="false" aria-controls="mega-skin" class="group relative flex min-h-[3.25rem] flex-1 items-center justify-between text-body-lg font-medium text-ink no-underline lg:min-h-touch lg:flex-none lg:text-body lg:after:absolute lg:after:inset-x-0 lg:after:bottom-2 lg:after:h-px lg:after:origin-left lg:after:scale-x-0 lg:after:bg-brand lg:after:transition-transform lg:hover:after:scale-x-100 lg:group-data-[open]/mega:after:scale-x-100">Skin<svg class="icon size-6 transition-transform duration-fast group-data-[open]/mega:rotate-180 lg:hidden" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></a>
+<div id="mega-skin" data-mega-panel class="mega-panel hidden data-[open]:block lg:absolute lg:inset-x-0 lg:top-full lg:z-[1] lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto lg:border-b lg:border-line lg:bg-page lg:shadow-md">
+<div class="mx-auto flex w-full max-w-[calc(var(--container-max)+2*var(--layout-gutter))] flex-col pb-3 pl-3 lg:px-gutter lg:py-8 lg:pl-gutter">
+<a href="#collection-skin" class="flex min-h-touch items-center gap-2 text-body font-medium text-brand no-underline hover:underline lg:order-last lg:mt-4 lg:self-start lg:border-t-0 lg:text-body-sm">Shop all skin<svg class="icon size-5" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></a>
+<div class="lg:grid lg:grid-cols-[repeat(2,minmax(0,1fr))_minmax(0,1.2fr)] lg:gap-grid-gap">
+<div class="mb-2 lg:mb-0">
+<p class="pb-1 pt-3 text-overline font-medium uppercase tracking-uppercase text-ink-muted lg:pb-3 lg:pt-0">Shop by concern</p>
+<ul class="m-0 list-none p-0">
+<li><a href="#collection-skin-hydration" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Hydration</a></li><li><a href="#collection-skin-brightening" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Brightening</a></li><li><a href="#collection-skin-anti-ageing" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Anti-ageing</a></li><li><a href="#collection-skin-blemish-care" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Blemish care</a></li><li><a href="#collection-skin-sensitive-skin" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Sensitive skin</a></li></ul></div>
+<div class="mb-2 lg:mb-0">
+<p class="pb-1 pt-3 text-overline font-medium uppercase tracking-uppercase text-ink-muted lg:pb-3 lg:pt-0">Shop by step</p>
+<ul class="m-0 list-none p-0">
+<li><a href="#collection-skin-cleansers" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Cleansers</a></li><li><a href="#collection-skin-serums" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Serums</a></li><li><a href="#collection-skin-moisturisers" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Moisturisers</a></li><li><a href="#collection-skin-sun-care" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Sun care</a></li><li><a href="#collection-skin-masks" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Masks</a></li><li><a href="#collection-skin-eye-care" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Eye care</a></li></ul></div>
+<div class="hidden grid-cols-2 gap-4 lg:grid">
+<a href="#collection-skin-new-in-skin" class="group/card block min-w-0 no-underline"><div class="ph relative flex aspect-portrait items-start justify-start overflow-hidden rounded-card border border-line p-2 text-caption leading-snug text-ink-muted"><span>IMAGE PLACEHOLDER<br>4:5</span></div><p class="mt-3 text-body-sm font-medium text-ink group-hover/card:underline">New in skin</p><p class="flex items-center gap-1 text-caption text-ink-muted">Shop now<svg class="icon size-4" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></p></a>
+<a href="#collection-skin-skin-routines" class="group/card block min-w-0 no-underline"><div class="ph-b relative flex aspect-portrait items-start justify-start overflow-hidden rounded-card border border-line p-2 text-caption leading-snug text-ink-muted"><span>IMAGE PLACEHOLDER<br>4:5</span></div><p class="mt-3 text-body-sm font-medium text-ink group-hover/card:underline">Skin routines</p><p class="flex items-center gap-1 text-caption text-ink-muted">Shop now<svg class="icon size-4" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></p></a>
+</div>
+</div></div></div>
+</div>
+<div data-mega="makeup" class="group/mega flex flex-col border-b border-line lg:border-0">
+<a href="#collection"  data-mega-link aria-haspopup="true" aria-expanded="false" aria-controls="mega-makeup" class="group relative flex min-h-[3.25rem] flex-1 items-center justify-between text-body-lg font-medium text-ink no-underline lg:min-h-touch lg:flex-none lg:text-body lg:after:absolute lg:after:inset-x-0 lg:after:bottom-2 lg:after:h-px lg:after:origin-left lg:after:scale-x-0 lg:after:bg-brand lg:after:transition-transform lg:hover:after:scale-x-100 lg:group-data-[open]/mega:after:scale-x-100">Makeup<svg class="icon size-6 transition-transform duration-fast group-data-[open]/mega:rotate-180 lg:hidden" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></a>
+<div id="mega-makeup" data-mega-panel class="mega-panel hidden data-[open]:block lg:absolute lg:inset-x-0 lg:top-full lg:z-[1] lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto lg:border-b lg:border-line lg:bg-page lg:shadow-md">
+<div class="mx-auto flex w-full max-w-[calc(var(--container-max)+2*var(--layout-gutter))] flex-col pb-3 pl-3 lg:px-gutter lg:py-8 lg:pl-gutter">
+<a href="#collection-makeup" class="flex min-h-touch items-center gap-2 text-body font-medium text-brand no-underline hover:underline lg:order-last lg:mt-4 lg:self-start lg:border-t-0 lg:text-body-sm">Shop all makeup<svg class="icon size-5" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></a>
+<div class="lg:grid lg:grid-cols-[repeat(2,minmax(0,1fr))_minmax(0,1.2fr)] lg:gap-grid-gap">
+<div class="mb-2 lg:mb-0">
+<p class="pb-1 pt-3 text-overline font-medium uppercase tracking-uppercase text-ink-muted lg:pb-3 lg:pt-0">Face</p>
+<ul class="m-0 list-none p-0">
+<li><a href="#collection-makeup-foundation" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Foundation</a></li><li><a href="#collection-makeup-concealer" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Concealer</a></li><li><a href="#collection-makeup-blush" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Blush</a></li><li><a href="#collection-makeup-highlighter" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Highlighter</a></li><li><a href="#collection-makeup-primer" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Primer</a></li></ul></div>
+<div class="mb-2 lg:mb-0">
+<p class="pb-1 pt-3 text-overline font-medium uppercase tracking-uppercase text-ink-muted lg:pb-3 lg:pt-0">Eyes and lips</p>
+<ul class="m-0 list-none p-0">
+<li><a href="#collection-makeup-mascara" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Mascara</a></li><li><a href="#collection-makeup-eyeliner" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Eyeliner</a></li><li><a href="#collection-makeup-brows" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Brows</a></li><li><a href="#collection-makeup-lipstick" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Lipstick</a></li><li><a href="#collection-makeup-lip-care" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Lip care</a></li><li><a href="#collection-makeup-brushes-and-tools" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Brushes and tools</a></li></ul></div>
+<div class="hidden grid-cols-2 gap-4 lg:grid">
+<a href="#collection-makeup-new-in-makeup" class="group/card block min-w-0 no-underline"><div class="ph relative flex aspect-portrait items-start justify-start overflow-hidden rounded-card border border-line p-2 text-caption leading-snug text-ink-muted"><span>IMAGE PLACEHOLDER<br>4:5</span></div><p class="mt-3 text-body-sm font-medium text-ink group-hover/card:underline">New in makeup</p><p class="flex items-center gap-1 text-caption text-ink-muted">Shop now<svg class="icon size-4" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></p></a>
+<a href="#collection-makeup-complexion-edit" class="group/card block min-w-0 no-underline"><div class="ph-b relative flex aspect-portrait items-start justify-start overflow-hidden rounded-card border border-line p-2 text-caption leading-snug text-ink-muted"><span>IMAGE PLACEHOLDER<br>4:5</span></div><p class="mt-3 text-body-sm font-medium text-ink group-hover/card:underline">Complexion edit</p><p class="flex items-center gap-1 text-caption text-ink-muted">Shop now<svg class="icon size-4" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></p></a>
+</div>
+</div></div></div>
+</div>
+<div data-mega="hair" class="group/mega flex flex-col border-b border-line lg:border-0">
+<a href="#collection"  data-mega-link aria-haspopup="true" aria-expanded="false" aria-controls="mega-hair" class="group relative flex min-h-[3.25rem] flex-1 items-center justify-between text-body-lg font-medium text-ink no-underline lg:min-h-touch lg:flex-none lg:text-body lg:after:absolute lg:after:inset-x-0 lg:after:bottom-2 lg:after:h-px lg:after:origin-left lg:after:scale-x-0 lg:after:bg-brand lg:after:transition-transform lg:hover:after:scale-x-100 lg:group-data-[open]/mega:after:scale-x-100">Hair<svg class="icon size-6 transition-transform duration-fast group-data-[open]/mega:rotate-180 lg:hidden" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></a>
+<div id="mega-hair" data-mega-panel class="mega-panel hidden data-[open]:block lg:absolute lg:inset-x-0 lg:top-full lg:z-[1] lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto lg:border-b lg:border-line lg:bg-page lg:shadow-md">
+<div class="mx-auto flex w-full max-w-[calc(var(--container-max)+2*var(--layout-gutter))] flex-col pb-3 pl-3 lg:px-gutter lg:py-8 lg:pl-gutter">
+<a href="#collection-hair" class="flex min-h-touch items-center gap-2 text-body font-medium text-brand no-underline hover:underline lg:order-last lg:mt-4 lg:self-start lg:border-t-0 lg:text-body-sm">Shop all hair<svg class="icon size-5" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></a>
+<div class="lg:grid lg:grid-cols-[repeat(2,minmax(0,1fr))_minmax(0,1.2fr)] lg:gap-grid-gap">
+<div class="mb-2 lg:mb-0">
+<p class="pb-1 pt-3 text-overline font-medium uppercase tracking-uppercase text-ink-muted lg:pb-3 lg:pt-0">Shop by concern</p>
+<ul class="m-0 list-none p-0">
+<li><a href="#collection-hair-dryness" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Dryness</a></li><li><a href="#collection-hair-frizz" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Frizz</a></li><li><a href="#collection-hair-colour-care" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Colour care</a></li><li><a href="#collection-hair-scalp-care" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Scalp care</a></li><li><a href="#collection-hair-hair-loss" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Hair loss</a></li></ul></div>
+<div class="mb-2 lg:mb-0">
+<p class="pb-1 pt-3 text-overline font-medium uppercase tracking-uppercase text-ink-muted lg:pb-3 lg:pt-0">Shop by step</p>
+<ul class="m-0 list-none p-0">
+<li><a href="#collection-hair-shampoo" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Shampoo</a></li><li><a href="#collection-hair-conditioner" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Conditioner</a></li><li><a href="#collection-hair-treatments" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Treatments</a></li><li><a href="#collection-hair-styling" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Styling</a></li><li><a href="#collection-hair-tools" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Tools</a></li></ul></div>
+<div class="hidden grid-cols-2 gap-4 lg:grid">
+<a href="#collection-hair-new-in-hair" class="group/card block min-w-0 no-underline"><div class="ph relative flex aspect-portrait items-start justify-start overflow-hidden rounded-card border border-line p-2 text-caption leading-snug text-ink-muted"><span>IMAGE PLACEHOLDER<br>4:5</span></div><p class="mt-3 text-body-sm font-medium text-ink group-hover/card:underline">New in hair</p><p class="flex items-center gap-1 text-caption text-ink-muted">Shop now<svg class="icon size-4" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></p></a>
+<a href="#collection-hair-salon-at-home" class="group/card block min-w-0 no-underline"><div class="ph-b relative flex aspect-portrait items-start justify-start overflow-hidden rounded-card border border-line p-2 text-caption leading-snug text-ink-muted"><span>IMAGE PLACEHOLDER<br>4:5</span></div><p class="mt-3 text-body-sm font-medium text-ink group-hover/card:underline">Salon at home</p><p class="flex items-center gap-1 text-caption text-ink-muted">Shop now<svg class="icon size-4" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></p></a>
+</div>
+</div></div></div>
+</div>
+<div data-mega="body" class="group/mega flex flex-col border-b border-line lg:border-0">
+<a href="#collection"  data-mega-link aria-haspopup="true" aria-expanded="false" aria-controls="mega-body" class="group relative flex min-h-[3.25rem] flex-1 items-center justify-between text-body-lg font-medium text-ink no-underline lg:min-h-touch lg:flex-none lg:text-body lg:after:absolute lg:after:inset-x-0 lg:after:bottom-2 lg:after:h-px lg:after:origin-left lg:after:scale-x-0 lg:after:bg-brand lg:after:transition-transform lg:hover:after:scale-x-100 lg:group-data-[open]/mega:after:scale-x-100">Body<svg class="icon size-6 transition-transform duration-fast group-data-[open]/mega:rotate-180 lg:hidden" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></a>
+<div id="mega-body" data-mega-panel class="mega-panel hidden data-[open]:block lg:absolute lg:inset-x-0 lg:top-full lg:z-[1] lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto lg:border-b lg:border-line lg:bg-page lg:shadow-md">
+<div class="mx-auto flex w-full max-w-[calc(var(--container-max)+2*var(--layout-gutter))] flex-col pb-3 pl-3 lg:px-gutter lg:py-8 lg:pl-gutter">
+<a href="#collection-body" class="flex min-h-touch items-center gap-2 text-body font-medium text-brand no-underline hover:underline lg:order-last lg:mt-4 lg:self-start lg:border-t-0 lg:text-body-sm">Shop all body<svg class="icon size-5" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></a>
+<div class="lg:grid lg:grid-cols-[repeat(2,minmax(0,1fr))_minmax(0,1.2fr)] lg:gap-grid-gap">
+<div class="mb-2 lg:mb-0">
+<p class="pb-1 pt-3 text-overline font-medium uppercase tracking-uppercase text-ink-muted lg:pb-3 lg:pt-0">Bath and body</p>
+<ul class="m-0 list-none p-0">
+<li><a href="#collection-body-body-wash" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Body wash</a></li><li><a href="#collection-body-body-lotion" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Body lotion</a></li><li><a href="#collection-body-body-oil" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Body oil</a></li><li><a href="#collection-body-scrubs" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Scrubs</a></li><li><a href="#collection-body-hand-and-foot-care" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Hand and foot care</a></li></ul></div>
+<div class="mb-2 lg:mb-0">
+<p class="pb-1 pt-3 text-overline font-medium uppercase tracking-uppercase text-ink-muted lg:pb-3 lg:pt-0">Fragrance and more</p>
+<ul class="m-0 list-none p-0">
+<li><a href="#collection-body-perfume" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Perfume</a></li><li><a href="#collection-body-body-mist" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Body mist</a></li><li><a href="#collection-body-deodorant" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Deodorant</a></li><li><a href="#collection-body-sun-care" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Sun care</a></li><li><a href="#collection-body-gifts-and-sets" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Gifts and sets</a></li></ul></div>
+<div class="hidden grid-cols-2 gap-4 lg:grid">
+<a href="#collection-body-new-in-body" class="group/card block min-w-0 no-underline"><div class="ph relative flex aspect-portrait items-start justify-start overflow-hidden rounded-card border border-line p-2 text-caption leading-snug text-ink-muted"><span>IMAGE PLACEHOLDER<br>4:5</span></div><p class="mt-3 text-body-sm font-medium text-ink group-hover/card:underline">New in body</p><p class="flex items-center gap-1 text-caption text-ink-muted">Shop now<svg class="icon size-4" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></p></a>
+<a href="#collection-body-gift-sets" class="group/card block min-w-0 no-underline"><div class="ph-b relative flex aspect-portrait items-start justify-start overflow-hidden rounded-card border border-line p-2 text-caption leading-snug text-ink-muted"><span>IMAGE PLACEHOLDER<br>4:5</span></div><p class="mt-3 text-body-sm font-medium text-ink group-hover/card:underline">Gift sets</p><p class="flex items-center gap-1 text-caption text-ink-muted">Shop now<svg class="icon size-4" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></p></a>
+</div>
+</div></div></div>
+</div>
+</div>
+      <div class="relative self-start" id="market"><button type="button" id="market-btn" aria-haspopup="true" aria-expanded="false" aria-controls="market-menu" class="group inline-flex min-h-touch items-center gap-2 whitespace-nowrap rounded-pill border border-line-strong bg-transparent px-4 text-body-sm text-ink lg:px-3 xl:px-4"><svg class="icon size-[18px]" aria-hidden="true" focusable="false"><use href="#icon-location"></use></svg><span id="market-label">India (INR)</span><svg class="icon size-4 transition-transform duration-fast group-aria-[expanded=true]:rotate-180" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></button><div id="market-menu" role="group" aria-label="Choose country and currency" hidden class="mt-2 w-full min-w-[260px] rounded-control border border-line-strong bg-surface p-2 shadow-md lg:absolute lg:left-0 lg:top-full lg:z-[60] lg:mt-1 lg:w-auto"></div></div>
+    </nav>
+    <div class="flex items-center justify-end gap-3 lg:order-3">
+      <a href="#search" role="search" aria-label="Search products" class="hidden min-h-touch w-full max-w-[13rem] items-center gap-2 rounded-pill border border-line-strong bg-surface px-4 text-body-sm text-ink-muted no-underline lg:flex"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-search"></use></svg><span>Search products</span></a>
+      <div class="flex gap-[2px]">
+        <a href="#account" aria-label="Account" class="inline-flex min-h-touch min-w-touch items-center justify-center gap-2 whitespace-nowrap px-2 text-body-sm leading-[1.2] text-ink no-underline"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-account"></use></svg><span class="hidden lg:inline">Account</span></a>
+        <button type="button" data-drawer-open="cart-drawer" aria-haspopup="dialog" aria-label="Cart, 0 items" class="relative inline-flex min-h-touch min-w-touch items-center justify-center gap-2 whitespace-nowrap px-2 text-ink"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-bag"></use></svg><span class="hidden lg:inline">Cart</span><b class="cnt h-[18px] min-w-[18px] rounded-pill bg-brand px-1 text-center text-caption leading-[20px] text-ink-on-brand">0</b></button>
+      </div>
+    </div>
+    <a href="#search" aria-label="Search products" class="col-span-full hidden min-h-touch items-center gap-2 rounded-pill border border-line-strong bg-surface px-4 text-body-sm text-ink-muted no-underline max-[359px]:flex"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-search"></use></svg><span>Search products</span></a>
+  </div>
+<div id="scrim" class="fixed inset-0 z-overlay hidden bg-scrim [.nav-open_&]:block lg:!hidden"></div>
+<div id="mega-scrim" class="absolute inset-x-0 top-full hidden h-screen bg-scrim lg:[.mega-open_&]:block"></div>
+</header>
+
+<main id="main" class="wrap py-12 md:py-16" aria-label="Page behind the drawer">
+<div class="ann"><b>Stand-in</b>The cart drawer opens over whichever page the visitor is on. These blocks only stand for that page, so the dimming and the panel can be judged.</div>
+<h1 class="type-h2 mb-8">Page behind the drawer</h1>
+<div class="grid grid-cols-[minmax(0,1fr)] gap-6 md:grid-cols-3"><div class="relative aspect-[4/3] overflow-hidden" role="img" aria-label="Stand-in block"><div class="ph absolute inset-0"></div><span class="absolute inset-0 grid place-items-center p-4 text-center text-caption text-ink-secondary">Any page content</span></div><div class="relative aspect-[4/3] overflow-hidden" role="img" aria-label="Stand-in block"><div class="ph ph-b absolute inset-0"></div><span class="absolute inset-0 grid place-items-center p-4 text-center text-caption text-ink-secondary">Any page content</span></div><div class="relative aspect-[4/3] overflow-hidden" role="img" aria-label="Stand-in block"><div class="ph ph-c absolute inset-0"></div><span class="absolute inset-0 grid place-items-center p-4 text-center text-caption text-ink-secondary">Any page content</span></div></div>
+</main>
+<footer class="bg-inverse text-ink-inverse">
+  <div class="mx-auto grid w-full max-w-[calc(var(--container-max)+2*var(--layout-gutter))] gap-6 px-gutter py-section md:grid-cols-[minmax(0,10rem)_minmax(0,1fr)] md:gap-[calc(var(--space-10)+var(--space-1))] lg:grid-cols-[3fr_8fr] lg:gap-16">
+        <div>
+      <a href="#top" class="mb-[14px] inline-flex min-h-touch items-center pr-2 text-ink-inverse"><svg viewBox="0 0 520 100" role="img" aria-label="NUDGE" fill="currentColor" class="block max-w-full h-7 w-auto"><path d="M0 14H16V100H0ZM66 0H82V86H66ZM0 14H19L82 86H63Z"/><path d="M106 0H122V62A25 25 0 0 0 172 62V0H188V62A41 41 0 0 1 106 62Z"/><path fill-rule="evenodd" d="M212 0H252A50 50 0 0 1 252 100H212ZM228 16H252A34 34 0 0 1 252 84H228Z"/><path d="M378 42H426V58H378Z"/><path d="M450 0H520V16H466V42H510V58H466V84H520V100H450Z"/><path d="M410.4 25.9A42 42 0 1 0 418 50" fill="none" stroke="currentColor" stroke-width="16"/></svg></a>
+      <p class="text-body-sm text-ink-inverse-secondary">One line about the brand.</p>
+      <div class="mt-4 flex flex-wrap gap-2"><a href="#" aria-label="Instagram" class="flex size-touch items-center justify-center rounded-pill border border-line-inverse-subtle text-ink-inverse transition-colors hover:bg-ink-inverse hover:text-ink"><svg class="icon size-5" aria-hidden="true" focusable="false"><use href="#icon-instagram"></use></svg></a><a href="#" aria-label="Facebook" class="flex size-touch items-center justify-center rounded-pill border border-line-inverse-subtle text-ink-inverse transition-colors hover:bg-ink-inverse hover:text-ink"><svg class="icon size-5" aria-hidden="true" focusable="false"><use href="#icon-facebook"></use></svg></a><a href="#" aria-label="YouTube" class="flex size-touch items-center justify-center rounded-pill border border-line-inverse-subtle text-ink-inverse transition-colors hover:bg-ink-inverse hover:text-ink"><svg class="icon size-5" aria-hidden="true" focusable="false"><use href="#icon-youtube"></use></svg></a></div>
+    </div>
+    <div class="md:grid md:grid-cols-[repeat(4,auto)] md:justify-between md:gap-grid-gap xl:grid-cols-4 xl:justify-normal">
+      <div class="fcol group border-t border-line-inverse-subtle md:border-t-0"><button type="button" aria-expanded="false" class="flex min-h-12 w-full items-center justify-between text-left type-h6 text-ink-inverse md:pointer-events-none md:mb-3 md:min-h-0"><span>Shop</span><svg class="icon size-6 md:hidden" aria-hidden="true" focusable="false"><use href="#icon-plus"></use></svg></button><div class="hidden flex-col pb-2 group-[.is-open]:flex md:flex md:pb-0"><a href="#collection" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Skin care</a><a href="#collection" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Makeup</a><a href="#collection" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Hair</a><a href="#collection" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Body</a><a href="#collection" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Gift sets</a></div></div>
+      <div class="fcol group border-t border-line-inverse-subtle md:border-t-0"><button type="button" aria-expanded="false" class="flex min-h-12 w-full items-center justify-between text-left type-h6 text-ink-inverse md:pointer-events-none md:mb-3 md:min-h-0"><span>About</span><svg class="icon size-6 md:hidden" aria-hidden="true" focusable="false"><use href="#icon-plus"></use></svg></button><div class="hidden flex-col pb-2 group-[.is-open]:flex md:flex md:pb-0"><a href="../08-NUDGE-Beauty-About-Wireframe/About_Page_Wireframe_v1.html" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">About us</a><a href="../09-NUDGE-Beauty-Story-Wireframe/Story_Page_Wireframe_v1.html" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Our story</a><a href="../14-NUDGE-Beauty-Blog-Listing-Wireframe/Blog_Listing_Wireframe_v1.html" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Journal</a><a href="../07-NUDGE-Beauty-FAQ-Wireframe/FAQ_Page_Wireframe_v1.html" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">FAQ</a></div></div>
+      <div class="fcol group border-t border-line-inverse-subtle md:border-t-0"><button type="button" aria-expanded="false" class="flex min-h-12 w-full items-center justify-between text-left type-h6 text-ink-inverse md:pointer-events-none md:mb-3 md:min-h-0"><span>Support</span><svg class="icon size-6 md:hidden" aria-hidden="true" focusable="false"><use href="#icon-plus"></use></svg></button><div class="hidden flex-col pb-2 group-[.is-open]:flex md:flex md:pb-0"><a href="../06-NUDGE-Beauty-Contact-Wireframe/Contact_Page_Wireframe_v1.html" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Contact us</a><a href="#help" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Support</a><a href="../10-NUDGE-Beauty-Shipping-Policy-Wireframe/Shipping_Policy_Wireframe_v1.html" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Shipping &amp; Delivery</a><a href="../11-NUDGE-Beauty-Returns-Policy-Wireframe/Returns_Policy_Wireframe_v1.html" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Returns &amp; Refunds</a></div></div>
+      <div class="fcol group border-t border-line-inverse-subtle md:border-t-0"><button type="button" aria-expanded="false" class="flex min-h-12 w-full items-center justify-between text-left type-h6 text-ink-inverse md:pointer-events-none md:mb-3 md:min-h-0"><span>Policies</span><svg class="icon size-6 md:hidden" aria-hidden="true" focusable="false"><use href="#icon-plus"></use></svg></button><div class="hidden flex-col pb-2 group-[.is-open]:flex md:flex md:pb-0"><a href="../12-NUDGE-Beauty-Privacy-Policy-Wireframe/Privacy_Policy_Wireframe_v1.html" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Privacy policy</a><a href="../13-NUDGE-Beauty-Terms-Wireframe/Terms_Conditions_Wireframe_v1.html" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Terms of service</a></div></div>
+    </div>
+    <div class="flex flex-col items-start gap-4 border-t border-line-inverse-subtle pt-5 md:col-span-full md:flex-row md:flex-wrap md:items-center md:justify-between">
+      <div class="flex flex-wrap gap-2" aria-label="Payment methods"><i class="border border-line-inverse-subtle px-3 py-1 text-caption font-medium not-italic text-ink-inverse-secondary">Visa</i><i class="border border-line-inverse-subtle px-3 py-1 text-caption font-medium not-italic text-ink-inverse-secondary">Mastercard</i><i class="border border-line-inverse-subtle px-3 py-1 text-caption font-medium not-italic text-ink-inverse-secondary">UPI</i><i class="border border-line-inverse-subtle px-3 py-1 text-caption font-medium not-italic text-ink-inverse-secondary">Wallet</i></div>
+      <div class="text-body-sm text-ink-inverse-secondary">Secure checkout. Easy returns. Support when you need it.</div>
+      <a href="#top" class="flex min-h-touch w-full items-center justify-center gap-2 border border-ink-inverse text-ink-inverse no-underline sm:w-auto sm:border-0 sm:px-1 sm:underline"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-chevron-up"></use></svg><span>Back to top</span></a>
+    </div>
+  </div>
+</footer>
+
+<dialog class="drawer" id="cart-drawer" aria-labelledby="cd-title">
+<div class="drawer-head"><h2 class="type-h5 m-0" id="cd-title">Cart <span class="font-body text-body-sm font-regular normal-case tracking-normal text-ink-secondary" id="cd-count">3 items</span></h2><button class="icon-btn" type="button" data-drawer-close aria-label="Close cart"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-close"></use></svg></button></div>
+<div class="drawer-body flex flex-col gap-4" id="cd-body">
+<div id="cd-cart" class="flex flex-col gap-4">
+<div id="cd-fs"></div>
+<div id="cd-undo"></div>
+<div id="cd-lines"></div>
+<div id="cd-up"></div>
+</div>
+<div id="cd-empty" class="flex flex-1 flex-col items-center justify-center gap-5 py-10 text-center" hidden>
+<p class="type-h4 m-0">Your cart is empty</p>
+<p class="m-0 text-ink-secondary">Nothing here yet. Browse the collections to find your next favourite.</p>
+<button class="btn btn-primary" type="button" data-drawer-close id="cd-continue">Continue shopping</button>
+<div class="chip-row justify-center" aria-label="Shop by collection"><a class="chip" href="#shop">Best sellers</a><a class="chip" href="#shop">Skin care</a><a class="chip" href="#shop">Makeup</a><a class="chip" href="#shop">Hair</a><a class="chip" href="#shop">Body</a></div>
+</div>
+</div>
+<div class="drawer-foot flex flex-col gap-3" id="cd-foot">
+<div class="flex items-baseline justify-between gap-4"><span>Subtotal</span><span class="font-heading text-h4 font-regular leading-tight [font-variant-numeric:lining-nums]" id="cd-sub">$0.00</span></div>
+<div class="flex items-baseline justify-between gap-4 text-brand" id="cd-savrow"><span>You save</span><span id="cd-sav">$0.00</span></div>
+<p class="m-0 text-caption text-ink-secondary">Taxes and shipping calculated at checkout.</p>
+<button class="btn btn-primary btn-lg btn-block" type="button" id="cd-checkout"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-lock"></use></svg><span>Checkout</span></button>
+<a class="link link-standalone justify-center" href="#cart" id="cd-viewcart">View cart</a>
+</div>
+</dialog>
+<div id="wp" role="dialog" aria-label="Width preview"><div class="bar2"><b>Viewport:</b><span id="wp-btns"></span><label><input type="checkbox" id="wp-ann"> annotations</label><span id="wp-info"></span><button type="button" id="wp-close">Close</button></div><div class="stage"><div><iframe id="wp-f" title="Page at the chosen width"></iframe></div></div></div>
+<script>
+(function(){
+ var $=function(id){return document.getElementById(id)},t=$("t-wp");if(!t)return;
+ var wp=$("wp"),wf=$("wp-f"),cur=1440;
+ function wapply(){var avail=wp.clientWidth-32,sc=Math.min(1,avail/cur),h=Math.max(600,(wp.clientHeight-90)/sc);wf.style.width=cur+"px";wf.style.height=h+"px";wf.parentNode.style.width=cur+"px";wf.parentNode.style.height=h*sc+"px";wf.parentNode.style.transform="scale("+sc+")";wf.parentNode.style.transformOrigin="top left";$("wp-info").textContent=cur+" px wide, shown at "+Math.round(sc*100)+"%";var base=location.href.split("#")[0].split("?")[0];wf.src=base+"?embed=1"+($("wp-ann").checked?"":"&ann=0")}
+ [1920,1440,1280,1024,768,430,390,320].forEach(function(w){var bt=document.createElement("button");bt.type="button";bt.textContent=w;if(w===cur){bt.className="on"}bt.addEventListener("click",function(){cur=w;[].forEach.call($("wp-btns").children,function(x){x.className=""});bt.className="on";wapply()});$("wp-btns").appendChild(bt)});
+ t.addEventListener("click",function(){wp.classList.add("open");wapply()});$("wp-close").addEventListener("click",function(){wp.classList.remove("open")});$("wp-ann").addEventListener("change",wapply);
+ window.addEventListener("resize",function(){if(wp.classList.contains("open"))wapply()});
+ document.addEventListener("keydown",function(e){if(e.key==="Escape")wp.classList.remove("open")});
+})();
+</script>
+<script type="text/plain" id="selftest-src">
+(function(){
+ function vis(el){var cs=getComputedStyle(el);if(cs.display==="none"||cs.visibility==="hidden")return false;var r=el.getBoundingClientRect();return r.width>0&&r.height>0}
+ function sel(el){var s=el.tagName.toLowerCase();if(el.id)s+="#"+el.id;if(el.className&&typeof el.className==="string")s+="."+el.className.trim().split(/\s+/).slice(0,2).join(".");return s}
+ function $(id){return document.getElementById(id)}
+ function wait(ms){return new Promise(function(r){setTimeout(r,ms)})}
+ async function run(){
+  var W=window.innerWidth,H=window.innerHeight,de=document.documentElement,out={docHeight:de.scrollHeight,width:W,checks:{}},N=window.NudgeCartDrawer,D=$("cart-drawer"),SHEET=W<600;
+  var st=document.createElement("style");st.textContent="*{transition:none!important}";document.head.appendChild(st);de.style.scrollBehavior="auto";
+  N.state("multi");N.open();await wait(80);
+  var twOk=getComputedStyle($("site-header")).position==="sticky"&&!document.querySelector('link[href*="components.css"],link[href*="base.css"]')&&!!window.NudgeDrawer;
+  var fl=Array.from(document.fonts).some(function(x){return x.family.indexOf("Cormorant")>-1&&x.status==="loaded"})&&Array.from(document.fonts).some(function(x){return x.family.indexOf("DM Sans")>-1&&x.status==="loaded"});
+  out.checks.tailwindAndFonts={pass:twOk&&fl,detail:"Tailwind utilities applied, no Design System component stylesheet, drawer.js loaded: "+twOk+"; Cormorant and DM Sans loaded: "+fl};
+  var dr=D.getBoundingClientRect(),want=SHEET?W:416,wOk=Math.abs(dr.width-want)<2&&Math.abs(dr.right-W)<=20&&Math.abs(dr.height-H)<2;
+  out.checks.panel={pass:D.open&&wOk,detail:"modal panel "+Math.round(dr.width)+" px wide (expected "+want+", "+(SHEET?"full-width sheet":"right-hand panel")+"), full height: "+(D.open&&wOk)};
+  var bd=$("cd-body"),hd=D.querySelector(".drawer-head").getBoundingClientRect(),ft=$("cd-foot").getBoundingClientRect(),anat=Math.abs(hd.top-dr.top)<2&&Math.abs(ft.bottom-dr.bottom)<2&&getComputedStyle(bd).overflowY==="auto"&&!!D.querySelector("h2")&&D.querySelector("[data-drawer-close]").getBoundingClientRect().height>=44-.5;
+  out.checks.anatomy={pass:anat,detail:"header pinned to the top with a 44 px close button, footer pinned to the bottom, only the body scrolls: "+anat};
+  var offc=[];D.querySelectorAll("*").forEach(function(el){var r=el.getBoundingClientRect();if(r.width>0&&(r.right>dr.right+1||r.left<dr.left-1)&&!el.closest(".chip-row"))offc.push(sel(el))});
+  out.checks.overflow={pass:bd.scrollWidth<=bd.clientWidth+1&&offc.length===0&&de.scrollWidth<=W+1,detail:"no sideways scroll in the drawer or page"+(offc.length?"; past the edge: "+offc.slice(0,3).join(", "):"")};
+  var focusIn=D.contains(document.activeElement),locked=de.classList.contains("is-scroll-locked");
+  var items=[].slice.call(D.querySelectorAll('a[href],button:not([disabled]),input,summary')).filter(vis),last=items[items.length-1],first=items[0];last.focus();last.dispatchEvent(new KeyboardEvent("keydown",{key:"Tab",bubbles:true,cancelable:true}));var wrap=document.activeElement===first;
+  out.checks.focusAndLock={pass:focusIn&&locked&&wrap,detail:"focus starts inside the drawer: "+focusIn+"; page scroll locked: "+locked+"; Tab from the last control wraps to the first: "+wrap};
+  var lc=bd.querySelectorAll(".cl").length,lines=lc===3&&!!bd.querySelector(".cl__name")&&!!bd.querySelector("[data-q]")&&!!bd.querySelector("[data-rm]");
+  out.checks.lines={pass:lines,detail:"three lines, each with name, quantity stepper and Remove: "+lines};
+  var s0=$("cd-sub").textContent;bd.querySelector('.cl[data-id="tm"] [data-plus]').click();var s1=$("cd-sub").textContent,c1=$("cd-count").textContent==="4 items"&&/4/.test(document.querySelector("#site-header .cnt").textContent);bd.querySelector('.cl[data-id="tm"] [data-minus]').click();var s2=$("cd-sub").textContent===s0;
+  out.checks.liveUpdate={pass:s0==="$82.00"&&s1==="$114.00"&&c1&&s2,detail:"subtotal "+s0+" to "+s1+" on +1 and back: "+s2+"; drawer and header counts update: "+c1};
+  N.state("multi");bd.querySelector('.cl[data-id="cl"] [data-rm]').click();var gone=bd.querySelectorAll(".cl").length===2&&!!bd.querySelector("[data-undo]")&&$("cd-sub").textContent==="$64.00";bd.querySelector("[data-undo]").click();var back=bd.querySelectorAll(".cl").length===3&&!bd.querySelector("[data-undo]")&&$("cd-sub").textContent==="$82.00";
+  out.checks.removeUndo={pass:gone&&back,detail:"one tap removes with no dialog, Undo shown, total updates: "+gone+"; Undo restores the line: "+back};
+  N.state("one");var t1=$("cd-fs").textContent;N.state("free");var t2=$("cd-fs").textContent,dn=bd.querySelector(".fs").getAttribute("data-done")==="true";
+  out.checks.freeShipping={pass:/\$18\.00/.test(t1)&&dn&&/free shipping/i.test(t2)&&!!bd.querySelector('.fs__bar[role="progressbar"]'),detail:"one item: '"+t1.trim()+"'; threshold reached: '"+t2.trim()+"' ("+dn+")"};
+  N.state("multi");var up=bd.querySelectorAll(".up__row").length===1,saveRow=!$("cd-savrow").hidden&&/\$4\.00/.test($("cd-sav").textContent);
+  out.checks.addOnAndSaving={pass:up&&saveRow,detail:"exactly one add-on shown: "+up+"; saving line shown with the compare-at saving: "+saveRow};
+  N.state("long");await wait(60);var scrolls=bd.scrollHeight>bd.clientHeight+20,ftVis=$("cd-checkout").getBoundingClientRect().bottom<=H+1&&$("cd-checkout").getBoundingClientRect().top>=0,ftFix=Math.abs($("cd-foot").getBoundingClientRect().bottom-dr.bottom)<2;
+  out.checks.longCart={pass:scrolls&&ftVis&&ftFix,detail:"six lines scroll inside the body: "+scrolls+"; Checkout stays on screen: "+ftVis+"; footer fixed: "+ftFix};
+  N.state("empty");var em=!$("cd-empty").hidden&&$("cd-foot").hidden&&$("cd-empty").querySelectorAll(".chip").length===5&&/Continue shopping/.test($("cd-empty").textContent)&&document.querySelector("#site-header .cnt").textContent==="0"&&$("cd-count").textContent==="0 items";
+  out.checks.empty={pass:em,detail:"empty message, Continue shopping, five collection links, footer hidden, counts 0: "+em};
+  N.state("multi");var ck=$("cd-foot").querySelectorAll(".btn-primary").length===1&&/Checkout/.test($("cd-checkout").textContent)&&$("cd-checkout").getBoundingClientRect().height>=48&&!!$("cd-viewcart");
+  out.checks.checkout={pass:ck,detail:"one dominant Checkout button (48 px or more) and a quiet View cart link: "+ck};
+  var txt=D.innerText.toLowerCase(),bad=[];["discount code","promo","gift wrap","installment","save for later","reserved","calculator","buy now","live chat","order note"].forEach(function(w){if(txt.indexOf(w)>-1)bad.push(w)});
+  out.checks.exclusions={pass:bad.length===0,detail:"wording kept off the drawer: "+(bad.join(", ")||"none")};
+  var small=[];[].slice.call(D.querySelectorAll("a,button,input,textarea")).filter(function(e){return vis(e)}).forEach(function(e){var r=e.getBoundingClientRect();if(e.classList.contains("qty-input")||e.classList.contains("chip"))return;if(e.tagName==="A"&&r.height>=44-.5)return;if(r.height<44-.5||r.width<44-.5&&!e.classList.contains("btn"))small.push(sel(e)+" "+Math.round(r.width)+"x"+Math.round(r.height))});
+  var tb=[],hg=[D.querySelector("#cd-title"),D.querySelector(".cl__name")];hg.forEach(function(e){var f=getComputedStyle(e).fontFamily.split(",")[0].replace(/["']/g,"").trim();if(f!=="Cormorant")tb.push(sel(e)+" "+f)});[].slice.call(D.querySelectorAll("p,button.btn")).filter(vis).forEach(function(e){var f=getComputedStyle(e).fontFamily.split(",")[0].replace(/["']/g,"").trim();if(e.classList.contains("type-h4"))return;if(f!=="DM Sans"&&f!=="Cormorant")tb.push(sel(e)+" "+f)});
+  out.checks.targetsAndType={pass:small.length===0&&tb.length===0,detail:(small.length?"small targets: "+small.slice(0,5).join("; "):"every control is 44 px or has a 44 px hit area")+"; "+(tb.length?"fonts: "+tb.slice(0,3).join("; "):"headings Cormorant, UI DM Sans")};
+  N.state("multi");
+  var closeBtn=D.querySelector("[data-drawer-close]"),opener=document.querySelector("#site-header [data-drawer-open]");var fired=false,evs=0;D.addEventListener("close",function(){fired=true;evs++});closeBtn.click();await wait(400);var sim=false;if(!fired){sim=true;D.dispatchEvent(new Event("close"))}await wait(50);
+  out.checks.closeAndReturn={pass:!D.open&&!de.classList.contains("is-scroll-locked")&&document.activeElement===opener,detail:"close button closes the drawer: "+!D.open+"; scroll unlocked: "+!de.classList.contains("is-scroll-locked")+"; focus returns to the header cart button: "+(document.activeElement===opener)+(sim?"; note: this headless browser does not deliver the native close event, so the test dispatches it once to run the drawer.js handler":"")};
+  var pre=document.createElement("pre");pre.id="selftest-result";pre.textContent=JSON.stringify(out);document.body.appendChild(pre);
+  if(window.parent!==window){window.parent.postMessage({selftest:out},"*")}
+ }
+ if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){setTimeout(run,900)})}else{setTimeout(run,1400)}
+})();
+</script>
+<script src="../../01-Design-System/Scripts/drawer.js"></script>
+<script src="../00-Shared-Tailwind-Foundation/cart-render.js"></script>
+<script>
+(function(){
+ var b=document.body,q=new URLSearchParams(location.search),C=window.NudgeCart,$=function(id){return document.getElementById(id)},D=$("cart-drawer");
+ C.ctx="drawer";
+ if(q.get("embed")){b.classList.add("embed")}
+ b.classList.toggle("ann-on",q.get("ann")!=="0");
+ function navOpen(o){b.classList.toggle("nav-open",o);$("menu-btn").setAttribute("aria-expanded",o?"true":"false")}
+ $("menu-btn").addEventListener("click",function(){navOpen(true)});$("nav-close").addEventListener("click",function(){navOpen(false)});$("scrim").addEventListener("click",function(){navOpen(false)});
+ document.addEventListener("keydown",function(e){if(e.key==="Escape")navOpen(false)});
+ [].forEach.call(document.querySelectorAll(".fcol > button"),function(h){h.addEventListener("click",function(){var f=h.parentNode,o=!f.classList.contains("is-open");f.classList.toggle("is-open",o);h.setAttribute("aria-expanded",o?"true":"false")})});
+ var msgs=["Free shipping on orders over $50","New launches are in store","Free returns within 30 days"],mi=0;
+ function msg(d){mi=(mi+d+msgs.length)%msgs.length;$("ann-msg").textContent=msgs[mi];[].forEach.call(document.querySelectorAll(".ann-dot"),function(x,i){x.classList.toggle("bg-current",i===mi);x.classList.toggle("opacity-100",i===mi);x.classList.toggle("opacity-muted",i!==mi)})}
+ $("ann-prev").addEventListener("click",function(){msg(-1)});$("ann-next").addEventListener("click",function(){msg(1)});
+ document.addEventListener("click",function(e){var a=e.target.closest('a[href^="#"]:not([href="#main"]):not([href="#top"])');if(a)e.preventDefault()});
+ $("t-ann").addEventListener("click",function(){var on=!b.classList.contains("ann-on");b.classList.toggle("ann-on",on);this.setAttribute("aria-pressed",on?"true":"false")});
+ $("t-ann").setAttribute("aria-pressed",b.classList.contains("ann-on")?"true":"false");
+ var STATES={multi:[["tm",1],["sr",1],["cl",1]],one:[["tm",1]],free:[["sr",1],["cl",1]],long:[["tm",1],["sr",1],["cl",1],["sp",1],["ey",1],["bl",1]],empty:[]};
+ function render(focus){
+  var n=C.count(),emp=C.S.items.length===0&&!C.S.undo;
+  $("cd-count").textContent=n+(n===1?" item":" items");
+  $("cd-empty").hidden=!emp;$("cd-cart").hidden=emp;$("cd-foot").hidden=emp;
+  $("cd-fs").innerHTML=C.fsHtml();$("cd-undo").innerHTML=C.undoHtml();$("cd-lines").innerHTML=C.linesHtml();
+  /* one add-on only: the drawer is narrow and the Checkout button must stay in view */
+  var up=document.createElement("div");up.innerHTML=C.upHtml("Add to your order");var li=up.querySelectorAll("li");for(var i=1;i<li.length;i++)li[i].remove();$("cd-up").innerHTML=up.innerHTML;
+  $("cd-sub").textContent=C.money(C.sub());
+  var sv=C.save();$("cd-savrow").hidden=sv<=0;$("cd-sav").textContent=C.money(sv);
+  var h=document.querySelector("#site-header .cnt");if(h){h.textContent=n;h.closest("[aria-label^=Cart]").setAttribute("aria-label","Cart, "+n+" items")}
+  if(focus){var el=null;if(focus==="undo")el=document.querySelector("[data-undo]");else if(focus.id){el=document.querySelector('.cl[data-id="'+focus.id+'"] '+focus.sel)}if(el&&!el.disabled)el.focus()}
+ }
+ C.bind($("cd-body"),function(kind){var a=document.activeElement,f=null;if(a&&a.closest&&a.closest(".cl")){f={id:a.closest(".cl").getAttribute("data-id"),sel:a.hasAttribute("data-plus")?"[data-plus]":a.hasAttribute("data-minus")?"[data-minus]":a.hasAttribute("data-q")?"[data-q]":"[data-rm]"}}
+  if(C.S.undo&&kind==="edit"&&!f)f="undo";if(kind==="remove")f="undo";render(f)});
+ function open(opener){if(!D.open)window.NudgeDrawer.open(D,opener||document.querySelector("#site-header [data-drawer-open]"))}
+ function state(s){C.set(STATES[s]);render()}
+ [["s-multi","multi"],["s-one","one"],["s-free","free"],["s-long","long"],["s-empty","empty"]].forEach(function(p){$(p[0]).addEventListener("click",function(){state(p[1]);open($(p[0]))})});
+ $("s-undo").addEventListener("click",function(){state("multi");C.remove("tm");render();open($("s-undo"))});
+ $("cd-checkout").addEventListener("click",function(){});
+ window.NudgeCartDrawer={state:state,open:open};
+ var s0=q.get("state")&&STATES[q.get("state")]?q.get("state"):"multi";state(s0);
+ if(q.get("state")==="undo"){C.remove("tm");render()}
+ if(q.get("drawer")!=="closed"&&!q.get("selftest")){open()}
+ if(q.get("selftest")){var s=document.createElement("script");s.text=$("selftest-src").text;document.body.appendChild(s)}
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,828 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NUDGE Beauty Theme: PDP Wireframe</title>
+<!-- Design Variables (tokens) linked; styling is Tailwind utilities and the shared components, mapped to those tokens. -->
+<link rel="stylesheet" href="../../02-Design-Variables/Styles/variables.css">
+<link rel="stylesheet" href="../../01-Design-System/Styles/foundation.css"><!-- self-hosted fonts only -->
+<script src="../00-Shared-Tailwind-Foundation/tailwindcss-play-3.4.17.js"></script>
+<script src="../00-Shared-Tailwind-Foundation/tailwind.config.js"></script>
+<script src="../00-Shared-Tailwind-Foundation/currency.js" defer></script>
+<script src="../00-Shared-Tailwind-Foundation/nav.js" defer></script>
+<style type="text/tailwindcss">
+/* Shared Tailwind base for every wireframe. Injected inside <style type="text/tailwindcss"> by build.ps1 (partial "head").
+   It reproduces the element defaults of the Design System (01-Design-System/Styles/base.css) from the same tokens, so plain
+   headings and paragraphs look exactly as on the approved pages. The two warm greys are mixes of existing tokens. */
+@layer base {
+  :root{--warm:color-mix(in srgb,var(--color-border-strong) 14%,var(--color-bg-page));--warm-deep:color-mix(in srgb,var(--color-border-strong) 28%,var(--color-bg-page))}
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:var(--space-20)}
+  html.is-scroll-locked{overflow:hidden}
+  body{@apply bg-page font-body text-ink antialiased;font-size:var(--font-size-body);font-weight:var(--font-weight-regular);line-height:var(--line-height-normal);overflow-wrap:break-word;text-rendering:optimizeLegibility}
+  h1{font-family:var(--type-h1-font-family);font-size:var(--type-h1-font-size);font-weight:var(--type-h1-font-weight);line-height:var(--type-h1-line-height);letter-spacing:var(--type-h1-letter-spacing);text-wrap:balance}
+  h2{font-family:var(--type-h2-font-family);font-size:var(--type-h2-font-size);font-weight:var(--type-h2-font-weight);line-height:var(--type-h2-line-height);letter-spacing:var(--type-h2-letter-spacing);text-wrap:balance}
+  h3{font-family:var(--type-h3-font-family);font-size:var(--type-h3-font-size);font-weight:var(--type-h3-font-weight);line-height:var(--type-h3-line-height);letter-spacing:var(--type-h3-letter-spacing);text-wrap:balance}
+  h4{font-family:var(--type-h4-font-family);font-size:var(--type-h4-font-size);font-weight:var(--type-h4-font-weight);line-height:var(--type-h4-line-height);letter-spacing:var(--type-h4-letter-spacing)}
+  h5{font-family:var(--type-h5-font-family);font-size:var(--type-h5-font-size);font-weight:var(--type-h5-font-weight);line-height:var(--type-h5-line-height);letter-spacing:var(--type-h5-letter-spacing)}
+  h6{font-family:var(--type-h6-font-family);font-size:var(--type-h6-font-size);font-weight:var(--type-h6-font-weight);line-height:var(--type-h6-line-height);letter-spacing:var(--type-h6-letter-spacing)}
+  p{font-family:var(--type-body-font-family);font-size:var(--type-body-font-size);font-weight:var(--type-body-font-weight);line-height:var(--type-body-line-height);letter-spacing:var(--type-body-letter-spacing)}
+  input,button,select,textarea{letter-spacing:inherit}
+  [hidden]{display:none!important}
+  :focus-visible{outline:var(--focus-ring);outline-offset:var(--focus-ring-offset)}
+  :focus:not(:focus-visible){outline:none}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+}
+@layer components {
+  .icon{@apply size-5 shrink-0 fill-none stroke-current;stroke-width:var(--icon-stroke-width);stroke-linecap:round;stroke-linejoin:round} /* 20 px, as the Design System icon; chrome icons add size-6 */
+  .icon-filled{fill:currentColor}
+  /* media placeholders (labelled boxes; no photography) */
+  .ph{background:radial-gradient(110% 80% at 30% 20%,var(--color-bg-surface) 0%,transparent 60%),linear-gradient(160deg,var(--warm),var(--warm-deep))}
+  .ph-b{background:radial-gradient(100% 80% at 70% 25%,var(--color-bg-surface) 0%,transparent 55%),linear-gradient(200deg,var(--warm-deep),var(--warm))}
+  .ph-c{background:linear-gradient(180deg,var(--color-bg-surface),var(--warm))}
+  /* full type roles, same as the Design System role classes (family, size, weight, line height, letter spacing) */
+  .type-display{font-family:var(--type-display-font-family);font-size:var(--type-display-font-size);font-weight:var(--type-display-font-weight);line-height:var(--type-display-line-height);letter-spacing:var(--type-display-letter-spacing);text-wrap:balance}
+  .type-h1{font-family:var(--type-h1-font-family);font-size:var(--type-h1-font-size);font-weight:var(--type-h1-font-weight);line-height:var(--type-h1-line-height);letter-spacing:var(--type-h1-letter-spacing);text-wrap:balance}
+  .type-h2{font-family:var(--type-h2-font-family);font-size:var(--type-h2-font-size);font-weight:var(--type-h2-font-weight);line-height:var(--type-h2-line-height);letter-spacing:var(--type-h2-letter-spacing);text-wrap:balance}
+  .type-h3{font-family:var(--type-h3-font-family);font-size:var(--type-h3-font-size);font-weight:var(--type-h3-font-weight);line-height:var(--type-h3-line-height);letter-spacing:var(--type-h3-letter-spacing);text-wrap:balance}
+  .type-h4{font-family:var(--type-h4-font-family);font-size:var(--type-h4-font-size);font-weight:var(--type-h4-font-weight);line-height:var(--type-h4-line-height);letter-spacing:var(--type-h4-letter-spacing)}
+  .type-h5{font-family:var(--type-h5-font-family);font-size:var(--type-h5-font-size);font-weight:var(--type-h5-font-weight);line-height:var(--type-h5-line-height);letter-spacing:var(--type-h5-letter-spacing)}
+  .type-h6{font-family:var(--type-h6-font-family);font-size:var(--type-h6-font-size);font-weight:var(--type-h6-font-weight);line-height:var(--type-h6-line-height);letter-spacing:var(--type-h6-letter-spacing)}
+  .type-body{font-family:var(--type-body-font-family);font-size:var(--type-body-font-size);font-weight:var(--type-body-font-weight);line-height:var(--type-body-line-height);letter-spacing:var(--type-body-letter-spacing)}
+  .type-body-lg{font-family:var(--type-body-lg-font-family);font-size:var(--type-body-lg-font-size);font-weight:var(--type-body-lg-font-weight);line-height:var(--type-body-lg-line-height);letter-spacing:var(--type-body-lg-letter-spacing)}
+  .type-body-sm{font-family:var(--type-body-sm-font-family);font-size:var(--type-body-sm-font-size);font-weight:var(--type-body-sm-font-weight);line-height:var(--type-body-sm-line-height);letter-spacing:var(--type-body-sm-letter-spacing)}
+  .type-caption{font-family:var(--type-caption-font-family);font-size:var(--type-caption-font-size);font-weight:var(--type-caption-font-weight);line-height:var(--type-caption-line-height);letter-spacing:var(--type-caption-letter-spacing);color:var(--color-text-secondary)}
+  .type-overline{font-family:var(--type-overline-font-family);font-size:var(--type-overline-font-size);font-weight:var(--type-overline-font-weight);line-height:var(--type-overline-line-height);letter-spacing:var(--type-overline-letter-spacing);text-transform:var(--type-overline-text-transform);color:var(--color-brand-primary)}
+  .type-label{font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);font-weight:var(--type-label-font-weight);line-height:var(--type-label-line-height);letter-spacing:var(--type-label-letter-spacing)}
+  .type-utility{font-family:var(--type-utility-font-family);font-size:var(--type-utility-font-size);font-weight:var(--type-utility-font-weight);line-height:var(--type-utility-line-height);letter-spacing:var(--type-utility-letter-spacing);text-transform:var(--type-utility-text-transform)}
+  .type-nav{font-family:var(--type-nav-font-family);font-size:var(--type-nav-font-size);font-weight:var(--type-nav-font-weight);line-height:var(--type-nav-line-height);letter-spacing:var(--type-nav-letter-spacing)}
+  .type-product-title{font-family:var(--type-product-title-font-family);font-size:var(--type-product-title-font-size);font-weight:var(--type-product-title-font-weight);line-height:var(--type-product-title-line-height);letter-spacing:var(--type-product-title-letter-spacing)}
+  .type-price{font-family:var(--type-price-font-family);font-size:var(--type-price-font-size);font-weight:var(--type-price-font-weight);line-height:var(--type-price-line-height);letter-spacing:var(--type-price-letter-spacing);font-variant-numeric:tabular-nums}
+  .type-price-lg{font-family:var(--type-price-lg-font-family);font-size:var(--type-price-lg-font-size);font-weight:var(--type-price-lg-font-weight);line-height:var(--type-price-lg-line-height);letter-spacing:var(--type-price-lg-letter-spacing);font-variant-numeric:tabular-nums}
+  .type-validation{font-family:var(--type-validation-font-family);font-size:var(--type-validation-font-size);font-weight:var(--type-validation-font-weight);line-height:var(--type-validation-line-height);letter-spacing:var(--type-validation-letter-spacing)}
+  /* main headings (every h1) are shown in capitals, except the Homepage hero heading, which keeps its own case; h1[class] outranks the .type-* role classes so the tracking applies on every page */
+  h1:not(:where([data-section="Hero Banner"] h1)),h1[class]:not(:where([data-section="Hero Banner"] h1)){text-transform:uppercase;letter-spacing:.04em}
+  /* section headings (every h2) too, except inside rich text the merchant writes (article body, policy text), which keeps its own case */
+  h2:not(:where(#body h2,#body2 h2,#policy-body>section h2)),h2[class]:not(:where(#body h2,#body2 h2,#policy-body>section h2)){text-transform:uppercase;letter-spacing:.04em}
+}
+
+/* Shared component layer for every wireframe: the Design System components (01-Design-System/Styles/components.css)
+   expressed with Tailwind utilities and the mapped tokens. Same sizes, colours and states as the approved pages.
+   In the Shopify theme these become the shared @layer components of the compiled stylesheet and the markup lives in snippets. */
+@layer components {
+  /* ---- Buttons ---- */
+  .btn{@apply inline-flex min-h-control-md select-none items-center justify-center gap-2 rounded-control border border-transparent bg-transparent px-control-x text-center text-ink no-underline transition-colors duration-base;font-family:var(--type-button-font-family);font-size:var(--type-button-font-size);font-weight:var(--type-button-font-weight);line-height:var(--type-button-line-height);letter-spacing:var(--type-button-letter-spacing);text-transform:var(--type-button-text-transform);-webkit-tap-highlight-color:transparent}
+  .btn-primary{@apply border-btn-primary bg-btn-primary text-btn-primary-text hover:border-btn-primary-hover hover:bg-btn-primary-hover active:border-btn-primary-active active:bg-btn-primary-active}
+  .btn-secondary{@apply border-btn-secondary text-ink hover:bg-btn-secondary-hover hover:text-btn-secondary-hover-text}
+  .btn-secondary:active{opacity:var(--opacity-pressed)}
+  .btn-text{@apply min-h-touch px-1 text-link underline decoration-1 underline-offset-[0.35em] hover:text-link-hover hover:decoration-2}
+  .btn-sm{@apply relative min-h-control-sm min-w-touch px-control-x-sm}
+  .btn-sm::after{content:"";position:absolute;inset:calc((var(--control-height-sm) - var(--touch-target-min)) / 2 - var(--border-width-thin)) calc(var(--border-width-thin) * -1)}
+  .btn-lg{@apply min-h-control-lg px-control-x-lg}
+  .btn-block{@apply flex w-full}
+  .btn:disabled,.btn[aria-disabled="true"]{@apply cursor-not-allowed border-btn-disabled bg-btn-disabled text-btn-disabled-text;pointer-events:none}
+  .icon-btn{@apply relative inline-flex size-touch flex-none items-center justify-center rounded-control border border-transparent bg-transparent p-0 text-ink transition-colors duration-base hover:bg-subtle active:bg-brand-tint-strong aria-pressed:text-brand}
+  .icon-btn[aria-pressed="true"] .icon{fill:currentColor}
+  .icon-btn-filled{@apply rounded-pill bg-surface shadow-sm hover:bg-surface hover:shadow-md}
+  /* ---- Links, dividers ---- */
+  .link{@apply text-link underline decoration-1 underline-offset-[0.2em] transition-colors duration-fast hover:text-link-hover hover:decoration-2}
+  .link-standalone{@apply inline-flex min-h-touch items-center}
+  .divider{@apply m-0 w-full border-0 border-t border-line}
+  /* ---- Badges, messages ---- */
+  .badge{@apply inline-flex items-center gap-1 whitespace-nowrap rounded-badge bg-subtle px-2 py-1 font-semibold uppercase leading-snug tracking-wider text-ink;font-size:var(--font-size-utility)}
+  .badge-brand{@apply bg-brand text-ink-on-brand}
+  .badge-dark{@apply bg-inverse text-ink-inverse}
+  .badge-outline{@apply border border-line-strong bg-transparent}
+  .badge .icon{@apply size-4}
+  .message{@apply flex items-start gap-3 rounded-control border-l-thick border-current bg-subtle px-4 py-3 text-body-sm leading-normal text-ink}
+  .message .icon{margin-top:.1em}
+  .message-error{@apply bg-status-error-bg text-status-error}
+  .message-success{@apply bg-status-success-bg text-status-success}
+  .message-warning{@apply bg-status-warning-bg text-status-warning}
+  .message-error>*:not(.icon),.message-success>*:not(.icon),.message-warning>*:not(.icon){color:var(--color-text-primary)}
+  /* ---- Form fields ---- */
+  .field{@apply flex min-w-0 flex-col gap-2}
+  .field-label{@apply text-ink;font-size:var(--type-label-font-size);font-weight:var(--type-label-font-weight);line-height:var(--type-label-line-height)}
+  .input{@apply block min-h-control-md w-full appearance-none rounded-control border border-line-strong bg-surface px-4 py-3 text-input leading-normal text-ink transition-colors duration-fast placeholder:text-ink-muted hover:border-ink focus:border-brand focus-visible:border-brand disabled:cursor-not-allowed disabled:border-dashed disabled:bg-subtle disabled:text-ink-muted aria-[invalid=true]:border-status-error}
+  .select{@apply relative}
+  .select .input{@apply cursor-pointer pr-12}
+  .select-icon{@apply pointer-events-none absolute right-4 top-1/2 -translate-y-1/2}
+  /* ---- Quantity stepper ---- */
+  .qty{@apply inline-flex items-stretch rounded-control border border-line-strong bg-surface hover:border-ink focus-within:border-brand}
+  .qty-btn{@apply grid min-h-control-md w-touch place-items-center rounded-control border-0 bg-transparent p-0 text-ink transition-[background-color] duration-fast hover:bg-subtle active:bg-brand-tint-strong disabled:cursor-not-allowed disabled:bg-transparent disabled:text-ink-disabled}
+  .qty-input{@apply w-qty appearance-none border-0 bg-transparent p-0 text-center text-input font-medium focus-visible:outline-offset-[-4px];font-variant-numeric:tabular-nums;-moz-appearance:textfield}
+  .qty-input::-webkit-outer-spin-button,.qty-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+  /* ---- Price, rating ---- */
+  .price{@apply inline-flex flex-wrap items-baseline gap-x-3 gap-y-1;font-variant-numeric:tabular-nums}
+  .price-current{@apply text-price font-medium}
+  .price-lg .price-current{@apply text-price-lg font-medium}
+  .price-compare{@apply text-body-sm text-ink-secondary line-through decoration-1}
+  .price-sale .price-current{color:var(--color-price-sale)}
+  .price-unit{@apply text-caption text-ink-secondary}
+  .rating{@apply inline-flex items-center gap-2 text-caption text-ink-secondary}
+  .rating-stars{@apply inline-flex text-brand}
+  .rating-stars .icon{@apply size-4}
+  .rating-stars .icon:not(.icon-filled){@apply text-line-strong}
+  /* ---- Chip, chip row ---- */
+  .chip{@apply relative inline-flex min-h-control-sm min-w-touch items-center justify-center gap-2 whitespace-nowrap rounded-pill border border-line-strong bg-surface px-4 text-body-sm font-medium leading-snug text-ink transition-colors duration-base hover:border-ink aria-pressed:border-brand aria-pressed:bg-brand-tint aria-pressed:text-brand-active}
+  .chip::after{content:"";position:absolute;inset:calc((var(--control-height-sm) - var(--touch-target-min)) / 2 - var(--border-width-thin)) calc(var(--border-width-thin) * -1)}
+  .chip-row{@apply flex flex-nowrap items-center gap-3 overflow-x-auto py-1 sm:flex-wrap sm:overflow-x-visible sm:py-0;scrollbar-width:thin}
+  .chip-row>.chip{@apply flex-none}
+  .chip[aria-pressed="true"]::before{content:"";width:var(--icon-size-sm);height:var(--icon-size-sm);background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat}
+  .chip[aria-pressed="true"]:has(.icon)::before{content:none}
+  .chip:disabled{@apply cursor-not-allowed border-dashed bg-subtle text-ink-muted}
+  /* ---- Accordion (native details) ---- */
+  .accordion{@apply border-t border-line}
+  .accordion-item{@apply border-b border-line}
+  .accordion-summary{@apply flex min-h-touch cursor-pointer list-none items-center justify-between gap-4 py-4 text-body font-medium leading-snug hover:text-link}
+  .accordion-summary::-webkit-details-marker{display:none}
+  .accordion-summary::marker{content:""}
+  .accordion-summary .icon{@apply transition-transform duration-base}
+  .accordion-item[open]>.accordion-summary .icon{@apply rotate-180}
+  .accordion-panel{@apply max-w-text pb-5}
+  /* ---- Breadcrumb: phones show parent and current page on one line, tablets the full trail ---- */
+  .breadcrumb{@apply text-body-sm}
+  .breadcrumb-list{@apply m-0 flex list-none flex-nowrap items-center gap-x-2 p-0 sm:flex-wrap}
+  .breadcrumb-item{@apply inline-flex min-w-0 items-center gap-2}
+  .breadcrumb-item+.breadcrumb-item::before{content:"";width:var(--icon-size-sm);height:var(--icon-size-sm);flex:none;background:var(--color-text-muted);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 18 6-6-6-6'/%3E%3C/svg%3E") center / contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 18 6-6-6-6'/%3E%3C/svg%3E") center / contain no-repeat}
+  .breadcrumb a{@apply inline-flex min-h-touch min-w-touch items-center justify-center text-ink-secondary underline decoration-1 underline-offset-[0.2em] hover:text-link-hover hover:decoration-2}
+  .breadcrumb a[aria-current="page"]{@apply font-medium text-ink no-underline}
+  .breadcrumb-item:not(:nth-last-child(-n+2)){@apply hidden sm:inline-flex}
+  .breadcrumb-item:nth-last-child(2)::before{@apply hidden sm:block}
+  .breadcrumb-item:last-child{@apply flex-[1_1_0] sm:flex-[0_1_auto]}
+  .breadcrumb-item:last-child a{@apply block truncate leading-touch sm:inline-flex sm:overflow-visible sm:whitespace-normal sm:leading-[inherit]}
+  /* ---- Pagination ---- */
+  .pagination{@apply m-0 flex list-none flex-wrap items-center justify-center gap-1 p-0}
+  .pagination-link{@apply inline-flex min-h-touch min-w-touch items-center justify-center gap-2 rounded-control border border-transparent px-3 font-medium text-ink no-underline transition-colors duration-base hover:bg-subtle aria-[current=page]:border-btn-primary aria-[current=page]:bg-btn-primary aria-[current=page]:text-btn-primary-text aria-[disabled=true]:pointer-events-none aria-[disabled=true]:text-ink-muted aria-[disabled=true]:line-through;font-variant-numeric:tabular-nums}
+  .pagination-gap{@apply inline-grid min-w-touch place-items-center text-ink-muted}
+  /* ---- Drawer (native dialog; behaviour from 01-Design-System/Scripts/drawer.js) ---- */
+  .drawer{@apply fixed inset-y-0 right-0 left-auto m-0 h-full max-h-none w-drawer max-w-none flex-col overflow-hidden border-0 bg-surface p-0 text-ink shadow-lg backdrop:bg-scrim open:flex}
+  .drawer-head{@apply flex items-center justify-between gap-2 border-b border-line py-1 pl-4 pr-1}
+  .drawer-body{@apply min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-3}
+  .drawer-foot{@apply border-t border-line p-4}
+  /* ---- Page container, review annotations ---- */
+  .wrap{@apply mx-auto w-full px-gutter;max-width:calc(var(--container-max) + 2 * var(--layout-gutter))}
+  .ann{@apply hidden border border-dashed border-line-strong bg-subtle p-3 text-body-sm}
+  body.ann-on .ann{display:block}
+  .ann b{@apply mr-2 font-semibold}
+  .ann em{@apply mt-1 block not-italic text-ink-secondary}
+
+  /* ---- Mega menu panel entrance (reduced motion is handled globally in base.tw.css) ---- */
+  @keyframes mega-in{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  .mega-panel[data-open]{animation:mega-in var(--duration-base) var(--ease-out)}
+}
+</style>
+<style type="text/tailwindcss">
+/* PDP page-level components. Everything here is @apply of mapped tokens or token CSS; candidates to promote to the shared layer:
+   choice (checkbox and radio), tile (image swatch), opt (option button), vendor (small caps line), ph-k-* (composed media placeholders). */
+@layer components{
+ .vendor{@apply text-overline font-medium uppercase tracking-widest text-ink-secondary}
+ /* choice: native checkbox or radio, restyled; the whole label row is the hit area */
+ .choice{@apply flex min-h-touch cursor-pointer items-start gap-3 py-2 text-body leading-snug}
+ .choice:has(.choice-input:disabled){@apply cursor-not-allowed text-ink-muted}
+ .choice-input{appearance:none;-webkit-appearance:none;flex:none;position:relative;margin:-0.0625rem 0 0;width:var(--choice-size);height:var(--choice-size);background:var(--color-control-bg);border:var(--border-width-thin) solid var(--color-control-border);display:grid;place-content:center;cursor:pointer;transition:background-color var(--duration-fast) var(--ease-standard),border-color var(--duration-fast) var(--ease-standard)}
+ .choice-input[type="checkbox"]{border-radius:var(--radius-sm)}
+ .choice-input[type="radio"]{border-radius:var(--radius-pill)}
+ .choice-input::before{content:"";background:var(--color-text-on-brand);transform:scale(0);transition:transform var(--duration-fast) var(--ease-out)}
+ .choice-input[type="checkbox"]::before{width:var(--choice-check-size);height:var(--choice-check-size);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat}
+ .choice-input[type="radio"]::before{width:var(--choice-dot-size);height:var(--choice-dot-size);border-radius:var(--radius-pill)}
+ .choice-input:hover{border-color:var(--color-control-border-hover)}
+ .choice-input:checked{background:var(--color-control-selected);border-color:var(--color-control-selected)}
+ .choice-input:checked::before{transform:scale(1)}
+ .choice-input:disabled{border-style:dashed;background:var(--color-bg-subtle);cursor:not-allowed}
+ .choice-input:disabled:checked{background:var(--color-border-strong);border-color:var(--color-border-strong)}
+ /* tile: image swatch with a name under it */
+ .tile{@apply relative flex min-h-touch w-14 cursor-pointer flex-col items-center justify-start gap-1}
+ .tile-input{@apply absolute inset-0 m-0 size-full cursor-pointer opacity-0 disabled:cursor-not-allowed}
+ .tile-img{width:var(--space-10);height:var(--space-10);border-radius:var(--radius-pill);background:radial-gradient(circle at 30% 25%,color-mix(in srgb,var(--swatch) 45%,var(--color-bg-surface)) 0,var(--swatch) 75%);box-shadow:inset 0 0 0 var(--border-width-thin) rgb(var(--shadow-color) / 0.2);outline:var(--border-width-thick) solid transparent;outline-offset:var(--space-1);transition:outline-color var(--duration-fast) var(--ease-standard)}
+ .tile:hover .tile-img{outline-color:var(--color-border-strong)}
+ .tile-input:checked + .tile-img{outline-color:var(--color-brand-primary)}
+ .tile-input:focus-visible + .tile-img{outline:var(--focus-ring);outline-offset:var(--space-1)}
+ .tile-name{@apply text-center text-caption leading-snug text-ink-secondary}
+ .tile-input:checked ~ .tile-name{@apply font-semibold text-ink}
+ .tile-input:disabled + .tile-img{opacity:var(--opacity-disabled);background-image:linear-gradient(to top right,transparent calc(50% - 1px),var(--color-text-primary) 50%,transparent calc(50% + 1px)),radial-gradient(circle at 30% 25%,color-mix(in srgb,var(--swatch) 45%,var(--color-bg-surface)) 0,var(--swatch) 75%)}
+ .tile-input:disabled ~ .tile-name{@apply text-ink-muted line-through}
+ /* opt: option button (size, pack) */
+ .opt{@apply relative flex min-h-touch cursor-pointer flex-col items-center justify-center gap-1 rounded-control border border-line-strong bg-[var(--color-control-bg)] p-2 text-center hover:border-ink}
+ .opt-input{@apply absolute inset-0 m-0 size-full cursor-pointer opacity-0}
+ .opt:has(.opt-input:checked){@apply border-brand bg-brand-tint;box-shadow:inset 0 0 0 var(--border-width-thin) var(--color-brand-primary)}
+ .opt:has(.opt-input:focus-visible){outline:var(--focus-ring);outline-offset:var(--focus-ring-offset)}
+ .opt:has(.opt-input:disabled){@apply cursor-not-allowed border-dashed bg-subtle text-ink-muted}
+ .opt:has(.opt-input:disabled) .opt-label{@apply line-through}
+ .opt-label{@apply font-medium}
+ .opt-sub{@apply text-caption text-ink-secondary}
+ .opt-save{@apply text-caption font-medium text-brand}
+ /* composed media placeholders for the gallery (labelled boxes; no imagery) */
+ .ph-k-pack{background:radial-gradient(38% 5% at 50% 80%,rgb(var(--shadow-color) / 0.2) 0%,transparent 100%),radial-gradient(55% 45% at 50% 40%,var(--color-bg-surface) 0%,transparent 72%),linear-gradient(180deg,color-mix(in srgb,var(--shade,var(--warm)) 22%,var(--warm)) 0%,color-mix(in srgb,var(--shade,var(--warm-deep)) 30%,var(--warm-deep)) 100%)}
+ .ph-k-tex{background:radial-gradient(60% 40% at 32% 36%,color-mix(in srgb,var(--color-bg-surface) 85%,transparent) 0%,transparent 70%),radial-gradient(50% 35% at 68% 64%,color-mix(in srgb,var(--color-brand-accent) 35%,transparent) 0%,transparent 75%),linear-gradient(155deg,var(--warm),var(--warm-deep))}
+ .ph-k-app{background:radial-gradient(45% 55% at 62% 45%,color-mix(in srgb,var(--color-bg-surface) 75%,transparent) 0%,transparent 70%),linear-gradient(105deg,var(--warm) 0%,var(--warm) 46%,var(--warm-deep) 46%,color-mix(in srgb,var(--color-brand-accent) 25%,var(--warm-deep)) 100%)}
+ .ph-k-ing{background:radial-gradient(circle at 30% 30%,color-mix(in srgb,var(--color-bg-surface) 90%,transparent) 0 14%,transparent 15%),radial-gradient(circle at 68% 42%,color-mix(in srgb,var(--color-brand-accent) 40%,transparent) 0 20%,transparent 21%),linear-gradient(170deg,var(--warm),var(--warm-deep))}
+ .ph-k-vid{background:linear-gradient(180deg,var(--color-brand-primary),var(--color-brand-primary-active))}
+ .ph-k-ba{background:linear-gradient(90deg,var(--warm) 0 49.5%,var(--color-bg-surface) 49.5% 50.5%,var(--warm-deep) 50.5% 100%)}
+ .ph-dash::after{content:"";position:absolute;top:18%;bottom:24%;left:31%;right:31%;border:var(--border-width-thin) dashed color-mix(in srgb,var(--color-text-secondary) 45%,transparent);pointer-events:none}
+}
+</style>
+<style>
+body.embed .rv,body.embed #wp{display:none}
+.rv{background:#f1f1f1;border-bottom:1px solid #aaa;padding:12px 16px;font:14px/1.45 system-ui,sans-serif;color:#222}
+.rv .rvt{font:600 16px system-ui,sans-serif;margin:0 0 4px}.rv p{margin:0 0 8px;max-width:75ch}
+.rv .ctl{display:flex;flex-wrap:wrap;gap:8px}.rv button,.rv a.rvb{min-height:44px;padding:0 14px;border:1px solid #666;background:#fff;font:14px system-ui,sans-serif;cursor:pointer;color:#222;display:inline-flex;align-items:center;text-decoration:none}
+.rv button[aria-pressed="true"],.rv button.on{background:#222;color:#fff}
+.rv details{margin-top:8px}.rv summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:600}.rv li{margin:2px 0}.rv ul{margin:4px 0 8px;padding-left:20px;list-style:disc}
+.rv table{border-collapse:collapse;margin:6px 0 10px;font-size:13px}.rv th,.rv td{border:1px solid #bbb;padding:4px 8px;text-align:left;vertical-align:top}
+#wp{display:none;position:fixed;inset:0;background:#cfcfcf;z-index:1000;overflow:auto;font:14px system-ui,sans-serif;color:#222}#wp.open{display:block}
+#wp .bar2{position:sticky;top:0;z-index:2;background:#fff;border-bottom:1px solid #999;padding:8px 12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+#wp .bar2 button{min-height:44px;padding:0 16px;border:1px solid #666;background:#fff;cursor:pointer;font-size:14px;color:#222}#wp .bar2 button.on{background:#222;color:#fff}
+#wp .stage{padding:16px;display:flex;justify-content:center}#wp iframe{display:block;border:0;background:#fff;box-shadow:0 0 0 1px #888}
+
+</style>
+</head>
+<body class="ann-on [&.has-sticky]:pb-20 md:[&.has-sticky]:pb-0" id="top">
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+  <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="icon-account" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+  <symbol id="icon-bag" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></symbol>
+  <symbol id="icon-menu" viewBox="0 0 24 24"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></symbol>
+  <symbol id="icon-close" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+  <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+  <symbol id="icon-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="icon-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="icon-chevron-up" viewBox="0 0 24 24"><path d="m18 15-6-6-6 6"/></symbol>
+  <symbol id="icon-chevron-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+  <symbol id="icon-chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+  <symbol id="icon-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol>
+  <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="icon-filter" viewBox="0 0 24 24"><line x1="21" x2="14" y1="4" y2="4"/><line x1="10" x2="3" y1="4" y2="4"/><line x1="21" x2="12" y1="12" y2="12"/><line x1="8" x2="3" y1="12" y2="12"/><line x1="21" x2="16" y1="20" y2="20"/><line x1="12" x2="3" y1="20" y2="20"/><line x1="14" x2="14" y1="2" y2="6"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="16" x2="16" y1="18" y2="22"/></symbol>
+  <symbol id="icon-sort" viewBox="0 0 24 24"><path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/></symbol>
+  <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></symbol>
+  <symbol id="icon-star" viewBox="0 0 24 24"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></symbol>
+  <symbol id="icon-location" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="icon-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+  <symbol id="icon-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="icon-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="icon-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol>
+  <symbol id="icon-warning" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+  <symbol id="icon-eye" viewBox="0 0 24 24"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="icon-eye-off" viewBox="0 0 24 24"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"/><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/><path d="m2 2 20 20"/></symbol>
+  <symbol id="icon-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></symbol>
+  <symbol id="icon-instagram" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></symbol>
+  <symbol id="icon-facebook" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+  <symbol id="icon-youtube" viewBox="0 0 24 24"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></symbol>
+  <symbol id="icon-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+  <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="icon-zoom-in" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></symbol>
+  <symbol id="icon-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></symbol>
+  <symbol id="icon-truck" viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+  <symbol id="icon-rotate-ccw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
+  <symbol id="icon-shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="icon-store" viewBox="0 0 24 24"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/></symbol>
+  <symbol id="icon-loader" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></symbol>
+</svg>
+
+<a href="#product" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-skip focus:bg-surface focus:p-3">Skip to product</a>
+<div class="rv">
+  <div class="rvt">NUDGE Beauty Theme: product detail page (PDP) wireframe &middot; single responsive file</div>
+  <p>One product page (sample product: Tinted Moisturiser), built with Tailwind utilities and shared components mapped to the Design Variables. Resize the window or open the <b>Width preview</b> for 1920, 1440, 1024, 768, 390, 375 and 320 px. The announcement bar, header and footer are the shared sections. Product data, ingredients, steps and copy are <b>sample content</b> standing in for product metafields; nothing is a real claim. Placeholders only: no photography.</p>
+  <div class="ctl"><button id="t-ann" type="button" aria-pressed="true">Annotations</button><button id="t-wp" type="button">Width preview</button><button id="t-zoom" type="button">Image zoom</button><button id="t-add" type="button">Add to bag (loading, success)</button><button id="t-sticky" type="button" aria-pressed="false">Sticky bar</button><button id="t-ba" type="button" aria-pressed="false">Before &amp; after slide</button><button id="t-single" type="button" aria-pressed="false">Single-variant product</button><button id="t-reset" type="button">Reset</button></div>
+<details><summary>Review notes: approved features, exclusions, decisions, Shopify, reuse, checks (open)</summary>
+<h3>Approved Beauty PDP features (33 of 33; one not drawn)</h3>
+<p>Source: <b>Homepage_CRO_5_Theme_Final_Comparison_Revised_Final.xlsx</b>, sheet <i>Beauty - PLP, PDP &amp; Cart</i> (PDP: 33 kept, 14 not recommended). Evidence, feedback and conflicts are in <b>PDP-FEATURE-ANALYSIS.md</b> beside this file.</p>
+<div class="max-w-full overflow-x-auto"><table class="min-w-[44rem]"><thead><tr><th>#</th><th>Feature</th><th>Where</th></tr></thead><tbody>
+<tr><td>1-4</td><td>Gallery, image zoom, product video, before and after (optional)</td><td>Gallery; zoom on hover and in the viewer; video slide; before and after slide is off by default</td></tr>
+<tr><td>5-8</td><td>Title and subtitle, breadcrumbs, rating, price block, key benefits</td><td>Title, rating and price at the top of the info column with one line of key benefits; the editorial band repeats them as its headline</td></tr>
+<tr><td>9</td><td>Description and details accordion</td><td>Accordion under the trust row</td></tr>
+<tr><td>10-14</td><td>Variant picker, shade swatches with names, quantity, selling plan, pack savings</td><td>Variant picker, plan picker, quantity</td></tr>
+<tr><td>15-18</td><td>Stock message, add to cart, express checkout, sticky add to cart</td><td>Under the button; bar after scroll</td></tr>
+<tr><td>19-23</td><td>Delivery estimate, free-shipping message, returns, trust row, pickup</td><td>Below the button, one line each; the dispatch cut-off time is a sample setting</td></tr>
+<tr><td>24-28</td><td>Ingredients, allergen and safety, how to use, suitability, certifications</td><td>Key ingredients in the editorial band; how to use, full ingredients, suitability and safety, and certifications in the details accordion</td></tr>
+<tr><td>29</td><td>Expert note</td><td><b>Not drawn</b>: no real practitioner statement exists</td></tr>
+<tr><td>30</td><td>Product FAQ</td><td>FAQ accordion</td></tr>
+<tr><td>31-33</td><td>Complementary products (frequently-bought-together layout), related products, set contents</td><td>Complete your routine; Related products</td></tr>
+</tbody></table></div>
+<h3>Not in the wireframe (marked No or Removed for Beauty, or not approved)</h3>
+<ul class="[columns:2_14rem]"><li>Review cards, photos, filters and rating distribution (Removed: need a review app); a labelled app slot is shown instead</li><li>Recently viewed (Removed)</li><li>Wishlist, ask a question, back-in-stock (Removed: apps)</li><li>Separate Buy Now (express checkout is the fast route)</li><li>Specifications table, size guide, installment message, SKU, 3D / AR (No)</li><li>Cash on Delivery and authenticity badges (not in the approved list; merchant content)</li><li>Pincode check (needs an integration)</li><li>Fake urgency: countdowns, visitor counts</li></ul>
+<h3>Decisions to confirm</h3>
+<ul>
+<li><b>Palette:</b> your brief says warm ivory, champagne and beige; the current tokens (Pearl Pink, Rose Quartz, Luxury Rose, Rich Burgundy, Midnight Plum) are used, because champagne and beige were retired on 2026-11-11.</li>
+<li><b>Headings:</b> sentence-case Cormorant, as on the homepage and PLP (the brief says uppercase; uppercase stays for labels and buttons).</li>
+<li><b>Sticky column:</b> the gallery is sticky from 1024 px (the info column is taller than a 900 px screen); the sticky add to cart bar keeps the action reachable.</li>
+<li><b>Shade:</b> none is pre-selected. Add to bag stays enabled and asks for a shade (PDP-04).</li>
+<li><b>Reviews:</b> a display rating plus a reviews-app slot; no review data is invented.</li>
+</ul>
+<h3>Shopify-native, theme-editor or custom</h3>
+<div class="max-w-full overflow-x-auto"><table class="min-w-[44rem]"><thead><tr><th>Feature</th><th>Type</th></tr></thead><tbody>
+<tr><td>Product media, variants, price, compare-at, unit price, stock, selling plans, pickup, recommendations, dynamic checkout buttons</td><td>Native Shopify platform data and features</td></tr>
+<tr><td>Gallery layout, zoom, sticky add to cart position, accordion rows, trust items, section order and visibility</td><td>Theme editor settings and blocks</td></tr>
+<tr><td>Ingredients, how to use, suitability, safety, certifications, benefits, FAQ</td><td>Product metafields and rich-text blocks (merchant fills)</td></tr>
+<tr><td>Image swatches</td><td>Variant option plus variant image or colour metafield</td></tr>
+<tr><td>Rating and review count near the title</td><td>Native display only: metafield values; the theme builds no review system</td></tr>
+<tr><td>Delivery estimate</td><td>Theme JavaScript from merchant processing days and cut-off (not live carrier data)</td></tr>
+<tr><td>Add to bag loading and success, image viewer, sticky bar</td><td>Native theme JavaScript on the Cart Ajax API (to be built)</td></tr>
+<tr><td>Reviews list, photos, filters, subscriptions, back-in-stock, pincode lookup</td><td>Needs an app or integration; excluded</td></tr>
+</tbody></table></div>
+<h3>Shopify build</h3>
+<p>Template <code>product.json</code> with a <code>main-product</code> section (gallery, variant picker, buy buttons, selling plan, delivery lines and details accordion as blocks and snippets over the native <code>product</code> object and the Cart Ajax API), followed by sections for the story band, complete your routine (native complementary recommendations), reviews slot (app block area), related products (native recommendations) and FAQ. Section order and visibility, gallery layout and trust items are theme-editor settings; ingredients, how to use and safety are product metafields. No app is involved. Tailwind utilities compile into one theme stylesheet from the same token-mapped config.</p>
+<h3>Reused from the Design System (nothing duplicated)</h3>
+<p>Breadcrumb, Button, Quantity, Accordion, Message, Price, Rating, Badge, Drawer (image viewer, with <code>drawer.js</code>), Grid, Container, text roles, expressed as the shared Tailwind components. Page-level additions (gallery, image swatch tile, option button, choice, sticky bar, busy button, viewer variant, composed placeholders, six icons) are listed in PDP-FEATURE-ANALYSIS.md, section 3.2.</p>
+<h3>Checks</h3>
+<p id="doc-checks">See PDP-FEATURE-ANALYSIS.md, section 6.</p>
+</details>
+</div>
+<div class="ann"><b>Global</b>Announcement bar, header and footer: the shared sections. Skin is the current link. Responsive: below 1024 px a one-row header with the menu in a left drawer; footer groups are tap-to-open rows below 768 px; the announcement bar shows arrows from 600 px and dots below.</div>
+<div id="annbar" class="flex min-h-10 flex-wrap items-center justify-center gap-x-3 gap-y-[2px] bg-brand px-gutter py-2 text-center text-body-sm tracking-[0.03em] text-ink-inverse focus-within:[--color-focus-ring:var(--color-focus-ring-inverse)]">
+  <button id="ann-prev" type="button" aria-label="Previous message" class="hidden size-touch items-center justify-center sm:inline-flex"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-chevron-left"></use></svg></button>
+  <div id="ann-msg" class="min-w-0" aria-live="polite">Free shipping on orders over $50</div>
+  <button id="ann-next" type="button" aria-label="Next message" class="hidden size-touch items-center justify-center sm:inline-flex"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-chevron-right"></use></svg></button>
+  <div class="flex w-full justify-center gap-2 sm:hidden" aria-hidden="true"><i class="ann-dot size-[6px] rounded-pill border border-current bg-current opacity-100"></i><i class="ann-dot size-[6px] rounded-pill border border-current opacity-muted"></i><i class="ann-dot size-[6px] rounded-pill border border-current opacity-muted"></i></div>
+</div>
+<header id="site-header" class="sticky top-0 z-sticky border-b border-line bg-page [.nav-open_&]:z-drawer lg:[html_body.mega-open_&]:!bg-page ">
+  <div class="mx-auto grid w-full max-w-[calc(var(--container-max)+2*var(--layout-gutter))] grid-cols-[auto_auto_1fr_auto] items-center gap-x-1 px-gutter py-2 max-[359px]:grid-cols-[auto_1fr_auto] max-[359px]:gap-y-2 max-[359px]:pb-3 lg:min-h-[5.25rem] lg:grid-cols-[1fr_auto_1fr] lg:gap-x-grid-gap lg:py-0">
+    <button id="menu-btn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu" class="inline-flex size-touch items-center justify-center text-ink lg:hidden"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-menu"></use></svg></button>
+    <a href="#search" aria-label="Search" class="inline-flex size-touch items-center justify-center text-ink max-[359px]:hidden lg:hidden"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-search"></use></svg></a>
+    <a href="#top" aria-label="Store home" class="inline-flex min-h-touch items-center justify-center justify-self-center px-2 text-ink max-[374px]:px-1 lg:order-2"><svg viewBox="0 0 520 100" role="img" aria-label="NUDGE" fill="currentColor" class="block max-w-full h-5 w-auto max-[374px]:h-4 lg:h-6"><path d="M0 14H16V100H0ZM66 0H82V86H66ZM0 14H19L82 86H63Z"/><path d="M106 0H122V62A25 25 0 0 0 172 62V0H188V62A41 41 0 0 1 106 62Z"/><path fill-rule="evenodd" d="M212 0H252A50 50 0 0 1 252 100H212ZM228 16H252A34 34 0 0 1 252 84H228Z"/><path d="M378 42H426V58H378Z"/><path d="M450 0H520V16H466V42H510V58H466V84H520V100H450Z"/><path d="M410.4 25.9A42 42 0 1 0 418 50" fill="none" stroke="currentColor" stroke-width="16"/></svg></a>
+    <nav id="nav" aria-label="Main" class="invisible fixed inset-y-0 left-0 z-drawer flex w-full max-w-[26rem] -translate-x-full flex-col gap-3 overflow-y-auto border-r border-line-strong bg-page p-4 transition-transform duration-base [.nav-open_&]:visible [.nav-open_&]:translate-x-0 lg:visible lg:static lg:order-1 lg:w-auto lg:max-w-none lg:translate-x-0 lg:!transform-none lg:flex-row lg:tracking-[var(--type-nav-letter-spacing)] lg:items-center lg:gap-5 xl:gap-7 lg:overflow-visible lg:border-0 lg:bg-transparent lg:p-0">
+      <button id="nav-close" type="button" aria-label="Close menu" class="inline-flex min-h-touch min-w-touch items-center justify-center gap-2 self-end px-2 text-body-sm text-ink lg:hidden"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-close"></use></svg><span>Close</span></button>
+      <div class="flex flex-col lg:flex-row lg:gap-7">
+<div data-mega="skin" class="group/mega flex flex-col border-b border-line lg:border-0">
+<a href="#collection" aria-current="page" data-mega-link aria-haspopup="true" aria-expanded="false" aria-controls="mega-skin" class="group relative flex min-h-[3.25rem] flex-1 items-center justify-between text-body-lg font-medium text-ink no-underline lg:min-h-touch lg:flex-none lg:text-body lg:after:absolute lg:after:inset-x-0 lg:after:bottom-2 lg:after:h-px lg:after:origin-left lg:after:scale-x-0 lg:after:bg-brand lg:after:transition-transform lg:hover:after:scale-x-100 lg:group-data-[open]/mega:after:scale-x-100 lg:after:scale-x-100">Skin<svg class="icon size-6 transition-transform duration-fast group-data-[open]/mega:rotate-180 lg:hidden" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></a>
+<div id="mega-skin" data-mega-panel class="mega-panel hidden data-[open]:block lg:absolute lg:inset-x-0 lg:top-full lg:z-[1] lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto lg:border-b lg:border-line lg:bg-page lg:shadow-md">
+<div class="mx-auto flex w-full max-w-[calc(var(--container-max)+2*var(--layout-gutter))] flex-col pb-3 pl-3 lg:px-gutter lg:py-8 lg:pl-gutter">
+<a href="#collection-skin" class="flex min-h-touch items-center gap-2 text-body font-medium text-brand no-underline hover:underline lg:order-last lg:mt-4 lg:self-start lg:border-t-0 lg:text-body-sm">Shop all skin<svg class="icon size-5" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></a>
+<div class="lg:grid lg:grid-cols-[repeat(2,minmax(0,1fr))_minmax(0,1.2fr)] lg:gap-grid-gap">
+<div class="mb-2 lg:mb-0">
+<p class="pb-1 pt-3 text-overline font-medium uppercase tracking-uppercase text-ink-muted lg:pb-3 lg:pt-0">Shop by concern</p>
+<ul class="m-0 list-none p-0">
+<li><a href="#collection-skin-hydration" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Hydration</a></li><li><a href="#collection-skin-brightening" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Brightening</a></li><li><a href="#collection-skin-anti-ageing" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Anti-ageing</a></li><li><a href="#collection-skin-blemish-care" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Blemish care</a></li><li><a href="#collection-skin-sensitive-skin" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Sensitive skin</a></li></ul></div>
+<div class="mb-2 lg:mb-0">
+<p class="pb-1 pt-3 text-overline font-medium uppercase tracking-uppercase text-ink-muted lg:pb-3 lg:pt-0">Shop by step</p>
+<ul class="m-0 list-none p-0">
+<li><a href="#collection-skin-cleansers" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Cleansers</a></li><li><a href="#collection-skin-serums" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Serums</a></li><li><a href="#collection-skin-moisturisers" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Moisturisers</a></li><li><a href="#collection-skin-sun-care" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Sun care</a></li><li><a href="#collection-skin-masks" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Masks</a></li><li><a href="#collection-skin-eye-care" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Eye care</a></li></ul></div>
+<div class="hidden grid-cols-2 gap-4 lg:grid">
+<a href="#collection-skin-new-in-skin" class="group/card block min-w-0 no-underline"><div class="ph relative flex aspect-portrait items-start justify-start overflow-hidden rounded-card border border-line p-2 text-caption leading-snug text-ink-muted"><span>IMAGE PLACEHOLDER<br>4:5</span></div><p class="mt-3 text-body-sm font-medium text-ink group-hover/card:underline">New in skin</p><p class="flex items-center gap-1 text-caption text-ink-muted">Shop now<svg class="icon size-4" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></p></a>
+<a href="#collection-skin-skin-routines" class="group/card block min-w-0 no-underline"><div class="ph-b relative flex aspect-portrait items-start justify-start overflow-hidden rounded-card border border-line p-2 text-caption leading-snug text-ink-muted"><span>IMAGE PLACEHOLDER<br>4:5</span></div><p class="mt-3 text-body-sm font-medium text-ink group-hover/card:underline">Skin routines</p><p class="flex items-center gap-1 text-caption text-ink-muted">Shop now<svg class="icon size-4" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></p></a>
+</div>
+</div></div></div>
+</div>
+<div data-mega="makeup" class="group/mega flex flex-col border-b border-line lg:border-0">
+<a href="#collection"  data-mega-link aria-haspopup="true" aria-expanded="false" aria-controls="mega-makeup" class="group relative flex min-h-[3.25rem] flex-1 items-center justify-between text-body-lg font-medium text-ink no-underline lg:min-h-touch lg:flex-none lg:text-body lg:after:absolute lg:after:inset-x-0 lg:after:bottom-2 lg:after:h-px lg:after:origin-left lg:after:scale-x-0 lg:after:bg-brand lg:after:transition-transform lg:hover:after:scale-x-100 lg:group-data-[open]/mega:after:scale-x-100">Makeup<svg class="icon size-6 transition-transform duration-fast group-data-[open]/mega:rotate-180 lg:hidden" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></a>
+<div id="mega-makeup" data-mega-panel class="mega-panel hidden data-[open]:block lg:absolute lg:inset-x-0 lg:top-full lg:z-[1] lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto lg:border-b lg:border-line lg:bg-page lg:shadow-md">
+<div class="mx-auto flex w-full max-w-[calc(var(--container-max)+2*var(--layout-gutter))] flex-col pb-3 pl-3 lg:px-gutter lg:py-8 lg:pl-gutter">
+<a href="#collection-makeup" class="flex min-h-touch items-center gap-2 text-body font-medium text-brand no-underline hover:underline lg:order-last lg:mt-4 lg:self-start lg:border-t-0 lg:text-body-sm">Shop all makeup<svg class="icon size-5" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></a>
+<div class="lg:grid lg:grid-cols-[repeat(2,minmax(0,1fr))_minmax(0,1.2fr)] lg:gap-grid-gap">
+<div class="mb-2 lg:mb-0">
+<p class="pb-1 pt-3 text-overline font-medium uppercase tracking-uppercase text-ink-muted lg:pb-3 lg:pt-0">Face</p>
+<ul class="m-0 list-none p-0">
+<li><a href="#collection-makeup-foundation" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Foundation</a></li><li><a href="#collection-makeup-concealer" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Concealer</a></li><li><a href="#collection-makeup-blush" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Blush</a></li><li><a href="#collection-makeup-highlighter" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Highlighter</a></li><li><a href="#collection-makeup-primer" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Primer</a></li></ul></div>
+<div class="mb-2 lg:mb-0">
+<p class="pb-1 pt-3 text-overline font-medium uppercase tracking-uppercase text-ink-muted lg:pb-3 lg:pt-0">Eyes and lips</p>
+<ul class="m-0 list-none p-0">
+<li><a href="#collection-makeup-mascara" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Mascara</a></li><li><a href="#collection-makeup-eyeliner" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Eyeliner</a></li><li><a href="#collection-makeup-brows" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Brows</a></li><li><a href="#collection-makeup-lipstick" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Lipstick</a></li><li><a href="#collection-makeup-lip-care" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Lip care</a></li><li><a href="#collection-makeup-brushes-and-tools" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Brushes and tools</a></li></ul></div>
+<div class="hidden grid-cols-2 gap-4 lg:grid">
+<a href="#collection-makeup-new-in-makeup" class="group/card block min-w-0 no-underline"><div class="ph relative flex aspect-portrait items-start justify-start overflow-hidden rounded-card border border-line p-2 text-caption leading-snug text-ink-muted"><span>IMAGE PLACEHOLDER<br>4:5</span></div><p class="mt-3 text-body-sm font-medium text-ink group-hover/card:underline">New in makeup</p><p class="flex items-center gap-1 text-caption text-ink-muted">Shop now<svg class="icon size-4" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></p></a>
+<a href="#collection-makeup-complexion-edit" class="group/card block min-w-0 no-underline"><div class="ph-b relative flex aspect-portrait items-start justify-start overflow-hidden rounded-card border border-line p-2 text-caption leading-snug text-ink-muted"><span>IMAGE PLACEHOLDER<br>4:5</span></div><p class="mt-3 text-body-sm font-medium text-ink group-hover/card:underline">Complexion edit</p><p class="flex items-center gap-1 text-caption text-ink-muted">Shop now<svg class="icon size-4" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></p></a>
+</div>
+</div></div></div>
+</div>
+<div data-mega="hair" class="group/mega flex flex-col border-b border-line lg:border-0">
+<a href="#collection"  data-mega-link aria-haspopup="true" aria-expanded="false" aria-controls="mega-hair" class="group relative flex min-h-[3.25rem] flex-1 items-center justify-between text-body-lg font-medium text-ink no-underline lg:min-h-touch lg:flex-none lg:text-body lg:after:absolute lg:after:inset-x-0 lg:after:bottom-2 lg:after:h-px lg:after:origin-left lg:after:scale-x-0 lg:after:bg-brand lg:after:transition-transform lg:hover:after:scale-x-100 lg:group-data-[open]/mega:after:scale-x-100">Hair<svg class="icon size-6 transition-transform duration-fast group-data-[open]/mega:rotate-180 lg:hidden" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></a>
+<div id="mega-hair" data-mega-panel class="mega-panel hidden data-[open]:block lg:absolute lg:inset-x-0 lg:top-full lg:z-[1] lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto lg:border-b lg:border-line lg:bg-page lg:shadow-md">
+<div class="mx-auto flex w-full max-w-[calc(var(--container-max)+2*var(--layout-gutter))] flex-col pb-3 pl-3 lg:px-gutter lg:py-8 lg:pl-gutter">
+<a href="#collection-hair" class="flex min-h-touch items-center gap-2 text-body font-medium text-brand no-underline hover:underline lg:order-last lg:mt-4 lg:self-start lg:border-t-0 lg:text-body-sm">Shop all hair<svg class="icon size-5" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></a>
+<div class="lg:grid lg:grid-cols-[repeat(2,minmax(0,1fr))_minmax(0,1.2fr)] lg:gap-grid-gap">
+<div class="mb-2 lg:mb-0">
+<p class="pb-1 pt-3 text-overline font-medium uppercase tracking-uppercase text-ink-muted lg:pb-3 lg:pt-0">Shop by concern</p>
+<ul class="m-0 list-none p-0">
+<li><a href="#collection-hair-dryness" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Dryness</a></li><li><a href="#collection-hair-frizz" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Frizz</a></li><li><a href="#collection-hair-colour-care" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Colour care</a></li><li><a href="#collection-hair-scalp-care" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Scalp care</a></li><li><a href="#collection-hair-hair-loss" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Hair loss</a></li></ul></div>
+<div class="mb-2 lg:mb-0">
+<p class="pb-1 pt-3 text-overline font-medium uppercase tracking-uppercase text-ink-muted lg:pb-3 lg:pt-0">Shop by step</p>
+<ul class="m-0 list-none p-0">
+<li><a href="#collection-hair-shampoo" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Shampoo</a></li><li><a href="#collection-hair-conditioner" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Conditioner</a></li><li><a href="#collection-hair-treatments" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Treatments</a></li><li><a href="#collection-hair-styling" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Styling</a></li><li><a href="#collection-hair-tools" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Tools</a></li></ul></div>
+<div class="hidden grid-cols-2 gap-4 lg:grid">
+<a href="#collection-hair-new-in-hair" class="group/card block min-w-0 no-underline"><div class="ph relative flex aspect-portrait items-start justify-start overflow-hidden rounded-card border border-line p-2 text-caption leading-snug text-ink-muted"><span>IMAGE PLACEHOLDER<br>4:5</span></div><p class="mt-3 text-body-sm font-medium text-ink group-hover/card:underline">New in hair</p><p class="flex items-center gap-1 text-caption text-ink-muted">Shop now<svg class="icon size-4" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></p></a>
+<a href="#collection-hair-salon-at-home" class="group/card block min-w-0 no-underline"><div class="ph-b relative flex aspect-portrait items-start justify-start overflow-hidden rounded-card border border-line p-2 text-caption leading-snug text-ink-muted"><span>IMAGE PLACEHOLDER<br>4:5</span></div><p class="mt-3 text-body-sm font-medium text-ink group-hover/card:underline">Salon at home</p><p class="flex items-center gap-1 text-caption text-ink-muted">Shop now<svg class="icon size-4" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></p></a>
+</div>
+</div></div></div>
+</div>
+<div data-mega="body" class="group/mega flex flex-col border-b border-line lg:border-0">
+<a href="#collection"  data-mega-link aria-haspopup="true" aria-expanded="false" aria-controls="mega-body" class="group relative flex min-h-[3.25rem] flex-1 items-center justify-between text-body-lg font-medium text-ink no-underline lg:min-h-touch lg:flex-none lg:text-body lg:after:absolute lg:after:inset-x-0 lg:after:bottom-2 lg:after:h-px lg:after:origin-left lg:after:scale-x-0 lg:after:bg-brand lg:after:transition-transform lg:hover:after:scale-x-100 lg:group-data-[open]/mega:after:scale-x-100">Body<svg class="icon size-6 transition-transform duration-fast group-data-[open]/mega:rotate-180 lg:hidden" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></a>
+<div id="mega-body" data-mega-panel class="mega-panel hidden data-[open]:block lg:absolute lg:inset-x-0 lg:top-full lg:z-[1] lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto lg:border-b lg:border-line lg:bg-page lg:shadow-md">
+<div class="mx-auto flex w-full max-w-[calc(var(--container-max)+2*var(--layout-gutter))] flex-col pb-3 pl-3 lg:px-gutter lg:py-8 lg:pl-gutter">
+<a href="#collection-body" class="flex min-h-touch items-center gap-2 text-body font-medium text-brand no-underline hover:underline lg:order-last lg:mt-4 lg:self-start lg:border-t-0 lg:text-body-sm">Shop all body<svg class="icon size-5" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></a>
+<div class="lg:grid lg:grid-cols-[repeat(2,minmax(0,1fr))_minmax(0,1.2fr)] lg:gap-grid-gap">
+<div class="mb-2 lg:mb-0">
+<p class="pb-1 pt-3 text-overline font-medium uppercase tracking-uppercase text-ink-muted lg:pb-3 lg:pt-0">Bath and body</p>
+<ul class="m-0 list-none p-0">
+<li><a href="#collection-body-body-wash" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Body wash</a></li><li><a href="#collection-body-body-lotion" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Body lotion</a></li><li><a href="#collection-body-body-oil" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Body oil</a></li><li><a href="#collection-body-scrubs" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Scrubs</a></li><li><a href="#collection-body-hand-and-foot-care" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Hand and foot care</a></li></ul></div>
+<div class="mb-2 lg:mb-0">
+<p class="pb-1 pt-3 text-overline font-medium uppercase tracking-uppercase text-ink-muted lg:pb-3 lg:pt-0">Fragrance and more</p>
+<ul class="m-0 list-none p-0">
+<li><a href="#collection-body-perfume" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Perfume</a></li><li><a href="#collection-body-body-mist" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Body mist</a></li><li><a href="#collection-body-deodorant" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Deodorant</a></li><li><a href="#collection-body-sun-care" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Sun care</a></li><li><a href="#collection-body-gifts-and-sets" class="flex min-h-touch items-center text-body text-ink no-underline hover:text-brand hover:underline lg:min-h-0 lg:py-2">Gifts and sets</a></li></ul></div>
+<div class="hidden grid-cols-2 gap-4 lg:grid">
+<a href="#collection-body-new-in-body" class="group/card block min-w-0 no-underline"><div class="ph relative flex aspect-portrait items-start justify-start overflow-hidden rounded-card border border-line p-2 text-caption leading-snug text-ink-muted"><span>IMAGE PLACEHOLDER<br>4:5</span></div><p class="mt-3 text-body-sm font-medium text-ink group-hover/card:underline">New in body</p><p class="flex items-center gap-1 text-caption text-ink-muted">Shop now<svg class="icon size-4" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></p></a>
+<a href="#collection-body-gift-sets" class="group/card block min-w-0 no-underline"><div class="ph-b relative flex aspect-portrait items-start justify-start overflow-hidden rounded-card border border-line p-2 text-caption leading-snug text-ink-muted"><span>IMAGE PLACEHOLDER<br>4:5</span></div><p class="mt-3 text-body-sm font-medium text-ink group-hover/card:underline">Gift sets</p><p class="flex items-center gap-1 text-caption text-ink-muted">Shop now<svg class="icon size-4" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg></p></a>
+</div>
+</div></div></div>
+</div>
+</div>
+      <div class="relative self-start" id="market"><button type="button" id="market-btn" aria-haspopup="true" aria-expanded="false" aria-controls="market-menu" class="group inline-flex min-h-touch items-center gap-2 whitespace-nowrap rounded-pill border border-line-strong bg-transparent px-4 text-body-sm text-ink lg:px-3 xl:px-4"><svg class="icon size-[18px]" aria-hidden="true" focusable="false"><use href="#icon-location"></use></svg><span id="market-label">India (INR)</span><svg class="icon size-4 transition-transform duration-fast group-aria-[expanded=true]:rotate-180" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></button><div id="market-menu" role="group" aria-label="Choose country and currency" hidden class="mt-2 w-full min-w-[260px] rounded-control border border-line-strong bg-surface p-2 shadow-md lg:absolute lg:left-0 lg:top-full lg:z-[60] lg:mt-1 lg:w-auto"></div></div>
+    </nav>
+    <div class="flex items-center justify-end gap-3 lg:order-3">
+      <a href="#search" role="search" aria-label="Search products" class="hidden min-h-touch w-full max-w-[13rem] items-center gap-2 rounded-pill border border-line-strong bg-surface px-4 text-body-sm text-ink-muted no-underline lg:flex"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-search"></use></svg><span>Search products</span></a>
+      <div class="flex gap-[2px]">
+        <a href="#account" aria-label="Account" class="inline-flex min-h-touch min-w-touch items-center justify-center gap-2 whitespace-nowrap px-2 text-body-sm leading-[1.2] text-ink no-underline"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-account"></use></svg><span class="hidden lg:inline">Account</span></a>
+        <a href="#cart" aria-label="Cart, 0 items" class="relative inline-flex min-h-touch min-w-touch items-center justify-center gap-2 whitespace-nowrap px-2 text-ink no-underline"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-bag"></use></svg><span class="hidden lg:inline">Cart</span><b class="cnt h-[18px] min-w-[18px] rounded-pill bg-brand px-1 text-center text-caption leading-[20px] text-ink-on-brand">0</b></a>
+      </div>
+    </div>
+    <a href="#search" aria-label="Search products" class="col-span-full hidden min-h-touch items-center gap-2 rounded-pill border border-line-strong bg-surface px-4 text-body-sm text-ink-muted no-underline max-[359px]:flex"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-search"></use></svg><span>Search products</span></a>
+  </div>
+<div id="scrim" class="fixed inset-0 z-overlay hidden bg-scrim [.nav-open_&]:block lg:!hidden"></div>
+<div id="mega-scrim" class="absolute inset-x-0 top-full hidden h-screen bg-scrim lg:[.mega-open_&]:block"></div>
+</header>
+<main id="main">
+<div class="wrap py-2" data-section="Breadcrumb">
+<div class="ann"><b>01 &middot; Orient</b>Breadcrumbs &mdash; CRO: Essential (CRO-PRD-003, PDP-19). Built from the collection and the product only, never from filter parameters.<em>Responsive: parent and current page on one line below 600 px, the current page truncated with an ellipsis; the full trail from 600 px.</em></div>
+<nav class="breadcrumb" aria-label="Breadcrumb"><ol class="breadcrumb-list"><li class="breadcrumb-item"><a href="#top">Home</a></li><li class="breadcrumb-item"><a href="#cat">Skin care</a></li><li class="breadcrumb-item"><a href="#product" aria-current="page">Tinted Moisturiser</a></li></ol></nav>
+</div>
+<section class="wrap grid grid-cols-[minmax(0,1fr)] gap-6 pb-16 pt-2 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:items-start md:gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12 lg:pb-20" id="product" tabindex="-1" aria-label="Product" data-section="Product: gallery and purchase panel">
+<div class="grid min-w-0 grid-cols-[minmax(0,1fr)] gap-3 lg:sticky lg:top-[calc(var(--sticky-top,0px)+var(--space-4))] lg:grid-cols-[var(--space-16)_minmax(0,1fr)] lg:gap-4" id="gallery" role="region" aria-roledescription="carousel" aria-label="Product images">
+<div class="ann"><b>02 &middot; Look</b>Gallery (P1) &mdash; CRO: Essential (gallery, zoom), optional (video, before and after). Plan variant: zoom, with thumbnails. Merchant media, in order: pack shot, texture, application, ingredients, video. Slide 1 follows the chosen shade. Before and after is an optional slide, off by default, because it needs claim-safe images and legal review.<em>Responsive: stage is square on phones so the title, rating and price peek into the first screen, with swipe and dots; 4:5 from 768 px with thumbnails beneath; from 1024 px thumbnails sit in a vertical column on the left and the gallery stays in view while the information scrolls. Zoom: hover magnifier on mouse screens, a Zoom button and a tap open the full-screen viewer.</em></div>
+<div class="gallery__stage group/stage relative overflow-hidden bg-surface lg:col-start-2 lg:row-start-1" id="g-stage">
+<div class="flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" id="g-track" tabindex="0" aria-label="Images. Use the arrow keys to move between images."></div>
+<span class="sr-only" id="g-count" role="status">1 / 5</span>
+<button class="icon-btn icon-btn-filled absolute left-3 top-1/2 z-raised hidden -translate-y-1/2 opacity-0 transition-opacity duration-base ease-standard group-focus-within/stage:opacity-100 group-hover/stage:opacity-100 md:grid" type="button" id="g-prev" aria-label="Previous image"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-left"></use></svg></button>
+<button class="icon-btn icon-btn-filled absolute right-3 top-1/2 z-raised hidden -translate-y-1/2 opacity-0 transition-opacity duration-base ease-standard group-focus-within/stage:opacity-100 group-hover/stage:opacity-100 md:grid" type="button" id="g-next" aria-label="Next image"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-right"></use></svg></button>
+<button class="icon-btn icon-btn-filled absolute bottom-3 right-3 z-raised" type="button" id="g-zoom" aria-haspopup="dialog" aria-label="Zoom image"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-zoom-in"></use></svg></button>
+</div>
+<div class="hidden gap-2 overflow-x-auto p-1 md:flex lg:col-start-1 lg:row-start-1 lg:max-h-[calc(100vh-var(--sticky-top,0px)-var(--space-8))] lg:flex-col lg:overflow-y-auto lg:overflow-x-visible" id="g-thumbs" role="group" aria-label="Choose an image"></div>
+<div class="-mt-2 flex justify-center md:hidden lg:col-span-full" id="g-dots" role="group" aria-label="Choose an image"></div>
+</div>
+<div class="flex min-w-0 flex-col gap-4" id="product-info" data-section="Product information and purchase">
+<div class="ann"><b>03 &middot; Decide</b>Product info (P2), Variant picker (P3), Buy buttons (P4), Selling plan (P5), Pickup (P6), Trust row (P11), Delivery estimate (P12), Inventory status (P13) &mdash; CRO: Essential (CRO-PRD-006 to 024, PDP-01, 04, 05). Category, the page's one H1, subtitle, rating, price, three benefits, shade and size pickers, optional subscribe and save, quantity, Add to bag, stock, express checkout, then delivery, returns and trust below the button (PDP-10), then the details accordion (description, how to use, ingredients, suitability and safety, certifications) closes the column. Add to bag is never disabled for a missing choice; it asks for the shade.<em>Responsive: one column on phones with the sticky bottom bar for the action; two columns from 768 px (information at 50%), 7 / 5 from 1024 px. Shade tiles wrap; size options fill the width.</em></div>
+<div class="flex flex-col gap-3">
+<p class="vendor">Skin care &middot; Moisturiser</p>
+<h1 class="type-h2" id="p-title">Tinted Moisturiser</h1>
+<p class="type-body-lg max-w-text text-ink-secondary">Light tint and everyday hydration, in five shades.</p>
+<div class="flex flex-wrap items-center gap-3" id="p-rating"><span class="rating"><span class="rating-stars text-rating" role="img" aria-label="Rated 4.4 out of 5"><svg class="icon icon-filled" aria-hidden="true" focusable="false"><use href="#icon-star"></use></svg><svg class="icon icon-filled" aria-hidden="true" focusable="false"><use href="#icon-star"></use></svg><svg class="icon icon-filled" aria-hidden="true" focusable="false"><use href="#icon-star"></use></svg><svg class="icon icon-filled" aria-hidden="true" focusable="false"><use href="#icon-star"></use></svg><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-star"></use></svg></span>4.4</span><a class="my-[calc((var(--touch-target-min)_-_var(--space-6))_/_-2)] inline-flex min-h-touch items-center text-body-sm text-ink-secondary underline underline-offset-[0.2em]" href="#reviews">31 reviews</a></div>
+<p class="m-0 text-body-sm text-ink-secondary" aria-label="Key benefits">Lasting hydration &middot; Sheer tint &middot; Fragrance-free</p>
+</div>
+<div class="flex flex-col gap-1">
+<span class="price price-lg" id="p-price"><span class="price-current" id="pr-cur">$32.00</span><s class="price-compare" id="pr-cmp" hidden>$64.00</s></span>
+<p class="text-body-sm font-medium text-brand" id="pr-save" hidden>Save $6.00 (9%)</p>
+<p class="type-caption" id="pr-unit">$0.64 / ml &middot; tax included</p>
+</div>
+<div class="flex flex-col gap-5 [.no-variants_&]:hidden" id="variants" data-section="Variant picker">
+<fieldset class="m-0 min-w-0 border-0 p-0"><legend class="mb-3 flex items-baseline gap-2 p-0 font-medium">Shade<span class="font-regular text-ink-secondary" id="shade-name">Select a shade</span></legend><div class="flex flex-wrap gap-3 max-[479px]:gap-2" id="shade-tiles"></div><p class="message message-error mt-3 items-center" id="shade-err" role="alert" hidden><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-warning"></use></svg><span>Select a shade to add this to your bag.</span></p></fieldset>
+<fieldset class="m-0 min-w-0 border-0 p-0"><legend class="mb-3 flex items-baseline gap-2 p-0 font-medium">Size<span class="font-regular text-ink-secondary" id="size-name">50 ml</span></legend><div class="grid grid-cols-3 gap-2" id="size-opts"></div></fieldset>
+</div>
+<fieldset class="m-0 flex min-w-0 flex-wrap gap-x-6 gap-y-2 border-0 p-0" id="plan" data-section="Selling plan picker"><legend class="sr-only">Purchase options</legend>
+<label class="choice max-w-full flex-none"><input class="choice-input" type="radio" name="plan" value="once" checked><span class="flex flex-col">One-time purchase</span></label>
+<label class="choice max-w-full flex-none"><input class="choice-input" type="radio" name="plan" value="sub"><span class="flex flex-col">Subscribe and save<span class="type-caption flex flex-col">Every 8 weeks, cancel any time. Sample plan.</span></span></label>
+</fieldset><div class="flex flex-col gap-3" id="buy" data-section="Buy buttons">
+<div class="flex gap-3 max-[299px]:flex-wrap"><div class="qty" role="group" aria-label="Quantity"><button class="qty-btn" type="button" id="q-minus" aria-label="Decrease quantity"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-minus"></use></svg></button><input class="qty-input" id="q-input" type="text" inputmode="numeric" pattern="[0-9]*" value="1" aria-label="Quantity"><button class="qty-btn" type="button" id="q-plus" aria-label="Increase quantity"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-plus"></use></svg></button></div>
+<button class="btn btn-primary btn-lg flex-auto aria-busy:pointer-events-none aria-busy:cursor-progress data-[done=true]:pointer-events-none data-[done=true]:border-brand-active data-[done=true]:bg-brand-active" type="button" id="atc"><svg class="icon [&.is-spin]:animate-[spin_calc(var(--duration-slow)_*_3)_linear_infinite]" aria-hidden="true" focusable="false"><use href="#icon-bag"></use></svg><span id="atc-label">Add to bag</span></button></div>
+<p class="message message-success items-center" id="atc-msg" role="status" hidden><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-check-circle"></use></svg><span id="atc-msg-t">Added to your bag.</span><a class="link ml-auto whitespace-nowrap" href="#bag">View bag</a></p>
+<p class="flex items-center gap-2 text-body-sm text-status-success data-[low=true]:text-status-warning data-[out=true]:text-status-error" id="stock" role="status"><svg class="icon size-4" aria-hidden="true" focusable="false"><use href="#icon-check-circle"></use></svg><span id="stock-t">In stock</span></p>
+<div class="grid min-h-control-sm place-items-center rounded-control border border-dashed border-line-strong px-4 py-2 text-center text-caption text-ink-secondary" id="express">Express checkout buttons (Shopify dynamic checkout, set in the store)</div>
+</div>
+<ul class="m-0 grid list-none gap-2 border-t border-line p-0 pt-5 text-ink-secondary" id="assure" data-section="Delivery, returns, pickup and trust">
+<li class="block text-body-sm" id="dl-est">Estimated delivery 17 to 20 Nov. Order before 2 pm to dispatch today.</li>
+<li class="block text-body-sm" id="fs-msg">Free shipping on orders over $50</li>
+<li class="block text-body-sm">Free returns within 30 days. <a class="text-ink underline" href="#policy">Returns policy</a></li>
+<li class="block text-body-sm">Pickup available at Store name</li>
+</ul>
+<p class="flex flex-wrap items-center gap-x-3 gap-y-1 text-caption text-ink-secondary" aria-label="Payment and security">Secure checkout &middot; Visa &middot; Mastercard &middot; UPI &middot; Wallet</p>
+<div class="accordion" id="details" data-section="Product details">
+<details class="accordion-item" open><summary class="accordion-summary">Description <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></summary><div class="accordion-panel text-ink-secondary [&_p+p]:mt-3"><p>A lightweight tinted moisturiser for everyday wear. Merchant description goes here, from the product description field. Sample text.</p></div></details>
+<details class="accordion-item"><summary class="accordion-summary">How to use <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></summary><div class="accordion-panel text-ink-secondary [&_p+p]:mt-3"><ol class="m-0 grid list-decimal gap-2 pl-5"><li>Cleanse: start with clean, dry skin.</li><li>Apply: warm a pea-sized drop between your fingertips and smooth over the face and neck.</li><li>Protect: in the morning, finish with sunscreen.</li></ol><p>Use morning and evening.</p></div></details>
+<details class="accordion-item"><summary class="accordion-summary">Full ingredients <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></summary><div class="accordion-panel text-ink-secondary [&_p+p]:mt-3"><p>Full ingredient list (INCI) from the product metafield. Sample text: Aqua, Glycerin, Squalane, Sodium Hyaluronate, Niacinamide, Iron Oxides.</p></div></details>
+<details class="accordion-item"><summary class="accordion-summary">Suitability and safety <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></summary><div class="accordion-panel text-ink-secondary [&_p+p]:mt-3"><p><b>Best for:</b> normal, dry and combination skin. <b>Not for:</b> merchant-filled. Sample text.</p><p>For external use. Patch test before first use. Merchant-filled warnings, in claim-safe wording.</p></div></details>
+<details class="accordion-item"><summary class="accordion-summary">Certifications and claims <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></summary><div class="accordion-panel text-ink-secondary [&_p+p]:mt-3"><p>Only certifications the merchant can evidence. Sample text: none listed.</p><p class="type-caption">Results vary. Statements on this page are not medical advice. Legal review of claims is an open dependency.</p></div></details>
+</div>
+</div>
+</section>
+<section class="bg-warm py-12 lg:py-20" id="story" data-section="Product storytelling">
+<div class="ann"><b>04 &middot; Story</b>Editorial section: key benefits and key ingredients &mdash; CRO: Essential (key benefits), industry-specific (ADD-07, PDP-08). The benefits are the headline and lead, so no separate benefits strip exists. The one band with its own surface. One large image beside the three actives and what each is for. Replaces three separate image cards. Merchant metafields; claim-safe wording.<em>Responsive: image beside text from 1024 px, image first then text below.</em></div>
+<div class="wrap grid grid-cols-[minmax(0,1fr)] items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+<div class="relative aspect-square overflow-hidden md:aspect-portrait" aria-hidden="true"><div class="ph-b absolute inset-0"></div><span class="absolute inset-x-0 bottom-4 z-[2] px-2 text-center text-caption uppercase tracking-wide text-ink-secondary">Editorial image &middot; ingredients</span></div>
+<div class="flex min-w-0 flex-col gap-6">
+<div class="flex max-w-text flex-col gap-3 [&_p]:text-ink-secondary"><p class="type-overline !text-ink-secondary">Why it works</p><h2 class="type-h3">Hydration, a sheer tint and nothing you do not need</h2><p>Lasting hydration, five shades and a fragrance-free formula, built on three key ingredients.</p></div>
+<ul class="m-0 list-none p-0">
+<li class="flex flex-col gap-1 border-t border-line-strong py-4"><h3 class="type-h4">Hyaluronic acid</h3><p class="text-ink-secondary">Helps skin hold on to water, for a softer feel.</p></li>
+<li class="flex flex-col gap-1 border-t border-line-strong py-4"><h3 class="type-h4">Squalane</h3><p class="text-ink-secondary">A light oil that cushions the skin without a heavy finish.</p></li>
+<li class="flex flex-col gap-1 border-t border-line-strong py-4"><h3 class="type-h4">Niacinamide</h3><p class="text-ink-secondary">A gentle, widely used ingredient in everyday skincare.</p></li>
+</ul>
+<p class="border-t border-line-strong pt-4 text-body-sm text-ink-secondary">Free from fragrance, parabens and mineral oil.</p>
+</div>
+</div>
+</section>
+<section class="py-12 lg:py-20" id="routine" data-section="Complete your routine">
+<div class="ann"><b>05 &middot; Complete</b>Complementary Products (frequently-bought-together layout) and set contents &mdash; CRO: Essential (PDP complementary intent, ADD-09). Shopify's native recommendations (complementary); no discount logic. Pick what you want and add the selection in one tap.<em>Responsive: list and summary side by side from 1024 px; stacked below.</em></div>
+<div class="wrap">
+<div class="mb-8 flex max-w-text flex-col gap-3 [&_p]:text-ink-secondary"><p class="type-overline !text-ink-secondary">Complete your routine</p><h2 class="type-h3">Pairs well with</h2></div>
+<div class="grid grid-cols-[minmax(0,1fr)] gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] lg:items-start lg:gap-12">
+<ul class="m-0 list-none border-t border-line p-0" id="routine-list"></ul>
+<div class="flex flex-col gap-4"><p class="type-utility" id="routine-n">3 products selected</p><span class="price price-lg"><span class="price-current" id="routine-total">$76.00</span></span><button class="btn btn-primary btn-block" type="button" id="routine-add">Add selected to bag</button><p class="message message-success" id="routine-msg" role="status" hidden><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-check-circle"></use></svg><span>Added to your bag.</span></p></div>
+</div>
+</div>
+</section>
+<section class="border-t border-line py-12 lg:py-20" id="reviews" data-section="Reviews">
+<div class="ann"><b>06 &middot; Trust</b>Rating summary (display only) and the reviews app block (P8) &mdash; CRO: optional (rating), Removed (review cards, photos, filters: need an app). The theme builds no review system; it shows the rating stored in a product metafield and keeps the app-block area the Theme Store requires. No reviews, names or photos are invented here.<em>Responsive: summary beside the slot from 1024 px, stacked below.</em></div>
+<div class="wrap">
+<div class="mb-8 flex max-w-text flex-col gap-3 [&_p]:text-ink-secondary"><p class="type-overline !text-ink-secondary">Reviews</p><h2 class="type-h3">Customer reviews</h2></div>
+<div class="grid grid-cols-[minmax(0,1fr)] gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:items-start lg:gap-12">
+<div class="flex flex-col gap-2"><span class="font-heading text-h1 leading-tight [font-variant-numeric:lining-nums]" id="rv-score">4.4</span><span class="rating"><span class="rating-stars text-rating" role="img" aria-label="Rated 4.4 out of 5"><svg class="icon icon-filled" aria-hidden="true" focusable="false"><use href="#icon-star"></use></svg><svg class="icon icon-filled" aria-hidden="true" focusable="false"><use href="#icon-star"></use></svg><svg class="icon icon-filled" aria-hidden="true" focusable="false"><use href="#icon-star"></use></svg><svg class="icon icon-filled" aria-hidden="true" focusable="false"><use href="#icon-star"></use></svg><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-star"></use></svg></span></span><p class="type-caption">Based on 31 reviews. Sample values from the product rating metafield; shown only from 5 reviews.</p></div>
+<div class="flex flex-col gap-3 border border-dashed border-line-strong p-6 text-ink-secondary" id="reviews-slot" role="region" aria-label="Reviews app block (placeholder)"><p class="type-utility">Reviews app block (placeholder)</p><p>The store's review app renders here. It can provide:</p><ul class="m-0 list-disc pl-5"><li>the rating breakdown and review cards</li><li>verified purchase labels</li><li>customer photos, filtering and sorting</li></ul><p class="type-caption">The theme provides the empty block area and the display rating only. Nothing in this slot is real content.</p></div>
+</div>
+</div>
+</section>
+<section class="border-t border-line py-12 lg:py-20" id="related" data-section="Related products">
+<div class="ann"><b>07 &middot; Discover</b>Related Products &mdash; CRO: Essential (Shopify's native related recommendations). Same card as the PLP, without the quick view bar.<em>Responsive: 2 columns on phones, 3 from 600 px, 4 from 1024 px (Design System grid tokens).</em></div>
+<div class="wrap">
+<div class="mb-8 flex max-w-text flex-col gap-3 [&_p]:text-ink-secondary"><p class="type-overline !text-ink-secondary">You may also like</p><h2 class="type-h3">Related products</h2></div>
+<div class="grid grid-cols-[repeat(var(--grid-columns-products),minmax(0,1fr))] gap-grid-gap gap-y-10" id="related-grid"></div>
+</div>
+</section>
+<section class="border-t border-line py-12 lg:py-20" id="faq" data-section="Product FAQ">
+<div class="ann"><b>08 &middot; Answer</b>Product FAQ &mdash; CRO: optional, merchant content. Native accordion; answers common questions that would otherwise send shoppers away.<em>Responsive: reading width capped; 44 px headers on every device.</em></div>
+<div class="wrap">
+<div class="mb-8 flex max-w-text flex-col gap-3 [&_p]:text-ink-secondary"><p class="type-overline !text-ink-secondary">Questions</p><h2 class="type-h3">Frequently asked</h2></div>
+<div class="accordion max-w-narrow">
+<details class="accordion-item"><summary class="accordion-summary">Can I use it every day? <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></summary><div class="accordion-panel [&_p]:text-ink-secondary"><p>Merchant answer goes here. Sample text.</p></div></details>
+<details class="accordion-item"><summary class="accordion-summary">How do I choose my shade? <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></summary><div class="accordion-panel [&_p]:text-ink-secondary"><p>Merchant answer goes here. Sample text.</p></div></details>
+<details class="accordion-item"><summary class="accordion-summary">Is it suitable for sensitive skin? <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></summary><div class="accordion-panel [&_p]:text-ink-secondary"><p>Merchant answer goes here, in claim-safe wording. Sample text.</p></div></details>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-inverse text-ink-inverse">
+  <div class="mx-auto grid w-full max-w-[calc(var(--container-max)+2*var(--layout-gutter))] gap-6 px-gutter py-section md:grid-cols-[minmax(0,10rem)_minmax(0,1fr)] md:gap-[calc(var(--space-10)+var(--space-1))] lg:grid-cols-[3fr_8fr] lg:gap-16">
+        <div>
+      <a href="#top" class="mb-[14px] inline-flex min-h-touch items-center pr-2 text-ink-inverse"><svg viewBox="0 0 520 100" role="img" aria-label="NUDGE" fill="currentColor" class="block max-w-full h-7 w-auto"><path d="M0 14H16V100H0ZM66 0H82V86H66ZM0 14H19L82 86H63Z"/><path d="M106 0H122V62A25 25 0 0 0 172 62V0H188V62A41 41 0 0 1 106 62Z"/><path fill-rule="evenodd" d="M212 0H252A50 50 0 0 1 252 100H212ZM228 16H252A34 34 0 0 1 252 84H228Z"/><path d="M378 42H426V58H378Z"/><path d="M450 0H520V16H466V42H510V58H466V84H520V100H450Z"/><path d="M410.4 25.9A42 42 0 1 0 418 50" fill="none" stroke="currentColor" stroke-width="16"/></svg></a>
+      <p class="text-body-sm text-ink-inverse-secondary">One line about the brand.</p>
+      <div class="mt-4 flex flex-wrap gap-2"><a href="#" aria-label="Instagram" class="flex size-touch items-center justify-center rounded-pill border border-line-inverse-subtle text-ink-inverse transition-colors hover:bg-ink-inverse hover:text-ink"><svg class="icon size-5" aria-hidden="true" focusable="false"><use href="#icon-instagram"></use></svg></a><a href="#" aria-label="Facebook" class="flex size-touch items-center justify-center rounded-pill border border-line-inverse-subtle text-ink-inverse transition-colors hover:bg-ink-inverse hover:text-ink"><svg class="icon size-5" aria-hidden="true" focusable="false"><use href="#icon-facebook"></use></svg></a><a href="#" aria-label="YouTube" class="flex size-touch items-center justify-center rounded-pill border border-line-inverse-subtle text-ink-inverse transition-colors hover:bg-ink-inverse hover:text-ink"><svg class="icon size-5" aria-hidden="true" focusable="false"><use href="#icon-youtube"></use></svg></a></div>
+    </div>
+    <div class="md:grid md:grid-cols-[repeat(4,auto)] md:justify-between md:gap-grid-gap xl:grid-cols-4 xl:justify-normal">
+      <div class="fcol group border-t border-line-inverse-subtle md:border-t-0"><button type="button" aria-expanded="false" class="flex min-h-12 w-full items-center justify-between text-left type-h6 text-ink-inverse md:pointer-events-none md:mb-3 md:min-h-0"><span>Shop</span><svg class="icon size-6 md:hidden" aria-hidden="true" focusable="false"><use href="#icon-plus"></use></svg></button><div class="hidden flex-col pb-2 group-[.is-open]:flex md:flex md:pb-0"><a href="#collection" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Skin care</a><a href="#collection" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Makeup</a><a href="#collection" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Hair</a><a href="#collection" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Body</a><a href="#collection" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Gift sets</a></div></div>
+      <div class="fcol group border-t border-line-inverse-subtle md:border-t-0"><button type="button" aria-expanded="false" class="flex min-h-12 w-full items-center justify-between text-left type-h6 text-ink-inverse md:pointer-events-none md:mb-3 md:min-h-0"><span>About</span><svg class="icon size-6 md:hidden" aria-hidden="true" focusable="false"><use href="#icon-plus"></use></svg></button><div class="hidden flex-col pb-2 group-[.is-open]:flex md:flex md:pb-0"><a href="../08-NUDGE-Beauty-About-Wireframe/About_Page_Wireframe_v1.html" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">About us</a><a href="../09-NUDGE-Beauty-Story-Wireframe/Story_Page_Wireframe_v1.html" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Our story</a><a href="../14-NUDGE-Beauty-Blog-Listing-Wireframe/Blog_Listing_Wireframe_v1.html" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Journal</a><a href="../07-NUDGE-Beauty-FAQ-Wireframe/FAQ_Page_Wireframe_v1.html" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">FAQ</a></div></div>
+      <div class="fcol group border-t border-line-inverse-subtle md:border-t-0"><button type="button" aria-expanded="false" class="flex min-h-12 w-full items-center justify-between text-left type-h6 text-ink-inverse md:pointer-events-none md:mb-3 md:min-h-0"><span>Support</span><svg class="icon size-6 md:hidden" aria-hidden="true" focusable="false"><use href="#icon-plus"></use></svg></button><div class="hidden flex-col pb-2 group-[.is-open]:flex md:flex md:pb-0"><a href="../06-NUDGE-Beauty-Contact-Wireframe/Contact_Page_Wireframe_v1.html" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Contact us</a><a href="#help" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Support</a><a href="../10-NUDGE-Beauty-Shipping-Policy-Wireframe/Shipping_Policy_Wireframe_v1.html" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Shipping &amp; Delivery</a><a href="../11-NUDGE-Beauty-Returns-Policy-Wireframe/Returns_Policy_Wireframe_v1.html" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Returns &amp; Refunds</a></div></div>
+      <div class="fcol group border-t border-line-inverse-subtle md:border-t-0"><button type="button" aria-expanded="false" class="flex min-h-12 w-full items-center justify-between text-left type-h6 text-ink-inverse md:pointer-events-none md:mb-3 md:min-h-0"><span>Policies</span><svg class="icon size-6 md:hidden" aria-hidden="true" focusable="false"><use href="#icon-plus"></use></svg></button><div class="hidden flex-col pb-2 group-[.is-open]:flex md:flex md:pb-0"><a href="../12-NUDGE-Beauty-Privacy-Policy-Wireframe/Privacy_Policy_Wireframe_v1.html" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Privacy policy</a><a href="../13-NUDGE-Beauty-Terms-Wireframe/Terms_Conditions_Wireframe_v1.html" class="flex min-h-touch items-center text-ink-inverse-secondary no-underline hover:text-ink-inverse hover:underline">Terms of service</a></div></div>
+    </div>
+    <div class="flex flex-col items-start gap-4 border-t border-line-inverse-subtle pt-5 md:col-span-full md:flex-row md:flex-wrap md:items-center md:justify-between">
+      <div class="flex flex-wrap gap-2" aria-label="Payment methods"><i class="border border-line-inverse-subtle px-3 py-1 text-caption font-medium not-italic text-ink-inverse-secondary">Visa</i><i class="border border-line-inverse-subtle px-3 py-1 text-caption font-medium not-italic text-ink-inverse-secondary">Mastercard</i><i class="border border-line-inverse-subtle px-3 py-1 text-caption font-medium not-italic text-ink-inverse-secondary">UPI</i><i class="border border-line-inverse-subtle px-3 py-1 text-caption font-medium not-italic text-ink-inverse-secondary">Wallet</i></div>
+      <div class="text-body-sm text-ink-inverse-secondary">Secure checkout. Easy returns. Support when you need it.</div>
+      <a href="#top" class="flex min-h-touch w-full items-center justify-center gap-2 border border-ink-inverse text-ink-inverse no-underline sm:w-auto sm:border-0 sm:px-1 sm:underline"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-chevron-up"></use></svg><span>Back to top</span></a>
+    </div>
+  </div>
+</footer>
+<div class="invisible fixed inset-x-0 bottom-0 z-sticky translate-y-full border-t border-line bg-surface px-gutter py-2 shadow-lg transition-[transform,visibility] duration-base ease-standard md:inset-x-auto md:bottom-4 md:left-1/2 md:w-[min(var(--container-narrow),calc(100%_-_2_*_var(--layout-gutter)))] md:-translate-x-1/2 md:translate-y-[calc(100%_+_var(--space-4))] md:rounded-card md:border md:px-4 md:py-3 [&.is-on]:visible [&.is-on]:translate-y-0 [.nav-open_&]:!invisible" id="sticky-atc" role="region" aria-label="Quick purchase" inert>
+<div class="ann"><b>09 &middot; Reach</b>Sticky add to cart (P9) &mdash; CRO: Essential. A slim bar on phones, a compact floating bar from 768 px; it appears once the buy box has scrolled out of view and carries the same price and action.<em>Responsive: full-width bottom bar below 768 px; centred floating bar with a thumbnail and name from 768 px.</em></div>
+<div class="flex items-center gap-3">
+<div class="relative hidden aspect-portrait w-12 flex-none overflow-hidden md:block" aria-hidden="true"><div class="ph-b absolute inset-0"></div></div>
+<div class="flex min-w-0 flex-1 flex-col"><p class="hidden truncate font-medium md:block">Tinted Moisturiser</p><p class="truncate text-caption text-ink-secondary" id="sa-var">Select a shade &middot; 50 ml</p></div>
+<span class="price flex-none"><span class="price-current" id="sa-price">$32.00</span></span>
+<button class="btn btn-primary flex-none" type="button" id="sa-add"><span id="sa-label">Add to bag</span></button>
+</div>
+</div>
+<dialog class="drawer inset-0 w-full" id="zoom" aria-labelledby="zoom-title">
+<div class="drawer-head"><h2 class="m-0 type-h5" id="zoom-title">Product images</h2><button class="icon-btn" type="button" data-drawer-close aria-label="Close image viewer"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-close"></use></svg></button></div>
+<div class="drawer-body grid place-items-center bg-surface p-4"><div class="relative grid w-full max-w-narrow grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3"><button class="icon-btn icon-btn-filled" type="button" id="z-prev" aria-label="Previous image"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-left"></use></svg></button><div class="relative mx-auto aspect-portrait max-h-[calc(100vh-var(--space-24)-var(--space-12))] w-full overflow-hidden" id="zoom-stage"><div class="ph absolute inset-0" id="zoom-ph"></div></div><button class="icon-btn icon-btn-filled" type="button" id="z-next" aria-label="Next image"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-right"></use></svg></button><p class="type-caption col-span-full text-center" id="zoom-cap" role="status"></p></div></div>
+</dialog>
+<div id="wp" role="dialog" aria-label="Width preview"><div class="bar2"><b>Viewport:</b><span id="wp-btns"></span><label><input type="checkbox" id="wp-ann"> annotations</label><span id="wp-info"></span><button type="button" id="wp-close">Close</button></div><div class="stage"><div><iframe id="wp-f" title="Page at the chosen width"></iframe></div></div></div>
+<script>
+(function(){
+ var $=function(id){return document.getElementById(id)},t=$("t-wp");if(!t)return;
+ var wp=$("wp"),wf=$("wp-f"),cur=1440;
+ function wapply(){var avail=wp.clientWidth-32,sc=Math.min(1,avail/cur),h=Math.max(600,(wp.clientHeight-90)/sc);wf.style.width=cur+"px";wf.style.height=h+"px";wf.parentNode.style.width=cur+"px";wf.parentNode.style.height=h*sc+"px";wf.parentNode.style.transform="scale("+sc+")";wf.parentNode.style.transformOrigin="top left";$("wp-info").textContent=cur+" px wide, shown at "+Math.round(sc*100)+"%";var base=location.href.split("#")[0].split("?")[0];wf.src=base+"?embed=1"+($("wp-ann").checked?"":"&ann=0")}
+ [1920,1440,1280,1024,768,430,390,320].forEach(function(w){var bt=document.createElement("button");bt.type="button";bt.textContent=w;if(w===cur){bt.className="on"}bt.addEventListener("click",function(){cur=w;[].forEach.call($("wp-btns").children,function(x){x.className=""});bt.className="on";wapply()});$("wp-btns").appendChild(bt)});
+ t.addEventListener("click",function(){wp.classList.add("open");wapply()});$("wp-close").addEventListener("click",function(){wp.classList.remove("open")});$("wp-ann").addEventListener("change",wapply);
+ window.addEventListener("resize",function(){if(wp.classList.contains("open"))wapply()});
+ document.addEventListener("keydown",function(e){if(e.key==="Escape")wp.classList.remove("open")});
+})();
+</script>
+<script type="text/plain" id="selftest-src">
+(function(){
+ function vis(el){var cs=getComputedStyle(el);if(cs.display==="none"||cs.visibility==="hidden")return false;var r=el.getBoundingClientRect();return r.width>0&&r.height>0}
+ function sel(el){var s=el.tagName.toLowerCase();if(el.id)s+="#"+el.id;if(el.className&&typeof el.className==="string")s+="."+el.className.trim().split(/\s+/).slice(0,2).join(".");return s}
+ function $(id){return document.getElementById(id)}
+ function wait(ms){return new Promise(function(r){setTimeout(r,ms)})}
+ async function run(){
+  var W=window.innerWidth,de=document.documentElement,out={docHeight:de.scrollHeight,width:W,checks:{}},N=window.NudgePDP,SIDE=W>=768,DESK=W>=1024;
+  var st=document.createElement("style");st.textContent="*{transition:none!important}";document.head.appendChild(st);de.style.scrollBehavior="auto";void document.body.offsetHeight;
+  N.reset();
+  /* 0 Tailwind applied and web fonts loaded */
+  var twOk=getComputedStyle($("site-header")).position==="sticky"&&getComputedStyle($("product-info")).display==="flex"&&getComputedStyle($("gallery")).display==="grid"&&!document.querySelector('link[href*="components.css"],link[href*="base.css"]');
+  var fl=Array.from(document.fonts).some(function(x){return x.family.indexOf("Cormorant")>-1&&x.status==="loaded"})&&Array.from(document.fonts).some(function(x){return x.family.indexOf("DM Sans")>-1&&x.status==="loaded"});
+  out.checks.tailwindAndFonts={pass:twOk&&fl,detail:"Tailwind utilities applied, no Design System component stylesheet: "+twOk+"; Cormorant and DM Sans loaded: "+fl};
+  /* 1 overflow */
+  var off=[];document.querySelectorAll("main *,header *,footer *").forEach(function(el){if(el.closest("#g-track")||el.closest(".sr-only")||el.closest(".rv")||el.closest("#g-thumbs")||el.closest("#nav")&&W<1024)return;var r=el.getBoundingClientRect();if(r.width>0&&(r.right>W+1||r.left<-1))off.push(sel(el))});
+  out.checks.overflow={pass:de.scrollWidth<=W+1&&off.length===0,detail:"scrollWidth "+de.scrollWidth+" of "+W+(off.length?"; past the edge: "+off.slice(0,4).join(", "):"")};
+  /* 2 structure */
+  var hs=[].slice.call(document.querySelectorAll("h1,h2,h3,h4,h5,h6")).filter(function(h){return !h.closest(".rv")&&!h.closest("dialog")}),lv=0,skip=[];hs.forEach(function(h){var n=+h.tagName[1];if(lv&&n>lv+1)skip.push(h.tagName+" after H"+lv);lv=n});
+  var ids=["gallery","product-info","story","routine","reviews","faq","related"],miss=ids.filter(function(i){return !$(i)});
+  out.checks.structure={pass:document.querySelectorAll("h1").length===1&&skip.length===0&&miss.length===0&&!!document.querySelector("nav.breadcrumb")&&!!document.querySelector("main#main"),detail:"H1 "+document.querySelectorAll("h1").length+"; skipped levels: "+(skip.join(", ")||"none")+"; missing sections: "+(miss.join(", ")||"none")};
+  /* 3 layout */
+  var g=$("gallery").getBoundingClientRect(),inf=$("product-info").getBoundingClientRect(),lay,ldet;
+  if(SIDE){lay=g.right<=inf.left+1&&Math.abs(g.top-inf.top)<=48;ldet="gallery ends "+Math.round(g.right)+", info starts "+Math.round(inf.left)+"; widths "+Math.round(g.width)+" / "+Math.round(inf.width)}else{lay=inf.top>=g.bottom-1&&g.top<inf.top;ldet="stacked: gallery first ("+Math.round(g.height)+" px tall), info below"}
+  if(DESK){var sticky=getComputedStyle($("gallery")).position==="sticky";lay=lay&&sticky;ldet+="; gallery sticky: "+sticky}
+  out.checks.layout={pass:lay,detail:ldet};
+  /* 4 gallery */
+  var slides=document.querySelectorAll(".gallery__slide"),th=[].slice.call(document.querySelectorAll(".gallery__thumb")),dots=document.querySelectorAll(".gallery__dot"),gok=slides.length===5&&th.length===5&&dots.length===5,gd="";
+  if(DESK){var a=th[0].getBoundingClientRect(),b2=th[1].getBoundingClientRect(),stg=$("g-stage").getBoundingClientRect();gok=gok&&Math.abs(a.left-b2.left)<=1&&b2.top>a.top&&a.right<=stg.left+1;gd="vertical thumbnails left of the stage; "}
+  else if(SIDE){var a2=th[0].getBoundingClientRect(),b3=th[1].getBoundingClientRect(),stg2=$("g-stage").getBoundingClientRect();gok=gok&&b3.left>a2.left&&a2.top>=stg2.bottom-1;gd="thumbnails under the stage; "}
+  else{gok=gok&&!vis($("g-thumbs"))&&vis($("g-dots"));gd="dots, no thumbnails; "}
+  N.go(2);var c1=$("g-count").textContent==="3 / 5"&&(th[2].getAttribute("aria-current")==="true"||dots[2].getAttribute("aria-current")==="true");N.go(0);
+  if(SIDE){$("g-next").click();var c2=$("g-count").textContent==="2 / 5";$("g-prev").click();var c3=$("g-count").textContent==="1 / 5";gok=gok&&c2&&c3}
+  gok=gok&&c1;gd+="selection and counter work: "+c1;
+  var zb=$("g-zoom");zb.focus();zb.click();await wait(150);var zo=$("zoom").open&&$("zoom-cap").textContent.length>0;$("z-next").click();var zc=/2 of 5/.test($("zoom-cap").textContent);window.NudgeDrawer.close($("zoom"));await wait(100);var zf=document.activeElement===zb;
+  gok=gok&&zo&&zc&&zf;gd+="; viewer opens, steps, closes with focus back: "+(zo&&zc&&zf);
+  out.checks.gallery={pass:gok,detail:gd};
+  /* 5 variants */
+  N.reset();var tiles=document.querySelectorAll(".tile-input"),dis=[].filter.call(tiles,function(t){return t.disabled}).length;
+  N.pick(0);var n1=$("shade-name").textContent==="Rose";var gs=$("gallery").hasAttribute("data-shade");
+  N.size("duo");var p1=$("pr-cur").textContent==="$58.00"&&!$("pr-cmp").hidden&&!$("pr-save").hidden&&/\$0\.58/.test($("pr-unit").textContent);
+  var szDis=[].filter.call(document.querySelectorAll(".opt-input"),function(o){return o.disabled}).length;
+  N.size("50");var p2=$("pr-cur").textContent==="$32.00"&&$("pr-cmp").hidden;
+  out.checks.variants={pass:tiles.length===5&&dis===1&&n1&&gs&&p1&&p2&&szDis===1,detail:"5 image swatches, "+dis+" sold out; Rose selected updates the name and the gallery: "+(n1&&gs)+"; Duo pack shows $58.00, compare-at, saving and unit price: "+p1+"; one size sold out: "+szDis+"; back to 50 ml: "+p2};
+  /* 6 prompt for a missing shade; the button is never disabled */
+  N.reset();var cnt0=N.bag();$("atc").click();var pr=!$("shade-err").hidden&&document.activeElement&&document.activeElement.classList.contains("tile-input")&&$("atc").getAttribute("aria-busy")!=="true"&&$("atc").getAttribute("aria-disabled")!=="true"&&!$("atc").disabled&&N.bag()===cnt0;
+  out.checks.prompt={pass:pr,detail:"Add to bag with no shade shows the message, focuses the shade picker, stays enabled, adds nothing: "+pr};
+  /* 7 add to bag: loading, one submission, success, reset */
+  N.pick(0);var b0=N.bag();$("atc").click();var busy=$("atc").getAttribute("aria-busy")==="true"&&/Adding/.test($("atc-label").textContent);$("atc").click();$("sa-add").click();await wait(1300);var done=N.bag()===b0+1&&/Added/.test($("atc-label").textContent)&&!$("atc-msg").hidden&&$("atc").getAttribute("aria-busy")!=="true";await wait(3500);var back=$("atc-label").textContent==="Add to bag";
+  out.checks.addToBag={pass:busy&&done&&back,detail:"loading state shows Adding: "+busy+"; three rapid clicks add once (bag +1) and show success: "+done+"; label returns: "+back};
+  /* 8 quantity limited by stock */
+  N.reset();N.pick(0);N.size("duo");var qi=$("q-input");$("q-plus").click();$("q-plus").click();$("q-plus").click();var qmax=qi.value==="3"&&$("q-plus").disabled;$("q-minus").click();$("q-minus").click();$("q-minus").click();var qmin=qi.value==="1"&&$("q-minus").disabled;var low=/Only 3 left/.test($("stock-t").textContent);
+  out.checks.quantity={pass:qmax&&qmin&&low,detail:"capped at the 3 in stock: "+qmax+"; floor of 1: "+qmin+"; low-stock message: "+low};
+  /* 9 sticky bar */
+  N.reset();window.scrollTo(0,0);await wait(150);var sa=$("sticky-atc"),off0=!sa.classList.contains("is-on")&&sa.hasAttribute("inert")&&getComputedStyle(sa).visibility==="hidden";var bb=$("buy").getBoundingClientRect();window.scrollTo(0,bb.bottom+window.scrollY+400);await wait(200);window.dispatchEvent(new Event("scroll"));await wait(100);var on=sa.classList.contains("is-on")&&!sa.hasAttribute("inert")&&getComputedStyle(sa).visibility==="visible";var sr=sa.getBoundingClientRect(),hh=Math.round(sr.height),fixed=getComputedStyle(sa).position==="fixed"&&sr.bottom<=window.innerHeight+1&&hh<=88;var same=$("sa-price").textContent===$("pr-cur").textContent;
+  N.pick(0);var cnt1=N.bag();$("sa-add").click();await wait(1300);var sadd=N.bag()===cnt1+1;window.scrollTo(0,0);await wait(200);window.dispatchEvent(new Event("scroll"));await wait(100);var gone=!sa.classList.contains("is-on");
+  out.checks.stickyBar={pass:off0&&on&&fixed&&same&&sadd&&gone,detail:"hidden at the top: "+off0+"; shows after the buy box scrolls away: "+on+"; fixed to the bottom, "+hh+" px tall: "+fixed+"; price matches: "+same+"; its button adds: "+sadd+"; hides again: "+gone};
+  /* 10 content and exclusions */
+  N.reset();var acc=document.querySelectorAll("#details details").length,ing=document.querySelectorAll("#story li").length,stp=document.querySelectorAll("#details ol li").length,rel=document.querySelectorAll("#related-grid article").length;
+  var t0=$("routine-total").textContent;document.querySelector("#routine-list input").click();var t1=$("routine-total").textContent;document.querySelector("#routine-list input").click();
+  var main=document.getElementById("main").innerText.toLowerCase(),bad2=[];["cash on delivery","installment","size guide","recently viewed","wishlist","pre-order","buy now","verified purchase"].forEach(function(w){if(main.indexOf(w)>-1&&w!=="verified purchase")bad2.push(w)});
+  var fake=document.querySelectorAll(".review-card,.review,[data-review]").length;
+  out.checks.content={pass:acc===5&&ing===3&&stp===3&&rel>=4&&t0!==t1&&$("reviews-slot")&&fake===0&&bad2.length===0,detail:acc+" detail accordions, "+ing+" ingredients, "+stp+" steps, "+rel+" related cards; routine total changes on untick ("+t0+" to "+t1+"); reviews app slot present, "+fake+" invented reviews; excluded wording found in the page: "+(bad2.join(", ")||"none")};
+  /* 11 targets and typography */
+  var small=[];[].slice.call(document.querySelectorAll("main a,main button,main summary,main select,main input,main .tile,main .opt,main .choice,header a,header button,footer a,footer button")).filter(function(e){return vis(e)&&!e.closest(".drawer")&&!e.closest(".sr-only")&&!(W<1024&&e.closest("#nav"))&&!e.closest(".rv")&&!e.closest(".ann")}).forEach(function(e){var r=e.getBoundingClientRect();if(e.classList.contains("tile-input")||e.classList.contains("opt-input")||e.classList.contains("choice-input")||e.classList.contains("qty-input"))return;if(e.closest("#related-grid h3")||(e.tagName==="A"&&e.closest("#assure"))||e.closest(".breadcrumb-item")&&r.width>=44&&r.height>=44)return;if(e.closest(".fcol")&&W>=768)return;if(e.tagName==="A"&&r.height>=44-.5)return;if(r.height<44-.5||(r.width<44-.5&&!e.closest("p")&&!e.closest("footer")))small.push(sel(e)+" "+Math.round(r.width)+"x"+Math.round(r.height))});
+  var tb=[],fams={};[].slice.call(document.querySelectorAll("main h1,main h2,main h3,.btn,.price-current,main p,#rv-score")).filter(vis).forEach(function(e){var f=getComputedStyle(e).fontFamily.split(",")[0].replace(/["']/g,"").trim();fams[f]=1;var head=/^H[1-3]$/.test(e.tagName),sc=e.id==="rv-score";if((head||sc)&&f!=="Cormorant")tb.push(sel(e)+" "+f);if(!head&&!sc&&f!=="DM Sans"&&f!=="Cormorant")tb.push(sel(e)+" "+f)});
+  out.checks.targetsAndType={pass:small.length===0&&tb.length===0,detail:(small.length?"small targets: "+small.slice(0,5).join("; "):"every visible control is 44 px or has a 44 px hit area")+"; "+(tb.length?"fonts: "+tb.slice(0,3).join("; "):"headings Cormorant, UI DM Sans ("+Object.keys(fams).join(", ")+")")};
+  N.reset();window.scrollTo(0,0);
+  var pre=document.createElement("pre");pre.id="selftest-result";pre.textContent=JSON.stringify(out);document.body.appendChild(pre);
+  if(window.parent!==window){window.parent.postMessage({selftest:out},"*")}
+ }
+ if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){setTimeout(run,900)})}else{setTimeout(run,1400)}
+})();
+</script>
+<script src="../../01-Design-System/Scripts/drawer.js"></script>
+<script>
+(function(){
+ var b=document.body,q=new URLSearchParams(location.search);
+ if(q.get("embed")){b.classList.add("embed")}
+ b.classList.toggle("ann-on",q.get("ann")!=="0");
+ function $(id){return document.getElementById(id)}
+ function navOpen(o){b.classList.toggle("nav-open",o);$("menu-btn").setAttribute("aria-expanded",o?"true":"false")}
+ $("menu-btn").addEventListener("click",function(){navOpen(true)});
+ $("nav-close").addEventListener("click",function(){navOpen(false)});
+ $("scrim").addEventListener("click",function(){navOpen(false)});
+ document.addEventListener("keydown",function(e){if(e.key==="Escape"){navOpen(false)}});
+ [].forEach.call(document.querySelectorAll(".fcol > button"),function(h){h.addEventListener("click",function(){var f=h.parentNode,o=!f.classList.contains("is-open");f.classList.toggle("is-open",o);h.setAttribute("aria-expanded",o?"true":"false")})});
+ var msgs=["Free shipping on orders over $50","New launches are in store","Free returns within 30 days"],mi=0;
+ function msg(d){mi=(mi+d+msgs.length)%msgs.length;$("ann-msg").textContent=msgs[mi];[].forEach.call(document.querySelectorAll(".ann-dot"),function(x,i){x.classList.toggle("bg-current",i===mi);x.classList.toggle("opacity-100",i===mi);x.classList.toggle("opacity-muted",i!==mi)})}
+ $("ann-prev").addEventListener("click",function(){msg(-1)});$("ann-next").addEventListener("click",function(){msg(1)});
+ document.addEventListener("click",function(e){var a=e.target.closest('a[href^="#"]:not([href="#main"]):not([href="#top"]):not([href="#product"]):not([href="#reviews"])');if(a)e.preventDefault()});
+ function toggle(btn,cls){var on=!b.classList.contains(cls);b.classList.toggle(cls,on);btn.setAttribute("aria-pressed",on?"true":"false");return on}
+ function stickyTop(){var h=$("site-header");document.documentElement.style.setProperty("--sticky-top",h.offsetHeight+"px")}
+ window.addEventListener("resize",stickyTop);stickyTop();
+ $("t-ann").addEventListener("click",function(){toggle(this,"ann-on");stickyTop()});
+ $("t-ann").setAttribute("aria-pressed",b.classList.contains("ann-on")?"true":"false");
+ /* ---- sample product data (merchant content and metafields) ---- */
+ var SHADES=[["Rose","#D99BAA",0],["Berry","#8E3F5A",1],["Peach","#EDB9A9",0],["Mauve","#B48A9A",0],["Coral","#E8907E",0]];
+ var SIZES=[{id:"30",label:"30 ml",sub:"",ml:30,price:22,cmp:0,stock:0},{id:"50",label:"50 ml",sub:"",ml:50,price:32,cmp:0,stock:24},{id:"duo",label:"Duo pack",sub:"2 × 50 ml",ml:100,price:58,cmp:64,stock:3}];
+ var SL=[{k:"pack",label:"Pack shot",ph:"Product photo · 4:5",v:0},{k:"tex",label:"Texture",ph:"Texture close-up · 4:5",v:1},{k:"app",label:"Application",ph:"Application photo · 4:5",v:2},{k:"ing",label:"Ingredients",ph:"Ingredient macro · 4:5",v:1},{k:"vid",label:"Video",ph:"Video poster · 4:5",v:0,video:true},{k:"ba",label:"Before and after",ph:"Before and after · 4:5 (optional, legal review)",v:2,opt:true}];
+ var S={shade:-1,size:"50",qty:1,adding:false,ba:false,bag:0,idx:0},FS=50,MINREV=5,REVIEWS=31;
+ function money(n){return "$"+n.toFixed(2)}
+ function sz(){return SIZES.filter(function(s){return s.id===S.size})[0]}
+ function slides(){return SL.filter(function(s){return !s.opt||S.ba})}
+ var PV=["ph","ph-b","ph-c"];
+ function pm(v){return PV[v%3]}
+ function kc(s){return "ph-k-"+s.k+(s.k==="pack"?" ph-dash":"")}
+ /* class strings for markup built here (the same utilities as the static markup) */
+ var C_SLIDE="gallery__slide group relative flex-[0_0_100%] cursor-zoom-in snap-center snap-always overflow-hidden aspect-square md:aspect-portrait",
+  C_IMG="gallery__img absolute inset-0 origin-[var(--zx,50%)_var(--zy,50%)] transition-transform duration-slow ease-standard group-[.is-zoom]:scale-[2]",
+  C_PH="absolute inset-x-0 bottom-4 z-[2] px-2 text-center text-caption uppercase tracking-wide",
+  C_PLAY="absolute left-1/2 top-1/2 grid size-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-pill bg-surface text-ink shadow-md",
+  C_THUMB="gallery__thumb relative aspect-portrait w-16 flex-none overflow-hidden border border-transparent bg-surface p-0 aria-[current=true]:outline aria-[current=true]:outline-[length:var(--border-width-thick)] aria-[current=true]:outline-brand aria-[current=true]:-outline-offset-1",
+  C_DOT="gallery__dot grid size-touch place-items-center border-0 bg-transparent p-0 before:size-2 before:rounded-pill before:bg-line-strong before:content-[''] aria-[current=true]:before:w-5 aria-[current=true]:before:bg-brand",
+  C_VEND="vendor";
+ /* ---- gallery (P1) ---- */
+ var track=$("g-track"),thumbs=$("g-thumbs"),dots=$("g-dots");
+ function buildGallery(){
+  var sl=slides();
+  track.innerHTML=sl.map(function(s,i){return '<div class="'+C_SLIDE+'" role="group" aria-roledescription="slide" aria-label="'+(i+1)+' of '+sl.length+': '+s.label+'" data-k="'+s.k+'"><div class="'+C_IMG+'"><div class="absolute inset-0 '+kc(s)+'"></div></div><span class="'+C_PH+(s.video?' text-page':' text-ink-secondary')+'">'+s.ph+'</span>'+(s.video?'<span class="'+C_PLAY+'" aria-hidden="true"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-play"></use></svg></span>':"")+'</div>'}).join("");
+  thumbs.innerHTML=sl.map(function(s,i){return '<button class="'+C_THUMB+'" type="button" data-k="'+s.k+'" data-i="'+i+'" aria-label="Show image '+(i+1)+': '+s.label+'" aria-current="'+(i===S.idx?"true":"false")+'"><div class="absolute inset-0 '+kc(s).replace(" ph-dash","")+'"></div>'+(s.video?'<svg class="icon absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-page" aria-hidden="true" focusable="false"><use href="#icon-play"></use></svg>':"")+'</button>'}).join("");
+  dots.innerHTML=sl.map(function(s,i){return '<button class="'+C_DOT+'" type="button" data-i="'+i+'" aria-label="Go to image '+(i+1)+': '+s.label+'" aria-current="'+(i===S.idx?"true":"false")+'"></button>'}).join("");
+  if(S.idx>=sl.length)S.idx=0;go(S.idx,true);
+ }
+ function sync(i){
+  var n=slides().length;S.idx=Math.max(0,Math.min(n-1,i));$("g-count").textContent=(S.idx+1)+" / "+n;
+  [].forEach.call(thumbs.children,function(t,k){t.setAttribute("aria-current",k===S.idx?"true":"false")});
+  [].forEach.call(dots.children,function(t,k){t.setAttribute("aria-current",k===S.idx?"true":"false")});
+  var act=thumbs.children[S.idx];if(act&&thumbs.scrollHeight>thumbs.clientHeight+1&&window.matchMedia("(min-width:1024px)").matches){act.scrollIntoView({block:"nearest"})}
+ }
+ function go(i,quiet){var n=slides().length;i=Math.max(0,Math.min(n-1,i));track.scrollTo({left:i*track.clientWidth,behavior:"auto"});sync(i)}
+ track.addEventListener("scroll",function(){var i=Math.round(track.scrollLeft/(track.clientWidth||1));if(i!==S.idx)sync(i)},{passive:true});
+ thumbs.addEventListener("click",function(e){var t=e.target.closest("[data-i]");if(t)go(+t.getAttribute("data-i"))});
+ dots.addEventListener("click",function(e){var t=e.target.closest("[data-i]");if(t)go(+t.getAttribute("data-i"))});
+ $("g-prev").addEventListener("click",function(){go(S.idx-1)});$("g-next").addEventListener("click",function(){go(S.idx+1)});
+ track.addEventListener("keydown",function(e){if(e.key==="ArrowRight"){e.preventDefault();go(S.idx+1)}else if(e.key==="ArrowLeft"){e.preventDefault();go(S.idx-1)}});
+ window.addEventListener("resize",function(){go(S.idx,true)});
+ /* hover magnifier on mouse screens; tap or the Zoom button opens the viewer */
+ var fine=window.matchMedia("(hover:hover) and (pointer:fine)");
+ track.addEventListener("pointermove",function(e){if(!fine.matches)return;var sl=e.target.closest(".gallery__slide");if(!sl)return;var r=sl.getBoundingClientRect();sl.style.setProperty("--zx",((e.clientX-r.left)/r.width*100)+"%");sl.style.setProperty("--zy",((e.clientY-r.top)/r.height*100)+"%");sl.classList.add("is-zoom")});
+ track.addEventListener("pointerleave",function(){[].forEach.call(track.querySelectorAll(".is-zoom"),function(s){s.classList.remove("is-zoom")})});
+ var zoomOpener=null;
+ function zoomShow(i){var sl=slides(),n=sl.length;i=(i+n)%n;S.zi=i;var s=sl[i];$("zoom-ph").className="absolute inset-0 "+pm(s.v);$("zoom-cap").textContent=s.label+" · "+(i+1)+" of "+n}
+ function openZoom(opener){zoomOpener=opener||$("g-zoom");zoomShow(S.idx);window.NudgeDrawer.open($("zoom"),zoomOpener)}
+ $("g-zoom").addEventListener("click",function(){openZoom(this)});
+ track.addEventListener("click",function(e){var sl=e.target.closest(".gallery__slide");if(sl&&!fine.matches){openZoom($("g-zoom"))}else if(sl){openZoom($("g-zoom"))}});
+ $("z-prev").addEventListener("click",function(){zoomShow(S.zi-1)});$("z-next").addEventListener("click",function(){zoomShow(S.zi+1)});
+ $("zoom").addEventListener("keydown",function(e){if(e.key==="ArrowRight"){zoomShow(S.zi+1)}else if(e.key==="ArrowLeft"){zoomShow(S.zi-1)}});
+ $("zoom").addEventListener("drawer:close",function(){go(S.zi||0)});
+ /* ---- variant picker (P3) ---- */
+ function buildVariants(){
+  $("shade-tiles").innerHTML=SHADES.map(function(s,i){return '<label class="tile"><input class="tile-input" type="radio" name="shade" value="'+i+'"'+(s[2]?" disabled":"")+'><span class="tile-img" style="--swatch: '+s[1]+'"></span><span class="tile-name">'+s[0]+(s[2]?'<span class="sr-only"> (sold out)</span>':"")+'</span></label>'}).join("");
+  $("size-opts").innerHTML=SIZES.map(function(z){var u=money(z.price/z.ml)+" / ml";return '<label class="opt"><input class="opt-input" type="radio" name="size" value="'+z.id+'"'+(z.id===S.size?" checked":"")+(z.stock<=0?" disabled":"")+'><span class="opt-label">'+z.label+(z.stock<=0?'<span class="sr-only"> (sold out)</span>':"")+'</span><span class="opt-sub">'+money(z.price)+'</span>'+(z.cmp?'<span class="opt-save">Save '+money(z.cmp-z.price)+'</span>':"")+'</label>'}).join("");
+ }
+ $("shade-tiles").addEventListener("change",function(e){if(e.target.name==="shade"){S.shade=+e.target.value;update()}});
+ $("size-opts").addEventListener("change",function(e){if(e.target.name==="size"){S.size=e.target.value;S.qty=1;update()}});
+ function chooseShade(){$("shade-err").hidden=false;var f=$("shade-tiles").querySelector("input:not(:disabled)");$("variants").scrollIntoView({block:"center"});if(f)f.focus()}
+ /* ---- price, stock, quantity, sticky text ---- */
+ function update(){
+  var z=sz(),sh=S.shade>=0?SHADES[S.shade]:null;
+  $("shade-name").textContent=sh?sh[0]:"Select a shade";$("size-name").textContent=z.label+(z.sub?" · "+z.sub:"");
+  if(sh){$("shade-err").hidden=true;$("gallery").setAttribute("data-shade",sh[0]);$("gallery").style.setProperty("--shade",sh[1])}else{$("gallery").removeAttribute("data-shade")}
+  $("pr-cur").textContent=money(z.price);$("pr-cmp").hidden=!z.cmp;if(z.cmp)$("pr-cmp").textContent=money(z.cmp);
+  $("pr-save").hidden=!z.cmp;if(z.cmp)$("pr-save").textContent="Save "+money(z.cmp-z.price)+" ("+Math.round((1-z.price/z.cmp)*100)+"%)";
+  $("pr-unit").textContent=money(z.price/z.ml)+" / ml · tax included";
+  var max=Math.max(1,Math.min(10,z.stock));if(S.qty>max)S.qty=max;if(S.qty<1)S.qty=1;$("q-input").value=S.qty;$("q-minus").disabled=S.qty<=1;$("q-plus").disabled=S.qty>=max;
+  var st=$("stock"),low=z.stock>0&&z.stock<=5;st.setAttribute("data-low",low?"true":"false");st.setAttribute("data-out",z.stock<=0?"true":"false");
+  $("stock-t").textContent=z.stock<=0?"Sold out":low?"Only "+z.stock+" left":"In stock";
+  var tot=z.price*S.qty,rem=Math.max(0,FS-tot);$("fs-msg").textContent=rem>0?"Free shipping on orders over $"+FS+". Add "+money(rem)+" more.":"Free shipping applies to this order.";
+  $("sa-price").textContent=money(tot);$("sa-var").textContent=(sh?sh[0]:"Select a shade")+" · "+z.label+(z.sub?" "+z.sub:"");
+  $("t-single").setAttribute("aria-pressed",b.classList.contains("no-variants")?"true":"false");
+ }
+ $("q-minus").addEventListener("click",function(){S.qty--;update()});$("q-plus").addEventListener("click",function(){S.qty++;update()});
+ $("q-input").addEventListener("change",function(){var v=parseInt(this.value,10);S.qty=isNaN(v)?1:v;update()});
+ /* ---- delivery estimate from sample settings: 1 working day processing, 3 to 5 days in transit ---- */
+ function addDays(d,n){var x=new Date(d.getTime()),k=0;while(k<n){x.setDate(x.getDate()+1);var w=x.getDay();if(w!==0&&w!==6)k++}return x}
+ function fmt(d){return d.toLocaleDateString("en-GB",{day:"numeric",month:"short"})}
+ var now=new Date();$("dl-est").textContent="Estimated delivery "+fmt(addDays(now,1+3))+" to "+fmt(addDays(now,1+5))+". Order before 2 pm to dispatch today.";
+ /* ---- add to bag (P4): one submission, loading, success ---- */
+ var atc=$("atc"),saBtn=$("sa-add"),resetT=null;
+ function label(txt,busy,done){[$("atc-label"),$("sa-label")].forEach(function(l){l.textContent=txt});[atc,saBtn].forEach(function(bt){if(busy)bt.setAttribute("aria-busy","true");else bt.removeAttribute("aria-busy");if(done)bt.setAttribute("data-done","true");else bt.removeAttribute("data-done")});
+  var ic=atc.querySelector("use");ic.setAttribute("href",busy?"#icon-loader":done?"#icon-check":"#icon-bag");atc.querySelector(".icon").classList.toggle("is-spin",!!busy)}
+ function addToBag(){
+  if(S.adding)return;if(S.shade<0){chooseShade();return}var z=sz();if(z.stock<=0)return;
+  S.adding=true;$("atc-msg").hidden=true;label("Adding…",true,false);
+  setTimeout(function(){S.adding=false;S.bag+=S.qty;var c=document.querySelector("#site-header .cnt");if(c)c.textContent=S.bag;label("Added to bag",false,true);$("atc-msg-t").textContent=S.qty+(S.qty>1?" items":" item")+" added: "+SHADES[S.shade][0]+", "+z.label+".";$("atc-msg").hidden=false;clearTimeout(resetT);resetT=setTimeout(function(){label("Add to bag",false,false)},3000)},900);
+ }
+ atc.addEventListener("click",addToBag);saBtn.addEventListener("click",function(){if(S.shade<0){$("variants").scrollIntoView({block:"center"})}addToBag()});
+ /* ---- sticky add to cart (P9): shows once the buy box has scrolled out of view ---- */
+ var sa=$("sticky-atc"),forced=false,tick=false;
+ function stickyCheck(){tick=false;var r=$("buy").getBoundingClientRect(),on=forced||r.bottom<0;sa.classList.toggle("is-on",on);if(on)sa.removeAttribute("inert");else sa.setAttribute("inert","");b.classList.toggle("has-sticky",on)}
+ window.addEventListener("scroll",stickyCheck,{passive:true});window.addEventListener("resize",stickyCheck);
+ $("t-sticky").addEventListener("click",function(){forced=!forced;this.setAttribute("aria-pressed",forced?"true":"false");stickyCheck()});
+ /* ---- selling plan: label only; the price effect belongs to the store's selling plans ---- */
+ /* ---- complementary products (P7): frequently-bought-together layout ---- */
+ var RT=[["Face Cleanser","Cleanser",18,0],["Face Serum","Serum",32,1],["Daily Sunscreen","Sun care",26,2]];
+ $("routine-list").innerHTML=RT.map(function(p,i){return '<li><label class="grid cursor-pointer grid-cols-[auto_var(--space-16)_minmax(0,1fr)_auto] items-center gap-4 border-b border-line py-4"><input class="choice-input m-0" type="checkbox" data-p="'+p[2]+'" checked aria-label="Add '+p[0]+'"><span class="relative aspect-portrait overflow-hidden"><span class="absolute inset-0 '+pm(p[3])+'"></span></span><span><span class="vendor">'+p[1]+'</span><span class="block font-[family-name:var(--type-h4-font-family)] text-body-lg leading-[var(--type-h4-line-height)]">'+p[0]+'</span></span><span class="price"><span class="price-current">'+money(p[2])+'</span></span></label></li>'}).join("");
+ function routineSum(){var n=0,t=0;[].forEach.call($("routine-list").querySelectorAll("input"),function(i){if(i.checked){n++;t+=+i.getAttribute("data-p")}});$("routine-n").textContent=n+(n===1?" product":" products")+" selected";$("routine-total").textContent=money(t);$("routine-add").disabled=n===0;return n}
+ $("routine-list").addEventListener("change",function(){routineSum();$("routine-msg").hidden=true});routineSum();
+ $("routine-add").addEventListener("click",function(){var n=routineSum();if(!n)return;S.bag+=n;var c=document.querySelector("#site-header .cnt");if(c)c.textContent=S.bag;$("routine-msg").querySelector("span").textContent=n+(n===1?" product":" products")+" added to your bag.";$("routine-msg").hidden=false});
+ /* ---- related products (P7) ---- */
+ var REL=[["Hydrating Serum","Serum","Best for: dry skin",30,0,4.7,141,0],["Gel Moisturiser","Moisturiser","Light gel texture",26,0,4.6,88,1],["Barrier Cream","Moisturiser","Best for: sensitive skin",30,0,4.8,119,2],["Eye Cream","Eye care","Light gel texture",30,0,4.6,73,0]];
+ function stars(v){var h="",k;for(k=1;k<=5;k++){h+='<svg class="icon'+(v>=k-.25?" icon-filled":"")+'" aria-hidden="true" focusable="false"><use href="#icon-star"></use></svg>'}return '<span class="rating-stars text-rating" role="img" aria-label="Rated '+v.toFixed(1)+' out of 5">'+h+'</span>'}
+ $("related-grid").innerHTML=REL.map(function(p){return '<article class="relative flex min-w-0 flex-col gap-3 text-left"><div class="relative overflow-hidden bg-surface"><div class="relative aspect-portrait overflow-hidden bg-[var(--product-image-background)]"><div class="absolute inset-0 '+pm(p[7])+'"></div><span class="absolute inset-x-0 bottom-3 px-2 text-center text-caption text-ink-secondary">Product photo &middot; 4:5</span></div></div><div class="flex min-w-0 flex-col items-start gap-1 pt-1"><p class="vendor">'+p[1]+'</p><h3 class="type-h4 line-clamp-3 overflow-hidden [overflow-wrap:anywhere]"><a class="text-inherit no-underline after:absolute after:inset-0 after:content-[\'\'] hover:text-link hover:underline hover:decoration-1 hover:underline-offset-[0.2em]" href="#cat">'+p[0]+'</a></h3><p class="type-caption">'+p[2]+'</p><span class="rating mt-1">'+stars(p[5])+p[5].toFixed(1)+" ("+p[6]+')</span><span class="price mt-1 justify-start"><span class="price-current">'+money(p[3])+'</span></span></div></article>'}).join("");
+ /* ---- rating visibility policy: hidden under the minimum review count ---- */
+ $("p-rating").hidden=REVIEWS<MINREV;
+ /* ---- review controls and test hooks ---- */
+ function reset(){S.shade=-1;S.size="50";S.qty=1;S.adding=false;S.idx=0;forced=false;clearTimeout(resetT);b.classList.remove("no-variants");$("t-single").setAttribute("aria-pressed","false");$("t-sticky").setAttribute("aria-pressed","false");buildVariants();label("Add to bag",false,false);$("atc-msg").hidden=true;$("shade-err").hidden=true;update();stickyCheck();go(0)}
+ $("t-zoom").addEventListener("click",function(){openZoom(this)});
+ $("t-add").addEventListener("click",function(){if(S.shade<0){S.shade=0;var f=$("shade-tiles").querySelectorAll("input")[0];f.checked=true;update()}document.querySelector("#buy").scrollIntoView({block:"center"});addToBag()});
+ $("t-ba").addEventListener("click",function(){S.ba=!S.ba;this.setAttribute("aria-pressed",S.ba?"true":"false");buildGallery()});
+ $("t-single").addEventListener("click",function(){var on=b.classList.toggle("no-variants");this.setAttribute("aria-pressed",on?"true":"false");if(on){S.shade=0;S.size="50";update()}});
+ $("t-reset").addEventListener("click",reset);
+ window.NudgePDP={reset:reset,go:go,pick:function(i){S.shade=i;var r=$("shade-tiles").querySelectorAll("input");if(r[i])r[i].checked=true;update()},size:function(id){S.size=id;var r=document.querySelector('input[name=size][value="'+id+'"]');if(r)r.checked=true;S.qty=1;update()},bag:function(){return S.bag},state:function(){return S}};
+ buildVariants();buildGallery();update();stickyCheck();
+ if(q.get("shade")){window.NudgePDP.pick(+q.get("shade"))}
+ if(q.get("ba")==="1"){S.ba=true;$("t-ba").setAttribute("aria-pressed","true");buildGallery()}
+ if(q.get("zoom")==="open"){openZoom($("g-zoom"))}
+ if(q.get("sticky")==="1"){forced=true;$("t-sticky").setAttribute("aria-pressed","true");stickyCheck()}
+ if(q.get("state")==="success"){window.NudgePDP.pick(0);S.bag=1;var c0=document.querySelector("#site-header .cnt");if(c0)c0.textContent="1";label("Added to bag",false,true);$("atc-msg").hidden=false}
+ if(q.get("state")==="prompt"){$("shade-err").hidden=false}
+ if(q.get("selftest")){var s=document.createElement("script");s.text=$("selftest-src").text;document.body.appendChild(s)}
+})();
+</script>
+</body>
+</html>

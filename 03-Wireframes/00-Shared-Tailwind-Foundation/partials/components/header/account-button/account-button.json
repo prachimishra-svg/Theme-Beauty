@@ -1,0 +1,27 @@
+{
+    "id":  "account-button",
+    "page":  "shared",
+    "level":  "sub",
+    "name":  "Account Button",
+    "properties":  [
+
+                   ],
+    "shopifyOnly":  [
+                        {
+                            "id":  "show_account",
+                            "setting":  "checkbox",
+                            "note":  "Show or hide the account link"
+                        }
+                    ],
+    "status":  "classified (D10 items pending)",
+    "accessibility":  "A link with an accessible name Account.",
+    "summary":  "The account link in the header: user icon and, from 1024 px, the word Account.",
+    "tokens":  [
+                   "touch target",
+                   "type roles"
+               ],
+    "responsive":  "Icon only below 1024 px; icon and text from 1024 px.",
+    "children":  [
+
+                 ]
+}

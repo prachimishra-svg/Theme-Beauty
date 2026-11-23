@@ -1,0 +1,70 @@
+{
+    "name":  "Product Grid",
+    "wireframeOnly":  [
+                          ".ann annotation block",
+                          "data-section attribute"
+                      ],
+    "page":  "plp",
+    "properties":  [
+                       {
+                           "name":  "heading",
+                           "type":  "TEXT",
+                           "default":  "Products",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "heading"
+                                       },
+                           "note":  "Hidden heading that names the region, from a locale string"
+                       },
+                       {
+                           "name":  "paginationLabel",
+                           "type":  "TEXT",
+                           "default":  "Pagination",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "pagination_label"
+                                       },
+                           "note":  "Accessible name of the pagination nav"
+                       }
+                   ],
+    "tokens":  [
+                   "grid gap",
+                   "spacing"
+               ],
+    "summary":  "The product grid (2 to 4 columns, one card size), the optional promo tile after the eighth product on page one, the empty filter state and numbered pagination. The cards, tile and pagination items are rendered into it by the page script from their own components.",
+    "accessibility":  "A region labelled Products; the grid is a plain list of cards; pagination is a labelled nav.",
+    "id":  "product-grid",
+    "shopifyOnly":  [
+                        {
+                            "id":  "products_per_page",
+                            "setting":  "range",
+                            "note":  "Products on each page (the wireframe shows 10)"
+                        },
+                        {
+                            "id":  "show_second_image",
+                            "setting":  "checkbox",
+                            "note":  "Second image on hover (mouse screens only)"
+                        },
+                        {
+                            "id":  "show_rating",
+                            "setting":  "checkbox"
+                        },
+                        {
+                            "id":  "promo_tile",
+                            "setting":  "blocks",
+                            "note":  "Promo tile block: eyebrow, heading, text, button label and link"
+                        }
+                    ],
+    "level":  "main",
+    "status":  "classified",
+    "responsive":  "Two columns below 600 px, three from 600 px, two beside the sidebar from 768 px, three from 1024 px, four from 1280 px.",
+    "exposes":  [
+
+                ],
+    "children":  [
+                     "components/plp/empty-state",
+                     "components/plp/product-card",
+                     "components/plp/promo-tile",
+                     "components/plp/pagination"
+                 ]
+}

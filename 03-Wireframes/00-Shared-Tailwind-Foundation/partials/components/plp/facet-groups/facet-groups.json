@@ -1,0 +1,91 @@
+{
+    "id":  "facet-groups",
+    "page":  "plp",
+    "level":  "sub",
+    "name":  "Filter Groups",
+    "properties":  [
+                       {
+                           "name":  "groups",
+                           "type":  "LIST",
+                           "default":  [
+                                           {
+                                               "title":  "Skin concern",
+                                               "key":  "concern",
+                                               "options":  [
+                                                               {
+                                                                   "label":  "Dryness",
+                                                                   "hex":  "",
+                                                                   "count":  "9",
+                                                                   "name":  "concern",
+                                                                   "value":  "Dryness"
+                                                               },
+                                                               {
+                                                                   "label":  "Dullness",
+                                                                   "hex":  "",
+                                                                   "count":  "7",
+                                                                   "name":  "concern",
+                                                                   "value":  "Dullness"
+                                                               }
+                                                           ],
+                                               "open":  "1",
+                                               "kind":  "options"
+                                           },
+                                           {
+                                               "title":  "Shade",
+                                               "key":  "shade",
+                                               "options":  [
+                                                               {
+                                                                   "label":  "",
+                                                                   "hex":  "#D99BAA",
+                                                                   "count":  "2",
+                                                                   "name":  "Rose",
+                                                                   "value":  "0"
+                                                               },
+                                                               {
+                                                                   "label":  "",
+                                                                   "hex":  "#8E3F5A",
+                                                                   "count":  "2",
+                                                                   "name":  "Berry",
+                                                                   "value":  "1"
+                                                               }
+                                                           ],
+                                               "open":  "",
+                                               "kind":  "swatches"
+                                           },
+                                           {
+                                               "title":  "Price",
+                                               "key":  "price",
+                                               "options":  [
+
+                                                           ],
+                                               "open":  "",
+                                               "kind":  "price"
+                                           }
+                                       ],
+                           "itemFields":  [
+                                              "kind",
+                                              "key",
+                                              "title",
+                                              "open",
+                                              "options"
+                                          ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "groups"
+                                       },
+                           "data":  "collection.filters",
+                           "note":  "Filter groups with their options and counts. In Shopify these come from Search and Discovery filters set in the admin"
+                       }
+                   ],
+    "accessibility":  "Native details and summary groups; fieldsets with legends; swatches have text names and counts.",
+    "status":  "classified",
+    "summary":  "The collapsible filter groups: checkbox options with counts, shade swatches and the price range. One form is placed in the sidebar from 768 px and in the left drawer below.",
+    "tokens":  [
+                   "accordion tokens",
+                   "choice and swatch styles"
+               ],
+    "responsive":  "A left sidebar from 768 px; a left slide-in drawer below.",
+    "children":  [
+                     "components/base/icon"
+                 ]
+}

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NUDGE Beauty Theme: 404 Page Not Found Wireframe</title>
+<!-- Design Variables (tokens) linked; styling is Tailwind utilities and the shared components, mapped to those tokens. -->
+@@PARTIAL head@@
+<style>
+@@PARTIAL review-css@@
+</style>
+</head>
+<body class="ann-on" id="top">
+@@PARTIAL sprite@@
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-skip focus:bg-surface focus:p-3">Skip to content</a>
+<div class="rv">
+  <div class="rvt">NUDGE Beauty Theme: 404 page not found wireframe &middot; single responsive file</div>
+  <p>Phase 4, page 24 of 25. The native Shopify 404 page (<code>404.json</code>), built with Tailwind utilities and the shared components mapped to the Design Variables. The announcement bar, header and footer are the shared sections. All wording is <b>sample content</b>; collection links are sample menu items. Placeholders only: no illustration or photography. Use <b>Width preview</b> for 1920, 1440, 1280, 1024, 768, 430, 390 and 320 px.</p>
+  <div class="ctl"><button id="t-ann" type="button" aria-pressed="true">Annotations</button><button id="t-wp" type="button">Width preview</button></div>
+<details><summary>Review notes: purpose, sections, decisions, Shopify (open)</summary>
+<h3>Purpose</h3>
+<p>A visitor who followed a broken or old link should know in one second what happened and have an easy way to carry on: search, shop, or go home. Nothing else is on the page.</p>
+<h3>Sections, top to bottom</h3>
+<ul><li>A large "404" in the display face, a short title and one sentence</li><li>A search form (native store search)</li><li>Two buttons: Continue shopping and Go to the homepage</li><li>A short row of popular links, taken from a menu</li></ul>
+<h3>Decisions to confirm</h3>
+<ul><li>The page keeps the shared header and footer, so navigation and the header search are still available.</li><li>No illustration, no joke copy and no product grid: the aim is to get the visitor moving, not to entertain. A featured collection can be added as an optional section later.</li><li>The popular links are a theme-editor menu (sample: Best sellers, Skin care, Makeup, Hair, Body); they are not generated from analytics.</li></ul>
+<h3>Not drawn</h3>
+<ul><li>Smart "did you mean" suggestions, live chat or redirect managers (each needs an app; broken URLs are redirected in Shopify admin under Navigation, URL redirects)</li></ul>
+<h3>Shopify build</h3>
+<p>Template <code>404.json</code> with a <code>main-404</code> section. The search is a plain form to <code>routes.search_url</code> with <code>name="q"</code> and <code>type="product,article,page"</code>; the buttons use <code>routes.all_products_collection_url</code> and <code>routes.root_url</code>; the links are a link-list setting. The response status 404 is set by Shopify. No app is involved.</p>
+</details>
+</div>
+<div class="ann"><b>Global</b>Announcement bar, header (sticky) and footer: the shared sections. Responsive: below 1024 px a one-row header with the menu in a left drawer; footer groups are tap-to-open rows below 768 px.</div>
+@@PARTIAL annbar@@
+@@PARTIAL header CART=link NAV=none@@
+<main id="main" class="wrap flex min-h-[560px] items-center justify-center py-12 md:py-16 lg:py-20">
+<section class="mx-auto flex w-full max-w-[640px] flex-col items-center gap-6 text-center md:gap-8" id="nf" aria-labelledby="nf-h" data-section="404">
+<div class="ann"><b>01 &middot; Say it</b>Message (T1) &mdash; Essential: the number 404 in the display face as a quiet typographic mark (no illustration), one title and one plain sentence that says what happened without blaming the visitor.<em>Responsive: the number and title step down with the Design System scale; text stays centred in a column no wider than the reading width.</em></div>
+<div class="flex flex-col items-center gap-3 md:gap-4">
+<p class="m-0 font-heading text-[96px] leading-[88px] text-brand md:text-[144px] md:leading-[128px]" aria-hidden="true" id="num">404</p>
+<h1 class="type-h2" id="nf-h">We cannot find that page</h1>
+<p class="m-0 text-body-lg text-ink-secondary">The link may be old or mistyped. Try a search, or head back to the shop.</p>
+</div>
+<div class="ann"><b>02 &middot; Find</b>Search (T1) &mdash; Essential: Shopify's own store search, one field and one button, so a visitor can look for what they came for. The label is visible to screen readers; the field uses the shared input style.<em>Responsive: field and button share a row from 600 px; stacked on phones with a full-width button.</em></div>
+<form class="flex w-full flex-col gap-3 sm:flex-row" action="#" method="get" role="search" id="nf-search"><div class="field flex-1"><label class="sr-only" for="nf-q">Search our store</label><input class="input" id="nf-q" name="q" type="search" placeholder="Search products, guides and pages" autocomplete="off"></div><button class="btn btn-secondary w-full sm:w-auto" type="submit">Search</button></form>
+<div class="ann"><b>03 &middot; Move on</b>Buttons and popular links (T1) &mdash; Essential: one primary button to the shop (the only filled button on the page, so the search button is outlined) and one quiet text link to the homepage, then a short row of popular links from a menu. Together they give three clear ways on without a long list.<em>Responsive: buttons stack on phones and sit side by side from 600 px; the links scroll in one row on phones and wrap, centred, from 600 px.</em></div>
+<div class="flex w-full flex-col gap-3 sm:w-auto sm:flex-row" id="nf-actions"><a class="btn btn-primary" href="#shop">Continue shopping</a><a class="btn btn-text" href="#home">Go to the homepage</a></div>
+<div class="flex w-full min-w-0 flex-col items-center gap-3 border-t border-line pt-6" id="nf-links"><p class="type-overline m-0">Popular right now</p><div class="chip-row w-full justify-start sm:justify-center" aria-label="Popular links"><a class="chip" href="#shop">Best sellers</a><a class="chip" href="#shop">Skin care</a><a class="chip" href="#shop">Makeup</a><a class="chip" href="#shop">Hair</a><a class="chip" href="#shop">Body</a></div></div>
+</section>
+</main>
+@@PARTIAL footer@@
+@@PARTIAL width-preview@@
+<script type="text/plain" id="selftest-src">
+(function(){
+ function vis(el){var cs=getComputedStyle(el);if(cs.display==="none"||cs.visibility==="hidden")return false;var r=el.getBoundingClientRect();return r.width>0&&r.height>0}
+ function sel(el){var s=el.tagName.toLowerCase();if(el.id)s+="#"+el.id;if(el.className&&typeof el.className==="string")s+="."+el.className.trim().split(/\s+/).slice(0,2).join(".");return s}
+ function $(id){return document.getElementById(id)}
+ async function run(){
+  var W=window.innerWidth,H=window.innerHeight,de=document.documentElement,out={docHeight:de.scrollHeight,width:W,checks:{}},SM=W>=600;
+  var st=document.createElement("style");st.textContent="*{transition:none!important}";document.head.appendChild(st);de.style.scrollBehavior="auto";
+  var twOk=getComputedStyle($("site-header")).position==="sticky"&&!document.querySelector('link[href*="components.css"],link[href*="base.css"]');
+  var fl=Array.from(document.fonts).some(function(x){return x.family.indexOf("Cormorant")>-1&&x.status==="loaded"})&&Array.from(document.fonts).some(function(x){return x.family.indexOf("DM Sans")>-1&&x.status==="loaded"});
+  out.checks.tailwindAndFonts={pass:twOk&&fl,detail:"Tailwind utilities applied, no Design System component stylesheet: "+twOk+"; Cormorant and DM Sans loaded: "+fl};
+  var off=[];document.querySelectorAll("main *,header *,footer *").forEach(function(el){if(el.closest(".sr-only")||el.closest(".chip-row")||el.closest("#nav")&&W<1024)return;var r=el.getBoundingClientRect();if(r.width>0&&(r.right>W+1||r.left<-1))off.push(sel(el))});
+  out.checks.overflow={pass:de.scrollWidth<=W+1&&off.length===0,detail:"scrollWidth "+de.scrollWidth+" of "+W+(off.length?"; past the edge: "+off.slice(0,4).join(", "):"")};
+  var hs=[].slice.call(document.querySelectorAll("h1")).filter(function(h){return !h.closest(".rv")&&vis(h)});
+  out.checks.structure={pass:hs.length===1&&!!document.querySelector("main#main")&&!document.querySelector("main img,main svg:not(.icon)"),detail:"visible H1: "+hs.length+"; no photographs or illustrations: "+!document.querySelector("main img,main svg:not(.icon)")};
+  var nf=$("nf").getBoundingClientRect(),mr=document.querySelector("main").getBoundingClientRect(),mid=Math.abs((nf.left+nf.width/2)-(mr.left+mr.width/2))<4,ctr=getComputedStyle($("nf")).textAlign==="center";
+  out.checks.centred={pass:mid&&ctr,detail:"content centred horizontally, text centred: "+(mid&&ctr)};
+  var foot=document.querySelector("footer").getBoundingClientRect(),mainR=document.querySelector("main").getBoundingClientRect(),bottom=nf.bottom;
+  out.checks.firstFold={pass:W>=768?(bottom<=H-8):(nf.top+360<=H),detail:W>=768?("the whole message ends at "+Math.round(bottom)+" px of a "+H+" px screen: "+(bottom<=H-8)):("title and search start on screen: "+(nf.top+360<=H))};
+  var ns=$("num").getBoundingClientRect(),h1r=$("nf-h").getBoundingClientRect(),ord=ns.bottom<=h1r.top+1;
+  out.checks.hierarchy={pass:ord&&parseFloat(getComputedStyle($("num")).fontSize)>parseFloat(getComputedStyle($("nf-h")).fontSize)*2&&$("num").getAttribute("aria-hidden")==="true",detail:"large 404 mark above the title, hidden from screen readers (the H1 carries the meaning): "+ord};
+  var q=$("nf-q"),b=$("nf-search").querySelector("button"),qr=q.getBoundingClientRect(),br=b.getBoundingClientRect(),lab=!!document.querySelector('label[for="nf-q"]'),row=SM?(Math.abs(qr.top-br.top)<4&&br.left>=qr.right-1):(br.top>=qr.bottom-1&&Math.abs(br.width-qr.width)<2);
+  out.checks.search={pass:lab&&row&&qr.height>=44-.5&&$("nf-search").getAttribute("role")==="search"&&q.name==="q",detail:"labelled search field named q, "+(SM?"button beside the field":"full-width button below")+", 44 px: "+(lab&&row)};
+  var a=$("nf-actions").querySelectorAll("a"),a0=a[0].getBoundingClientRect(),a1=a[1].getBoundingClientRect(),acts=a.length===2&&a[0].classList.contains("btn-primary")&&a[1].classList.contains("btn-text")&&document.querySelectorAll("main .btn-primary").length===1&&(SM?(Math.abs(a0.top-a1.top)<4&&a1.left>=a0.right-1):(a1.top>=a0.bottom-1));
+  out.checks.actions={pass:acts,detail:"one primary button and one quiet link, "+(SM?"side by side":"stacked")+": "+acts};
+  var ch=$("nf-links").querySelectorAll(".chip");
+  out.checks.popular={pass:ch.length===5,detail:"five popular links: "+ch.length};
+  var txt=$("main").innerText.toLowerCase(),bad=[];["oops","sorry","uh oh","whoops","chatbot","did you mean","% off","discount"].forEach(function(w){if(txt.indexOf(w)>-1)bad.push(w)});
+  out.checks.tone={pass:bad.length===0,detail:"playful, app-dependent or offer wording: "+(bad.join(", ")||"none")};
+  var small=[];[].slice.call(document.querySelectorAll("main a,main button,main input,header a,header button,footer a,footer button")).filter(function(e){return vis(e)&&!e.closest(".sr-only")&&!e.closest(".rv")&&!e.closest(".ann")&&!(W<1024&&e.closest("#nav"))}).forEach(function(e){var r=e.getBoundingClientRect();if(e.closest(".fcol")&&W>=768)return;if(e.classList.contains("chip"))return;if(e.tagName==="A"&&r.height>=44-.5)return;if(r.height<44-.5)small.push(sel(e)+" "+Math.round(r.width)+"x"+Math.round(r.height))});
+  var tb=[];[].slice.call(document.querySelectorAll("main h1,main p,main a.btn,main button")).filter(vis).forEach(function(e){if(e.id==="num"||e.classList.contains("type-overline"))return;var fm=getComputedStyle(e).fontFamily.split(",")[0].replace(/["']/g,"").trim(),head=/^H[1-6]$/.test(e.tagName);if(head&&fm!=="Cormorant")tb.push(sel(e)+" "+fm);if(!head&&fm!=="DM Sans")tb.push(sel(e)+" "+fm)});
+  var nfm=getComputedStyle($("num")).fontFamily.indexOf("Cormorant")>-1;
+  out.checks.targetsAndType={pass:small.length===0&&tb.length===0&&nfm,detail:(small.length?"small targets: "+small.slice(0,5).join("; "):"every visible control is 44 px or has a 44 px hit area")+"; "+(tb.length?"fonts: "+tb.slice(0,3).join("; "):"headings and the 404 mark Cormorant, UI DM Sans")};
+  window.scrollTo(0,0);var pre=document.createElement("pre");pre.id="selftest-result";pre.textContent=JSON.stringify(out);document.body.appendChild(pre);
+  if(window.parent!==window){window.parent.postMessage({selftest:out},"*")}
+ }
+ if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){setTimeout(run,900)})}else{setTimeout(run,1400)}
+})();
+</script>
+<script>
+(function(){
+ var b=document.body,q=new URLSearchParams(location.search),$=function(id){return document.getElementById(id)};
+ if(q.get("embed")){b.classList.add("embed")}
+ b.classList.toggle("ann-on",q.get("ann")!=="0");
+ function navOpen(o){b.classList.toggle("nav-open",o);$("menu-btn").setAttribute("aria-expanded",o?"true":"false")}
+ $("menu-btn").addEventListener("click",function(){navOpen(true)});$("nav-close").addEventListener("click",function(){navOpen(false)});$("scrim").addEventListener("click",function(){navOpen(false)});
+ document.addEventListener("keydown",function(e){if(e.key==="Escape")navOpen(false)});
+ [].forEach.call(document.querySelectorAll(".fcol > button"),function(h){h.addEventListener("click",function(){var f=h.parentNode,o=!f.classList.contains("is-open");f.classList.toggle("is-open",o);h.setAttribute("aria-expanded",o?"true":"false")})});
+ var msgs=["Free shipping on orders over $50","New launches are in store","Free returns within 30 days"],mi=0;
+ function msg(d){mi=(mi+d+msgs.length)%msgs.length;$("ann-msg").textContent=msgs[mi];[].forEach.call(document.querySelectorAll(".ann-dot"),function(x,i){x.classList.toggle("bg-current",i===mi);x.classList.toggle("opacity-100",i===mi);x.classList.toggle("opacity-muted",i!==mi)})}
+ $("ann-prev").addEventListener("click",function(){msg(-1)});$("ann-next").addEventListener("click",function(){msg(1)});
+ document.addEventListener("click",function(e){var a=e.target.closest('a[href^="#"]:not([href="#main"]):not([href="#top"])');if(a)e.preventDefault()});
+ $("nf-search").addEventListener("submit",function(e){e.preventDefault()});
+ $("t-ann").addEventListener("click",function(){var on=!b.classList.contains("ann-on");b.classList.toggle("ann-on",on);this.setAttribute("aria-pressed",on?"true":"false")});
+ $("t-ann").setAttribute("aria-pressed",b.classList.contains("ann-on")?"true":"false");
+ if(q.get("selftest")){var s=document.createElement("script");s.text=$("selftest-src").text;document.body.appendChild(s)}
+})();
+</script>
+</body>
+</html>

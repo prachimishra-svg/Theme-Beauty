@@ -1,0 +1,38 @@
+{
+    "id":  "footer-brand",
+    "page":  "shared",
+    "level":  "sub",
+    "name":  "Footer Brand",
+    "properties":  [
+                       {
+                           "name":  "text",
+                           "type":  "TEXT",
+                           "default":  "One line about the brand.",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "text",
+                                           "id":  "brand_text",
+                                           "setting":  "textarea"
+                                       },
+                           "note":  "Brand statement"
+                       }
+                   ],
+    "shopifyOnly":  [
+                        {
+                            "id":  "show_social",
+                            "setting":  "checkbox",
+                            "note":  "Social links come from theme settings"
+                        }
+                    ],
+    "status":  "classified (D10 items pending)",
+    "accessibility":  "The logo link is named by the SVG.",
+    "summary":  "Logo, one line about the brand and the social links.",
+    "tokens":  [
+                   "inverse colours",
+                   "type roles"
+               ],
+    "responsive":  "Full width block on small screens.",
+    "children":  [
+                     "components/layout/social-link"
+                 ]
+}

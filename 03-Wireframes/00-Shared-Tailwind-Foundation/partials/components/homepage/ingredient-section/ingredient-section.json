@@ -1,0 +1,177 @@
+{
+    "name":  "Ingredient Spotlight",
+    "wireframeOnly":  [
+                          ".ann annotation block",
+                          "data-section attribute",
+                          "data-c review hooks",
+                          "ingredient placeholder tints"
+                      ],
+    "page":  "homepage",
+    "properties":  [
+                       {
+                           "name":  "heading",
+                           "type":  "TEXT",
+                           "default":  "What is inside",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "heading",
+                                           "id":  "heading",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "lead",
+                           "type":  "TEXT",
+                           "default":  "Key ingredients and where they come from.",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "lead",
+                                           "id":  "lead",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "anchor",
+                           "type":  "TEXT",
+                           "default":  "s10",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "anchor",
+                                           "id":  "anchor",
+                                           "setting":  "text"
+                                       },
+                           "note":  "In-page anchor id"
+                       },
+                       {
+                           "name":  "ingredients",
+                           "type":  "LIST",
+                           "default":  [
+                                           {
+                                               "tone":  "t4",
+                                               "name":  "Ingredient name 1",
+                                               "desc":  "One line on what it is and why it is used. Merchant to provide; no claims without evidence."
+                                           },
+                                           {
+                                               "tone":  "",
+                                               "name":  "Ingredient name 2",
+                                               "desc":  "One line on what it is and why it is used. Merchant to provide; no claims without evidence."
+                                           },
+                                           {
+                                               "tone":  "t2",
+                                               "name":  "Ingredient name 3",
+                                               "desc":  "One line on what it is and why it is used. Merchant to provide; no claims without evidence."
+                                           },
+                                           {
+                                               "tone":  "t3",
+                                               "name":  "Ingredient name 4",
+                                               "desc":  "One line on what it is and why it is used. Merchant to provide; no claims without evidence."
+                                           }
+                                       ],
+                           "itemFields":  [
+                                              "tone",
+                                              "name",
+                                              "desc"
+                                          ],
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "ingredients",
+                                           "setting":  "blocks",
+                                           "blockType":  "ingredient",
+                                           "maxBlocks":  4
+                                       },
+                           "note":  "One block per ingredient"
+                       },
+                       {
+                           "name":  "freeFromLabel",
+                           "type":  "TEXT",
+                           "default":  "Free from:",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "free_from_label",
+                                           "id":  "free_from_label",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "freeFrom",
+                           "type":  "LIST",
+                           "default":  [
+                                           {
+                                               "label":  "Item 1"
+                                           },
+                                           {
+                                               "label":  "Item 2"
+                                           },
+                                           {
+                                               "label":  "Item 3"
+                                           },
+                                           {
+                                               "label":  "Item 4"
+                                           }
+                                       ],
+                           "itemFields":  [
+                                              "label"
+                                          ],
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "free_from",
+                                           "setting":  "textarea"
+                                       },
+                           "note":  "One tag per line in the theme editor"
+                       },
+                       {
+                           "name":  "sourceLine",
+                           "type":  "TEXT",
+                           "default":  "Source line: where the key ingredients come from (merchant to provide).",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "source_line",
+                                           "id":  "source_line",
+                                           "setting":  "text"
+                                       }
+                       }
+                   ],
+    "tokens":  [
+                   "surface background",
+                   "spacing",
+                   "type roles"
+               ],
+    "summary":  "Four key ingredients with a free-from list and a source line. Maps to the ingredient-spotlight section. Ingredient claims are merchant content and need evidence.",
+    "accessibility":  "Heading is an h2; tags are plain text.",
+    "id":  "ingredient-section",
+    "level":  "main",
+    "status":  "classified (D10 items pending)",
+    "responsive":  "Two columns below 768 px, four from 768 px.",
+    "exposes":  [
+                    {
+                        "child":  "components/base/section-heading",
+                        "property":  "title",
+                        "via":  "heading"
+                    },
+                    {
+                        "child":  "components/base/section-heading",
+                        "property":  "lead",
+                        "via":  "lead"
+                    },
+                    {
+                        "child":  "components/homepage/ingredient-card",
+                        "property":  "name",
+                        "via":  "ingredients.name"
+                    },
+                    {
+                        "child":  "components/homepage/ingredient-card",
+                        "property":  "desc",
+                        "via":  "ingredients.text"
+                    },
+                    {
+                        "child":  "components/base/chip",
+                        "property":  "label",
+                        "via":  "free_from lines"
+                    }
+                ],
+    "children":  [
+                     "components/base/section-heading",
+                     "components/homepage/ingredient-card",
+                     "components/base/chip"
+                 ]
+}

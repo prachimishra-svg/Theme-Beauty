@@ -1,0 +1,90 @@
+{
+    "id":  "announcement-arrow",
+    "page":  "shared",
+    "level":  "sub",
+    "name":  "Announcement Arrow",
+    "properties":  [
+                       {
+                           "name":  "id",
+                           "type":  "TEXT",
+                           "default":  "ann-prev",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "id"
+                                       },
+                           "note":  "Script id"
+                       },
+                       {
+                           "name":  "label",
+                           "type":  "TEXT",
+                           "default":  "Previous message",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "label"
+                                       },
+                           "note":  "Accessible name from a locale string"
+                       },
+                       {
+                           "name":  "icon",
+                           "type":  "INSTANCE_SWAP",
+                           "default":  "chevron-left",
+                           "options":  [
+                                           "search",
+                                           "account",
+                                           "bag",
+                                           "menu",
+                                           "close",
+                                           "plus",
+                                           "minus",
+                                           "chevron-down",
+                                           "chevron-up",
+                                           "chevron-left",
+                                           "chevron-right",
+                                           "arrow-left",
+                                           "arrow-right",
+                                           "filter",
+                                           "sort",
+                                           "heart",
+                                           "star",
+                                           "location",
+                                           "lock",
+                                           "check",
+                                           "check-circle",
+                                           "info",
+                                           "warning",
+                                           "eye",
+                                           "eye-off",
+                                           "share",
+                                           "instagram",
+                                           "facebook",
+                                           "youtube",
+                                           "mail",
+                                           "phone",
+                                           "clock",
+                                           "zoom-in",
+                                           "play",
+                                           "truck",
+                                           "rotate-ccw",
+                                           "shield-check",
+                                           "store",
+                                           "loader"
+                                       ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "icon",
+                                           "setting":  "select"
+                                       },
+                           "note":  "Arrow icon"
+                       }
+                   ],
+    "accessibility":  "A button with an accessible name.",
+    "status":  "classified (D10 items pending)",
+    "summary":  "Previous or next control of the announcement bar.",
+    "tokens":  [
+                   "touch target"
+               ],
+    "responsive":  "Hidden on small screens where the dots show.",
+    "children":  [
+                     "components/base/icon"
+                 ]
+}

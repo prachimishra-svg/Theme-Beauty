@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NUDGE Beauty Theme Figma System Review</title>
+  <meta name="description" content="Browser review of the proposed NUDGE Figma design system and variables. This is not a Figma file.">
+  <link rel="stylesheet" href="preview.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="shell">
+    <aside class="side" id="side" aria-label="Sections">
+      <div class="brand"><svg class="brand__mark" viewBox="0 0 82 100" role="img" aria-label="NUDGE" fill="currentColor"><path d="M0 14H16V100H0ZM66 0H82V86H66ZM0 14H19L82 86H63Z"/></svg><div><strong>NUDGE</strong><span>Figma system review</span></div></div>
+      <nav id="nav" aria-label="Dashboard sections"></nav>
+      <p class="side__note">Preview of a <strong>proposed</strong> Figma specification. Not a Figma file; not a Figma Variables panel.</p>
+    </aside>
+    <div class="main-col">
+      <header class="bar">
+        <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="side">Menu</button>
+        <div class="search">
+          <label class="sr" for="gsearch">Search variables by name</label>
+          <input id="gsearch" type="search" placeholder="Search variables, for example rose or gutter" autocomplete="off">
+          <div class="results" id="gresults" hidden role="listbox" aria-label="Search results"></div>
+        </div>
+        <div class="modes" id="modes" role="group" aria-label="Preview modes"></div>
+      </header>
+      <main id="main" tabindex="-1">
+        <div id="app"><p class="loading">Loading specification data...</p></div>
+      </main>
+    </div>
+  </div>
+  <aside class="panel" id="panel" aria-label="Variable details" hidden>
+    <div class="panel__head"><h2 id="panel-title">Variable</h2><button type="button" id="panel-close" aria-label="Close variable details">Close</button></div>
+    <div id="panel-body"></div>
+  </aside>
+  <script src="preview-data.js"></script>
+  <script src="validation-data.js"></script>
+  <script src="renderers.js"></script>
+  <script src="preview.js"></script>
+</body>
+</html>

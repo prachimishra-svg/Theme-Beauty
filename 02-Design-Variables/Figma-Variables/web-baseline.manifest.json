@@ -1,0 +1,412 @@
+[
+    {
+        "path":  "01-Design-System/Documentation/accessibility.md",
+        "sha256":  "EAA3E34232874884070280AECF80F2AFAA73714B6DB268F43A80F40C7135FC05",
+        "bytes":  13006
+    },
+    {
+        "path":  "01-Design-System/Documentation/AUDIT-REPORT.md",
+        "sha256":  "0F047FBC9EA00D146402723F949D4CF3945C3B3A8B4CEC427C785B613DF35417",
+        "bytes":  107013
+    },
+    {
+        "path":  "01-Design-System/Documentation/brand.md",
+        "sha256":  "57F9611366F9299D927AB4A256E86D05056D46E00B9A1AD55F6F1D159E531855",
+        "bytes":  5901
+    },
+    {
+        "path":  "01-Design-System/Documentation/components.md",
+        "sha256":  "C092B8D56C3DF9EC8C2F108FF53276828996C5102E409D5D110651504053530E",
+        "bytes":  10910
+    },
+    {
+        "path":  "01-Design-System/Documentation/foundations.md",
+        "sha256":  "B1664A6D9B4EF7760E2922B1203557D39EA8D46E6603FAAD9C93BA540559198A",
+        "bytes":  37397
+    },
+    {
+        "path":  "01-Design-System/Documentation/manual-testing.md",
+        "sha256":  "BF4CC203FDE0D3E97D0C74766E37473E74ACAC3CF916EA9E475B4EE0432BEE82",
+        "bytes":  9914
+    },
+    {
+        "path":  "01-Design-System/Documentation/README.md",
+        "sha256":  "63058FECA772075FA11B8469F09E481344AA8DF29FA667117C999C3A83FB80B3",
+        "bytes":  5560
+    },
+    {
+        "path":  "01-Design-System/Documentation/tokens.md",
+        "sha256":  "CB2607EA6439DA89BA84D7A234C9826049EF4484D2145B66DEC7E5BFC71BF71A",
+        "bytes":  7438
+    },
+    {
+        "path":  "01-Design-System/Documentation/typography.md",
+        "sha256":  "1A7DF848B5DFF7F9B428CBDD34835C9E4CA9AEAA10213431D613D66A50CFA631",
+        "bytes":  10996
+    },
+    {
+        "path":  "01-Design-System/index.html",
+        "sha256":  "39030224BB540288FDAEFC109525BE1533E30ACCB9FE3706001683E554B5EDB3",
+        "bytes":  92402
+    },
+    {
+        "path":  "01-Design-System/Scripts/chip-row.js",
+        "sha256":  "2697CCF7A6CB18588711C51598252F173F7432023C9453F3F8B00D1EFDF43531",
+        "bytes":  832
+    },
+    {
+        "path":  "01-Design-System/Scripts/drawer.js",
+        "sha256":  "05C2C0A00B0281B5F7ADF5B0E3F3941566ECEC5730C8E0528F90D4AD90BB26BB",
+        "bytes":  4111
+    },
+    {
+        "path":  "01-Design-System/Scripts/load-more.js",
+        "sha256":  "75C984EC88DA082094CF5D221FED72A617B97BC57790A494E508148B4C50FB45",
+        "bytes":  4300
+    },
+    {
+        "path":  "01-Design-System/Scripts/preview.js",
+        "sha256":  "4587C30C921CB3A22D6256DAB1E9AE197118619396ED7BB24533B2AEF12414F8",
+        "bytes":  7070
+    },
+    {
+        "path":  "01-Design-System/Styles/base.css",
+        "sha256":  "54AFB317F5788CBF85B1675B14B9A06681042C74A6BF8FF1825E5EFD9A17E834",
+        "bytes":  11691
+    },
+    {
+        "path":  "01-Design-System/Styles/components.css",
+        "sha256":  "2E0D075AD4C6DFD71176C16F2ED562D3F78A62F81A7AF1001D0E0794EC181AD6",
+        "bytes":  39141
+    },
+    {
+        "path":  "01-Design-System/Styles/foundation.css",
+        "sha256":  "9B4BD2FA4870052C3E66A70517B7285CD1A8AF66468EFD4EEC0F22C4D1336F62",
+        "bytes":  2534
+    },
+    {
+        "path":  "01-Design-System/Styles/preview.css",
+        "sha256":  "9BFBDFB2EE5DB8B4C708E0A9EA43F2410AC2F3F3CDBFCA038CE2CE42CF6A7B39",
+        "bytes":  11196
+    },
+    {
+        "path":  "02-Design-Variables/Documentation/token-reference.md",
+        "sha256":  "02D272D61F63B61402D633B87F9983CD3D55213668ED2981295CDDE2350A12E2",
+        "bytes":  26611
+    },
+    {
+        "path":  "02-Design-Variables/Documentation/usage-guide.md",
+        "sha256":  "79EA6E68F9BE754D01E8C9533730CE409B1F28C90C2CB2F7F6B2665677282150",
+        "bytes":  15327
+    },
+    {
+        "path":  "02-Design-Variables/Preview/index.html",
+        "sha256":  "D98827E9A4B29316E37E5548AFCCE5DD66592CBF3384862E81BA5244EEC6FD18",
+        "bytes":  114444
+    },
+    {
+        "path":  "02-Design-Variables/Preview/preview.css",
+        "sha256":  "5A39F71B39B8E98BCBEBAC303AC3A79C764B1A017E17533544D07BE364BB274D",
+        "bytes":  33739
+    },
+    {
+        "path":  "02-Design-Variables/Preview/preview.js",
+        "sha256":  "C4FF574E2E27ED267C23CBB57F0E0F93C2E9945E9D9F871E5551CE8145732CFC",
+        "bytes":  48185
+    },
+    {
+        "path":  "02-Design-Variables/README.md",
+        "sha256":  "F23203E319833556FD2A6BC2631959973D2533BD4E496A26CFA934DFE8C8DE8F",
+        "bytes":  8719
+    },
+    {
+        "path":  "02-Design-Variables/responsive-token-matrix.md",
+        "sha256":  "0FF8856BFAF6C7BF1B1B77208670AFC99B9814659642B2DA59F9561E28355B4F",
+        "bytes":  6769
+    },
+    {
+        "path":  "02-Design-Variables/Styles/variables.css",
+        "sha256":  "44FD41B9DB834D4749CC306BC4A3AA5EC344F50F17A884AC7212EF0262CAEE23",
+        "bytes":  18698
+    },
+    {
+        "path":  "02-Design-Variables/Tokens/breakpoints.json",
+        "sha256":  "08FB56D03506A56D4C68D71F0F9B2F65FD2F01B63A6F26B0E2F8AEC7AB9727BA",
+        "bytes":  345
+    },
+    {
+        "path":  "02-Design-Variables/Tokens/build-tokens.ps1",
+        "sha256":  "2708A90C21EBC7FB1B77C338F7070CCA64AC63AD50F1B3B9186BA3B6B28FDE2E",
+        "bytes":  29355
+    },
+    {
+        "path":  "02-Design-Variables/Tokens/components.json",
+        "sha256":  "930D3E19D407D23B1645AF2FCC8EE66CD659B31CE9F80D270911BC8E6D263E84",
+        "bytes":  4938
+    },
+    {
+        "path":  "02-Design-Variables/Tokens/effects.json",
+        "sha256":  "35E16963FC1FF1B8A88A7448B086AE11CC1565A218C95DF0CD4E64433D5F2367",
+        "bytes":  2195
+    },
+    {
+        "path":  "02-Design-Variables/Tokens/layout.json",
+        "sha256":  "069996EAF407DDC258DFA494E7E55862F8585140FFACEA3DC03E991D8B6F75B0",
+        "bytes":  2805
+    },
+    {
+        "path":  "02-Design-Variables/Tokens/primitives.json",
+        "sha256":  "69122B5536CEDE341AF27295D730A4AC0AEA37C9067F42E3B77EC80AA53A380A",
+        "bytes":  2073
+    },
+    {
+        "path":  "02-Design-Variables/Tokens/semantic.json",
+        "sha256":  "ABD1509CC532955DB4F8A9BCD3F0BF27DF956404A2B34690787629B7BC42C174",
+        "bytes":  5208
+    },
+    {
+        "path":  "02-Design-Variables/Tokens/spacing.json",
+        "sha256":  "87C1106314AF61A50BBA6BEE47E3E3FCD3B342A115DA4E893413F844922CA76B",
+        "bytes":  1248
+    },
+    {
+        "path":  "02-Design-Variables/Tokens/test-emulation.ps1",
+        "sha256":  "898DB0D353109DD80B642E35F992CA88A435C8C594C567F344D112CAB09C5096",
+        "bytes":  40272
+    },
+    {
+        "path":  "02-Design-Variables/Tokens/test-tokens.ps1",
+        "sha256":  "9995785FC4675E3618CFAD1C63B992E0A110E66989C2ABAD05A7881BE2E59CDD",
+        "bytes":  44628
+    },
+    {
+        "path":  "02-Design-Variables/Tokens/typography.json",
+        "sha256":  "549AA9539E1AD05CE9D61DB29C1A064DF14EFBBE3371C242E66F980A416A8F43",
+        "bytes":  10117
+    },
+    {
+        "path":  "05-Assets/Fonts/cormorant-italic-500.woff2",
+        "sha256":  "BBB329FDA419BD8DF9D2FC2A245041ABA41D351A134D9796AC5B4C90EFA279D8",
+        "bytes":  24176
+    },
+    {
+        "path":  "05-Assets/Fonts/cormorant-var.woff2",
+        "sha256":  "766E1B19FA74895763CEF708F4B360B887E5A836725869CA672A0753BF19BD53",
+        "bytes":  35340
+    },
+    {
+        "path":  "05-Assets/Fonts/dm-sans-var.woff2",
+        "sha256":  "9FEA608A947E67020C33CAD9A6FE3D60C54119DFB8CFF87768A8117A15ED7543",
+        "bytes":  36932
+    },
+    {
+        "path":  "05-Assets/Icons/account.svg",
+        "sha256":  "D289CA9C089CDF871E89298B8674A25B69FC026ADE8F1CF326BCF7F6235224F7",
+        "bytes":  310
+    },
+    {
+        "path":  "05-Assets/Icons/arrow-left.svg",
+        "sha256":  "5390C8290BEFBEE5DC42339B9B12D185C4AEA577CDC5411CBA85E10F6B64B8AE",
+        "bytes":  273
+    },
+    {
+        "path":  "05-Assets/Icons/arrow-right.svg",
+        "sha256":  "E37066B321DAA7CA4D8101299CB7527C4A29F052A67F297F368413E89849B529",
+        "bytes":  272
+    },
+    {
+        "path":  "05-Assets/Icons/bag.svg",
+        "sha256":  "52475AC53A67F2A9A06BB120BFD343618CEEDEE835F8FE971EA7AFE7C00BFEDE",
+        "bytes":  340
+    },
+    {
+        "path":  "05-Assets/Icons/build-icons.ps1",
+        "sha256":  "CE2A2361C0342157202F1EC1440062520679A7C3D3037039BD64B362094D8396",
+        "bytes":  6617
+    },
+    {
+        "path":  "05-Assets/Icons/check.svg",
+        "sha256":  "7B1347D77D92623EB69725E9FB0DF6AE54C6ABFED4A9BC8226A6537A82D72904",
+        "bytes":  254
+    },
+    {
+        "path":  "05-Assets/Icons/check-circle.svg",
+        "sha256":  "6D7D2C098957231DA29DE5456E5B1E18B702834375264495B041A3A5B22484E7",
+        "bytes":  284
+    },
+    {
+        "path":  "05-Assets/Icons/chevron-down.svg",
+        "sha256":  "365269EE3858C652FCD7471D194C83E111280C6474611C494C44BDAD7BA9D40C",
+        "bytes":  251
+    },
+    {
+        "path":  "05-Assets/Icons/chevron-left.svg",
+        "sha256":  "63CDAC1F968509DD2373099CE58AEAA04A1C3F06629A322840B2EE32891936C0",
+        "bytes":  253
+    },
+    {
+        "path":  "05-Assets/Icons/chevron-right.svg",
+        "sha256":  "42937F4881A22474F6AF38C1ED430AB6702A4F7720876C45AD92A0265C8C192A",
+        "bytes":  252
+    },
+    {
+        "path":  "05-Assets/Icons/chevron-up.svg",
+        "sha256":  "86CBED73812CC6110BE71F5A1BE76B9C9F2836F3A5C0912C4EB15F059F2B5984",
+        "bytes":  253
+    },
+    {
+        "path":  "05-Assets/Icons/close.svg",
+        "sha256":  "3D08F40470E02640ECE90C057F90254AEEF969DE368D706158699C5FCC831A98",
+        "bytes":  271
+    },
+    {
+        "path":  "05-Assets/Icons/eye.svg",
+        "sha256":  "F0F6F953DFFDA49D112C95B39D5E10608C04ED3DB3F9B577BE219781E7406942",
+        "bytes":  371
+    },
+    {
+        "path":  "05-Assets/Icons/eye-off.svg",
+        "sha256":  "E0911FA30DA1696FE436FA2184A2F7930D7CA6928250B2EE6A92C4ECEE3D7559",
+        "bytes":  507
+    },
+    {
+        "path":  "05-Assets/Icons/facebook.svg",
+        "sha256":  "703AEB5122F18722009B08B9EDD41BBA06AF8A02C1166CFB848786C9B2715CB5",
+        "bytes":  304
+    },
+    {
+        "path":  "05-Assets/Icons/filter.svg",
+        "sha256":  "A8358A910C27F9F0D8B346968B36FD18FEB0A43BAC239B4821CDA558B1076720",
+        "bytes":  566
+    },
+    {
+        "path":  "05-Assets/Icons/heart.svg",
+        "sha256":  "1B0F2C66364055121EF9EA01D3DBA674BB691958B86460D6AA62E677DE55C7C1",
+        "bytes":  375
+    },
+    {
+        "path":  "05-Assets/Icons/info.svg",
+        "sha256":  "07FD25E8AE1E34513DD0C5862493779A62DE339E9E9DB35B4E5FE3792AD313CF",
+        "bytes":  301
+    },
+    {
+        "path":  "05-Assets/Icons/instagram.svg",
+        "sha256":  "D81CAD4FD9EDC4C7DB291C3887BB876A9BCFD51C045550F5A1AA18B710D802D3",
+        "bytes":  388
+    },
+    {
+        "path":  "05-Assets/Icons/location.svg",
+        "sha256":  "A172C1C9EAE6A4672697F3CEF53B2203D2C2352B081FA3610E57745D598AA532",
+        "bytes":  370
+    },
+    {
+        "path":  "05-Assets/Icons/menu.svg",
+        "sha256":  "7843B1CFC48676F5E8B82E3B518B649DD41EB35EAE51BF35A4EEE0712503E071",
+        "bytes":  339
+    },
+    {
+        "path":  "05-Assets/Icons/minus.svg",
+        "sha256":  "17FC253E9BE8F693006CF43B938733AFFE3D2CC391BD188C44E1AF2426531088",
+        "bytes":  247
+    },
+    {
+        "path":  "05-Assets/Icons/plus.svg",
+        "sha256":  "84161A79D6098094BCED261521B3E2219EE94F82F2267359CBF06F675500EA2F",
+        "bytes":  267
+    },
+    {
+        "path":  "05-Assets/Icons/search.svg",
+        "sha256":  "DEA94DCFE88DC7D76D7AE128FF5A4BD2FFE5E12DCB8942C1585FD8A855F2D74F",
+        "bytes":  284
+    },
+    {
+        "path":  "05-Assets/Icons/share.svg",
+        "sha256":  "1B7C2113B11E1C50A665D28BF9EF6FA62C237858711E3761CFA0A4975E575CA2",
+        "bytes":  417
+    },
+    {
+        "path":  "05-Assets/Icons/sort.svg",
+        "sha256":  "1CA1BC098661036F3D76B53B5A44A24A03E1D3287712A45DC415792B60A7EA2E",
+        "bytes":  316
+    },
+    {
+        "path":  "05-Assets/Icons/sprite.svg",
+        "sha256":  "DC7475209B4DFFC1020FD3647EC20F27101654C7A731591FB70540456521EFF8",
+        "bytes":  4871
+    },
+    {
+        "path":  "05-Assets/Icons/star.svg",
+        "sha256":  "E594CF1BAB38581B6FFC61E57061C9C5B23D27CDBD381C6806A94B249B0E9ACB",
+        "bytes":  603
+    },
+    {
+        "path":  "05-Assets/Icons/warning.svg",
+        "sha256":  "8EFF50B6D28D933E4AA5840A0A300FB68571DF6CE07C5B9A4DAE9AC4ED773A6C",
+        "bytes":  352
+    },
+    {
+        "path":  "05-Assets/Icons/youtube.svg",
+        "sha256":  "2B333440146CB80E96884AE137D2E399C7350A85FC40939BDC7686793503E030",
+        "bytes":  439
+    },
+    {
+        "path":  "05-Assets/Logos/logo.html",
+        "sha256":  "1245328799C851A09EDDF0B68676F1EA1771814DED76BEDBA430005D3BA56DF7",
+        "bytes":  6659
+    },
+    {
+        "path":  "05-Assets/Logos/nudge-apple-touch-icon.png",
+        "sha256":  "1CEF3CB8EEB1141963EA0B55037274CA50C2CE491FD3EE1932485AA45558E807",
+        "bytes":  1537
+    },
+    {
+        "path":  "05-Assets/Logos/nudge-favicon.svg",
+        "sha256":  "2FF9E06F2022D7D6701A55C8E5A96794B32ACF9EC407B099B8CDFC43998DA20E",
+        "bytes":  334
+    },
+    {
+        "path":  "05-Assets/Logos/nudge-favicon-32.png",
+        "sha256":  "F5E7AE146608179AB074FAF992F0DD700827D89F72D2EA3D3CC614B983A4E576",
+        "bytes":  585
+    },
+    {
+        "path":  "05-Assets/Logos/nudge-icon-192.png",
+        "sha256":  "C1D069AA0C7C399558689BE32C14ECC3741BC1769A3ECCDA71533D9666634369",
+        "bytes":  2589
+    },
+    {
+        "path":  "05-Assets/Logos/nudge-icon-512.png",
+        "sha256":  "4F88CD62D439970DC24F817E89B42062034DA165D5F95596214B6046FD48C292",
+        "bytes":  8002
+    },
+    {
+        "path":  "05-Assets/Logos/nudge-monogram.svg",
+        "sha256":  "49A8F1616A52A1B07FD30E19AAA39686398FF19A0A95804EB2BD0DCE2DC5495A",
+        "bytes":  238
+    },
+    {
+        "path":  "05-Assets/Logos/nudge-monogram-currentcolor.svg",
+        "sha256":  "CF31FC92908729200EFC961087AD0B15A455B856CEA06792F699C09173E16D9E",
+        "bytes":  243
+    },
+    {
+        "path":  "05-Assets/Logos/nudge-monogram-light.svg",
+        "sha256":  "5CC7ABF355E6A57869B0B89D14D924FA215CA62ABCA3AD1E8207FFACCAA77C4F",
+        "bytes":  238
+    },
+    {
+        "path":  "05-Assets/Logos/nudge-wordmark.svg",
+        "sha256":  "68526756197B8BD73E511F7D46739BC773A29A5E8186CE8CDA830EB4491CF5B0",
+        "bytes":  621
+    },
+    {
+        "path":  "05-Assets/Logos/nudge-wordmark-currentcolor.svg",
+        "sha256":  "3699384CBBDBBEF2A63C1BB6060244125AA6389360FE2EAE0D870AEF804F4D56",
+        "bytes":  631
+    },
+    {
+        "path":  "05-Assets/Logos/nudge-wordmark-light.svg",
+        "sha256":  "AA1BAFD8C5F351A67D11DB1F84D9FF7CB8DDD3C6705CE3A3F41D8D3354263B2D",
+        "bytes":  621
+    }
+]

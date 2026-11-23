@@ -1,0 +1,26 @@
+{
+  "palette": {
+    "rose": {
+      "50":  { "$value": "#FBEAEE", "$description": "Rose tint: selected / subtle fills" },
+      "100": { "$value": "#F0D2DA", "$description": "Rose tint: borders on selected, pressed icon buttons" },
+      "400": { "$value": "#D99BAA", "$description": "Blush Rose: decorative brand accent (rules, marks, dividers, swatches) and links/focus on Midnight Plum (6.9:1). Never text on light surfaces (2.1:1 on Pearl Pink)" },
+      "500": { "$value": "#AD526D", "$description": "Luxury Rose: recognisable brand elements (eyebrows, ratings, heading rules, large serif accents). Text only on Pearl Pink or white (4.7 / 5.0:1); large text or marks only on Rose Quartz (3.7:1)" },
+      "700": { "$value": "#713448", "$description": "BRAND: Rich Burgundy, primary CTA, active and selected states, key highlights" },
+      "800": { "$value": "#5E2A3B", "$description": "Rich Burgundy hover" },
+      "900": { "$value": "#4B2130", "$description": "Rich Burgundy active / pressed" }
+    },
+    "white":    { "$value": "#FFFFFF" },
+    "ivory":    { "$value": "#FFF5F5", "$description": "Pearl Pink: main page background (primitive name kept from the earlier palette)" },
+    "blush":    { "$value": "#F2D5DC", "$description": "Rose Quartz: secondary backgrounds" },
+    "charcoal": { "$value": "#292126", "$description": "Midnight Plum: headings, text and dark surfaces (primitive name kept from the earlier palette)" },
+    "neutral": {
+      "300": { "$value": "#BFB1B7", "$description": "Disabled text / inverse border" },
+      "400": { "$value": "#908088", "$description": "Strong border (3.5:1 on Pearl Pink)" },
+      "500": { "$value": "#6B5C64", "$description": "Muted text (AA on Pearl Pink, white and Rose Quartz)" },
+      "600": { "$value": "#5A4B53", "$description": "Secondary text" }
+    },
+    "red":   { "700": { "$value": "#A93226" }, "50": { "$value": "#FDECEA" } },
+    "green": { "700": { "$value": "#2F6B4F" }, "50": { "$value": "#E9F3EE" } },
+    "amber": { "700": { "$value": "#8A5A00" }, "50": { "$value": "#FBF1DC" } }
+  }
+}

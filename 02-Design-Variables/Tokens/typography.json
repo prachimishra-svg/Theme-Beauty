@@ -1,0 +1,162 @@
+{
+  "font": {
+    "family": {
+      "heading": { "$value": "\"Cormorant\", \"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, serif" },
+      "body":    { "$value": "\"DM Sans\", system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif" }
+    },
+    "weight": {
+      "regular":  { "$value": "400" },
+      "medium":   { "$value": "500" },
+      "semibold": { "$value": "600" },
+      "bold":     { "$value": "700" }
+    },
+    "size": {
+      "display":       { "$value": { "mobile": "44px", "tablet": "60px", "desktop": "80px" }, "$description": "Hero only. Tier (stepped): was fluid 44 to 80px; now exact even sizes on the 4px scale at each breakpoint" },
+      "h1":            { "$value": { "mobile": "36px", "tablet": "48px", "desktop": "60px" }, "$description": "Tier: was fluid 36 to 60px (end values kept)" },
+      "h2":            { "$value": { "mobile": "32px", "tablet": "36px", "desktop": "44px" }, "$description": "Tier: was fluid 30 to 44px; mobile raised to 32px so it sits on the 4px scale" },
+      "h3":            { "$value": { "mobile": "24px", "tablet": "28px", "desktop": "32px" }, "$description": "Tier: was fluid 24 to 32px (end values kept)" },
+      "h4":            { "$value": { "mobile": "20px", "tablet": "24px", "desktop": "24px" }, "$description": "Tier: was fluid 20 to 24px (end values kept)" },
+      "h5":            { "$value": "16px", "$description": "Was fluid 16 to 18px. Kept at 16px on every tier so the approved order h4 > body large (18px) > h5 holds now that body large is a fixed 18px" },
+      "h6":            { "$value": "16px" },
+      "body-lg":       { "$value": "18px", "$description": "Was fluid 17 to 19px (both odd); one even size on every tier" },
+      "body":          { "$value": "16px", "$description": "Never below 16px on any tier" },
+      "body-sm":       { "$value": "14px" },
+      "caption":       { "$value": "12px", "$description": "Was 13px (odd)" },
+      "overline":      { "$value": "12px" },
+      "label":         { "$value": "14px" },
+      "button":        { "$value": "14px", "$description": "Was 13px (odd). 14px rather than 16px: buttons are uppercase with 0.08em tracking, so 16px would outweigh the body text" },
+      "nav":           { "$value": "16px", "$description": "Was 15px (odd)" },
+      "utility":       { "$value": "12px" },
+      "input":         { "$value": "16px", "$description": ">=16px prevents iOS zoom on focus" },
+      "validation":    { "$value": "14px", "$description": "Was 13px (odd); error messages stay readable" },
+      "product-title": { "$value": { "mobile": "16px", "tablet": "16px", "desktop": "18px" }, "$description": "Tier: was fluid 16 to 18px (end values kept)" },
+      "price":         { "$value": "16px" },
+      "price-lg":      { "$value": { "mobile": "20px", "tablet": "24px", "desktop": "24px" }, "$description": "Tier: was fluid 20 to 24px (end values kept)" }
+    }
+  },
+
+  "line-height": {
+    "tight":   { "$value": "1.1" },
+    "snug":    { "$value": "1.25" },
+    "normal":  { "$value": "1.5" },
+    "relaxed": { "$value": "1.6", "$description": "Was 1.65, above the 1.4 to 1.6 range for body text" }
+  },
+
+  "letter-spacing": {
+    "display": { "$value": "-0.015em" },
+    "tight":   { "$value": "-0.01em" },
+    "normal":  { "$value": "0" },
+    "wide":    { "$value": "0.04em" },
+    "uppercase": { "$value": "0.06em", "$description": "Uppercase headings (Cormorant); controlled tracking, between wide and wider" },
+    "wider":   { "$value": "0.08em" },
+    "widest":  { "$value": "0.14em" }
+  },
+
+  "type": {
+    "display": {
+      "font-family": { "$value": "{font.family.heading}" }, "font-size": { "$value": "{font.size.display}" },
+      "font-weight": { "$value": "{font.weight.medium}" },  "line-height": { "$value": "{line-height.tight}" },
+      "letter-spacing": { "$value": "{letter-spacing.display}" }
+    },
+    "h1": {
+      "font-family": { "$value": "{font.family.heading}" }, "font-size": { "$value": "{font.size.h1}" },
+      "font-weight": { "$value": "{font.weight.medium}" },  "line-height": { "$value": "{line-height.tight}" },
+      "letter-spacing": { "$value": "{letter-spacing.tight}" }
+    },
+    "h2": {
+      "font-family": { "$value": "{font.family.heading}" }, "font-size": { "$value": "{font.size.h2}" },
+      "font-weight": { "$value": "{font.weight.medium}" },  "line-height": { "$value": "{line-height.tight}" },
+      "letter-spacing": { "$value": "{letter-spacing.tight}" }
+    },
+    "h3": {
+      "font-family": { "$value": "{font.family.heading}" }, "font-size": { "$value": "{font.size.h3}" },
+      "font-weight": { "$value": "{font.weight.medium}" },  "line-height": { "$value": "{line-height.snug}" },
+      "letter-spacing": { "$value": "{letter-spacing.normal}" }
+    },
+    "h4": {
+      "font-family": { "$value": "{font.family.heading}" }, "font-size": { "$value": "{font.size.h4}" },
+      "font-weight": { "$value": "{font.weight.semibold}" }, "line-height": { "$value": "{line-height.snug}" },
+      "letter-spacing": { "$value": "{letter-spacing.normal}" }
+    },
+    "h5": {
+      "font-family": { "$value": "{font.family.heading}" }, "font-size": { "$value": "{font.size.h5}" },
+      "font-weight": { "$value": "{font.weight.bold}" }, "line-height": { "$value": "{line-height.snug}" },
+      "letter-spacing": { "$value": "{letter-spacing.normal}" }
+    },
+    "h6": {
+      "font-family": { "$value": "{font.family.heading}" }, "font-size": { "$value": "{font.size.h6}" },
+      "font-weight": { "$value": "{font.weight.bold}" }, "line-height": { "$value": "{line-height.snug}" },
+      "letter-spacing": { "$value": "{letter-spacing.wide}" }
+    },
+    "body-lg": {
+      "font-family": { "$value": "{font.family.body}" }, "font-size": { "$value": "{font.size.body-lg}" },
+      "font-weight": { "$value": "{font.weight.regular}" }, "line-height": { "$value": "{line-height.relaxed}" },
+      "letter-spacing": { "$value": "{letter-spacing.normal}" }
+    },
+    "body": {
+      "font-family": { "$value": "{font.family.body}" }, "font-size": { "$value": "{font.size.body}" },
+      "font-weight": { "$value": "{font.weight.regular}" }, "line-height": { "$value": "{line-height.relaxed}" },
+      "letter-spacing": { "$value": "{letter-spacing.normal}" }
+    },
+    "body-sm": {
+      "font-family": { "$value": "{font.family.body}" }, "font-size": { "$value": "{font.size.body-sm}" },
+      "font-weight": { "$value": "{font.weight.regular}" }, "line-height": { "$value": "{line-height.normal}" },
+      "letter-spacing": { "$value": "{letter-spacing.normal}" }
+    },
+    "caption": {
+      "font-family": { "$value": "{font.family.body}" }, "font-size": { "$value": "{font.size.caption}" },
+      "font-weight": { "$value": "{font.weight.regular}" }, "line-height": { "$value": "{line-height.normal}" },
+      "letter-spacing": { "$value": "{letter-spacing.normal}" }
+    },
+    "overline": {
+      "font-family": { "$value": "{font.family.body}" }, "font-size": { "$value": "{font.size.overline}" },
+      "font-weight": { "$value": "{font.weight.semibold}" }, "line-height": { "$value": "{line-height.normal}" },
+      "letter-spacing": { "$value": "{letter-spacing.widest}" }, "text-transform": { "$value": "uppercase" }
+    },
+    "label": {
+      "font-family": { "$value": "{font.family.body}" }, "font-size": { "$value": "{font.size.label}" },
+      "font-weight": { "$value": "{font.weight.medium}" }, "line-height": { "$value": "{line-height.snug}" },
+      "letter-spacing": { "$value": "{letter-spacing.normal}" }
+    },
+    "button": {
+      "font-family": { "$value": "{font.family.body}" }, "font-size": { "$value": "{font.size.button}" },
+      "font-weight": { "$value": "{font.weight.semibold}" }, "line-height": { "$value": "{line-height.snug}" },
+      "letter-spacing": { "$value": "{letter-spacing.wider}" }, "text-transform": { "$value": "uppercase" }
+    },
+    "nav": {
+      "font-family": { "$value": "{font.family.body}" }, "font-size": { "$value": "{font.size.nav}" },
+      "font-weight": { "$value": "{font.weight.medium}" }, "line-height": { "$value": "{line-height.snug}" },
+      "letter-spacing": { "$value": "{letter-spacing.wide}" }
+    },
+    "utility": {
+      "font-family": { "$value": "{font.family.body}" }, "font-size": { "$value": "{font.size.utility}" },
+      "font-weight": { "$value": "{font.weight.medium}" }, "line-height": { "$value": "{line-height.normal}" },
+      "letter-spacing": { "$value": "{letter-spacing.wider}" }, "text-transform": { "$value": "uppercase" }
+    },
+    "input": {
+      "font-family": { "$value": "{font.family.body}" }, "font-size": { "$value": "{font.size.input}" },
+      "font-weight": { "$value": "{font.weight.regular}" }, "line-height": { "$value": "{line-height.normal}" },
+      "letter-spacing": { "$value": "{letter-spacing.normal}" }
+    },
+    "validation": {
+      "font-family": { "$value": "{font.family.body}" }, "font-size": { "$value": "{font.size.validation}" },
+      "font-weight": { "$value": "{font.weight.medium}" }, "line-height": { "$value": "{line-height.normal}" },
+      "letter-spacing": { "$value": "{letter-spacing.normal}" }
+    },
+    "product-title": {
+      "font-family": { "$value": "{font.family.body}" }, "font-size": { "$value": "{font.size.product-title}" },
+      "font-weight": { "$value": "{font.weight.medium}" }, "line-height": { "$value": "{line-height.snug}" },
+      "letter-spacing": { "$value": "{letter-spacing.normal}" }
+    },
+    "price": {
+      "font-family": { "$value": "{font.family.body}" }, "font-size": { "$value": "{font.size.price}" },
+      "font-weight": { "$value": "{font.weight.medium}" }, "line-height": { "$value": "{line-height.snug}" },
+      "letter-spacing": { "$value": "{letter-spacing.normal}" }
+    },
+    "price-lg": {
+      "font-family": { "$value": "{font.family.body}" }, "font-size": { "$value": "{font.size.price-lg}" },
+      "font-weight": { "$value": "{font.weight.medium}" }, "line-height": { "$value": "{line-height.snug}" },
+      "letter-spacing": { "$value": "{letter-spacing.normal}" }
+    }
+  }
+}

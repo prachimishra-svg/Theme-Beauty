@@ -1,0 +1,25 @@
+{
+    "name":  "Footer Section (Homepage wrapper)",
+    "wireframeOnly":  [
+                          "the whole numbered section wrapper, .ann annotation, data-section"
+                      ],
+    "page":  "homepage",
+    "properties":  [
+
+                   ],
+    "tokens":  [
+                   "inverse background"
+               ],
+    "summary":  "The Homepage wireframe wraps the shared footer in a numbered review section. The wrapper exists only in the wireframe; in Shopify the footer is the footer group section.",
+    "accessibility":  "See Footer.",
+    "id":  "footer-section",
+    "level":  "main",
+    "status":  "classified (D10 items pending)",
+    "responsive":  "See Footer.",
+    "exposes":  [
+
+                ],
+    "children":  [
+                     "components/layout/site-footer"
+                 ]
+}

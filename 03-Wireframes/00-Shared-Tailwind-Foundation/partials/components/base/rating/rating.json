@@ -1,0 +1,116 @@
+{
+    "id":  "rating",
+    "name":  "Rating",
+    "level":  "base",
+    "page":  "shared",
+    "status":  "ready",
+    "summary":  "Five stars with the number of filled stars, an accessible value and an optional review count.",
+    "properties":  [
+                       {
+                           "name":  "stars",
+                           "type":  "VARIANT",
+                           "default":  "4",
+                           "tables":  {
+                                          "s1":  {
+                                                     "0":  "",
+                                                     "1":  "icon-filled",
+                                                     "2":  "icon-filled",
+                                                     "3":  "icon-filled",
+                                                     "4":  "icon-filled",
+                                                     "5":  "icon-filled"
+                                                 },
+                                          "s2":  {
+                                                     "0":  "",
+                                                     "1":  "",
+                                                     "2":  "icon-filled",
+                                                     "3":  "icon-filled",
+                                                     "4":  "icon-filled",
+                                                     "5":  "icon-filled"
+                                                 },
+                                          "s3":  {
+                                                     "0":  "",
+                                                     "1":  "",
+                                                     "2":  "",
+                                                     "3":  "icon-filled",
+                                                     "4":  "icon-filled",
+                                                     "5":  "icon-filled"
+                                                 },
+                                          "s4":  {
+                                                     "0":  "",
+                                                     "1":  "",
+                                                     "2":  "",
+                                                     "3":  "",
+                                                     "4":  "icon-filled",
+                                                     "5":  "icon-filled"
+                                                 },
+                                          "s5":  {
+                                                     "0":  "",
+                                                     "1":  "",
+                                                     "2":  "",
+                                                     "3":  "",
+                                                     "4":  "",
+                                                     "5":  "icon-filled"
+                                                 }
+                                      },
+                           "values":  [
+                                          "0",
+                                          "1",
+                                          "2",
+                                          "3",
+                                          "4",
+                                          "5"
+                                      ],
+                           "note":  "Filled stars",
+                           "classes":  {
+                                           "0":  "",
+                                           "1":  "",
+                                           "2":  "",
+                                           "3":  "",
+                                           "4":  "",
+                                           "5":  ""
+                                       },
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "stars"
+                                       }
+                       },
+                       {
+                           "name":  "value",
+                           "type":  "TEXT",
+                           "default":  "4.4",
+                           "note":  "Spoken rating, for example 4.4",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "value"
+                                       }
+                       },
+                       {
+                           "name":  "text",
+                           "type":  "TEXT",
+                           "default":  "4.8 (212)",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "text"
+                                       },
+                           "note":  "Text after the stars, for example 4.8 (212)"
+                       },
+                       {
+                           "name":  "extra",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "extra"
+                                       },
+                           "note":  "Layout utilities set by the parent (for example top margin)"
+                       }
+                   ],
+    "children":  [
+                     "components/base/icon"
+                 ],
+    "accessibility":  "role=\"img\" with an aria-label such as \"Rated 4.4 out of 5\".",
+    "tokens":  [
+                   "rating star colour",
+                   "caption type"
+               ]
+}

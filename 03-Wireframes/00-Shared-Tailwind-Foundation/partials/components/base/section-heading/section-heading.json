@@ -1,0 +1,48 @@
+{
+    "id":  "section-heading",
+    "name":  "Section Heading",
+    "level":  "base",
+    "page":  "shared",
+    "status":  "ready",
+    "summary":  "The centred section title with the short rule underneath and an optional lead line.",
+    "properties":  [
+                       {
+                           "name":  "title",
+                           "type":  "TEXT",
+                           "default":  "Shop by category",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "title",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "lead",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "note":  "Optional supporting line; empty = hidden",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "lead",
+                                           "setting":  "textarea"
+                                       }
+                       },
+                       {
+                           "name":  "editHook",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "note":  "Wireframe review hook (data-c)",
+                           "scope":  "wireframe",
+                           "shopify":  {
+                                           "param":  "edit_hook"
+                                       }
+                       }
+                   ],
+    "accessibility":  "The title is the section\u0027s h2.",
+    "responsive":  "Spacing below grows at 600 and 1024 px.",
+    "tokens":  [
+                   "heading type",
+                   "brand secondary rule",
+                   "spacing"
+               ]
+}

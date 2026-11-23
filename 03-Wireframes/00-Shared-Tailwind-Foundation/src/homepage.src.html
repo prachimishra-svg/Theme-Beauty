@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NUDGE Beauty Theme: Homepage Wireframe</title>
+<!-- Design Variables (tokens) linked; styling is Tailwind utilities and the shared components, mapped to those tokens. Homepage-only pieces are in the small page-level layer below. -->
+@@PARTIAL head@@
+<style type="text/tailwindcss">
+/* ===== Homepage page-level components (everything else on this page is plain Tailwind utilities) ===== */
+@layer components{
+ /* Homepage icons are 24 px (the shared default is 20 px); specific icons set their own size with utilities */
+ .icon{@apply size-6}
+ /* The approved Homepage has no base stylesheet: its headings carry no letter spacing and no balanced wrapping (lining numerals) */
+ h1,h2,h3{letter-spacing:normal;text-wrap:wrap;font-variant-numeric:lining-nums}
+ /* Image placeholders: soft tonal fields with one label and one size each (labelled boxes, no imagery). Modifiers: t2 t3 t4 tones; r11 circle r169 r21 r45 ratios; img-bare, img-nodim */
+ .img{@apply relative w-full min-w-0 overflow-hidden text-caption font-medium;background:linear-gradient(155deg,var(--ta,var(--color-bg-surface)),var(--tb,color-mix(in srgb,var(--color-text-primary) 7%,var(--color-bg-page))));color:var(--color-text-secondary)}
+ .img::before{content:"";@apply absolute inset-0;background:radial-gradient(circle at 28% 18%,rgba(255,255,255,.6),transparent 58%)}
+ .img.t2{--ta:var(--color-bg-subtle);--tb:var(--color-brand-tint-strong)}
+ .img.t3{--ta:var(--color-bg-page);--tb:var(--color-bg-subtle)}
+ .img.t4{--ta:var(--color-brand-tint-strong);--tb:var(--color-border-inverse)}
+ .img.circle{@apply rounded-full}
+ :where(.img) .ratio{@apply block w-full;padding-top:125%}
+ :where(.img.r11,.img.circle) .ratio{padding-top:100%}
+ :where(.img.r169) .ratio{padding-top:56.25%}
+ :where(.img.r21) .ratio{padding-top:50%}
+ :where(.img) .in{@apply absolute inset-0 z-[1] flex flex-col items-center justify-center gap-1 p-1 text-center}
+ :where(.img) .lbl,:where(.img) .dim{max-width:94%;padding:1px 8px;line-height:1.3;color:var(--color-text-secondary);background:rgba(255,255,255,.72)}
+ .img-bare::before{@apply hidden}
+ .img-bare .lbl,.img-bare .dim{background:none;padding:0}
+ .img-nodim .dim{@apply hidden}
+ /* hero campaign field: warm gradient plus the readable fade (strength --scrim, set on the section); the fade is part of the design */
+ .hp-hero-media{background:radial-gradient(56% 72% at 72% 42%,color-mix(in srgb,var(--color-brand-accent) 62%,transparent),transparent 72%),linear-gradient(160deg,var(--color-bg-page) 0,var(--color-bg-subtle) 58%,color-mix(in srgb,var(--color-brand-secondary) 26%,var(--color-bg-subtle)) 100%)}
+ .hp-hero-media::after{content:"";@apply pointer-events-none absolute inset-0 z-[1];background:linear-gradient(0deg,color-mix(in srgb,var(--color-bg-page) calc(var(--scrim) * 1.1%),transparent) 0,color-mix(in srgb,var(--color-bg-page) calc(var(--scrim) * .6%),transparent) 30%,transparent 56%)}
+ @media (min-width:1024px){.hp-hero-media::after{background:linear-gradient(180deg,color-mix(in srgb,var(--color-bg-page) calc(var(--scrim) * .75%),transparent) 0,transparent 140px),linear-gradient(90deg,color-mix(in srgb,var(--color-bg-page) calc(var(--scrim) * 1%),transparent) 0,color-mix(in srgb,var(--color-bg-page) calc(var(--scrim) * .55%),transparent) 32%,transparent 58%)}}
+ /* Homepage buttons (square, sentence case; differ from the Design System .btn) */
+ .hp-btn{@apply inline-flex min-h-touch cursor-pointer items-center justify-center border border-brand bg-brand px-7 text-center text-body-sm font-semibold tracking-[0.02em] text-ink-on-brand no-underline transition-colors duration-base hover:border-brand-hover hover:bg-brand-hover active:border-brand-active active:bg-brand-active}
+ .hp-btn-o{@apply border-ink bg-transparent text-ink hover:border-ink hover:bg-ink hover:text-page active:border-ink active:bg-ink active:text-page}
+ .hp-btn-s{@apply px-4}
+ /* Homepage chip (finder answers, free-from tags) */
+ .hp-chip{@apply inline-flex min-h-touch cursor-pointer items-center rounded-pill border border-line-inverse bg-transparent px-5 text-body-sm text-ink transition-colors duration-base hover:border-ink [&.on]:border-ink [&.on]:bg-ink [&.on]:text-page}
+ /* Text link with an underlined label and an arrow */
+ .lnk{@apply inline-flex min-h-touch items-center gap-2 border-b border-transparent text-body-sm text-ink no-underline transition-[gap] duration-base hover:gap-3 hover:text-brand}
+ .lnk span{@apply border-b border-current}
+ .lnk .icon{@apply size-4}
+ /* Announcement bar on the homepage is one notch quieter from 1024 px (compact first fold) */
+ @media (min-width:1024px){#annbar{min-height:36px;padding-block:0;font-size:12px;letter-spacing:.06em}#annbar button{margin-block:-4px}}
+}
+</style>
+<style>
+@@PARTIAL review-css@@
+.rv h3{margin:16px 0 4px;font:600 14px/1.45 system-ui,sans-serif}
+.rv table.ck{min-width:44rem;font-size:12px}.rv table.ck th{background:#e6e6e6}
+.rv code{font-family:ui-monospace,Consolas,monospace;font-size:13px}
+.src-demo{background:rgba(0,160,80,.25);padding:0 4px}.smp-demo{background:rgba(255,170,0,.28);padding:0 4px}
+.show-src [data-c="src"]{background:rgba(0,160,80,.22);outline:1px dotted #0a8}
+.show-src [data-c="smp"]{background:rgba(255,170,0,.26);outline:1px dotted #c80}
+.editing [data-c]{cursor:text;outline:1px dashed #1a56db}
+</style>
+</head>
+<body class="ann-on fold-home leading-relaxed" id="top">
+@@PARTIAL sprite@@
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-skip focus:bg-surface focus:p-3">Skip to content</a>
+<div class="rv">
+  <div class="rvt">NUDGE Beauty Theme: homepage wireframe &middot; single responsive file</div>
+  <p>One page, one set of 20 sections. Resize the window or use the <b>Width preview</b> for 1920, 1440, 1024, 768, 390, 375 and 320 px. Premium editorial wireframe: colours, type and spacing come from the NUDGE design system; image areas are labelled placeholders, not photography. The NUDGE wordmark stands in for the logo. Use <b>Show hover states</b> to see the card title hover colour and the hotspot labels. Source: Beauty column of Homepage_CRO_5_Theme_Final_Comparison_Revised_Final.xlsx (revision 2, see the revision notes below). Built with Tailwind utilities and shared components mapped to the Design Variables.</p>
+  <div class="ctl"><button id="t-ann" type="button" aria-pressed="true">Annotations</button><button id="t-wp" type="button">Width preview</button><button id="t-src" type="button" aria-pressed="false">Highlight content source</button><button id="t-edit" type="button" aria-pressed="false">Edit sample text</button><button id="t-hover" type="button" aria-pressed="false">Show hover states</button><button id="t-menu" type="button">Preview menu drawer</button><button id="t-hfull" type="button" aria-pressed="false">Hero: full height</button><button id="t-hguide" type="button" aria-pressed="false">Hero: focal point guide</button></div>
+<details><summary>Review notes: legend, checklist, validation, consolidation (open)</summary>
+<h3>Content legend</h3>
+<p>Turn on <b>Highlight content source</b>: <span class="src-demo">green</span> = text taken from the Excel (section structure, menu labels, tab labels, button intent, benefit names, footer groups); <span class="smp-demo">amber</span> = editable sample copy. Turn on <b>Edit sample text</b> to type over any highlighted text. Sample copy avoids product claims, certifications, ingredient names and clinical benefits; anything of that kind is a labelled placeholder for the merchant to supply. Prices, offers and policy lines are sample values.</p>
+<h3>Approved Beauty sections (20 of 20)</h3>
+<div class="max-w-full overflow-x-auto"><table class="ck"><thead><tr><th>#</th><th>Section</th><th>Stage</th><th>Approved in Excel (role)</th><th>In wireframe</th><th>Required content and UI elements</th></tr></thead><tbody><tr><td>01</td><td>Announcement Bar</td><td>Orient</td><td>Yes (Essential)</td><td>Yes</td><td>Rotating message, previous and next arrows</td></tr><tr><td>02</td><td>Header (logo, menu, search, account, cart, sticky, country selector, mobile drawer)</td><td>Orient</td><td>Yes (Essential)</td><td>Yes</td><td>Logo, 4 plain menu links (no mega menu), search, account, cart with count, country selector, sticky, mobile drawer</td></tr><tr><td>03</td><td>Hero Banner</td><td>Attract</td><td>Yes (Essential)</td><td>Yes</td><td>H1, supporting line, 2 buttons (shop, find your routine), hero image, product or category shown early</td></tr><tr><td>04</td><td>Benefits / USP Row</td><td>Attract</td><td>Yes (Essential)</td><td>Yes</td><td>4 benefits with icons: cruelty-free, clean, free shipping, easy returns</td></tr><tr><td>05</td><td>Shop by Category</td><td>Discover</td><td>Yes (Essential)</td><td>Yes</td><td>Heading, 4 photo tiles: skin care, makeup, hair, body</td></tr><tr><td>06</td><td>Featured Collection (Best Sellers / New Arrivals)</td><td>Discover</td><td>Yes (Essential)</td><td>Yes</td><td>Heading, tabs (best sellers, new launches, sets), 4 product cards (image, badge, title, size, key-attribute line, shade dots only where a product has shades, price), view all; the whole card is the link</td></tr><tr><td>07</td><td>Shop by Concern / Need / Routine</td><td>Discover</td><td>Yes (Industry-specific)</td><td>Yes</td><td>Heading, 6 concern tiles, 4 numbered routine links</td></tr><tr><td>08</td><td>Guided Finder / Quiz</td><td>Decide</td><td>Yes (Industry-specific)</td><td>Yes</td><td>Heading, 3-step question card with chips, back and next, result link</td></tr><tr><td>09</td><td>Shop the Look</td><td>Decide</td><td>Yes (Industry-specific)</td><td>Yes</td><td>Shoppable look image with 3 pins, 3 product rows with view buttons</td></tr><tr><td>10</td><td>Ingredient / Material Spotlight</td><td>Educate</td><td>Yes (Industry-specific)</td><td>Yes</td><td>Heading, 4 ingredient cards, free-from chips, source line</td></tr><tr><td>11</td><td>How to Use / Routine Steps</td><td>Educate</td><td>Yes (Industry-specific)</td><td>Yes</td><td>Heading, 4 numbered steps with product links</td></tr><tr><td>12</td><td>Video Section</td><td>Educate</td><td>Yes (Industry-specific)</td><td>Yes</td><td>Video poster with play button, heading, text, shop button</td></tr><tr><td>13</td><td>Before &amp; After</td><td>Trust</td><td>Yes (Industry-specific)</td><td>Yes</td><td>Heading, 2 before and after pairs with captions, disclaimer</td></tr><tr><td>14</td><td>Testimonials / Customer Reviews</td><td>Trust</td><td>Yes (Essential)</td><td>Yes</td><td>Heading, 3 quotes with names and product links</td></tr><tr><td>15</td><td>Customer Photo Gallery</td><td>Trust</td><td>Yes (Industry-specific)</td><td>Yes</td><td>Heading, 6 merchant-uploaded photos</td></tr><tr><td>16</td><td>Logo List (Awards, Certifications, Press, Partner Brands)</td><td>Trust</td><td>Yes (Essential)</td><td>Yes</td><td>Heading, 6 logos: certification, award, press, partner brand</td></tr><tr><td>17</td><td>Promotional / Campaign Banner</td><td>Convert</td><td>Yes (Industry-specific)</td><td>Yes</td><td>Campaign image, eyebrow, headline, text, button</td></tr><tr><td>18</td><td>Custom Liquid Section</td><td>Convert</td><td>Yes (Optional (merchant-controlled))</td><td>Yes</td><td>Dashed slot, empty by default, not visible to shoppers until the merchant adds content</td></tr><tr><td>19</td><td>Newsletter</td><td>Convert</td><td>Yes (Essential)</td><td>Yes</td><td>Heading, text, email field, subscribe button, consent line, no pop-up</td></tr><tr><td>20</td><td>Footer (navigation, about, contact, support, shipping &amp; returns, policies, social, payment icons, trust line, back to top)</td><td>Close</td><td>Yes (Essential)</td><td>Yes</td><td>Link groups (navigation, about, contact, support, shipping and returns, policies), social, payment icons, trust line, back to top</td></tr></tbody></table></div>
+<h3>Not in the wireframe (marked No for Beauty)</h3><ul class="[columns:2_14rem]"><li>Shop by Pet Type</li><li>Shop by Occasion</li><li>Shop by Device / Use Case</li><li>Certifications &amp; Lab Reports</li><li>Brand / Craft Story</li><li>Size &amp; Fit Guidance</li><li>Spec Highlights</li><li>Comparison Table</li><li>Support &amp; Warranty Info</li><li>Expert / Vet Credentials</li><li>Help Me Choose Guide</li><li>FAQ</li></ul>
+<h3>Unclear or not mapped confidently</h3>
+<ul>
+<li>The workbook uses Yes and No, not tick marks; Yes was treated as the tick.</li>
+<li>Guided Finder / Quiz and Before &amp; After are Yes but the workbook says they come after the first listing; they are included and flagged. Before &amp; After needs claim-safe images and legal review.</li>
+<li>Resolved in revision 2: the hero second button (Find your routine) now points to Shop by Concern / Need / Routine, which exists at launch; the Guided Finder is deferred to after the first listing.</li>
+<li>Customer Photo Gallery: the workbook records a conflict (app-controlled in one source); kept as a display-only section with merchant-uploaded photos.</li>
+<li>The workbook gives no final labels, counts or copy for concern tiles, ingredients, logos or the benefits sub-lines; those are sample or placeholders.</li>
+<li>The workbook places the campaign banner late (Convert stage, section 17); the wireframe follows that order.</li>
+<li>The workbook calls the theme family Nudge with a Beauty preset. This project is the NUDGE Beauty Theme; the header and footer carry the NUDGE wordmark (the existing logo asset, unchanged).</li><li>Custom Liquid Section is new in the revised workbook (Theme Store requirement; optional and merchant-controlled). It is shown as an empty dashed slot before the newsletter.</li>
+</ul>
+<h3>Visual direction: luxury beauty editorial</h3>
+<p>The page was recomposed section by section (20 sections in the revised workbook order): a campaign first fold (one full-width campaign image behind a transparent header, text bottom left, a featured-product card; v8.0, see below); a slim benefit strip; an asymmetric image-led category grid; circular concern tiles and numbered routine links; product cards with badges, a key-attribute line, shade dots where a product has shades, price and compare-at price, the whole card being the link (no Quick Add and no image rollover); a framed guided finder; a shop-the-look image with labelled hotspots and an overlapping product list; circular ingredient images; a how-to ritual journey (four staggered step cards on a warm band, swipeable on phones); a cinematic video band; an edge-to-edge before and after comparison with no text (After layered over Before, clipped at a draggable divider); one large review beside two smaller; a customer-photo mosaic; a compact recognition strip (one row of certification, award and press logos, each tagged and linked to its source); an overlapping promotion card; a newsletter on a warm band (heading left, form right, inline validation); a dark footer. Layouts are not reused from section to section. Original visual language; no layout, asset or branding was copied from other themes. Public theme demos (Prestige, Pipeline, Palo Alto, Motion, Sense) were not fetched during this work; the direction draws on general knowledge of how premium beauty themes present editorial layout, merchandising and shop-the-look.</p>
+<p>Colours, type, spacing, radii and shadows come from the existing design tokens (ivory, blush, rose, charcoal, Cormorant headings, DM Sans UI). No token was changed and no colour was added. Image areas are soft tonal placeholders labelled with the subject and size; they are not photography and do not represent NUDGE products. Badges (Bestseller, 15% off, New), the compare-at price, the key-attribute lines and the shade dots are sample content.</p>
+<h3>Shopify-native or app-dependent</h3>
+<div class="max-w-full overflow-x-auto"><table class="ck"><thead><tr><th>Feature</th><th>Where</th><th>Type</th></tr></thead><tbody>
+<tr><td>Sticky header, mobile drawer</td><td>Header</td><td>Native: section, CSS, JavaScript</td></tr>
+<tr><td>Country selector</td><td>Header</td><td>Native Shopify platform feature: needs Shopify Markets set up in the store</td></tr>
+<tr><td>Predictive search</td><td>Header search</td><td>Native Shopify platform feature: the header search field (shown here as the plain field)</td></tr>
+<tr><td>Tabs of products, badges, swatches, compare-at price</td><td>Favourites</td><td>Native: collection data, tags, variant options</td></tr>
+<tr><td>Quick Add and image rollover</td><td>Product cards</td><td>Not on the cards: both are No for Beauty in the revised PLP sheet. Quick View is Yes for Beauty, after the first listing.</td></tr>
+<tr><td>Product cards (whole card is the link)</td><td>Favourites</td><td>Native theme: Liquid, product data, tags and variant options</td></tr>
+<tr><td>Shop the look hotspots</td><td>Shop the look</td><td>Native: image block with product pin blocks</td></tr>
+<tr><td>Product video</td><td>Video</td><td>Native: Shopify-hosted or YouTube/Vimeo URL</td></tr>
+<tr><td>Guided finder</td><td>Finder</td><td>Native theme + custom development (bespoke JavaScript) linking to collections; a personalised quiz would need an app</td></tr>
+<tr><td>Customer reviews with live ratings</td><td>Reviews</td><td>Needs an app or Shopify product reviews; this design uses merchant-typed quotes</td></tr>
+<tr><td>Newsletter form</td><td>Newsletter</td><td>Native Shopify platform feature: customer form that collects the address; sending campaigns is a separate store tool</td></tr><tr><td>Custom Liquid section</td><td>Before the newsletter</td><td>Native theme section; required by the Theme Store; optional and empty by default</td></tr><tr><td>Instagram or social feeds, before and after sliders</td><td>Photos, Before and after</td><td>Not used: uploaded images only</td></tr>
+</tbody></table></div>
+<h3>Extra CRO ideas (not added to the wireframe)</h3>
+<ul>
+<li>Free-shipping progress bar in the cart drawer: native, raises order value; belongs to the cart stage, outside the approved homepage scope.</li>
+<li>Back-in-stock and low-stock messages on product cards: native with inventory data; needs a merchant decision on thresholds.</li>
+<li>Recently viewed row below the favourites: native with local storage; low priority until there is browsing history to show.</li>
+</ul>
+<h3>Image requirements for the high-fidelity stage</h3>
+<ul>
+<li>Hero (first fold v8.0): one campaign image for the large frame (hero video is Removed for Beauty). Desktop 7:6 (2800 x 2400) with the subject in the right two thirds and a calm left 24% where the headline crosses; tablet 16:9 (2048 x 1152) and phone 1:1 (1080 x 1080), each with a calm top band where the last headline line crosses. Video section: 8 to 15 seconds, muted, under about 4 MB, with a still as its poster. Categories: one tall hero image and three consistent crops. Products: studio shots on one background and angle, with a second texture or in-use image for the rollover.</li>
+<li>Ingredients: macro textures, one per ingredient, only for real ingredients. Look: one natural-light portrait with product positions known. Campaign: styled gift-set still life. Customer photos: consent and rights required.</li>
+<li>Keep colour grading, light direction and crop rules the same across all images; reuse of one image in several sections should be avoided.</li>
+</ul>
+<h3>Reused from the design system</h3>
+<p>Spacing, gutters, grid gaps, section spacing, container cap, type sizes and the body font come from <code>02-Design-Variables/Styles/variables.css</code> and <code>01-Design-System/Styles/foundation.css</code>; icons are copies of the design-system sprite symbols. Fallback values apply if those files are missing. Nothing in those folders was changed.</p>
+<h3>Validation</h3>
+<p><b>Responsive validation.</b> The page was loaded in headless browsers inside frames of exact widths (headless browsers cannot open a window narrower than about 500 px) and a self-test measured the live layout. 10 checks per width: horizontal overflow, all 20 sections present and in workbook order, required content and UI elements per section (53 groups; every image placeholder has a ratio and size label), overlap, 44 px touch targets below 1024 px, text clipping, image ratios, spacing and alignment, navigation, typography (every wireframe heading is Cormorant in sentence case, all other text is DM Sans, no other family is in use, both fonts are loaded). Transitions were switched off while measuring. The run was repeated with the drawer open and with the hover states switched on; all passed in both browsers. Re-run after revision 2 on 2026-11-04.</p>
+<div class="max-w-full overflow-x-auto"><table class="ck"><thead><tr><th>Width (px)</th><th>Chrome 156.0.0.0 checks passed</th><th>Edge 156.0.0.0 checks passed</th><th>Drawer open, Chrome / Edge</th><th>Grid columns measured: category / concern / products / gallery / footer / hero tracks</th></tr></thead><tbody><tr><td>1920</td><td>10 of 10</td><td>10 of 10</td><td>n/a</td><td>3 / 6 / 4 / 4 / 4 / 12</td></tr><tr><td>1440</td><td>10 of 10</td><td>10 of 10</td><td>n/a</td><td>3 / 6 / 4 / 4 / 4 / 12</td></tr><tr><td>1024</td><td>10 of 10</td><td>10 of 10</td><td>n/a</td><td>3 / 6 / 4 / 4 / 4 / 12</td></tr><tr><td>768</td><td>10 of 10</td><td>10 of 10</td><td>10 of 10 / 10 of 10</td><td>3 / 3 / 4 / 4 / 4 / 1</td></tr><tr><td>390</td><td>10 of 10</td><td>10 of 10</td><td>10 of 10 / 10 of 10</td><td>2 / 3 / 2 / 2 / 1 / 1</td></tr><tr><td>375</td><td>10 of 10</td><td>10 of 10</td><td>10 of 10 / 10 of 10</td><td>2 / 3 / 2 / 2 / 1 / 1</td></tr><tr><td>320</td><td>10 of 10</td><td>10 of 10</td><td>10 of 10 / 10 of 10</td><td>2 / 3 / 2 / 2 / 1 / 1</td></tr></tbody></table></div>
+<p>Boundary widths also passed 10 of 10 in both browsers (closed and, below 1024 px, drawer open): 1023 px: Edge 10 of 10, Chrome 10 of 10; 767 px: Edge 10 of 10, Chrome 10 of 10; 600 px: Edge 10 of 10, Chrome 10 of 10; 599 px: Edge 10 of 10, Chrome 10 of 10. The hover states were also switched on at 1920, 1440 and 1024 px (10 of 10 in both browsers). The grid-column counts in this table are what the page measures; the counts in the previous version of this table did not match the measured layout and were corrected. Page behaviour was re-checked after revision 2 (22 checks, Edge and Chrome): section count, order, numbering and links, hero button targets, removal of the mega menu and of Add to bag, product-card structure, tab switching (key-attribute lines and shade dots follow the product), routine links, the Custom Liquid slot, drawer open and Escape close, hover and annotation toggles, finder to result, and no script errors. The announcement arrows, the edit and highlight toggles and the width preview were not re-tested in this revision.</p>
+<p><b>Browser testing.</b> Tested: Chrome and Edge on Windows (both Chromium, so they share one engine). <b>Not tested:</b> Firefox (not installed here), Safari and other WebKit browsers (not available on this machine), real phones and tablets. These browsers were reviewed by feature only, not run. The CSS and JavaScript use standard, widely supported features: Grid, Flexbox, custom properties, calc(), media queries, position: sticky with the -webkit- prefix, details/summary, and ES5 JavaScript. Aspect ratios use the padding technique rather than aspect-ratio, and no :has(), container queries, logical properties or inset are used. Items to watch in Firefox and Safari: flexbox gap needs Safari 14.1 or newer; spacing that used clamp() is now stepped through CSS custom properties at 600 and 1024 px (typography and spacing audit, 2026-11-11); clamp() remains only for a few viewport-proportional heights (hero stage, category rows); display: contents is used on the header utility group below 1024 px. Treat Firefox and Safari as untested until opened there.</p>
+<p><b>Other limits.</b> Checks are measurements, not a design review. Not tested: browser text zoom, landscape phones, screen readers. The drawer has no focus trap (a build task).</p>
+<h3>Revision 2: alignment with the revised final CRO workbook</h3>
+<p>Source: Homepage_CRO_5_Theme_Final_Comparison_Revised_Final.xlsx (Beauty column and the Beauty Homepage structure). All changes were made inside this page; the 19 original sections, the design tokens, the width preview and the self-test were kept.</p>
+<ul>
+<li><b>Order and scope:</b> Featured Collection is now section 6 and Shop by Concern / Need / Routine section 7 (Plan p47 and the revised structure). Section 18, Custom Liquid Section, is new (optional, merchant-controlled). The page has 20 sections.</li>
+<li><b>Product cards:</b> removed Add to bag and the image rollover (Quick Add and second image on hover are No for Beauty in the revised PLP sheet); the whole card links to its product page; added the key-attribute line (Yes for Beauty); shade dots show only on products that have shades; prices line up across cards.</li>
+<li><b>Header:</b> removed the image mega menu. The Beauty header is the centred-logo variant with four plain links; the mega menu belongs to Clothing in the workbook, and sub-categories appear as chips on the collection page.</li>
+<li><b>Hero:</b> Find your routine points to the routine section that exists at launch, not to the deferred Guided Finder.</li>
+<li><b>Less repetition:</b> the four routine steps appeared as image tiles in Shop by Concern / Routine and again as images in How to Use. They are now four compact numbered links in the first place; the images stay in How to Use.</li>
+<li><b>Reference review (Plan section 4 and 4.6):</b> patterns deliberately not copied: floating side tabs and first-load pop-ups, countdown timers, text laid over busy photographs, dense multi-row headers, invented stock or viewer counts, scrolling slogan bands. The page keeps four header links, a text card beside the image, category captions on a solid panel and placeholder offers marked as real-data-only.</li>
+<li><b>Reviewed and kept:</b> hero with one H1 and two buttons, benefit row, category tiles, Guided Finder (flagged as after the first listing), Shop the Look, ingredients, video, before and after (flagged), testimonials, photo gallery, logo strip, campaign banner, newsletter without pop-up, footer.</li>
+<li><b>Other pages:</b> the Beauty product listing, product detail and cart pages are separate wireframes in their own folders (NUDGE-Beauty-PLP-Wireframe, NUDGE-Beauty-PDP-Wireframe, NUDGE-Beauty-Cart-Wireframe). The other four themes are not wireframed yet.</li>
+</ul>
+<h3>First fold v8.0: campaign</h3>
+<p>v8.0 replaces v7.0 (text left, a framed placeholder right). It follows the brief to let large campaign photography carry the first screen, as Aesop, Rhode, Glossier and Summer Fridays do. One full-width campaign image runs up behind a transparent header. The label, a display-size headline (two lines, one italic word), one line and the buttons sit bottom left in the photograph's calm area. A soft ivory fade (strength 0 to 100, default 80) keeps them readable on any image and stays when real media is added. A small featured-product card (packshot, name, size and price) sits bottom right and ties the model to the product. The fold stops 56 px short of the screen bottom so the next section peeks; there is no excessive height.</p>
+<ul>
+<li><b>Desktop 1440 x 900:</b> 36 px bar; the image from the bar to y 844 (808 px) with the 72 px header over it; text column up to 544 px from the left grid edge, 64 px above the image bottom; product card 300 px wide at the right grid edge. 1920: same structure, image capped at 860 px. Photography brief: 16:9, 2880 x 1620, subject in the right half, left 40% calm and light.</li>
+<li><b>Tablet 768:</b> a 520 to 640 px stage with the text inside it, bottom left; the product row below. Photograph 4:3 with the subject upper right.</li>
+<li><b>Phone 390:</b> a portrait stage of 64% of the screen (540 px) with the text inside it; the product row below; everything up to the product in the first screen. Photograph 2:3 with the subject in the top half and a calm lower half. Short phones use a 400 to 460 px stage and drop the line.</li>
+<li><b>Settings (Online Store 2.0):</b> desktop and mobile image (<code>image_picker</code>, <code>&lt;picture&gt;</code> with a mobile source below 768 px, eager with <code>fetchpriority="high"</code>, WebP or AVIF through <code>image_url</code>); native focal point (<code>image.presentation.focal_point</code> as <code>object-position</code>); desktop and mobile video (Shopify-hosted <code>video_tag</code>: muted, loop, playsinline, poster = the image as the static fallback; pause button; no autoplay under reduced motion); label, heading (<code>inline_richtext</code>), text, button and second link; text position (bottom left, centre left, bottom centre); fade strength (range); colour scheme; transparent header (checkbox); height (large or full); content bottom spacing (range); featured product (<code>product</code>, card hidden when empty).</li>
+<li><b>Review buttons:</b> Hero: full height, Hero: focal point guide (or <code>?height=full</code>, <code>?guides=1</code>). The hero video option was removed (hero video is Removed for Beauty).</li>
+</ul>
+<p><b>First fold v8.0 checks:</b> page self-test 10 of 10 in Chrome at 1920, 1440, 1024, 768, 390, 375 and 320 px for image, video and full height. The main button is inside the first screen at every size (780 of 900 px at 1440, 615 of 844 at 390, 482 of 568 at 320). The featured product is in the first screen at every size except 320 x 568, where the original two-row header is used. Real mouse-wheel scrolling (Chrome DevTools Protocol): the header is transparent at the top, solid ivory after 400 px and transparent again back at the top. Only section 03 markup changed. Not tested: Safari, Firefox, real phones, screen readers, real media.</p>
+<h3>How to use: ritual journey (section 11)</h3>
+<p>Revised after the interactive version (one large image stage beside a text list) read as empty and list-like. Now a ritual journey on a warm blush band: four portrait step cards in a row, steps 2 and 4 set lower so the row reads as a sequence. Each card has a 4:5 application image, a large italic rose numeral overlapping the image's lower edge, the step title, a one-line instruction, tip and time, and the product link. Everything is visible at once; no interaction is needed on desktop or tablet. Phones get a swipeable row (78% cards, the next one peeking) with a "01 / 04" counter and 44 px arrows, which is shorter and easier to browse than a long vertical list.</p>
+<ul>
+<li><b>Layout:</b> from 1024 px four cards in a row (the even ones 72 px lower); below 1024 px the swipe row (44% cards from 600 px, 78% below). A 2 by 2 tablet grid was tried and dropped: it made the section 1,706 px tall at 768.</li>
+<li><b>Accessibility:</b> an ordered list; each title is a level 3 heading with a hidden "Step n." prefix; the swipe row is a focusable list (arrow keys scroll it); the counter is a polite live region; the arrows are named and disable at the ends.</li>
+<li><b>Content:</b> step names follow the routine on this page and link to the same products; instructions, tips, times and the closing tip are placeholders to be taken from the product labels. Nothing is invented.</li>
+</ul>
+<div class="max-w-full overflow-x-auto"><table class="ck"><thead><tr><th>Shopify</th><th>Type</th><th>Settings</th></tr></thead><tbody>
+<tr><td>Section</td><td>settings</td><td>Eyebrow, heading, intro, closing tip, colour scheme (default blush), stagger on or off, image ratio (4:5, 1:1), desktop and mobile spacing</td></tr>
+<tr><td>Step (up to 6)</td><td>block</td><td>Image (<code>image_picker</code>, focal point), title, instruction (richtext), tip, time, product (<code>product</code>)</td></tr>
+</tbody></table></div>
+<p><b>Section 11 checks (Chrome DevTools Protocol, real input):</b> 1440 and 1920: all four cards fully visible, counter row hidden. 768 and 390 (touch emulation): taps on Next advanced the counter (01 to 04) and disabled Next at the end; a swipe back scrolled the row and re-enabled Previous; no page overflow. Section height 1,070 px at 1440, about 960 at 768, 901 at 390. Page self-test 10 of 10 at 1920, 1440, 1024, 768, 390, 375 and 320 px. Not tested: Safari, Firefox, real devices, screen-reader output.</p>
+<h3>Before &amp; After: edge-to-edge comparison slider (section 13)</h3>
+<p>One compact frame spanning the full page width with no heading, copy or padding; the only text is the BEFORE and AFTER labels inside the frame. The Before image is the base layer; the After image sits on top with exactly the same box and is clipped with <code>clip-path: inset(0 0 0 var(--pos))</code>, so the left of the divider shows Before and the right shows After. The divider starts at 50%. Frame ratio: 1:1 below 600 px (390 x 390), 16:9 from 600 px (768 x 432), 21:9 from 1024 px capped at 76% of the screen height (1440 x 609, 1920 x 816), so the whole section fits in one screen. BEFORE is placed bottom left inside the Before layer and AFTER bottom right inside the After layer, so each travels with its image; a label fades out once the divider reaches it rather than being cut in half. The placeholders: Before is flat blush, After is hatched rose; their names stay in the markup, visually hidden.</p>
+<ul>
+<li><b>Input:</b> a native range input (0 to 100, visually hidden, keyboard and screen-reader operable; <code>aria-valuetext</code> reads "40% before, 60% after"); pointer events on the frame for mouse, pen and touch; <code>touch-action: pan-y</code> keeps vertical page scrolling. The focus ring shows on the round handle.</li>
+<li><b>Removed at the merchant's request:</b> heading, description, product and duration details, hint, the BEFORE and AFTER labels, and the results disclaimer. The workbook still flags this section for claim-safe images and legal review; if a disclaimer is needed, add it in a neighbouring section or the image itself.</li>
+</ul>
+<div class="max-w-full overflow-x-auto"><table class="ck"><thead><tr><th>Shopify setting</th><th>Type</th><th>Notes</th></tr></thead><tbody>
+<tr><td>Before image, After image</td><td>image_picker x 2</td><td>Both rendered with <code>image_tag</code> into the same absolutely positioned box, <code>object-fit: cover</code>; both must share framing and crop</td></tr>
+<tr><td>Initial divider position</td><td>range 0 to 100, default 50</td><td>Written to <code>data-start</code> and <code>--pos</code></td></tr>
+<tr><td>Frame ratio (desktop, mobile)</td><td>select x 2</td><td>Defaults 16:9 and 4:5</td></tr>
+</tbody></table></div>
+<p><b>Before &amp; After checks (Chrome DevTools Protocol, real input events):</b> the frame starts at x 0 and matches the viewport width at 1920, 1440, 768 and 390 px with no horizontal overflow; frame heights 748, 609, 432 and 390 px (64 to 69% of a 1080 or 900 px screen on desktop, under half the screen on tablet and phone); labels hide only when the divider would cut them (390 px at 15%: BEFORE hidden; 768 px at 15%: both shown). Mouse drag 50 to 20 to 85% (1920, 1440), keyboard ArrowLeft, Home, End and PageDown with the input focused, and touch swipes 50 to 15 to 75% (768, 390) all moved the range value, divider and After clip together; vertical swipes still scrolled the page. Both layers matched the frame box at every width; the only visible text is the two labels. Page self-test 10 of 10 at 1920, 1440, 1024, 768, 390, 375 and 320 px. Not tested: Safari, Firefox, real devices, screen-reader output.</p>
+<h3>Certifications, awards and press (section 16)</h3>
+<p>Revised to one compact strip after the card version proved too tall and too busy: a small label ("As recognised by"), one row of logos, and previous and next arrows that appear only when the row does not fit. Each logo carries a one-word tag (Certification, Award or Press) so the type stays clear without group headings, and each logo links to its proof (certificate, award page or article), so issuer and year live at the source instead of on the homepage. Removed: intro paragraph, group headings and counts, cards, issuer and year lines, per-item link text and the note line. The section is about 200 px tall on desktop (was about 850 px).</p>
+<ul>
+<li><b>Layout:</b> from 1024 px the label, logos (6 per view) and arrows share one line. Below 1024 px the label and arrows sit above the row: 4 logos per view from 600 px, about 2.5 on phones with swipe.</li>
+<li><b>Accessibility:</b> the label is a level 2 heading; the row is a labelled, focusable list region (arrow keys scroll it); the arrow buttons are 44 px, named, disabled at the ends and hidden when nothing overflows; each logo link names its type and purpose.</li>
+<li><b>Content:</b> placeholders only ("Certification logo", "Award logo", "Publication logo", 2:1, SVG); nothing is invented. Order: certifications, awards, press.</li>
+</ul>
+<div class="max-w-full overflow-x-auto"><table class="ck"><thead><tr><th>Shopify</th><th>Type</th><th>Settings</th></tr></thead><tbody>
+<tr><td>Section</td><td>settings</td><td>Label text, show type tags (checkbox)</td></tr>
+<tr><td>Recognition</td><td>block</td><td>Type (select: Certification, Award, Press), logo (image_picker), name (used for the link's accessible name and image alt), link URL</td></tr>
+</tbody></table></div>
+<p><b>Section 16 checks (Chrome DevTools Protocol, real input):</b> section height 183 px at 1440, 186 at 1920, 212 at 768, 196 at 390 (the card version was about 850 at 1440). At 1440 and 1920, 6 logos fully visible; Previous disabled at the start; one Next click reached the end and disabled Next; 3 x ArrowLeft on the focused row scrolled back. At 768 (touch emulation) 4 logos visible and a swipe snapped to a logo; at 390, 2 visible (the third peeking), swipe and Next reached the end. No page overflow at any width. Page self-test 10 of 10 at 1920, 1440, 1024, 768, 390, 375 and 320 px. Not tested: Safari, Firefox, real devices, screen-reader output.</p>
+<h3>Newsletter (section 19)</h3>
+<p>Replaced the bordered box floating on ivory with a warm blush band: eyebrow, heading and one line on the left (columns 1 to 5), the form on the right (columns 7 to 12). A visible "Email address" label sits above an underlined field and a "Subscribe" button with an arrow, on one line from 600 px and stacked below. Three check-marked benefits come from the existing copy (launches, routine tips, offers). The consent line sits under a hairline. The "Native Shopify form; no pop-up" developer note moved to the annotation. Inline feedback in a <code>role="status"</code> line: an empty or invalid address sets <code>aria-invalid</code>, shows an error and returns focus to the field; typing a valid address clears it; a valid submit shows "Thanks, you're on the list". In the theme: <code>{% form 'customer' %}</code> with <code>contact[tags]</code> newsletter, <code>form.posted_successfully?</code> and <code>form.errors</code> drive the same message line. Settings: eyebrow, heading, text, button label, three benefit lines, consent text, colour scheme.</p>
+<p><b>Section 19 checks (Chrome DevTools Protocol, real input) at 1440, 768 and 390:</b> empty submit and "not-an-email" showed the error and kept focus; "ana@example.com" cleared it and the submit showed the success line; no page overflow. Section height 381 px at 1440 (was about 600). Page self-test 10 of 10 at 1920, 1440, 1024, 768, 390, 375 and 320 px.</p>
+<h3>Consolidated and removed</h3>
+<p>This is the single homepage wireframe of the NUDGE Beauty Theme (03-Wireframes). It replaced earlier separate wireframe files (two artboards for 1440 and 390 px, and a first responsive version with its own preview page, self-test script and screenshots); their useful content was merged here (checklist, exclusions, unclear items, responsive rules, the width preview, the self-test and the validation summary) and the old files were removed. The original research workbooks and the Design System and Design Variables files were not touched by that consolidation.</p>
+<h3>Shopify build and Tailwind</h3>
+<p>Each of the 20 sections is one Shopify section file in <code>sections/</code> (announcement bar, header, hero, benefits, category list, featured collection, concern list, finder, shop the look, ingredients, how to use, video, before and after, testimonials, photo gallery, logo list, promotional banner, custom liquid, newsletter, footer). They are placed in <code>templates/index.json</code> in this order; the header, announcement bar and footer are section groups. Repeating items are blocks with settings (category tile, product tab, pin, ingredient, ritual step, quote, photo, logo, benefit); section settings carry the eyebrow, heading, text, colour scheme and spacing. Shared pieces are snippets: product card, button, image placeholder or image with focal point, section heading, text link, icon. The product cards read the native product, collection and variant objects, the newsletter is Shopify&rsquo;s customer form, and the shop-the-look pins are blocks. Tailwind utilities compile (Tailwind CLI, same token-mapped config) into one theme stylesheet in <code>assets/</code>; the in-browser Tailwind script is for the wireframes only. No app is involved.</p>
+</details>
+</div>
+<main id="main" class="leading-relaxed">
+<section class="sec bg-page text-ink" id="s01" data-section="Announcement Bar"><div class="ann"><b>01 &middot; Orient</b>Announcement Bar &mdash; Purpose: Delivers the store-wide offer and delivery promise at first glance In this theme: Rotating messages: real shipping offer and launch news (Plan p46 variant: rotating) Note: Schedule decision: Add to v1.0 (honest version only)<em>Responsive: One wrapping line. Arrows from 600 px; dots below. Messages rotate with the arrows.</em></div>
+@@PARTIAL annbar@@
+</section>
+<section class="sec contents" id="s02" data-section="Header (logo, menu, search, account, cart, sticky, country selector, mobile drawer)"><div class="ann"><b>02 &middot; Orient</b>Header (logo, menu, search, account, cart, sticky, country selector, mobile drawer) &mdash; Purpose: Navigation, search and cart on every page In this theme: Centered logo, short menu (skin, makeup, hair, body), search always visible Note: Header variants by theme: centered logo (Beauty), mega menu (Clothing), concern menu (Wellness), cat / dog tabs (Pets), search-first (Electronics)<em>Responsive: Below 1024 px: menu button, centred logo, account and cart, search on its own full-width row; menu links and country selector sit in the drawer. From 1024 px: links left, logo centred, search and icons right. No mega menu: the Beauty header is the centred-logo variant with four plain links; sub-categories appear as chips on the collection page. Sticky at every size.</em></div>
+@@PARTIAL header CART=link NAV=none EXTRA="!border-transparent transition-colors duration-base lg:[body.is-scrolled_&]:!border-line lg:[body:not(.is-scrolled)_&]:!bg-transparent lg:[&>div]:min-h-[4.5rem] [&_a[aria-label^=Cart]]:text-body-sm [&_a[aria-label^=Cart]]:leading-[1.2] lg:[&_#market-btn]:tracking-normal"@@
+</section>
+@@PARTIAL components/homepage/hero-banner@@
+@@PARTIAL components/homepage/usp-row@@
+@@PARTIAL components/homepage/category-section@@
+@@PARTIAL components/homepage/featured-collection@@
+@@PARTIAL components/homepage/concern-section@@
+@@PARTIAL components/homepage/finder-section@@
+@@PARTIAL components/homepage/look-section@@
+@@PARTIAL components/homepage/ingredient-section@@
+@@PARTIAL components/homepage/ritual-section@@
+@@PARTIAL components/homepage/video-section@@
+@@PARTIAL components/homepage/compare-section@@
+@@PARTIAL components/homepage/testimonials-section@@
+@@PARTIAL components/homepage/gallery-section@@
+@@PARTIAL components/homepage/logo-section@@
+@@PARTIAL components/homepage/promo-banner@@
+@@PARTIAL components/homepage/custom-liquid-section@@
+@@PARTIAL components/homepage/newsletter-section@@
+@@PARTIAL components/homepage/footer-section@@
+</main>
+@@PARTIAL width-preview@@
+<script type="text/plain" id="selftest-src">
+(function(){
+ var EXPECTED=["Announcement Bar","Header (logo, menu, search, account, cart, sticky, country selector, mobile drawer)","Hero Banner","Benefits / USP Row","Shop by Category","Featured Collection (Best Sellers / New Arrivals)","Shop by Concern / Need / Routine","Guided Finder / Quiz","Shop the Look","Ingredient / Material Spotlight","How to Use / Routine Steps","Video Section","Before & After","Testimonials / Customer Reviews","Customer Photo Gallery","Logo List (Awards, Certifications, Press, Partner Brands)","Promotional / Campaign Banner","Custom Liquid Section","Newsletter","Footer (navigation, about, contact, support, shipping & returns, policies, social, payment icons, trust line, back to top)"];
+ var CONTENT=[['s01','#ann-msg',1],['s01','button[aria-label$="message"]',2],['s02','#nav a[href="#collection"]',4],['s02','a[aria-label="Store home"]',1],['s02','a[role="search"]',1],['s02','#menu-btn',1],['s02','a[aria-label="Account"],a[aria-label^="Cart"]',2],['s02','#market-btn',1],['s02','.cnt',1],['s03','h1',1],['s03','.hero .hero-btn',2],['s03','.hero .img',1],['s03','.eyebrow',1],['s04','.usp__i',4],['s04','.usp__i .icon',4],['s05','.g--cat .tile',4],['s05','.g--cat .lnk',4],['s07','.g--concern .tile',6],['s07','.rsteps .rstep',4],['s06','.tab',3],['s06','.g--prod .card',4],['s06','.card .card__link',4],['s06','.card .attr',4],['s06','.card .pprice',4],['s08','.finder .hp-chip',4],['s08','.finder .hp-btn',2],['s09','.pin',3],['s09','.lrow',3],['s09','.lrow .hp-btn',3],['s10','.icard',4],['s10','.chip--tag',3],['s10','.src-line',1],['s11','.hstep',4],['s11','.hstep .lnk',4],['s11','.hstep .img',4],['s11','.rit__nav button',2],['s12','.play',1],['s12','.vid .hp-btn',1],['s13','.cmp__frame',1],['s13','.cmp__img',2],['s13','.cmp__range',1],['s13','.cmp__handle',1],['s14','.quote',6],['s14','.quote .lnk',6],['s14','.rec__nav button',2],['s15','.g--gal .img',6],['s16','.logo-i',6],['s16','.rec__tag',6],['s16','.rec__nav button',2],['s17','.promo .hp-btn',1],['s17','.promo .img',1],['s17','.promo h2',1],['s18','.optslot',1],['s19','.nform input',1],['s19','.nform .hp-btn',1],['s20','.fcol',4],['s20','footer a[aria-label]',3],['s20','footer i',4],['s20','footer a[href="#top"]',1],['s20','footer p',1]];
+ function run(){
+  var st=document.createElement('style');st.textContent='*{transition:none!important}';document.head.appendChild(st);void document.body.offsetHeight;
+  var W=window.innerWidth,de=document.documentElement,out={docHeight:de.scrollHeight,width:W,ua:navigator.userAgent,checks:{}};
+  function sel(el){var s=el.tagName.toLowerCase();if(el.id)s+='#'+el.id;if(el.className&&typeof el.className==='string')s+='.'+el.className.trim().split(/\s+/).slice(0,3).join('.');return s}
+  function vis(el){var cs=getComputedStyle(el);if(cs.display==='none'||cs.visibility==='hidden')return false;var r=el.getBoundingClientRect();return r.width>0&&r.height>0}
+  var navOpen=document.body.classList.contains('nav-open');
+  function closedDrawer(el){return W<1024&&!navOpen&&el.closest('#nav')}
+  function all(s){return [].slice.call(document.querySelectorAll(s)).filter(function(e){return vis(e)&&!closedDrawer(e)})}
+  var twOk=getComputedStyle(document.getElementById('site-header')).position==='sticky'&&getComputedStyle(document.getElementById('prod-grid')).display==='grid'&&getComputedStyle(document.getElementById('f-next')).minHeight==='44px'&&!document.querySelector('link[href*="components.css"],link[href*="base.css"]');
+  var fl=Array.from(document.fonts).some(function(x){return x.family.indexOf('Cormorant')>-1&&x.status==='loaded'})&&Array.from(document.fonts).some(function(x){return x.family.indexOf('DM Sans')>-1&&x.status==='loaded'});
+  out.checks.tailwindAndFonts={pass:twOk&&fl,detail:'Tailwind utilities applied, no Design System component stylesheet: '+twOk+'; Cormorant and DM Sans loaded: '+fl};
+  var off=[];all('body *').forEach(function(el){if(el.closest('.rv')||el.closest('.rec__track')||el.closest('.rit__track')||el.closest('.sr-only'))return;var r=el.getBoundingClientRect();if(r.right>W+1||r.left<-1)off.push(sel(el)+' ['+Math.round(r.left)+','+Math.round(r.right)+']')});
+  out.checks.horizontalOverflow={pass:de.scrollWidth<=W+1&&off.length===0,detail:'scrollWidth='+de.scrollWidth+', viewport='+W+'; elements outside viewport: '+(off.length?off.slice(0,8).join(' | '):'none')};
+  var secs=[].slice.call(document.querySelectorAll('section[data-section]')),names=secs.map(function(s){return s.getAttribute('data-section')});
+  var missing=EXPECTED.filter(function(n){return names.indexOf(n)<0}),tiny=secs.filter(function(s){return s.getBoundingClientRect().height<8}).map(function(s){return s.getAttribute('data-section')});
+  var ordered=true;EXPECTED.forEach(function(n,i){if(names[i]!==n)ordered=false});
+  out.checks.sections={pass:secs.length===EXPECTED.length&&!missing.length&&!tiny.length&&ordered&&new Set(names).size===names.length,detail:secs.length+' of '+EXPECTED.length+' sections present, in workbook order: '+ordered+'; missing: '+(missing.join(', ')||'none')+'; collapsed: '+(tiny.join(', ')||'none')};
+  var cm=[];CONTENT.forEach(function(c){var q=c[1].split(',').map(function(x){return '#'+c[0]+' '+x.trim()}).join(',');var n=document.querySelectorAll(q).length;if(n<c[2])cm.push(c[0]+' '+c[1]+' '+n+'/'+c[2])});
+  var noDim=[].slice.call(document.querySelectorAll('.img')).filter(function(e){return !e.querySelector('.dim')}).length;
+  out.checks.sectionContent={pass:cm.length===0&&noDim===0,detail:cm.length?cm.slice(0,6).join(' | '):'all '+CONTENT.length+' required content and UI element groups present; every image placeholder has a ratio and size label'};
+  var items=all('.hp-btn,.tab,.hp-chip,.tile,.card,.usp__i,.icard,.hstep,.rstep,.quote,.logo-i,.cmp,.lrow,.nl-input,#site-header a,#site-header button,.pin,.fcol,footer a[aria-label],footer i,.play,.tagprod,#annbar button');
+  var ov=[];for(var i=0;i<items.length;i++){for(var j=i+1;j<items.length;j++){var a=items[i],c=items[j];if(a.contains(c)||c.contains(a))continue;if(navOpen&&W<1024&&(!!a.closest('#nav'))!==(!!c.closest('#nav')))continue;var ra=a.getBoundingClientRect(),rc=c.getBoundingClientRect();var w=Math.min(ra.right,rc.right)-Math.max(ra.left,rc.left),h=Math.min(ra.bottom,rc.bottom)-Math.max(ra.top,rc.top);if(w>2&&h>2)ov.push(sel(a)+' x '+sel(c))}}
+  out.checks.overlap={pass:ov.length===0,detail:ov.length?ov.slice(0,6).join(' | '):'none (checked '+items.length+' elements)'};
+  var tt=[];if(W<1024){all('.hp-btn,.tab,.hp-chip:not(.chip--tag),#site-header a,#site-header button,.nl-input input,footer a,.pin,.lnk,.play,#annbar button').forEach(function(el){var r=el.getBoundingClientRect();if(r.height<43.5||r.width<43.5)tt.push(sel(el)+' '+Math.round(r.width)+'x'+Math.round(r.height))});if(W<768){all('.fcol>button').forEach(function(el){var r=el.getBoundingClientRect();if(r.height<43.5)tt.push(sel(el)+' '+Math.round(r.width)+'x'+Math.round(r.height))})}}
+  out.checks.touchTargets={pass:tt.length===0,detail:W<1024?(tt.length?tt.slice(0,8).join(' | '):'all interactive elements are at least 44 x 44 px'):'not applied from 1024 px (pointer layout)'};
+  var cl=[];all('.hp-btn,.tab,.hp-chip,.eyebrow,h1,h2,h3,small,.lnk,#ann-msg,.fcol>button,.stepper,.src-line,.pprice,.ptitle,.sub,.lead,.tagprod,.dur').forEach(function(el){if(getComputedStyle(el).display==='inline')return;if(el.scrollWidth>el.clientWidth+1)cl.push(sel(el)+' '+el.scrollWidth+'>'+el.clientWidth)});
+  out.checks.textClipping={pass:cl.length===0,detail:cl.length?cl.slice(0,6).join(' | '):'none'};
+  var RT={r45:0.8,r11:1,r169:16/9,r21:2,circle:1},bad=[],small=[];all('.img').forEach(function(el){var r=el.getBoundingClientRect();if(r.width<20||r.height<20)small.push(sel(el)+' '+Math.round(r.width)+'x'+Math.round(r.height));if(el.classList.contains('thumb')||el.closest('.g--gal'))return;Object.keys(RT).forEach(function(k){if(el.classList.contains(k)&&Math.abs(r.width/r.height-RT[k])/RT[k]>0.04)bad.push(sel(el)+' '+(r.width/r.height).toFixed(2)+' expected '+RT[k].toFixed(2))})});
+  out.checks.imageScaling={pass:bad.length===0&&small.length===0,detail:(bad.concat(small).slice(0,6).join(' | ')||'all fixed-ratio images keep their ratio; none collapsed')};
+  var G={};['g--cat','g--concern','rsteps','g--prod','g--ing','g--quote','g--gal','usp','hero','finder','look','vid','promo'].forEach(function(k){var e=document.querySelector('.'+k);if(e&&vis(e))G[k]=getComputedStyle(e).gridTemplateColumns.split(' ').length});
+  out.gridColumns=G;
+  var lefts={};all('.sec .wrap,#site-header>div,footer>div').forEach(function(c){var x=Math.round(c.getBoundingClientRect().left+parseFloat(getComputedStyle(c).paddingLeft));lefts[x]=1});
+  var pads={};[].slice.call(document.querySelectorAll('.sec__in:not(.sec__in--tight)')).forEach(function(s){pads[getComputedStyle(s).paddingTop]=1});
+  out.checks.spacingAlignment={pass:Object.keys(lefts).length<=1&&Object.keys(pads).length===1,detail:'content left edges: '+Object.keys(lefts).join(',')+' px; section padding: '+Object.keys(pads).join(',')};
+  out.checks.navigation={pass:(W<1024)?(vis(document.getElementById('menu-btn'))&&(!vis(document.querySelector('#nav a[href="#collection"]'))||navOpen)&&all('#site-header a[href="#search"]').length>0):(!vis(document.getElementById('menu-btn'))&&all('#nav a[href="#collection"]').length===4&&all('#site-header a[href="#search"]').length>0),detail:W<1024?'menu button visible, links in drawer (open='+navOpen+'), search visible':'4 inline links, no menu button, search visible'};
+  var tyBad=[],HF=/cormorant/i,BF=/dm sans/i,hs=all('h1,h2,h3,.tt,.fcol>button').filter(function(e){return !e.classList.contains('ptitle')}),sizes={};
+  hs.forEach(function(el){if(el.closest('.rv'))return;var cs=getComputedStyle(el);if(!HF.test(cs.fontFamily))tyBad.push(sel(el)+' family='+cs.fontFamily.split(',')[0]);var wantUp=el.tagName==='H2',isUp=cs.textTransform==='uppercase';if(isUp!==wantUp)tyBad.push(sel(el)+(wantUp?' should be uppercase (section headings are capitals)':' unexpectedly uppercase (the hero heading keeps its own case)'));if(el.tagName==='H1')sizes.h1=cs.fontSize;else if(el.tagName==='H2')sizes.h2=cs.fontSize});
+  all('main p,.lead,.sub,.hp-btn,.tab,.hp-chip,.nl-input input,#nav a,.ptitle,.pprice,.note,.quote blockquote,.eyebrow,#ann-msg,footer a').forEach(function(el){if(el.closest('.rv'))return;var cs=getComputedStyle(el);if(!BF.test(cs.fontFamily))tyBad.push(sel(el)+' family='+cs.fontFamily.split(',')[0]);if(cs.textTransform==='uppercase'&&!el.classList.contains('eyebrow'))tyBad.push(sel(el)+' unexpectedly uppercase')});
+  var fam={};all('body *').forEach(function(el){if(el.closest('.rv')||!el.childNodes.length)return;var hasText=[].some.call(el.childNodes,function(n){return n.nodeType===3&&n.textContent.trim()});if(!hasText)return;fam[getComputedStyle(el).fontFamily.split(',')[0].replace(/"/g,'')]=1});
+  var loaded=true;try{loaded=document.fonts.check('500 20px "Cormorant"')&&document.fonts.check('400 16px "DM Sans"')}catch(e){}
+  var famKeys=Object.keys(fam),foreign=famKeys.filter(function(k){return !/cormorant|dm sans/i.test(k)});
+  out.headingSizes=sizes;
+  out.checks.typography={pass:tyBad.length===0&&foreign.length===0&&loaded,detail:tyBad.length||foreign.length||!loaded?(tyBad.slice(0,5).concat(foreign.map(function(f){return 'foreign family '+f})).concat(loaded?[]:['fonts not loaded']).join(' | ')):'headings Cormorant in sentence case, body/nav/buttons/prices DM Sans; families in use: '+famKeys.join(', ')+'; h1 '+(sizes.h1||'-')+', h2 '+(sizes.h2||'-')};
+  var pre=document.createElement('pre');pre.id='selftest-result';pre.textContent=JSON.stringify(out);document.body.appendChild(pre);
+  if(window.parent!==window){window.parent.postMessage({selftest:out},'*')}
+ }
+ if(document.readyState==='complete')setTimeout(run,900);else window.addEventListener('load',function(){setTimeout(run,900)});
+})();
+</script>
+<script>
+(function(){
+ var b=document.body,q=new URLSearchParams(location.search);
+ if(q.get("embed")){b.classList.add("embed")}
+ b.classList.toggle("ann-on",q.get("ann")!=="0");
+ function $(id){return document.getElementById(id)}
+ /* "Sticky on scroll" review label on the header (annotation only) */
+ $("site-header").insertAdjacentHTML("beforeend",'<div class="absolute -bottom-[9px] right-2 z-[3] hidden bg-ink px-2 py-[2px] font-body text-[10px] font-medium text-page [.ann-on_&]:block">Sticky on scroll</div>');
+ function navOpen(o){b.classList.toggle("nav-open",o);$("menu-btn").setAttribute("aria-expanded",o?"true":"false")}
+ $("menu-btn").addEventListener("click",function(){navOpen(true)});
+ $("nav-close").addEventListener("click",function(){navOpen(false)});
+ $("scrim").addEventListener("click",function(){navOpen(false)});
+ document.addEventListener("keydown",function(e){if(e.key==="Escape"||e.keyCode===27){navOpen(false)}});
+ if(q.get("menu")==="open"){navOpen(true)}
+ function toggle(btn,cls){var on=!b.classList.contains(cls);b.classList.toggle(cls,on);btn.setAttribute("aria-pressed",on?"true":"false");return on}
+ $("t-ann").addEventListener("click",function(){toggle(this,"ann-on")});
+ $("t-src").addEventListener("click",function(){toggle(this,"show-src")});
+ $("t-edit").addEventListener("click",function(){var on=toggle(this,"editing");[].forEach.call(document.querySelectorAll("[data-c]"),function(e){if(on){e.setAttribute("contenteditable","true")}else{e.removeAttribute("contenteditable")}})});
+ $("t-menu").addEventListener("click",function(){navOpen(!b.classList.contains("nav-open"))});
+ $("t-hover").addEventListener("click",function(){toggle(this,"show-hover")});
+ if(q.get("hover")==="1"){b.classList.add("show-hover");$("t-hover").setAttribute("aria-pressed","true")}
+ [].forEach.call(document.querySelectorAll(".pin"),function(p){p.addEventListener("click",function(){[].forEach.call(document.querySelectorAll(".pin"),function(x){x.classList.remove("is-on")});p.classList.add("is-on")})});
+ if(q.get("src")==="1"){b.classList.add("show-src");$("t-src").setAttribute("aria-pressed","true")}
+ $("t-ann").setAttribute("aria-pressed",b.classList.contains("ann-on")?"true":"false");
+ [].forEach.call(document.querySelectorAll(".fcol > button"),function(h){h.addEventListener("click",function(){var f=h.parentNode,o=!f.classList.contains("is-open");f.classList.toggle("is-open",o);h.setAttribute("aria-expanded",o?"true":"false")})});
+ var msgs=["Free shipping on orders over $50","New launches are in store","Free returns within 30 days"],mi=0;
+ function msg(d){mi=(mi+d+msgs.length)%msgs.length;$("ann-msg").textContent=msgs[mi];[].forEach.call(document.querySelectorAll(".ann-dot"),function(x,i){x.classList.toggle("bg-current",i===mi);x.classList.toggle("opacity-100",i===mi);x.classList.toggle("opacity-muted",i!==mi)})}
+ $("ann-prev").addEventListener("click",function(){msg(-1)});$("ann-next").addEventListener("click",function(){msg(1)});
+ var sets=[[["Face Cleanser","150 ml","$18.00","Best for: all skin types",0,"4.6 (112)"],["Face Serum","30 ml","$32.00","Best for: dullness",0,"4.7 (141)"],["Moisturiser","50 ml","$28.00","Best for: dry skin",0,"4.8 (119)"],["Lip Colour","3.5 g","$16.00","Satin finish, 6 shades",1,"4.5 (64)"]],[["Sunscreen","50 ml","$26.00","Daily protection",0,"4.6 (88)"],["Eye Cream","15 ml","$30.00","Light gel texture",0,"4.6 (73)"],["Mascara","8 ml","$19.00","Black or brown",1,"4.4 (56)"],["Hair Oil","50 ml","$22.00","Lightweight finish",0,"4.5 (47)"]],[["Starter Set","3 pieces","$62.00","Cleanse, treat, moisturise",0,"4.8 (39)"],["Gift Set","4 pieces","$78.00","Ready to give",0,"4.9 (52)"],["Travel Set","4 minis","$34.00","Carry-on size",0,"4.6 (28)"],["Makeup Set","3 pieces","$54.00","3 shades available",1,"4.5 (31)"]]];
+ [].forEach.call(document.querySelectorAll(".tab"),function(t){t.addEventListener("click",function(){[].forEach.call(document.querySelectorAll(".tab"),function(x){x.classList.remove("on");x.setAttribute("aria-selected","false")});t.classList.add("on");t.setAttribute("aria-selected","true");var s=sets[parseInt(t.getAttribute("data-set"),10)],cards=document.querySelectorAll("#prod-grid .card");[].forEach.call(cards,function(c,i){c.querySelector(".ptitle [data-c]").textContent=s[i][0];c.querySelector(".sub [data-c]").textContent=s[i][1];c.querySelector(".pprice > [data-c]").textContent=s[i][2];c.querySelector(".attr [data-c]").textContent=s[i][3];c.querySelector(".rate [data-c]").textContent=s[i][5];c.querySelector(".sw").hidden=!s[i][4]})})});
+ var steps=[{q:"What is your skin type?",o:["Dry","Normal","Oily","Combination","Sensitive"]},{q:"What would you like to focus on?",o:["Dryness","Dullness","Breakouts","Texture"]},{q:"How many steps do you want?",o:["1 to 2 steps","3 to 4 steps"]}],si=0;
+ function fshow(){var last=si>2;$("f-chips").style.display=last?"none":"flex";$("f-res").hidden=!last;$("f-next").style.display=last?"none":"";if(!last){$("f-step").textContent="Step "+(si+1)+" of 3";$("f-q").textContent=steps[si].q;var h="";steps[si].o.forEach(function(o,i){h+='<button class="hp-chip'+(i===0?" on":"")+'" type="button">'+o+"</button>"});$("f-chips").innerHTML=h}else{$("f-step").textContent="Result";$("f-q").textContent="Your matches"}}
+ $("f-chips").addEventListener("click",function(e){var t=e.target.closest(".hp-chip");if(t){[].forEach.call($("f-chips").children,function(x){x.classList.remove("on")});t.classList.add("on")}});
+ $("f-next").addEventListener("click",function(){si++;fshow()});$("f-back").addEventListener("click",function(){if(si>0){si--;fshow()}});
+ var hs=$("s03");
+ function hflag(id,on,set){set(on);$(id).setAttribute("aria-pressed",on?"true":"false")}
+ function hfull(on){hflag("t-hfull",on,function(v){hs.setAttribute("data-height",v?"full":"large")})}
+ function hguide(on){hflag("t-hguide",on,function(v){if(v){hs.setAttribute("data-guides","1")}else{hs.removeAttribute("data-guides")}})}
+ [["t-hfull",hfull],["t-hguide",hguide]].forEach(function(p){$(p[0]).addEventListener("click",function(){p[1](this.getAttribute("aria-pressed")!=="true")})});
+ if(q.get("height")==="full")hfull(true);if(q.get("guides")==="1")hguide(true);
+ function hscroll(){b.classList.toggle("is-scrolled",(window.pageYOffset||document.documentElement.scrollTop||0)>8)}
+ window.addEventListener("scroll",hscroll,{passive:true});hscroll();
+ (function(){var f=$("nl-form"),i=$("nl-email"),m=$("nl-msg");if(!f)return;
+  function say(ok,t){m.classList.remove("is-ok","is-err");m.classList.add(ok?"is-ok":"is-err");m.textContent=t}
+  f.addEventListener("submit",function(e){e.preventDefault();var ok=i.value.trim()!==""&&i.checkValidity();i.setAttribute("aria-invalid",ok?"false":"true");say(ok,ok?"Thanks, you're on the list. Check your inbox to confirm.":"Please enter a valid email address, for example you@example.com.");if(!ok)i.focus()});
+  i.addEventListener("input",function(){if(i.getAttribute("aria-invalid")==="true"&&i.checkValidity()){i.setAttribute("aria-invalid","false");m.textContent="";m.classList.remove("is-ok","is-err")}});
+ })();
+ [].forEach.call(document.querySelectorAll("[data-ritual]"),function(r){
+  var tr=r.querySelector(".rit__track"),items=tr.children,cnt=r.querySelector(".rit__count"),pv=r.querySelector(".rit__prev"),nx=r.querySelector(".rit__next"),N=items.length,rm=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function pad(n){return (n<10?"0":"")+n}
+  function pos(k){return items[k].offsetLeft-items[0].offsetLeft}
+  function idx(){var max=tr.scrollWidth-tr.clientWidth;if(tr.scrollLeft>=max-2)return N-1;var best=0,d=1e9;for(var k=0;k<N;k++){var dd=Math.abs(pos(k)-tr.scrollLeft);if(dd<d){d=dd;best=k}}return best}
+  function upd(){var i=idx();cnt.textContent=pad(i+1)+" / "+pad(N);pv.disabled=tr.scrollLeft<=2;nx.disabled=tr.scrollLeft>=tr.scrollWidth-tr.clientWidth-2}
+  function go(d){var i=Math.max(0,Math.min(N-1,idx()+d));tr.scrollTo({left:pos(i),behavior:rm?"auto":"smooth"})}
+  pv.addEventListener("click",function(){go(-1)});nx.addEventListener("click",function(){go(1)});
+  tr.addEventListener("scroll",upd,{passive:true});window.addEventListener("resize",upd);upd();
+ });
+ [].forEach.call(document.querySelectorAll(".cmp"),function(root){
+  var f=root.querySelector(".cmp__frame"),r=root.querySelector(".cmp__range"),tb=root.querySelector(".cmp__tag--b"),ta=root.querySelector(".cmp__tag--a"),drag=false;
+  function tags(v){var w=f.clientWidth,x=v/100*w;if(tb)root.classList.toggle("hide-b",x<tb.offsetLeft+tb.offsetWidth+8);if(ta)root.classList.toggle("hide-a",x>ta.offsetLeft-8)}
+  function set(v){v=Math.max(0,Math.min(100,v));root.style.setProperty("--pos",v+"%");root.style.setProperty("--p",v);tags(v);r.value=Math.round(v);r.setAttribute("aria-valuetext",Math.round(v)+"% before, "+Math.round(100-v)+"% after")}
+  function at(e){var b=f.getBoundingClientRect();if(b.width)set((e.clientX-b.left)/b.width*100)}
+  set(parseFloat(root.getAttribute("data-start"))||50);
+  window.addEventListener("resize",function(){tags(+r.value)});
+  r.addEventListener("input",function(){set(+r.value)});
+  f.addEventListener("pointerdown",function(e){if(e.button>0)return;drag=true;f.classList.add("is-drag");if(f.setPointerCapture)f.setPointerCapture(e.pointerId);at(e)});
+  f.addEventListener("pointermove",function(e){if(drag)at(e)});
+  ["pointerup","pointercancel","lostpointercapture"].forEach(function(n){f.addEventListener(n,function(){drag=false;f.classList.remove("is-drag")})});
+ });
+ [].forEach.call(document.querySelectorAll("[data-scroller]"),function(s){
+  var tr=s.querySelector(".rec__track"),p=s.querySelector(".rec__prev"),n=s.querySelector(".rec__next"),rm=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function upd(){var max=tr.scrollWidth-tr.clientWidth;s.classList.toggle("is-static",max<=2);p.disabled=tr.scrollLeft<=2;n.disabled=tr.scrollLeft>=max-2}
+  function go(d){tr.scrollBy({left:d*tr.clientWidth*.9,behavior:rm?"auto":"smooth"})}
+  p.addEventListener("click",function(){go(-1)});n.addEventListener("click",function(){go(1)});
+  tr.addEventListener("scroll",upd,{passive:true});window.addEventListener("resize",upd);upd();
+ });
+ if(q.get("selftest")){var s=document.createElement("script");s.text=document.getElementById("selftest-src").text;document.body.appendChild(s)}
+})();
+</script>
+</body></html>

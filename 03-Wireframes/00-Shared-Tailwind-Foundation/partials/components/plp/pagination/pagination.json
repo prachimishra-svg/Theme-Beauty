@@ -1,0 +1,68 @@
+{
+    "id":  "pagination",
+    "page":  "plp",
+    "level":  "sub",
+    "name":  "Pagination",
+    "properties":  [
+                       {
+                           "name":  "items",
+                           "type":  "LIST",
+                           "default":  [
+                                           {
+                                               "current":  "",
+                                               "disabled":  "1",
+                                               "page":  "0",
+                                               "kind":  "prev"
+                                           },
+                                           {
+                                               "current":  "1",
+                                               "disabled":  "",
+                                               "page":  "1",
+                                               "kind":  "page"
+                                           },
+                                           {
+                                               "current":  "",
+                                               "disabled":  "",
+                                               "page":  "2",
+                                               "kind":  "page"
+                                           },
+                                           {
+                                               "current":  "",
+                                               "disabled":  "",
+                                               "page":  "3",
+                                               "kind":  "page"
+                                           },
+                                           {
+                                               "current":  "",
+                                               "disabled":  "",
+                                               "page":  "2",
+                                               "kind":  "next"
+                                           }
+                                       ],
+                           "itemFields":  [
+                                              "kind",
+                                              "page",
+                                              "disabled",
+                                              "current"
+                                          ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "items"
+                                       },
+                           "data":  "paginate.parts",
+                           "note":  "Previous, page numbers, gaps and Next"
+                       }
+                   ],
+    "accessibility":  "Links with aria-current on the current page and aria-disabled at the ends; Previous and Next keep their words for screen readers.",
+    "status":  "classified",
+    "summary":  "Numbered pagination: Previous, the current page with its neighbours, ellipsis gaps and Next. The list items only; the nav landmark is in the product grid section.",
+    "tokens":  [
+                   "brand colour",
+                   "radius",
+                   "type roles"
+               ],
+    "responsive":  "Previous and Next show words from 600 px and icons only below.",
+    "children":  [
+                     "components/base/icon"
+                 ]
+}

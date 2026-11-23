@@ -1,0 +1,41 @@
+{%- liquid
+  assign messages = section.blocks
+  assign n = messages.size
+  assign t_prev = 'announcement.previous' | t
+  assign t_next = 'announcement.next' | t
+-%}
+{%- if n > 0 -%}
+  {%- assign first = messages.first -%}
+  <div id="annbar" class="flex min-h-10 flex-wrap items-center justify-center gap-x-3 gap-y-[2px] bg-brand px-gutter py-2 text-center text-body-sm tracking-[0.03em] text-ink-inverse focus-within:[--color-focus-ring:var(--color-focus-ring-inverse)]" data-autoplay="{{ section.settings.autoplay }}" data-interval="{{ section.settings.interval | times: 1000 }}">
+    {%- if n > 1 -%}{% render 'announcement-arrow', id: 'ann-prev', label: t_prev, icon: 'chevron-left' %}{%- endif -%}
+    <div id="ann-msg" class="min-w-0" aria-live="polite">{%- if first.settings.link != blank -%}<a href="{{ first.settings.link }}" class="text-inherit">{{ first.settings.text | escape }}</a>{%- else -%}{{ first.settings.text | escape }}{%- endif -%}</div>
+    {%- if n > 1 -%}{% render 'announcement-arrow', id: 'ann-next', label: t_next, icon: 'chevron-right' %}{% render 'announcement-dots', count: n %}{%- endif -%}
+    <ul hidden data-ann-source>
+      {%- for block in messages -%}
+        <li data-ann-item {{ block.shopify_attributes }}>{%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}" class="text-inherit">{{ block.settings.text | escape }}</a>{%- else -%}{{ block.settings.text | escape }}{%- endif -%}</li>
+      {%- endfor -%}
+    </ul>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "enabled_on": { "groups": ["header"] },
+  "settings": [
+    { "type": "checkbox", "id": "autoplay", "label": "Rotate messages automatically", "default": false },
+    { "type": "range", "id": "interval", "min": 3, "max": 10, "step": 1, "unit": "s", "label": "Seconds per message", "default": 5 }
+  ],
+  "blocks": [
+    {
+      "type": "message",
+      "name": "Message",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Free shipping on orders over $50" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "max_blocks": 6
+}
+{% endschema %}

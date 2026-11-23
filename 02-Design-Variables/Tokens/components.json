@@ -1,0 +1,112 @@
+{
+  "touch-target": {
+    "min": { "$value": "2.75rem", "$description": "44px: the default interactive target (width and height, or an equivalent hit area)" }
+  },
+
+  "icon": {
+    "size": {
+      "sm": { "$value": "1rem" },
+      "md": { "$value": "1.25rem" },
+      "lg": { "$value": "1.5rem" },
+      "xl": { "$value": "2rem" }
+    },
+    "stroke-width": { "$value": "1.5" }
+  },
+
+  "control": {
+    "height-sm":    { "$value": "2.5rem", "$description": "40px visual height; keeps a 44px hit area (see touch-target.min)" },
+    "height-md":    { "$value": "3rem",   "$description": "48px: default button, input, select" },
+    "height-lg":    { "$value": "3.5rem", "$description": "56px: primary CTA (the Design System's shipped value; no per-viewport change)" },
+    "padding-x":    { "$value": "{space.6}", "$description": "24px horizontal button padding" },
+    "padding-x-sm": { "$value": "{space.4}" },
+    "padding-x-lg": { "$value": "{space.8}", "$description": "32px: large button" }
+  },
+
+  "radius": {
+    "control": { "$value": "{radius.sm}", "$description": "Buttons, inputs, selects" },
+    "card":    { "$value": "{radius.md}", "$description": "Cards, product cards, product images" },
+    "badge":   { "$value": "{radius.sm}" }
+  },
+
+  "button": {
+    "gap":       { "$value": "{space.2}" },
+    "icon-size": { "$value": "{icon.size.sm}" }
+  },
+
+  "icon-button": {
+    "count-size": { "$value": "1.25rem", "$description": "Cart-count bubble diameter (20px; was 18px, off the 4px grid)" }
+  },
+
+  "input": {
+    "padding-x":           { "$value": "{space.4}" },
+    "padding-y":           { "$value": "{space.3}" },
+    "textarea-min-height": { "$value": "7rem" }
+  },
+
+  "choice": {
+    "size":       { "$value": "1.5rem", "$description": "Checkbox / radio box (visual, 24px; was 22px, off the 4px grid); the whole label row is the 44px target" },
+    "gap":        { "$value": "{space.3}" },
+    "check-size": { "$value": "1rem" },
+    "dot-size":   { "$value": "0.75rem", "$description": "12px (was 10px, off the 4px grid)" }
+  },
+
+  "form": {
+    "field-gap": { "$value": "{space.6}", "$description": "Between fields (24px)" },
+    "label-gap": { "$value": "{space.2}" }
+  },
+
+  "qty": {
+    "input-width": { "$value": "3rem" }
+  },
+
+  "swatch": {
+    "size":        { "$value": "2rem",  "$description": "Visible chip; the tap area is touch-target.min" },
+    "size-sm":     { "$value": "1rem",  "$description": "Decorative mini swatch on cards (not interactive)" },
+    "hit-sm":      { "$value": "{space.6}", "$description": "Layout box of the decorative mini swatch (not a tap target)" },
+    "ring-width":  { "$value": "{border-width.thick}", "$description": "Selected ring (selection is not colour-only)" },
+    "ring-offset": { "$value": "{space.1}" },
+    "gap":         { "$value": "{space.1}" },
+    "radius":      { "$value": "{radius.pill}" }
+  },
+
+  "badge": {
+    "padding-x": { "$value": "{space.2}" },
+    "padding-y": { "$value": "{space.1}" },
+    "gap":       { "$value": "{space.1}" },
+    "icon-size": { "$value": "{icon.size.sm}" }
+  },
+
+  "rating": {
+    "star-size": { "$value": "{icon.size.sm}" },
+    "gap":       { "$value": "{space.2}" }
+  },
+
+  "card": {
+    "padding": { "$value": { "mobile": "{space.5}", "tablet": "{space.5}", "desktop": "{space.6}" }, "$description": "Tier: 20px, growing to 24px at desktop where the 4-column grid and wider cards give more room (the Design System's shipped behavior)" },
+    "gap":     { "$value": "{space.3}" }
+  },
+
+  "product-card": {
+    "gap":          { "$value": "{space.3}", "$description": "Between media and body (12px)" },
+    "body-gap":     { "$value": "{space.1}" },
+    "badge-offset": { "$value": "{space.3}", "$description": "Badge inset from the image corner" },
+    "hover-zoom":   { "$value": "1.03", "$description": "Image scale on hover (hover-capable devices only)" }
+  },
+
+  "product-image": {
+    "aspect-card":    { "$value": "{aspect.portrait}" },
+    "aspect-gallery": { "$value": "{aspect.portrait}", "$description": "Same as the card today; separate so the gallery can diverge without touching cards" },
+    "aspect-thumb":   { "$value": "{aspect.square}" },
+    "thumb-size":     { "$value": "4rem", "$description": "Gallery thumbnail edge (64px). Provisional until the gallery layout is wireframed" },
+    "thumb-gap":      { "$value": "{space.2}" },
+    "fit":            { "$value": "cover", "$description": "object-fit: crop, never stretch" },
+    "position":       { "$value": "50% 50%", "$description": "Default object-position (centre). Override per image with --image-position (e.g. a focal point)" },
+    "background":     { "$value": "{color.bg.subtle}", "$description": "Shown while the image loads or when it is missing" }
+  },
+
+  "focus": {
+    "ring-width":  { "$value": "2px" },
+    "ring-offset": { "$value": "2px" },
+    "ring":        { "$value": "{focus.ring-width} solid {color.focus.ring}" }
+  }
+}

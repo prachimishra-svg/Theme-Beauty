@@ -1,0 +1,29 @@
+{
+  "id": "category-section",
+  "name": "Shop by Category",
+  "level": "main",
+  "page": "homepage",
+  "status": "classified (D10 items pending)",
+  "summary": "Primary category entry: four photo tiles in an asymmetric mosaic with a heading. Maps to the category grid section in the Shopify theme.",
+  "properties": [
+    { "name": "heading", "type": "TEXT", "default": "Shop by category", "scope": "merchant", "shopify": { "param": "heading", "id": "heading", "setting": "text" } },
+    { "name": "anchor", "type": "TEXT", "default": "s05", "scope": "merchant", "shopify": { "param": "anchor", "id": "anchor", "setting": "text" }, "note": "In-page anchor id" },
+    { "name": "items", "type": "LIST", "scope": "merchant", "shopify": { "param": "items", "setting": "blocks", "blockType": "category_card", "maxBlocks": 4 },
+      "itemFields": [ "layout", "href", "photo", "dim", "title", "subtitle", "linkText" ],
+      "note": "One block per tile; fields are the Category Card properties",
+      "default": [ {"layout":"tall","href":"#","photo":"Category photo: Skin care","dim":"Tall editorial crop, 900 x 1300 (1.25 : 1 wide on mobile)","title":"Skin care","subtitle":"Cleansers, serums and moisturisers","linkText":"Shop skin care"},{"layout":"top-middle","href":"#","photo":"Category photo: Makeup","dim":"4:5, 800 x 1000","title":"Makeup","subtitle":"Face, eyes and lips","linkText":"Shop makeup"},{"layout":"top-right","href":"#","photo":"Category photo: Hair","dim":"4:5, 800 x 1000","title":"Hair","subtitle":"Shampoo, conditioner and styling","linkText":"Shop hair"},{"layout":"wide","href":"#","photo":"Category photo: Body","dim":"Wide crop, 1400 x 640","title":"Body","subtitle":"Wash, lotion and body care","linkText":"Shop body"} ] }
+  ],
+  "children": ["components/base/section-heading", "components/homepage/category-card"],
+  "exposes": [
+    { "child": "components/homepage/category-card", "property": "layout", "via": "items.layout" },
+    { "child": "components/homepage/category-card", "property": "href", "via": "items.href" },
+    { "child": "components/homepage/category-card", "property": "title", "via": "items.title" },
+    { "child": "components/homepage/category-card", "property": "subtitle", "via": "items.subtitle" },
+    { "child": "components/homepage/category-card", "property": "linkText", "via": "items.linkText" },
+    { "child": "components/base/section-heading", "property": "title", "via": "heading" }
+  ],
+  "wireframeOnly": [".ann annotation block", "data-section attribute", "data-c review hooks", "photo and dim placeholder captions"],
+  "accessibility": "Section heading is an h2; each tile is one link named by its title.",
+  "responsive": "Below 768 px: wide Skin care tile, two portrait tiles side by side, wide Body tile; caption under each image. From 768 px: one tall tile and three smaller ones, caption on the image.",
+  "tokens": ["page background", "spacing and grid gap", "type roles"]
+}

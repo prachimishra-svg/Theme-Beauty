@@ -1,0 +1,74 @@
+{
+    "name":  "Gallery Tile",
+    "page":  "homepage",
+    "properties":  [
+                       {
+                           "name":  "i",
+                           "type":  "TEXT",
+                           "default":  "1",
+                           "scope":  "wireframe",
+                           "shopify":  {
+                                           "param":  "i"
+                                       },
+                           "note":  "Placeholder caption number"
+                       },
+                       {
+                           "name":  "tone",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "scope":  "wireframe",
+                           "shopify":  {
+                                           "param":  "tone"
+                                       },
+                           "note":  "Placeholder tint class"
+                       },
+                       {
+                           "name":  "size",
+                           "type":  "VARIANT",
+                           "default":  "normal",
+                           "values":  [
+                                          "normal",
+                                          "large",
+                                          "wide"
+                                      ],
+                           "tables":  {
+                                          "extra":  {
+                                                        "normal":  "",
+                                                        "large":  "col-span-2 [\u0026_.ratio]:pt-[58%] md:col-[1/span_2] md:row-[1/span_2] md:[\u0026_.ratio]:h-full md:[\u0026_.ratio]:min-h-full md:[\u0026_.ratio]:pt-0",
+                                                        "wide":  "col-span-2 [\u0026_.ratio]:pt-[58%] md:col-[1/-1] md:[\u0026_.ratio]:pt-[24%]"
+                                                    }
+                                      },
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "id":  "size",
+                                           "setting":  "select",
+                                           "param":  "gallery_tile_size"
+                                       },
+                           "note":  "Size in the mosaic: normal, large (2 x 2 on desktop) or wide (full row on desktop)"
+                       }
+                   ],
+    "tokens":  [
+                   "spacing",
+                   "grid gap"
+               ],
+    "summary":  "One customer photo in the mosaic. Its size in the mosaic is a variant.",
+    "accessibility":  "Alt text comes from the image.",
+    "id":  "gallery-tile",
+    "shopifyOnly":  [
+                        {
+                            "id":  "image",
+                            "setting":  "image_picker",
+                            "replaces":  "placeholder",
+                            "note":  "Customer photo"
+                        }
+                    ],
+    "level":  "sub",
+    "status":  "classified (D10 items pending)",
+    "responsive":  "Mosaic: large and wide tiles span more cells from 768 px.",
+    "wireframeOnly":  [
+                          "placeholder captions and tint"
+                      ],
+    "children":  [
+
+                 ]
+}

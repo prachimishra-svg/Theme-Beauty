@@ -1,0 +1,87 @@
+{
+    "id":  "social-link",
+    "page":  "shared",
+    "level":  "sub",
+    "name":  "Social Link",
+    "properties":  [
+                       {
+                           "name":  "label",
+                           "type":  "TEXT",
+                           "default":  "Instagram",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "label"
+                                       },
+                           "note":  "Accessible name"
+                       },
+                       {
+                           "name":  "icon",
+                           "type":  "INSTANCE_SWAP",
+                           "default":  "instagram",
+                           "options":  [
+                                           "search",
+                                           "account",
+                                           "bag",
+                                           "menu",
+                                           "close",
+                                           "plus",
+                                           "minus",
+                                           "chevron-down",
+                                           "chevron-up",
+                                           "chevron-left",
+                                           "chevron-right",
+                                           "arrow-left",
+                                           "arrow-right",
+                                           "filter",
+                                           "sort",
+                                           "heart",
+                                           "star",
+                                           "location",
+                                           "lock",
+                                           "check",
+                                           "check-circle",
+                                           "info",
+                                           "warning",
+                                           "eye",
+                                           "eye-off",
+                                           "share",
+                                           "instagram",
+                                           "facebook",
+                                           "youtube",
+                                           "mail",
+                                           "phone",
+                                           "clock",
+                                           "zoom-in",
+                                           "play",
+                                           "truck",
+                                           "rotate-ccw",
+                                           "shield-check",
+                                           "store",
+                                           "loader"
+                                       ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "icon",
+                                           "setting":  "select"
+                                       },
+                           "note":  "Network icon"
+                       }
+                   ],
+    "shopifyOnly":  [
+                        {
+                            "id":  "social_url",
+                            "setting":  "url",
+                            "note":  "Theme settings social_instagram, social_facebook, social_youtube"
+                        }
+                    ],
+    "status":  "classified (D10 items pending)",
+    "accessibility":  "A link with an accessible name.",
+    "summary":  "One social network link shown as an icon.",
+    "tokens":  [
+                   "touch target"
+               ],
+    "responsive":  "Same at all widths.",
+    "children":  [
+                     "components/base/icon"
+                 ]
+}

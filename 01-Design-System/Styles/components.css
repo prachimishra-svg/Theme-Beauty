@@ -1,0 +1,458 @@
+/* ==========================================================================
+   NUDGE — COMPONENTS
+   Every value comes from the canonical tokens (02-Design-Variables/Styles/variables.css). If you need a value that isn't a token,
+   add the token first in 02-Design-Variables/Tokens (see 02-Design-Variables/Documentation/usage-guide.md), then use it here.
+   Naming: BEM-lite  .block  .block__element  .block--modifier
+   State hooks (prefer ARIA/native): :disabled, [aria-disabled="true"],
+   [aria-invalid="true"], [aria-pressed="true"], [aria-current], :checked
+   ========================================================================== */
+
+/* ---------- Icons --------------------------------------------------------- */
+.icon {
+  width: var(--icon-size-md); height: var(--icon-size-md); flex: none;
+  fill: none; stroke: currentColor; stroke-width: var(--icon-stroke-width);
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.icon--sm { width: var(--icon-size-sm); height: var(--icon-size-sm); }
+.icon--lg { width: var(--icon-size-lg); height: var(--icon-size-lg); }
+.icon--xl { width: var(--icon-size-xl); height: var(--icon-size-xl); }
+.icon--filled { fill: currentColor; }
+/* Icon sitting in running text: scales with the text, sits on the baseline */
+.icon--inline { display: inline-block; width: 1.1em; height: 1.1em; vertical-align: -0.18em; }
+
+/* ---------- Buttons ------------------------------------------------------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+  min-height: var(--control-height-md); padding: 0 var(--control-padding-x);
+  border: var(--border-width-thin) solid transparent; border-radius: var(--radius-control);
+  font-family: var(--type-button-font-family); font-size: var(--type-button-font-size);
+  font-weight: var(--type-button-font-weight); line-height: var(--type-button-line-height);
+  letter-spacing: var(--type-button-letter-spacing); text-transform: var(--type-button-text-transform); text-align: center; text-decoration: none;
+  background: transparent; color: var(--color-text-primary);
+  transition: var(--transition-colors);
+  -webkit-tap-highlight-color: transparent; user-select: none;
+}
+.btn--primary { background: var(--color-button-primary-bg); border-color: var(--color-button-primary-bg); color: var(--color-button-primary-text); }
+.btn--primary:hover { background: var(--color-button-primary-bg-hover); border-color: var(--color-button-primary-bg-hover); }
+.btn--primary:active { background: var(--color-button-primary-bg-active); border-color: var(--color-button-primary-bg-active); }
+
+.btn--secondary { border-color: var(--color-button-secondary-border); color: var(--color-text-primary); }
+.btn--secondary:hover { background: var(--color-button-secondary-bg-hover); color: var(--color-button-secondary-text-hover); }
+.btn--secondary:active { background: var(--color-button-secondary-bg-hover); color: var(--color-button-secondary-text-hover); opacity: var(--opacity-pressed); }
+
+/* Text button: reads as a link, behaves as a button */
+.btn--text {
+  min-height: var(--touch-target-min); padding-inline: var(--space-1);
+  color: var(--color-link); text-decoration: underline; text-decoration-thickness: var(--border-width-thin); text-underline-offset: 0.35em;
+}
+.btn--text:hover { color: var(--color-link-hover); text-decoration-thickness: var(--border-width-thick); }
+.btn--text:active { color: var(--color-brand-primary-active); }
+
+.btn--sm { position: relative; min-width: var(--touch-target-min); min-height: var(--control-height-sm); padding-inline: var(--control-padding-x-sm); }
+/* 44 x 44 default target: the small button keeps a 40px visual and gets an invisible 44px hit area.
+   The inset also cancels the 1px border (an absolutely positioned box is sized from the padding box).
+   Keep at least 4px between adjacent small controls so hit areas do not overlap. */
+.btn--sm::after { content: ""; position: absolute; inset: calc((var(--control-height-sm) - var(--touch-target-min)) / 2 - var(--border-width-thin)) calc(var(--border-width-thin) * -1); }
+.btn--lg { min-height: var(--control-height-lg); padding-inline: var(--control-padding-x-lg); }
+.btn--block { display: flex; width: 100%; }
+/* Full-width on phones, natural width from tablet up */
+.btn--block-mobile { display: flex; width: 100%; }
+@media (min-width: 37.5rem) { .btn--block-mobile { display: inline-flex; width: auto; } }
+
+.btn:disabled, .btn[aria-disabled="true"] {
+  background: var(--color-button-disabled-bg); border-color: var(--color-button-disabled-bg);
+  color: var(--color-button-disabled-text); cursor: not-allowed; pointer-events: none;
+  text-decoration: line-through;   /* non-color cue */
+}
+.btn--text:disabled, .btn--text[aria-disabled="true"] { background: transparent; border-color: transparent; }
+
+/* ---------- Icon button --------------------------------------------------- */
+/* Always needs an accessible name: aria-label or a .visually-hidden span. */
+.icon-btn {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: var(--touch-target-min); height: var(--touch-target-min);
+  padding: 0; border: var(--border-width-thin) solid transparent; border-radius: var(--radius-control);
+  background: transparent; color: var(--color-text-primary); position: relative;
+  transition: background-color var(--duration-base) var(--ease-standard), color var(--duration-base) var(--ease-standard);
+}
+.icon-btn:hover { background: var(--color-bg-subtle); }
+.icon-btn:active { background: var(--color-brand-tint-strong); }
+.icon-btn[aria-pressed="true"] { color: var(--color-brand-primary); }
+.icon-btn[aria-pressed="true"] .icon { fill: currentColor; }
+.icon-btn:disabled, .icon-btn[aria-disabled="true"] { color: var(--color-text-disabled); cursor: not-allowed; pointer-events: none; }
+.icon-btn--filled { background: var(--color-bg-surface); box-shadow: var(--shadow-sm); border-radius: var(--radius-pill); }
+.icon-btn--filled:hover { background: var(--color-bg-surface); box-shadow: var(--shadow-md); }
+.icon-btn--round { border-radius: var(--radius-pill); }
+/* Count bubble (cart) — always paired with visible/visually-hidden text */
+.icon-btn__count {
+  position: absolute; top: var(--space-1); right: var(--space-1);
+  min-width: var(--icon-button-count-size); height: var(--icon-button-count-size); padding: 0 var(--space-1);
+  display: grid; place-items: center; border-radius: var(--radius-pill);
+  background: var(--color-brand-primary); color: var(--color-text-on-brand);
+  font-size: var(--font-size-utility); font-weight: var(--font-weight-bold); line-height: 1; font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Links --------------------------------------------------------- */
+.link, .rte a {
+  color: var(--color-link); text-decoration: underline; text-decoration-thickness: var(--border-width-thin);
+  text-underline-offset: 0.2em; transition: color var(--duration-fast) var(--ease-standard);
+}
+.link:hover, .rte a:hover { color: var(--color-link-hover); text-decoration-thickness: var(--border-width-thick); }
+.link--subtle { color: inherit; text-decoration: none; }
+.link--subtle:hover { color: var(--color-link); text-decoration: underline; }
+.link--arrow { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--touch-target-min); font-weight: var(--font-weight-medium); }
+/* A link that stands on its own (footer list, "View all", card title) is a 44px target. Links inside a sentence are exempt. */
+.link--standalone { display: inline-flex; align-items: center; min-height: var(--touch-target-min); }
+.link--arrow .icon { transition: transform var(--duration-base) var(--ease-standard); }
+.link--arrow:hover .icon { transform: translateX(var(--space-1)); }
+
+/* ---------- Divider ------------------------------------------------------- */
+.divider { border: 0; border-top: var(--border-width-thin) solid var(--color-border-subtle); margin: 0; width: 100%; }
+.divider--strong { border-top-color: var(--color-border-strong); }
+.divider--vertical { border-top: 0; border-left: var(--border-width-thin) solid var(--color-border-subtle); align-self: stretch; width: 0; }
+
+/* ---------- Badges / labels ----------------------------------------------- */
+.badge {
+  display: inline-flex; align-items: center; gap: var(--space-1);
+  padding: var(--space-1) var(--space-2); border-radius: var(--radius-badge);
+  background: var(--color-bg-subtle); color: var(--color-text-primary);
+  font-size: var(--font-size-utility); font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wider); text-transform: uppercase; line-height: var(--line-height-snug); white-space: nowrap;
+}
+.badge--brand   { background: var(--color-brand-primary); color: var(--color-text-on-brand); }
+.badge--dark    { background: var(--color-bg-inverse); color: var(--color-text-inverse); }
+.badge--outline { background: transparent; border: var(--border-width-thin) solid var(--color-border-strong); }
+.badge--success { background: var(--color-status-success-bg); color: var(--color-status-success); }
+.badge--warning { background: var(--color-status-warning-bg); color: var(--color-status-warning); }
+.badge--error   { background: var(--color-status-error-bg);   color: var(--color-status-error); }
+.badge .icon { width: var(--icon-size-sm); height: var(--icon-size-sm); }
+
+/* ---------- Message (form-level / inline feedback) ------------------------ */
+.message {
+  display: flex; gap: var(--space-3); align-items: flex-start;
+  padding: var(--space-3) var(--space-4); border-radius: var(--radius-control);
+  border-left: var(--border-width-thick) solid currentColor;
+  background: var(--color-bg-subtle); color: var(--color-text-primary);
+  font-size: var(--font-size-body-sm); line-height: var(--line-height-normal);
+}
+.message .icon { margin-top: 0.1em; }
+.message--error   { background: var(--color-status-error-bg);   color: var(--color-status-error); }
+.message--success { background: var(--color-status-success-bg); color: var(--color-status-success); }
+.message--warning { background: var(--color-status-warning-bg); color: var(--color-status-warning); }
+.message--error > *:not(.icon), .message--success > *:not(.icon), .message--warning > *:not(.icon) { color: var(--color-text-primary); }
+
+/* ---------- Form fields ---------------------------------------------------- */
+.field { display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; }
+.field__label { font-size: var(--type-label-font-size); font-weight: var(--type-label-font-weight); line-height: var(--type-label-line-height); color: var(--color-text-primary); }
+.field__label .field__optional { font-weight: var(--font-weight-regular); color: var(--color-text-secondary); }
+.field__hint { font-size: var(--font-size-validation); color: var(--color-text-secondary); line-height: var(--line-height-snug); }
+.field__message {
+  display: none; align-items: flex-start; gap: var(--space-2);
+  font-size: var(--type-validation-font-size); font-weight: var(--type-validation-font-weight); line-height: var(--type-validation-line-height);
+}
+.field__message .icon { width: var(--icon-size-sm); height: var(--icon-size-sm); margin-top: 0.05em; }
+.field--error .field__message--error   { display: flex; color: var(--color-status-error); }
+.field--success .field__message--success { display: flex; color: var(--color-status-success); }
+
+.input {
+  display: block; width: 100%; min-height: var(--control-height-md); padding: var(--space-3) var(--space-4);
+  background: var(--color-control-bg); color: var(--color-text-primary);
+  border: var(--border-width-thin) solid var(--color-control-border); border-radius: var(--radius-control);
+  font-family: var(--type-input-font-family); font-size: var(--type-input-font-size); line-height: var(--type-input-line-height);
+  transition: border-color var(--duration-fast) var(--ease-standard), box-shadow var(--duration-fast) var(--ease-standard);
+  appearance: none; -webkit-appearance: none;
+}
+.input::placeholder { color: var(--color-text-muted); opacity: 1; }
+.input:hover { border-color: var(--color-control-border-hover); }
+.input:focus-visible, .input:focus { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); border-color: var(--color-brand-primary); }
+.input:disabled { background: var(--color-bg-subtle); color: var(--color-text-muted); border-style: dashed; border-color: var(--color-border-strong); cursor: not-allowed; }
+textarea.input { min-height: var(--input-textarea-min-height); resize: vertical; }
+
+/* Error / success: border colour + thicker (inset ring) + icon & message in .field__message */
+.input[aria-invalid="true"], .field--error .input { border-color: var(--color-status-error); box-shadow: inset 0 0 0 var(--border-width-thin) var(--color-status-error); }
+.field--success .input { border-color: var(--color-status-success); box-shadow: inset 0 0 0 var(--border-width-thin) var(--color-status-success); }
+
+/* Select: native control, custom chevron (wrapper keeps it token-coloured) */
+.select { position: relative; }
+.select .input { padding-right: var(--space-12); cursor: pointer; }
+.select__icon { position: absolute; right: var(--space-4); top: 50%; transform: translateY(-50%); pointer-events: none; color: var(--color-text-primary); }
+.select .input:disabled ~ .select__icon { color: var(--color-text-muted); }
+
+/* Input with trailing control (password toggle, search submit) */
+.input-affix { position: relative; }
+.input-affix .input { padding-right: calc(var(--touch-target-min) + var(--space-2)); }
+.input-affix__action { position: absolute; right: var(--space-1); top: 50%; transform: translateY(-50%); }
+
+/* Checkbox & radio: native input, restyled. Hit area = whole label row. */
+.choice { display: flex; align-items: flex-start; gap: var(--space-3); min-height: var(--touch-target-min); padding-block: var(--space-2); cursor: pointer; font-size: var(--font-size-body); line-height: var(--line-height-snug); }
+.choice__input {
+  appearance: none; -webkit-appearance: none; flex: none; position: relative; margin: 0;
+  width: var(--choice-size); height: var(--choice-size); margin-top: -0.0625rem;
+  background: var(--color-control-bg); border: var(--border-width-thin) solid var(--color-control-border);
+  display: grid; place-content: center; cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-standard), border-color var(--duration-fast) var(--ease-standard);
+}
+.choice__input[type="checkbox"] { border-radius: var(--radius-sm); }
+.choice__input[type="radio"] { border-radius: var(--radius-pill); }
+.choice__input::before { content: ""; background: var(--color-text-on-brand); transform: scale(0); transition: transform var(--duration-fast) var(--ease-out); }
+.choice__input[type="checkbox"]::before {
+  width: var(--choice-check-size); height: var(--choice-check-size);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.choice__input[type="radio"]::before { width: var(--choice-dot-size); height: var(--choice-dot-size); border-radius: var(--radius-pill); }
+.choice__input:hover { border-color: var(--color-control-border-hover); }
+.choice__input:checked { background: var(--color-control-selected); border-color: var(--color-control-selected); }
+.choice__input:checked::before { transform: scale(1); }
+.choice__input[type="checkbox"]:indeterminate { background: var(--color-control-selected); border-color: var(--color-control-selected); }
+.choice__input:disabled { border-style: dashed; background: var(--color-bg-subtle); cursor: not-allowed; }
+.choice__input:disabled:checked { background: var(--color-border-strong); border-color: var(--color-border-strong); }
+.choice:has(.choice__input:disabled) { color: var(--color-text-muted); cursor: not-allowed; }
+.choice__input[aria-invalid="true"] { border-color: var(--color-status-error); box-shadow: inset 0 0 0 var(--border-width-thin) var(--color-status-error); }
+fieldset.fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+.fieldset__legend { padding: 0; margin-bottom: var(--space-2); font-size: var(--font-size-label); font-weight: var(--font-weight-medium); }
+
+/* ---------- Quantity selector --------------------------------------------- */
+.qty {
+  display: inline-flex; align-items: stretch;
+  border: var(--border-width-thin) solid var(--color-control-border); border-radius: var(--radius-control); background: var(--color-control-bg);
+}
+.qty:hover { border-color: var(--color-control-border-hover); }
+.qty:focus-within { border-color: var(--color-brand-primary); }
+.qty__btn { width: var(--touch-target-min); min-height: var(--control-height-md); padding: 0; border: 0; background: transparent; display: grid; place-items: center; color: var(--color-text-primary); border-radius: var(--radius-control); transition: background-color var(--duration-fast) var(--ease-standard); }
+.qty__btn:hover { background: var(--color-bg-subtle); }
+.qty__btn:active { background: var(--color-brand-tint-strong); }
+.qty__btn:disabled { color: var(--color-text-disabled); cursor: not-allowed; background: transparent; }
+.qty__input { width: var(--qty-input-width); border: 0; background: transparent; text-align: center; font-size: var(--font-size-input); font-weight: var(--font-weight-medium); font-variant-numeric: tabular-nums; -moz-appearance: textfield; appearance: textfield; padding: 0; }
+.qty__input::-webkit-outer-spin-button, .qty__input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.qty__input:focus-visible { outline-offset: calc(var(--space-1) * -1); }
+
+/* ---------- Swatches ------------------------------------------------------- */
+/* Colour comes from merchant data via --swatch (inline style in Liquid).
+   Selection is NOT colour-only: thick ring + gap, plus selected name text outside. */
+.swatches { display: flex; flex-wrap: wrap; gap: var(--swatch-gap); }
+.swatch { position: relative; display: grid; place-items: center; width: var(--touch-target-min); height: var(--touch-target-min); cursor: pointer; }
+.swatch__input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.swatch__chip {
+  width: var(--swatch-size); height: var(--swatch-size); border-radius: var(--swatch-radius); background: var(--swatch, var(--color-bg-subtle));
+  box-shadow: inset 0 0 0 var(--border-width-thin) rgb(var(--shadow-color) / 0.25);
+  outline: var(--swatch-ring-width) solid transparent; outline-offset: var(--swatch-ring-offset);
+  transition: outline-color var(--duration-fast) var(--ease-standard);
+}
+.swatch:hover .swatch__chip { outline-color: var(--color-border-strong); }
+.swatch__input:checked + .swatch__chip { outline-color: var(--color-text-primary); }
+.swatch__input:focus-visible + .swatch__chip { outline: var(--focus-ring); outline-offset: var(--swatch-ring-offset); }
+.swatch__input:disabled { cursor: not-allowed; }
+.swatch__input:disabled + .swatch__chip { opacity: var(--opacity-disabled); background-image: linear-gradient(to top right, transparent calc(50% - 1px), var(--color-text-primary) 50%, transparent calc(50% + 1px)); }
+.swatch--sm { width: var(--swatch-hit-sm); height: var(--swatch-hit-sm); }   /* decorative-only mini swatches on cards */
+.swatch--sm .swatch__chip { width: var(--swatch-size-sm); height: var(--swatch-size-sm); }
+
+/* ---------- Price ---------------------------------------------------------- */
+.price { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-1) var(--space-3); font-variant-numeric: tabular-nums; }
+.price__current { font-size: var(--font-size-price); font-weight: var(--font-weight-medium); }
+.price--lg .price__current { font-size: var(--font-size-price-lg); }
+.price__compare { font-size: var(--font-size-body-sm); color: var(--color-text-secondary); text-decoration: line-through; text-decoration-thickness: var(--border-width-thin); }
+.price--sale .price__current { color: var(--color-price-sale); }
+.price__unit { font-size: var(--font-size-caption); color: var(--color-text-secondary); }
+
+/* ---------- Rating --------------------------------------------------------- */
+.rating { display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--font-size-caption); color: var(--color-text-secondary); }
+.rating__stars { display: inline-flex; color: var(--color-brand-primary); }
+.rating__stars .icon { width: var(--icon-size-sm); height: var(--icon-size-sm); }
+.rating__stars .icon:not(.icon--filled) { color: var(--color-border-strong); }
+
+/* ---------- Card ----------------------------------------------------------- */
+.card { background: var(--color-bg-surface); border: var(--border-width-thin) solid var(--color-border-subtle); border-radius: var(--radius-card); overflow: hidden; }
+.card--flat { background: transparent; border-color: transparent; }
+.card--raised { box-shadow: var(--shadow-md); border-color: transparent; }
+.card--interactive { transition: box-shadow var(--duration-base) var(--ease-standard), transform var(--duration-base) var(--ease-standard); }
+.card--interactive:hover { box-shadow: var(--shadow-lg); transform: translateY(calc(var(--space-1) * -1)); }
+.card__body { padding: var(--space-5); display: flex; flex-direction: column; gap: var(--space-3); }
+@media (min-width: 64rem) { .card__body { padding: var(--space-6); } }
+.card__title { font-family: var(--font-family-heading); font-size: var(--font-size-h4); font-weight: var(--font-weight-semibold); line-height: var(--line-height-snug); }
+
+/* ---------- Product card foundation ---------------------------------------- */
+.product-card { position: relative; display: flex; flex-direction: column; gap: var(--product-card-gap); min-width: 0; }
+.product-card__media { position: relative; border-radius: var(--radius-card); overflow: hidden; background: var(--color-bg-subtle); }
+.product-card__media .ratio { border-radius: 0; }
+.product-card__badges { position: absolute; top: var(--product-card-badge-offset); left: var(--product-card-badge-offset); display: flex; flex-wrap: wrap; gap: var(--space-1); z-index: var(--z-raised); }
+.product-card__wishlist { position: absolute; top: var(--space-1); right: var(--space-1); z-index: var(--z-raised); }
+/* Badges never run under the 44px wishlist button: on a 129 to 136px card (2-up at 320px) the badge area is narrower than a one-line "Sale -20%" label, so the label wraps instead of being covered. */
+.product-card__badges { max-width: calc(100% - var(--product-card-badge-offset) - var(--touch-target-min) - var(--space-2)); }
+.product-card__badges .badge { white-space: normal; }
+.product-card__body { display: flex; flex-direction: column; gap: var(--product-card-body-gap); min-width: 0; }
+.product-card__vendor { font-size: var(--font-size-overline); letter-spacing: var(--letter-spacing-widest); text-transform: uppercase; color: var(--color-text-secondary); font-weight: var(--font-weight-medium); }
+/* Whole card is clickable via the title link; controls sit above it. */
+.product-card__title a { color: inherit; text-decoration: none; }
+.product-card__title a::after { content: ""; position: absolute; inset: 0; }
+.product-card__title a:hover { color: var(--color-link); text-decoration: underline; text-underline-offset: 0.2em; text-decoration-thickness: var(--border-width-thin); }
+/* Focus, progressive enhancement. By default the title link shows the normal focus ring. Where :has() is
+   supported (and the browser understands @supports selector()), the ring moves to the whole card, because the
+   link's ::after covers the card. A browser lacking either keeps the link ring, so focus is never invisible. */
+@supports selector(:has(*)) {
+  .product-card__title a:focus-visible { outline: none; }
+  .product-card:has(.product-card__title a:focus-visible) { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); border-radius: var(--radius-card); }
+}
+.product-card__title { overflow-wrap: anywhere; }
+.product-card__swatches, .product-card__action { position: relative; z-index: var(--z-raised); }
+.product-card__action { margin-top: var(--space-2); }
+.product-card__media img, .product-card__media .placeholder-media { transition: var(--transition-transform); }
+@media (hover: hover) { .product-card:hover .product-card__media > .ratio > * { transform: scale(var(--product-card-hover-zoom)); } }
+.product-card--soldout .product-card__media .ratio { opacity: var(--opacity-muted); }
+
+/* Image placeholder (Design System only; replaced by <img> in the theme) */
+.placeholder-media { width: 100%; height: 100%; background:
+  radial-gradient(120% 90% at 30% 20%, var(--color-bg-surface) 0%, transparent 55%),
+  linear-gradient(160deg, var(--color-brand-tint-strong), var(--color-bg-subtle)); }
+.placeholder-media--b { background:
+  radial-gradient(100% 80% at 70% 25%, var(--color-bg-surface) 0%, transparent 50%),
+  linear-gradient(200deg, var(--color-bg-subtle), var(--color-brand-tint)); }
+.placeholder-media--c { background: linear-gradient(180deg, var(--color-bg-surface), var(--color-bg-subtle)); }
+
+/* ---------- Accordion (native <details>; no JS) ----------------------------- */
+/* Markup: <div class="accordion"><details class="accordion__item"><summary class="accordion__summary">Title <svg class="icon">chevron-down</svg></summary><div class="accordion__panel">…</div></details></div>
+   Use `name="…"` on the <details> elements for exclusive groups where supported. */
+.accordion { border-top: var(--border-width-thin) solid var(--color-border-subtle); }
+.accordion__item { border-bottom: var(--border-width-thin) solid var(--color-border-subtle); }
+.accordion__summary {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
+  min-height: var(--touch-target-min); padding-block: var(--space-4); cursor: pointer; list-style: none;
+  font-size: var(--font-size-body); font-weight: var(--font-weight-medium); line-height: var(--line-height-snug);
+}
+.accordion__summary::-webkit-details-marker { display: none; }
+.accordion__summary::marker { content: ""; }
+.accordion__summary:hover { color: var(--color-link); }
+.accordion__summary .icon { transition: transform var(--duration-base) var(--ease-standard); }
+.accordion__item[open] > .accordion__summary .icon { transform: rotate(180deg); }
+.accordion__panel { padding-bottom: var(--space-5); max-width: var(--container-text); }
+
+/* ---------- Breadcrumb ------------------------------------------------------- */
+/* Markup: <nav class="breadcrumb" aria-label="Breadcrumb"><ol class="breadcrumb__list"><li class="breadcrumb__item"><a href>Home</a></li>…<li class="breadcrumb__item"><a href aria-current="page">Serums</a></li></ol></nav> */
+.breadcrumb { font-size: var(--font-size-body-sm); }
+.breadcrumb__list { display: flex; flex-wrap: wrap; align-items: center; gap: 0 var(--space-2); list-style: none; margin: 0; padding: 0; }
+.breadcrumb__item { display: inline-flex; align-items: center; gap: var(--space-2); }
+.breadcrumb__item + .breadcrumb__item::before {
+  content: ""; width: var(--icon-size-sm); height: var(--icon-size-sm); background: var(--color-text-muted);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 18 6-6-6-6'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 18 6-6-6-6'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.breadcrumb a { display: inline-flex; align-items: center; justify-content: center; min-width: var(--touch-target-min); min-height: var(--touch-target-min); color: var(--color-text-secondary); text-decoration: underline; text-underline-offset: 0.2em; text-decoration-thickness: var(--border-width-thin); }
+.breadcrumb a:hover { color: var(--color-link-hover); text-decoration-thickness: var(--border-width-thick); }
+.breadcrumb a[aria-current="page"] { color: var(--color-text-primary); font-weight: var(--font-weight-medium); text-decoration: none; }
+/* Phones (below 600px): one compact line, parent + current page. The current page truncates with an ellipsis; its full
+   name is the page heading. Earlier ancestors are hidden (display: none, so also out of the accessibility tree) until
+   the tablet tier restores the full wrapping trail. Measured with a long product name: full trail 88px tall at 320-390px,
+   compact 44px tall. Truncating without hiding ancestors left 58px of the name at 320px. */
+.breadcrumb__list { flex-wrap: nowrap; }
+.breadcrumb__item { min-width: 0; }
+.breadcrumb__item:not(:nth-last-child(-n+2)) { display: none; }
+.breadcrumb__item:nth-last-child(2)::before { display: none; }
+.breadcrumb__item:last-child { flex: 1 1 0; }
+.breadcrumb__item:last-child a { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: var(--touch-target-min); }
+@media (min-width: 37.5rem) {
+  .breadcrumb__list { flex-wrap: wrap; }
+  .breadcrumb__item:not(:nth-last-child(-n+2)) { display: inline-flex; }
+  .breadcrumb__item:nth-last-child(2)::before { display: block; }
+  .breadcrumb__item:last-child { flex: 0 1 auto; }
+  .breadcrumb__item:last-child a { display: inline-flex; overflow: visible; text-overflow: clip; white-space: normal; line-height: inherit; }
+}
+
+/* ---------- Pagination ------------------------------------------------------- */
+/* Markup: <nav aria-label="Pagination"><ul class="pagination"><li><a class="pagination__link" href aria-current="page"><span class="visually-hidden">Page </span>1</a></li>…</ul></nav> */
+.pagination { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: var(--space-1); list-style: none; margin: 0; padding: 0; }
+.pagination__link {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+  min-width: var(--touch-target-min); min-height: var(--touch-target-min); padding-inline: var(--space-3);
+  border: var(--border-width-thin) solid transparent; border-radius: var(--radius-control);
+  color: var(--color-text-primary); text-decoration: none; font-weight: var(--font-weight-medium); font-variant-numeric: tabular-nums;
+  transition: background-color var(--duration-base) var(--ease-standard), color var(--duration-base) var(--ease-standard);
+}
+.pagination__link:hover { background: var(--color-bg-subtle); }
+.pagination__link[aria-current="page"] { background: var(--color-button-primary-bg); border-color: var(--color-button-primary-bg); color: var(--color-button-primary-text); }
+.pagination__link[aria-disabled="true"] { color: var(--color-text-muted); pointer-events: none; text-decoration: line-through; }
+.pagination__gap { display: inline-grid; place-items: center; min-width: var(--touch-target-min); color: var(--color-text-muted); }
+
+/* ---------- Chip (filter toggle / active-filter pill) ------------------------ */
+/* Toggle: <button class="chip" aria-pressed="false">Hydration</button>
+   Removable: <button class="chip" aria-pressed="true">Dry skin <svg class="icon icon--sm">close</svg><span class="visually-hidden">Remove filter</span></button> */
+.chip {
+  position: relative; display: inline-flex; align-items: center; gap: var(--space-2); min-width: var(--touch-target-min); justify-content: center; min-height: var(--control-height-sm); padding: 0 var(--space-4);
+  background: var(--color-control-bg); color: var(--color-text-primary);
+  border: var(--border-width-thin) solid var(--color-control-border); border-radius: var(--radius-pill);
+  font-size: var(--font-size-body-sm); font-weight: var(--font-weight-medium); line-height: var(--line-height-snug); white-space: nowrap;
+  transition: background-color var(--duration-base) var(--ease-standard), border-color var(--duration-base) var(--ease-standard);
+}
+/* 44 x 44 default target: 40px visual, invisible 44px hit area */
+.chip::after { content: ""; position: absolute; inset: calc((var(--control-height-sm) - var(--touch-target-min)) / 2 - var(--border-width-thin)) calc(var(--border-width-thin) * -1); }
+.chip:hover { border-color: var(--color-control-border-hover); }
+/* Row of filter-choice chips. Phones: one horizontally scrolling line (8 chips measured 48px tall instead of 196px at
+   320px; the chips cut off at the edge show that the row scrolls). The vertical padding is room for the 2px ring plus its
+   2px offset and the 2px hit-area overhang: overflow clips both otherwise. Tablet and up: wraps. Use .cluster, which
+   wraps everywhere, for the row of APPLIED filters so every applied filter stays visible. */
+.chip-row { display: flex; flex-wrap: nowrap; align-items: center; gap: var(--space-3); overflow-x: auto; padding-block: var(--space-1); scrollbar-width: thin; }
+.chip-row > .chip { flex: none; }
+@media (min-width: 37.5rem) { .chip-row { flex-wrap: wrap; overflow-x: visible; padding-block: 0; } }
+.chip[aria-pressed="true"] { background: var(--color-brand-tint); border-color: var(--color-brand-primary); color: var(--color-brand-primary-active); }
+/* Selected is also a shape cue (check mark), not colour alone. Shown by default; a removable chip that already
+   carries an icon hides it where :has() is supported. */
+.chip[aria-pressed="true"]::before {
+  content: ""; width: var(--icon-size-sm); height: var(--icon-size-sm); background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+@supports selector(:has(*)) { .chip[aria-pressed="true"]:has(.icon)::before { content: none; } }
+.chip:disabled { border-style: dashed; color: var(--color-text-muted); background: var(--color-bg-subtle); cursor: not-allowed; }
+
+/* ---------- Drawer (modal side panel; full-width sheet on phones) ------------------------------------
+   Markup: <dialog class="drawer" id="x" aria-labelledby="x-title">
+             <div class="drawer__head"><h2 class="drawer__title h5" id="x-title">Filters</h2><button class="icon-btn" type="button" data-drawer-close aria-label="Close filters">icon</button></div>
+             <div class="drawer__body">scrolling content</div>
+             <div class="drawer__foot"><button class="btn btn--primary btn--block" type="button" data-drawer-close>Show 24 products</button></div></dialog>
+   Open with <button data-drawer-open="x" aria-haspopup="dialog">. Behavior (focus wrap, scroll lock, focus restore): Scripts/drawer.js.
+   The width is --layout-drawer-width (100% below 600px = a sheet, 26rem from 600px). The head and foot stay put; only the body scrolls. */
+.drawer {
+  position: fixed; inset: 0 0 0 auto; width: var(--layout-drawer-width); max-width: none; height: 100%; max-height: none;
+  margin: 0; padding: 0; border: 0; background: var(--color-bg-surface); color: var(--color-text-primary); box-shadow: var(--shadow-lg);
+}
+.drawer[open] { display: flex; flex-direction: column; }
+.drawer::backdrop { background: var(--color-overlay-scrim); }
+.drawer__head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); padding: var(--space-1) var(--space-1) var(--space-1) var(--space-4); border-bottom: var(--border-width-thin) solid var(--color-border-subtle); }
+.drawer__title { margin: 0; }
+.drawer__body { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: var(--space-3) var(--space-4); }
+.drawer__foot { padding: var(--space-4); border-top: var(--border-width-thin) solid var(--color-border-subtle); }
+html.is-scroll-locked { overflow: hidden; }
+
+/* ---------- Load more (phones) and numbered pagination (tablet and up) ------------------------------
+   One wrapper, both patterns in the markup; CSS shows one. The numbered list is display: none on phones, so a
+   screen reader there meets one pagination control, not two. Both are real links (Load more is <a href="?page=N">),
+   so everything still works without JavaScript. Behavior: Scripts/load-more.js. */
+.pagination-switch__numbered { display: none; }
+.load-more { display: grid; justify-items: center; gap: var(--space-3); text-align: center; }
+.load-more [hidden] { display: none !important; }
+.load-more .btn[aria-disabled="true"] { cursor: progress; }
+.load-more .message { text-align: left; }
+@media (min-width: 37.5rem) {
+  .pagination-switch__numbered { display: block; }
+  .load-more { display: none; }
+}
+/* ---------- Forced colors (Windows high contrast) -------------------------------------------------
+   The browser replaces our colors with system colors and removes backgrounds and shadows. Anything drawn
+   with a background (check marks, radio dots, separators) or whose meaning is carried by a color (selected
+   swatch ring, current page) needs an explicit system-color rule, or it vanishes or looks identical. */
+@media (forced-colors: active) {
+  .choice__input { forced-color-adjust: none; background: Canvas; border-color: ButtonText; }
+  .choice__input::before { background: HighlightText; }
+  .choice__input:checked { background: Highlight; border-color: Highlight; }
+  .choice__input:disabled { border-color: GrayText; }
+  .swatch__chip { forced-color-adjust: none; outline-color: transparent; }   /* the swatch color is product data: keep it */
+  .swatch__input:checked + .swatch__chip { outline-color: CanvasText; }
+  .swatch__input:focus-visible + .swatch__chip { outline-color: Highlight; }
+  .swatch__input:disabled + .swatch__chip { background-image: linear-gradient(to top right, transparent calc(50% - 1px), CanvasText 50%, transparent calc(50% + 1px)); }
+  .chip[aria-pressed="true"] { border-width: var(--border-width-thick); }
+  .chip[aria-pressed="true"]::before { forced-color-adjust: none; background: CanvasText; }
+  .pagination__link[aria-current="page"] { border-width: var(--border-width-thick); font-weight: var(--font-weight-bold); text-decoration: underline; }
+  .breadcrumb__item + .breadcrumb__item::before { forced-color-adjust: none; background: CanvasText; }
+  .badge { border: var(--border-width-thin) solid CanvasText; }
+  .icon-btn--filled { border-color: ButtonText; }
+  .drawer { border: var(--border-width-thin) solid CanvasText; }
+}

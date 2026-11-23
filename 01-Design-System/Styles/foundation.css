@@ -1,0 +1,59 @@
+/* ==========================================================================
+   NUDGE DESIGN SYSTEM: FOUNDATION  (fonts + deprecated compatibility aliases)
+
+   This file is NOT a token source. Every design token is defined in
+   ../../02-Design-Variables/Tokens/*.json and generated into
+   ../../02-Design-Variables/Styles/variables.css, which must be linked BEFORE this file.
+   To change a token, edit the JSON and run 02-Design-Variables/Tokens/build-tokens.ps1.
+
+   Load order: variables.css, foundation.css, base.css, components.css.
+   ========================================================================== */
+
+/* ---------- Fonts (self-hosted, SIL OFL, latin subset). The Design System owns the font files. ---------- */
+@font-face {
+  font-family: "Cormorant";
+  src: url("../../05-Assets/Fonts/cormorant-var.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cormorant";
+  src: url("../../05-Assets/Fonts/cormorant-italic-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "DM Sans";
+  src: url("../../05-Assets/Fonts/dm-sans-var.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------- DEPRECATED aliases ----------------------------------------------------------------------
+   Old Design System names, kept so any external code that used them keeps working.
+   Design System code must NOT use them (the build fails if it does). Remove at the theme phase.
+
+   old name               -> use instead
+   --gutter               -> --layout-gutter
+   --grid-gap             -> --layout-grid-gap
+   --section-space        -> --space-section
+   --grid-cols-products   -> --grid-columns-products
+   --header-height        -> --layout-header-height
+   --line-height-display  -> --line-height-tight
+   --bp-tablet/-laptop/-wide -> --breakpoint-tablet/-desktop/-wide
+   Removed with no alias (never used): --color-border-disabled
+   -------------------------------------------------------------------------------------------------- */
+:root {
+  --gutter: var(--layout-gutter);
+  --grid-gap: var(--layout-grid-gap);
+  --section-space: var(--space-section);
+  --grid-cols-products: var(--grid-columns-products);
+  --header-height: var(--layout-header-height);
+  --line-height-display: var(--line-height-tight);
+  --bp-tablet: var(--breakpoint-tablet);
+  --bp-laptop: var(--breakpoint-desktop);
+  --bp-wide: var(--breakpoint-wide);
+}

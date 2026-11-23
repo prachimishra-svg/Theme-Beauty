@@ -1,0 +1,12 @@
+<section class="banner-bg relative overflow-hidden" id="banner" aria-labelledby="plp-title" data-section="Collection Banner">
+<div class="ann"><b>01 &middot; Orient</b>Breadcrumbs + Collection Banner (title, image, short intro) &mdash; CRO: Essential (CRO-CAT-003, CRO-CAT-006). Plan component: collection-banner, variant image-background. The one H1 and a two-line intro; the breadcrumb sits inside the band to save height. Title and intro are merchant content.<em>Responsive: text only below 1024 px (setting: show image on mobile, default off) so products start early; from 1024 px the image fills the right half (placeholder, 16:9, subject right). Breadcrumb shows parent and current page below 600 px.</em></div>
+<div class="wrap relative flex flex-col gap-2 pb-10 pt-2 lg:pb-16">
+<nav class="breadcrumb" aria-label="Breadcrumb"><ol class="breadcrumb-list">{{each breadcrumb}}<li class="breadcrumb-item"><a href="{{item.href}}"{{if item.current}} aria-current="page"{{/if}}>{{item.label}}</a></li>{{/each}}</ol></nav>
+<div class="flex max-w-text flex-col gap-3">
+<p class="type-overline">{{eyebrow}}</p>
+<h1 id="plp-title">{{heading}}</h1>
+<p class="type-body-lg text-ink">{{intro}}</p>
+</div>
+<div class="absolute inset-y-0 left-1/2 right-0 hidden flex-col items-center justify-center gap-1 text-center text-ink-secondary lg:flex" aria-hidden="true"><svg class="icon size-6"><use href="#icon-eye"></use></svg><span class="type-utility">Collection image</span><span class="type-caption">Desktop &middot; 16:9 &middot; 2880 &times; 1620 &middot; subject in the right half</span></div>
+</div>
+</section>

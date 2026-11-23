@@ -1,0 +1,58 @@
+{
+    "id":  "scroller-controls",
+    "page":  "shared",
+    "level":  "sub",
+    "name":  "Scroller Controls",
+    "properties":  [
+                       {
+                           "name":  "hook",
+                           "type":  "TEXT",
+                           "default":  "rec",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "hook"
+                                       },
+                           "note":  "Script hook prefix (hook__prev, hook__next)"
+                       },
+                       {
+                           "name":  "end",
+                           "type":  "BOOLEAN",
+                           "default":  false,
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "end"
+                                       },
+                           "note":  "Align the buttons to the end of the row"
+                       },
+                       {
+                           "name":  "prev",
+                           "type":  "TEXT",
+                           "default":  "Previous",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "prev"
+                                       },
+                           "note":  "Accessible name from a locale string"
+                       },
+                       {
+                           "name":  "next",
+                           "type":  "TEXT",
+                           "default":  "Next",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "next"
+                                       },
+                           "note":  "Accessible name from a locale string"
+                       }
+                   ],
+    "accessibility":  "Two buttons with accessible names; hidden when the list does not scroll.",
+    "status":  "classified (D10 items pending)",
+    "summary":  "Previous and next circle buttons that scroll a horizontal list. Used by testimonials and logos.",
+    "tokens":  [
+                   "spacing"
+               ],
+    "responsive":  "Shown only when the list overflows.",
+    "children":  [
+                     "components/base/icon-button"
+                 ]
+}

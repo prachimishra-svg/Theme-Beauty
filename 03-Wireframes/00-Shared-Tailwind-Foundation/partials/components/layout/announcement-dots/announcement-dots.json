@@ -1,0 +1,19 @@
+{
+    "id":  "announcement-dots",
+    "page":  "shared",
+    "level":  "sub",
+    "name":  "Announcement Dots",
+    "properties":  [
+
+                   ],
+    "accessibility":  "Decorative (aria-hidden).",
+    "status":  "classified (D10 items pending)",
+    "summary":  "Position dots shown on small screens when the announcement bar has several messages.",
+    "tokens":  [
+                   "brand colour"
+               ],
+    "responsive":  "Visible below 600 px only.",
+    "children":  [
+
+                 ]
+}

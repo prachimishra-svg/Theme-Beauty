@@ -1,0 +1,144 @@
+{
+    "name":  "Finder Card",
+    "page":  "homepage",
+    "properties":  [
+                       {
+                           "name":  "step",
+                           "type":  "TEXT",
+                           "default":  "Step 1 of 3",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "step"
+                                       },
+                           "note":  "Progress text, written by the script as the steps change"
+                       },
+                       {
+                           "name":  "question",
+                           "type":  "TEXT",
+                           "default":  "What is your skin type?",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "question",
+                                           "id":  "question",
+                                           "setting":  "text"
+                                       },
+                           "note":  "The current question"
+                       },
+                       {
+                           "name":  "options",
+                           "type":  "LIST",
+                           "default":  [
+                                           {
+                                               "selected":  "1",
+                                               "label":  "Dry"
+                                           },
+                                           {
+                                               "selected":  "0",
+                                               "label":  "Normal"
+                                           },
+                                           {
+                                               "selected":  "0",
+                                               "label":  "Oily"
+                                           },
+                                           {
+                                               "selected":  "0",
+                                               "label":  "Combination"
+                                           },
+                                           {
+                                               "selected":  "0",
+                                               "label":  "Sensitive"
+                                           }
+                                       ],
+                           "itemFields":  [
+                                              "label",
+                                              "selected"
+                                          ],
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "options",
+                                           "setting":  "blocks",
+                                           "blockType":  "question"
+                                       },
+                           "note":  "Answer chips; the first is selected"
+                       },
+                       {
+                           "name":  "backLabel",
+                           "type":  "TEXT",
+                           "default":  "Back",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "back_label"
+                                       },
+                           "note":  "Button text from a locale string"
+                       },
+                       {
+                           "name":  "nextLabel",
+                           "type":  "TEXT",
+                           "default":  "Next",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "next_label"
+                                       },
+                           "note":  "Button text from a locale string"
+                       },
+                       {
+                           "name":  "resultText",
+                           "type":  "TEXT",
+                           "default":  "Your starting routine: Cleanse, Treat, Moisturise",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "result_text",
+                                           "id":  "result_text",
+                                           "setting":  "text"
+                                       },
+                           "note":  "Text of the result"
+                       },
+                       {
+                           "name":  "resultButton",
+                           "type":  "TEXT",
+                           "default":  "See matching products",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "result_button",
+                                           "id":  "result_button",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "resultHref",
+                           "type":  "TEXT",
+                           "default":  "#s06",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "result_href",
+                                           "id":  "result_link",
+                                           "setting":  "url"
+                                       }
+                       }
+                   ],
+    "tokens":  [
+                   "brand colour",
+                   "type roles",
+                   "spacing"
+               ],
+    "summary":  "The guided finder: a question with answer chips, Back and Next buttons, and a result with a link. A small native script moves through the steps; there is no quiz app.",
+    "accessibility":  "Chips are toggle buttons; the question is announced as the step changes; focus stays in the card.",
+    "id":  "finder-card",
+    "shopifyOnly":  [
+                        {
+                            "id":  "result_collection",
+                            "setting":  "collection",
+                            "note":  "Collection the result links to"
+                        }
+                    ],
+    "level":  "sub",
+    "status":  "classified (D10 items pending)",
+    "responsive":  "Buttons share a row and wrap on narrow screens.",
+    "wireframeOnly":  [
+                          "the developer note line (Native JavaScript only ...)"
+                      ],
+    "children":  [
+                     "components/base/chip",
+                     "components/base/button"
+                 ]
+}

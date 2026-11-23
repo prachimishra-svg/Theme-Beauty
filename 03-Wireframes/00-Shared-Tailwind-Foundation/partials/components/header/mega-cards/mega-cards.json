@@ -1,0 +1,59 @@
+{
+    "id":  "mega-cards",
+    "page":  "shared",
+    "level":  "sub",
+    "name":  "Mega Menu Cards",
+    "properties":  [
+                       {
+                           "name":  "key",
+                           "type":  "TEXT",
+                           "default":  "skin",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "key"
+                                       },
+                           "note":  "Menu key used in link anchors"
+                       },
+                       {
+                           "name":  "first",
+                           "type":  "TEXT",
+                           "default":  "New in skin",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "id":  "title",
+                                           "setting":  "text",
+                                           "param":  "mega_cards_first"
+                                       },
+                           "note":  "Title of the first card"
+                       },
+                       {
+                           "name":  "second",
+                           "type":  "TEXT",
+                           "default":  "Skin routines",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "second",
+                                           "id":  "title",
+                                           "setting":  "text"
+                                       },
+                           "note":  "Title of the second card"
+                       }
+                   ],
+    "shopifyOnly":  [
+                        {
+                            "id":  "mega_card",
+                            "setting":  "blocks",
+                            "note":  "menu_item, title, cta, link, image, tone"
+                        }
+                    ],
+    "status":  "classified (D10 items pending)",
+    "accessibility":  "Each card is one link.",
+    "summary":  "The two promotional cards at the end of a mega menu (large screens only).",
+    "tokens":  [
+                   "spacing"
+               ],
+    "responsive":  "Hidden below 1024 px.",
+    "children":  [
+                     "components/header/mega-card"
+                 ]
+}

@@ -1,0 +1,5 @@
+{%- assign element = element | default: 'link' -%}
+{%- if element == 'link' -%}<a class="{{ class }}" href="{{ url | default: '#' }}"><span>{{ label | escape }}</span>{%- if arrow -%}{% render 'icon', name: 'arrow-right', class: 'icon size-4 transition-transform duration-base group-hover:translate-x-[3px]' %}{%- endif -%}</a>
+{%- elsif element == 'submit' -%}<button class="{{ class }}" type="submit"><span>{{ label | escape }}</span>{%- if arrow -%}{% render 'icon', name: 'arrow-right', class: 'icon size-4 transition-transform duration-base group-hover:translate-x-[3px]' %}{%- endif -%}</button>
+{%- else -%}<button class="{{ class }}" type="button"{% if id != blank %} id="{{ id }}"{% endif %}>{{ label | escape }}</button>
+{%- endif -%}

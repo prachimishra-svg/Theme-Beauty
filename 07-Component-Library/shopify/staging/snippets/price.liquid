@@ -1,0 +1,12 @@
+{%- comment -%}
+  GENERATED from components/base/price by 07-Component-Library/tools/generate-liquid-staging.ps1 (contract c364da67220515bb).
+  Do not edit here: change the library component, then regenerate. Text values are written raw; escape where Shopify data enters (| escape in the section).
+  Parameters (class: design = fixed, parent = passed in, merchant = set in a section, wireframe = not used):
+    variant (VARIANT, parent)
+    price (TEXT, parent)
+    compare (TEXT, parent)
+    unit (TEXT, parent)
+    extra (TEXT, parent)
+    unit_extra (TEXT, parent)
+{%- endcomment -%}
+{%- if variant == nil -%}{%- assign variant = 'regular' -%}{%- endif -%}{%- if price == nil -%}{%- assign price = '$32.00' -%}{%- endif -%}{%- if compare == nil -%}{%- assign compare = '$38.00' -%}{%- endif -%}{%- if unit == nil -%}{%- assign unit = '' -%}{%- endif -%}{%- if extra == nil -%}{%- assign extra = '' -%}{%- endif -%}{%- if unit_extra == nil -%}{%- assign unit_extra = '' -%}{%- endif -%}{% if variant == 'sale' %}<span class="price price-sale{% if extra != blank %} {{ extra }}{% endif %}"><span class="sr-only">Sale price</span><span class="price-current">{{ price }}</span><span class="sr-only">Regular price</span><s class="price-compare">{{ compare }}</s>{% if unit != blank %}<span class="price-unit{% if unit_extra != blank %} {{ unit_extra }}{% endif %}">{{ unit }}</span>{% endif %}</span>{% endif %}{% if variant == 'regular' %}<span class="price{% if extra != blank %} {{ extra }}{% endif %}"><span class="price-current">{{ price }}</span>{% if unit != blank %}<span class="price-unit{% if unit_extra != blank %} {{ unit_extra }}{% endif %}">{{ unit }}</span>{% endif %}</span>{% endif %}

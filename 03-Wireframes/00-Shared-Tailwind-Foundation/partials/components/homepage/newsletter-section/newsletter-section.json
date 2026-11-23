@@ -1,0 +1,132 @@
+{
+    "name":  "Newsletter",
+    "wireframeOnly":  [
+                          ".ann annotation block",
+                          "data-section attribute",
+                          "data-c review hooks"
+                      ],
+    "page":  "homepage",
+    "properties":  [
+                       {
+                           "name":  "anchor",
+                           "type":  "TEXT",
+                           "default":  "s19",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "anchor",
+                                           "id":  "anchor",
+                                           "setting":  "text"
+                                       },
+                           "note":  "In-page anchor id"
+                       },
+                       {
+                           "name":  "eyebrow",
+                           "type":  "TEXT",
+                           "default":  "Stay in touch",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "eyebrow",
+                                           "id":  "eyebrow",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "heading",
+                           "type":  "TEXT",
+                           "default":  "Join the list",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "heading",
+                                           "id":  "heading",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "text",
+                           "type":  "TEXT",
+                           "default":  "Launches, offers and routine tips by email.",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "text",
+                                           "id":  "text",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "buttonLabel",
+                           "type":  "TEXT",
+                           "default":  "Subscribe",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "button_label",
+                                           "id":  "button_label",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "legal",
+                           "type":  "TEXT",
+                           "default":  "By subscribing you agree to receive emails. Unsubscribe at any time.",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "legal",
+                                           "id":  "legal",
+                                           "setting":  "text"
+                                       },
+                           "note":  "Legal line; the merchant confirms the wording"
+                       },
+                       {
+                           "name":  "perks",
+                           "type":  "LIST",
+                           "default":  [
+                                           {
+                                               "label":  "New launches first"
+                                           },
+                                           {
+                                               "label":  "Routine tips"
+                                           },
+                                           {
+                                               "label":  "Offers by email"
+                                           }
+                                       ],
+                           "itemFields":  [
+                                              "label"
+                                          ],
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "perks",
+                                           "setting":  "blocks",
+                                           "blockType":  "perk",
+                                           "maxBlocks":  3
+                                       },
+                           "note":  "One block per perk"
+                       }
+                   ],
+    "tokens":  [
+                   "subtle background",
+                   "spacing"
+               ],
+    "summary":  "Email sign-up with a heading, three perks and a legal line. Maps to the newsletter section. The form posts to Shopify customer marketing.",
+    "accessibility":  "Heading is an h2; the field has a real label; success and error messages are announced.",
+    "id":  "newsletter-section",
+    "level":  "main",
+    "status":  "classified (D10 items pending)",
+    "responsive":  "Text above the form below 1024 px; side by side from 1024 px.",
+    "exposes":  [
+                    {
+                        "child":  "components/base/button",
+                        "property":  "label",
+                        "via":  "button_label"
+                    },
+                    {
+                        "child":  "components/homepage/newsletter-perk",
+                        "property":  "label",
+                        "via":  "perks.text"
+                    }
+                ],
+    "children":  [
+                     "components/homepage/newsletter-field",
+                     "components/base/button",
+                     "components/homepage/newsletter-perk"
+                 ]
+}

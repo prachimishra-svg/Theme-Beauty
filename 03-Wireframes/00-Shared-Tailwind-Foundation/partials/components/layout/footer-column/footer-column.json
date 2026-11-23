@@ -1,0 +1,49 @@
+{
+    "id":  "footer-column",
+    "page":  "shared",
+    "level":  "sub",
+    "name":  "Footer Column",
+    "properties":  [
+                       {
+                           "name":  "title",
+                           "type":  "TEXT",
+                           "default":  "Shop",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "title",
+                                           "id":  "heading",
+                                           "setting":  "text"
+                                       },
+                           "note":  "Group heading"
+                       },
+                       {
+                           "name":  "links",
+                           "type":  "LIST",
+                           "default":  "Skin care::#collection|Makeup::#collection",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "links"
+                                       },
+                           "data":  "linklist links",
+                           "note":  "Links as label::address pairs"
+                       }
+                   ],
+    "shopifyOnly":  [
+                        {
+                            "id":  "menu",
+                            "setting":  "link_list",
+                            "note":  "The links of the group"
+                        }
+                    ],
+    "status":  "classified (D10 items pending)",
+    "accessibility":  "A disclosure button on small screens; a plain list from 768 px.",
+    "summary":  "A titled group of footer links. An accordion below 768 px, an open list from 768 px.",
+    "tokens":  [
+                   "inverse colours",
+                   "type roles"
+               ],
+    "responsive":  "Accordion below 768 px.",
+    "children":  [
+                     "components/base/icon"
+                 ]
+}

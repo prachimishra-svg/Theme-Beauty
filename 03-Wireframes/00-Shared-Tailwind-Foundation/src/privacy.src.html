@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NUDGE Beauty Theme: Privacy Policy Wireframe</title>
+<!-- Design Variables (tokens) linked; styling is Tailwind utilities and the shared components, mapped to those tokens. -->
+@@PARTIAL head@@
+<style>
+@@PARTIAL review-css@@
+</style>
+</head>
+<body class="ann-on" id="top">
+@@PARTIAL sprite@@
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-skip focus:bg-surface focus:p-3">Skip to content</a>
+<div class="rv">
+  <div class="rvt">NUDGE Beauty Theme: privacy policy wireframe &middot; single responsive file</div>
+  <p>Phase 1, page 7 of 25. The layout for the store's privacy policy, the same layout as the shipping and returns pages, built with Tailwind utilities and the shared components mapped to the Design Variables. The announcement bar, header and footer are the shared sections. <b>All policy wording is placeholder</b>: every term, time, price and region is a bracketed slot. No legal text is written here, and nothing is a promise until the merchant adds the real policy. Use <b>Width preview</b> for 1920, 1440, 1280, 1024, 768, 430, 390 and 320 px.</p>
+  <div class="ctl"><button id="t-ann" type="button" aria-pressed="true">Annotations</button><button id="t-wp" type="button">Width preview</button></div>
+<details><summary>Review notes: purpose, sections, decisions, Shopify (open)</summary>
+<h3>Purpose</h3>
+<p>Make the privacy policy easy to scan: the key facts first, then the full text with a way to jump between sections. The same layout is shared with the shipping and returns pages and reused for the terms page (page 8), each as its own file.</p>
+<h3>Sections, top to bottom</h3>
+<ul><li>Title and last-updated date</li><li>Placeholder notice (review only, not part of the live page)</li><li>At a glance: who is responsible, what is collected, why, and how to ask about your data in one small table</li><li>On this page: section links (sticky list from 1024 px, a collapsible list below)</li><li>Policy sections: information collected, how it is used, cookies, sharing, choices and rights, retention, security, changes, contact</li><li>Questions: link to contact and FAQ</li></ul>
+<h3>Decisions to confirm</h3>
+<ul><li>Section headings are samples. Shopify's generated privacy policy is one block of rich text, so the live page can only show the headings the merchant writes.</li><li>The at-a-glance table is a theme-editor block (rows of topic and detail). It must match the policy text exactly or be left empty.</li><li>The contents list is built from the headings in the policy text.</li></ul>
+<h3>Not drawn</h3>
+<ul><li>Consent-management or privacy-request apps and third-party cookie widgets (each needs an app or external service). Shopify's own customer privacy banner and data-request tools are store settings, not theme designs.</li></ul>
+<h3>Shopify build</h3>
+<p>The text comes from <code>shop.privacy_policy.body</code> (Settings, Policies) and renders inside <code>main-policy</code>, with typography applied to the policy container (<code>.shopify-policy__container</code>). Theme settings add the last-updated date and the optional at-a-glance table; the contents list is a small script over the rendered headings. A custom <code>page.policy.json</code> reuses the same section for pages the merchant writes by hand. No app is involved.</p>
+</details>
+</div>
+<div class="ann"><b>Global</b>Announcement bar, header (sticky) and footer: the shared sections. Responsive: below 1024 px a one-row header with the menu in a left drawer; footer groups are tap-to-open rows below 768 px.</div>
+@@PARTIAL annbar@@
+@@PARTIAL header CART=link NAV=none@@
+<main id="main" class="wrap pb-20 pt-2 md:pb-24">
+<div class="ann"><b>01 &middot; Orient</b>Breadcrumb, title and date (T1) &mdash; Essential: one H1, a last-updated date so visitors know the policy is current, and a short sentence that says what the page covers.<em>Responsive: breadcrumb shows parent and current page on phones; title stays in the reading width.</em></div>
+<nav class="breadcrumb mb-4" aria-label="Breadcrumb"><ol class="breadcrumb-list"><li class="breadcrumb-item"><a href="#home">Home</a></li><li class="breadcrumb-item"><a href="#policies">Policies</a></li><li class="breadcrumb-item"><a href="#privacy" aria-current="page">Privacy policy</a></li></ol></nav>
+<header class="mb-8 flex max-w-text flex-col gap-3">
+<h1 class="type-h1">Privacy policy</h1>
+<p class="m-0 text-ink-secondary">Last updated [date]. How we handle your personal information.</p>
+</header>
+<div class="ann"><b>02 &middot; Scan</b>At a glance (T1) &mdash; Essential: the three facts people look for (where we ship, how long, how much) before any long text. Rows are a theme-editor block. If the block is empty the section is not shown.<em>Responsive: each row is a labelled stack on phones; a three-column table from 768 px.</em></div>
+<section class="mb-12 border-y border-line" aria-labelledby="glance-h" id="glance" data-section="At a glance">
+<h2 class="type-h5 pt-6" id="glance-h">At a glance</h2>
+<div class="hidden gap-6 border-b border-line py-3 text-utility uppercase md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]" aria-hidden="true"><span>Topic</span><span>Detail</span></div>
+<ul class="m-0 list-none p-0">
+<li class="grid grid-cols-[minmax(0,1fr)] gap-x-6 gap-y-1 border-b border-line py-4 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]"><span class="font-medium">Who is responsible</span><span class="text-ink-secondary">[store or company name]</span></li>
+<li class="grid grid-cols-[minmax(0,1fr)] gap-x-6 gap-y-1 border-b border-line py-4 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]"><span class="font-medium">What we collect</span><span class="text-ink-secondary">[categories of information]</span></li>
+<li class="grid grid-cols-[minmax(0,1fr)] gap-x-6 gap-y-1 border-b border-line py-4 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]"><span class="font-medium">Why we use it</span><span class="text-ink-secondary">[main purposes]</span></li>
+<li class="grid grid-cols-[minmax(0,1fr)] gap-x-6 gap-y-1 border-line py-4 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]"><span class="font-medium">How to ask about your data</span><span class="text-ink-secondary">[contact or request route]</span></li>
+</ul>
+</section><div class="grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,3fr)_minmax(0,8fr)] lg:items-start lg:gap-16">
+<div class="ann lg:col-span-2"><b>03 &middot; Navigate</b>On this page (T1) &mdash; Essential: links to every section so a long policy can be crossed in a tap. A sticky list beside the text from 1024 px; a native collapsible list above the text below that, so it needs no script.<em>Responsive: collapsible row (44 px) below 1024 px; sticky side list from 1024 px.</em></div>
+<nav aria-label="On this page" id="toc" class="lg:sticky lg:top-[calc(var(--sticky-top,0px)+var(--space-6))]">
+<details class="border-y border-line lg:hidden" id="toc-m"><summary class="flex min-h-touch cursor-pointer list-none items-center justify-between font-medium [&::-webkit-details-marker]:hidden">On this page <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></summary><ol class="m-0 list-none p-0 pb-2"><li><a class="flex min-h-touch items-center text-ink" href="#s-collect">Information we collect</a></li><li><a class="flex min-h-touch items-center text-ink" href="#s-use">How we use information</a></li><li><a class="flex min-h-touch items-center text-ink" href="#s-cookies">Cookies and similar technologies</a></li><li><a class="flex min-h-touch items-center text-ink" href="#s-sharing">Who we share information with</a></li><li><a class="flex min-h-touch items-center text-ink" href="#s-choices">Your choices and rights</a></li><li><a class="flex min-h-touch items-center text-ink" href="#s-retention">How long we keep information</a></li><li><a class="flex min-h-touch items-center text-ink" href="#s-security">How we protect information</a></li><li><a class="flex min-h-touch items-center text-ink" href="#s-changes">Changes to this policy</a></li><li><a class="flex min-h-touch items-center text-ink" href="#s-contact">Contact</a></li></ol></details>
+<div class="hidden lg:block" id="toc-d"><h2 class="type-h6 mb-2">On this page</h2><ol class="m-0 list-none border-l border-line p-0"><li><a class="-ml-px flex min-h-touch items-center border-l-2 border-transparent pl-4 text-ink-secondary no-underline hover:border-ink hover:text-ink" href="#s-collect">Information we collect</a></li><li><a class="-ml-px flex min-h-touch items-center border-l-2 border-transparent pl-4 text-ink-secondary no-underline hover:border-ink hover:text-ink" href="#s-use">How we use information</a></li><li><a class="-ml-px flex min-h-touch items-center border-l-2 border-transparent pl-4 text-ink-secondary no-underline hover:border-ink hover:text-ink" href="#s-cookies">Cookies and similar technologies</a></li><li><a class="-ml-px flex min-h-touch items-center border-l-2 border-transparent pl-4 text-ink-secondary no-underline hover:border-ink hover:text-ink" href="#s-sharing">Who we share information with</a></li><li><a class="-ml-px flex min-h-touch items-center border-l-2 border-transparent pl-4 text-ink-secondary no-underline hover:border-ink hover:text-ink" href="#s-choices">Your choices and rights</a></li><li><a class="-ml-px flex min-h-touch items-center border-l-2 border-transparent pl-4 text-ink-secondary no-underline hover:border-ink hover:text-ink" href="#s-retention">How long we keep information</a></li><li><a class="-ml-px flex min-h-touch items-center border-l-2 border-transparent pl-4 text-ink-secondary no-underline hover:border-ink hover:text-ink" href="#s-security">How we protect information</a></li><li><a class="-ml-px flex min-h-touch items-center border-l-2 border-transparent pl-4 text-ink-secondary no-underline hover:border-ink hover:text-ink" href="#s-changes">Changes to this policy</a></li><li><a class="-ml-px flex min-h-touch items-center border-l-2 border-transparent pl-4 text-ink-secondary no-underline hover:border-ink hover:text-ink" href="#s-contact">Contact</a></li></ol></div>
+</nav>
+<article class="flex max-w-text flex-col gap-10" id="policy-body" data-section="Policy text">
+<div class="ann"><b>04 &middot; Read</b>Policy text (T1) &mdash; Essential: the merchant's own policy text in a reading column, with clear H2 headings and short paragraphs. All wording is bracketed placeholder; no legal term is written here. The article styles whatever headings the merchant writes.<em>Responsive: single reading column at every width, no wider than the reading width.</em></div>
+<section class="scroll-mt-24 flex flex-col gap-3" id="s-collect" aria-labelledby="h-collect"><h2 class="type-h4" id="h-collect">Information we collect</h2><p class="m-0 text-ink-secondary">[Policy text: the kinds of personal information collected, such as contact, order and device details.]</p></section>
+<section class="scroll-mt-24 flex flex-col gap-3" id="s-use" aria-labelledby="h-use"><h2 class="type-h4" id="h-use">How we use information</h2><p class="m-0 text-ink-secondary">[Policy text: the purposes the information is used for.]</p></section>
+<section class="scroll-mt-24 flex flex-col gap-3" id="s-cookies" aria-labelledby="h-cookies"><h2 class="type-h4" id="h-cookies">Cookies and similar technologies</h2><p class="m-0 text-ink-secondary">[Policy text: which cookies are used and how a visitor can manage them.]</p></section>
+<section class="scroll-mt-24 flex flex-col gap-3" id="s-sharing" aria-labelledby="h-sharing"><h2 class="type-h4" id="h-sharing">Who we share information with</h2><p class="m-0 text-ink-secondary">[Policy text: the types of service providers and other parties who receive information.]</p></section>
+<section class="scroll-mt-24 flex flex-col gap-3" id="s-choices" aria-labelledby="h-choices"><h2 class="type-h4" id="h-choices">Your choices and rights</h2><p class="m-0 text-ink-secondary">[Policy text: the rights the visitor has over their information and how to use them.]</p></section>
+<section class="scroll-mt-24 flex flex-col gap-3" id="s-retention" aria-labelledby="h-retention"><h2 class="type-h4" id="h-retention">How long we keep information</h2><p class="m-0 text-ink-secondary">[Policy text: retention periods or the rule used to set them.]</p></section>
+<section class="scroll-mt-24 flex flex-col gap-3" id="s-security" aria-labelledby="h-security"><h2 class="type-h4" id="h-security">How we protect information</h2><p class="m-0 text-ink-secondary">[Policy text: a general description of safeguards, with no promise of absolute security.]</p></section>
+<section class="scroll-mt-24 flex flex-col gap-3" id="s-changes" aria-labelledby="h-changes"><h2 class="type-h4" id="h-changes">Changes to this policy</h2><p class="m-0 text-ink-secondary">[Policy text: how changes are announced and where the date is shown.]</p></section>
+<section class="scroll-mt-24 flex flex-col gap-3" id="s-contact" aria-labelledby="h-contact"><h2 class="type-h4" id="h-contact">Contact</h2><p class="m-0 text-ink-secondary">[Policy text: the contact for privacy questions and requests.]</p></section>
+<div class="ann"><b>05 &middot; Ask</b>Questions (T1) &mdash; Essential: a quiet panel at the end with two links so a visitor who still has a question is not left at the bottom of a policy.<em>Responsive: buttons stack on phones and sit side by side from 600 px.</em></div>
+<aside class="flex flex-col gap-4 bg-surface p-6" id="ask" aria-labelledby="ask-h"><h2 class="type-h5" id="ask-h">Still have a question?</h2><p class="m-0 text-ink-secondary">Our team is happy to help with any privacy question.</p><div class="flex flex-col gap-3 sm:flex-row"><a class="btn btn-primary" href="#contact">Contact us</a><a class="btn btn-secondary" href="#faq">Read the FAQ</a></div></aside>
+</article>
+</div>
+</main>
+@@PARTIAL footer@@
+@@PARTIAL width-preview@@
+<script type="text/plain" id="selftest-src">
+(function(){
+ function vis(el){var cs=getComputedStyle(el);if(cs.display==="none"||cs.visibility==="hidden")return false;var r=el.getBoundingClientRect();return r.width>0&&r.height>0}
+ function sel(el){var s=el.tagName.toLowerCase();if(el.id)s+="#"+el.id;if(el.className&&typeof el.className==="string")s+="."+el.className.trim().split(/\s+/).slice(0,2).join(".");return s}
+ function $(id){return document.getElementById(id)}
+ async function run(){
+  var W=window.innerWidth,de=document.documentElement,out={docHeight:de.scrollHeight,width:W,checks:{}},TWO=W>=1024;
+  var st=document.createElement("style");st.textContent="*{transition:none!important}";document.head.appendChild(st);de.style.scrollBehavior="auto";
+  var twOk=getComputedStyle($("site-header")).position==="sticky"&&!document.querySelector('link[href*="components.css"],link[href*="base.css"]');
+  var fl=Array.from(document.fonts).some(function(x){return x.family.indexOf("Cormorant")>-1&&x.status==="loaded"})&&Array.from(document.fonts).some(function(x){return x.family.indexOf("DM Sans")>-1&&x.status==="loaded"});
+  out.checks.tailwindAndFonts={pass:twOk&&fl,detail:"Tailwind utilities applied, no Design System component stylesheet: "+twOk+"; Cormorant and DM Sans loaded: "+fl};
+  var off=[];document.querySelectorAll("main *,header *,footer *").forEach(function(el){if(el.closest(".sr-only")||el.closest("#nav")&&W<1024)return;var r=el.getBoundingClientRect();if(r.width>0&&(r.right>W+1||r.left<-1))off.push(sel(el))});
+  out.checks.overflow={pass:de.scrollWidth<=W+1&&off.length===0,detail:"scrollWidth "+de.scrollWidth+" of "+W+(off.length?"; past the edge: "+off.slice(0,4).join(", "):"")};
+  var hs=[].slice.call(document.querySelectorAll("h1")).filter(function(h){return !h.closest(".rv")&&vis(h)}),secs=document.querySelectorAll("#policy-body > section").length;
+  out.checks.structure={pass:hs.length===1&&!!document.querySelector("main#main")&&secs===9,detail:"visible H1: "+hs.length+"; policy sections: "+secs};
+  var vt=TWO?$("toc-d"):$("toc-m"),ht=TWO?$("toc-m"):$("toc-d"),links=vt.querySelectorAll("a"),ok=links.length===9&&[].every.call(links,function(a){return !!$(a.getAttribute("href").slice(1))});
+  out.checks.toc={pass:vis(vt)&&!vis(ht)&&ok,detail:(TWO?"side list shown, collapsible hidden":"collapsible shown, side list hidden")+"; 9 links, all to existing sections: "+ok};
+  var lay,toc=$("toc").getBoundingClientRect(),art=$("policy-body").getBoundingClientRect();
+  if(TWO){lay=toc.right<=art.left+1&&getComputedStyle($("toc")).position==="sticky"}else{lay=art.top>=toc.bottom-1}
+  out.checks.layout={pass:lay,detail:TWO?"contents left of the text, sticky: "+lay:"contents above the text: "+lay};
+  var rows=[].slice.call(document.querySelectorAll("#glance li")),a=rows[0].children,hdr=vis(document.querySelector("#glance [aria-hidden]")),r0=a[0].getBoundingClientRect(),r1=a[1].getBoundingClientRect(),tbl=W>=768?(hdr&&Math.abs(r0.top-r1.top)<4&&r1.left>=r0.right-1):(!hdr&&r1.top>=r0.bottom-1);
+  out.checks.glance={pass:rows.length===4&&tbl,detail:"at-a-glance rows: "+(W>=768?"two-column table":"stacked")+": "+tbl};
+  var bw=$("policy-body").getBoundingClientRect().width,rd=bw<=720+1;
+  out.checks.readingWidth={pass:rd,detail:"policy text width "+Math.round(bw)+" px (max 720): "+rd};
+  var txt=$("main").innerText.toLowerCase(),bad=[];["gdpr","ccpa","we never share","we do not sell","guarantee","100% secure","consent banner"].forEach(function(w){if(txt.indexOf(w)>-1)bad.push(w)});var br=($("policy-body").innerText.match(/\[/g)||[]).length>=8;
+  out.checks.noInventedTerms={pass:bad.length===0&&br,detail:"invented terms or app widgets: "+(bad.join(", ")||"none")+"; every section is bracketed placeholder: "+br};
+  var small=[];[].slice.call(document.querySelectorAll("main a,main button,main summary,header a,header button,footer a,footer button")).filter(function(e){return vis(e)&&!e.closest(".sr-only")&&!e.closest(".rv")&&!e.closest(".ann")&&!(W<1024&&e.closest("#nav"))}).forEach(function(e){var r=e.getBoundingClientRect();if(e.closest(".fcol")&&W>=768)return;if(e.tagName==="A"&&r.height>=44-.5)return;if(r.height<44-.5)small.push(sel(e)+" "+Math.round(r.width)+"x"+Math.round(r.height))});
+  var tb=[];[].slice.call(document.querySelectorAll("main h1,main h2,main p,main a.btn,main summary")).filter(vis).forEach(function(e){var fm=getComputedStyle(e).fontFamily.split(",")[0].replace(/["']/g,"").trim(),head=/^H[1-6]$/.test(e.tagName);if(head&&fm!=="Cormorant")tb.push(sel(e)+" "+fm);if(!head&&fm!=="DM Sans")tb.push(sel(e)+" "+fm)});
+  out.checks.targetsAndType={pass:small.length===0&&tb.length===0,detail:(small.length?"small targets: "+small.slice(0,5).join("; "):"every visible control is 44 px or has a 44 px hit area")+"; "+(tb.length?"fonts: "+tb.slice(0,3).join("; "):"headings Cormorant, UI DM Sans")};
+  window.scrollTo(0,0);var pre=document.createElement("pre");pre.id="selftest-result";pre.textContent=JSON.stringify(out);document.body.appendChild(pre);
+  if(window.parent!==window){window.parent.postMessage({selftest:out},"*")}
+ }
+ if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){setTimeout(run,900)})}else{setTimeout(run,1400)}
+})();
+</script>
+<script>
+(function(){
+ var b=document.body,q=new URLSearchParams(location.search),$=function(id){return document.getElementById(id)};
+ if(q.get("embed")){b.classList.add("embed")}
+ b.classList.toggle("ann-on",q.get("ann")!=="0");
+ function navOpen(o){b.classList.toggle("nav-open",o);$("menu-btn").setAttribute("aria-expanded",o?"true":"false")}
+ $("menu-btn").addEventListener("click",function(){navOpen(true)});$("nav-close").addEventListener("click",function(){navOpen(false)});$("scrim").addEventListener("click",function(){navOpen(false)});
+ document.addEventListener("keydown",function(e){if(e.key==="Escape")navOpen(false)});
+ [].forEach.call(document.querySelectorAll(".fcol > button"),function(h){h.addEventListener("click",function(){var f=h.parentNode,o=!f.classList.contains("is-open");f.classList.toggle("is-open",o);h.setAttribute("aria-expanded",o?"true":"false")})});
+ var msgs=["Free shipping on orders over $50","New launches are in store","Free returns within 30 days"],mi=0;
+ function msg(d){mi=(mi+d+msgs.length)%msgs.length;$("ann-msg").textContent=msgs[mi];[].forEach.call(document.querySelectorAll(".ann-dot"),function(x,i){x.classList.toggle("bg-current",i===mi);x.classList.toggle("opacity-100",i===mi);x.classList.toggle("opacity-muted",i!==mi)})}
+ $("ann-prev").addEventListener("click",function(){msg(-1)});$("ann-next").addEventListener("click",function(){msg(1)});
+ document.addEventListener("click",function(e){var a=e.target.closest('a[href^="#"]:not([href="#main"]):not([href="#top"])');if(a&&!/^#(s-)/.test(a.getAttribute("href")))e.preventDefault()});
+ $("t-ann").addEventListener("click",function(){var on=!b.classList.contains("ann-on");b.classList.toggle("ann-on",on);this.setAttribute("aria-pressed",on?"true":"false")});
+ $("t-ann").setAttribute("aria-pressed",b.classList.contains("ann-on")?"true":"false");
+ if(q.get("selftest")){var s=document.createElement("script");s.text=$("selftest-src").text;document.body.appendChild(s)}
+})();
+</script>
+</body>
+</html>

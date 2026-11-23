@@ -1,0 +1,95 @@
+{
+    "id":  "usp-item",
+    "page":  "homepage",
+    "level":  "sub",
+    "name":  "USP Item",
+    "properties":  [
+                       {
+                           "name":  "icon",
+                           "type":  "INSTANCE_SWAP",
+                           "default":  "heart",
+                           "options":  [
+                                           "search",
+                                           "account",
+                                           "bag",
+                                           "menu",
+                                           "close",
+                                           "plus",
+                                           "minus",
+                                           "chevron-down",
+                                           "chevron-up",
+                                           "chevron-left",
+                                           "chevron-right",
+                                           "arrow-left",
+                                           "arrow-right",
+                                           "filter",
+                                           "sort",
+                                           "heart",
+                                           "star",
+                                           "location",
+                                           "lock",
+                                           "check",
+                                           "check-circle",
+                                           "info",
+                                           "warning",
+                                           "eye",
+                                           "eye-off",
+                                           "share",
+                                           "instagram",
+                                           "facebook",
+                                           "youtube",
+                                           "mail",
+                                           "phone",
+                                           "clock",
+                                           "zoom-in",
+                                           "play",
+                                           "truck",
+                                           "rotate-ccw",
+                                           "shield-check",
+                                           "store",
+                                           "loader"
+                                       ],
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "icon",
+                                           "id":  "icon",
+                                           "setting":  "select"
+                                       },
+                           "note":  "Icon from the shared sprite; the existing theme lets merchants pick it"
+                       },
+                       {
+                           "name":  "title",
+                           "type":  "TEXT",
+                           "default":  "Cruelty-free",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "title",
+                                           "id":  "title",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "text",
+                           "type":  "TEXT",
+                           "default":  "Only if certified or verifiable",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "text",
+                                           "id":  "text",
+                                           "setting":  "text"
+                                       }
+                       }
+                   ],
+    "accessibility":  "The icon is decorative; the title and text carry the meaning.",
+    "status":  "classified (D10 items pending)",
+    "summary":  "One benefit: an icon in a circle, a title and a short line. Four of them make the benefits row.",
+    "tokens":  [
+                   "brand colours",
+                   "type roles",
+                   "spacing"
+               ],
+    "responsive":  "Two columns below 600 px, four from 600 px.",
+    "children":  [
+                     "components/base/icon"
+                 ]
+}

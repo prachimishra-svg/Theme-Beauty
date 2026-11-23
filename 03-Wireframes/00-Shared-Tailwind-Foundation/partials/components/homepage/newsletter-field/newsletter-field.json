@@ -1,0 +1,30 @@
+{
+    "id":  "newsletter-field",
+    "page":  "homepage",
+    "level":  "sub",
+    "name":  "Newsletter Field",
+    "properties":  [
+                       {
+                           "name":  "label",
+                           "type":  "TEXT",
+                           "default":  "Email address",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "label"
+                                       },
+                           "note":  "Visible label from a locale string"
+                       }
+                   ],
+    "accessibility":  "A real label tied to the input; error state uses aria-invalid; the message region is announced politely.",
+    "status":  "classified (D10 items pending)",
+    "summary":  "The email field of the newsletter form: a visible label and an underlined input.",
+    "tokens":  [
+                   "ink colour",
+                   "error colour",
+                   "type roles"
+               ],
+    "responsive":  "Fills the row beside the button from 640 px.",
+    "children":  [
+
+                 ]
+}

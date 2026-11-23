@@ -1,0 +1,53 @@
+{
+    "id":  "nav-item",
+    "page":  "shared",
+    "level":  "sub",
+    "name":  "Navigation Item",
+    "properties":  [
+                       {
+                           "name":  "key",
+                           "type":  "TEXT",
+                           "default":  "skin",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "key"
+                                       },
+                           "data":  "linklist link handle",
+                           "note":  "Menu key used in ids and links"
+                       },
+                       {
+                           "name":  "name",
+                           "type":  "TEXT",
+                           "default":  "Skin",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "name"
+                                       },
+                           "data":  "linklist link title",
+                           "note":  "Menu title"
+                       },
+                       {
+                           "name":  "current",
+                           "type":  "BOOLEAN",
+                           "default":  false,
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "current"
+                                       },
+                           "data":  "link.current",
+                           "note":  "Marks the current section for assistive technology"
+                       }
+                   ],
+    "accessibility":  "A disclosure link with aria-haspopup and aria-expanded; arrow-key behaviour is script driven.",
+    "status":  "classified (D10 items pending)",
+    "summary":  "One top-level navigation entry with its chevron and mega menu panel.",
+    "tokens":  [
+                   "type roles",
+                   "spacing"
+               ],
+    "responsive":  "An accordion in the mobile panel; a hover or focus mega menu from 1024 px.",
+    "children":  [
+                     "components/base/icon",
+                     "components/header/mega-menu"
+                 ]
+}

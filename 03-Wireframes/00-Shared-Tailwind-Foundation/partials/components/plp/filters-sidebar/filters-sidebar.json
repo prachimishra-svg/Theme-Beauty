@@ -1,0 +1,53 @@
+{
+    "name":  "Filters Sidebar",
+    "wireframeOnly":  [
+                          ".ann annotation block",
+                          "data-section attribute"
+                      ],
+    "page":  "plp",
+    "properties":  [
+                       {
+                           "name":  "title",
+                           "type":  "TEXT",
+                           "default":  "Filters",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "title"
+                                       },
+                           "note":  "Heading and accessible name, from a locale string"
+                       },
+                       {
+                           "name":  "clearLabel",
+                           "type":  "TEXT",
+                           "default":  "Clear all",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "clear_label"
+                                       },
+                           "note":  "Button text from a locale string"
+                       }
+                   ],
+    "tokens":  [
+                   "accordion tokens",
+                   "spacing"
+               ],
+    "summary":  "The filter column from 768 px: a heading with Clear all, and the one filter form (the groups are filled in by the filter groups component). Below 768 px the same form is moved into the filters drawer.",
+    "accessibility":  "A labelled aside; each group is a details element with a fieldset.",
+    "id":  "filters-sidebar",
+    "shopifyOnly":  [
+                        {
+                            "id":  "filters",
+                            "setting":  "data",
+                            "note":  "Filters come from Search and Discovery (collection.filters); the merchant chooses them in the Shopify admin"
+                        }
+                    ],
+    "level":  "main",
+    "status":  "classified",
+    "responsive":  "Left column from 768 px (about 240 px wide); below 768 px the form lives in the filters drawer.",
+    "exposes":  [
+
+                ],
+    "children":  [
+                     "components/base/button"
+                 ]
+}

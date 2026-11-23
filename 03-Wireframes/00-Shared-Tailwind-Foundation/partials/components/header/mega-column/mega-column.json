@@ -1,0 +1,51 @@
+{
+    "id":  "mega-column",
+    "page":  "shared",
+    "level":  "sub",
+    "name":  "Mega Menu Column",
+    "properties":  [
+                       {
+                           "name":  "key",
+                           "type":  "TEXT",
+                           "default":  "skin",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "key"
+                                       },
+                           "note":  "Menu key used in link anchors"
+                       },
+                       {
+                           "name":  "title",
+                           "type":  "TEXT",
+                           "default":  "Shop by concern",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "title"
+                                       },
+                           "data":  "linklist child link title",
+                           "note":  "Column title"
+                       },
+                       {
+                           "name":  "links",
+                           "type":  "LIST",
+                           "default":  "Hydration|Brightening|Anti-ageing|Blemish care|Sensitive skin",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "links"
+                                       },
+                           "data":  "linklist child links",
+                           "note":  "Links, one per item"
+                       }
+                   ],
+    "accessibility":  "A list of links under a title.",
+    "status":  "classified (D10 items pending)",
+    "summary":  "A titled column of links in a mega menu.",
+    "tokens":  [
+                   "type roles",
+                   "spacing"
+               ],
+    "responsive":  "Stacked below 1024 px.",
+    "children":  [
+
+                 ]
+}

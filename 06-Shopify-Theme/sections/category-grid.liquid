@@ -1,0 +1,40 @@
+<section class="sec bg-page text-ink" id="{{ section.settings.anchor | default: 's05' }}">
+  <div class="sec__in py-section">
+    <div class="wrap">
+      {% render 'section-heading', title: section.settings.heading %}
+      <div class="g--cat grid min-w-0 grid-cols-2 gap-grid-gap md:grid-cols-[1.25fr_1fr_1fr] md:[grid-auto-rows:clamp(210px,23vw,330px)] md:gap-4 lg:gap-6 [&>*]:min-w-0">
+        {%- for block in section.blocks -%}{% render 'category-card', block: block %}{%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Category grid",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Shop by category" },
+    { "type": "text", "id": "anchor", "label": "Anchor id", "default": "s05" }
+  ],
+  "blocks": [
+    {
+      "type": "category_card",
+      "name": "Category",
+      "settings": [
+        { "type": "select", "id": "layout", "label": "Position in the mosaic", "options": [ { "value": "tall", "label": "tall" }, { "value": "top_middle", "label": "top middle" }, { "value": "top_right", "label": "top right" }, { "value": "wide", "label": "wide" } ], "default": "tall", "info": "Tall left, top middle, top right, wide bottom: the four-tile layout." },
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "text", "id": "title", "label": "Title", "info": "Leave empty to use the collection title." },
+        { "type": "text", "id": "subtitle", "label": "Subtitle" },
+        { "type": "text", "id": "link_text", "label": "Link text", "default": "Shop now" },
+        { "type": "url", "id": "link", "label": "Link", "info": "Leave empty to use the collection link." },
+        { "type": "image_picker", "id": "image", "label": "Image" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    { "name": "Category grid", "blocks": [ { "type": "category_card", "settings": { "layout": "tall" } }, { "type": "category_card", "settings": { "layout": "top_middle" } }, { "type": "category_card", "settings": { "layout": "top_right" } }, { "type": "category_card", "settings": { "layout": "wide" } } ] }
+  ]
+}
+{% endschema %}

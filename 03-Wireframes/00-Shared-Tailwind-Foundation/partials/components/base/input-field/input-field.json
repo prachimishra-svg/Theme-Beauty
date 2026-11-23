@@ -1,0 +1,101 @@
+{
+    "id":  "input-field",
+    "name":  "Input Field",
+    "level":  "base",
+    "page":  "shared",
+    "status":  "ready",
+    "summary":  "A labelled text input with an optional error line. The label is always visible.",
+    "properties":  [
+                       {
+                           "name":  "label",
+                           "type":  "TEXT",
+                           "default":  "Email",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "label"
+                                       }
+                       },
+                       {
+                           "name":  "id",
+                           "type":  "TEXT",
+                           "default":  "f-email",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "id"
+                                       }
+                       },
+                       {
+                           "name":  "name",
+                           "type":  "TEXT",
+                           "default":  "contact[email]",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "name"
+                                       }
+                       },
+                       {
+                           "name":  "type",
+                           "type":  "VARIANT",
+                           "default":  "email",
+                           "classes":  {
+                                           "text":  "text",
+                                           "email":  "email",
+                                           "number":  "number",
+                                           "tel":  "tel"
+                                       },
+                           "values":  [
+                                          "text",
+                                          "email",
+                                          "number",
+                                          "tel"
+                                      ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "type"
+                                       }
+                       },
+                       {
+                           "name":  "autocomplete",
+                           "type":  "TEXT",
+                           "default":  "email",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "autocomplete"
+                                       }
+                       },
+                       {
+                           "name":  "placeholder",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "placeholder"
+                                       }
+                       },
+                       {
+                           "name":  "required",
+                           "type":  "BOOLEAN",
+                           "default":  true,
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "required"
+                                       }
+                       },
+                       {
+                           "name":  "error",
+                           "type":  "TEXT",
+                           "default":  "Enter an email address like name@example.com.",
+                           "note":  "Validation message (hidden until invalid); empty = none",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "error"
+                                       }
+                       }
+                   ],
+    "accessibility":  "Label tied to the input; error text linked and announced when shown.",
+    "tokens":  [
+                   "input border and radius",
+                   "control height",
+                   "status error colour"
+               ]
+}

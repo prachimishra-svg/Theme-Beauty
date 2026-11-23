@@ -1,0 +1,51 @@
+{
+    "id":  "collection-tabs",
+    "page":  "homepage",
+    "level":  "sub",
+    "name":  "Collection Tabs",
+    "properties":  [
+                       {
+                           "name":  "tabs",
+                           "type":  "LIST",
+                           "default":  [
+                                           {
+                                               "label":  "Best sellers",
+                                               "selected":  "true",
+                                               "on":  "1"
+                                           },
+                                           {
+                                               "label":  "New launches",
+                                               "selected":  "false",
+                                               "on":  "0"
+                                           },
+                                           {
+                                               "label":  "Sets",
+                                               "selected":  "false",
+                                               "on":  "0"
+                                           }
+                                       ],
+                           "itemFields":  [
+                                              "label",
+                                              "on",
+                                              "selected"
+                                          ],
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "tabs",
+                                           "setting":  "blocks",
+                                           "blockType":  "tab"
+                                       },
+                           "note":  "One block per tab; the first is active"
+                       }
+                   ],
+    "accessibility":  "role=tablist; arrow-key behaviour is script-driven.",
+    "status":  "classified (D10 items pending)",
+    "summary":  "The tab list of the featured collection. Each tab is a block in the Shopify theme.",
+    "tokens":  [
+                   "spacing"
+               ],
+    "responsive":  "Same at all widths.",
+    "children":  [
+                     "components/homepage/collection-tab"
+                 ]
+}

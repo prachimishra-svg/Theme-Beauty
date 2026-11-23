@@ -1,0 +1,41 @@
+/* NUDGE high-fidelity Homepage layer. Loaded AFTER the wireframe's own CSS (tokens, components, Tailwind). It only adds: hiding of the wireframe scaffolding, photograph handling,
+   and a few refinements. Every colour, size and space below is a design-system variable; nothing here defines a new token. */
+
+/* ---- 1. the page is a design, not a review sheet: hide the reviewer panel, annotation notes, width preview and the empty merchant slot ---- */
+[data-hifi] .rv, [data-hifi] #wp, [data-hifi] .ann, [data-hifi] section[data-section="Custom Liquid Section"] { display: none !important; }
+
+/* ---- 2. photographs ---- */
+[data-hifi] .img .in { display: none; }                                         /* the wireframe caption ("Product photo ...", ratio, size) */
+[data-hifi].hifi-review .img .in, .hifi-review [data-hifi] .img .in { display: flex; }
+.hifi-review .img.no-photo::after { content: attr(data-slot-label); position: absolute; inset: auto 8px 8px 8px; z-index: 3; padding: 2px 6px; background: var(--color-bg-page); color: var(--color-text-primary); font: var(--font-size-caption) / 1.3 var(--font-body); text-align: center; }
+.hifi-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--focal, 50% 40%); z-index: 1; }
+.img.has-photo { background: var(--color-bg-subtle); }
+.img.has-photo .ratio { visibility: hidden; }
+[data-slot="hero-campaign"] .hifi-img { object-position: 70% 40%; }
+[data-slot^="logo-"] .hifi-img { object-fit: contain; padding: var(--space-2); filter: grayscale(1); opacity: .75; transition: filter var(--duration-base) var(--ease-standard), opacity var(--duration-base) var(--ease-standard); }
+a:hover > [data-slot^="logo-"] .hifi-img, a:focus-visible > [data-slot^="logo-"] .hifi-img { filter: none; opacity: 1; }
+
+/* the wireframe draws logo slots as dashed boxes; in the design they are quiet tiles */
+[data-hifi] .rec__logo { border-style: solid !important; border-color: transparent !important; background: var(--color-bg-subtle) !important; }
+[data-hifi] .rec__logo.has-photo { background: transparent !important; }
+
+/* the menu cards and any other plain placeholder tile: no wireframe caption in the design */
+[data-hifi] .ph, [data-hifi] .ph-b, [data-hifi] .ph-c { font-size: 0; color: transparent; }
+[data-hifi] .ph > span, [data-hifi] .ph-b > span { display: none; }
+
+/* before and after: the wireframe draws the two layers as grey and as diagonal hatching; in the design an empty layer is a calm tonal surface */
+[data-hifi] .cmp__img--before.no-photo { background: var(--color-bg-subtle) !important; }
+[data-hifi] .cmp__img--after.no-photo { background: var(--color-brand-tint) !important; }
+
+/* ---- 3. scroll reveal (below the first fold only; off for reduced motion) ---- */
+@media (prefers-reduced-motion: no-preference) {
+  .hifi-reveal { opacity: 0; transform: translateY(var(--space-4)); transition: opacity var(--duration-slow) var(--ease-standard), transform var(--duration-slow) var(--ease-standard); }
+  .hifi-reveal.is-in { opacity: 1; transform: none; }
+}
+
+/* ---- 4. refinements ---- */
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+::selection { background: var(--color-brand-tint-strong, var(--color-bg-subtle)); color: var(--color-text-primary); }
+[data-hifi] .card:hover .img img.hifi-img, [data-hifi] .group:hover .img img.hifi-img { transform: scale(1.03); }
+[data-hifi] .img img.hifi-img { transition: transform .6s var(--ease-standard); }

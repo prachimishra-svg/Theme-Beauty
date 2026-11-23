@@ -1,0 +1,69 @@
+{%- liquid
+  assign menu = section.settings.menu
+  assign cart_type = 'link'
+  if settings.cart_type == 'drawer'
+    assign cart_type = 'drawer'
+  elsif request.page_type == 'cart'
+    assign cart_type = 'page'
+  endif
+  assign transparent = false
+  if section.settings.transparent_on_home and request.page_type == 'index'
+    assign transparent = true
+  endif
+  assign t_search = 'general.search' | t
+  assign t_search_products = 'general.search_products' | t
+-%}
+<header id="site-header" class="sticky top-0 z-sticky border-b border-line bg-page [.nav-open_&]:z-drawer lg:[html_body.mega-open_&]:!bg-page{% if transparent %} !border-transparent transition-colors duration-base lg:[body.is-scrolled_&]:!border-line lg:[body:not(.is-scrolled)_&]:!bg-transparent lg:[&>div]:min-h-[4.5rem] [&_a[aria-label^=Cart]]:text-body-sm [&_a[aria-label^=Cart]]:leading-[1.2] lg:[&_#market-btn]:tracking-normal{% endif %}">
+  <div class="mx-auto grid w-full max-w-[calc(var(--container-max)+2*var(--layout-gutter))] grid-cols-[auto_auto_1fr_auto] items-center gap-x-1 px-gutter py-2 max-[359px]:grid-cols-[auto_1fr_auto] max-[359px]:gap-y-2 max-[359px]:pb-3 lg:min-h-[5.25rem] lg:grid-cols-[1fr_auto_1fr] lg:gap-x-grid-gap lg:py-0">
+    {% render 'header-menu-button' %}
+    {%- if section.settings.show_search -%}{% render 'header-search', label: t_search, class: 'inline-flex size-touch items-center justify-center text-ink max-[359px]:hidden lg:hidden' %}{%- endif -%}
+    {% render 'header-logo' %}
+    <nav id="nav" aria-label="{{ 'header.main_navigation' | t }}" class="invisible fixed inset-y-0 left-0 z-drawer flex w-full max-w-[26rem] -translate-x-full flex-col gap-3 overflow-y-auto border-r border-line-strong bg-page p-4 transition-transform duration-base [.nav-open_&]:visible [.nav-open_&]:translate-x-0 lg:visible lg:static lg:order-1 lg:w-auto lg:max-w-none lg:translate-x-0 lg:!transform-none lg:flex-row lg:tracking-[var(--type-nav-letter-spacing)] lg:items-center lg:gap-5 xl:gap-7 lg:overflow-visible lg:border-0 lg:bg-transparent lg:p-0">
+      {% render 'header-nav-close' %}
+      <div class="flex flex-col lg:flex-row lg:gap-7">
+        {%- for link in menu.links -%}
+          {% render 'header-nav-item', link: link, blocks: section.blocks %}
+        {%- endfor -%}
+      </div>
+      {% render 'header-localization' %}
+    </nav>
+    <div class="flex items-center justify-end gap-3 lg:order-3">
+      {%- if section.settings.show_search -%}{% render 'header-search', label: t_search_products, text: t_search_products, class: 'hidden min-h-touch w-full max-w-[13rem] items-center gap-2 rounded-pill border border-line-strong bg-surface px-4 text-body-sm text-ink-muted no-underline lg:flex' %}{%- endif -%}
+      <div class="flex gap-[2px]">
+        {%- if section.settings.show_account -%}{% render 'header-account' %}{%- endif -%}
+        {% render 'cart-button', type: cart_type %}
+      </div>
+    </div>
+    {%- if section.settings.show_search -%}{% render 'header-search', label: t_search_products, text: t_search_products, class: 'col-span-full hidden min-h-touch items-center gap-2 rounded-pill border border-line-strong bg-surface px-4 text-body-sm text-ink-muted no-underline max-[359px]:flex' %}{%- endif -%}
+  </div>
+  <div id="scrim" class="fixed inset-0 z-overlay hidden bg-scrim [.nav-open_&]:block lg:!hidden"></div>
+  <div id="mega-scrim" class="absolute inset-x-0 top-full hidden h-screen bg-scrim lg:[.mega-open_&]:block"></div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "enabled_on": { "groups": ["header"] },
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Main menu", "default": "main-menu", "info": "Level 1 = navigation links, level 2 = mega menu columns, level 3 = column links." },
+    { "type": "checkbox", "id": "transparent_on_home", "label": "Transparent over the Homepage hero", "default": true },
+    { "type": "checkbox", "id": "show_search", "label": "Show search", "default": true },
+    { "type": "checkbox", "id": "show_account", "label": "Show account", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "mega_card",
+      "name": "Mega menu card",
+      "settings": [
+        { "type": "text", "id": "menu_item", "label": "Menu item", "info": "Title of the level 1 menu link this card belongs to, for example Skin." },
+        { "type": "text", "id": "title", "label": "Title", "default": "New in" },
+        { "type": "text", "id": "cta", "label": "Link text", "default": "Shop now" },
+        { "type": "url", "id": "link", "label": "Link" },
+        { "type": "image_picker", "id": "image", "label": "Image", "info": "4:5 portrait. Without an image a labelled placeholder is shown." },
+        { "type": "select", "id": "tone", "label": "Placeholder tone", "options": [ { "value": "ph", "label": "Light" }, { "value": "ph-b", "label": "Warm" } ], "default": "ph" }
+      ]
+    }
+  ],
+  "max_blocks": 12
+}
+{% endschema %}

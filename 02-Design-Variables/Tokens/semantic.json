@@ -1,0 +1,94 @@
+{
+  "$scopes": {
+    ".surface-inverse": {
+      "background": "{color.bg.inverse}",
+      "color": "{color.text.inverse}",
+      "--color-bg-page": "{color.bg.inverse}",
+      "--color-text-primary": "{color.text.inverse}",
+      "--color-text-secondary": "{color.text.inverse-secondary}",
+      "--color-text-muted": "{palette.neutral.300}",
+      "--color-border-subtle": "{color.border.inverse-subtle}",
+      "--color-border-strong": "{color.border.inverse}",
+      "--color-link": "{color.link-inverse}",
+      "--color-link-hover": "{color.link-inverse-hover}",
+      "--color-focus-ring": "{color.focus.ring-inverse}",
+      "--color-control-bg": "transparent",
+      "--color-button-secondary-text-hover": "{color.bg.inverse}"
+    }
+  },
+  "color": {
+    "brand": {
+      "primary":        { "$value": "{palette.rose.700}", "$description": "Rich Burgundy: primary CTA, active navigation, selected states, links and focus" },
+      "primary-hover":  { "$value": "{palette.rose.800}" },
+      "primary-active": { "$value": "{palette.rose.900}" },
+      "secondary":      { "$value": "{palette.rose.500}", "$description": "Luxury Rose: recognisable brand elements (eyebrows, ratings, heading rules, large serif accents). Small text only on bg.page or bg.surface" },
+      "accent":         { "$value": "{palette.rose.400}", "$description": "Blush Rose: decorative accents and dividers on light surfaces; never text there (2.1:1 on Pearl Pink)" },
+      "tint":           { "$value": "{palette.rose.50}" },
+      "tint-strong":    { "$value": "{palette.rose.100}" }
+    },
+    "bg": {
+      "page":    { "$value": "{palette.ivory}" },
+      "surface": { "$value": "{palette.white}" },
+      "subtle":  { "$value": "{palette.blush}" },
+      "inverse": { "$value": "{palette.charcoal}" }
+    },
+    "text": {
+      "primary":   { "$value": "{palette.charcoal}" },
+      "secondary": { "$value": "{palette.neutral.600}" },
+      "muted":     { "$value": "{palette.neutral.500}", "$description": "AA on Pearl Pink, white and Rose Quartz (4.6:1 on Rose Quartz)" },
+      "disabled":  { "$value": "{palette.neutral.300}" },
+      "inverse":   { "$value": "{palette.ivory}", "$description": "Text on color.bg.inverse (footer, promo bar)" },
+      "inverse-secondary": { "$value": "{palette.blush}", "$description": "Secondary text on color.bg.inverse" },
+      "on-brand":  { "$value": "{palette.white}" }
+    },
+    "border": {
+      "subtle":   { "$value": "{palette.blush}", "$description": "Decorative dividers" },
+      "strong":   { "$value": "{palette.neutral.400}", "$description": "Control boundaries (>=3:1 on ivory/white)" },
+      "inverse":  { "$value": "{palette.neutral.300}", "$description": "Control boundaries on color.bg.inverse (7.6:1)" },
+      "inverse-subtle": { "$value": "rgb(255 245 245 / 0.2)", "$description": "Decorative dividers on color.bg.inverse (Pearl Pink at 20%; same literal as the Design System)" }
+    },
+    "link":       { "$value": "{palette.rose.700}" },
+    "link-hover": { "$value": "{palette.rose.900}" },
+    "link-inverse":       { "$value": "{palette.blush}", "$description": "Links on color.bg.inverse (Rich Burgundy is only 1.7:1 on Midnight Plum)" },
+    "link-inverse-hover": { "$value": "{palette.white}" },
+    "button": {
+      "primary-bg":           { "$value": "{color.brand.primary}" },
+      "primary-bg-hover":     { "$value": "{color.brand.primary-hover}" },
+      "primary-bg-active":    { "$value": "{color.brand.primary-active}" },
+      "primary-text":         { "$value": "{color.text.on-brand}" },
+      "secondary-border":     { "$value": "{color.text.primary}" },
+      "secondary-bg-hover":   { "$value": "{color.text.primary}" },
+      "secondary-text-hover": { "$value": "{color.text.inverse}" },
+      "disabled-bg":          { "$value": "{palette.blush}" },
+      "disabled-text":        { "$value": "{palette.neutral.600}" }
+    },
+    "focus": {
+      "ring":         { "$value": "{palette.rose.700}" },
+      "ring-inverse": { "$value": "{palette.blush}", "$description": "Focus ring on color.bg.inverse. The default ring is 1.7:1 on Midnight Plum and fails 3:1" }
+    },
+    "control": {
+      "bg":           { "$value": "{palette.white}" },
+      "border":       { "$value": "{color.border.strong}" },
+      "border-hover": { "$value": "{color.text.primary}" },
+      "selected":     { "$value": "{color.brand.primary}" }
+    },
+    "status": {
+      "error":      { "$value": "{palette.red.700}" },
+      "error-bg":   { "$value": "{palette.red.50}" },
+      "success":    { "$value": "{palette.green.700}" },
+      "success-bg": { "$value": "{palette.green.50}" },
+      "warning":    { "$value": "{palette.amber.700}" },
+      "warning-bg": { "$value": "{palette.amber.50}" }
+    },
+    "price": {
+      "sale": { "$value": "{color.brand.primary}" }
+    },
+    "rating": {
+      "star":       { "$value": "{color.brand.secondary}", "$description": "Luxury Rose (5.0:1 on white); stars always carry a text rating" },
+      "star-empty": { "$value": "{color.border.strong}" }
+    },
+    "overlay": {
+      "scrim": { "$value": "rgb({shadow.color} / {opacity.scrim})", "$description": "Behind drawers and modals" }
+    }
+  }
+}

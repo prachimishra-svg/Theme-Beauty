@@ -1,0 +1,36 @@
+{%- liquid
+  assign stock = item.variant.inventory_quantity
+  assign tracked = false
+  if item.variant.inventory_management == 'shopify' and item.variant.inventory_policy == 'deny'
+    assign tracked = true
+  endif
+  assign max_qty = 10
+  if tracked and stock < 10
+    assign max_qty = stock
+  endif
+  if max_qty < 1
+    assign max_qty = 1
+  endif
+  assign tones = 'ph,ph-b,ph-c' | split: ','
+  assign tone = tones[tone_index]
+  assign vtitle = item.variant.title
+  if vtitle == 'Default Title'
+    assign vtitle = ''
+  endif
+  assign name = item.product.title | default: item.product_title
+  assign qty_aria = 'cart.quantity_for' | t: title: name
+  assign remove_aria = 'cart.remove_item' | t: title: name
+  assign dec_aria = 'cart.decrease' | t
+  assign inc_aria = 'cart.increase' | t
+  assign q_aria = 'cart.quantity' | t
+  assign remove_label = 'cart.remove' | t
+  assign each_price = item.final_price | money
+  assign line_save = item.original_line_price | minus: item.final_line_price
+  assign save_price = line_save | money
+-%}
+<li class="cl grid grid-cols-[var(--space-16)_minmax(0,1fr)_auto] gap-x-4 gap-y-3 border-t border-line py-4 first:border-t-0 first:pt-0 last:border-b [grid-template-areas:'thumb_info_price''thumb_qty_qty']" data-id="{{ item.key }}" data-variant="{{ item.variant_id }}" data-qty="{{ item.quantity }}">
+  <div class="relative aspect-portrait self-start overflow-hidden [grid-area:thumb]" aria-hidden="true">{%- if item.image != blank -%}{{ item.image | image_url: width: 160 | image_tag: loading: 'lazy', class: 'absolute inset-0 size-full object-cover', alt: '' }}{%- else -%}<div class="ph {{ tone }} absolute inset-0"></div>{%- endif -%}</div>
+  <div class="flex min-w-0 flex-col gap-1 [grid-area:info]"><a class="cl__name -my-[calc((var(--touch-target-min)-var(--space-6))/2)] flex min-h-touch items-center font-heading text-body leading-snug text-inherit no-underline hover:underline" href="{{ item.url }}">{{ name | escape }}</a>{%- if vtitle != blank -%}<p class="text-body-sm text-ink-secondary">{{ vtitle | escape }}</p>{%- endif -%}{%- if tracked and stock <= 5 -%}<p class="cl__stock text-caption text-status-warning">{{ 'cart.only_left' | t: count: stock }}</p>{%- endif -%}</div>
+  <div class="flex flex-col items-end gap-1 text-right [grid-area:price]"><span class="price"><span class="price-current">{{ item.final_line_price | money }}</span></span>{%- if item.quantity > 1 -%}<span class="cl__each text-caption text-ink-secondary">{{ 'cart.each' | t: price: each_price }}</span>{%- endif -%}{%- if item.original_line_price > item.final_line_price -%}<s class="price-compare">{{ item.original_line_price | money }}</s><span class="text-caption text-brand">{{ 'cart.save' | t: amount: save_price }}</span>{%- endif -%}</div>
+  <div class="flex flex-wrap items-center gap-4 [grid-area:qty]"><div class="qty" role="group" aria-label="{{ qty_aria }}"><button class="qty-btn" type="button" data-minus aria-label="{{ dec_aria }}"{% if item.quantity <= 1 %} disabled{% endif %}>{% render 'icon', name: 'minus', class: 'icon size-5' %}</button><input class="qty-input" type="text" inputmode="numeric" pattern="[0-9]*" value="{{ item.quantity }}" aria-label="{{ q_aria }}" data-q data-max="{{ max_qty }}" data-stock="{{ stock }}"><button class="qty-btn" type="button" data-plus aria-label="{{ inc_aria }}"{% if item.quantity >= max_qty %} disabled{% endif %}>{% render 'icon', name: 'plus', class: 'icon size-5' %}</button></div><button class="min-h-touch px-2 text-body-sm text-ink-secondary underline underline-offset-[0.2em] hover:text-ink" type="button" data-rm aria-label="{{ remove_aria }}">{{ remove_label }}</button></div>
+</li>

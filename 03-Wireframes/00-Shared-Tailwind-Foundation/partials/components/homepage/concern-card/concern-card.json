@@ -1,0 +1,55 @@
+{
+    "id":  "concern-card",
+    "page":  "homepage",
+    "level":  "sub",
+    "name":  "Concern Card",
+    "properties":  [
+                       {
+                           "name":  "tone",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "scope":  "wireframe",
+                           "shopify":  {
+                                           "param":  "tone"
+                                       },
+                           "note":  "Placeholder tint class"
+                       },
+                       {
+                           "name":  "name",
+                           "type":  "TEXT",
+                           "default":  "Dryness",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "name",
+                                           "id":  "title",
+                                           "setting":  "text"
+                                       },
+                           "note":  "Concern name; empty means the collection title in Shopify"
+                       }
+                   ],
+    "shopifyOnly":  [
+                        {
+                            "id":  "collection",
+                            "setting":  "collection",
+                            "note":  "Resolves the name and link"
+                        },
+                        {
+                            "id":  "image",
+                            "setting":  "image_picker",
+                            "replaces":  "placeholder",
+                            "note":  "Real photo in place of the wireframe placeholder"
+                        }
+                    ],
+    "status":  "classified (D10 items pending)",
+    "accessibility":  "The tile is a link named by the concern.",
+    "summary":  "A round photo with the skin concern name under it.",
+    "tokens":  [
+                   "brand colour (hover ring)",
+                   "type roles",
+                   "spacing"
+               ],
+    "responsive":  "Three columns below 1024 px, six from 1024 px.",
+    "children":  [
+
+                 ]
+}

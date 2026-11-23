@@ -1,0 +1,40 @@
+{
+    "name":  "Video Poster",
+    "page":  "homepage",
+    "properties":  [
+
+                   ],
+    "tokens":  [
+                   "overlay",
+                   "spacing"
+               ],
+    "summary":  "The still image with a play control that opens the tutorial. The wireframe holds no player.",
+    "accessibility":  "The play control is a button with an accessible name.",
+    "id":  "video-poster",
+    "shopifyOnly":  [
+                        {
+                            "id":  "cover_image",
+                            "setting":  "image_picker",
+                            "replaces":  "poster placeholder"
+                        },
+                        {
+                            "id":  "video_url",
+                            "setting":  "video_url",
+                            "note":  "Hosted video the poster opens"
+                        },
+                        {
+                            "id":  "duration",
+                            "setting":  "text",
+                            "note":  "Length shown on the poster"
+                        }
+                    ],
+    "level":  "sub",
+    "status":  "classified (D10 items pending)",
+    "responsive":  "Full width, 16:9.",
+    "wireframeOnly":  [
+                          "placeholder captions"
+                      ],
+    "children":  [
+
+                 ]
+}

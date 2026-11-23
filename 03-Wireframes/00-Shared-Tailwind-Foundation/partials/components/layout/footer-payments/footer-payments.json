@@ -1,0 +1,30 @@
+{
+    "id":  "footer-payments",
+    "page":  "shared",
+    "level":  "sub",
+    "name":  "Footer Payments",
+    "properties":  [
+                       {
+                           "name":  "methods",
+                           "type":  "LIST",
+                           "default":  "Visa|Mastercard|UPI|Wallet",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "methods",
+                                           "id":  "payment_methods",
+                                           "setting":  "textarea"
+                                       },
+                           "note":  "One method per line in the theme editor"
+                       }
+                   ],
+    "accessibility":  "A labelled group of text labels.",
+    "status":  "classified (D10 items pending)",
+    "summary":  "The accepted payment methods shown as text labels.",
+    "tokens":  [
+                   "inverse colours"
+               ],
+    "responsive":  "Wraps.",
+    "children":  [
+
+                 ]
+}

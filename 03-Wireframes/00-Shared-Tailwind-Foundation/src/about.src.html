@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NUDGE Beauty Theme: About Us Wireframe</title>
+<!-- Design Variables (tokens) linked; styling is Tailwind utilities and the shared components, mapped to those tokens. -->
+@@PARTIAL head@@
+<style>
+@@PARTIAL review-css@@
+</style>
+</head>
+<body class="ann-on" id="top">
+@@PARTIAL sprite@@
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-skip focus:bg-surface focus:p-3">Skip to content</a>
+<div class="rv">
+  <div class="rvt">NUDGE Beauty Theme: About us wireframe &middot; single responsive file</div>
+  <p>Phase 1, page 3 of 25. A native Shopify page (<code>page.about</code>) built from theme sections, with Tailwind utilities and the shared components mapped to the Design Variables. The announcement bar, header and footer are the shared sections. All copy is <b>sample content</b> with bracketed values; no claim, number, certification or founder detail is invented. Image areas are <b>labelled placeholders</b> (no photography). Use <b>Width preview</b> for 1920, 1440, 1280, 1024, 768, 430, 390 and 320 px.</p>
+  <div class="ctl"><button id="t-ann" type="button" aria-pressed="true">Annotations</button><button id="t-wp" type="button">Width preview</button></div>
+<details><summary>Review notes: purpose, sections, decisions, Shopify (open)</summary>
+<h3>Purpose</h3>
+<p>Say in one scroll who the brand is, what it stands for and why a visitor can trust it, then send them on: to the story (page 4), or to the shop. The longer narrative lives on Our Story, so About stays short and values-led.</p>
+<h3>Sections, top to bottom</h3>
+<ul><li>Title, one-sentence lede and a brand image area</li><li>Mission statement in large type</li><li>Three values</li><li>How products are made: image area and short text with a link to the ingredient pages when they exist</li><li>Closing call to action: shop and read the story</li></ul>
+<h3>Decisions to confirm</h3>
+<ul><li>No statistics, awards, "clean" or "dermatologist" wording or founder names: each needs proof from the merchant. Bracketed slots mark where they go.</li><li>Team and press blocks are optional blocks, hidden when empty.</li><li>The three values are sample headings; merchant replaces them.</li></ul>
+<h3>Not drawn</h3>
+<ul><li>Video embed with third-party player, review or trust widgets, careers or booking forms (apps or external services)</li></ul>
+<h3>Shopify build</h3>
+<p>Template <code>page.about.json</code> with sections: <code>image-banner</code> (title, lede, image picker), <code>rich-text</code> (mission), <code>multicolumn</code> (values, up to four blocks), <code>image-with-text</code> (how products are made) and a <code>cta</code> section. All text, images and links are theme-editor settings; images use <code>image_picker</code> with the <code>image_url</code> filter and responsive <code>srcset</code>. No app is involved.</p>
+</details>
+</div>
+<div class="ann"><b>Global</b>Announcement bar, header (sticky) and footer: the shared sections. Responsive: below 1024 px a one-row header with the menu in a left drawer; footer groups are tap-to-open rows below 768 px.</div>
+@@PARTIAL annbar@@
+@@PARTIAL header CART=link NAV=none@@
+<main id="main" class="pb-20 md:pb-24">
+<section class="wrap pt-2" aria-labelledby="about-h" data-section="Intro">
+<div class="ann"><b>01 &middot; Introduce</b>Title, lede and brand image (T1) &mdash; Essential: one H1 and one sentence that states what the brand is, then a large image area. The image is a labelled placeholder; in the theme it is an image picker with a descriptive alt text.<em>Responsive: text above the image on phones; text and image side by side from 1024 px.</em></div>
+<nav class="breadcrumb mb-6" aria-label="Breadcrumb"><ol class="breadcrumb-list"><li class="breadcrumb-item"><a href="#home">Home</a></li><li class="breadcrumb-item"><a href="#about" aria-current="page">About us</a></li></ol></nav>
+<div class="grid grid-cols-[minmax(0,1fr)] items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-16">
+<div class="flex flex-col gap-4"><p class="type-overline m-0">About NUDGE</p><h1 class="type-h1" id="about-h">Skincare made to be simple to use</h1><p class="m-0 max-w-text text-body-lg text-ink-secondary">[One sentence about what the brand makes and who it is for.]</p><div><a class="btn btn-primary" href="#shop">Shop the collection</a></div></div>
+<div class="relative aspect-[4/3] overflow-hidden lg:aspect-[5/4]" role="img" aria-label="Image placeholder: brand image"><div class="ph absolute inset-0"></div><span class="absolute inset-0 grid place-items-center p-4 text-center text-caption text-ink-secondary">Image placeholder: brand image (4:3 on phones, 5:4 from 1024 px)</span></div>
+</div>
+</section>
+<section class="wrap mt-16 md:mt-24" aria-labelledby="mission-h" data-section="Mission">
+<div class="ann"><b>02 &middot; Believe</b>Mission statement (T1) &mdash; Essential: one short statement in display type, centred and alone, so the idea lands before the detail. Sample wording is bracketed for the merchant.<em>Responsive: centred column; the type steps down with the Design System scale.</em></div>
+<div class="mx-auto flex max-w-[var(--container-narrow,56rem)] flex-col items-center gap-4 border-y border-line py-12 text-center md:py-16"><h2 class="type-overline m-0" id="mission-h">Our mission</h2><p class="m-0 font-heading text-h2 leading-snug text-ink">[Mission statement in one or two sentences.]</p></div>
+</section>
+<section class="wrap mt-16 md:mt-24" aria-labelledby="values-h" data-section="Values">
+<div class="ann"><b>03 &middot; Prove</b>Three values (T1) &mdash; Essential: each value is a short heading and two lines, numbered, with no icons or logos. Values are statements the brand can stand behind; any specific proof (testing, sourcing, certification) is added only when the merchant can document it.<em>Responsive: stacked on phones, three columns from 768 px.</em></div>
+<h2 class="type-h3 mb-8" id="values-h">What we stand for</h2>
+<ol class="m-0 grid list-none grid-cols-[minmax(0,1fr)] gap-8 p-0 md:grid-cols-3 md:gap-10" id="values">
+<li class="flex flex-col gap-3 border-t border-ink pt-4"><span class="type-utility text-ink-secondary">01</span><h3 class="type-h5">Skin first</h3><p class="m-0 text-ink-secondary">[Two lines on how products are designed around real skin needs.]</p></li>
+<li class="flex flex-col gap-3 border-t border-ink pt-4"><span class="type-utility text-ink-secondary">02</span><h3 class="type-h5">Clear information</h3><p class="m-0 text-ink-secondary">[Two lines on plain ingredient lists and honest directions.]</p></li>
+<li class="flex flex-col gap-3 border-t border-ink pt-4"><span class="type-utility text-ink-secondary">03</span><h3 class="type-h5">Made to be used</h3><p class="m-0 text-ink-secondary">[Two lines on routines that are easy to keep up.]</p></li>
+</ol>
+</section>
+<section class="wrap mt-16 md:mt-24" aria-labelledby="made-h" data-section="How products are made">
+<div class="ann"><b>04 &middot; Show</b>How products are made (T1) &mdash; additional: an image area beside a short text and one quiet link. The text stays to facts the merchant provides; the link goes to the ingredient pages if that page is approved later.<em>Responsive: image above text on phones; side by side from 768 px, image on the left.</em></div>
+<div class="grid grid-cols-[minmax(0,1fr)] items-center gap-8 md:grid-cols-2 md:gap-12 lg:gap-16" id="made">
+<div class="relative aspect-[4/3] overflow-hidden" role="img" aria-label="Image placeholder: product making"><div class="ph ph-b absolute inset-0"></div><span class="absolute inset-0 grid place-items-center p-4 text-center text-caption text-ink-secondary">Image placeholder: product making</span></div>
+<div class="flex flex-col gap-4"><h2 class="type-h3" id="made-h">How we make our products</h2><p class="m-0 max-w-text text-ink-secondary">[Short paragraph on formulation, testing and where products are made, only facts the merchant can support.]</p><div><a class="btn btn-text" href="#ingredients">Browse our ingredients</a></div></div>
+</div>
+</section>
+<section class="wrap mt-16 md:mt-24" aria-labelledby="cta-h" data-section="Closing call to action">
+<div class="ann"><b>05 &middot; Continue</b>Closing call to action (T1) &mdash; Essential: the page ends with two clear next steps, a primary button to shop and a secondary one to the longer story. No dead end.<em>Responsive: centred; buttons stack on phones and sit side by side from 600 px.</em></div>
+<div class="flex flex-col items-center gap-5 bg-surface px-6 py-12 text-center md:py-16"><h2 class="type-h3" id="cta-h">Ready to start your routine?</h2><p class="m-0 max-w-text text-ink-secondary">Explore the collection, or read how the brand began.</p><div class="flex w-full flex-col gap-3 sm:w-auto sm:flex-row"><a class="btn btn-primary" href="#shop">Shop now</a><a class="btn btn-secondary" href="#story">Read our story</a></div></div>
+</section>
+</main>
+@@PARTIAL footer@@
+@@PARTIAL width-preview@@
+<script type="text/plain" id="selftest-src">
+(function(){
+ function vis(el){var cs=getComputedStyle(el);if(cs.display==="none"||cs.visibility==="hidden")return false;var r=el.getBoundingClientRect();return r.width>0&&r.height>0}
+ function sel(el){var s=el.tagName.toLowerCase();if(el.id)s+="#"+el.id;if(el.className&&typeof el.className==="string")s+="."+el.className.trim().split(/\s+/).slice(0,2).join(".");return s}
+ function $(id){return document.getElementById(id)}
+ async function run(){
+  var W=window.innerWidth,de=document.documentElement,out={docHeight:de.scrollHeight,width:W,checks:{}};
+  var st=document.createElement("style");st.textContent="*{transition:none!important}";document.head.appendChild(st);de.style.scrollBehavior="auto";
+  var twOk=getComputedStyle($("site-header")).position==="sticky"&&!document.querySelector('link[href*="components.css"],link[href*="base.css"]');
+  var fl=Array.from(document.fonts).some(function(x){return x.family.indexOf("Cormorant")>-1&&x.status==="loaded"})&&Array.from(document.fonts).some(function(x){return x.family.indexOf("DM Sans")>-1&&x.status==="loaded"});
+  out.checks.tailwindAndFonts={pass:twOk&&fl,detail:"Tailwind utilities applied, no Design System component stylesheet: "+twOk+"; Cormorant and DM Sans loaded: "+fl};
+  var off=[];document.querySelectorAll("main *,header *,footer *").forEach(function(el){if(el.closest(".sr-only")||el.closest("#nav")&&W<1024)return;var r=el.getBoundingClientRect();if(r.width>0&&(r.right>W+1||r.left<-1))off.push(sel(el))});
+  out.checks.overflow={pass:de.scrollWidth<=W+1&&off.length===0,detail:"scrollWidth "+de.scrollWidth+" of "+W+(off.length?"; past the edge: "+off.slice(0,4).join(", "):"")};
+  var hs=[].slice.call(document.querySelectorAll("h1")).filter(function(h){return !h.closest(".rv")&&vis(h)}),secs=document.querySelectorAll("main > section").length;
+  out.checks.structure={pass:hs.length===1&&!!document.querySelector("main#main")&&secs===5&&!document.querySelector("main img"),detail:"visible H1: "+hs.length+"; sections: "+secs+"; no photographs (placeholders only): "+!document.querySelector("main img")};
+  var v=[].slice.call($("values").children).map(function(x){return x.getBoundingClientRect()}),cols=W>=768?(Math.abs(v[0].top-v[2].top)<4&&v[1].left>=v[0].right-1&&v[2].left>=v[1].right-1):(v[1].top>=v[0].bottom-1&&v[2].top>=v[1].bottom-1);
+  out.checks.values={pass:v.length===3&&cols,detail:"three values in "+(W>=768?"one row":"a stack")+": "+cols};
+  var ib=document.querySelector("#about-h").closest("section").querySelector("[role=img]").getBoundingClientRect(),it=$("about-h").getBoundingClientRect(),heroOk=W>=1024?(it.right<=ib.left+1):(ib.top>=it.bottom-1);
+  out.checks.hero={pass:heroOk,detail:W>=1024?"title left of the image: "+heroOk:"image follows the title: "+heroOk};
+  var mi=document.querySelector("#made [role=img]").getBoundingClientRect(),mt=$("made-h").getBoundingClientRect(),madeOk=W>=768?(mi.right<=mt.left+1):(mt.top>=mi.bottom-1);
+  out.checks.madeRow={pass:madeOk,detail:W>=768?"image left of the text: "+madeOk:"text follows the image: "+madeOk};
+  var ph=[].slice.call(document.querySelectorAll("main [role=img]")),lab=ph.length===2&&ph.every(function(p){return /placeholder/i.test(p.getAttribute("aria-label")||"")&&/placeholder/i.test(p.textContent)});
+  out.checks.placeholders={pass:lab,detail:"two image areas, both labelled as placeholders: "+lab};
+  var ctas=document.querySelectorAll("#cta-h ~ div a.btn").length===2;
+  out.checks.cta={pass:ctas,detail:"closing section has two buttons (primary and secondary): "+ctas};
+  var txt=$("main").innerText.toLowerCase(),bad=[];["award","certified","dermatologist","clinically","cruelty","vegan","as seen in","years of"].forEach(function(w){if(txt.indexOf(w)>-1)bad.push(w)});
+  out.checks.claims={pass:bad.length===0,detail:"unsupported claim wording: "+(bad.join(", ")||"none")};
+  var small=[];[].slice.call(document.querySelectorAll("main a,main button,header a,header button,footer a,footer button")).filter(function(e){return vis(e)&&!e.closest(".sr-only")&&!e.closest(".rv")&&!e.closest(".ann")&&!(W<1024&&e.closest("#nav"))}).forEach(function(e){var r=e.getBoundingClientRect();if(e.closest(".fcol")&&W>=768)return;if(e.tagName==="A"&&r.height>=44-.5)return;if(r.height<44-.5)small.push(sel(e)+" "+Math.round(r.width)+"x"+Math.round(r.height))});
+  var tb=[];[].slice.call(document.querySelectorAll("main h1,main h2,main h3,main p,main a.btn")).filter(vis).forEach(function(e){var fm=getComputedStyle(e).fontFamily.split(",")[0].replace(/["']/g,"").trim(),head=(/^H[1-6]$/.test(e.tagName)&&!e.classList.contains("type-overline"))||e.classList.contains("font-heading");if(head&&fm!=="Cormorant")tb.push(sel(e)+" "+fm);if(!head&&fm!=="DM Sans")tb.push(sel(e)+" "+fm)});
+  out.checks.targetsAndType={pass:small.length===0&&tb.length===0,detail:(small.length?"small targets: "+small.slice(0,5).join("; "):"every visible control is 44 px or has a 44 px hit area")+"; "+(tb.length?"fonts: "+tb.slice(0,3).join("; "):"headings Cormorant, UI DM Sans")};
+  window.scrollTo(0,0);var pre=document.createElement("pre");pre.id="selftest-result";pre.textContent=JSON.stringify(out);document.body.appendChild(pre);
+  if(window.parent!==window){window.parent.postMessage({selftest:out},"*")}
+ }
+ if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){setTimeout(run,900)})}else{setTimeout(run,1400)}
+})();
+</script>
+<script>
+(function(){
+ var b=document.body,q=new URLSearchParams(location.search),$=function(id){return document.getElementById(id)};
+ if(q.get("embed")){b.classList.add("embed")}
+ b.classList.toggle("ann-on",q.get("ann")!=="0");
+ function navOpen(o){b.classList.toggle("nav-open",o);$("menu-btn").setAttribute("aria-expanded",o?"true":"false")}
+ $("menu-btn").addEventListener("click",function(){navOpen(true)});$("nav-close").addEventListener("click",function(){navOpen(false)});$("scrim").addEventListener("click",function(){navOpen(false)});
+ document.addEventListener("keydown",function(e){if(e.key==="Escape")navOpen(false)});
+ [].forEach.call(document.querySelectorAll(".fcol > button"),function(h){h.addEventListener("click",function(){var f=h.parentNode,o=!f.classList.contains("is-open");f.classList.toggle("is-open",o);h.setAttribute("aria-expanded",o?"true":"false")})});
+ var msgs=["Free shipping on orders over $50","New launches are in store","Free returns within 30 days"],mi=0;
+ function msg(d){mi=(mi+d+msgs.length)%msgs.length;$("ann-msg").textContent=msgs[mi];[].forEach.call(document.querySelectorAll(".ann-dot"),function(x,i){x.classList.toggle("bg-current",i===mi);x.classList.toggle("opacity-100",i===mi);x.classList.toggle("opacity-muted",i!==mi)})}
+ $("ann-prev").addEventListener("click",function(){msg(-1)});$("ann-next").addEventListener("click",function(){msg(1)});
+ document.addEventListener("click",function(e){var a=e.target.closest('a[href^="#"]:not([href="#main"]):not([href="#top"])');if(a)e.preventDefault()});
+ $("t-ann").addEventListener("click",function(){var on=!b.classList.contains("ann-on");b.classList.toggle("ann-on",on);this.setAttribute("aria-pressed",on?"true":"false")});
+ $("t-ann").setAttribute("aria-pressed",b.classList.contains("ann-on")?"true":"false");
+ if(q.get("selftest")){var s=document.createElement("script");s.text=$("selftest-src").text;document.body.appendChild(s)}
+})();
+</script>
+</body>
+</html>

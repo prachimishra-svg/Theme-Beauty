@@ -1,0 +1,74 @@
+{
+    "id":  "video-copy",
+    "page":  "homepage",
+    "level":  "sub",
+    "name":  "Video Copy",
+    "properties":  [
+                       {
+                           "name":  "eyebrow",
+                           "type":  "TEXT",
+                           "default":  "Tutorial",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "eyebrow",
+                                           "id":  "eyebrow",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "heading",
+                           "type":  "TEXT",
+                           "default":  "Watch: building a simple routine",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "heading",
+                                           "id":  "heading",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "text",
+                           "type":  "TEXT",
+                           "default":  "A short tutorial that shows the steps in order.",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "text",
+                                           "id":  "text",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "buttonLabel",
+                           "type":  "TEXT",
+                           "default":  "Shop the products",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "button_label",
+                                           "id":  "button_label",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "buttonHref",
+                           "type":  "TEXT",
+                           "default":  "#s06",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "button_href",
+                                           "id":  "button_link",
+                                           "setting":  "url"
+                                       }
+                       }
+                   ],
+    "accessibility":  "Heading is an h2.",
+    "status":  "classified (D10 items pending)",
+    "summary":  "Eyebrow, heading, one line and a button beside the video.",
+    "tokens":  [
+                   "inverse colours",
+                   "type roles"
+               ],
+    "responsive":  "Below the poster on small screens, beside it from 768 px.",
+    "children":  [
+                     "components/base/button"
+                 ]
+}

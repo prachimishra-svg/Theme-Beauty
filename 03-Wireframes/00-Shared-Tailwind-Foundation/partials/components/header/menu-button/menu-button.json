@@ -1,0 +1,19 @@
+{
+    "id":  "menu-button",
+    "page":  "shared",
+    "level":  "sub",
+    "name":  "Menu Button",
+    "properties":  [
+
+                   ],
+    "accessibility":  "aria-expanded and aria-controls point at the navigation; the script toggles them.",
+    "status":  "classified (D10 items pending)",
+    "summary":  "The hamburger button that opens the mobile navigation.",
+    "tokens":  [
+                   "touch target"
+               ],
+    "responsive":  "Visible below 1024 px only.",
+    "children":  [
+                     "components/base/icon"
+                 ]
+}

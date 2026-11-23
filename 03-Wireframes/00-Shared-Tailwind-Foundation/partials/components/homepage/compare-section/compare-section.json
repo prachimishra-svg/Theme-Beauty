@@ -1,0 +1,88 @@
+{
+    "name":  "Before and After",
+    "wireframeOnly":  [
+                          ".ann annotation block",
+                          "data-section attribute",
+                          "data-c review hooks"
+                      ],
+    "page":  "homepage",
+    "properties":  [
+                       {
+                           "name":  "anchor",
+                           "type":  "TEXT",
+                           "default":  "s13",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "anchor",
+                                           "id":  "anchor",
+                                           "setting":  "text"
+                                       },
+                           "note":  "In-page anchor id"
+                       },
+                       {
+                           "name":  "beforeLabel",
+                           "type":  "TEXT",
+                           "default":  "Before",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "before_label",
+                                           "id":  "before_label",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "afterLabel",
+                           "type":  "TEXT",
+                           "default":  "After",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "after_label",
+                                           "id":  "after_label",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "start",
+                           "type":  "TEXT",
+                           "default":  "50",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "start",
+                                           "id":  "start",
+                                           "setting":  "range"
+                                       },
+                           "note":  "Where the divider starts, in percent"
+                       }
+                   ],
+    "tokens":  [
+                   "surface colours",
+                   "spacing"
+               ],
+    "summary":  "A full-width image comparison slider. Maps to the before-after section. Results shown must be real and substantiated by the merchant.",
+    "accessibility":  "A range input with a name describing left and right; keyboard operable.",
+    "id":  "compare-section",
+    "shopifyOnly":  [
+                        {
+                            "id":  "before_image",
+                            "setting":  "image_picker"
+                        },
+                        {
+                            "id":  "after_image",
+                            "setting":  "image_picker"
+                        }
+                    ],
+    "level":  "main",
+    "status":  "classified (D10 items pending)",
+    "responsive":  "Full width at all sizes; the handle stays touch sized.",
+    "exposes":  [
+                    {
+                        "child":  "components/homepage/compare-layer",
+                        "property":  "title",
+                        "via":  "before_label, after_label"
+                    }
+                ],
+    "children":  [
+                     "components/homepage/compare-layer",
+                     "components/base/icon"
+                 ]
+}

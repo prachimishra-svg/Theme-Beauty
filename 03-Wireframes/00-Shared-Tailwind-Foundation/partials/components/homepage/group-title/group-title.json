@@ -1,0 +1,48 @@
+{
+    "id":  "group-title",
+    "page":  "homepage",
+    "level":  "sub",
+    "name":  "Group Title",
+    "properties":  [
+                       {
+                           "name":  "position",
+                           "type":  "VARIANT",
+                           "default":  "first",
+                           "values":  [
+                                          "first",
+                                          "second"
+                                      ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "position"
+                                       },
+                           "note":  "Spacing: first sits under the heading, second has more space above",
+                           "classes":  {
+                                           "first":  "grp__t mb-5 text-center text-caption font-semibold uppercase tracking-[0.14em] text-brand",
+                                           "second":  "grp__t grp__t--2 mb-5 mt-9 text-center text-caption font-semibold uppercase tracking-[0.14em] text-brand sm:mt-12 lg:mt-16"
+                                       }
+                       },
+                       {
+                           "name":  "text",
+                           "type":  "TEXT",
+                           "default":  "By skin concern",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "text",
+                                           "setting":  "text"
+                                       },
+                           "note":  "Group title text"
+                       }
+                   ],
+    "status":  "classified (D10 items pending)",
+    "summary":  "The small uppercase title above a group of cards or steps.",
+    "tokens":  [
+                   "brand colour",
+                   "type roles",
+                   "spacing"
+               ],
+    "responsive":  "Spacing above the second title grows with the width.",
+    "children":  [
+
+                 ]
+}

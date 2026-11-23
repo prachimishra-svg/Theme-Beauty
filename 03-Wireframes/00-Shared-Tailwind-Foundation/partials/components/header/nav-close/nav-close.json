@@ -1,0 +1,19 @@
+{
+    "id":  "nav-close",
+    "page":  "shared",
+    "level":  "sub",
+    "name":  "Navigation Close",
+    "properties":  [
+
+                   ],
+    "accessibility":  "A button named Close menu.",
+    "status":  "classified (D10 items pending)",
+    "summary":  "The close button inside the mobile navigation panel.",
+    "tokens":  [
+                   "touch target"
+               ],
+    "responsive":  "Visible below 1024 px only.",
+    "children":  [
+                     "components/base/icon"
+                 ]
+}

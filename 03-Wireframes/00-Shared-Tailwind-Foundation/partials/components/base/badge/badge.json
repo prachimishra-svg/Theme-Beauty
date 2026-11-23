@@ -1,0 +1,84 @@
+{
+    "id":  "badge",
+    "name":  "Badge",
+    "level":  "base",
+    "page":  "shared",
+    "status":  "ready",
+    "summary":  "A small label: Design System badges, and the labels laid over product images on the Homepage (Bestseller, New, Sale).",
+    "properties":  [
+                       {
+                           "name":  "variant",
+                           "type":  "VARIANT",
+                           "default":  "ds",
+                           "values":  [
+                                          "ds",
+                                          "ds-brand",
+                                          "ds-dark",
+                                          "ds-outline",
+                                          "overlay",
+                                          "overlay-sale"
+                                      ],
+                           "note":  "ds* = Design System; overlay = label on an image (Bestseller, New); overlay-sale = brand colour (Sale)",
+                           "classes":  {
+                                           "ds":  "badge",
+                                           "ds-brand":  "badge badge-brand",
+                                           "ds-dark":  "badge badge-dark",
+                                           "ds-outline":  "badge badge-outline",
+                                           "overlay":  "absolute left-[10px] top-[10px] z-[4] px-2 py-1 text-caption font-semibold tracking-[0.06em] bg-page text-ink",
+                                           "overlay-sale":  "absolute left-[10px] top-[10px] z-[4] px-2 py-1 text-caption font-semibold tracking-[0.06em] bg-brand text-ink-on-brand"
+                                       },
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "variant",
+                                           "setting":  "select"
+                                       }
+                       },
+                       {
+                           "name":  "label",
+                           "type":  "TEXT",
+                           "default":  "Bestseller",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "label"
+                                       }
+                       },
+                       {
+                           "name":  "labelWrap",
+                           "type":  "VARIANT",
+                           "default":  "plain",
+                           "values":  [
+                                          "plain",
+                                          "span"
+                                      ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "label_wrap"
+                                       },
+                           "note":  "Passed by callers. Reclassified from design by the conversion check; it could later be derived from the variant"
+                       },
+                       {
+                           "name":  "extra",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "extra"
+                                       }
+                       },
+                       {
+                           "name":  "editHook",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "scope":  "wireframe",
+                           "shopify":  {
+                                           "param":  "edit_hook"
+                                       }
+                       }
+                   ],
+    "accessibility":  "Text label, not colour alone.",
+    "tokens":  [
+                   "badge radius",
+                   "brand colours",
+                   "caption type"
+               ]
+}

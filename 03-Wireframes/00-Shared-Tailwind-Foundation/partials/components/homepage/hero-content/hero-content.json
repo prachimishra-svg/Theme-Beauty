@@ -1,0 +1,98 @@
+{
+    "id":  "hero-content",
+    "page":  "homepage",
+    "level":  "sub",
+    "name":  "Hero Content",
+    "properties":  [
+                       {
+                           "name":  "eyebrow",
+                           "type":  "TEXT",
+                           "default":  "The ritual edit \u0026middot; AW26",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "eyebrow",
+                                           "id":  "eyebrow",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "heading",
+                           "type":  "TEXT",
+                           "default":  "Radiance, \u003cem class=\"italic [font-weight:inherit] text-brand-secondary\"\u003eGently\u003c/em\u003e Nudged.",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "heading",
+                                           "id":  "heading",
+                                           "setting":  "text"
+                                       },
+                           "note":  "Inline rich text: one emphasised word is allowed (em). The emphasis styling belongs to the design, so the Shopify snippet applies it with CSS"
+                       },
+                       {
+                           "name":  "text",
+                           "type":  "TEXT",
+                           "default":  "Skin care, makeup, hair and body, chosen to work together.",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "text",
+                                           "id":  "text",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "buttonLabel",
+                           "type":  "TEXT",
+                           "default":  "Shop the edit",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "button_label",
+                                           "id":  "button_label",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "buttonHref",
+                           "type":  "TEXT",
+                           "default":  "#s06",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "button_href",
+                                           "id":  "button_link",
+                                           "setting":  "url"
+                                       }
+                       },
+                       {
+                           "name":  "button2Label",
+                           "type":  "TEXT",
+                           "default":  "Find your routine",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "button2_label",
+                                           "id":  "button_2_label",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "button2Href",
+                           "type":  "TEXT",
+                           "default":  "#s07",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "button2_href",
+                                           "id":  "button_2_link",
+                                           "setting":  "url"
+                                       }
+                       }
+                   ],
+    "accessibility":  "The only h1 on the page. Both actions are real links with visible text.",
+    "status":  "classified (D10 items pending)",
+    "summary":  "The hero text block: eyebrow, the one H1 of the page, a line of text, a main button and a text link.",
+    "tokens":  [
+                   "display type",
+                   "brand colours",
+                   "spacing"
+               ],
+    "responsive":  "Sits inside the stage on small screens and in the calm left of the photograph from 1024 px.",
+    "children":  [
+                     "components/base/button"
+                 ]
+}

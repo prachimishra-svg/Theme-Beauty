@@ -1,0 +1,101 @@
+{
+    "name":  "Collection Banner",
+    "wireframeOnly":  [
+                          ".ann annotation block",
+                          "data-section attribute",
+                          "collection image placeholder"
+                      ],
+    "page":  "plp",
+    "properties":  [
+                       {
+                           "name":  "breadcrumb",
+                           "type":  "LIST",
+                           "default":  [
+                                           {
+                                               "label":  "Home",
+                                               "href":  "#top",
+                                               "current":  ""
+                                           },
+                                           {
+                                               "label":  "Skin care",
+                                               "href":  "#banner",
+                                               "current":  "1"
+                                           }
+                                       ],
+                           "itemFields":  [
+                                              "label",
+                                              "href",
+                                              "current"
+                                          ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "breadcrumb"
+                                       },
+                           "data":  "collection and shop links",
+                           "note":  "Home and the current collection"
+                       },
+                       {
+                           "name":  "eyebrow",
+                           "type":  "TEXT",
+                           "default":  "The collection",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "eyebrow",
+                                           "id":  "eyebrow",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "heading",
+                           "type":  "TEXT",
+                           "default":  "Skin care",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "heading"
+                                       },
+                           "data":  "collection.title",
+                           "note":  "The one H1 of the page"
+                       },
+                       {
+                           "name":  "intro",
+                           "type":  "TEXT",
+                           "default":  "Cleansers, serums, moisturisers and sun care, chosen to work together.",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "intro"
+                                       },
+                           "data":  "collection.description",
+                           "note":  "Short intro, two lines at most"
+                       }
+                   ],
+    "tokens":  [
+                   "banner gradient",
+                   "type roles",
+                   "spacing"
+               ],
+    "summary":  "Breadcrumb, the one H1, a short intro and, from 1024 px, a collection image on the right. Maps to the collection banner of the collection template.",
+    "accessibility":  "The H1 labels the section; the breadcrumb is a labelled nav with aria-current.",
+    "id":  "collection-banner",
+    "shopifyOnly":  [
+                        {
+                            "id":  "show_image_on_mobile",
+                            "setting":  "checkbox",
+                            "note":  "Show the collection image below 1024 px (default off, so products start early)"
+                        },
+                        {
+                            "id":  "collection_image",
+                            "setting":  "image_picker",
+                            "note":  "Uses collection.image when empty",
+                            "replaces":  "image placeholder"
+                        }
+                    ],
+    "level":  "main",
+    "status":  "classified",
+    "responsive":  "Text only below 1024 px; from 1024 px the image fills the right half.",
+    "exposes":  [
+
+                ],
+    "children":  [
+
+                 ]
+}

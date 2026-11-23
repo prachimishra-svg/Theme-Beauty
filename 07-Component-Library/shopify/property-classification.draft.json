@@ -1,0 +1,710 @@
+[
+    {
+        "component":  "badge",
+        "property":  "variant",
+        "type":  "VARIANT",
+        "scope":  "parent",
+        "shopifyParam":  "variant",
+        "merchantSettingType":  "select",
+        "note":  "Chosen by the calling section. A section may expose it as a select setting when merchants should pick a style",
+        "review":  ""
+    },
+    {
+        "component":  "badge",
+        "property":  "label",
+        "type":  "TEXT",
+        "scope":  "parent",
+        "shopifyParam":  "label",
+        "merchantSettingType":  "",
+        "note":  "Data: product tag badge:\u003ctext\u003e (PENDING MERCHANT CONFIRMATION), or a fixed locale string such as Sale",
+        "review":  ""
+    },
+    {
+        "component":  "badge",
+        "property":  "labelWrap",
+        "type":  "VARIANT",
+        "scope":  "parent",
+        "shopifyParam":  "label_wrap",
+        "merchantSettingType":  "",
+        "note":  "Passed by callers (reclassified from design by the conversion check)",
+        "review":  ""
+    },
+    {
+        "component":  "badge",
+        "property":  "extra",
+        "type":  "TEXT",
+        "scope":  "parent",
+        "shopifyParam":  "extra",
+        "merchantSettingType":  "",
+        "note":  "Layout utilities set by the parent (margin, width, group)",
+        "review":  ""
+    },
+    {
+        "component":  "badge",
+        "property":  "editHook",
+        "type":  "TEXT",
+        "scope":  "wireframe",
+        "shopifyParam":  "edit_hook",
+        "merchantSettingType":  "",
+        "note":  "Wireframe review hook (data-c). Not carried to Shopify",
+        "review":  ""
+    },
+    {
+        "component":  "breadcrumb",
+        "property":  "items",
+        "type":  "LIST",
+        "scope":  "merchant",
+        "shopifyParam":  "items",
+        "merchantSettingType":  "blocks",
+        "note":  "Repeating items become blocks or a link list",
+        "review":  ""
+    },
+    {
+        "component":  "button",
+        "property":  "variant",
+        "type":  "VARIANT",
+        "scope":  "parent",
+        "shopifyParam":  "variant",
+        "merchantSettingType":  "select",
+        "note":  "Chosen by the calling section. A section may expose it as a select setting when merchants should pick a style",
+        "review":  "",
+        "approved":  "D10 (2026-11-17)"
+    },
+    {
+        "component":  "button",
+        "property":  "size",
+        "type":  "VARIANT",
+        "scope":  "parent",
+        "shopifyParam":  "size",
+        "merchantSettingType":  "",
+        "note":  "Chosen by context (large on PDP, Cart, Drawer, Contact; small on PLP, Blog Article); never a merchant choice",
+        "review":  "",
+        "approved":  "D10 (2026-11-17)"
+    },
+    {
+        "component":  "button",
+        "property":  "element",
+        "type":  "VARIANT",
+        "scope":  "parent",
+        "shopifyParam":  "element",
+        "merchantSettingType":  "",
+        "note":  "Structure chosen by the caller: link, button or submit",
+        "review":  ""
+    },
+    {
+        "component":  "button",
+        "property":  "label",
+        "type":  "TEXT",
+        "scope":  "merchant",
+        "shopifyParam":  "label",
+        "merchantSettingType":  "text",
+        "note":  "Visible text. In a section it is a text setting; in a pure UI part (quantity, input) it is passed by the parent",
+        "review":  ""
+    },
+    {
+        "component":  "button",
+        "property":  "href",
+        "type":  "TEXT",
+        "scope":  "merchant",
+        "shopifyParam":  "href",
+        "merchantSettingType":  "url",
+        "note":  "Link target: url setting, or resolved from a link, product or collection by the parent",
+        "review":  ""
+    },
+    {
+        "component":  "button",
+        "property":  "icon",
+        "type":  "INSTANCE_SWAP",
+        "scope":  "parent",
+        "shopifyParam":  "icon",
+        "merchantSettingType":  "select",
+        "note":  "Chosen by the caller; exposed as a select only where the merchant picks the icon",
+        "review":  "",
+        "approved":  "D10 (2026-11-17)"
+    },
+    {
+        "component":  "button",
+        "property":  "iconPosition",
+        "type":  "VARIANT",
+        "scope":  "parent",
+        "shopifyParam":  "icon_position",
+        "merchantSettingType":  "",
+        "note":  "Layout choice made by the caller",
+        "review":  ""
+    },
+    {
+        "component":  "button",
+        "property":  "labelWrap",
+        "type":  "VARIANT",
+        "scope":  "parent",
+        "shopifyParam":  "label_wrap",
+        "merchantSettingType":  "",
+        "note":  "Passed by callers (reclassified from design by the conversion check)",
+        "review":  ""
+    },
+    {
+        "component":  "button",
+        "property":  "block",
+        "type":  "BOOLEAN",
+        "scope":  "parent",
+        "shopifyParam":  "block",
+        "merchantSettingType":  "checkbox",
+        "note":  "Full width, set by the layout",
+        "review":  ""
+    },
+    {
+        "component":  "button",
+        "property":  "disabled",
+        "type":  "BOOLEAN",
+        "scope":  "parent",
+        "shopifyParam":  "disabled",
+        "merchantSettingType":  "",
+        "note":  "State from logic (sold out, unavailable)",
+        "review":  ""
+    },
+    {
+        "component":  "button",
+        "property":  "id",
+        "type":  "TEXT",
+        "scope":  "parent",
+        "shopifyParam":  "id",
+        "merchantSettingType":  "",
+        "note":  "Wiring: id for labels and scripts",
+        "review":  ""
+    },
+    {
+        "component":  "button",
+        "property":  "attrs",
+        "type":  "TEXT",
+        "scope":  "parent",
+        "shopifyParam":  "attrs",
+        "merchantSettingType":  "",
+        "note":  "Wiring: data attributes for scripts",
+        "review":  ""
+    },
+    {
+        "component":  "button",
+        "property":  "extra",
+        "type":  "TEXT",
+        "scope":  "parent",
+        "shopifyParam":  "extra",
+        "merchantSettingType":  "",
+        "note":  "Layout utilities set by the parent (margin, width, group)",
+        "review":  ""
+    },
+    {
+        "component":  "button",
+        "property":  "editHook",
+        "type":  "TEXT",
+        "scope":  "wireframe",
+        "shopifyParam":  "edit_hook",
+        "merchantSettingType":  "",
+        "note":  "Wireframe review hook (data-c). Not carried to Shopify",
+        "review":  ""
+    },
+    {
+        "component":  "chip",
+        "property":  "variant",
+        "type":  "VARIANT",
+        "scope":  "parent",
+        "shopifyParam":  "variant",
+        "merchantSettingType":  "select",
+        "note":  "Chosen by the calling section. A section may expose it as a select setting when merchants should pick a style",
+        "review":  "",
+        "approved":  "D10 (2026-11-17)"
+    },
+    {
+        "component":  "chip",
+        "property":  "element",
+        "type":  "VARIANT",
+        "scope":  "parent",
+        "shopifyParam":  "element",
+        "merchantSettingType":  "",
+        "note":  "Structure chosen by the caller: link, button or submit",
+        "review":  ""
+    },
+    {
+        "component":  "chip",
+        "property":  "label",
+        "type":  "TEXT",
+        "scope":  "parent",
+        "shopifyParam":  "label",
+        "merchantSettingType":  "",
+        "note":  "Filter chips are product data; Homepage chips are fixed copy",
+        "review":  "",
+        "approved":  "D10 (2026-11-17)"
+    },
+    {
+        "component":  "chip",
+        "property":  "selected",
+        "type":  "BOOLEAN",
+        "scope":  "parent",
+        "shopifyParam":  "selected",
+        "merchantSettingType":  "",
+        "note":  "State from logic",
+        "review":  ""
+    },
+    {
+        "component":  "chip",
+        "property":  "href",
+        "type":  "TEXT",
+        "scope":  "parent",
+        "shopifyParam":  "href",
+        "merchantSettingType":  "",
+        "note":  "Computed from the filter or collection",
+        "review":  "",
+        "approved":  "D10 (2026-11-17)"
+    },
+    {
+        "component":  "chip",
+        "property":  "extra",
+        "type":  "TEXT",
+        "scope":  "parent",
+        "shopifyParam":  "extra",
+        "merchantSettingType":  "",
+        "note":  "Layout utilities set by the parent (margin, width, group)",
+        "review":  ""
+    },
+    {
+        "component":  "chip",
+        "property":  "editHook",
+        "type":  "TEXT",
+        "scope":  "wireframe",
+        "shopifyParam":  "edit_hook",
+        "merchantSettingType":  "",
+        "note":  "Wireframe review hook (data-c). Not carried to Shopify",
+        "review":  ""
+    },
+    {
+        "component":  "icon",
+        "property":  "name",
+        "type":  "INSTANCE_SWAP",
+        "scope":  "parent",
+        "shopifyParam":  "name",
+        "merchantSettingType":  "",
+        "note":  "Icon chosen by the caller (INSTANCE_SWAP)",
+        "review":  ""
+    },
+    {
+        "component":  "icon",
+        "property":  "size",
+        "type":  "VARIANT",
+        "scope":  "parent",
+        "shopifyParam":  "size",
+        "merchantSettingType":  "",
+        "note":  "Passed by callers (reclassified from design by the conversion check)",
+        "review":  ""
+    },
+    {
+        "component":  "icon",
+        "property":  "extra",
+        "type":  "TEXT",
+        "scope":  "parent",
+        "shopifyParam":  "extra",
+        "merchantSettingType":  "",
+        "note":  "Layout utilities set by the parent (margin, width, group)",
+        "review":  ""
+    },
+    {
+        "component":  "icon-button",
+        "property":  "variant",
+        "type":  "VARIANT",
+        "scope":  "parent",
+        "shopifyParam":  "variant",
+        "merchantSettingType":  "select",
+        "note":  "Chosen by the calling section. A section may expose it as a select setting when merchants should pick a style",
+        "review":  ""
+    },
+    {
+        "component":  "icon-button",
+        "property":  "icon",
+        "type":  "INSTANCE_SWAP",
+        "scope":  "parent",
+        "shopifyParam":  "icon",
+        "merchantSettingType":  "select",
+        "note":  "Chosen by the caller; exposed as a select only where the merchant picks the icon",
+        "review":  ""
+    },
+    {
+        "component":  "icon-button",
+        "property":  "label",
+        "type":  "TEXT",
+        "scope":  "parent",
+        "shopifyParam":  "label",
+        "merchantSettingType":  "",
+        "note":  "Accessible name; comes from a translatable locale string, not a merchant setting",
+        "review":  ""
+    },
+    {
+        "component":  "icon-button",
+        "property":  "disabled",
+        "type":  "BOOLEAN",
+        "scope":  "parent",
+        "shopifyParam":  "disabled",
+        "merchantSettingType":  "",
+        "note":  "State from logic (sold out, unavailable)",
+        "review":  ""
+    },
+    {
+        "component":  "icon-button",
+        "property":  "hook",
+        "type":  "TEXT",
+        "scope":  "parent",
+        "shopifyParam":  "hook",
+        "merchantSettingType":  "",
+        "note":  "Wiring: script hook",
+        "review":  ""
+    },
+    {
+        "component":  "icon-button",
+        "property":  "attrs",
+        "type":  "TEXT",
+        "scope":  "parent",
+        "shopifyParam":  "attrs",
+        "merchantSettingType":  "",
+        "note":  "Wiring: data attributes for scripts",
+        "review":  ""
+    },
+    {
+        "component":  "icon-button",
+        "property":  "extra",
+        "type":  "TEXT",
+        "scope":  "parent",
+        "shopifyParam":  "extra",
+        "merchantSettingType":  "",
+        "note":  "Layout utilities set by the parent (margin, width, group)",
+        "review":  ""
+    },
+    {
+        "component":  "input-field",
+        "property":  "label",
+        "type":  "TEXT",
+        "scope":  "parent",
+        "shopifyParam":  "label",
+        "merchantSettingType":  "",
+        "note":  "Visible field label; locale string or form wiring",
+        "review":  ""
+    },
+    {
+        "component":  "input-field",
+        "property":  "id",
+        "type":  "TEXT",
+        "scope":  "parent",
+        "shopifyParam":  "id",
+        "merchantSettingType":  "",
+        "note":  "Wiring: id for labels and scripts",
+        "review":  ""
+    },
+    {
+        "component":  "input-field",
+        "property":  "name",
+        "type":  "TEXT",
+        "scope":  "parent",
+        "shopifyParam":  "name",
+        "merchantSettingType":  "",
+        "note":  "Icon or form field name chosen by the caller",
+        "review":  ""
+    },
+    {
+        "component":  "input-field",
+        "property":  "type",
+        "type":  "VARIANT",
+        "scope":  "parent",
+        "shopifyParam":  "type",
+        "merchantSettingType":  "",
+        "note":  "Form wiring",
+        "review":  ""
+    },
+    {
+        "component":  "input-field",
+        "property":  "autocomplete",
+        "type":  "TEXT",
+        "scope":  "parent",
+        "shopifyParam":  "autocomplete",
+        "merchantSettingType":  "",
+        "note":  "Form wiring",
+        "review":  ""
+    },
+    {
+        "component":  "input-field",
+        "property":  "placeholder",
+        "type":  "TEXT",
+        "scope":  "parent",
+        "shopifyParam":  "placeholder",
+        "merchantSettingType":  "",
+        "note":  "Form wiring (merchant text only if a section exposes it)",
+        "review":  ""
+    },
+    {
+        "component":  "input-field",
+        "property":  "required",
+        "type":  "BOOLEAN",
+        "scope":  "parent",
+        "shopifyParam":  "required",
+        "merchantSettingType":  "",
+        "note":  "Form logic",
+        "review":  ""
+    },
+    {
+        "component":  "input-field",
+        "property":  "error",
+        "type":  "TEXT",
+        "scope":  "parent",
+        "shopifyParam":  "error",
+        "merchantSettingType":  "",
+        "note":  "Data: Shopify form errors",
+        "review":  ""
+    },
+    {
+        "component":  "media",
+        "property":  "shape",
+        "type":  "VARIANT",
+        "scope":  "parent",
+        "shopifyParam":  "shape",
+        "merchantSettingType":  "",
+        "note":  "Layout choice made by the caller",
+        "review":  ""
+    },
+    {
+        "component":  "media",
+        "property":  "ratio",
+        "type":  "VARIANT",
+        "scope":  "parent",
+        "shopifyParam":  "ratio",
+        "merchantSettingType":  "",
+        "note":  "Image ratio chosen by the caller (design scale); may be exposed as a select",
+        "review":  "",
+        "approved":  "D10 (2026-11-17)"
+    },
+    {
+        "component":  "media",
+        "property":  "tone",
+        "type":  "VARIANT",
+        "scope":  "wireframe",
+        "shopifyParam":  "tone",
+        "merchantSettingType":  "",
+        "note":  "Placeholder tone. Not carried to Shopify",
+        "review":  ""
+    },
+    {
+        "component":  "media",
+        "property":  "label",
+        "type":  "TEXT",
+        "scope":  "wireframe",
+        "shopifyParam":  "label",
+        "merchantSettingType":  "",
+        "note":  "Placeholder caption. Not carried to Shopify",
+        "review":  ""
+    },
+    {
+        "component":  "media",
+        "property":  "dim",
+        "type":  "TEXT",
+        "scope":  "wireframe",
+        "shopifyParam":  "dim",
+        "merchantSettingType":  "",
+        "note":  "Placeholder size caption. Not carried to Shopify",
+        "review":  ""
+    },
+    {
+        "component":  "media",
+        "property":  "image",
+        "type":  "TEXT",
+        "scope":  "merchant",
+        "shopifyParam":  "image",
+        "merchantSettingType":  "image_picker",
+        "note":  "Wireframe placeholder today; Shopify image object later",
+        "review":  ""
+    },
+    {
+        "component":  "media",
+        "property":  "alt",
+        "type":  "TEXT",
+        "scope":  "parent",
+        "shopifyParam":  "alt",
+        "merchantSettingType":  "",
+        "note":  "From the Shopify image alt (edited in admin); empty for decorative images",
+        "review":  "",
+        "approved":  "D10 (2026-11-17)"
+    },
+    {
+        "component":  "media",
+        "property":  "nodim",
+        "type":  "BOOLEAN",
+        "scope":  "wireframe",
+        "shopifyParam":  "nodim",
+        "merchantSettingType":  "",
+        "note":  "Placeholder caption switch. Not carried to Shopify",
+        "review":  ""
+    },
+    {
+        "component":  "media",
+        "property":  "extra",
+        "type":  "TEXT",
+        "scope":  "parent",
+        "shopifyParam":  "extra",
+        "merchantSettingType":  "",
+        "note":  "Layout utilities set by the parent (margin, width, group)",
+        "review":  ""
+    },
+    {
+        "component":  "message",
+        "property":  "variant",
+        "type":  "VARIANT",
+        "scope":  "parent",
+        "shopifyParam":  "variant",
+        "merchantSettingType":  "select",
+        "note":  "Set by the flow (success, error, warning)",
+        "review":  ""
+    },
+    {
+        "component":  "message",
+        "property":  "text",
+        "type":  "TEXT",
+        "scope":  "merchant",
+        "shopifyParam":  "text",
+        "merchantSettingType":  "text",
+        "note":  "Message text from the calling flow",
+        "review":  ""
+    },
+    {
+        "component":  "price",
+        "property":  "variant",
+        "type":  "VARIANT",
+        "scope":  "parent",
+        "shopifyParam":  "variant",
+        "merchantSettingType":  "select",
+        "note":  "Chosen by the calling section. A section may expose it as a select setting when merchants should pick a style",
+        "review":  ""
+    },
+    {
+        "component":  "price",
+        "property":  "price",
+        "type":  "TEXT",
+        "scope":  "parent",
+        "shopifyParam":  "price",
+        "merchantSettingType":  "",
+        "note":  "Data: comes from the Shopify product or variant, never typed by a merchant",
+        "review":  ""
+    },
+    {
+        "component":  "price",
+        "property":  "compare",
+        "type":  "TEXT",
+        "scope":  "parent",
+        "shopifyParam":  "compare",
+        "merchantSettingType":  "",
+        "note":  "Data: compare_at_price",
+        "review":  ""
+    },
+    {
+        "component":  "price",
+        "property":  "unit",
+        "type":  "TEXT",
+        "scope":  "parent",
+        "shopifyParam":  "unit",
+        "merchantSettingType":  "",
+        "note":  "Data: unit price",
+        "review":  ""
+    },
+    {
+        "component":  "quantity",
+        "property":  "value",
+        "type":  "TEXT",
+        "scope":  "parent",
+        "shopifyParam":  "value",
+        "merchantSettingType":  "",
+        "note":  "Data or state (quantity value, rating value)",
+        "review":  ""
+    },
+    {
+        "component":  "quantity",
+        "property":  "label",
+        "type":  "TEXT",
+        "scope":  "parent",
+        "shopifyParam":  "label",
+        "merchantSettingType":  "",
+        "note":  "Accessible name; locale string",
+        "review":  ""
+    },
+    {
+        "component":  "quantity",
+        "property":  "minusDisabled",
+        "type":  "BOOLEAN",
+        "scope":  "parent",
+        "shopifyParam":  "minus_disabled",
+        "merchantSettingType":  "",
+        "note":  "State from logic (minimum reached)",
+        "review":  ""
+    },
+    {
+        "component":  "quantity",
+        "property":  "plusDisabled",
+        "type":  "BOOLEAN",
+        "scope":  "parent",
+        "shopifyParam":  "plus_disabled",
+        "merchantSettingType":  "",
+        "note":  "State from logic (maximum or stock reached)",
+        "review":  ""
+    },
+    {
+        "component":  "rating",
+        "property":  "stars",
+        "type":  "VARIANT",
+        "scope":  "parent",
+        "shopifyParam":  "stars",
+        "merchantSettingType":  "",
+        "note":  "Data: product rating (metafield reviews.rating, PENDING MERCHANT CONFIRMATION)",
+        "review":  ""
+    },
+    {
+        "component":  "rating",
+        "property":  "value",
+        "type":  "TEXT",
+        "scope":  "parent",
+        "shopifyParam":  "value",
+        "merchantSettingType":  "",
+        "note":  "Data or state (quantity value, rating value)",
+        "review":  ""
+    },
+    {
+        "component":  "rating",
+        "property":  "count",
+        "type":  "TEXT",
+        "scope":  "parent",
+        "shopifyParam":  "count",
+        "merchantSettingType":  "",
+        "note":  "Data: reviews.rating_count, PENDING MERCHANT CONFIRMATION",
+        "review":  ""
+    },
+    {
+        "component":  "section-heading",
+        "property":  "title",
+        "type":  "TEXT",
+        "scope":  "merchant",
+        "shopifyParam":  "title",
+        "merchantSettingType":  "text",
+        "note":  "",
+        "review":  ""
+    },
+    {
+        "component":  "section-heading",
+        "property":  "lead",
+        "type":  "TEXT",
+        "scope":  "merchant",
+        "shopifyParam":  "lead",
+        "merchantSettingType":  "textarea",
+        "note":  "",
+        "review":  ""
+    },
+    {
+        "component":  "section-heading",
+        "property":  "editHook",
+        "type":  "TEXT",
+        "scope":  "wireframe",
+        "shopifyParam":  "edit_hook",
+        "merchantSettingType":  "",
+        "note":  "Wireframe review hook (data-c). Not carried to Shopify",
+        "review":  ""
+    }
+]

@@ -1,0 +1,83 @@
+{
+    "note":  "Last accepted sync per component: contract hash of the library component and hash of its Liquid. Written by check-shopify-sync.ps1 -Accept.",
+    "components":  {
+                       "components/base/badge":  {
+                                                     "contract":  "86d7d7ac45d08664",
+                                                     "liquid":  "1a3ad272588bef11",
+                                                     "accepted":  "2026-11-17 19:43",
+                                                     "renders":  8
+                                                 },
+                       "components/base/breadcrumb":  {
+                                                          "contract":  "776ea678cec2b99b",
+                                                          "liquid":  "a50a12e9f2e20440",
+                                                          "accepted":  "2026-11-17 19:43",
+                                                          "renders":  1
+                                                      },
+                       "components/base/button":  {
+                                                      "contract":  "656ae0485f2c4791",
+                                                      "liquid":  "79f38bb2ac68edb1",
+                                                      "accepted":  "2026-11-17 19:43",
+                                                      "renders":  18
+                                                  },
+                       "components/base/chip":  {
+                                                    "contract":  "3961ada54f3922c3",
+                                                    "liquid":  "29c3089f69828441",
+                                                    "accepted":  "2026-11-17 19:43",
+                                                    "renders":  7
+                                                },
+                       "components/base/icon":  {
+                                                    "contract":  "3a3333a2c3e46b32",
+                                                    "liquid":  "f1123f1086b98f08",
+                                                    "accepted":  "2026-11-17 19:43",
+                                                    "renders":  8
+                                                },
+                       "components/base/icon-button":  {
+                                                           "contract":  "c4ac2ba2540fa942",
+                                                           "liquid":  "0b0d335926bb53ef",
+                                                           "accepted":  "2026-11-17 19:43",
+                                                           "renders":  8
+                                                       },
+                       "components/base/input-field":  {
+                                                           "contract":  "39d511e9bbee2630",
+                                                           "liquid":  "a03f0495dfca6af4",
+                                                           "accepted":  "2026-11-17 19:43",
+                                                           "renders":  6
+                                                       },
+                       "components/base/media":  {
+                                                     "contract":  "ae77283676352957",
+                                                     "liquid":  "feb5942c5f28836c",
+                                                     "accepted":  "2026-11-17 19:43",
+                                                     "renders":  7
+                                                 },
+                       "components/base/message":  {
+                                                       "contract":  "435f7cbe8fcff290",
+                                                       "liquid":  "10cf8d4ac5280493",
+                                                       "accepted":  "2026-11-17 19:43",
+                                                       "renders":  4
+                                                   },
+                       "components/base/price":  {
+                                                     "contract":  "c364da67220515bb",
+                                                     "liquid":  "1916527909fc0bbe",
+                                                     "accepted":  "2026-11-17 19:43",
+                                                     "renders":  3
+                                                 },
+                       "components/base/quantity":  {
+                                                        "contract":  "3f454e9c1e39c206",
+                                                        "liquid":  "599c2c934a520357",
+                                                        "accepted":  "2026-11-17 19:43",
+                                                        "renders":  4
+                                                    },
+                       "components/base/rating":  {
+                                                      "contract":  "fdba2accaaad40b8",
+                                                      "liquid":  "ce7a541094a13fc3",
+                                                      "accepted":  "2026-11-17 19:43",
+                                                      "renders":  7
+                                                  },
+                       "components/base/section-heading":  {
+                                                               "contract":  "c9c41c9f1756b190",
+                                                               "liquid":  "9c544c717a94c0f4",
+                                                               "accepted":  "2026-11-17 19:43",
+                                                               "renders":  2
+                                                           }
+                   }
+}

@@ -1,0 +1,71 @@
+{
+    "id":  "ingredient-card",
+    "page":  "homepage",
+    "level":  "sub",
+    "name":  "Ingredient Card",
+    "properties":  [
+                       {
+                           "name":  "i",
+                           "type":  "TEXT",
+                           "default":  "1",
+                           "scope":  "wireframe",
+                           "shopify":  {
+                                           "param":  "i"
+                                       },
+                           "note":  "Placeholder caption number"
+                       },
+                       {
+                           "name":  "tone",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "scope":  "wireframe",
+                           "shopify":  {
+                                           "param":  "tone"
+                                       },
+                           "note":  "Placeholder tint class"
+                       },
+                       {
+                           "name":  "name",
+                           "type":  "TEXT",
+                           "default":  "Ingredient name 1",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "name",
+                                           "id":  "name",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "desc",
+                           "type":  "TEXT",
+                           "default":  "One line on what it is and why it is used. Merchant to provide; no claims without evidence.",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "desc",
+                                           "id":  "text",
+                                           "setting":  "text"
+                                       },
+                           "note":  "No claims without evidence"
+                       }
+                   ],
+    "shopifyOnly":  [
+                        {
+                            "id":  "image",
+                            "setting":  "image_picker",
+                            "replaces":  "placeholder",
+                            "note":  "Real macro photo"
+                        }
+                    ],
+    "status":  "classified (D10 items pending)",
+    "accessibility":  "Name and description are plain text; the photo is decorative.",
+    "summary":  "A round macro photo with the ingredient name and a one-line description.",
+    "tokens":  [
+                   "border colour",
+                   "type roles",
+                   "spacing"
+               ],
+    "responsive":  "Four across on large screens, two on small.",
+    "children":  [
+
+                 ]
+}

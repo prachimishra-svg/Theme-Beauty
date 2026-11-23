@@ -1,0 +1,98 @@
+{
+    "name":  "Header",
+    "wireframeOnly":  [
+                          "data-c review hooks"
+                      ],
+    "page":  "shared",
+    "properties":  [
+                       {
+                           "name":  "cart",
+                           "type":  "VARIANT",
+                           "default":  "link",
+                           "values":  [
+                                          "link",
+                                          "page",
+                                          "drawer"
+                                      ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "cart"
+                                       },
+                           "note":  "How the cart control behaves on this page"
+                       },
+                       {
+                           "name":  "nav",
+                           "type":  "VARIANT",
+                           "default":  "none",
+                           "values":  [
+                                          "none",
+                                          "skin"
+                                      ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "nav"
+                                       },
+                           "note":  "Which navigation entry is the current page: none or skin"
+                       },
+                       {
+                           "name":  "extra",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "extra"
+                                       },
+                           "note":  "Layout utilities the page adds to the header bar (the Homepage makes it transparent over the hero)"
+                       }
+                   ],
+    "tokens":  [
+                   "page background",
+                   "borders",
+                   "z-index",
+                   "touch target"
+               ],
+    "summary":  "The sticky site header: menu button, search, logo, navigation with mega menus and the country selector, and the account and cart controls. Maps to the header section in the Shopify header group.",
+    "accessibility":  "A banner landmark with a labelled main navigation; the mobile panel traps focus while open.",
+    "id":  "site-header",
+    "shopifyOnly":  [
+                        {
+                            "id":  "menu",
+                            "setting":  "link_list",
+                            "note":  "Main navigation; its links become the navigation items"
+                        },
+                        {
+                            "id":  "transparent_on_home",
+                            "setting":  "checkbox",
+                            "note":  "Replaces the extra property on the Homepage"
+                        },
+                        {
+                            "id":  "show_search",
+                            "setting":  "checkbox"
+                        },
+                        {
+                            "id":  "show_account",
+                            "setting":  "checkbox"
+                        },
+                        {
+                            "id":  "mega_card",
+                            "setting":  "blocks",
+                            "note":  "Promotional cards in the mega menus"
+                        }
+                    ],
+    "level":  "main",
+    "status":  "classified (D10 items pending)",
+    "responsive":  "Mobile: menu button, logo and cart, with the navigation in a side panel. From 1024 px: logo left, navigation centre, search, account and cart right.",
+    "exposes":  [
+
+                ],
+    "children":  [
+                     "components/header/menu-button",
+                     "components/header/search-button",
+                     "components/header/logo",
+                     "components/header/nav-close",
+                     "components/header/nav-item",
+                     "components/header/market-selector",
+                     "components/header/account-button",
+                     "components/header/cart-button"
+                 ]
+}

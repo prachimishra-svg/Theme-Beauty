@@ -1,0 +1,98 @@
+{
+    "id":  "icon",
+    "name":  "Icon",
+    "level":  "base",
+    "page":  "shared",
+    "status":  "ready",
+    "summary":  "One glyph from the project icon set (Lucide, 24 px grid, 1.5 stroke), drawn from the shared sprite.",
+    "properties":  [
+                       {
+                           "name":  "name",
+                           "type":  "INSTANCE_SWAP",
+                           "default":  "arrow-right",
+                           "options":  [
+                                           "account",
+                                           "arrow-left",
+                                           "arrow-right",
+                                           "bag",
+                                           "check",
+                                           "check-circle",
+                                           "chevron-down",
+                                           "chevron-left",
+                                           "chevron-right",
+                                           "chevron-up",
+                                           "clock",
+                                           "close",
+                                           "eye",
+                                           "eye-off",
+                                           "facebook",
+                                           "filter",
+                                           "heart",
+                                           "info",
+                                           "instagram",
+                                           "loader",
+                                           "location",
+                                           "lock",
+                                           "mail",
+                                           "menu",
+                                           "minus",
+                                           "phone",
+                                           "play",
+                                           "plus",
+                                           "rotate-ccw",
+                                           "search",
+                                           "share",
+                                           "shield-check",
+                                           "sort",
+                                           "star",
+                                           "store",
+                                           "truck",
+                                           "warning",
+                                           "youtube",
+                                           "zoom-in"
+                                       ],
+                           "note":  "Which icon",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "name"
+                                       }
+                       },
+                       {
+                           "name":  "size",
+                           "type":  "VARIANT",
+                           "default":  "md",
+                           "values":  [
+                                          "sm",
+                                          "md",
+                                          "lg",
+                                          "custom"
+                                      ],
+                           "classes":  {
+                                           "sm":  "size-4",
+                                           "md":  "size-5",
+                                           "lg":  "size-6",
+                                           "custom":  ""
+                                       },
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "icon_size"
+                                       },
+                           "note":  "Passed by callers: small, medium, large or custom (size comes from extra). Reclassified from design by the conversion check: a value callers choose is a parameter"
+                       },
+                       {
+                           "name":  "extra",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "note":  "Layout utilities set by the parent (colour, margin, transitions)",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "extra"
+                                       }
+                       }
+                   ],
+    "accessibility":  "Decorative (aria-hidden). The control that contains it carries the accessible name.",
+    "tokens":  [
+                   "icon sizes",
+                   "currentColor"
+               ]
+}

@@ -1,0 +1,42 @@
+{%- comment -%}
+  PENDING MERCHANT CONFIRMATION. The metafield and tag names below are placeholders, not verified against the merchant's store:
+    product.metafields.custom.size            -> size line (for example 150 ml)
+    product.metafields.custom.highlight       -> key attribute line (for example Best for: dullness)
+    product.metafields.reviews.rating         -> star rating value
+    product.metafields.reviews.rating_count   -> number of ratings
+    product tag "badge:<text>"                -> badge text (a sale badge is derived from compare-at price)
+  Do not rename without checking the real definitions (Shopify admin > Settings > Custom data > Products). Each line is simply hidden when its value is empty.
+  Tracked in MANUAL-CHECKS.md, item P1.
+{%- endcomment -%}
+{%- liquid
+  assign tone = 't4'
+  assign parity = index0 | modulo: 2
+  if parity == 1
+    assign tone = 't2'
+  endif
+  assign badge = ''
+  assign badge_style = 'bg-page text-ink'
+  if product.compare_at_price > product.price
+    assign off = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price | floor
+    assign badge = 'sections.product_card.percent_off' | t: percent: off
+    assign badge_style = 'bg-brand text-ink-on-brand'
+  else
+    for tag in product.tags
+      if tag contains 'badge:'
+        assign badge = tag | remove_first: 'badge:' | strip
+        break
+      endif
+    endfor
+  endif
+  assign size = product.metafields.custom.size.value
+  assign highlight = product.metafields.custom.highlight.value
+  assign rating = product.metafields.reviews.rating.value
+  assign rating_count = product.metafields.reviews.rating_count.value
+  assign has_shades = false
+  for option in product.options_with_values
+    assign oname = option.name | downcase
+    if oname == 'shade' or oname == 'color' or oname == 'colour'
+      assign has_shades = true
+    endif
+  endfor
+-%}<article class="card group relative flex min-w-0 flex-col text-center"><div class="card__img relative overflow-hidden bg-surface">{%- if product.featured_image != blank -%}{{ product.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '400, 600, 800', sizes: '(min-width: 768px) 25vw, 50vw', class: 'aspect-portrait w-full object-cover', alt: product.featured_image.alt | default: product.title }}{%- else -%}<div class="img r45 {{ tone }}"><i class="ratio"></i><div class="in"><span class="lbl">{{ 'sections.product_card.photo' | t: title: product.title | escape }}</span><span class="dim">4:5, 800 x 1000</span></div></div>{%- endif -%}{%- if badge != blank -%}<span class="absolute left-[10px] top-[10px] z-[4] px-2 py-1 text-caption font-semibold tracking-[0.06em] {{ badge_style }}"><span>{{ badge | escape }}</span></span>{%- endif -%}</div><h3 class="ptitle type-product-title mt-4 lg:group-hover:text-brand lg:[.show-hover_.card:first-child_&]:text-brand"><a class="card__link text-inherit no-underline after:absolute after:inset-0 after:z-[5] after:content-[''] hover:text-brand focus-visible:text-brand" href="{{ product.url }}"><span>{{ product.title | escape }}</span></a></h3>{%- if size != blank -%}<span class="sub block text-body-sm text-ink-secondary mt-[2px]"><span>{{ size | escape }}</span></span>{%- endif -%}{%- if highlight != blank -%}<span class="attr mt-1 block text-body-sm text-ink-secondary"><span>{{ highlight | escape }}</span></span>{%- endif -%}{%- if rating != blank -%}<span class="rate mt-1 flex items-center justify-center gap-1 text-body-sm text-ink-secondary">{% render 'icon', name: 'star', class: 'icon size-4 fill-rating stroke-rating' %}<span>{{ rating }} ({{ rating_count }})</span></span>{%- endif -%}<span class="sw mt-2 flex justify-center gap-2" aria-hidden="true"{% unless has_shades %} hidden{% endunless %}><i class="block size-3 rounded-full border border-line-inverse bg-brand-tint-strong"></i><i class="block size-3 rounded-full border border-line-inverse bg-brand"></i><i class="block size-3 rounded-full border border-line-inverse bg-brand-accent"></i></span><span class="pprice mt-auto block pt-2 font-body text-price font-medium"><span>{{ product.price | money }}</span>{%- if product.compare_at_price > product.price -%} <s class="font-regular ml-2 text-ink-muted">{{ product.compare_at_price | money }}</s>{%- endif -%}</span></article>

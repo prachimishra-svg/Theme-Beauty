@@ -1,0 +1,7 @@
+{%- comment -%}
+  GENERATED from components/base/breadcrumb by 07-Component-Library/tools/generate-liquid-staging.ps1 (contract 776ea678cec2b99b).
+  Do not edit here: change the library component, then regenerate. Text values are written raw; escape where Shopify data enters (| escape in the section).
+  Parameters (class: design = fixed, parent = passed in, merchant = set in a section, wireframe = not used):
+    items (LIST, merchant) - required, pass an array
+{%- endcomment -%}
+<nav class="breadcrumb" aria-label="Breadcrumb"><ol class="breadcrumb-list">{% for item in items %}<li class="breadcrumb-item"><a href="{{ item.href }}"{% if item.current != blank %} aria-current="page"{% endif %}>{{ item.label }}</a></li>{% endfor %}</ol></nav>

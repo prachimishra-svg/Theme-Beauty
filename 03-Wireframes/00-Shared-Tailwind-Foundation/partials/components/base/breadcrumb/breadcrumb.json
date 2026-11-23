@@ -1,0 +1,51 @@
+{
+    "id":  "breadcrumb",
+    "name":  "Breadcrumb",
+    "level":  "base",
+    "page":  "shared",
+    "status":  "ready",
+    "summary":  "The trail of pages above the title; the last link is the current page.",
+    "properties":  [
+                       {
+                           "name":  "items",
+                           "type":  "LIST",
+                           "default":  [
+                                           {
+                                               "label":  "Home",
+                                               "href":  "#top",
+                                               "current":  false
+                                           },
+                                           {
+                                               "label":  "Skin care",
+                                               "href":  "#cat",
+                                               "current":  true
+                                           }
+                                       ],
+                           "itemFields":  [
+                                              {
+                                                  "name":  "label",
+                                                  "type":  "TEXT"
+                                              },
+                                              {
+                                                  "name":  "href",
+                                                  "type":  "TEXT"
+                                              },
+                                              {
+                                                  "name":  "current",
+                                                  "type":  "BOOLEAN"
+                                              }
+                                          ],
+                           "note":  "One entry per level",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "items",
+                                           "setting":  "blocks"
+                                       }
+                       }
+                   ],
+    "accessibility":  "nav landmark named Breadcrumb; ordered list; aria-current on the last link.",
+    "tokens":  [
+                   "body-sm type",
+                   "divider"
+               ]
+}

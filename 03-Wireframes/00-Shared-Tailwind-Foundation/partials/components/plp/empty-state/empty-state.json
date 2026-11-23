@@ -1,0 +1,78 @@
+{
+    "id":  "empty-state",
+    "page":  "plp",
+    "level":  "sub",
+    "name":  "Empty Filter Result",
+    "properties":  [
+                       {
+                           "name":  "heading",
+                           "type":  "TEXT",
+                           "default":  "No products match these filters",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "heading"
+                                       },
+                           "note":  "Locale string"
+                       },
+                       {
+                           "name":  "text",
+                           "type":  "TEXT",
+                           "default":  "Remove a filter or start from a category.",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "text"
+                                       },
+                           "note":  "Locale string"
+                       },
+                       {
+                           "name":  "buttonLabel",
+                           "type":  "TEXT",
+                           "default":  "Clear all filters",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "button_label"
+                                       },
+                           "note":  "Locale string"
+                       },
+                       {
+                           "name":  "links",
+                           "type":  "LIST",
+                           "default":  [
+                                           {
+                                               "href":  "#cat",
+                                               "label":  "Cleansers"
+                                           },
+                                           {
+                                               "href":  "#cat",
+                                               "label":  "Serums"
+                                           },
+                                           {
+                                               "href":  "#cat",
+                                               "label":  "Moisturisers"
+                                           }
+                                       ],
+                           "itemFields":  [
+                                              "label",
+                                              "href"
+                                          ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "links"
+                                       },
+                           "data":  "collection list",
+                           "note":  "Category links"
+                       }
+                   ],
+    "accessibility":  "Plain text and links; focus moves to the filters control after Clear all.",
+    "status":  "classified",
+    "summary":  "Shown in place of the grid when the filters match no products: a message, a Clear all filters button and category links.",
+    "tokens":  [
+                   "spacing",
+                   "chip tokens"
+               ],
+    "responsive":  "Same at all widths.",
+    "children":  [
+                     "components/base/icon",
+                     "components/base/button"
+                 ]
+}

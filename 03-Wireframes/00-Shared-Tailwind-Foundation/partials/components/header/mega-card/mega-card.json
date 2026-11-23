@@ -1,0 +1,68 @@
+{
+    "name":  "Mega Menu Card",
+    "page":  "shared",
+    "properties":  [
+                       {
+                           "name":  "key",
+                           "type":  "TEXT",
+                           "default":  "skin",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "key"
+                                       },
+                           "note":  "Menu key used in the link anchor"
+                       },
+                       {
+                           "name":  "title",
+                           "type":  "TEXT",
+                           "default":  "New in skin",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "title",
+                                           "id":  "title",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "tone",
+                           "type":  "TEXT",
+                           "default":  "ph",
+                           "scope":  "wireframe",
+                           "shopify":  {
+                                           "param":  "tone"
+                                       },
+                           "note":  "Placeholder tint class"
+                       }
+                   ],
+    "tokens":  [
+                   "type roles",
+                   "spacing"
+               ],
+    "summary":  "One promotional card: image, title and a Shop now link.",
+    "accessibility":  "One link; the title names it.",
+    "id":  "mega-card",
+    "shopifyOnly":  [
+                        {
+                            "id":  "cta",
+                            "setting":  "text"
+                        },
+                        {
+                            "id":  "link",
+                            "setting":  "url"
+                        },
+                        {
+                            "id":  "image",
+                            "setting":  "image_picker",
+                            "replaces":  "placeholder"
+                        }
+                    ],
+    "level":  "sub",
+    "status":  "classified (D10 items pending)",
+    "responsive":  "Two cards side by side from 1024 px.",
+    "wireframeOnly":  [
+                          "IMAGE PLACEHOLDER caption and tint"
+                      ],
+    "children":  [
+                     "components/base/icon"
+                 ]
+}

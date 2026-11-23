@@ -1,0 +1,183 @@
+{
+    "name":  "Shop by Concern / Routine",
+    "wireframeOnly":  [
+                          ".ann annotation block",
+                          "data-section attribute",
+                          "data-c hooks",
+                          "concern tone placeholder tints"
+                      ],
+    "page":  "homepage",
+    "properties":  [
+                       {
+                           "name":  "heading",
+                           "type":  "TEXT",
+                           "default":  "Shop by concern or routine",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "heading",
+                                           "id":  "heading",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "lead",
+                           "type":  "TEXT",
+                           "default":  "Start with what you want to look after, or build a routine step by step.",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "lead",
+                                           "id":  "lead",
+                                           "setting":  "textarea"
+                                       }
+                       },
+                       {
+                           "name":  "concernTitle",
+                           "type":  "TEXT",
+                           "default":  "By skin concern",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "concern_title",
+                                           "id":  "concern_title",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "routineTitle",
+                           "type":  "TEXT",
+                           "default":  "By routine step",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "routine_title",
+                                           "id":  "routine_title",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "anchor",
+                           "type":  "TEXT",
+                           "default":  "s07",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "anchor",
+                                           "id":  "anchor",
+                                           "setting":  "text"
+                                       },
+                           "note":  "In-page anchor id"
+                       },
+                       {
+                           "name":  "concerns",
+                           "type":  "LIST",
+                           "default":  [
+                                           {
+                                               "tone":  "t2",
+                                               "name":  "Dryness"
+                                           },
+                                           {
+                                               "tone":  "t3",
+                                               "name":  "Dullness"
+                                           },
+                                           {
+                                               "tone":  "t4",
+                                               "name":  "Breakouts"
+                                           },
+                                           {
+                                               "tone":  "",
+                                               "name":  "Sensitivity"
+                                           },
+                                           {
+                                               "tone":  "t2",
+                                               "name":  "Uneven tone"
+                                           },
+                                           {
+                                               "tone":  "t3",
+                                               "name":  "Texture"
+                                           }
+                                       ],
+                           "itemFields":  [
+                                              "name",
+                                              "tone"
+                                          ],
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "concerns",
+                                           "setting":  "blocks",
+                                           "blockType":  "concern",
+                                           "maxBlocks":  6
+                                       },
+                           "note":  "One block per concern"
+                       },
+                       {
+                           "name":  "steps",
+                           "type":  "LIST",
+                           "default":  [
+                                           {
+                                               "label":  "Cleanse"
+                                           },
+                                           {
+                                               "label":  "Treat"
+                                           },
+                                           {
+                                               "label":  "Moisturise"
+                                           },
+                                           {
+                                               "label":  "Protect"
+                                           }
+                                       ],
+                           "itemFields":  [
+                                              "label"
+                                          ],
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "steps",
+                                           "setting":  "blocks",
+                                           "blockType":  "routine_step",
+                                           "maxBlocks":  4
+                                       },
+                           "note":  "One block per routine step"
+                       }
+                   ],
+    "tokens":  [
+                   "surface background",
+                   "grid gap",
+                   "type roles"
+               ],
+    "summary":  "Skin concerns as round photos and routine steps as numbered pills. Maps to the concern-routine section.",
+    "accessibility":  "Heading is an h2; every card and pill is a link.",
+    "id":  "concern-section",
+    "level":  "main",
+    "status":  "classified (D10 items pending)",
+    "responsive":  "Concern photos: three columns below 1024 px, six from 1024 px. Steps wrap.",
+    "exposes":  [
+                    {
+                        "child":  "components/base/section-heading",
+                        "property":  "title",
+                        "via":  "heading"
+                    },
+                    {
+                        "child":  "components/base/section-heading",
+                        "property":  "lead",
+                        "via":  "lead"
+                    },
+                    {
+                        "child":  "components/homepage/group-title",
+                        "property":  "text",
+                        "via":  "concernTitle, routineTitle"
+                    },
+                    {
+                        "child":  "components/homepage/concern-card",
+                        "property":  "name",
+                        "via":  "concerns.name"
+                    },
+                    {
+                        "child":  "components/homepage/routine-step",
+                        "property":  "label",
+                        "via":  "steps.label"
+                    }
+                ],
+    "children":  [
+                     "components/base/section-heading",
+                     "components/homepage/group-title",
+                     "components/homepage/concern-card",
+                     "components/homepage/routine-step"
+                 ]
+}

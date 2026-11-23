@@ -1,0 +1,236 @@
+{
+    "specVersion":  "1.0",
+    "kind":  "source",
+    "purpose":  "Layout (collection Layout, modes Mobile, Tablet, Desktop). Tier tokens map one to one; fluid section spacing is sampled.",
+    "valueSyntax":  "A value is a literal (hex colour, number in px unless stated, or text) or an alias written {collection-local/variable-name}. Colours are #RRGGBB or #RRGGBBAA. Every variable has one value per mode of its collection.",
+    "variables":  [
+                      {
+                          "name":  "layout/gutter",
+                          "collection":  "Layout",
+                          "type":  "FLOAT",
+                          "layer":  "layout",
+                          "description":  "Page side padding (16 / 24 / 40px)",
+                          "scopes":  [
+                                         "GAP",
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  "{space/4}",
+                                         "Tablet":  "{space/6}",
+                                         "Desktop":  "{space/10}"
+                                     },
+                          "webToken":  "--layout-gutter",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "layout/grid-gap",
+                          "collection":  "Layout",
+                          "type":  "FLOAT",
+                          "layer":  "layout",
+                          "description":  "Gap between grid cells (16 / 24 / 32px)",
+                          "scopes":  [
+                                         "GAP"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  "{space/4}",
+                                         "Tablet":  "{space/6}",
+                                         "Desktop":  "{space/8}"
+                                     },
+                          "webToken":  "--layout-grid-gap",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "layout/header-height",
+                          "collection":  "Layout",
+                          "type":  "FLOAT",
+                          "layer":  "layout",
+                          "description":  "Header minimum height (the content decides the final height)",
+                          "scopes":  [
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  64,
+                                         "Tablet":  64,
+                                         "Desktop":  80
+                                     },
+                          "webToken":  "--layout-header-height",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "layout/section-spacing",
+                          "collection":  "Layout",
+                          "type":  "FLOAT",
+                          "layer":  "layout",
+                          "description":  "Vertical padding of a page section: 48px mobile, 64px tablet, 96px desktop (web tier token, 4px grid). Was fluid in the web system and sampled here as 48 / 66 / 92.",
+                          "scopes":  [
+                                         "GAP",
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  "{space/12}",
+                                         "Tablet":  "{space/16}",
+                                         "Desktop":  "{space/24}"
+                                     },
+                          "webToken":  "--space-section",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "layout/card-padding",
+                          "collection":  "Layout",
+                          "type":  "FLOAT",
+                          "layer":  "layout",
+                          "description":  "Card inner padding (20 / 20 / 24px)",
+                          "scopes":  [
+                                         "GAP",
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  "{space/5}",
+                                         "Tablet":  "{space/5}",
+                                         "Desktop":  "{space/6}"
+                                     },
+                          "webToken":  "--card-padding",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "layout/container/max",
+                          "collection":  "Layout",
+                          "type":  "FLOAT",
+                          "layer":  "layout",
+                          "description":  "Page content cap maximum width",
+                          "scopes":  [
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  1280,
+                                         "Tablet":  1280,
+                                         "Desktop":  1280
+                                     },
+                          "webToken":  "--container-max",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "layout/container/wide",
+                          "collection":  "Layout",
+                          "type":  "FLOAT",
+                          "layer":  "layout",
+                          "description":  "Wide sections maximum width",
+                          "scopes":  [
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  1440,
+                                         "Tablet":  1440,
+                                         "Desktop":  1440
+                                     },
+                          "webToken":  "--container-wide",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "layout/container/narrow",
+                          "collection":  "Layout",
+                          "type":  "FLOAT",
+                          "layer":  "layout",
+                          "description":  "Forms, editorial maximum width",
+                          "scopes":  [
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  896,
+                                         "Tablet":  896,
+                                         "Desktop":  896
+                                     },
+                          "webToken":  "--container-narrow",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "layout/container/text",
+                          "collection":  "Layout",
+                          "type":  "FLOAT",
+                          "layer":  "layout",
+                          "description":  "Reading measure maximum width",
+                          "scopes":  [
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  640,
+                                         "Tablet":  640,
+                                         "Desktop":  640
+                                     },
+                          "webToken":  "--container-text",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "layout/drawer-width",
+                          "collection":  "Layout",
+                          "type":  "FLOAT",
+                          "layer":  "layout",
+                          "description":  "Drawer width. Tablet and Desktop: the 416px panel. MOBILE IS REFERENCE ONLY: the web value is 100% (a full-width sheet), which a number cannot express; build the sheet with Fill container and do not bind its width here.",
+                          "scopes":  [
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  360,
+                                         "Tablet":  416,
+                                         "Desktop":  416
+                                     },
+                          "webToken":  "--layout-drawer-width",
+                          "webRelation":  "mapped"
+                      },
+                      {
+                          "name":  "layout/frame-width",
+                          "collection":  "Layout",
+                          "type":  "FLOAT",
+                          "layer":  "layout",
+                          "description":  "Reference page-frame width per tier (the widths the web matrix samples). Figma-only: the web system has no such token.",
+                          "scopes":  [
+                                         "WIDTH_HEIGHT"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Mobile":  360,
+                                         "Tablet":  768,
+                                         "Desktop":  1280
+                                     },
+                          "webToken":  "",
+                          "webRelation":  "figma-only"
+                      }
+                  ],
+    "gridStyles":  [
+                       {
+                           "name":  "Grid/Products Mobile",
+                           "mode":  "Mobile",
+                           "columns":  2,
+                           "gutterVariable":  "{layout/grid-gap}",
+                           "marginVariable":  "{layout/gutter}",
+                           "note":  "Product grid, 2 columns (web: --grid-columns-products)"
+                       },
+                       {
+                           "name":  "Grid/Products Tablet",
+                           "mode":  "Tablet",
+                           "columns":  3,
+                           "gutterVariable":  "{layout/grid-gap}",
+                           "marginVariable":  "{layout/gutter}",
+                           "note":  "Product grid, 3 columns"
+                       },
+                       {
+                           "name":  "Grid/Products Desktop",
+                           "mode":  "Desktop",
+                           "columns":  4,
+                           "gutterVariable":  "{layout/grid-gap}",
+                           "marginVariable":  "{layout/gutter}",
+                           "note":  "Product grid, 4 columns"
+                       }
+                   ],
+    "gridNote":  "Grid column COUNT is a property of a layout grid or Grid Style, not a Variable. The web system defines only the product grid (2, 3, 4 columns); its proposed 4/8/12-column page grid was deliberately not adopted, so none is invented here."
+}

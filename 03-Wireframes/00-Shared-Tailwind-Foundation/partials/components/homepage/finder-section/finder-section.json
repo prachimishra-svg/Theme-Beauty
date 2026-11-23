@@ -1,0 +1,96 @@
+{
+    "name":  "Guided Finder",
+    "wireframeOnly":  [
+                          ".ann annotation block",
+                          "data-section attribute",
+                          "data-c review hooks"
+                      ],
+    "page":  "homepage",
+    "properties":  [
+                       {
+                           "name":  "eyebrow",
+                           "type":  "TEXT",
+                           "default":  "Guided finder",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "eyebrow",
+                                           "id":  "eyebrow",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "heading",
+                           "type":  "TEXT",
+                           "default":  "Not sure where to start?",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "heading",
+                                           "id":  "heading",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "text",
+                           "type":  "TEXT",
+                           "default":  "Answer three quick questions and we will point you to a matching collection.",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "text",
+                                           "id":  "text",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "anchor",
+                           "type":  "TEXT",
+                           "default":  "s08",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "anchor",
+                                           "id":  "anchor",
+                                           "setting":  "text"
+                                       },
+                           "note":  "In-page anchor id"
+                       }
+                   ],
+    "tokens":  [
+                   "subtle background",
+                   "spacing"
+               ],
+    "summary":  "Three quick questions that lead to a matching collection. Maps to the guided-finder section.",
+    "accessibility":  "Heading is an h2; the finder card handles focus.",
+    "id":  "finder-section",
+    "level":  "main",
+    "status":  "classified (D10 items pending)",
+    "responsive":  "Text above the card on small screens, side by side from 768 px.",
+    "exposes":  [
+                    {
+                        "child":  "components/homepage/finder-card",
+                        "property":  "question",
+                        "via":  "question blocks"
+                    },
+                    {
+                        "child":  "components/homepage/finder-card",
+                        "property":  "options",
+                        "via":  "question blocks (options)"
+                    },
+                    {
+                        "child":  "components/homepage/finder-card",
+                        "property":  "resultText",
+                        "via":  "result_text"
+                    },
+                    {
+                        "child":  "components/homepage/finder-card",
+                        "property":  "resultButton",
+                        "via":  "result_button"
+                    },
+                    {
+                        "child":  "components/homepage/finder-card",
+                        "property":  "resultHref",
+                        "via":  "result_link"
+                    }
+                ],
+    "children":  [
+                     "components/homepage/finder-card"
+                 ]
+}

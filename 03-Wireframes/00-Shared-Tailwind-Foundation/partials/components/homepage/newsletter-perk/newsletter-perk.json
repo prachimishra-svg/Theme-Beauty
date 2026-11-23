@@ -1,0 +1,30 @@
+{
+    "id":  "newsletter-perk",
+    "page":  "homepage",
+    "level":  "sub",
+    "name":  "Newsletter Perk",
+    "properties":  [
+                       {
+                           "name":  "label",
+                           "type":  "TEXT",
+                           "default":  "New launches first",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "label",
+                                           "id":  "text",
+                                           "setting":  "text"
+                                       }
+                       }
+                   ],
+    "accessibility":  "A list item; the icon is decorative.",
+    "status":  "classified (D10 items pending)",
+    "summary":  "One short reason to subscribe, with a check icon.",
+    "tokens":  [
+                   "brand colour",
+                   "type roles"
+               ],
+    "responsive":  "Wraps into rows on small screens.",
+    "children":  [
+                     "components/base/icon"
+                 ]
+}

@@ -1,0 +1,255 @@
+{
+    "id":  "button",
+    "name":  "Button",
+    "level":  "base",
+    "page":  "shared",
+    "status":  "ready",
+    "summary":  "Primary, secondary and text actions in the Design System style, and the Homepage Editorial style (square, sentence case). One component, named variants.",
+    "properties":  [
+                       {
+                           "name":  "variant",
+                           "type":  "VARIANT",
+                           "default":  "primary",
+                           "tables":  {
+                                          "iconClass":  {
+                                                            "primary":  "",
+                                                            "secondary":  "",
+                                                            "text":  "",
+                                                            "editorial":  "size-4 transition-transform duration-base group-hover:translate-x-[3px]",
+                                                            "editorial-outline":  "size-4 transition-transform duration-base group-hover:translate-x-[3px]",
+                                                            "editorial-text":  "size-4 transition-transform duration-base group-hover:translate-x-[3px]"
+                                                        }
+                                      },
+                           "values":  [
+                                          "primary",
+                                          "secondary",
+                                          "text",
+                                          "editorial",
+                                          "editorial-outline",
+                                          "editorial-text"
+                                      ],
+                           "note":  "primary, secondary, text = Design System; editorial* = Homepage Editorial",
+                           "classes":  {
+                                           "primary":  "btn btn-primary",
+                                           "secondary":  "btn btn-secondary",
+                                           "text":  "btn btn-text",
+                                           "editorial":  "hp-btn",
+                                           "editorial-outline":  "hp-btn hp-btn-o",
+                                           "editorial-text":  "hp-btn border-0 bg-transparent px-[2px] text-ink underline decoration-1 underline-offset-[6px] hover:bg-transparent hover:text-brand"
+                                       },
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "variant",
+                                           "setting":  "select"
+                                       },
+                           "approved":  "D10 (2026-11-17)"
+                       },
+                       {
+                           "name":  "size",
+                           "type":  "VARIANT",
+                           "default":  "md",
+                           "values":  [
+                                          "sm",
+                                          "md",
+                                          "lg"
+                                      ],
+                           "note":  "Design System sizes",
+                           "classes":  {
+                                           "sm":  "btn-sm",
+                                           "md":  "",
+                                           "lg":  "btn-lg"
+                                       },
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "button_size"
+                                       },
+                           "approved":  "D10 (2026-11-17)"
+                       },
+                       {
+                           "name":  "element",
+                           "type":  "VARIANT",
+                           "default":  "link",
+                           "note":  "What it renders: a link, a button, or a form submit button",
+                           "values":  [
+                                          "link",
+                                          "button",
+                                          "submit"
+                                      ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "element"
+                                       }
+                       },
+                       {
+                           "name":  "label",
+                           "type":  "TEXT",
+                           "default":  "Shop now",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "label",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "href",
+                           "type":  "TEXT",
+                           "default":  "#",
+                           "note":  "Link target (element = link)",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "href",
+                                           "setting":  "url"
+                                       }
+                       },
+                       {
+                           "name":  "icon",
+                           "type":  "INSTANCE_SWAP",
+                           "default":  "",
+                           "options":  [
+                                           "",
+                                           "search",
+                                           "account",
+                                           "bag",
+                                           "menu",
+                                           "close",
+                                           "plus",
+                                           "minus",
+                                           "chevron-down",
+                                           "chevron-up",
+                                           "chevron-left",
+                                           "chevron-right",
+                                           "arrow-left",
+                                           "arrow-right",
+                                           "filter",
+                                           "sort",
+                                           "heart",
+                                           "star",
+                                           "location",
+                                           "lock",
+                                           "check",
+                                           "check-circle",
+                                           "info",
+                                           "warning",
+                                           "eye",
+                                           "eye-off",
+                                           "share",
+                                           "instagram",
+                                           "facebook",
+                                           "youtube",
+                                           "mail",
+                                           "phone",
+                                           "clock",
+                                           "zoom-in",
+                                           "play",
+                                           "truck",
+                                           "rotate-ccw",
+                                           "shield-check",
+                                           "store",
+                                           "loader"
+                                       ],
+                           "note":  "Optional icon; empty = none",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "icon",
+                                           "setting":  "select"
+                                       },
+                           "approved":  "D10 (2026-11-17)"
+                       },
+                       {
+                           "name":  "iconPosition",
+                           "type":  "VARIANT",
+                           "default":  "trailing",
+                           "values":  [
+                                          "leading",
+                                          "trailing"
+                                      ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "icon_position"
+                                       }
+                       },
+                       {
+                           "name":  "labelWrap",
+                           "type":  "VARIANT",
+                           "default":  "plain",
+                           "values":  [
+                                          "plain",
+                                          "span"
+                                      ],
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "label_wrap"
+                                       },
+                           "note":  "Passed by callers (Editorial buttons wrap the label in a span). Reclassified from design by the conversion check; it could later be derived from the variant"
+                       },
+                       {
+                           "name":  "block",
+                           "type":  "BOOLEAN",
+                           "default":  false,
+                           "note":  "Full-width (Design System btn-block)",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "block",
+                                           "setting":  "checkbox"
+                                       }
+                       },
+                       {
+                           "name":  "disabled",
+                           "type":  "BOOLEAN",
+                           "default":  false,
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "disabled"
+                                       }
+                       },
+                       {
+                           "name":  "id",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "id"
+                                       }
+                       },
+                       {
+                           "name":  "attrs",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "note":  "Raw attributes, for example data-drawer-close",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "attrs"
+                                       }
+                       },
+                       {
+                           "name":  "extra",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "note":  "Layout utilities set by the parent (margin, width, group)",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "extra"
+                                       }
+                       },
+                       {
+                           "name":  "editHook",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "note":  "Wireframe review hook (data-c). Not used by the theme",
+                           "scope":  "wireframe",
+                           "shopify":  {
+                                           "param":  "edit_hook"
+                                       }
+                       }
+                   ],
+    "children":  [
+                     "components/base/icon"
+                 ],
+    "accessibility":  "Native a / button. 44 px minimum touch target (min-h-touch in the Editorial style, control height in the Design System style). Focus ring from the Design System.",
+    "tokens":  [
+                   "brand and button colours",
+                   "button text style",
+                   "control heights",
+                   "radius"
+               ]
+}

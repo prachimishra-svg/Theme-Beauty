@@ -1,0 +1,30 @@
+{
+    "name":  "Promo Media",
+    "page":  "homepage",
+    "properties":  [
+
+                   ],
+    "tokens":  [
+                   "radius",
+                   "spacing"
+               ],
+    "summary":  "The image beside the promotional copy. Wireframe placeholder today.",
+    "accessibility":  "Decorative or described by alt text from the image.",
+    "id":  "promo-media",
+    "shopifyOnly":  [
+                        {
+                            "id":  "image",
+                            "setting":  "image_picker",
+                            "replaces":  "placeholder"
+                        }
+                    ],
+    "level":  "sub",
+    "status":  "classified (D10 items pending)",
+    "responsive":  "Full width below 768 px; half from 768 px.",
+    "wireframeOnly":  [
+                          "placeholder captions"
+                      ],
+    "children":  [
+
+                 ]
+}

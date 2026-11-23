@@ -1,0 +1,11 @@
+{%- comment -%}
+  GENERATED from components/base/media by 07-Component-Library/tools/generate-liquid-staging.ps1 (contract ae77283676352957).
+  Do not edit here: change the library component, then regenerate. Text values are written raw; escape where Shopify data enters (| escape in the section).
+  Parameters (class: design = fixed, parent = passed in, merchant = set in a section, wireframe = not used):
+    shape (VARIANT, parent)
+    ratio (VARIANT, parent)
+    image (TEXT, merchant)
+    alt (TEXT, parent)
+    extra (TEXT, parent)
+{%- endcomment -%}
+{%- if shape == nil -%}{%- assign shape = 'rect' -%}{%- endif -%}{%- if ratio == nil -%}{%- assign ratio = 'portrait' -%}{%- endif -%}{%- assign tone = '' -%}{%- assign label = '' -%}{%- assign dim = '' -%}{%- if image == nil -%}{%- assign image = '' -%}{%- endif -%}{%- if alt == nil -%}{%- assign alt = '' -%}{%- endif -%}{%- assign nodim = false -%}{%- if extra == nil -%}{%- assign extra = '' -%}{%- endif -%}<div class="img{% if shape == 'circle' %} circle{% endif %} {% case ratio %}{% when 'portrait' %}r45{% when 'square' %}r11{% when 'landscape' %}r169{% when 'wide' %}r21{% endcase %} {% case tone %}{% when 't1' %}{% when 't2' %}t2{% when 't3' %}t3{% when 't4' %}t4{% endcase %}{% if nodim %} img-nodim{% endif %}{% if extra != blank %} {{ extra }}{% endif %}"><i class="ratio"></i>{% if image != blank %}<img class="absolute inset-0 size-full object-cover" src="{{ image }}" alt="{{ alt }}" loading="lazy">{% endif %}{% if label != blank %}<div class="in"><span class="lbl">{{ label }}</span><span class="dim">{{ dim }}</span></div>{% endif %}</div>

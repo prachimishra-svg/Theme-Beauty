@@ -1,0 +1,16 @@
+<footer class="bg-inverse text-ink-inverse">
+  <div class="mx-auto grid w-full max-w-[calc(var(--container-max)+2*var(--layout-gutter))] gap-6 px-gutter py-section md:grid-cols-[minmax(0,10rem)_minmax(0,1fr)] md:gap-[calc(var(--space-10)+var(--space-1))] lg:grid-cols-[3fr_8fr] lg:gap-16">
+        @@PARTIAL components/layout/footer-brand text="{{arg:brandText}}"@@
+    <div class="md:grid md:grid-cols-[repeat(4,auto)] md:justify-between md:gap-grid-gap xl:grid-cols-4 xl:justify-normal">
+      @@PARTIAL components/layout/footer-column title=Shop links="Skin care::#collection|Makeup::#collection|Hair::#collection|Body::#collection|Gift sets::#collection"@@
+      @@PARTIAL components/layout/footer-column title=About links="About us::@@LINK:about@@|Our story::@@LINK:story@@|Journal::@@LINK:blog@@|FAQ::@@LINK:faq@@"@@
+      @@PARTIAL components/layout/footer-column title=Support links="Contact us::@@LINK:contact@@|Support::#help|Shipping &amp; Delivery::@@LINK:shipping@@|Returns &amp; Refunds::@@LINK:returns@@"@@
+      @@PARTIAL components/layout/footer-column title=Policies links="Privacy policy::@@LINK:privacy@@|Terms of service::@@LINK:terms@@"@@
+    </div>
+    <div class="flex flex-col items-start gap-4 border-t border-line-inverse-subtle pt-5 md:col-span-full md:flex-row md:flex-wrap md:items-center md:justify-between">
+      @@PARTIAL components/layout/footer-payments methods="{{paymentMethods}}"@@
+      <div class="text-body-sm text-ink-inverse-secondary">{{trustText}}</div>
+      @@PARTIAL components/layout/back-to-top@@
+    </div>
+  </div>
+</footer>

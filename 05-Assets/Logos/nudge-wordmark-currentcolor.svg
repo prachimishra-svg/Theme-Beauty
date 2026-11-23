@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 100" role="img" aria-labelledby="nudge-title">
+  <title id="nudge-title">NUDGE</title>
+  <g fill="currentColor">
+    <path d="M0 14H16V100H0ZM66 0H82V86H66ZM0 14H19L82 86H63Z"/>
+    <path d="M106 0H122V62A25 25 0 0 0 172 62V0H188V62A41 41 0 0 1 106 62Z"/>
+    <path fill-rule="evenodd" d="M212 0H252A50 50 0 0 1 252 100H212ZM228 16H252A34 34 0 0 1 252 84H228Z"/>
+    <path d="M378 42H426V58H378Z"/>
+    <path d="M450 0H520V16H466V42H510V58H466V84H520V100H450Z"/>
+  </g>
+  <path d="M410.4 25.9A42 42 0 1 0 418 50" fill="none" stroke="currentColor" stroke-width="16"/>
+</svg>

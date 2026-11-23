@@ -1,0 +1,26 @@
+{
+    "id":  "review-stars",
+    "page":  "homepage",
+    "level":  "sub",
+    "name":  "Review Stars",
+    "properties":  [
+
+                   ],
+    "shopifyOnly":  [
+                        {
+                            "id":  "rating",
+                            "setting":  "range",
+                            "note":  "Stars per review"
+                        }
+                    ],
+    "status":  "classified (D10 items pending)",
+    "accessibility":  "Decorative (aria-hidden).",
+    "summary":  "A row of five filled stars used as a layout placeholder in review cards. Reviews are typed by the merchant; there is no review platform.",
+    "tokens":  [
+                   "brand colour"
+               ],
+    "responsive":  "Same at all widths.",
+    "children":  [
+                     "components/base/icon"
+                 ]
+}

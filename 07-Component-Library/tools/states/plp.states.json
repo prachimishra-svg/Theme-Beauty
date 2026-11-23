@@ -1,0 +1,32 @@
+{
+  "page": "02-NUDGE-Beauty-PLP-Wireframe/PLP.html",
+  "widths": [1440, 1024, 768, 390],
+  "states": [
+    { "key": "default", "query": "?embed=1&ann=0", "script": "" },
+    { "key": "applied", "query": "?embed=1&ann=0", "script": "NudgePLP.apply({concern:['Dryness'],skin:['Dry'],max:'30'})" },
+    { "key": "empty", "query": "?embed=1&ann=0", "script": "NudgePLP.apply({concern:['Dryness'],type:['Mask'],min:'1',max:'5'})" },
+    { "key": "page2", "query": "?embed=1&ann=0", "script": "NudgePLP.apply({page:2})" },
+    { "key": "page3", "query": "?embed=1&ann=0", "script": "NudgePLP.apply({page:3})" },
+    { "key": "sort-price-low", "query": "?embed=1&ann=0", "script": "var s=document.getElementById('sort');s.value='plh';s.dispatchEvent(new Event('change',{bubbles:true}))" },
+    { "key": "sort-best", "query": "?embed=1&ann=0", "script": "var s=document.getElementById('sort');s.value='best';s.dispatchEvent(new Event('change',{bubbles:true}))" },
+    { "key": "quick-view-swatches", "query": "?embed=1&ann=0", "script": "NudgePLP.quick(13,document.body)" },
+    { "key": "quick-view-sold-out", "query": "?embed=1&ann=0", "script": "NudgePLP.quick(3,document.body)" },
+    { "key": "quick-view-no-rating", "query": "?embed=1&ann=0", "script": "NudgePLP.quick(2,document.body)" },
+    { "key": "filters-drawer", "maxWidth": 767, "query": "?embed=1&ann=0", "script": "NudgeDrawer.open(document.getElementById('faceted-drawer'),document.getElementById('f-open'))" },
+    { "key": "filters-drawer-checked", "maxWidth": 767, "query": "?embed=1&ann=0", "script": "NudgeDrawer.open(document.getElementById('faceted-drawer'),document.getElementById('f-open'));var i=document.querySelector('#faceted-form input[name=type][value=Serum]');i.click()" },
+    { "key": "facet-checked", "minWidth": 768, "query": "?embed=1&ann=0", "script": "var i=document.querySelector('#faceted-form input[name=type][value=Serum]');i.click()" },
+    { "key": "facet-shade", "minWidth": 768, "query": "?embed=1&ann=0", "script": "var i=document.querySelector('#faceted-form input[name=shade][value=\"1\"]');i.click()" },
+    { "key": "facet-price", "minWidth": 768, "query": "?embed=1&ann=0", "script": "var m=document.getElementById('f-max');m.value='26';m.dispatchEvent(new Event('input',{bubbles:true}))" },
+    { "key": "chip-removed", "query": "?embed=1&ann=0", "script": "NudgePLP.apply({concern:['Dryness'],skin:['Dry'],max:'30'});document.querySelector('#chips [data-rm]').click()" },
+    { "key": "clear-all", "query": "?embed=1&ann=0", "script": "NudgePLP.apply({concern:['Dryness'],skin:['Dry'],max:'30'});document.getElementById('clear-all').click()" },
+    { "key": "state-applied-url", "query": "?embed=1&ann=0&state=applied", "script": "" },
+    { "key": "state-empty-url", "query": "?embed=1&ann=0&state=empty", "script": "" }
+  ],
+  "screens": [
+    { "key": "default", "query": "?embed=1&ann=0" },
+    { "key": "applied", "query": "?embed=1&ann=0&state=applied" },
+    { "key": "empty", "query": "?embed=1&ann=0&state=empty" },
+    { "key": "filters-open", "maxWidth": 767, "query": "?embed=1&ann=0&filters=open" },
+    { "key": "quick-open", "query": "?embed=1&ann=0&quick=open" }
+  ]
+}

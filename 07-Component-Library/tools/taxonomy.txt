@@ -1,0 +1,235 @@
+# MASTER TAXONOMY. One component per line:  Group ;; Name ;; Status ;; Implementation ;; Matchers (joined by " && ") ;; Note
+# Status:  component = implemented as a partial and used by pages | ready = base component exists and validates, pages still use hand-written markup
+#          css = Design System CSS class only, markup hand-written on the page | page = page-specific markup or script, no shared component
+#          page-local = icon defined inside one page only | none = requested in the brief but NOT present in any wireframe (not created)
+# Matchers (evaluated against the rendered pages at 1440 px):  B:kindRegex~textRegex (button)  D:detector  C:class  I:iconRegex  H:headingRegex  N:blockNameRegex  IN:typeRegex~labelRegex  T:textRegex
+# Append  @@blockNameRegex  to a matcher to restrict it to blocks with that name.
+01 Buttons ;; Primary Button ;; component ;; base/button variant=primary (.btn .btn-primary) ;; B:^button: primary ;; Variant exists in base/button; inner pages hand-write the same .btn markup
+01 Buttons ;; Secondary Button ;; component ;; base/button variant=secondary (.btn-secondary) ;; B:^button: secondary ;; Variant exists in base/button; inner pages hand-write the same .btn markup
+01 Buttons ;; Tertiary / Text Button ;; component ;; base/button variant=text (.btn-text) ;; B:^button: text ;; The Design System has one text-style tier; it serves as the tertiary button
+01 Buttons ;; Outline Button ;; component ;; base/button variant=secondary (DS) and editorial-outline (Homepage) ;; B:^button: (secondary|editorial-outline) ;; Outline style is the secondary variant; not a separate system
+01 Buttons ;; Editorial Button ;; component ;; base/button variant=editorial (.hp-btn) ;; B:^button: editorial$ ;; Approved Homepage Editorial variant of the Button
+01 Buttons ;; Editorial Outline Button ;; component ;; base/button variant=editorial-outline (.hp-btn-o) ;; B:^button: editorial-outline ;; Approved Homepage Editorial variant
+01 Buttons ;; Editorial Text Button ;; ready ;; base/button variant=editorial-text ;; ;; Variant defined; no page uses it yet
+01 Buttons ;; Icon Button ;; component ;; base/icon-button variant=ds (.icon-btn) ;; C:icon-btn ;; Close, gallery arrows, zoom
+01 Buttons ;; Circular Icon Button ;; component ;; base/icon-button variant=circle / circle-soft ;; B:^icon button~^(Previous|Next) (logos|reviews|step) ;; Homepage scrollers and ritual controls
+01 Buttons ;; Announcement Arrow Button ;; component ;; layout/announcement-arrow ;; B:^icon button~(Previous|Next) message ;; Announcement bar, every page
+01 Buttons ;; Add to Cart Button ;; css ;; .btn .btn-primary (text: Add to bag); cart add-on uses .btn-secondary Add ;; B:^button: primary~Add (selected )?to bag && B:^button: secondary~^Add$ ;; Same Button, different label; hand-written on PLP, PDP, Cart
+01 Buttons ;; Buy Now Button ;; none ;; - ;; ;; Not in the wireframes
+01 Buttons ;; Quick View Button ;; css ;; .btn .btn-secondary .pc-quick ;; B:~Quick view ;; PLP product card action
+01 Buttons ;; Apply Filter Button ;; css ;; .btn .btn-primary ;; B:~Apply filters ;; Filter drawer footer
+01 Buttons ;; Clear Filter Button ;; css ;; .btn-primary (drawer), .btn-text (applied bar) ;; B:~^Clear all ;; Two styles of the same action
+01 Buttons ;; Load More Button ;; none ;; - ;; ;; Not in the wireframes (PLP uses Pagination)
+01 Buttons ;; View All Button ;; component ;; base/button editorial-outline / text ;; B:~View all|View full details ;; Homepage View all best sellers; PLP quick view link
+01 Buttons ;; Checkout Button ;; css ;; .btn .btn-primary btn-block ;; B:~^Checkout ;; Cart page and drawer
+01 Buttons ;; Continue Shopping Button ;; css ;; .btn-primary (cart, 404) / .btn-text (contact) ;; B:~Continue shopping ;;
+01 Buttons ;; Form Submit Button ;; css ;; .btn .btn-primary type=submit ;; B:~Send message|Post comment|^Subscribe ;; Contact, comment, newsletter
+01 Buttons ;; Newsletter Subscribe Button ;; component ;; base/button variant=editorial element=submit ;; B:~^Subscribe ;; Homepage newsletter
+01 Buttons ;; Back to Top Button ;; component ;; layout/back-to-top ;; D:back to top link ;; Footer, every page
+01 Buttons ;; Call-to-Action Button (page CTAs) ;; component ;; base/button (any variant) ;; B:^button: (primary|secondary|editorial|editorial-outline|text)~(Shop|Contact|Read|About|Browse|Go to|See |Find|All articles|Search) ;; Shop now, Contact us, Read the FAQ and similar
+01 Buttons ;; Filters Open Button ;; css ;; .btn .btn-secondary with filter icon ;; B:~^Filters$ ;; Opens the mobile filter drawer
+01 Buttons ;; Disabled / Sold-out Button ;; css ;; .btn .btn-secondary disabled ;; B:~Sold out ;; PLP card state
+01 Buttons ;; Share Button ;; css ;; .btn .btn-secondary btn-sm with share icon ;; B:~^Share ;; Blog article
+01 Buttons ;; Remove Line Button ;; css ;; .link style button ;; B:other control~^Remove$ ;; Cart line
+01 Buttons ;; Wizard Step Button (Next / Back) ;; component ;; base/button editorial ;; B:~^(Next|Back)$ ;; Homepage guided finder
+01 Buttons ;; Play Video Button ;; page ;; Homepage video poster play control ;; B:other control~^.$ && I:^play$ ;;
+02 Icons ;; Search Icon ;; component ;; base/icon name=search ;; I:^search$ ;;
+02 Icons ;; Shopping Bag / Cart Icon ;; component ;; base/icon name=bag ;; I:^bag$ ;; Header cart button
+02 Icons ;; Account / User Icon ;; component ;; base/icon name=account ;; I:^account$ ;;
+02 Icons ;; Menu / Hamburger Icon ;; component ;; base/icon name=menu ;; I:^menu$ ;;
+02 Icons ;; Close Icon ;; component ;; base/icon name=close ;; I:^close$ ;;
+02 Icons ;; Chevron Icons (up, down, left, right) ;; component ;; base/icon name=chevron-* ;; I:^chevron ;; Accordion, scrollers, pagination, selects
+02 Icons ;; Arrow Icons (left, right) ;; component ;; base/icon name=arrow-* ;; I:^arrow ;; CTAs and navigation
+02 Icons ;; Plus / Minus Icons ;; component ;; base/icon name=plus / minus ;; I:^(plus|minus)$ ;; Quantity controls, footer accordion
+02 Icons ;; Heart Icon ;; component ;; base/icon name=heart ;; I:^heart$ ;; Homepage benefit row only
+02 Icons ;; Star / Rating Icon ;; component ;; base/icon name=star ;; I:^star$ ;; Rating
+02 Icons ;; Filter Icon ;; component ;; base/icon name=filter ;; I:^filter$ ;; PLP
+02 Icons ;; Sort Icon ;; ready ;; base/icon name=sort (in sprite) ;; ;; In the sprite and assets, not used on any page
+02 Icons ;; Grid / List View Icon ;; none ;; - ;; ;; Not in the wireframes
+02 Icons ;; Location Icon ;; component ;; base/icon name=location ;; I:^location$ ;; Market selector, benefit row, contact
+02 Icons ;; Phone Icon ;; component ;; base/icon name=icon (now in the shared sprite and assets) ;; I:^phone$ ;; Was defined inside one page; moved to the shared sprite
+02 Icons ;; Email Icon ;; component ;; base/icon name=icon (now in the shared sprite and assets) ;; I:^mail$ ;; Was defined inside one page; moved to the shared sprite
+02 Icons ;; Clock Icon ;; component ;; base/icon name=icon (now in the shared sprite and assets) ;; I:^clock$ ;; Was defined inside one page; moved to the shared sprite
+02 Icons ;; Social Media Icons (Instagram, Facebook, YouTube) ;; component ;; base/icon via layout/social-link ;; I:^(instagram|facebook|youtube)$ ;; Footer
+02 Icons ;; Payment Icons ;; none ;; footer shows text pills (layout/footer-payments) ;; ;; No payment icons exist; payments are text labels
+02 Icons ;; Security / Lock Icon ;; component ;; base/icon name=lock ;; I:^lock$ ;; Cart secure checkout
+02 Icons ;; Shipping Icon ;; none ;; - ;; ;; Not in the wireframes
+02 Icons ;; Wishlist Icon ;; none ;; - ;; ;; No wishlist control exists; the heart icon is a benefit symbol only
+02 Icons ;; Check / Check-circle Icons ;; component ;; base/icon name=check / check-circle ;; I:^check ;; Market selector, newsletter, messages
+02 Icons ;; Warning Icon ;; component ;; base/icon name=warning ;; I:^warning$ ;; Validation and stock messages
+02 Icons ;; Eye Icon ;; component ;; base/icon name=eye ;; I:^eye$ ;; PLP banner
+02 Icons ;; Share Icon ;; component ;; base/icon name=share ;; I:^share$ ;; Blog article
+02 Icons ;; Play Icon ;; component ;; base/icon name=icon (now in the shared sprite and assets) ;; I:^play$ ;; Was defined inside one page; moved to the shared sprite
+02 Icons ;; Zoom-in Icon ;; component ;; base/icon name=icon (now in the shared sprite and assets) ;; I:^zoom-in$ ;; Was defined inside one page; moved to the shared sprite
+02 Icons ;; Delivery / Returns / Trust / Pickup Icons (truck, rotate-ccw, shield-check, store) ;; component ;; base/icon (in the shared sprite) ;; ;; Defined for the PDP delivery block; no page source references them directly yet
+02 Icons ;; Loader Icon ;; component ;; base/icon name=loader (in the shared sprite) ;; ;; Used by PDP and Cart loading states (script-built markup)
+02 Icons ;; Info Icon ;; ready ;; base/icon name=info (in sprite) ;; ;; Not used on any page
+02 Icons ;; Eye-off Icon ;; ready ;; base/icon name=eye-off (in sprite) ;; ;; Not used on any page
+03 Forms and inputs ;; Text Input ;; css ;; .field + .input (base/input-field ready) ;; IN:^text~ ;; Name, order number, quantity
+03 Forms and inputs ;; Email Input ;; css ;; .field + .input type=email ;; IN:^email ;; Contact, comment, newsletter
+03 Forms and inputs ;; Password Input ;; none ;; - ;; ;; No account pages in the wireframes
+03 Forms and inputs ;; Search Input ;; css ;; .input type=search ;; IN:^search ;; 404 page search
+03 Forms and inputs ;; Phone Input ;; css ;; .input type=tel ;; IN:^tel ;; Contact
+03 Forms and inputs ;; Select Dropdown ;; css ;; .select + .select-icon ;; IN:^select ;; PLP sort, contact topic
+03 Forms and inputs ;; Checkbox ;; css ;; .choice + choice-input (facets, bundle) ;; IN:^checkbox ;; PLP facets, PDP routine
+03 Forms and inputs ;; Radio Button ;; css ;; .opt / .tile (PDP option cards) and swatch radios ;; IN:^radio ;; PDP variant and selling plan pickers
+03 Forms and inputs ;; Toggle Switch ;; none ;; - ;; ;; Not in the wireframes
+03 Forms and inputs ;; Range Slider ;; page ;; Before and after compare slider ;; IN:^range ;; Homepage
+03 Forms and inputs ;; Quantity Input ;; ready ;; base/quantity (.qty .qty-btn .qty-input) ;; D:quantity ;; PDP, Cart, Drawer use hand-written .qty markup
+03 Forms and inputs ;; Textarea ;; css ;; .field + textarea ;; IN:^textarea ;; Contact, comment, order note
+03 Forms and inputs ;; Newsletter Form ;; component ;; homepage/newsletter-section + newsletter-field ;; N:^Newsletter ;; Homepage
+03 Forms and inputs ;; Filter Inputs (facet checkboxes, price range) ;; component ;; plp/facet-groups ;; D:input number && D:checkbox@@Filters ;; PLP
+03 Forms and inputs ;; Form Validation Message ;; ready ;; base/message variant=error (.message-error) ;; D:validation message ;; Contact, PDP
+03 Forms and inputs ;; Input Label ;; css ;; .field-label ;; D:label ;;
+03 Forms and inputs ;; Input Helper Text ;; none ;; - ;; ;; No helper text pattern in the wireframes
+03 Forms and inputs ;; Contact Form ;; page ;; Contact page form ;; N:^Contact form ;; Composite: fields, select, textarea, submit, success state
+03 Forms and inputs ;; Comment Form ;; page ;; Blog article comments ;; N:^Comments ;;
+03 Forms and inputs ;; Order Note Field ;; page ;; Cart note ;; N:^Order note ;;
+04 Images and media ;; Product Image ;; page ;; placeholder in PLP card (.pc-media), PDP gallery, Homepage product card ;; D:placeholder image@@(Product Grid|Product:|Featured Collection|Related) ;; base/media ready
+04 Images and media ;; Category Image ;; component ;; homepage/category-card image ;; N:^Shop by Category ;;
+04 Images and media ;; Hero Image ;; component ;; homepage/hero-media ;; N:^Hero Banner ;;
+04 Images and media ;; Banner Image ;; component ;; homepage/promo-media; PLP collection banner ;; N:^(Promotional|Collection Banner) ;;
+04 Images and media ;; Thumbnail Image ;; page ;; PDP gallery thumbnails ;; B:other control~^Show image ;;
+04 Images and media ;; Lifestyle / Look Image ;; component ;; homepage/look-section ;; N:^Shop the Look ;;
+04 Images and media ;; Before / After Image ;; component ;; homepage/compare-section + compare-layer ;; N:^Before ;;
+04 Images and media ;; Video Thumbnail (poster) ;; component ;; homepage/video-poster ;; N:^Video Section ;;
+04 Images and media ;; Video Player ;; none ;; - ;; D:video or embed ;; Only a poster exists; no player is in the wireframes
+04 Images and media ;; Image Gallery ;; page ;; PDP gallery; Homepage customer photos ;; N:^(Customer Photo Gallery|Product: gallery) ;; Homepage gallery is a component; PDP gallery is page markup
+04 Images and media ;; Image Slider / Carousel ;; page ;; PDP gallery prev/next and dots ;; B:^icon button~(Previous|Next) image ;;
+04 Images and media ;; Responsive Image (img with srcset) ;; none ;; - ;; D:image ;; Wireframes use labelled placeholders only
+04 Images and media ;; Placeholder Image ;; ready ;; base/media (.ph, .ph-b, .ph-c) ;; D:placeholder image ;; Wireframe placeholder, ratios 1:1 to 16:9
+04 Images and media ;; Customer Photo Tile ;; component ;; homepage/gallery-tile ;; N:^Customer Photo Gallery ;;
+05 Cards ;; Homepage Product Card ;; component ;; homepage/product-card ;; H:^(Face Cleanser|Face Serum|Moisturiser|Lip Colour)$@@^Featured ;; Kept separate from the PLP card
+05 Cards ;; PLP Product Card ;; component ;; plp/product-card (uses base badge, price, rating, button, icon) ;; D:plp product card ;; Kept separate from the Homepage card; rendered by the PLP script from its own template
+05 Cards ;; Hero Featured Product Card ;; component ;; homepage/hero-featured-product ;; N:^Hero Banner ;;
+05 Cards ;; Category Card ;; component ;; homepage/category-card ;; N:^Shop by Category ;;
+05 Cards ;; Collection Card ;; none ;; - ;; ;; No separate collection card; collections are shown as category cards
+05 Cards ;; Concern Card ;; component ;; homepage/concern-card ;; N:^Shop by Concern ;;
+05 Cards ;; Review Card ;; component ;; homepage/review-card (+ PDP review list) ;; N:^(Testimonials|Reviews) ;; Homepage testimonials and PDP reviews
+05 Cards ;; Testimonial Card ;; component ;; homepage/review-card ;; D:blockquote@@Testimonials ;; Same as Review Card (merged)
+05 Cards ;; Blog Card ;; page ;; Blog listing grid item ;; N:^Article grid ;;
+05 Cards ;; Article Card (featured) ;; page ;; Blog listing featured article ;; N:^Featured article ;;
+05 Cards ;; Ingredient Card ;; component ;; homepage/ingredient-card ;; N:^Ingredient ;; PDP shows ingredient blocks as page markup
+05 Cards ;; Benefit Card (USP item) ;; component ;; homepage/usp-item ;; N:^Benefits ;;
+05 Cards ;; Brand Card ;; none ;; - ;; ;; Not in the wireframes (logo items only)
+05 Cards ;; Lookbook Card ;; component ;; homepage/look-row + look-pin ;; N:^Shop the Look ;;
+05 Cards ;; Promotional Card ;; component ;; homepage/promo-banner; header/mega-card ;; N:^Promotional ;;
+05 Cards ;; Recommendation Card ;; page ;; PDP Complete your routine; cart add-on ;; N:^(Complete your routine|Cart upsell) ;;
+05 Cards ;; Related Product Card ;; page ;; PDP related products ;; N:^Related products ;; Uses the PLP-style card pattern
+05 Cards ;; Recently Viewed Product Card ;; none ;; - ;; ;; Not in the wireframes
+05 Cards ;; Cart Item Card ;; page ;; cart line (.qty, price, remove) ;; D:quantity@@^Cart ;; Cart page and drawer
+05 Cards ;; Contact Detail Card ;; page ;; Contact details list item ;; N:^Contact details ;;
+05 Cards ;; Value Card ;; page ;; About values ;; N:^Values ;;
+05 Cards ;; Timeline Milestone ;; page ;; Our Story timeline ;; N:^Timeline ;;
+05 Cards ;; At-a-glance Card ;; page ;; Policy summary items ;; N:^At a glance ;; Four policy pages
+05 Cards ;; Mega Menu Card ;; component ;; header/mega-card ;; D:placeholder image@@Header ;; Header mega menu promotional cards
+05 Cards ;; Quick Answer Card ;; page ;; Contact quick answers ;; N:^Quick answers ;;
+06 Typography ;; Heading H1 ;; css ;; .type-h1 / element default ;; H:^h1 ;; One per page
+06 Typography ;; Heading H2 ;; css ;; .type-h2 ;; H:^h2 ;;
+06 Typography ;; Heading H3 ;; css ;; .type-h3 ;; H:^h3 ;;
+06 Typography ;; Heading H4-H6 ;; css ;; .type-h4 to .type-h6 ;; H:^h[456] ;;
+06 Typography ;; Section Heading ;; component ;; base/section-heading ;; C:shead ;; Homepage sections
+06 Typography ;; Subheading / Lead ;; component ;; section-heading lead property ;; ;;
+06 Typography ;; Body Text / Paragraph ;; css ;; .type-body, .type-body-lg, .type-body-sm ;; ;; Element defaults, every page
+06 Typography ;; Caption ;; css ;; .type-caption ;; ;;
+06 Typography ;; Overline ;; css ;; .type-overline ;; ;;
+06 Typography ;; Price Typography ;; css ;; .type-price, .type-price-lg ;; D:price ;;
+06 Typography ;; Discount Text ;; css ;; .price-sale / .price-compare ;; C:price-sale ;;
+06 Typography ;; Product Title ;; css ;; .type-product-title ;; ;;
+06 Typography ;; Label Text ;; css ;; .type-label ;; D:label ;;
+06 Typography ;; Rich Text Content ;; page ;; policy text, article body ;; N:^(Policy text|Article)$ ;; Long-form content blocks
+06 Typography ;; Pull Quote ;; page ;; Our Story pull quote ;; N:^Pull quote ;;
+07 Navigation ;; Announcement Bar ;; component ;; shared annbar (layout/announcement-arrow, announcement-dots) ;; N:^Announcement ;; Every page
+07 Navigation ;; Header ;; component ;; shared header (logo, nav-item, search-button, account-button, cart-button, menu-button) ;; N:^Header ;; Every page
+07 Navigation ;; Desktop Navigation ;; component ;; header/nav-item ;; N:^Header ;; Part of Header
+07 Navigation ;; Mega Menu ;; component ;; header/mega-menu + menus/* + mega-column + mega-cards ;; C:mega-panel ;; 4 panels
+07 Navigation ;; Mobile Navigation / Hamburger Drawer ;; component ;; header/menu-button + nav-close + nav panel ;; B:disclosure toggle~Open menu ;; Part of Header
+07 Navigation ;; Market Selector ;; component ;; header/market-selector ;; B:disclosure toggle~\(INR\) ;; Country and currency
+07 Navigation ;; Breadcrumb ;; ready ;; base/breadcrumb (.breadcrumb) ;; D:breadcrumb ;; Pages use hand-written .breadcrumb markup
+07 Navigation ;; Footer ;; component ;; shared footer (footer-brand, footer-column, social-link, footer-payments) ;; N:^Footer ;; Every page
+07 Navigation ;; Footer Link Group ;; component ;; layout/footer-column ;; B:disclosure toggle~^(Shop|About|Support|Policies)$ ;;
+07 Navigation ;; Pagination ;; component ;; plp/pagination (items) inside plp/product-grid ;; D:pagination ;; PLP; the blog listing still uses hand-written markup
+07 Navigation ;; Tabs ;; component ;; homepage/collection-tabs ;; B:^tab ;; Homepage featured collection
+07 Navigation ;; Accordion ;; css ;; .accordion .accordion-item (details) ;; D:accordion ;; FAQ, PDP, PLP filters, footer
+07 Navigation ;; Sidebar Navigation (filter sidebar) ;; component ;; plp/filters-sidebar ;; N:^Filters$ ;; PLP filter column
+07 Navigation ;; Sub-collection Links ;; component ;; plp/subcollection-nav ;; N:^Sub-collection ;; PLP chip row of sub-collections
+08 Commerce ;; Product Price ;; component ;; base/price (.price .price-current) ;; D:price ;; Hand-written on PLP, PDP, Cart
+08 Commerce ;; Compare-at Price ;; component ;; base/price variant=sale (.price-compare) ;; C:price-compare ;; Part of base/price, used by plp/product-card
+08 Commerce ;; Discount Badge ;; component ;; base/badge variant=overlay-sale ;; D:badge ;; PLP badges
+08 Commerce ;; Bestseller Badge ;; component ;; base/badge variant=overlay ;; D:badge ;; Metafield tag badge:<text> is pending merchant confirmation
+08 Commerce ;; New Badge ;; component ;; base/badge variant=overlay ;; D:badge ;; Same badge, different label
+08 Commerce ;; Product Rating ;; component ;; base/rating (.rating .rating-stars) ;; D:rating ;; PLP and PDP
+08 Commerce ;; Review Count ;; component ;; base/rating count property ;; D:rating ;; Part of Rating
+08 Commerce ;; Product Variant Selector ;; page ;; PDP variant picker (swatch radios + option cards) ;; N:^Variant picker ;;
+08 Commerce ;; Size Selector ;; page ;; PDP size options ;; H:^Size ;;
+08 Commerce ;; Color Swatch ;; css ;; .swatch .swatch-chip (PLP), shade radios (PDP) ;; D:swatch ;; Two different swatch patterns
+08 Commerce ;; Quantity Selector ;; ready ;; base/quantity ;; D:quantity ;;
+08 Commerce ;; Quick View Panel ;; component ;; plp/quick-view-drawer + plp/quick-view-body ;; N:^Quick view ;; PLP quick view side panel
+08 Commerce ;; Wishlist Control ;; none ;; - ;; ;; Not in the wireframes
+08 Commerce ;; Stock Status ;; page ;; low-stock and sold-out text in PLP and PDP ;; B:~Sold out ;;
+08 Commerce ;; Delivery Information ;; page ;; PDP delivery, returns, pickup block ;; N:^Delivery ;;
+08 Commerce ;; Product Details Accordion ;; page ;; PDP details ;; N:^Product details ;;
+08 Commerce ;; Selling Plan Picker ;; page ;; PDP subscribe or one-time ;; N:^Selling plan ;;
+08 Commerce ;; Buy Buttons Group ;; page ;; PDP quantity + add to bag ;; N:^Buy buttons ;;
+08 Commerce ;; Product Gallery ;; page ;; PDP gallery with zoom viewer ;; N:^Product: gallery ;;
+08 Commerce ;; Product Zoom Viewer ;; page ;; PDP image dialog ;; N:^Product images ;;
+08 Commerce ;; Cart Line Item ;; page ;; cart line ;; D:quantity@@^Cart ;; Same as Cart Item Card
+08 Commerce ;; Cart Summary ;; page ;; order summary ;; N:^Order summary ;;
+08 Commerce ;; Cart Drawer ;; page ;; cart drawer dialog ;; N:^Cart \d ;;
+08 Commerce ;; Cart Upsell ;; page ;; cart add-on ;; N:^Cart upsell ;;
+08 Commerce ;; Coupon / Discount Field ;; none ;; - ;; ;; Not in the wireframes
+08 Commerce ;; Checkout Summary ;; none ;; - ;; ;; Checkout is outside the wireframe scope
+08 Commerce ;; Free Shipping Progress ;; page ;; progress indicator in cart ;; D:progress ;;
+09 Feedback ;; Badge ;; component ;; base/badge ;; D:badge ;; base/badge, used by plp/product-card
+09 Feedback ;; Chip ;; component ;; base/chip ;; D:chip ;; Filter chips, concern chips, tags
+09 Feedback ;; Tag ;; component ;; base/chip variant=editorial-tag ;; C:hp-chip ;;
+09 Feedback ;; Tooltip ;; none ;; - ;; D:tooltip ;; Not in the wireframes
+09 Feedback ;; Toast ;; none ;; - ;; ;; Not in the wireframes
+09 Feedback ;; Alert / Message ;; ready ;; base/message ;; D:message ;;
+09 Feedback ;; Success Message ;; ready ;; base/message variant=success ;; C:message-success ;;
+09 Feedback ;; Error Message ;; ready ;; base/message variant=error ;; C:message-error ;;
+09 Feedback ;; Empty State ;; component ;; plp/empty-state (PLP); cart and blog still hand-written ;; N:^(Empty cart|No articles) ;; PLP converted; cart and blog empty states remain page markup
+09 Feedback ;; Loading State ;; none ;; - ;; ;; Not in the wireframes
+09 Feedback ;; Skeleton Loader ;; none ;; - ;; D:skeleton ;; Not in the wireframes
+09 Feedback ;; Progress Indicator ;; page ;; free shipping progress ;; D:progress ;;
+09 Feedback ;; Modal Dialog ;; css ;; native dialog (.drawer base) ;; K:overlay ;; PLP quick view, PDP zoom
+09 Feedback ;; Drawer ;; css ;; .drawer .drawer-head .drawer-body .drawer-foot ;; K:overlay ;; Filters, quick view, zoom, cart
+09 Feedback ;; Popover / Disclosure Menu ;; component ;; header/market-selector panel ;; B:disclosure toggle ;;
+09 Feedback ;; Status / Live Region ;; page ;; polite announcements ;; D:status / live region ;; Accessibility, no visible UI
+10 Layout ;; Section Container ;; css ;; .sec / .sec__in ;; ;; Every section
+10 Layout ;; Content Wrapper ;; css ;; .wrap ;; ;; Every page
+10 Layout ;; Grid ;; css ;; Tailwind grid utilities with Design Variable gaps ;; ;;
+10 Layout ;; Flex Layout ;; css ;; Tailwind flex utilities ;; ;;
+10 Layout ;; Divider ;; css ;; .divider ;; D:divider ;; Cart
+10 Layout ;; Spacer ;; css ;; spacing tokens ;; ;; No separate spacer element; spacing comes from tokens
+10 Layout ;; Section Background ;; css ;; bg-page, bg-surface, bg-subtle, bg-inverse, bg-brand ;; ;; Homepage section rhythm
+10 Layout ;; Responsive Layout Wrapper ;; css ;; breakpoints at 600, 768, 1024, 1280 ;; ;;
+10 Layout ;; Sticky Bar ;; css ;; sticky header, sticky purchase panel ;; D:sticky element ;;
+10 Layout ;; Floating Action Element ;; none ;; - ;; ;; Not in the wireframes (back to top is in the footer)
+10 Layout ;; Scroller (horizontal carousel) ;; component ;; common/scroller-controls ;; D:scroller controls ;; Homepage scrollers
+10 Layout ;; Wireframe Annotation Note ;; page ;; .ann (wireframe only) ;; ;; Wireframe-only; not a theme component
+11 Beauty ;; Skin Concern Selector ;; component ;; homepage/concern-section + concern-card ;; N:^Shop by Concern ;;
+11 Beauty ;; Skin Type Selector ;; component ;; homepage/finder-card (skin-type chips) ;; B:chip~^(Dry|Oily|Normal|Combination|Sensitive)$ ;; Homepage guided finder
+11 Beauty ;; Guided Finder / Quiz ;; component ;; homepage/finder-section ;; N:^Guided Finder ;;
+11 Beauty ;; Ingredient Information ;; component ;; homepage/ingredient-section ;; N:^Ingredient ;; PDP story ingredients are page markup
+11 Beauty ;; Ingredient Benefits ;; page ;; PDP product storytelling ingredient list ;; N:^Product storytelling ;;
+11 Beauty ;; How to Use ;; component ;; homepage/ritual-section ;; N:^How to Use ;; PDP has a how-to-use accordion
+11 Beauty ;; Routine Steps ;; component ;; homepage/ritual-step, routine-step ;; N:^(How to Use|Shop by Concern) ;;
+11 Beauty ;; Product Benefits ;; component ;; homepage/usp-row ;; N:^Benefits ;;
+11 Beauty ;; Before and After ;; component ;; homepage/compare-section ;; N:^Before ;;
+11 Beauty ;; Certifications / Awards / Press Logos ;; component ;; homepage/logo-section + logo-item ;; N:^Logo List ;; One logo list serves all three
+11 Beauty ;; Expert Recommendations ;; none ;; - ;; ;; Not in the wireframes
+11 Beauty ;; Beauty Results ;; none ;; - ;; ;; Not in the wireframes (before and after only)
+11 Beauty ;; Product Comparison ;; none ;; - ;; ;; Not in the wireframes
+11 Beauty ;; Shop the Look ;; component ;; homepage/look-section ;; N:^Shop the Look ;;
+11 Beauty ;; Complete Your Routine Bundle ;; page ;; PDP routine bundle with checkboxes ;; N:^Complete your routine ;;
+12 Additional ;; Page Hero / Intro Block ;; page ;; About, Story, Contact, Blog intros ;; N:^(Intro|Collection Banner|404)$ ;;
+12 Additional ;; Policy Page Body ;; page ;; four policy pages ;; N:^Policy text ;;
+12 Additional ;; Policy Ask Panel (contact CTA) ;; page ;; policy pages end block ;; N:^ask$ ;;
+12 Additional ;; Closing Call-to-Action Block ;; page ;; About, Story, FAQ, Blog empty ;; N:^(Closing call|What comes next|Still need help|No articles) ;;
+12 Additional ;; FAQ Question Group ;; page ;; FAQ accordion groups ;; N:^Question groups ;; Uses the accordion
+12 Additional ;; Collection SEO Description ;; component ;; plp/seo-block ;; N:^Collection SEO ;; PLP description block
+12 Additional ;; Share Block ;; page ;; Blog share ;; B:~^Share ;;
+12 Additional ;; Custom Liquid Section ;; component ;; homepage/custom-liquid-section ;; N:^Custom Liquid ;; Merchant-supplied code slot
+12 Additional ;; Contact Details List ;; page ;; Contact details ;; N:^Contact details ;;
+12 Additional ;; Wireframe Width Panel ;; page ;; #wp review panel (wireframe only) ;; ;; Wireframe-only; not a theme component

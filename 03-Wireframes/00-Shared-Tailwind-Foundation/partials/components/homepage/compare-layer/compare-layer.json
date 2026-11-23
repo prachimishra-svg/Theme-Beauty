@@ -1,0 +1,74 @@
+{
+    "name":  "Compare Layer",
+    "page":  "homepage",
+    "properties":  [
+                       {
+                           "name":  "layer",
+                           "type":  "VARIANT",
+                           "default":  "before",
+                           "values":  [
+                                          "before",
+                                          "after"
+                                      ],
+                           "tables":  {
+                                          "img":  {
+                                                      "before":  "img cmp__img cmp__img--before absolute inset-0 h-full w-full [background:color-mix(in_srgb,var(--color-text-primary)_12%,var(--color-bg-surface))] before:hidden",
+                                                      "after":  "img cmp__img cmp__img--after absolute inset-0 h-full w-full [background:var(--color-brand-tint)_repeating-linear-gradient(135deg,color-mix(in_srgb,var(--color-brand-primary)_7%,transparent)_0_1px,transparent_1px_10px)] [clip-path:inset(0_0_0_var(--pos))] before:hidden"
+                                                  },
+                                          "tag":  {
+                                                      "before":  "cmp__tag cmp__tag--b pointer-events-none absolute bottom-4 left-4 z-[2] bg-[color-mix(in_srgb,var(--color-bg-surface)_86%,transparent)] px-3 py-2 text-caption font-semibold uppercase leading-[1.2] tracking-widest text-ink transition-opacity duration-base group-[.hide-b]:opacity-0 lg:bottom-6 lg:left-6 lg:px-4",
+                                                      "after":  "cmp__tag cmp__tag--a pointer-events-none absolute bottom-4 right-4 z-[2] bg-[color-mix(in_srgb,var(--color-bg-surface)_86%,transparent)] px-3 py-2 text-caption font-semibold uppercase leading-[1.2] tracking-widest text-ink transition-opacity duration-base group-[.hide-a]:opacity-0 lg:bottom-6 lg:right-6 lg:px-4"
+                                                  },
+                                          "desc":  {
+                                                       "before":  "Base layer, same size and crop as After",
+                                                       "after":  "Top layer, same size and crop as Before"
+                                                   }
+                                      },
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "layer"
+                                       },
+                           "note":  "Which layer: before (base) or after (top)"
+                       },
+                       {
+                           "name":  "title",
+                           "type":  "TEXT",
+                           "default":  "Before",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "title",
+                                           "id":  "before_label",
+                                           "setting":  "text"
+                                       },
+                           "note":  "Label on the layer"
+                       }
+                   ],
+    "tokens":  [
+                   "surface colours",
+                   "type roles"
+               ],
+    "summary":  "One of the two stacked images of the before and after slider, with its label. Before is the base layer, After the clipped top layer.",
+    "accessibility":  "The label is visible text; the slider carries the interaction.",
+    "id":  "compare-layer",
+    "shopifyOnly":  [
+                        {
+                            "id":  "before_image",
+                            "setting":  "image_picker",
+                            "replaces":  "before placeholder"
+                        },
+                        {
+                            "id":  "after_image",
+                            "setting":  "image_picker",
+                            "replaces":  "after placeholder"
+                        }
+                    ],
+    "level":  "sub",
+    "status":  "classified (D10 items pending)",
+    "responsive":  "Both layers share one size and crop.",
+    "wireframeOnly":  [
+                          "placeholder caption (desc)"
+                      ],
+    "children":  [
+
+                 ]
+}

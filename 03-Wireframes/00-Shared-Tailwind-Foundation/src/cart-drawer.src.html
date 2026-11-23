@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NUDGE Beauty Theme: Cart Drawer Wireframe</title>
+<!-- Design Variables (tokens) linked; styling is Tailwind utilities and the shared components, mapped to those tokens. -->
+@@PARTIAL head@@
+<style>
+@@PARTIAL review-css@@
+</style>
+</head>
+<body class="ann-on" id="top">
+@@PARTIAL sprite@@
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-skip focus:bg-surface focus:p-3">Skip to content</a>
+<div class="rv">
+  <div class="rvt">NUDGE Beauty Theme: cart drawer wireframe &middot; single responsive file</div>
+  <p>The slide-in cart that opens from the header cart icon (a native <code>&lt;dialog&gt;</code>, behaviour from the Design System's <code>drawer.js</code>), built with Tailwind utilities and the shared components mapped to the Design Variables. It opens over any page, so the page behind it here is only a labelled stand-in. Products, prices and the free-shipping threshold are <b>sample content</b> standing in for the Shopify cart. Placeholders only: no photography. Pick a cart state below; the drawer opens with it. <b>Close the drawer</b> (close button, Esc or the dim area) to reach these buttons again. Use <b>Width preview</b> for 1920, 1440, 1280, 1024, 768, 430, 390 and 320 px.</p>
+  <div class="ctl"><button id="t-ann" type="button" aria-pressed="true">Annotations</button><button id="t-wp" type="button">Width preview</button><button id="s-multi" type="button">3 items</button><button id="s-one" type="button">1 item</button><button id="s-free" type="button">Free shipping reached</button><button id="s-long" type="button">Long cart (6)</button><button id="s-undo" type="button">Remove, with undo</button><button id="s-empty" type="button">Empty cart</button></div>
+<details><summary>Review notes: anatomy, decisions, what stays on the cart page, Shopify (open)</summary>
+<h3>Purpose</h3>
+<p>Let a shopper check, adjust and leave the cart in one or two taps without losing their place on the page. The drawer is the quick view; the full cart page stays the place for the order note, delivery estimate and express checkout.</p>
+<h3>Anatomy, top to bottom</h3>
+<ol><li><b>Header:</b> "Cart" with the item count, and a 44 px close button. Stays fixed.</li><li><b>Free-shipping progress:</b> one line and a thin bar that fills as the cart grows. Only shown when a threshold is set.</li><li><b>Lines:</b> small image area, name, variant, price, quantity stepper and Remove. Removing is one tap with an Undo message, no confirmation dialog. Real low-stock notes only; a typed quantity above stock is capped with a message.</li><li><b>One add-on:</b> a single low-priced item the merchant picks, with an Add button. Hidden when already in the cart.</li><li><b>Footer (fixed):</b> subtotal, saving (when there is one), the tax and shipping note, one dominant Checkout button with a lock icon, and a quiet View cart link.</li><li><b>Empty state:</b> a short message, a Continue shopping button and collection links.</li></ol>
+<h3>Decisions to confirm</h3>
+<ul><li>Kept light on purpose: the order note, gift message, delivery estimate, express-checkout buttons and policy links stay on the cart page (the approved cart decisions).</li><li>No discount-code box (Shopify takes codes at checkout), no timer, no save for later, no installment line, no gift-wrap upsell.</li><li>One add-on, not a carousel: the drawer is narrow and the checkout button must stay in view.</li><li>The drawer opens when the header cart icon is tapped or when an item is added from a product page. After an add, the new line is shown first.</li></ul>
+<h3>Not drawn</h3>
+<ul><li>Cart-recommendation widgets, subscription or shipping-protection add-ons, loyalty points (each needs an app)</li></ul>
+<h3>Shopify build</h3>
+<p>A <code>cart-drawer</code> section rendered in the header group, over the native <code>cart</code> object and the Cart Ajax API (<code>/cart/change.js</code> to change or remove, <code>/cart/add.js</code> for the add-on, then re-render the section with the Section Rendering API). Free-shipping threshold, the add-on product and the cart link are theme-editor settings. A native <code>&lt;dialog&gt;</code> with the shared <code>drawer.js</code> gives focus handling, Esc, scroll lock and focus return. No app is involved.</p>
+</details>
+</div>
+<div class="ann"><b>Global</b>Announcement bar and header (sticky): the shared sections; the cart icon is a button that opens this drawer. The footer is the shared footer. Responsive: a full-width sheet below 600 px, a 416 px panel on the right from 600 px.</div>
+@@PARTIAL annbar@@
+@@PARTIAL header CART=drawer NAV=none@@
+<main id="main" class="wrap py-12 md:py-16" aria-label="Page behind the drawer">
+<div class="ann"><b>Stand-in</b>The cart drawer opens over whichever page the visitor is on. These blocks only stand for that page, so the dimming and the panel can be judged.</div>
+<h1 class="type-h2 mb-8">Page behind the drawer</h1>
+<div class="grid grid-cols-[minmax(0,1fr)] gap-6 md:grid-cols-3"><div class="relative aspect-[4/3] overflow-hidden" role="img" aria-label="Stand-in block"><div class="ph absolute inset-0"></div><span class="absolute inset-0 grid place-items-center p-4 text-center text-caption text-ink-secondary">Any page content</span></div><div class="relative aspect-[4/3] overflow-hidden" role="img" aria-label="Stand-in block"><div class="ph ph-b absolute inset-0"></div><span class="absolute inset-0 grid place-items-center p-4 text-center text-caption text-ink-secondary">Any page content</span></div><div class="relative aspect-[4/3] overflow-hidden" role="img" aria-label="Stand-in block"><div class="ph ph-c absolute inset-0"></div><span class="absolute inset-0 grid place-items-center p-4 text-center text-caption text-ink-secondary">Any page content</span></div></div>
+</main>
+@@PARTIAL footer@@
+<dialog class="drawer" id="cart-drawer" aria-labelledby="cd-title">
+<div class="drawer-head"><h2 class="type-h5 m-0" id="cd-title">Cart <span class="font-body text-body-sm font-regular normal-case tracking-normal text-ink-secondary" id="cd-count">3 items</span></h2><button class="icon-btn" type="button" data-drawer-close aria-label="Close cart"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-close"></use></svg></button></div>
+<div class="drawer-body flex flex-col gap-4" id="cd-body">
+<div id="cd-cart" class="flex flex-col gap-4">
+<div id="cd-fs"></div>
+<div id="cd-undo"></div>
+<div id="cd-lines"></div>
+<div id="cd-up"></div>
+</div>
+<div id="cd-empty" class="flex flex-1 flex-col items-center justify-center gap-5 py-10 text-center" hidden>
+<p class="type-h4 m-0">Your cart is empty</p>
+<p class="m-0 text-ink-secondary">Nothing here yet. Browse the collections to find your next favourite.</p>
+<button class="btn btn-primary" type="button" data-drawer-close id="cd-continue">Continue shopping</button>
+<div class="chip-row max-w-full justify-center" aria-label="Shop by collection"><a class="chip" href="#shop">Best sellers</a><a class="chip" href="#shop">Skin care</a><a class="chip" href="#shop">Makeup</a><a class="chip" href="#shop">Hair</a><a class="chip" href="#shop">Body</a></div>
+</div>
+</div>
+<div class="drawer-foot flex flex-col gap-3" id="cd-foot">
+<div class="flex items-baseline justify-between gap-4"><span>Subtotal</span><span class="font-heading text-h4 font-regular leading-tight [font-variant-numeric:lining-nums]" id="cd-sub">$0.00</span></div>
+<div class="flex items-baseline justify-between gap-4 text-brand" id="cd-savrow"><span>You save</span><span id="cd-sav">$0.00</span></div>
+<p class="m-0 text-caption text-ink-secondary">Taxes and shipping calculated at checkout.</p>
+<button class="btn btn-primary btn-lg btn-block" type="button" id="cd-checkout"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-lock"></use></svg><span>Checkout</span></button>
+<a class="link link-standalone justify-center" href="#cart" id="cd-viewcart">View cart</a>
+</div>
+</dialog>
+@@PARTIAL width-preview@@
+<script type="text/plain" id="selftest-src">
+(function(){
+ function vis(el){var cs=getComputedStyle(el);if(cs.display==="none"||cs.visibility==="hidden")return false;var r=el.getBoundingClientRect();return r.width>0&&r.height>0}
+ function sel(el){var s=el.tagName.toLowerCase();if(el.id)s+="#"+el.id;if(el.className&&typeof el.className==="string")s+="."+el.className.trim().split(/\s+/).slice(0,2).join(".");return s}
+ function $(id){return document.getElementById(id)}
+ function wait(ms){return new Promise(function(r){setTimeout(r,ms)})}
+ async function run(){
+  var W=window.innerWidth,H=window.innerHeight,de=document.documentElement,out={docHeight:de.scrollHeight,width:W,checks:{}},N=window.NudgeCartDrawer,D=$("cart-drawer"),SHEET=W<600;
+  var st=document.createElement("style");st.textContent="*{transition:none!important}";document.head.appendChild(st);de.style.scrollBehavior="auto";
+  N.state("multi");N.open();await wait(80);
+  var twOk=getComputedStyle($("site-header")).position==="sticky"&&!document.querySelector('link[href*="components.css"],link[href*="base.css"]')&&!!window.NudgeDrawer;
+  var fl=Array.from(document.fonts).some(function(x){return x.family.indexOf("Cormorant")>-1&&x.status==="loaded"})&&Array.from(document.fonts).some(function(x){return x.family.indexOf("DM Sans")>-1&&x.status==="loaded"});
+  out.checks.tailwindAndFonts={pass:twOk&&fl,detail:"Tailwind utilities applied, no Design System component stylesheet, drawer.js loaded: "+twOk+"; Cormorant and DM Sans loaded: "+fl};
+  var dr=D.getBoundingClientRect(),want=SHEET?W:416,wOk=Math.abs(dr.width-want)<2&&Math.abs(dr.right-W)<=20&&Math.abs(dr.height-H)<2;
+  out.checks.panel={pass:D.open&&wOk,detail:"modal panel "+Math.round(dr.width)+" px wide (expected "+want+", "+(SHEET?"full-width sheet":"right-hand panel")+"), full height: "+(D.open&&wOk)};
+  var bd=$("cd-body"),hd=D.querySelector(".drawer-head").getBoundingClientRect(),ft=$("cd-foot").getBoundingClientRect(),anat=Math.abs(hd.top-dr.top)<2&&Math.abs(ft.bottom-dr.bottom)<2&&getComputedStyle(bd).overflowY==="auto"&&!!D.querySelector("h2")&&D.querySelector("[data-drawer-close]").getBoundingClientRect().height>=44-.5;
+  out.checks.anatomy={pass:anat,detail:"header pinned to the top with a 44 px close button, footer pinned to the bottom, only the body scrolls: "+anat};
+  var offc=[];D.querySelectorAll("*").forEach(function(el){var r=el.getBoundingClientRect();if(r.width>0&&(r.right>dr.right+1||r.left<dr.left-1)&&!el.closest(".chip-row"))offc.push(sel(el))});
+  out.checks.overflow={pass:bd.scrollWidth<=bd.clientWidth+1&&offc.length===0&&de.scrollWidth<=W+1,detail:"no sideways scroll in the drawer or page"+(offc.length?"; past the edge: "+offc.slice(0,3).join(", "):"")};
+  var focusIn=D.contains(document.activeElement),locked=de.classList.contains("is-scroll-locked");
+  var items=[].slice.call(D.querySelectorAll('a[href],button:not([disabled]),input,summary')).filter(vis),last=items[items.length-1],first=items[0];last.focus();last.dispatchEvent(new KeyboardEvent("keydown",{key:"Tab",bubbles:true,cancelable:true}));var wrap=document.activeElement===first;
+  out.checks.focusAndLock={pass:focusIn&&locked&&wrap,detail:"focus starts inside the drawer: "+focusIn+"; page scroll locked: "+locked+"; Tab from the last control wraps to the first: "+wrap};
+  var lc=bd.querySelectorAll(".cl").length,lines=lc===3&&!!bd.querySelector(".cl__name")&&!!bd.querySelector("[data-q]")&&!!bd.querySelector("[data-rm]");
+  out.checks.lines={pass:lines,detail:"three lines, each with name, quantity stepper and Remove: "+lines};
+  var s0=$("cd-sub").textContent;bd.querySelector('.cl[data-id="tm"] [data-plus]').click();var s1=$("cd-sub").textContent,c1=$("cd-count").textContent==="4 items"&&/4/.test(document.querySelector("#site-header .cnt").textContent);bd.querySelector('.cl[data-id="tm"] [data-minus]').click();var s2=$("cd-sub").textContent===s0;
+  out.checks.liveUpdate={pass:s0==="$82.00"&&s1==="$114.00"&&c1&&s2,detail:"subtotal "+s0+" to "+s1+" on +1 and back: "+s2+"; drawer and header counts update: "+c1};
+  N.state("multi");bd.querySelector('.cl[data-id="cl"] [data-rm]').click();var gone=bd.querySelectorAll(".cl").length===2&&!!bd.querySelector("[data-undo]")&&$("cd-sub").textContent==="$64.00";bd.querySelector("[data-undo]").click();var back=bd.querySelectorAll(".cl").length===3&&!bd.querySelector("[data-undo]")&&$("cd-sub").textContent==="$82.00";
+  out.checks.removeUndo={pass:gone&&back,detail:"one tap removes with no dialog, Undo shown, total updates: "+gone+"; Undo restores the line: "+back};
+  N.state("one");var t1=$("cd-fs").textContent;N.state("free");var t2=$("cd-fs").textContent,dn=bd.querySelector(".fs").getAttribute("data-done")==="true";
+  out.checks.freeShipping={pass:/\$18\.00/.test(t1)&&dn&&/free shipping/i.test(t2)&&!!bd.querySelector('.fs__bar[role="progressbar"]'),detail:"one item: '"+t1.trim()+"'; threshold reached: '"+t2.trim()+"' ("+dn+")"};
+  N.state("multi");var up=bd.querySelectorAll(".up__row").length===1,saveRow=!$("cd-savrow").hidden&&/\$4\.00/.test($("cd-sav").textContent);
+  out.checks.addOnAndSaving={pass:up&&saveRow,detail:"exactly one add-on shown: "+up+"; saving line shown with the compare-at saving: "+saveRow};
+  N.state("long");await wait(60);var scrolls=bd.scrollHeight>bd.clientHeight+20,ftVis=$("cd-checkout").getBoundingClientRect().bottom<=H+1&&$("cd-checkout").getBoundingClientRect().top>=0,ftFix=Math.abs($("cd-foot").getBoundingClientRect().bottom-dr.bottom)<2;
+  out.checks.longCart={pass:scrolls&&ftVis&&ftFix,detail:"six lines scroll inside the body: "+scrolls+"; Checkout stays on screen: "+ftVis+"; footer fixed: "+ftFix};
+  N.state("empty");var em=!$("cd-empty").hidden&&$("cd-foot").hidden&&$("cd-empty").querySelectorAll(".chip").length===5&&/Continue shopping/.test($("cd-empty").textContent)&&document.querySelector("#site-header .cnt").textContent==="0"&&$("cd-count").textContent==="0 items";
+  out.checks.empty={pass:em,detail:"empty message, Continue shopping, five collection links, footer hidden, counts 0: "+em};
+  N.state("multi");var ck=$("cd-foot").querySelectorAll(".btn-primary").length===1&&/Checkout/.test($("cd-checkout").textContent)&&$("cd-checkout").getBoundingClientRect().height>=48&&!!$("cd-viewcart");
+  out.checks.checkout={pass:ck,detail:"one dominant Checkout button (48 px or more) and a quiet View cart link: "+ck};
+  var txt=D.innerText.toLowerCase(),bad=[];["discount code","promo","gift wrap","installment","save for later","reserved","calculator","buy now","live chat","order note"].forEach(function(w){if(txt.indexOf(w)>-1)bad.push(w)});
+  out.checks.exclusions={pass:bad.length===0,detail:"wording kept off the drawer: "+(bad.join(", ")||"none")};
+  var small=[];[].slice.call(D.querySelectorAll("a,button,input,textarea")).filter(function(e){return vis(e)}).forEach(function(e){var r=e.getBoundingClientRect();if(e.classList.contains("qty-input")||e.classList.contains("chip"))return;if(e.tagName==="A"&&r.height>=44-.5)return;if(r.height<44-.5||r.width<44-.5&&!e.classList.contains("btn"))small.push(sel(e)+" "+Math.round(r.width)+"x"+Math.round(r.height))});
+  var tb=[],hg=[D.querySelector("#cd-title"),D.querySelector(".cl__name")];hg.forEach(function(e){var f=getComputedStyle(e).fontFamily.split(",")[0].replace(/["']/g,"").trim();if(f!=="Cormorant")tb.push(sel(e)+" "+f)});[].slice.call(D.querySelectorAll("p,button.btn")).filter(vis).forEach(function(e){var f=getComputedStyle(e).fontFamily.split(",")[0].replace(/["']/g,"").trim();if(e.classList.contains("type-h4"))return;if(f!=="DM Sans"&&f!=="Cormorant")tb.push(sel(e)+" "+f)});
+  out.checks.targetsAndType={pass:small.length===0&&tb.length===0,detail:(small.length?"small targets: "+small.slice(0,5).join("; "):"every control is 44 px or has a 44 px hit area")+"; "+(tb.length?"fonts: "+tb.slice(0,3).join("; "):"headings Cormorant, UI DM Sans")};
+  N.state("multi");
+  var closeBtn=D.querySelector("[data-drawer-close]"),opener=document.querySelector("#site-header [data-drawer-open]");var fired=false,evs=0;D.addEventListener("close",function(){fired=true;evs++});closeBtn.click();await wait(400);var sim=false;if(!fired){sim=true;D.dispatchEvent(new Event("close"))}await wait(50);
+  out.checks.closeAndReturn={pass:!D.open&&!de.classList.contains("is-scroll-locked")&&document.activeElement===opener,detail:"close button closes the drawer: "+!D.open+"; scroll unlocked: "+!de.classList.contains("is-scroll-locked")+"; focus returns to the header cart button: "+(document.activeElement===opener)+(sim?"; note: this headless browser does not deliver the native close event, so the test dispatches it once to run the drawer.js handler":"")};
+  var pre=document.createElement("pre");pre.id="selftest-result";pre.textContent=JSON.stringify(out);document.body.appendChild(pre);
+  if(window.parent!==window){window.parent.postMessage({selftest:out},"*")}
+ }
+ if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){setTimeout(run,900)})}else{setTimeout(run,1400)}
+})();
+</script>
+<script src="../../01-Design-System/Scripts/drawer.js"></script>
+<script src="../@@FOUNDATION@@/cart-render.js"></script>
+<script>
+(function(){
+ var b=document.body,q=new URLSearchParams(location.search),C=window.NudgeCart,$=function(id){return document.getElementById(id)},D=$("cart-drawer");
+ C.ctx="drawer";
+ if(q.get("embed")){b.classList.add("embed")}
+ b.classList.toggle("ann-on",q.get("ann")!=="0");
+ function navOpen(o){b.classList.toggle("nav-open",o);$("menu-btn").setAttribute("aria-expanded",o?"true":"false")}
+ $("menu-btn").addEventListener("click",function(){navOpen(true)});$("nav-close").addEventListener("click",function(){navOpen(false)});$("scrim").addEventListener("click",function(){navOpen(false)});
+ document.addEventListener("keydown",function(e){if(e.key==="Escape")navOpen(false)});
+ [].forEach.call(document.querySelectorAll(".fcol > button"),function(h){h.addEventListener("click",function(){var f=h.parentNode,o=!f.classList.contains("is-open");f.classList.toggle("is-open",o);h.setAttribute("aria-expanded",o?"true":"false")})});
+ var msgs=["Free shipping on orders over $50","New launches are in store","Free returns within 30 days"],mi=0;
+ function msg(d){mi=(mi+d+msgs.length)%msgs.length;$("ann-msg").textContent=msgs[mi];[].forEach.call(document.querySelectorAll(".ann-dot"),function(x,i){x.classList.toggle("bg-current",i===mi);x.classList.toggle("opacity-100",i===mi);x.classList.toggle("opacity-muted",i!==mi)})}
+ $("ann-prev").addEventListener("click",function(){msg(-1)});$("ann-next").addEventListener("click",function(){msg(1)});
+ document.addEventListener("click",function(e){var a=e.target.closest('a[href^="#"]:not([href="#main"]):not([href="#top"])');if(a)e.preventDefault()});
+ $("t-ann").addEventListener("click",function(){var on=!b.classList.contains("ann-on");b.classList.toggle("ann-on",on);this.setAttribute("aria-pressed",on?"true":"false")});
+ $("t-ann").setAttribute("aria-pressed",b.classList.contains("ann-on")?"true":"false");
+ var STATES={multi:[["tm",1],["sr",1],["cl",1]],one:[["tm",1]],free:[["sr",1],["cl",1]],long:[["tm",1],["sr",1],["cl",1],["sp",1],["ey",1],["bl",1]],empty:[]};
+ function render(focus){
+  var n=C.count(),emp=C.S.items.length===0&&!C.S.undo;
+  $("cd-count").textContent=n+(n===1?" item":" items");
+  $("cd-empty").hidden=!emp;$("cd-cart").hidden=emp;$("cd-foot").hidden=emp;
+  $("cd-fs").innerHTML=C.fsHtml();$("cd-undo").innerHTML=C.undoHtml();$("cd-lines").innerHTML=C.linesHtml();
+  /* one add-on only: the drawer is narrow and the Checkout button must stay in view */
+  var up=document.createElement("div");up.innerHTML=C.upHtml("Add to your order");var li=up.querySelectorAll("li");for(var i=1;i<li.length;i++)li[i].remove();$("cd-up").innerHTML=up.innerHTML;
+  $("cd-sub").textContent=C.money(C.sub());
+  var sv=C.save();$("cd-savrow").hidden=sv<=0;$("cd-sav").textContent=C.money(sv);
+  var h=document.querySelector("#site-header .cnt");if(h){h.textContent=n;h.closest("[aria-label^=Cart]").setAttribute("aria-label","Cart, "+n+" items")}
+  if(focus){var el=null;if(focus==="undo")el=document.querySelector("[data-undo]");else if(focus.id){el=document.querySelector('.cl[data-id="'+focus.id+'"] '+focus.sel)}if(el&&!el.disabled)el.focus()}
+ }
+ C.bind($("cd-body"),function(kind){var a=document.activeElement,f=null;if(a&&a.closest&&a.closest(".cl")){f={id:a.closest(".cl").getAttribute("data-id"),sel:a.hasAttribute("data-plus")?"[data-plus]":a.hasAttribute("data-minus")?"[data-minus]":a.hasAttribute("data-q")?"[data-q]":"[data-rm]"}}
+  if(C.S.undo&&kind==="edit"&&!f)f="undo";if(kind==="remove")f="undo";render(f)});
+ function open(opener){if(!D.open)window.NudgeDrawer.open(D,opener||document.querySelector("#site-header [data-drawer-open]"))}
+ function state(s){C.set(STATES[s]);render()}
+ [["s-multi","multi"],["s-one","one"],["s-free","free"],["s-long","long"],["s-empty","empty"]].forEach(function(p){$(p[0]).addEventListener("click",function(){state(p[1]);open($(p[0]))})});
+ $("s-undo").addEventListener("click",function(){state("multi");C.remove("tm");render();open($("s-undo"))});
+ $("cd-checkout").addEventListener("click",function(){});
+ window.NudgeCartDrawer={state:state,open:open};
+ var s0=q.get("state")&&STATES[q.get("state")]?q.get("state"):"multi";state(s0);
+ if(q.get("state")==="undo"){C.remove("tm");render()}
+ if(q.get("drawer")!=="closed"&&!q.get("selftest")){open()}
+ if(q.get("selftest")){var s=document.createElement("script");s.text=$("selftest-src").text;document.body.appendChild(s)}
+})();
+</script>
+</body>
+</html>

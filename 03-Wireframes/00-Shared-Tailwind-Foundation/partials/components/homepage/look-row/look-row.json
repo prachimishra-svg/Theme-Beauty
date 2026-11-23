@@ -1,0 +1,60 @@
+{
+    "id":  "look-row",
+    "page":  "homepage",
+    "level":  "sub",
+    "name":  "Look Row",
+    "properties":  [
+                       {
+                           "name":  "n",
+                           "type":  "TEXT",
+                           "default":  "1",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "n"
+                                       },
+                           "note":  "Row number, from the position in the list"
+                       },
+                       {
+                           "name":  "tone",
+                           "type":  "TEXT",
+                           "default":  "",
+                           "scope":  "wireframe",
+                           "shopify":  {
+                                           "param":  "tone"
+                                       },
+                           "note":  "Placeholder tint class"
+                       },
+                       {
+                           "name":  "name",
+                           "type":  "TEXT",
+                           "default":  "Foundation",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "name"
+                                       },
+                           "data":  "pin.product.title"
+                       },
+                       {
+                           "name":  "price",
+                           "type":  "TEXT",
+                           "default":  "$30.00",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "price"
+                                       },
+                           "data":  "pin.product.price"
+                       }
+                   ],
+    "accessibility":  "Row content is read in order; the View control is a button-styled label for now.",
+    "status":  "classified (D10 items pending)",
+    "summary":  "One product in the look list: number, thumbnail, name, price and a View button.",
+    "tokens":  [
+                   "border colour",
+                   "spacing",
+                   "type roles"
+               ],
+    "responsive":  "Thumbnail grows with the width.",
+    "children":  [
+
+                 ]
+}

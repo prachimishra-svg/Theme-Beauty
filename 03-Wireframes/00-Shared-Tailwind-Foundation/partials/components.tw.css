@@ -1,0 +1,105 @@
+/* Shared component layer for every wireframe: the Design System components (01-Design-System/Styles/components.css)
+   expressed with Tailwind utilities and the mapped tokens. Same sizes, colours and states as the approved pages.
+   In the Shopify theme these become the shared @layer components of the compiled stylesheet and the markup lives in snippets. */
+@layer components {
+  /* ---- Buttons ---- */
+  .btn{@apply inline-flex min-h-control-md select-none items-center justify-center gap-2 rounded-control border border-transparent bg-transparent px-control-x text-center text-ink no-underline transition-colors duration-base;font-family:var(--type-button-font-family);font-size:var(--type-button-font-size);font-weight:var(--type-button-font-weight);line-height:var(--type-button-line-height);letter-spacing:var(--type-button-letter-spacing);text-transform:var(--type-button-text-transform);-webkit-tap-highlight-color:transparent}
+  .btn-primary{@apply border-btn-primary bg-btn-primary text-btn-primary-text hover:border-btn-primary-hover hover:bg-btn-primary-hover active:border-btn-primary-active active:bg-btn-primary-active}
+  .btn-secondary{@apply border-btn-secondary text-ink hover:bg-btn-secondary-hover hover:text-btn-secondary-hover-text}
+  .btn-secondary:active{opacity:var(--opacity-pressed)}
+  .btn-text{@apply min-h-touch px-1 text-link underline decoration-1 underline-offset-[0.35em] hover:text-link-hover hover:decoration-2}
+  .btn-sm{@apply relative min-h-control-sm min-w-touch px-control-x-sm}
+  .btn-sm::after{content:"";position:absolute;inset:calc((var(--control-height-sm) - var(--touch-target-min)) / 2 - var(--border-width-thin)) calc(var(--border-width-thin) * -1)}
+  .btn-lg{@apply min-h-control-lg px-control-x-lg}
+  .btn-block{@apply flex w-full}
+  .btn:disabled,.btn[aria-disabled="true"]{@apply cursor-not-allowed border-btn-disabled bg-btn-disabled text-btn-disabled-text;pointer-events:none}
+  .icon-btn{@apply relative inline-flex size-touch flex-none items-center justify-center rounded-control border border-transparent bg-transparent p-0 text-ink transition-colors duration-base hover:bg-subtle active:bg-brand-tint-strong aria-pressed:text-brand}
+  .icon-btn[aria-pressed="true"] .icon{fill:currentColor}
+  .icon-btn-filled{@apply rounded-pill bg-surface shadow-sm hover:bg-surface hover:shadow-md}
+  /* ---- Links, dividers ---- */
+  .link{@apply text-link underline decoration-1 underline-offset-[0.2em] transition-colors duration-fast hover:text-link-hover hover:decoration-2}
+  .link-standalone{@apply inline-flex min-h-touch items-center}
+  .divider{@apply m-0 w-full border-0 border-t border-line}
+  /* ---- Badges, messages ---- */
+  .badge{@apply inline-flex items-center gap-1 whitespace-nowrap rounded-badge bg-subtle px-2 py-1 font-semibold uppercase leading-snug tracking-wider text-ink;font-size:var(--font-size-utility)}
+  .badge-brand{@apply bg-brand text-ink-on-brand}
+  .badge-dark{@apply bg-inverse text-ink-inverse}
+  .badge-outline{@apply border border-line-strong bg-transparent}
+  .badge .icon{@apply size-4}
+  .message{@apply flex items-start gap-3 rounded-control border-l-thick border-current bg-subtle px-4 py-3 text-body-sm leading-normal text-ink}
+  .message .icon{margin-top:.1em}
+  .message-error{@apply bg-status-error-bg text-status-error}
+  .message-success{@apply bg-status-success-bg text-status-success}
+  .message-warning{@apply bg-status-warning-bg text-status-warning}
+  .message-error>*:not(.icon),.message-success>*:not(.icon),.message-warning>*:not(.icon){color:var(--color-text-primary)}
+  /* ---- Form fields ---- */
+  .field{@apply flex min-w-0 flex-col gap-2}
+  .field-label{@apply text-ink;font-size:var(--type-label-font-size);font-weight:var(--type-label-font-weight);line-height:var(--type-label-line-height)}
+  .input{@apply block min-h-control-md w-full appearance-none rounded-control border border-line-strong bg-surface px-4 py-3 text-input leading-normal text-ink transition-colors duration-fast placeholder:text-ink-muted hover:border-ink focus:border-brand focus-visible:border-brand disabled:cursor-not-allowed disabled:border-dashed disabled:bg-subtle disabled:text-ink-muted aria-[invalid=true]:border-status-error}
+  .select{@apply relative}
+  .select .input{@apply cursor-pointer pr-12}
+  .select-icon{@apply pointer-events-none absolute right-4 top-1/2 -translate-y-1/2}
+  /* ---- Quantity stepper ---- */
+  .qty{@apply inline-flex items-stretch rounded-control border border-line-strong bg-surface hover:border-ink focus-within:border-brand}
+  .qty-btn{@apply grid min-h-control-md w-touch place-items-center rounded-control border-0 bg-transparent p-0 text-ink transition-[background-color] duration-fast hover:bg-subtle active:bg-brand-tint-strong disabled:cursor-not-allowed disabled:bg-transparent disabled:text-ink-disabled}
+  .qty-input{@apply w-qty appearance-none border-0 bg-transparent p-0 text-center text-input font-medium focus-visible:outline-offset-[-4px];font-variant-numeric:tabular-nums;-moz-appearance:textfield}
+  .qty-input::-webkit-outer-spin-button,.qty-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+  /* ---- Price, rating ---- */
+  .price{@apply inline-flex flex-wrap items-baseline gap-x-3 gap-y-1;font-variant-numeric:tabular-nums}
+  .price-current{@apply text-price font-medium}
+  .price-lg .price-current{@apply text-price-lg font-medium}
+  .price-compare{@apply text-body-sm text-ink-secondary line-through decoration-1}
+  .price-sale .price-current{color:var(--color-price-sale)}
+  .price-unit{@apply text-caption text-ink-secondary}
+  .rating{@apply inline-flex items-center gap-2 text-caption text-ink-secondary}
+  .rating-stars{@apply inline-flex text-brand}
+  .rating-stars .icon{@apply size-4}
+  .rating-stars .icon:not(.icon-filled){@apply text-line-strong}
+  /* ---- Chip, chip row ---- */
+  .chip{@apply relative inline-flex min-h-control-sm min-w-touch items-center justify-center gap-2 whitespace-nowrap rounded-pill border border-line-strong bg-surface px-4 text-body-sm font-medium leading-snug text-ink transition-colors duration-base hover:border-ink aria-pressed:border-brand aria-pressed:bg-brand-tint aria-pressed:text-brand-active}
+  .chip::after{content:"";position:absolute;inset:calc((var(--control-height-sm) - var(--touch-target-min)) / 2 - var(--border-width-thin)) calc(var(--border-width-thin) * -1)}
+  .chip-row{@apply flex flex-nowrap items-center gap-3 overflow-x-auto py-1 sm:flex-wrap sm:overflow-x-visible sm:py-0;scrollbar-width:thin}
+  .chip-row>.chip{@apply flex-none}
+  .chip[aria-pressed="true"]::before{content:"";width:var(--icon-size-sm);height:var(--icon-size-sm);background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat}
+  .chip[aria-pressed="true"]:has(.icon)::before{content:none}
+  .chip:disabled{@apply cursor-not-allowed border-dashed bg-subtle text-ink-muted}
+  /* ---- Accordion (native details) ---- */
+  .accordion{@apply border-t border-line}
+  .accordion-item{@apply border-b border-line}
+  .accordion-summary{@apply flex min-h-touch cursor-pointer list-none items-center justify-between gap-4 py-4 text-body font-medium leading-snug hover:text-link}
+  .accordion-summary::-webkit-details-marker{display:none}
+  .accordion-summary::marker{content:""}
+  .accordion-summary .icon{@apply transition-transform duration-base}
+  .accordion-item[open]>.accordion-summary .icon{@apply rotate-180}
+  .accordion-panel{@apply max-w-text pb-5}
+  /* ---- Breadcrumb: phones show parent and current page on one line, tablets the full trail ---- */
+  .breadcrumb{@apply text-body-sm}
+  .breadcrumb-list{@apply m-0 flex list-none flex-nowrap items-center gap-x-2 p-0 sm:flex-wrap}
+  .breadcrumb-item{@apply inline-flex min-w-0 items-center gap-2}
+  .breadcrumb-item+.breadcrumb-item::before{content:"";width:var(--icon-size-sm);height:var(--icon-size-sm);flex:none;background:var(--color-text-muted);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 18 6-6-6-6'/%3E%3C/svg%3E") center / contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 18 6-6-6-6'/%3E%3C/svg%3E") center / contain no-repeat}
+  .breadcrumb a{@apply inline-flex min-h-touch min-w-touch items-center justify-center text-ink-secondary underline decoration-1 underline-offset-[0.2em] hover:text-link-hover hover:decoration-2}
+  .breadcrumb a[aria-current="page"]{@apply font-medium text-ink no-underline}
+  .breadcrumb-item:not(:nth-last-child(-n+2)){@apply hidden sm:inline-flex}
+  .breadcrumb-item:nth-last-child(2)::before{@apply hidden sm:block}
+  .breadcrumb-item:last-child{@apply flex-[1_1_0] sm:flex-[0_1_auto]}
+  .breadcrumb-item:last-child a{@apply block truncate leading-touch sm:inline-flex sm:overflow-visible sm:whitespace-normal sm:leading-[inherit]}
+  /* ---- Pagination ---- */
+  .pagination{@apply m-0 flex list-none flex-wrap items-center justify-center gap-1 p-0}
+  .pagination-link{@apply inline-flex min-h-touch min-w-touch items-center justify-center gap-2 rounded-control border border-transparent px-3 font-medium text-ink no-underline transition-colors duration-base hover:bg-subtle aria-[current=page]:border-btn-primary aria-[current=page]:bg-btn-primary aria-[current=page]:text-btn-primary-text aria-[disabled=true]:pointer-events-none aria-[disabled=true]:text-ink-muted aria-[disabled=true]:line-through;font-variant-numeric:tabular-nums}
+  .pagination-gap{@apply inline-grid min-w-touch place-items-center text-ink-muted}
+  /* ---- Drawer (native dialog; behaviour from 01-Design-System/Scripts/drawer.js) ---- */
+  .drawer{@apply fixed inset-y-0 right-0 left-auto m-0 h-full max-h-none w-drawer max-w-none flex-col overflow-hidden border-0 bg-surface p-0 text-ink shadow-lg backdrop:bg-scrim open:flex}
+  .drawer-head{@apply flex items-center justify-between gap-2 border-b border-line py-1 pl-4 pr-1}
+  .drawer-body{@apply min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-3}
+  .drawer-foot{@apply border-t border-line p-4}
+  /* ---- Page container, review annotations ---- */
+  .wrap{@apply mx-auto w-full px-gutter;max-width:calc(var(--container-max) + 2 * var(--layout-gutter))}
+  .ann{@apply hidden border border-dashed border-line-strong bg-subtle p-3 text-body-sm}
+  body.ann-on .ann{display:block}
+  .ann b{@apply mr-2 font-semibold}
+  .ann em{@apply mt-1 block not-italic text-ink-secondary}
+
+  /* ---- Mega menu panel entrance (reduced motion is handled globally in base.tw.css) ---- */
+  @keyframes mega-in{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  .mega-panel[data-open]{animation:mega-in var(--duration-base) var(--ease-out)}
+}

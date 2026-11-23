@@ -1,0 +1,14 @@
+{%- comment -%}
+  GENERATED from components/base/input-field by 07-Component-Library/tools/generate-liquid-staging.ps1 (contract 39d511e9bbee2630).
+  Do not edit here: change the library component, then regenerate. Text values are written raw; escape where Shopify data enters (| escape in the section).
+  Parameters (class: design = fixed, parent = passed in, merchant = set in a section, wireframe = not used):
+    label (TEXT, parent)
+    id (TEXT, parent)
+    name (TEXT, parent)
+    type (VARIANT, parent)
+    autocomplete (TEXT, parent)
+    placeholder (TEXT, parent)
+    required (BOOLEAN, parent)
+    error (TEXT, parent)
+{%- endcomment -%}
+{%- if label == nil -%}{%- assign label = 'Email' -%}{%- endif -%}{%- if id == nil -%}{%- assign id = 'f-email' -%}{%- endif -%}{%- if name == nil -%}{%- assign name = 'contact[email]' -%}{%- endif -%}{%- if type == nil -%}{%- assign type = 'email' -%}{%- endif -%}{%- if autocomplete == nil -%}{%- assign autocomplete = 'email' -%}{%- endif -%}{%- if placeholder == nil -%}{%- assign placeholder = '' -%}{%- endif -%}{%- if required == nil -%}{%- assign required = true -%}{%- endif -%}{%- if error == nil -%}{%- assign error = 'Enter an email address like name@example.com.' -%}{%- endif -%}<div class="field"><label class="field-label" for="{{ id }}">{{ label }}</label><input class="input" id="{{ id }}" name="{{ name }}" type="{{ type }}"{% if autocomplete != blank %} autocomplete="{{ autocomplete }}"{% endif %}{% if placeholder != blank %} placeholder="{{ placeholder }}"{% endif %}{% if required %} required{% endif %}>{% if error != blank %}<p class="m-0 type-validation text-status-error" id="{{ id }}-e" hidden>{{ error }}</p>{% endif %}</div>

@@ -1,0 +1,72 @@
+{
+    "id":  "look-pin",
+    "page":  "homepage",
+    "level":  "sub",
+    "name":  "Look Pin",
+    "properties":  [
+                       {
+                           "name":  "n",
+                           "type":  "TEXT",
+                           "default":  "1",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "n"
+                                       },
+                           "note":  "Pin number, from the position in the list"
+                       },
+                       {
+                           "name":  "top",
+                           "type":  "TEXT",
+                           "default":  "24%",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "top",
+                                           "id":  "y",
+                                           "setting":  "range"
+                                       },
+                           "note":  "Vertical position on the photo"
+                       },
+                       {
+                           "name":  "left",
+                           "type":  "TEXT",
+                           "default":  "40%",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "left",
+                                           "id":  "x",
+                                           "setting":  "range"
+                                       },
+                           "note":  "Horizontal position on the photo"
+                       },
+                       {
+                           "name":  "tip",
+                           "type":  "TEXT",
+                           "default":  "Foundation \u0026middot; $30.00",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "tip"
+                                       },
+                           "data":  "pin.product.title, pin.product.price",
+                           "note":  "Tooltip text: product title and price"
+                       }
+                   ],
+    "shopifyOnly":  [
+                        {
+                            "id":  "product",
+                            "setting":  "product",
+                            "note":  "The product the pin points to"
+                        }
+                    ],
+    "status":  "classified (D10 items pending)",
+    "accessibility":  "A button with an accessible name Product N; the tooltip shows on hover and focus.",
+    "summary":  "A numbered hotspot on the look photo; shows the product name and price on hover or focus.",
+    "tokens":  [
+                   "brand colour",
+                   "z-index",
+                   "shadow"
+               ],
+    "responsive":  "Positions are percentages of the photo.",
+    "children":  [
+
+                 ]
+}

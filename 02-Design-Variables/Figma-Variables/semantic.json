@@ -1,0 +1,879 @@
+{
+    "specVersion":  "1.0",
+    "kind":  "source",
+    "purpose":  "Semantic colour roles (collection Semantic, modes Default and Inverse). Aliases to Primitives. Inverse mirrors the web .surface-inverse scope.",
+    "valueSyntax":  "A value is a literal (hex colour, number in px unless stated, or text) or an alias written {collection-local/variable-name}. Colours are #RRGGBB or #RRGGBBAA. Every variable has one value per mode of its collection.",
+    "variables":  [
+                      {
+                          "name":  "color/brand/primary",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Brand accent",
+                          "scopes":  [
+                                         "ALL_FILLS"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/rose/700}",
+                                         "Inverse":  "{palette/rose/700}"
+                                     },
+                          "webToken":  "--color-brand-primary",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/brand/primary-hover",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Brand hover",
+                          "scopes":  [
+                                         "ALL_FILLS"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/rose/800}",
+                                         "Inverse":  "{palette/rose/800}"
+                                     },
+                          "webToken":  "--color-brand-primary-hover",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/brand/primary-active",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Brand pressed",
+                          "scopes":  [
+                                         "ALL_FILLS"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/rose/900}",
+                                         "Inverse":  "{palette/rose/900}"
+                                     },
+                          "webToken":  "--color-brand-primary-active",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/brand/secondary",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Luxury Rose: recognisable brand elements (eyebrows, ratings, heading rules, large serif accents). Small text only on the page or surface",
+                          "scopes":  [
+                                         "FRAME_FILL",
+                                         "SHAPE_FILL",
+                                         "STROKE_COLOR"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/rose/500}",
+                                         "Inverse":  "{palette/rose/500}"
+                                     },
+                          "webToken":  "--color-brand-secondary",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/brand/accent",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Blush Rose: decorative accents and dividers on light surfaces; never text there",
+                          "scopes":  [
+                                         "FRAME_FILL",
+                                         "SHAPE_FILL",
+                                         "STROKE_COLOR"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/rose/400}",
+                                         "Inverse":  "{palette/rose/400}"
+                                     },
+                          "webToken":  "--color-brand-accent",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/brand/tint",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Selected and subtle brand fill",
+                          "scopes":  [
+                                         "ALL_FILLS"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/rose/50}",
+                                         "Inverse":  "{palette/rose/50}"
+                                     },
+                          "webToken":  "--color-brand-tint",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/brand/tint-strong",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Stronger brand tint",
+                          "scopes":  [
+                                         "ALL_FILLS"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/rose/100}",
+                                         "Inverse":  "{palette/rose/100}"
+                                     },
+                          "webToken":  "--color-brand-tint-strong",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/bg/page",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Page background",
+                          "scopes":  [
+                                         "FRAME_FILL"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/ivory}",
+                                         "Inverse":  "{color/bg/inverse}"
+                                     },
+                          "webToken":  "--color-bg-page",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/bg/surface",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Cards, inputs, drawers",
+                          "scopes":  [
+                                         "FRAME_FILL"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/white}",
+                                         "Inverse":  "{palette/white}"
+                                     },
+                          "webToken":  "--color-bg-surface",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/bg/subtle",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Subtle surfaces",
+                          "scopes":  [
+                                         "FRAME_FILL"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/blush}",
+                                         "Inverse":  "{palette/blush}"
+                                     },
+                          "webToken":  "--color-bg-subtle",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/bg/inverse",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Footer, promotional bar",
+                          "scopes":  [
+                                         "FRAME_FILL"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/charcoal}",
+                                         "Inverse":  "{palette/charcoal}"
+                                     },
+                          "webToken":  "--color-bg-inverse",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/text/primary",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Primary text",
+                          "scopes":  [
+                                         "TEXT_FILL"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/charcoal}",
+                                         "Inverse":  "{color/text/inverse}"
+                                     },
+                          "webToken":  "--color-text-primary",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/text/secondary",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Secondary text",
+                          "scopes":  [
+                                         "TEXT_FILL"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/neutral/600}",
+                                         "Inverse":  "{color/text/inverse-secondary}"
+                                     },
+                          "webToken":  "--color-text-secondary",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/text/muted",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Muted text. AA on Pearl Pink, white and Rose Quartz (4.6:1 on Rose Quartz)",
+                          "scopes":  [
+                                         "TEXT_FILL"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/neutral/500}",
+                                         "Inverse":  "{palette/neutral/300}"
+                                     },
+                          "webToken":  "--color-text-muted",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/text/disabled",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Disabled text",
+                          "scopes":  [
+                                         "TEXT_FILL"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/neutral/300}",
+                                         "Inverse":  "{palette/neutral/300}"
+                                     },
+                          "webToken":  "--color-text-disabled",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/text/inverse",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Text on the inverse surface",
+                          "scopes":  [
+                                         "TEXT_FILL"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/ivory}",
+                                         "Inverse":  "{palette/ivory}"
+                                     },
+                          "webToken":  "--color-text-inverse",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/text/inverse-secondary",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Secondary text on the inverse surface",
+                          "scopes":  [
+                                         "TEXT_FILL"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/blush}",
+                                         "Inverse":  "{palette/blush}"
+                                     },
+                          "webToken":  "--color-text-inverse-secondary",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/text/on-brand",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Text on brand fills",
+                          "scopes":  [
+                                         "TEXT_FILL"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/white}",
+                                         "Inverse":  "{palette/white}"
+                                     },
+                          "webToken":  "--color-text-on-brand",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/border/subtle",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Decorative dividers",
+                          "scopes":  [
+                                         "STROKE_COLOR"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/blush}",
+                                         "Inverse":  "{color/border/inverse-subtle}"
+                                     },
+                          "webToken":  "--color-border-subtle",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/border/strong",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Control boundaries (3:1 or more on ivory and white)",
+                          "scopes":  [
+                                         "STROKE_COLOR"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/neutral/400}",
+                                         "Inverse":  "{color/border/inverse}"
+                                     },
+                          "webToken":  "--color-border-strong",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/border/inverse",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Control boundaries on the inverse surface",
+                          "scopes":  [
+                                         "STROKE_COLOR"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/neutral/300}",
+                                         "Inverse":  "{palette/neutral/300}"
+                                     },
+                          "webToken":  "--color-border-inverse",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/border/inverse-subtle",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Dividers on the inverse surface: Pearl Pink at 20%. A literal, because a Figma alias cannot change alpha",
+                          "scopes":  [
+                                         "STROKE_COLOR"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "#FFF5F533",
+                                         "Inverse":  "#FFF5F533"
+                                     },
+                          "webToken":  "--color-border-inverse-subtle",
+                          "webRelation":  "mapped"
+                      },
+                      {
+                          "name":  "color/link/default",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Links",
+                          "scopes":  [
+                                         "ALL_FILLS"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/rose/700}",
+                                         "Inverse":  "{color/link/inverse}"
+                                     },
+                          "webToken":  "--color-link",
+                          "webRelation":  "mapped"
+                      },
+                      {
+                          "name":  "color/link/hover",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Link hover",
+                          "scopes":  [
+                                         "ALL_FILLS"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/rose/900}",
+                                         "Inverse":  "{color/link/inverse-hover}"
+                                     },
+                          "webToken":  "--color-link-hover",
+                          "webRelation":  "mapped"
+                      },
+                      {
+                          "name":  "color/link/inverse",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Links on the inverse surface (Rich Burgundy is only 1.7:1 on Midnight Plum)",
+                          "scopes":  [
+                                         "ALL_FILLS"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/blush}",
+                                         "Inverse":  "{palette/blush}"
+                                     },
+                          "webToken":  "--color-link-inverse",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/link/inverse-hover",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Link hover on the inverse surface",
+                          "scopes":  [
+                                         "ALL_FILLS"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/white}",
+                                         "Inverse":  "{palette/white}"
+                                     },
+                          "webToken":  "--color-link-inverse-hover",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/button/primary-bg",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Primary button",
+                          "scopes":  [
+                                         "ALL_FILLS"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{color/brand/primary}",
+                                         "Inverse":  "{color/brand/primary}"
+                                     },
+                          "webToken":  "--color-button-primary-bg",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/button/primary-bg-hover",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Primary button hover",
+                          "scopes":  [
+                                         "ALL_FILLS"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{color/brand/primary-hover}",
+                                         "Inverse":  "{color/brand/primary-hover}"
+                                     },
+                          "webToken":  "--color-button-primary-bg-hover",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/button/primary-bg-active",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Primary button pressed",
+                          "scopes":  [
+                                         "ALL_FILLS"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{color/brand/primary-active}",
+                                         "Inverse":  "{color/brand/primary-active}"
+                                     },
+                          "webToken":  "--color-button-primary-bg-active",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/button/primary-text",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Primary button label",
+                          "scopes":  [
+                                         "TEXT_FILL"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{color/text/on-brand}",
+                                         "Inverse":  "{color/text/on-brand}"
+                                     },
+                          "webToken":  "--color-button-primary-text",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/button/secondary-border",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Secondary button outline (follows the surface mode)",
+                          "scopes":  [
+                                         "STROKE_COLOR"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{color/text/primary}",
+                                         "Inverse":  "{color/text/primary}"
+                                     },
+                          "webToken":  "--color-button-secondary-border",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/button/secondary-bg-hover",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Secondary button hover fill",
+                          "scopes":  [
+                                         "ALL_FILLS"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{color/text/primary}",
+                                         "Inverse":  "{color/text/primary}"
+                                     },
+                          "webToken":  "--color-button-secondary-bg-hover",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/button/secondary-text-hover",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Secondary button hover label",
+                          "scopes":  [
+                                         "TEXT_FILL"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{color/text/inverse}",
+                                         "Inverse":  "{color/bg/inverse}"
+                                     },
+                          "webToken":  "--color-button-secondary-text-hover",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/button/disabled-bg",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Disabled button",
+                          "scopes":  [
+                                         "ALL_FILLS"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/blush}",
+                                         "Inverse":  "{palette/blush}"
+                                     },
+                          "webToken":  "--color-button-disabled-bg",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/button/disabled-text",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Disabled button label",
+                          "scopes":  [
+                                         "TEXT_FILL"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/neutral/600}",
+                                         "Inverse":  "{palette/neutral/600}"
+                                     },
+                          "webToken":  "--color-button-disabled-text",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/focus/ring",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Focus ring on light and tinted surfaces",
+                          "scopes":  [
+                                         "STROKE_COLOR"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/rose/700}",
+                                         "Inverse":  "{color/focus/ring-inverse}"
+                                     },
+                          "webToken":  "--color-focus-ring",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/focus/ring-inverse",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Focus ring on the inverse surface (the default ring is 1.7:1 on Midnight Plum)",
+                          "scopes":  [
+                                         "STROKE_COLOR"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/blush}",
+                                         "Inverse":  "{palette/blush}"
+                                     },
+                          "webToken":  "--color-focus-ring-inverse",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/control/bg",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Form control background (transparent on the inverse surface)",
+                          "scopes":  [
+                                         "ALL_FILLS"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/white}",
+                                         "Inverse":  "#00000000"
+                                     },
+                          "webToken":  "--color-control-bg",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/control/border",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Form control border",
+                          "scopes":  [
+                                         "STROKE_COLOR"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{color/border/strong}",
+                                         "Inverse":  "{color/border/strong}"
+                                     },
+                          "webToken":  "--color-control-border",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/control/border-hover",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Form control border on hover",
+                          "scopes":  [
+                                         "STROKE_COLOR"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{color/text/primary}",
+                                         "Inverse":  "{color/text/primary}"
+                                     },
+                          "webToken":  "--color-control-border-hover",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/control/selected",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Selected checkbox, radio, chip",
+                          "scopes":  [
+                                         "ALL_FILLS"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{color/brand/primary}",
+                                         "Inverse":  "{color/brand/primary}"
+                                     },
+                          "webToken":  "--color-control-selected",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/status/error",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Error",
+                          "scopes":  [
+                                         "ALL_FILLS"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/red/700}",
+                                         "Inverse":  "{palette/red/700}"
+                                     },
+                          "webToken":  "--color-status-error",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/status/error-bg",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Error tint",
+                          "scopes":  [
+                                         "ALL_FILLS"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/red/50}",
+                                         "Inverse":  "{palette/red/50}"
+                                     },
+                          "webToken":  "--color-status-error-bg",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/status/success",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Success",
+                          "scopes":  [
+                                         "ALL_FILLS"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/green/700}",
+                                         "Inverse":  "{palette/green/700}"
+                                     },
+                          "webToken":  "--color-status-success",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/status/success-bg",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Success tint",
+                          "scopes":  [
+                                         "ALL_FILLS"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/green/50}",
+                                         "Inverse":  "{palette/green/50}"
+                                     },
+                          "webToken":  "--color-status-success-bg",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/status/warning",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Warning",
+                          "scopes":  [
+                                         "ALL_FILLS"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/amber/700}",
+                                         "Inverse":  "{palette/amber/700}"
+                                     },
+                          "webToken":  "--color-status-warning",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/status/warning-bg",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Warning tint",
+                          "scopes":  [
+                                         "ALL_FILLS"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{palette/amber/50}",
+                                         "Inverse":  "{palette/amber/50}"
+                                     },
+                          "webToken":  "--color-status-warning-bg",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/price/sale",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Sale price",
+                          "scopes":  [
+                                         "TEXT_FILL"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{color/brand/primary}",
+                                         "Inverse":  "{color/brand/primary}"
+                                     },
+                          "webToken":  "--color-price-sale",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/rating/star",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Filled star",
+                          "scopes":  [
+                                         "ALL_FILLS"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{color/brand/secondary}",
+                                         "Inverse":  "{color/brand/secondary}"
+                                     },
+                          "webToken":  "--color-rating-star",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/rating/star-empty",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Empty star",
+                          "scopes":  [
+                                         "ALL_FILLS"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "{color/border/strong}",
+                                         "Inverse":  "{color/border/strong}"
+                                     },
+                          "webToken":  "--color-rating-star-empty",
+                          "webRelation":  "shared"
+                      },
+                      {
+                          "name":  "color/overlay/scrim",
+                          "collection":  "Semantic",
+                          "type":  "COLOR",
+                          "layer":  "semantic",
+                          "description":  "Behind drawers and modals: Midnight Plum at 50%. A literal, because the web value combines a colour with an opacity token",
+                          "scopes":  [
+                                         "ALL_FILLS"
+                                     ],
+                          "hiddenFromPublishing":  false,
+                          "values":  {
+                                         "Default":  "#29212680",
+                                         "Inverse":  "#29212680"
+                                     },
+                          "webToken":  "--color-overlay-scrim",
+                          "webRelation":  "mapped"
+                      }
+                  ]
+}

@@ -1,0 +1,27 @@
+{
+    "id":  "cart-button-content",
+    "page":  "shared",
+    "level":  "sub",
+    "name":  "Cart Button Content",
+    "properties":  [
+
+                   ],
+    "shopifyOnly":  [
+                        {
+                            "id":  "cart_count",
+                            "setting":  "data",
+                            "note":  "cart.item_count, filled by the theme script"
+                        }
+                    ],
+    "status":  "classified (D10 items pending)",
+    "accessibility":  "The count is part of the button name, which the script keeps current.",
+    "summary":  "The inside of the cart button: bag icon, the word Cart (from 1024 px) and the item count badge. The count is written by script.",
+    "tokens":  [
+                   "brand colour",
+                   "type roles"
+               ],
+    "responsive":  "Icon and count below 1024 px; icon, text and count from 1024 px.",
+    "children":  [
+                     "components/base/icon"
+                 ]
+}

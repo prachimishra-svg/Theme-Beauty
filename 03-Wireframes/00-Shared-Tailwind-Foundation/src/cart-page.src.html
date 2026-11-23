@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NUDGE Beauty Theme: Cart Page Wireframe</title>
+<!-- Design Variables (tokens) linked; styling is Tailwind utilities and the shared components, mapped to those tokens. -->
+@@PARTIAL head@@
+<style>
+@@PARTIAL review-css@@
+</style>
+</head>
+<body class="ann-on [&.has-sticky]:pb-20 md:[&.has-sticky]:pb-0" id="top">
+@@PARTIAL sprite@@
+<a href="#cart" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-skip focus:bg-surface focus:p-3">Skip to cart</a>
+<div class="rv">
+  <div class="rvt">NUDGE Beauty Theme: cart page wireframe &middot; single responsive file</div>
+  <p>The full-page cart, built with Tailwind utilities and shared components mapped to the Design Variables. The announcement bar, header and footer are the shared sections. Products, prices and the free-shipping threshold are <b>sample content</b> standing in for the Shopify cart. Placeholders only: no photography. Use <b>Width preview</b> for 1920, 1440, 1280, 1024, 768, 430, 390 and 320 px.</p>
+  <div class="ctl"><button id="t-ann" type="button" aria-pressed="true">Annotations</button><button id="t-wp" type="button">Width preview</button><button id="s-multi" type="button">3 items</button><button id="s-one" type="button">1 item</button><button id="s-free" type="button">Free shipping reached</button><button id="s-long" type="button">Long cart (6)</button><button id="s-undo" type="button">Remove, with undo</button><button id="s-empty" type="button">Empty cart</button></div>
+<details><summary>Review notes: approved features, exclusions, decisions, Shopify (open)</summary>
+<h3>Approved Beauty cart features (25 Yes in the revised workbook)</h3>
+<p>Source: <b>Homepage_CRO_5_Theme_Final_Comparison_Revised_Final.xlsx</b>, sheet <i>Beauty - PLP, PDP &amp; Cart</i> (Cart: 25 kept, 2 not recommended), with <i>Cart Additional CRO Recs</i> and <i>Removed - PLP, PDP, Cart</i>. Full checklist: <b>CART-FEATURE-ANALYSIS.md</b>.</p>
+<ul><li>Full cart page</li><li>Title and item count</li><li>Free-shipping progress</li><li>Lines: image, title, variant, price, quantity</li><li>Live quantity stepper, remove, remove with undo</li><li>Compare-at price and line saving</li><li>Stock warnings on lines (real stock only)</li><li>Delivery estimate date</li><li>Native upsell (one or two low-priced items)</li><li>Order note and gift message</li><li>Subtotal, saving, taxes and shipping note</li><li>Checkout button with lock, express buttons</li><li>Trust line, policy links, support contact</li><li>Continue shopping as a quiet link</li><li>Sticky checkout bar (phones)</li><li>Empty state with collection links; mobile-first layout</li></ul>
+<h3>Not drawn (No or Removed for Beauty)</h3>
+<ul><li>Discount code box (Shopify takes codes at checkout)</li><li>Gift wrap product, free gift line</li><li>Frequently bought together as its own block (merged into the upsell)</li><li>Change size or option in the cart (No for Beauty)</li><li>Installment messaging (No)</li><li>Reserved-for-10-minutes timer (fake urgency)</li><li>Save for later, quantity discounts, shipping rate calculator, live chat</li></ul>
+<h3>Shopify build</h3>
+<p>Template <code>cart.json</code> with a <code>main-cart</code> section over the native <code>cart</code> object and the Cart Ajax API (<code>/cart/change.js</code>); lines, summary and upsell are blocks and snippets; free-shipping threshold, upsell and express buttons are theme-editor settings. No app is involved. Tailwind utilities compile into one theme stylesheet from the same token-mapped config.</p>
+</details>
+</div>
+<div class="ann"><b>Global</b>Announcement bar, header (sticky) and footer: the shared sections. The cart icon is the current page. Responsive: below 1024 px a one-row header with the menu in a left drawer; footer groups are tap-to-open rows below 768 px.</div>
+@@PARTIAL annbar@@
+@@PARTIAL header CART=page NAV=none@@
+<main id="main" class="wrap pb-20 pt-6">
+<div id="cart" tabindex="-1" aria-label="Cart">
+<div id="full" data-section="Cart">
+<div class="ann"><b>01 &middot; Review</b>Cart header (T1, T5) &mdash; CRO: Essential (title and item count, continue shopping as a quiet link, free-shipping progress). The count lives in the title, not in a second badge; Continue shopping is a link, never a button that competes with checkout.<em>Responsive: title and link share a row; the link wraps under the title when narrow.</em></div>
+<div class="mb-6 flex flex-wrap items-baseline justify-between gap-4"><div class="flex flex-wrap items-baseline gap-3"><h1 class="type-h2">Cart</h1><span class="type-body-lg text-ink-secondary" id="c-count">3 items</span></div><a class="link inline-flex min-h-touch items-center" href="#shop">Continue shopping</a></div>
+<div class="mb-6" id="c-fs"></div>
+<div class="grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,4fr)] lg:items-start lg:gap-16">
+<div id="c-linescol" data-section="Cart lines">
+<div class="ann"><b>02 &middot; Lines</b>Cart lines and stepper (T1) &mdash; CRO: Essential (lines, live quantity, remove, compare-at and saving, stock warnings), additional (remove with undo, no confirmation dialog). Lines are separated by hairlines, not boxed. Quantity and totals update at once; removing is one tap with an Undo message. Stock warnings use real inventory only; a typed quantity above stock is capped with a message on the line, and a line with more than one unit shows its price each. Change size or option is not offered (No for Beauty).<em>Responsive: one row per line from 768 px (image, details, quantity, total); below that the image sits beside the details with the quantity and Remove under them.</em></div>
+<div class="hidden text-utility uppercase md:grid md:grid-cols-[var(--space-24)_minmax(0,1fr)_auto_var(--space-24)] md:gap-x-4 md:pb-3 lg:gap-x-6 [&>span:last-child]:text-right" aria-hidden="true"><span></span><span>Product</span><span>Quantity</span><span>Total</span></div>
+<div id="c-undo"></div>
+<div id="c-lines"></div>
+<div class="mt-8 flex flex-col gap-8">
+<details id="c-note" data-section="Order note and gift message"><summary class="flex min-h-touch cursor-pointer list-none items-center justify-between text-body-sm [&::-webkit-details-marker]:hidden">Add a note or gift message <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></summary><div class="field"><label class="sr-only" for="c-note-t">Order note or gift message</label><textarea class="input mt-2" id="c-note-t" rows="3" placeholder="Gift message or order note"></textarea></div></details>
+<div id="c-up" data-section="Cart upsell"></div>
+</div>
+</div>
+<aside class="flex flex-col gap-4 bg-surface p-6 lg:sticky lg:top-[calc(var(--sticky-top,0px)+var(--space-6))]" id="c-sum" aria-label="Order summary" data-section="Order summary">
+<div class="ann"><b>03 &middot; Pay</b>Order summary (T1) &mdash; CRO: Essential (subtotal, discount and saving, taxes and shipping note, checkout with lock icon, trust line, policy links, support contact), optional (delivery estimate, express buttons). One dominant button. The subtotal is the estimated total because shipping and tax are set at checkout. No discount code field (Removed). Trust is stated once, here.<em>Responsive: sticky beside the lines from 1024 px; below that it follows the lines, with a sticky checkout bar on phones.</em></div>
+<h2 class="type-h5">Order summary</h2>
+<div class="flex items-baseline justify-between gap-4"><span>Subtotal</span><span class="font-heading text-h3 font-regular leading-tight [font-variant-numeric:lining-nums]" id="c-sub">$0.00</span></div>
+<div class="flex items-baseline justify-between gap-4 text-brand" id="c-savrow"><span>You save</span><span id="c-sav">$0.00</span></div>
+<p class="m-0 text-caption text-ink-secondary">Taxes and shipping calculated at checkout.</p>
+<p class="m-0 text-body-sm text-ink-secondary" id="c-est">Estimated delivery 17 to 20 Nov</p>
+<hr class="divider">
+<button class="btn btn-primary btn-lg btn-block" type="button" id="c-checkout"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-lock"></use></svg><span>Checkout</span></button>
+<div class="grid min-h-control-md place-items-center border border-dashed border-line-strong px-4 py-2 text-center text-caption text-ink-secondary" id="c-express">Express checkout buttons (Shopify additional checkout buttons, set in the store)</div>
+<div class="flex flex-col gap-2 text-caption text-ink-secondary"><span>Secure checkout &middot; Visa &middot; Mastercard &middot; UPI &middot; Wallet</span><span class="flex flex-wrap gap-x-4"><a class="inline-flex min-h-touch items-center text-body-sm text-ink" href="#policy">Returns policy</a><a class="inline-flex min-h-touch items-center text-body-sm text-ink" href="#policy">Shipping policy</a><a class="inline-flex min-h-touch items-center text-body-sm text-ink" href="#contact">Contact us</a></span></div>
+</aside>
+</div>
+</div>
+<div class="mx-auto flex max-w-text flex-col items-center gap-5 py-16 text-center" id="empty" hidden data-section="Empty cart">
+<div class="ann"><b>04 &middot; Empty</b>Empty cart (T1) &mdash; CRO: Essential (invite shopping with links to best sellers or collections, not a dead end). A clear message, one button and collection links. No illustration, in line with the placeholders-only rule.<em>Responsive: centred column, chips wrap.</em></div>
+<h1 class="type-h2">Your cart is empty</h1>
+<p class="m-0 text-ink-secondary">Nothing here yet. Browse the collections to find your next favourite.</p>
+<a class="btn btn-primary" href="#shop">Continue shopping</a>
+<div class="chip-row max-w-full justify-center" aria-label="Shop by collection"><a class="chip" href="#shop">Best sellers</a><a class="chip" href="#shop">Skin care</a><a class="chip" href="#shop">Makeup</a><a class="chip" href="#shop">Hair</a><a class="chip" href="#shop">Body</a></div>
+</div>
+</div>
+</main>
+@@PARTIAL footer@@
+<div id="c-sticky" role="region" aria-label="Checkout" inert class="invisible fixed inset-x-0 bottom-0 z-sticky translate-y-full border-t border-line bg-surface px-gutter py-2 transition-[transform,visibility] duration-base md:hidden [&.is-on]:visible [&.is-on]:translate-y-0">
+<div class="ann"><b>05 &middot; Reach</b>Sticky checkout bar &mdash; CRO: additional, optional (merchant-controlled). Phones only; appears while the summary button is off screen.<em>Responsive: hidden from 768 px.</em></div>
+<div class="flex items-center gap-4"><span class="flex flex-none flex-col"><span class="type-caption">Subtotal</span><b id="c-sticky-sub">$0.00</b></span><button class="btn btn-primary flex-1" type="button" id="c-sticky-go"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-lock"></use></svg><span>Checkout</span></button></div>
+</div>
+@@PARTIAL width-preview@@
+<script type="text/plain" id="selftest-src">
+(function(){
+ function vis(el){var cs=getComputedStyle(el);if(cs.display==="none"||cs.visibility==="hidden")return false;var r=el.getBoundingClientRect();return r.width>0&&r.height>0}
+ function sel(el){var s=el.tagName.toLowerCase();if(el.id)s+="#"+el.id;if(el.className&&typeof el.className==="string")s+="."+el.className.trim().split(/\s+/).slice(0,2).join(".");return s}
+ function $(id){return document.getElementById(id)}
+ function wait(ms){return new Promise(function(r){setTimeout(r,ms)})}
+ async function run(){
+  var W=window.innerWidth,de=document.documentElement,out={docHeight:de.scrollHeight,width:W,checks:{}},N=window.NudgeCartPage,TWO=W>=1024,ROW=W>=768;
+  var st=document.createElement("style");st.textContent="*{transition:none!important}";document.head.appendChild(st);de.style.scrollBehavior="auto";
+  N.state("multi");void document.body.offsetHeight;
+  var twOk=getComputedStyle($("site-header")).position==="sticky"&&getComputedStyle($("c-sum")).display==="flex"&&!document.querySelector('link[href*="components.css"],link[href*="base.css"]');
+  var fl=Array.from(document.fonts).some(function(x){return x.family.indexOf("Cormorant")>-1&&x.status==="loaded"})&&Array.from(document.fonts).some(function(x){return x.family.indexOf("DM Sans")>-1&&x.status==="loaded"});
+  out.checks.tailwindAndFonts={pass:twOk&&fl,detail:"Tailwind utilities applied, no Design System component stylesheet: "+twOk+"; Cormorant and DM Sans loaded: "+fl};
+  var off=[];document.querySelectorAll("main *,header *,footer *").forEach(function(el){if(el.closest(".sr-only")||el.closest("#nav")&&W<1024)return;var r=el.getBoundingClientRect();if(r.width>0&&(r.right>W+1||r.left<-1))off.push(sel(el))});
+  out.checks.overflow={pass:de.scrollWidth<=W+1&&off.length===0,detail:"scrollWidth "+de.scrollWidth+" of "+W+(off.length?"; past the edge: "+off.slice(0,4).join(", "):"")};
+  var hs=[].slice.call(document.querySelectorAll("h1,h2,h3,h4,h5,h6")).filter(function(h){return !h.closest(".rv")&&vis(h)}),h1=hs.filter(function(h){return h.tagName==="H1"}).length;
+  out.checks.structure={pass:h1===1&&!!document.querySelector("main#main")&&document.querySelectorAll(".cl").length===3,detail:"visible H1: "+h1+"; lines: "+document.querySelectorAll(".cl").length};
+  var ln=$("c-lines").getBoundingClientRect(),sm=$("c-sum").getBoundingClientRect(),lay,ld;
+  if(TWO){lay=ln.right<=sm.left+1&&Math.abs(ln.top-sm.top)<200&&getComputedStyle($("c-sum")).position==="sticky";ld="lines left of the summary (sticky): "+lay}
+  else{lay=sm.top>=ln.bottom-1;ld="summary follows the lines"}
+  var c0=document.querySelector(".cl"),th=c0.children[0].getBoundingClientRect(),qy=c0.children[3].getBoundingClientRect(),pr=c0.children[2].getBoundingClientRect();
+  var rowOk=ROW?(Math.abs(th.top-qy.top)<80&&qy.left>th.right&&pr.left>=qy.right-1):(qy.top>=c0.children[1].getBoundingClientRect().bottom-1);
+  out.checks.layout={pass:lay&&rowOk,detail:ld+"; line "+(ROW?"in one row (image, details, quantity, total)":"stacked (quantity under the details)")+": "+rowOk};
+  N.state("multi");var s0=$("c-sub").textContent,btn=document.querySelector('.cl[data-id="tm"] [data-plus]');btn.click();var s1=$("c-sub").textContent,q1=document.querySelector('.cl[data-id="tm"] [data-q]').value==="2",cnt=$("c-count").textContent==="4 items"&&/4/.test(document.querySelector("#site-header .cnt").textContent);document.querySelector('.cl[data-id="tm"] [data-minus]').click();var s2=$("c-sub").textContent===s0;
+  out.checks.liveUpdate={pass:s0==="$82.00"&&s1==="$114.00"&&q1&&cnt&&s2,detail:"subtotal "+s0+" to "+s1+" on +1 and back: "+s2+"; line quantity 2: "+q1+"; count and header update: "+cnt};
+  N.state("multi");document.querySelector('.cl[data-id="cl"] [data-rm]').click();var gone=document.querySelectorAll(".cl").length===2&&!!document.querySelector("[data-undo]")&&$("c-sub").textContent==="$64.00";document.querySelector("[data-undo]").click();var back=document.querySelectorAll(".cl").length===3&&!document.querySelector("[data-undo]")&&$("c-sub").textContent==="$82.00";
+  out.checks.removeUndo={pass:gone&&back,detail:"one tap removes, no dialog, Undo message shown and total updated: "+gone+"; Undo restores the line in place: "+back};
+  N.state("one");var t1=$("c-fs").textContent;N.state("free");var t2=$("c-fs").textContent,done=document.querySelector(".fs").getAttribute("data-done")==="true";
+  out.checks.freeShipping={pass:/\$18\.00/.test(t1)&&done&&/free shipping/i.test(t2)&&!!document.querySelector('.fs__bar[role="progressbar"]'),detail:"one item ($32): '"+t1.trim()+"'; threshold reached: '"+t2.trim()+"' ("+done+")"};
+  N.state("multi");var low=document.querySelector('.cl[data-id="sr"] .cl__stock'),lowOk=!!low&&/Only 3 left/.test(low.textContent);var p=document.querySelector('.cl[data-id="sr"] [data-plus]');p.click();p=document.querySelector('.cl[data-id="sr"] [data-plus]');p.click();p=document.querySelector('.cl[data-id="sr"] [data-plus]');var cap=document.querySelector('.cl[data-id="sr"] [data-q]').value==="3"&&p.disabled;
+  out.checks.stock={pass:lowOk&&cap,detail:"real low-stock note on the serum line: "+lowOk+"; quantity stops at the 3 in stock: "+cap};
+  N.state("empty");var emp=!$("empty").hidden&&$("full").hidden&&$("empty").querySelectorAll(".chip").length>=4&&/Continue shopping/.test($("empty").textContent)&&document.querySelectorAll("h1").length===2;var hc=document.querySelector("#site-header .cnt").textContent==="0";
+  out.checks.empty={pass:emp&&hc&&getComputedStyle($("c-sticky")).visibility==="hidden",detail:"empty message, Continue shopping and collection links shown, summary hidden: "+emp+"; header count 0: "+hc};
+  N.state("multi");var qi=document.querySelector('.cl[data-id="sr"] [data-q]');qi.value="9";qi.dispatchEvent(new Event("change",{bubbles:true}));var er=document.querySelector('.cl[data-id="sr"] .cl__err'),capOk=!!er&&/Only 3 available/.test(er.textContent)&&document.querySelector('.cl[data-id="sr"] [data-q]').value==="3";document.querySelector('.cl[data-id="tm"] [data-plus]').click();var cleared=!document.querySelector(".cl__err"),eachEl=document.querySelector('.cl[data-id="tm"] .cl__each'),eachOk=!!eachEl&&/\$32\.00 each/.test(eachEl.textContent)&&!document.querySelector('.cl[data-id="cl"] .cl__each');
+  out.checks.availability={pass:capOk&&cleared&&eachOk,detail:"typing 9 for a line with 3 in stock sets 3 and shows a message: "+capOk+"; message clears on the next edit: "+cleared+"; price each shows only when quantity is above 1: "+eachOk};
+  N.state("multi");var txt=document.getElementById("main").innerText.toLowerCase(),bad=[];["discount code","promo","gift wrap","installment","save for later","reserved","frequently bought","calculator","buy now","live chat"].forEach(function(w){if(txt.indexOf(w)>-1)bad.push(w)});
+  out.checks.exclusions={pass:bad.length===0&&!!$("c-note")&&!!$("c-express"),detail:"excluded wording in the cart: "+(bad.join(", ")||"none")+"; order note and express slot present"};
+  N.state("long");window.scrollTo(0,0);window.dispatchEvent(new Event("scroll"));await wait(120);var sk=$("c-sticky"),skOn=sk.classList.contains("is-on");
+  window.scrollTo(0,$("c-checkout").getBoundingClientRect().top+window.scrollY-200);window.dispatchEvent(new Event("scroll"));await wait(120);var skOff=!sk.classList.contains("is-on");window.scrollTo(0,0);
+  out.checks.stickyBar={pass:W<768?(skOn&&skOff):(getComputedStyle(sk).display==="none"),detail:W<768?"shown while the summary button is off screen: "+skOn+"; hides when it is in view: "+skOff:"hidden from 768 px"};
+  N.state("multi");var small=[];[].slice.call(document.querySelectorAll("main a,main button,main summary,main input,main textarea,header a,header button,footer a,footer button")).filter(function(e){return vis(e)&&!e.closest(".sr-only")&&!e.closest(".rv")&&!e.closest(".ann")&&!(W<1024&&e.closest("#nav"))}).forEach(function(e){var r=e.getBoundingClientRect();if(e.classList.contains("qty-input"))return;if(e.closest(".fcol")&&W>=768)return;if(e.tagName==="A"&&r.height>=44-.5)return;if(r.height<44-.5||r.width<44-.5&&!e.classList.contains("btn"))small.push(sel(e)+" "+Math.round(r.width)+"x"+Math.round(r.height))});
+  var tb=[],fams={};[].slice.call(document.querySelectorAll("main h1,main h2,.cl__name,main button,main p")).filter(vis).forEach(function(e){var f=getComputedStyle(e).fontFamily.split(",")[0].replace(/["']/g,"").trim();fams[f]=1;var head=/^H[12]$/.test(e.tagName)||e.classList.contains("cl__name");if(head&&f!=="Cormorant")tb.push(sel(e)+" "+f);if(!head&&f!=="DM Sans"&&f!=="Cormorant")tb.push(sel(e)+" "+f)});
+  out.checks.targetsAndType={pass:small.length===0&&tb.length===0,detail:(small.length?"small targets: "+small.slice(0,5).join("; "):"every visible control is 44 px or has a 44 px hit area")+"; "+(tb.length?"fonts: "+tb.slice(0,3).join("; "):"headings Cormorant, UI DM Sans")};
+  N.state("multi");window.scrollTo(0,0);
+  var pre=document.createElement("pre");pre.id="selftest-result";pre.textContent=JSON.stringify(out);document.body.appendChild(pre);
+  if(window.parent!==window){window.parent.postMessage({selftest:out},"*")}
+ }
+ if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){setTimeout(run,900)})}else{setTimeout(run,1400)}
+})();
+</script>
+<script src="../@@FOUNDATION@@/cart-render.js"></script>
+<script>
+(function(){
+ var b=document.body,q=new URLSearchParams(location.search),C=window.NudgeCart,$=function(id){return document.getElementById(id)};
+ C.ctx="page";
+ if(q.get("embed")){b.classList.add("embed")}
+ b.classList.toggle("ann-on",q.get("ann")!=="0");
+ function navOpen(o){b.classList.toggle("nav-open",o);$("menu-btn").setAttribute("aria-expanded",o?"true":"false")}
+ $("menu-btn").addEventListener("click",function(){navOpen(true)});$("nav-close").addEventListener("click",function(){navOpen(false)});$("scrim").addEventListener("click",function(){navOpen(false)});
+ document.addEventListener("keydown",function(e){if(e.key==="Escape")navOpen(false)});
+ [].forEach.call(document.querySelectorAll(".fcol > button"),function(h){h.addEventListener("click",function(){var f=h.parentNode,o=!f.classList.contains("is-open");f.classList.toggle("is-open",o);h.setAttribute("aria-expanded",o?"true":"false")})});
+ var msgs=["Free shipping on orders over $50","New launches are in store","Free returns within 30 days"],mi=0;
+ function msg(d){mi=(mi+d+msgs.length)%msgs.length;$("ann-msg").textContent=msgs[mi];[].forEach.call(document.querySelectorAll(".ann-dot"),function(x,i){x.classList.toggle("bg-current",i===mi);x.classList.toggle("opacity-100",i===mi);x.classList.toggle("opacity-muted",i!==mi)})}
+ $("ann-prev").addEventListener("click",function(){msg(-1)});$("ann-next").addEventListener("click",function(){msg(1)});
+ document.addEventListener("click",function(e){var a=e.target.closest('a[href^="#"]:not([href="#main"]):not([href="#top"]):not([href="#cart"])');if(a)e.preventDefault()});
+ function stickyTop(){var h=$("site-header");document.documentElement.style.setProperty("--sticky-top",h.offsetHeight+"px")}
+ window.addEventListener("resize",stickyTop);stickyTop();
+ $("t-ann").addEventListener("click",function(){var on=!b.classList.contains("ann-on");b.classList.toggle("ann-on",on);this.setAttribute("aria-pressed",on?"true":"false");stickyTop()});
+ $("t-ann").setAttribute("aria-pressed",b.classList.contains("ann-on")?"true":"false");
+ /* delivery estimate from sample settings: 1 working day processing, 3 to 5 days in transit */
+ function addDays(d,n){var x=new Date(d.getTime()),k=0;while(k<n){x.setDate(x.getDate()+1);var w=x.getDay();if(w!==0&&w!==6)k++}return x}
+ function fmt(d){return d.toLocaleDateString("en-GB",{day:"numeric",month:"short"})}
+ var now=new Date();$("c-est").textContent="Estimated delivery "+fmt(addDays(now,4))+" to "+fmt(addDays(now,6));
+ var STATES={multi:[["tm",1],["sr",1],["cl",1]],one:[["tm",1]],free:[["sr",1],["cl",1]],long:[["tm",1],["sr",1],["cl",1],["sp",1],["ey",1],["bl",1]],empty:[]};
+ function render(focus){
+  var n=C.count(),emp=C.S.items.length===0;
+  $("empty").hidden=!emp;$("full").hidden=emp;
+  $("c-count").textContent=n+(n===1?" item":" items");
+  $("c-fs").innerHTML=C.fsHtml();$("c-undo").innerHTML=C.undoHtml();$("c-lines").innerHTML=C.linesHtml();$("c-up").innerHTML=C.upHtml("Add to your order");
+  $("c-sub").textContent=C.money(C.sub());$("c-sticky-sub").textContent=C.money(C.sub());
+  var sv=C.save();$("c-savrow").hidden=sv<=0;$("c-sav").textContent=C.money(sv);
+  var h=document.querySelector("#site-header .cnt");if(h){h.textContent=n;h.closest("[aria-label^=Cart]").setAttribute("aria-label","Cart, "+n+" items")}
+  if(emp&&C.S.undo){$("full").hidden=false;$("empty").hidden=true}
+  if(focus){var el=null;if(focus==="undo")el=document.querySelector("[data-undo]");else if(focus.id){el=document.querySelector('.cl[data-id="'+focus.id+'"] '+focus.sel)}if(el&&!el.disabled)el.focus()}
+  stickyCheck();
+ }
+ var sticky=$("c-sticky");
+ function stickyCheck(){var on=false;if(window.innerWidth<768&&C.S.items.length){var r=$("c-checkout").getBoundingClientRect();on=r.top>window.innerHeight||r.bottom<0}sticky.classList.toggle("is-on",on);if(on)sticky.removeAttribute("inert");else sticky.setAttribute("inert","");b.classList.toggle("has-sticky",on)}
+ window.addEventListener("scroll",stickyCheck,{passive:true});window.addEventListener("resize",stickyCheck);
+ C.bind($("cart"),function(kind){var a=document.activeElement,f=null;if(a&&a.closest&&a.closest(".cl")){f={id:a.closest(".cl").getAttribute("data-id"),sel:a.hasAttribute("data-plus")?"[data-plus]":a.hasAttribute("data-minus")?"[data-minus]":a.hasAttribute("data-q")?"[data-q]":"[data-rm]"}}
+  if(C.S.undo&&kind==="edit"&&!f)f="undo";if(kind==="remove")f="undo";render(f)});
+ function state(s){C.set(STATES[s]);render()}
+ [["s-multi","multi"],["s-one","one"],["s-free","free"],["s-long","long"],["s-empty","empty"]].forEach(function(p){$(p[0]).addEventListener("click",function(){state(p[1])})});
+ $("s-undo").addEventListener("click",function(){state("multi");C.remove("tm");render("undo")});
+ $("c-sticky-go").addEventListener("click",function(){$("c-checkout").scrollIntoView({block:"center"})});
+ window.NudgeCartPage={state:state};
+ state(q.get("state")&&STATES[q.get("state")]?q.get("state"):"multi");
+ if(q.get("state")==="undo"){C.remove("tm");render("undo")}
+ if(q.get("selftest")){var s=document.createElement("script");s.text=$("selftest-src").text;document.body.appendChild(s)}
+})();
+</script>
+</body>
+</html>

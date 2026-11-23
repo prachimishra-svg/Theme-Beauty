@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NUDGE Beauty Theme: Our Story Wireframe</title>
+<!-- Design Variables (tokens) linked; styling is Tailwind utilities and the shared components, mapped to those tokens. -->
+@@PARTIAL head@@
+<style>
+@@PARTIAL review-css@@
+</style>
+</head>
+<body class="ann-on" id="top">
+@@PARTIAL sprite@@
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-skip focus:bg-surface focus:p-3">Skip to content</a>
+<div class="rv">
+  <div class="rvt">NUDGE Beauty Theme: Our story wireframe &middot; single responsive file</div>
+  <p>Phase 1, page 4 of 25. A native Shopify page (<code>page.story</code>) built from theme sections, with Tailwind utilities and the shared components mapped to the Design Variables. The announcement bar, header and footer are the shared sections. All copy is <b>sample content</b> with bracketed values; no founder name, year, place or claim is invented. Image areas are <b>labelled placeholders</b> (no photography). Use <b>Width preview</b> for 1920, 1440, 1280, 1024, 768, 430, 390 and 320 px.</p>
+  <div class="ctl"><button id="t-ann" type="button" aria-pressed="true">Annotations</button><button id="t-wp" type="button">Width preview</button></div>
+<details><summary>Review notes: purpose, sections, decisions, Shopify (open)</summary>
+<h3>Purpose</h3>
+<p>Tell the brand's narrative as a short, readable sequence: why it began, how it grew, where it is going. About us (page 3) states what the brand believes; Our story tells how it got there, so the two pages do not repeat each other.</p>
+<h3>Sections, top to bottom</h3>
+<ul><li>Title, lede and one wide image area</li><li>Opening note in the brand's voice (a reading column)</li><li>Timeline of four milestones</li><li>Pull quote</li><li>What comes next, with shop and About links</li></ul>
+<h3>Decisions to confirm</h3>
+<ul><li>Years, places, names and milestones are bracketed. Nothing is stated until the merchant supplies it.</li><li>The opening note is unsigned in the wireframe; a name and role are theme settings.</li><li>Four milestones is a guide; the section supports two to six blocks.</li></ul>
+<h3>Not drawn</h3>
+<ul><li>Video player embeds, press and review widgets, a newsletter form (needs an email app; the footer handles sign-up if the store has it)</li></ul>
+<h3>Shopify build</h3>
+<p>Template <code>page.story.json</code> with sections <code>image-banner</code>, <code>rich-text</code> (opening note), <code>timeline</code> (a block per milestone: year, heading, text), <code>quote</code> and <code>cta</code>. All content is theme-editor settings; images use <code>image_picker</code>. No app is involved.</p>
+</details>
+</div>
+<div class="ann"><b>Global</b>Announcement bar, header (sticky) and footer: the shared sections. Responsive: below 1024 px a one-row header with the menu in a left drawer; footer groups are tap-to-open rows below 768 px.</div>
+@@PARTIAL annbar@@
+@@PARTIAL header CART=link NAV=none@@
+<main id="main" class="pb-20 md:pb-24">
+<section class="wrap pt-2" aria-labelledby="story-h" data-section="Intro">
+<div class="ann"><b>01 &middot; Begin</b>Title, lede and wide image (T1) &mdash; Essential: a single H1, one sentence that opens the narrative, then a wide image area that sets the tone. The image is a labelled placeholder.<em>Responsive: image keeps a wide ratio on tablet and desktop and a shorter 4:3 box on phones.</em></div>
+<nav class="breadcrumb mb-6" aria-label="Breadcrumb"><ol class="breadcrumb-list"><li class="breadcrumb-item"><a href="#home">Home</a></li><li class="breadcrumb-item"><a href="#about">About us</a></li><li class="breadcrumb-item"><a href="#story" aria-current="page">Our story</a></li></ol></nav>
+<div class="mb-8 flex max-w-text flex-col gap-4 md:mb-12"><p class="type-overline m-0">Our story</p><h1 class="type-h1" id="story-h">How NUDGE began</h1><p class="m-0 text-body-lg text-ink-secondary">[One sentence on the moment or idea that started the brand.]</p></div>
+<div class="relative aspect-[4/3] overflow-hidden md:aspect-[21/9]" role="img" aria-label="Image placeholder: story hero"><div class="ph absolute inset-0"></div><span class="absolute inset-0 grid place-items-center p-4 text-center text-caption text-ink-secondary">Image placeholder: story hero (4:3 on phones, 21:9 from 768 px)</span></div>
+</section>
+<section class="wrap mt-16 md:mt-24" aria-labelledby="note-h" data-section="Opening note">
+<div class="ann"><b>02 &middot; Open</b>Opening note (T1) &mdash; Essential: a short note in the brand's voice in a reading column. Plain paragraphs, no boxes, so it reads like a letter. Name and role are bracketed.<em>Responsive: single reading column at every width, centred from 768 px.</em></div>
+<div class="mx-auto flex max-w-text flex-col gap-5" id="note"><h2 class="type-h3" id="note-h">Where it started</h2><p class="m-0 text-body-lg text-ink-secondary">[Opening paragraph: the problem the founders saw in skincare.]</p><p class="m-0 text-ink-secondary">[Second paragraph: what they set out to do differently, in plain words.]</p><p class="m-0 type-label">[Name], [role]</p></div>
+</section>
+<section class="wrap mt-16 md:mt-24" aria-labelledby="tl-h" data-section="Timeline">
+<div class="ann"><b>03 &middot; Trace</b>Timeline (T1) &mdash; Essential: four milestones in order, each with a year, a heading and two lines. A hairline runs down the list; no icons or numbers beyond the year. The wording is bracketed so no date or fact is invented.<em>Responsive: year above the text on phones; year in a left column from 768 px.</em></div>
+<h2 class="type-h3 mb-8" id="tl-h">The road so far</h2>
+<ol class="m-0 list-none p-0" id="timeline">
+<li class="grid grid-cols-[minmax(0,1fr)] gap-2 border-t border-line py-6 md:grid-cols-[minmax(0,1fr)_minmax(0,3fr)] md:gap-8 md:py-8"><span class="font-heading text-h3 leading-tight text-brand">[Year]</span><div class="flex max-w-text flex-col gap-2"><h3 class="type-h5">[Milestone one]</h3><p class="m-0 text-ink-secondary">[Two lines on the first product or first idea.]</p></div></li>
+<li class="grid grid-cols-[minmax(0,1fr)] gap-2 border-t border-line py-6 md:grid-cols-[minmax(0,1fr)_minmax(0,3fr)] md:gap-8 md:py-8"><span class="font-heading text-h3 leading-tight text-brand">[Year]</span><div class="flex max-w-text flex-col gap-2"><h3 class="type-h5">[Milestone two]</h3><p class="m-0 text-ink-secondary">[Two lines on the first launch or first customers.]</p></div></li>
+<li class="grid grid-cols-[minmax(0,1fr)] gap-2 border-t border-line py-6 md:grid-cols-[minmax(0,1fr)_minmax(0,3fr)] md:gap-8 md:py-8"><span class="font-heading text-h3 leading-tight text-brand">[Year]</span><div class="flex max-w-text flex-col gap-2"><h3 class="type-h5">[Milestone three]</h3><p class="m-0 text-ink-secondary">[Two lines on a change that shaped the range.]</p></div></li>
+<li class="grid grid-cols-[minmax(0,1fr)] gap-2 border-y border-line py-6 md:grid-cols-[minmax(0,1fr)_minmax(0,3fr)] md:gap-8 md:py-8"><span class="font-heading text-h3 leading-tight text-brand">[Year]</span><div class="flex max-w-text flex-col gap-2"><h3 class="type-h5">[Milestone four]</h3><p class="m-0 text-ink-secondary">[Two lines on where the brand is today.]</p></div></li>
+</ol>
+</section>
+<section class="wrap mt-16 md:mt-24" aria-label="Quote" data-section="Pull quote">
+<div class="ann"><b>04 &middot; Pause</b>Pull quote (T1) &mdash; additional: one line in display type to break the page rhythm and restate the brand idea. Attribution is bracketed.<em>Responsive: centred; the type steps down with the Design System scale.</em></div>
+<figure class="m-0 mx-auto flex max-w-[var(--container-narrow,56rem)] flex-col items-center gap-4 py-8 text-center"><blockquote class="m-0 font-heading text-h2 leading-snug text-ink">[A single sentence that captures the brand idea.]</blockquote><figcaption class="text-body-sm text-ink-secondary">[Name], [role]</figcaption></figure>
+</section>
+<section class="wrap mt-16 md:mt-24" aria-labelledby="next-h" data-section="What comes next">
+<div class="ann"><b>05 &middot; Continue</b>What comes next (T1) &mdash; Essential: close on the future in one sentence and give two next steps, the shop as the primary button and About us as the secondary. No dead end.<em>Responsive: centred; buttons stack on phones and sit side by side from 600 px.</em></div>
+<div class="flex flex-col items-center gap-5 bg-surface px-6 py-12 text-center md:py-16"><h2 class="type-h3" id="next-h">What comes next</h2><p class="m-0 max-w-text text-ink-secondary">[One sentence on what the brand is working on now.]</p><div class="flex w-full flex-col gap-3 sm:w-auto sm:flex-row"><a class="btn btn-primary" href="#shop">Shop now</a><a class="btn btn-secondary" href="#about">About us</a></div></div>
+</section>
+</main>
+@@PARTIAL footer@@
+@@PARTIAL width-preview@@
+<script type="text/plain" id="selftest-src">
+(function(){
+ function vis(el){var cs=getComputedStyle(el);if(cs.display==="none"||cs.visibility==="hidden")return false;var r=el.getBoundingClientRect();return r.width>0&&r.height>0}
+ function sel(el){var s=el.tagName.toLowerCase();if(el.id)s+="#"+el.id;if(el.className&&typeof el.className==="string")s+="."+el.className.trim().split(/\s+/).slice(0,2).join(".");return s}
+ function $(id){return document.getElementById(id)}
+ async function run(){
+  var W=window.innerWidth,de=document.documentElement,out={docHeight:de.scrollHeight,width:W,checks:{}};
+  var st=document.createElement("style");st.textContent="*{transition:none!important}";document.head.appendChild(st);de.style.scrollBehavior="auto";
+  var twOk=getComputedStyle($("site-header")).position==="sticky"&&!document.querySelector('link[href*="components.css"],link[href*="base.css"]');
+  var fl=Array.from(document.fonts).some(function(x){return x.family.indexOf("Cormorant")>-1&&x.status==="loaded"})&&Array.from(document.fonts).some(function(x){return x.family.indexOf("DM Sans")>-1&&x.status==="loaded"});
+  out.checks.tailwindAndFonts={pass:twOk&&fl,detail:"Tailwind utilities applied, no Design System component stylesheet: "+twOk+"; Cormorant and DM Sans loaded: "+fl};
+  var off=[];document.querySelectorAll("main *,header *,footer *").forEach(function(el){if(el.closest(".sr-only")||el.closest("#nav")&&W<1024)return;var r=el.getBoundingClientRect();if(r.width>0&&(r.right>W+1||r.left<-1))off.push(sel(el))});
+  out.checks.overflow={pass:de.scrollWidth<=W+1&&off.length===0,detail:"scrollWidth "+de.scrollWidth+" of "+W+(off.length?"; past the edge: "+off.slice(0,4).join(", "):"")};
+  var hs=[].slice.call(document.querySelectorAll("h1")).filter(function(h){return !h.closest(".rv")&&vis(h)}),secs=document.querySelectorAll("main > section").length;
+  out.checks.structure={pass:hs.length===1&&!!document.querySelector("main#main")&&secs===5&&!document.querySelector("main img"),detail:"visible H1: "+hs.length+"; sections: "+secs+"; no photographs (placeholders only): "+!document.querySelector("main img")};
+  var items=[].slice.call($("timeline").children),yr=items[0].children[0].getBoundingClientRect(),tx=items[0].children[1].getBoundingClientRect(),tl=W>=768?(tx.left>=yr.right-1&&Math.abs(tx.top-yr.top)<24):(tx.top>=yr.bottom-1);
+  var order=items.every(function(li,i){return i===0||li.getBoundingClientRect().top>=items[i-1].getBoundingClientRect().bottom-1});
+  out.checks.timeline={pass:items.length===4&&tl&&order,detail:"four milestones in order: "+order+"; "+(W>=768?"year in a left column":"year above the text")+": "+tl};
+  var nt=$("note").getBoundingClientRect(),readW=nt.width<=720+1;
+  out.checks.readingWidth={pass:readW,detail:"opening note keeps a reading column ("+Math.round(nt.width)+" px): "+readW};
+  var ph=[].slice.call(document.querySelectorAll("main [role=img]")),lab=ph.length===1&&/placeholder/i.test(ph[0].getAttribute("aria-label")||"")&&/placeholder/i.test(ph[0].textContent);
+  out.checks.placeholders={pass:lab,detail:"image area labelled as a placeholder: "+lab};
+  var ctas=document.querySelectorAll("#next-h ~ div a.btn").length===2;
+  out.checks.cta={pass:ctas,detail:"closing section has two buttons: "+ctas};
+  var txt=$("main").innerText.toLowerCase(),bad=[];["award","certified","dermatologist","clinically","founded in","years of","as seen in","newsletter"].forEach(function(w){if(txt.indexOf(w)>-1)bad.push(w)});
+  out.checks.claims={pass:bad.length===0,detail:"unsupported claim wording: "+(bad.join(", ")||"none")};
+  var small=[];[].slice.call(document.querySelectorAll("main a,main button,header a,header button,footer a,footer button")).filter(function(e){return vis(e)&&!e.closest(".sr-only")&&!e.closest(".rv")&&!e.closest(".ann")&&!(W<1024&&e.closest("#nav"))}).forEach(function(e){var r=e.getBoundingClientRect();if(e.closest(".fcol")&&W>=768)return;if(e.tagName==="A"&&r.height>=44-.5)return;if(r.height<44-.5)small.push(sel(e)+" "+Math.round(r.width)+"x"+Math.round(r.height))});
+  var tb=[];[].slice.call(document.querySelectorAll("main h1,main h2,main h3,main p,main blockquote,main a.btn")).filter(vis).forEach(function(e){var fm=getComputedStyle(e).fontFamily.split(",")[0].replace(/["']/g,"").trim(),head=(/^H[1-6]$/.test(e.tagName)&&!e.classList.contains("type-overline"))||e.classList.contains("font-heading")||e.tagName==="BLOCKQUOTE";if(head&&fm!=="Cormorant")tb.push(sel(e)+" "+fm);if(!head&&fm!=="DM Sans")tb.push(sel(e)+" "+fm)});
+  out.checks.targetsAndType={pass:small.length===0&&tb.length===0,detail:(small.length?"small targets: "+small.slice(0,5).join("; "):"every visible control is 44 px or has a 44 px hit area")+"; "+(tb.length?"fonts: "+tb.slice(0,3).join("; "):"headings Cormorant, UI DM Sans")};
+  window.scrollTo(0,0);var pre=document.createElement("pre");pre.id="selftest-result";pre.textContent=JSON.stringify(out);document.body.appendChild(pre);
+  if(window.parent!==window){window.parent.postMessage({selftest:out},"*")}
+ }
+ if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){setTimeout(run,900)})}else{setTimeout(run,1400)}
+})();
+</script>
+<script>
+(function(){
+ var b=document.body,q=new URLSearchParams(location.search),$=function(id){return document.getElementById(id)};
+ if(q.get("embed")){b.classList.add("embed")}
+ b.classList.toggle("ann-on",q.get("ann")!=="0");
+ function navOpen(o){b.classList.toggle("nav-open",o);$("menu-btn").setAttribute("aria-expanded",o?"true":"false")}
+ $("menu-btn").addEventListener("click",function(){navOpen(true)});$("nav-close").addEventListener("click",function(){navOpen(false)});$("scrim").addEventListener("click",function(){navOpen(false)});
+ document.addEventListener("keydown",function(e){if(e.key==="Escape")navOpen(false)});
+ [].forEach.call(document.querySelectorAll(".fcol > button"),function(h){h.addEventListener("click",function(){var f=h.parentNode,o=!f.classList.contains("is-open");f.classList.toggle("is-open",o);h.setAttribute("aria-expanded",o?"true":"false")})});
+ var msgs=["Free shipping on orders over $50","New launches are in store","Free returns within 30 days"],mi=0;
+ function msg(d){mi=(mi+d+msgs.length)%msgs.length;$("ann-msg").textContent=msgs[mi];[].forEach.call(document.querySelectorAll(".ann-dot"),function(x,i){x.classList.toggle("bg-current",i===mi);x.classList.toggle("opacity-100",i===mi);x.classList.toggle("opacity-muted",i!==mi)})}
+ $("ann-prev").addEventListener("click",function(){msg(-1)});$("ann-next").addEventListener("click",function(){msg(1)});
+ document.addEventListener("click",function(e){var a=e.target.closest('a[href^="#"]:not([href="#main"]):not([href="#top"])');if(a)e.preventDefault()});
+ $("t-ann").addEventListener("click",function(){var on=!b.classList.contains("ann-on");b.classList.toggle("ann-on",on);this.setAttribute("aria-pressed",on?"true":"false")});
+ $("t-ann").setAttribute("aria-pressed",b.classList.contains("ann-on")?"true":"false");
+ if(q.get("selftest")){var s=document.createElement("script");s.text=$("selftest-src").text;document.body.appendChild(s)}
+})();
+</script>
+</body>
+</html>

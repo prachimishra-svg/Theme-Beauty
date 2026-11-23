@@ -1,0 +1,1472 @@
+{
+    "linklists":  {
+                      "main-menu":  {
+                                        "handle":  "main-menu",
+                                        "title":  "Main menu",
+                                        "links":  [
+                                                      {
+                                                          "title":  "Skin",
+                                                          "url":  "#collection",
+                                                          "current":  false,
+                                                          "child_current":  false,
+                                                          "active":  false,
+                                                          "links":  [
+                                                                        {
+                                                                            "title":  "Shop by concern",
+                                                                            "url":  "#",
+                                                                            "current":  false,
+                                                                            "child_current":  false,
+                                                                            "active":  false,
+                                                                            "links":  [
+                                                                                          {
+                                                                                              "title":  "Hydration",
+                                                                                              "url":  "#collection-skin-hydration",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Brightening",
+                                                                                              "url":  "#collection-skin-brightening",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Anti-ageing",
+                                                                                              "url":  "#collection-skin-anti-ageing",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Blemish care",
+                                                                                              "url":  "#collection-skin-blemish-care",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Sensitive skin",
+                                                                                              "url":  "#collection-skin-sensitive-skin",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          }
+                                                                                      ]
+                                                                        },
+                                                                        {
+                                                                            "title":  "Shop by step",
+                                                                            "url":  "#",
+                                                                            "current":  false,
+                                                                            "child_current":  false,
+                                                                            "active":  false,
+                                                                            "links":  [
+                                                                                          {
+                                                                                              "title":  "Cleansers",
+                                                                                              "url":  "#collection-skin-cleansers",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Serums",
+                                                                                              "url":  "#collection-skin-serums",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Moisturisers",
+                                                                                              "url":  "#collection-skin-moisturisers",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Sun care",
+                                                                                              "url":  "#collection-skin-sun-care",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Masks",
+                                                                                              "url":  "#collection-skin-masks",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Eye care",
+                                                                                              "url":  "#collection-skin-eye-care",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          }
+                                                                                      ]
+                                                                        }
+                                                                    ]
+                                                      },
+                                                      {
+                                                          "title":  "Makeup",
+                                                          "url":  "#collection",
+                                                          "current":  false,
+                                                          "child_current":  false,
+                                                          "active":  false,
+                                                          "links":  [
+                                                                        {
+                                                                            "title":  "Face",
+                                                                            "url":  "#",
+                                                                            "current":  false,
+                                                                            "child_current":  false,
+                                                                            "active":  false,
+                                                                            "links":  [
+                                                                                          {
+                                                                                              "title":  "Foundation",
+                                                                                              "url":  "#collection-makeup-foundation",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Concealer",
+                                                                                              "url":  "#collection-makeup-concealer",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Blush",
+                                                                                              "url":  "#collection-makeup-blush",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Highlighter",
+                                                                                              "url":  "#collection-makeup-highlighter",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Primer",
+                                                                                              "url":  "#collection-makeup-primer",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          }
+                                                                                      ]
+                                                                        },
+                                                                        {
+                                                                            "title":  "Eyes and lips",
+                                                                            "url":  "#",
+                                                                            "current":  false,
+                                                                            "child_current":  false,
+                                                                            "active":  false,
+                                                                            "links":  [
+                                                                                          {
+                                                                                              "title":  "Mascara",
+                                                                                              "url":  "#collection-makeup-mascara",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Eyeliner",
+                                                                                              "url":  "#collection-makeup-eyeliner",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Brows",
+                                                                                              "url":  "#collection-makeup-brows",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Lipstick",
+                                                                                              "url":  "#collection-makeup-lipstick",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Lip care",
+                                                                                              "url":  "#collection-makeup-lip-care",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Brushes and tools",
+                                                                                              "url":  "#collection-makeup-brushes-and-tools",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          }
+                                                                                      ]
+                                                                        }
+                                                                    ]
+                                                      },
+                                                      {
+                                                          "title":  "Hair",
+                                                          "url":  "#collection",
+                                                          "current":  false,
+                                                          "child_current":  false,
+                                                          "active":  false,
+                                                          "links":  [
+                                                                        {
+                                                                            "title":  "Shop by concern",
+                                                                            "url":  "#",
+                                                                            "current":  false,
+                                                                            "child_current":  false,
+                                                                            "active":  false,
+                                                                            "links":  [
+                                                                                          {
+                                                                                              "title":  "Dryness",
+                                                                                              "url":  "#collection-hair-dryness",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Frizz",
+                                                                                              "url":  "#collection-hair-frizz",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Colour care",
+                                                                                              "url":  "#collection-hair-colour-care",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Scalp care",
+                                                                                              "url":  "#collection-hair-scalp-care",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Hair loss",
+                                                                                              "url":  "#collection-hair-hair-loss",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          }
+                                                                                      ]
+                                                                        },
+                                                                        {
+                                                                            "title":  "Shop by step",
+                                                                            "url":  "#",
+                                                                            "current":  false,
+                                                                            "child_current":  false,
+                                                                            "active":  false,
+                                                                            "links":  [
+                                                                                          {
+                                                                                              "title":  "Shampoo",
+                                                                                              "url":  "#collection-hair-shampoo",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Conditioner",
+                                                                                              "url":  "#collection-hair-conditioner",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Treatments",
+                                                                                              "url":  "#collection-hair-treatments",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Styling",
+                                                                                              "url":  "#collection-hair-styling",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Tools",
+                                                                                              "url":  "#collection-hair-tools",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          }
+                                                                                      ]
+                                                                        }
+                                                                    ]
+                                                      },
+                                                      {
+                                                          "title":  "Body",
+                                                          "url":  "#collection",
+                                                          "current":  false,
+                                                          "child_current":  false,
+                                                          "active":  false,
+                                                          "links":  [
+                                                                        {
+                                                                            "title":  "Bath and body",
+                                                                            "url":  "#",
+                                                                            "current":  false,
+                                                                            "child_current":  false,
+                                                                            "active":  false,
+                                                                            "links":  [
+                                                                                          {
+                                                                                              "title":  "Body wash",
+                                                                                              "url":  "#collection-body-body-wash",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Body lotion",
+                                                                                              "url":  "#collection-body-body-lotion",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Body oil",
+                                                                                              "url":  "#collection-body-body-oil",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Scrubs",
+                                                                                              "url":  "#collection-body-scrubs",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Hand and foot care",
+                                                                                              "url":  "#collection-body-hand-and-foot-care",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          }
+                                                                                      ]
+                                                                        },
+                                                                        {
+                                                                            "title":  "Fragrance and more",
+                                                                            "url":  "#",
+                                                                            "current":  false,
+                                                                            "child_current":  false,
+                                                                            "active":  false,
+                                                                            "links":  [
+                                                                                          {
+                                                                                              "title":  "Perfume",
+                                                                                              "url":  "#collection-body-perfume",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Body mist",
+                                                                                              "url":  "#collection-body-body-mist",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Deodorant",
+                                                                                              "url":  "#collection-body-deodorant",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Sun care",
+                                                                                              "url":  "#collection-body-sun-care",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          },
+                                                                                          {
+                                                                                              "title":  "Gifts and sets",
+                                                                                              "url":  "#collection-body-gifts-and-sets",
+                                                                                              "current":  false,
+                                                                                              "child_current":  false,
+                                                                                              "active":  false,
+                                                                                              "links":  [
+
+                                                                                                        ]
+                                                                                          }
+                                                                                      ]
+                                                                        }
+                                                                    ]
+                                                      }
+                                                  ]
+                                    },
+                      "footer-shop":  {
+                                          "handle":  "footer-shop",
+                                          "title":  "Shop",
+                                          "links":  [
+                                                        {
+                                                            "title":  "Skin care",
+                                                            "url":  "#collection",
+                                                            "current":  false,
+                                                            "child_current":  false,
+                                                            "active":  false,
+                                                            "links":  [
+
+                                                                      ]
+                                                        },
+                                                        {
+                                                            "title":  "Makeup",
+                                                            "url":  "#collection",
+                                                            "current":  false,
+                                                            "child_current":  false,
+                                                            "active":  false,
+                                                            "links":  [
+
+                                                                      ]
+                                                        },
+                                                        {
+                                                            "title":  "Hair",
+                                                            "url":  "#collection",
+                                                            "current":  false,
+                                                            "child_current":  false,
+                                                            "active":  false,
+                                                            "links":  [
+
+                                                                      ]
+                                                        },
+                                                        {
+                                                            "title":  "Body",
+                                                            "url":  "#collection",
+                                                            "current":  false,
+                                                            "child_current":  false,
+                                                            "active":  false,
+                                                            "links":  [
+
+                                                                      ]
+                                                        },
+                                                        {
+                                                            "title":  "Gift sets",
+                                                            "url":  "#collection",
+                                                            "current":  false,
+                                                            "child_current":  false,
+                                                            "active":  false,
+                                                            "links":  [
+
+                                                                      ]
+                                                        }
+                                                    ]
+                                      },
+                      "footer-about":  {
+                                           "handle":  "footer-about",
+                                           "title":  "About",
+                                           "links":  [
+                                                         {
+                                                             "title":  "About us",
+                                                             "url":  "../08-NUDGE-Beauty-About-Wireframe/About_Page_Wireframe_v1.html",
+                                                             "current":  false,
+                                                             "child_current":  false,
+                                                             "active":  false,
+                                                             "links":  [
+
+                                                                       ]
+                                                         },
+                                                         {
+                                                             "title":  "Our story",
+                                                             "url":  "../09-NUDGE-Beauty-Story-Wireframe/Story_Page_Wireframe_v1.html",
+                                                             "current":  false,
+                                                             "child_current":  false,
+                                                             "active":  false,
+                                                             "links":  [
+
+                                                                       ]
+                                                         },
+                                                         {
+                                                             "title":  "Journal",
+                                                             "url":  "../14-NUDGE-Beauty-Blog-Listing-Wireframe/Blog_Listing_Wireframe_v1.html",
+                                                             "current":  false,
+                                                             "child_current":  false,
+                                                             "active":  false,
+                                                             "links":  [
+
+                                                                       ]
+                                                         },
+                                                         {
+                                                             "title":  "FAQ",
+                                                             "url":  "../07-NUDGE-Beauty-FAQ-Wireframe/FAQ_Page_Wireframe_v1.html",
+                                                             "current":  false,
+                                                             "child_current":  false,
+                                                             "active":  false,
+                                                             "links":  [
+
+                                                                       ]
+                                                         }
+                                                     ]
+                                       },
+                      "footer-support":  {
+                                             "handle":  "footer-support",
+                                             "title":  "Support",
+                                             "links":  [
+                                                           {
+                                                               "title":  "Contact us",
+                                                               "url":  "../06-NUDGE-Beauty-Contact-Wireframe/Contact_Page_Wireframe_v1.html",
+                                                               "current":  false,
+                                                               "child_current":  false,
+                                                               "active":  false,
+                                                               "links":  [
+
+                                                                         ]
+                                                           },
+                                                           {
+                                                               "title":  "Support",
+                                                               "url":  "#help",
+                                                               "current":  false,
+                                                               "child_current":  false,
+                                                               "active":  false,
+                                                               "links":  [
+
+                                                                         ]
+                                                           },
+                                                           {
+                                                               "title":  "Shipping \u0026 Delivery",
+                                                               "url":  "../10-NUDGE-Beauty-Shipping-Policy-Wireframe/Shipping_Policy_Wireframe_v1.html",
+                                                               "current":  false,
+                                                               "child_current":  false,
+                                                               "active":  false,
+                                                               "links":  [
+
+                                                                         ]
+                                                           },
+                                                           {
+                                                               "title":  "Returns \u0026 Refunds",
+                                                               "url":  "../11-NUDGE-Beauty-Returns-Policy-Wireframe/Returns_Policy_Wireframe_v1.html",
+                                                               "current":  false,
+                                                               "child_current":  false,
+                                                               "active":  false,
+                                                               "links":  [
+
+                                                                         ]
+                                                           }
+                                                       ]
+                                         },
+                      "footer-policies":  {
+                                              "handle":  "footer-policies",
+                                              "title":  "Policies",
+                                              "links":  [
+                                                            {
+                                                                "title":  "Privacy policy",
+                                                                "url":  "../12-NUDGE-Beauty-Privacy-Policy-Wireframe/Privacy_Policy_Wireframe_v1.html",
+                                                                "current":  false,
+                                                                "child_current":  false,
+                                                                "active":  false,
+                                                                "links":  [
+
+                                                                          ]
+                                                            },
+                                                            {
+                                                                "title":  "Terms of service",
+                                                                "url":  "../13-NUDGE-Beauty-Terms-Wireframe/Terms_Conditions_Wireframe_v1.html",
+                                                                "current":  false,
+                                                                "child_current":  false,
+                                                                "active":  false,
+                                                                "links":  [
+
+                                                                          ]
+                                                            }
+                                                        ]
+                                          },
+                      "cart-empty":  {
+                                         "handle":  "cart-empty",
+                                         "title":  "Cart empty links",
+                                         "links":  [
+                                                       {
+                                                           "title":  "Best sellers",
+                                                           "url":  "#shop",
+                                                           "current":  false,
+                                                           "child_current":  false,
+                                                           "active":  false,
+                                                           "links":  [
+
+                                                                     ]
+                                                       },
+                                                       {
+                                                           "title":  "Skin care",
+                                                           "url":  "#shop",
+                                                           "current":  false,
+                                                           "child_current":  false,
+                                                           "active":  false,
+                                                           "links":  [
+
+                                                                     ]
+                                                       },
+                                                       {
+                                                           "title":  "Makeup",
+                                                           "url":  "#shop",
+                                                           "current":  false,
+                                                           "child_current":  false,
+                                                           "active":  false,
+                                                           "links":  [
+
+                                                                     ]
+                                                       },
+                                                       {
+                                                           "title":  "Hair",
+                                                           "url":  "#shop",
+                                                           "current":  false,
+                                                           "child_current":  false,
+                                                           "active":  false,
+                                                           "links":  [
+
+                                                                     ]
+                                                       },
+                                                       {
+                                                           "title":  "Body",
+                                                           "url":  "#shop",
+                                                           "current":  false,
+                                                           "child_current":  false,
+                                                           "active":  false,
+                                                           "links":  [
+
+                                                                     ]
+                                                       }
+                                                   ]
+                                     }
+                  },
+    "localization":  {
+                         "available_countries":  [
+                                                     {
+                                                         "iso_code":  "IN",
+                                                         "name":  "India",
+                                                         "currency":  {
+                                                                          "iso_code":  "INR",
+                                                                          "symbol":  "₹"
+                                                                      }
+                                                     },
+                                                     {
+                                                         "iso_code":  "US",
+                                                         "name":  "United States",
+                                                         "currency":  {
+                                                                          "iso_code":  "USD",
+                                                                          "symbol":  "$"
+                                                                      }
+                                                     },
+                                                     {
+                                                         "iso_code":  "GB",
+                                                         "name":  "United Kingdom",
+                                                         "currency":  {
+                                                                          "iso_code":  "GBP",
+                                                                          "symbol":  "£"
+                                                                      }
+                                                     },
+                                                     {
+                                                         "iso_code":  "EU",
+                                                         "name":  "Eurozone",
+                                                         "currency":  {
+                                                                          "iso_code":  "EUR",
+                                                                          "symbol":  "€"
+                                                                      }
+                                                     }
+                                                 ],
+                         "country":  {
+                                         "iso_code":  "IN",
+                                         "name":  "India",
+                                         "currency":  {
+                                                          "iso_code":  "INR",
+                                                          "symbol":  "₹"
+                                                      }
+                                     },
+                         "language":  {
+                                          "iso_code":  "en"
+                                      }
+                     },
+    "collections":  {
+                        "best-sellers":  {
+                                             "handle":  "best-sellers",
+                                             "title":  "Best sellers",
+                                             "url":  "#",
+                                             "products":  [
+                                                              {
+                                                                  "title":  "Face Cleanser",
+                                                                  "handle":  "face-cleanser",
+                                                                  "url":  "#",
+                                                                  "price":  1800,
+                                                                  "compare_at_price":  0,
+                                                                  "tags":  [
+                                                                               "badge:Bestseller"
+                                                                           ],
+                                                                  "featured_image":  null,
+                                                                  "options_with_values":  [
+
+                                                                                          ],
+                                                                  "metafields":  {
+                                                                                     "custom":  {
+                                                                                                    "size":  {
+                                                                                                                 "value":  "150 ml"
+                                                                                                             },
+                                                                                                    "highlight":  {
+                                                                                                                      "value":  "Best for: all skin types"
+                                                                                                                  }
+                                                                                                },
+                                                                                     "reviews":  {
+                                                                                                     "rating":  {
+                                                                                                                    "value":  4.6
+                                                                                                                },
+                                                                                                     "rating_count":  {
+                                                                                                                          "value":  112
+                                                                                                                      }
+                                                                                                 }
+                                                                                 }
+                                                              },
+                                                              {
+                                                                  "title":  "Face Serum",
+                                                                  "handle":  "face-serum",
+                                                                  "url":  "#",
+                                                                  "price":  3200,
+                                                                  "compare_at_price":  3800,
+                                                                  "tags":  [
+
+                                                                           ],
+                                                                  "featured_image":  null,
+                                                                  "options_with_values":  [
+
+                                                                                          ],
+                                                                  "metafields":  {
+                                                                                     "custom":  {
+                                                                                                    "size":  {
+                                                                                                                 "value":  "30 ml"
+                                                                                                             },
+                                                                                                    "highlight":  {
+                                                                                                                      "value":  "Best for: dullness"
+                                                                                                                  }
+                                                                                                },
+                                                                                     "reviews":  {
+                                                                                                     "rating":  {
+                                                                                                                    "value":  4.7
+                                                                                                                },
+                                                                                                     "rating_count":  {
+                                                                                                                          "value":  141
+                                                                                                                      }
+                                                                                                 }
+                                                                                 }
+                                                              },
+                                                              {
+                                                                  "title":  "Moisturiser",
+                                                                  "handle":  "moisturiser",
+                                                                  "url":  "#",
+                                                                  "price":  2800,
+                                                                  "compare_at_price":  0,
+                                                                  "tags":  [
+
+                                                                           ],
+                                                                  "featured_image":  null,
+                                                                  "options_with_values":  [
+
+                                                                                          ],
+                                                                  "metafields":  {
+                                                                                     "custom":  {
+                                                                                                    "size":  {
+                                                                                                                 "value":  "50 ml"
+                                                                                                             },
+                                                                                                    "highlight":  {
+                                                                                                                      "value":  "Best for: dry skin"
+                                                                                                                  }
+                                                                                                },
+                                                                                     "reviews":  {
+                                                                                                     "rating":  {
+                                                                                                                    "value":  4.8
+                                                                                                                },
+                                                                                                     "rating_count":  {
+                                                                                                                          "value":  119
+                                                                                                                      }
+                                                                                                 }
+                                                                                 }
+                                                              },
+                                                              {
+                                                                  "title":  "Lip Colour",
+                                                                  "handle":  "lip-colour",
+                                                                  "url":  "#",
+                                                                  "price":  1600,
+                                                                  "compare_at_price":  0,
+                                                                  "tags":  [
+                                                                               "badge:New"
+                                                                           ],
+                                                                  "featured_image":  null,
+                                                                  "options_with_values":  [
+                                                                                              {
+                                                                                                  "name":  "Shade",
+                                                                                                  "values":  [
+                                                                                                                 "Rose",
+                                                                                                                 "Berry",
+                                                                                                                 "Peach"
+                                                                                                             ]
+                                                                                              }
+                                                                                          ],
+                                                                  "metafields":  {
+                                                                                     "custom":  {
+                                                                                                    "size":  {
+                                                                                                                 "value":  "3.5 g"
+                                                                                                             },
+                                                                                                    "highlight":  {
+                                                                                                                      "value":  "Satin finish, 6 shades"
+                                                                                                                  }
+                                                                                                },
+                                                                                     "reviews":  {
+                                                                                                     "rating":  {
+                                                                                                                    "value":  4.5
+                                                                                                                },
+                                                                                                     "rating_count":  {
+                                                                                                                          "value":  64
+                                                                                                                      }
+                                                                                                 }
+                                                                                 }
+                                                              }
+                                                          ],
+                                             "products_count":  4
+                                         },
+                        "new-launches":  {
+                                             "handle":  "new-launches",
+                                             "title":  "New launches",
+                                             "url":  "#",
+                                             "products":  [
+                                                              {
+                                                                  "title":  "Sunscreen",
+                                                                  "handle":  "sunscreen",
+                                                                  "url":  "#",
+                                                                  "price":  2600,
+                                                                  "compare_at_price":  0,
+                                                                  "tags":  [
+
+                                                                           ],
+                                                                  "featured_image":  null,
+                                                                  "options_with_values":  [
+
+                                                                                          ],
+                                                                  "metafields":  {
+                                                                                     "custom":  {
+                                                                                                    "size":  {
+                                                                                                                 "value":  "50 ml"
+                                                                                                             },
+                                                                                                    "highlight":  {
+                                                                                                                      "value":  "Daily protection"
+                                                                                                                  }
+                                                                                                },
+                                                                                     "reviews":  {
+                                                                                                     "rating":  {
+                                                                                                                    "value":  4.6
+                                                                                                                },
+                                                                                                     "rating_count":  {
+                                                                                                                          "value":  88
+                                                                                                                      }
+                                                                                                 }
+                                                                                 }
+                                                              },
+                                                              {
+                                                                  "title":  "Eye Cream",
+                                                                  "handle":  "eye-cream",
+                                                                  "url":  "#",
+                                                                  "price":  3000,
+                                                                  "compare_at_price":  0,
+                                                                  "tags":  [
+
+                                                                           ],
+                                                                  "featured_image":  null,
+                                                                  "options_with_values":  [
+
+                                                                                          ],
+                                                                  "metafields":  {
+                                                                                     "custom":  {
+                                                                                                    "size":  {
+                                                                                                                 "value":  "15 ml"
+                                                                                                             },
+                                                                                                    "highlight":  {
+                                                                                                                      "value":  "Light gel texture"
+                                                                                                                  }
+                                                                                                },
+                                                                                     "reviews":  {
+                                                                                                     "rating":  {
+                                                                                                                    "value":  4.6
+                                                                                                                },
+                                                                                                     "rating_count":  {
+                                                                                                                          "value":  73
+                                                                                                                      }
+                                                                                                 }
+                                                                                 }
+                                                              },
+                                                              {
+                                                                  "title":  "Mascara",
+                                                                  "handle":  "mascara",
+                                                                  "url":  "#",
+                                                                  "price":  1900,
+                                                                  "compare_at_price":  0,
+                                                                  "tags":  [
+                                                                               "badge:New"
+                                                                           ],
+                                                                  "featured_image":  null,
+                                                                  "options_with_values":  [
+                                                                                              {
+                                                                                                  "name":  "Shade",
+                                                                                                  "values":  [
+                                                                                                                 "Rose",
+                                                                                                                 "Berry",
+                                                                                                                 "Peach"
+                                                                                                             ]
+                                                                                              }
+                                                                                          ],
+                                                                  "metafields":  {
+                                                                                     "custom":  {
+                                                                                                    "size":  {
+                                                                                                                 "value":  "8 ml"
+                                                                                                             },
+                                                                                                    "highlight":  {
+                                                                                                                      "value":  "Black or brown"
+                                                                                                                  }
+                                                                                                },
+                                                                                     "reviews":  {
+                                                                                                     "rating":  {
+                                                                                                                    "value":  4.4
+                                                                                                                },
+                                                                                                     "rating_count":  {
+                                                                                                                          "value":  56
+                                                                                                                      }
+                                                                                                 }
+                                                                                 }
+                                                              },
+                                                              {
+                                                                  "title":  "Hair Oil",
+                                                                  "handle":  "hair-oil",
+                                                                  "url":  "#",
+                                                                  "price":  2200,
+                                                                  "compare_at_price":  0,
+                                                                  "tags":  [
+
+                                                                           ],
+                                                                  "featured_image":  null,
+                                                                  "options_with_values":  [
+
+                                                                                          ],
+                                                                  "metafields":  {
+                                                                                     "custom":  {
+                                                                                                    "size":  {
+                                                                                                                 "value":  "50 ml"
+                                                                                                             },
+                                                                                                    "highlight":  {
+                                                                                                                      "value":  "Lightweight finish"
+                                                                                                                  }
+                                                                                                },
+                                                                                     "reviews":  {
+                                                                                                     "rating":  {
+                                                                                                                    "value":  4.5
+                                                                                                                },
+                                                                                                     "rating_count":  {
+                                                                                                                          "value":  47
+                                                                                                                      }
+                                                                                                 }
+                                                                                 }
+                                                              }
+                                                          ],
+                                             "products_count":  4
+                                         },
+                        "add-ons":  {
+                                        "handle":  "add-ons",
+                                        "title":  "Add-ons",
+                                        "url":  "#",
+                                        "products":  [
+                                                         {
+                                                             "id":  1021,
+                                                             "title":  "Lip Balm",
+                                                             "handle":  "lip-balm",
+                                                             "url":  "#",
+                                                             "price":  1200,
+                                                             "featured_image":  null,
+                                                             "selected_or_first_available_variant":  {
+                                                                                                         "id":  21,
+                                                                                                         "title":  "Rose",
+                                                                                                         "price":  1200
+                                                                                                     }
+                                                         },
+                                                         {
+                                                             "id":  1022,
+                                                             "title":  "Travel Cleanser",
+                                                             "handle":  "travel-cleanser",
+                                                             "url":  "#",
+                                                             "price":  900,
+                                                             "featured_image":  null,
+                                                             "selected_or_first_available_variant":  {
+                                                                                                         "id":  22,
+                                                                                                         "title":  "50 ml",
+                                                                                                         "price":  900
+                                                                                                     }
+                                                         }
+                                                     ]
+                                    }
+                    },
+    "products":  {
+                     "face-cleanser":  {
+                                           "title":  "Face Cleanser",
+                                           "handle":  "face-cleanser",
+                                           "url":  "#",
+                                           "price":  1800,
+                                           "compare_at_price":  0,
+                                           "tags":  [
+                                                        "badge:Bestseller"
+                                                    ],
+                                           "featured_image":  null,
+                                           "options_with_values":  [
+
+                                                                   ],
+                                           "metafields":  {
+                                                              "custom":  {
+                                                                             "size":  {
+                                                                                          "value":  "150 ml"
+                                                                                      },
+                                                                             "highlight":  {
+                                                                                               "value":  "Best for: all skin types"
+                                                                                           }
+                                                                         },
+                                                              "reviews":  {
+                                                                              "rating":  {
+                                                                                             "value":  4.6
+                                                                                         },
+                                                                              "rating_count":  {
+                                                                                                   "value":  112
+                                                                                               }
+                                                                          }
+                                                          }
+                                       },
+                     "face-serum":  {
+                                        "title":  "Face Serum",
+                                        "handle":  "face-serum",
+                                        "url":  "#",
+                                        "price":  3200,
+                                        "compare_at_price":  3800,
+                                        "tags":  [
+
+                                                 ],
+                                        "featured_image":  null,
+                                        "options_with_values":  [
+
+                                                                ],
+                                        "metafields":  {
+                                                           "custom":  {
+                                                                          "size":  {
+                                                                                       "value":  "30 ml"
+                                                                                   },
+                                                                          "highlight":  {
+                                                                                            "value":  "Best for: dullness"
+                                                                                        }
+                                                                      },
+                                                           "reviews":  {
+                                                                           "rating":  {
+                                                                                          "value":  4.7
+                                                                                      },
+                                                                           "rating_count":  {
+                                                                                                "value":  141
+                                                                                            }
+                                                                       }
+                                                       }
+                                    },
+                     "moisturiser":  {
+                                         "title":  "Moisturiser",
+                                         "handle":  "moisturiser",
+                                         "url":  "#",
+                                         "price":  2800,
+                                         "compare_at_price":  0,
+                                         "tags":  [
+
+                                                  ],
+                                         "featured_image":  null,
+                                         "options_with_values":  [
+
+                                                                 ],
+                                         "metafields":  {
+                                                            "custom":  {
+                                                                           "size":  {
+                                                                                        "value":  "50 ml"
+                                                                                    },
+                                                                           "highlight":  {
+                                                                                             "value":  "Best for: dry skin"
+                                                                                         }
+                                                                       },
+                                                            "reviews":  {
+                                                                            "rating":  {
+                                                                                           "value":  4.8
+                                                                                       },
+                                                                            "rating_count":  {
+                                                                                                 "value":  119
+                                                                                             }
+                                                                        }
+                                                        }
+                                     },
+                     "lip-colour":  {
+                                        "title":  "Lip Colour",
+                                        "handle":  "lip-colour",
+                                        "url":  "#",
+                                        "price":  1600,
+                                        "compare_at_price":  0,
+                                        "tags":  [
+                                                     "badge:New"
+                                                 ],
+                                        "featured_image":  null,
+                                        "options_with_values":  [
+                                                                    {
+                                                                        "name":  "Shade",
+                                                                        "values":  [
+                                                                                       "Rose",
+                                                                                       "Berry",
+                                                                                       "Peach"
+                                                                                   ]
+                                                                    }
+                                                                ],
+                                        "metafields":  {
+                                                           "custom":  {
+                                                                          "size":  {
+                                                                                       "value":  "3.5 g"
+                                                                                   },
+                                                                          "highlight":  {
+                                                                                            "value":  "Satin finish, 6 shades"
+                                                                                        }
+                                                                      },
+                                                           "reviews":  {
+                                                                           "rating":  {
+                                                                                          "value":  4.5
+                                                                                      },
+                                                                           "rating_count":  {
+                                                                                                "value":  64
+                                                                                            }
+                                                                       }
+                                                       }
+                                    },
+                     "sunscreen":  {
+                                       "title":  "Sunscreen",
+                                       "handle":  "sunscreen",
+                                       "url":  "#",
+                                       "price":  2600,
+                                       "compare_at_price":  0,
+                                       "tags":  [
+
+                                                ],
+                                       "featured_image":  null,
+                                       "options_with_values":  [
+
+                                                               ],
+                                       "metafields":  {
+                                                          "custom":  {
+                                                                         "size":  {
+                                                                                      "value":  "50 ml"
+                                                                                  },
+                                                                         "highlight":  {
+                                                                                           "value":  "Daily protection"
+                                                                                       }
+                                                                     },
+                                                          "reviews":  {
+                                                                          "rating":  {
+                                                                                         "value":  4.6
+                                                                                     },
+                                                                          "rating_count":  {
+                                                                                               "value":  88
+                                                                                           }
+                                                                      }
+                                                      }
+                                   },
+                     "eye-cream":  {
+                                       "title":  "Eye Cream",
+                                       "handle":  "eye-cream",
+                                       "url":  "#",
+                                       "price":  3000,
+                                       "compare_at_price":  0,
+                                       "tags":  [
+
+                                                ],
+                                       "featured_image":  null,
+                                       "options_with_values":  [
+
+                                                               ],
+                                       "metafields":  {
+                                                          "custom":  {
+                                                                         "size":  {
+                                                                                      "value":  "15 ml"
+                                                                                  },
+                                                                         "highlight":  {
+                                                                                           "value":  "Light gel texture"
+                                                                                       }
+                                                                     },
+                                                          "reviews":  {
+                                                                          "rating":  {
+                                                                                         "value":  4.6
+                                                                                     },
+                                                                          "rating_count":  {
+                                                                                               "value":  73
+                                                                                           }
+                                                                      }
+                                                      }
+                                   },
+                     "mascara":  {
+                                     "title":  "Mascara",
+                                     "handle":  "mascara",
+                                     "url":  "#",
+                                     "price":  1900,
+                                     "compare_at_price":  0,
+                                     "tags":  [
+                                                  "badge:New"
+                                              ],
+                                     "featured_image":  null,
+                                     "options_with_values":  [
+                                                                 {
+                                                                     "name":  "Shade",
+                                                                     "values":  [
+                                                                                    "Rose",
+                                                                                    "Berry",
+                                                                                    "Peach"
+                                                                                ]
+                                                                 }
+                                                             ],
+                                     "metafields":  {
+                                                        "custom":  {
+                                                                       "size":  {
+                                                                                    "value":  "8 ml"
+                                                                                },
+                                                                       "highlight":  {
+                                                                                         "value":  "Black or brown"
+                                                                                     }
+                                                                   },
+                                                        "reviews":  {
+                                                                        "rating":  {
+                                                                                       "value":  4.4
+                                                                                   },
+                                                                        "rating_count":  {
+                                                                                             "value":  56
+                                                                                         }
+                                                                    }
+                                                    }
+                                 },
+                     "hair-oil":  {
+                                      "title":  "Hair Oil",
+                                      "handle":  "hair-oil",
+                                      "url":  "#",
+                                      "price":  2200,
+                                      "compare_at_price":  0,
+                                      "tags":  [
+
+                                               ],
+                                      "featured_image":  null,
+                                      "options_with_values":  [
+
+                                                              ],
+                                      "metafields":  {
+                                                         "custom":  {
+                                                                        "size":  {
+                                                                                     "value":  "50 ml"
+                                                                                 },
+                                                                        "highlight":  {
+                                                                                          "value":  "Lightweight finish"
+                                                                                      }
+                                                                    },
+                                                         "reviews":  {
+                                                                         "rating":  {
+                                                                                        "value":  4.5
+                                                                                    },
+                                                                         "rating_count":  {
+                                                                                              "value":  47
+                                                                                          }
+                                                                     }
+                                                     }
+                                  },
+                     "foundation":  {
+                                        "title":  "Foundation",
+                                        "handle":  "foundation",
+                                        "url":  "#",
+                                        "price":  3000,
+                                        "compare_at_price":  0,
+                                        "tags":  [
+
+                                                 ],
+                                        "featured_image":  null,
+                                        "options_with_values":  [
+
+                                                                ],
+                                        "metafields":  {
+                                                           "custom":  {
+                                                                          "size":  {
+                                                                                       "value":  "30 ml"
+                                                                                   },
+                                                                          "highlight":  {
+                                                                                            "value":  ""
+                                                                                        }
+                                                                      },
+                                                           "reviews":  {
+                                                                           "rating":  {
+                                                                                          "value":  0
+                                                                                      },
+                                                                           "rating_count":  {
+                                                                                                "value":  0
+                                                                                            }
+                                                                       }
+                                                       }
+                                    },
+                     "blush":  {
+                                   "title":  "Blush",
+                                   "handle":  "blush",
+                                   "url":  "#",
+                                   "price":  2000,
+                                   "compare_at_price":  0,
+                                   "tags":  [
+
+                                            ],
+                                   "featured_image":  null,
+                                   "options_with_values":  [
+
+                                                           ],
+                                   "metafields":  {
+                                                      "custom":  {
+                                                                     "size":  {
+                                                                                  "value":  "5 g"
+                                                                              },
+                                                                     "highlight":  {
+                                                                                       "value":  ""
+                                                                                   }
+                                                                 },
+                                                      "reviews":  {
+                                                                      "rating":  {
+                                                                                     "value":  0
+                                                                                 },
+                                                                      "rating_count":  {
+                                                                                           "value":  0
+                                                                                       }
+                                                                  }
+                                                  }
+                               }
+                 }
+}

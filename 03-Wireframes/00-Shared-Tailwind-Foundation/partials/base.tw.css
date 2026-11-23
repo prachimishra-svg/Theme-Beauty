@@ -1,0 +1,53 @@
+/* Shared Tailwind base for every wireframe. Injected inside <style type="text/tailwindcss"> by build.ps1 (partial "head").
+   It reproduces the element defaults of the Design System (01-Design-System/Styles/base.css) from the same tokens, so plain
+   headings and paragraphs look exactly as on the approved pages. The two warm greys are mixes of existing tokens. */
+@layer base {
+  :root{--warm:color-mix(in srgb,var(--color-border-strong) 14%,var(--color-bg-page));--warm-deep:color-mix(in srgb,var(--color-border-strong) 28%,var(--color-bg-page))}
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:var(--space-20)}
+  html.is-scroll-locked{overflow:hidden}
+  body{@apply bg-page font-body text-ink antialiased;font-size:var(--font-size-body);font-weight:var(--font-weight-regular);line-height:var(--line-height-normal);overflow-wrap:break-word;text-rendering:optimizeLegibility}
+  h1{font-family:var(--type-h1-font-family);font-size:var(--type-h1-font-size);font-weight:var(--type-h1-font-weight);line-height:var(--type-h1-line-height);letter-spacing:var(--type-h1-letter-spacing);text-wrap:balance}
+  h2{font-family:var(--type-h2-font-family);font-size:var(--type-h2-font-size);font-weight:var(--type-h2-font-weight);line-height:var(--type-h2-line-height);letter-spacing:var(--type-h2-letter-spacing);text-wrap:balance}
+  h3{font-family:var(--type-h3-font-family);font-size:var(--type-h3-font-size);font-weight:var(--type-h3-font-weight);line-height:var(--type-h3-line-height);letter-spacing:var(--type-h3-letter-spacing);text-wrap:balance}
+  h4{font-family:var(--type-h4-font-family);font-size:var(--type-h4-font-size);font-weight:var(--type-h4-font-weight);line-height:var(--type-h4-line-height);letter-spacing:var(--type-h4-letter-spacing)}
+  h5{font-family:var(--type-h5-font-family);font-size:var(--type-h5-font-size);font-weight:var(--type-h5-font-weight);line-height:var(--type-h5-line-height);letter-spacing:var(--type-h5-letter-spacing)}
+  h6{font-family:var(--type-h6-font-family);font-size:var(--type-h6-font-size);font-weight:var(--type-h6-font-weight);line-height:var(--type-h6-line-height);letter-spacing:var(--type-h6-letter-spacing)}
+  p{font-family:var(--type-body-font-family);font-size:var(--type-body-font-size);font-weight:var(--type-body-font-weight);line-height:var(--type-body-line-height);letter-spacing:var(--type-body-letter-spacing)}
+  input,button,select,textarea{letter-spacing:inherit}
+  [hidden]{display:none!important}
+  :focus-visible{outline:var(--focus-ring);outline-offset:var(--focus-ring-offset)}
+  :focus:not(:focus-visible){outline:none}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+}
+@layer components {
+  .icon{@apply size-5 shrink-0 fill-none stroke-current;stroke-width:var(--icon-stroke-width);stroke-linecap:round;stroke-linejoin:round} /* 20 px, as the Design System icon; chrome icons add size-6 */
+  .icon-filled{fill:currentColor}
+  /* media placeholders (labelled boxes; no photography) */
+  .ph{background:radial-gradient(110% 80% at 30% 20%,var(--color-bg-surface) 0%,transparent 60%),linear-gradient(160deg,var(--warm),var(--warm-deep))}
+  .ph-b{background:radial-gradient(100% 80% at 70% 25%,var(--color-bg-surface) 0%,transparent 55%),linear-gradient(200deg,var(--warm-deep),var(--warm))}
+  .ph-c{background:linear-gradient(180deg,var(--color-bg-surface),var(--warm))}
+  /* full type roles, same as the Design System role classes (family, size, weight, line height, letter spacing) */
+  .type-display{font-family:var(--type-display-font-family);font-size:var(--type-display-font-size);font-weight:var(--type-display-font-weight);line-height:var(--type-display-line-height);letter-spacing:var(--type-display-letter-spacing);text-wrap:balance}
+  .type-h1{font-family:var(--type-h1-font-family);font-size:var(--type-h1-font-size);font-weight:var(--type-h1-font-weight);line-height:var(--type-h1-line-height);letter-spacing:var(--type-h1-letter-spacing);text-wrap:balance}
+  .type-h2{font-family:var(--type-h2-font-family);font-size:var(--type-h2-font-size);font-weight:var(--type-h2-font-weight);line-height:var(--type-h2-line-height);letter-spacing:var(--type-h2-letter-spacing);text-wrap:balance}
+  .type-h3{font-family:var(--type-h3-font-family);font-size:var(--type-h3-font-size);font-weight:var(--type-h3-font-weight);line-height:var(--type-h3-line-height);letter-spacing:var(--type-h3-letter-spacing);text-wrap:balance}
+  .type-h4{font-family:var(--type-h4-font-family);font-size:var(--type-h4-font-size);font-weight:var(--type-h4-font-weight);line-height:var(--type-h4-line-height);letter-spacing:var(--type-h4-letter-spacing)}
+  .type-h5{font-family:var(--type-h5-font-family);font-size:var(--type-h5-font-size);font-weight:var(--type-h5-font-weight);line-height:var(--type-h5-line-height);letter-spacing:var(--type-h5-letter-spacing)}
+  .type-h6{font-family:var(--type-h6-font-family);font-size:var(--type-h6-font-size);font-weight:var(--type-h6-font-weight);line-height:var(--type-h6-line-height);letter-spacing:var(--type-h6-letter-spacing)}
+  .type-body{font-family:var(--type-body-font-family);font-size:var(--type-body-font-size);font-weight:var(--type-body-font-weight);line-height:var(--type-body-line-height);letter-spacing:var(--type-body-letter-spacing)}
+  .type-body-lg{font-family:var(--type-body-lg-font-family);font-size:var(--type-body-lg-font-size);font-weight:var(--type-body-lg-font-weight);line-height:var(--type-body-lg-line-height);letter-spacing:var(--type-body-lg-letter-spacing)}
+  .type-body-sm{font-family:var(--type-body-sm-font-family);font-size:var(--type-body-sm-font-size);font-weight:var(--type-body-sm-font-weight);line-height:var(--type-body-sm-line-height);letter-spacing:var(--type-body-sm-letter-spacing)}
+  .type-caption{font-family:var(--type-caption-font-family);font-size:var(--type-caption-font-size);font-weight:var(--type-caption-font-weight);line-height:var(--type-caption-line-height);letter-spacing:var(--type-caption-letter-spacing);color:var(--color-text-secondary)}
+  .type-overline{font-family:var(--type-overline-font-family);font-size:var(--type-overline-font-size);font-weight:var(--type-overline-font-weight);line-height:var(--type-overline-line-height);letter-spacing:var(--type-overline-letter-spacing);text-transform:var(--type-overline-text-transform);color:var(--color-brand-primary)}
+  .type-label{font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);font-weight:var(--type-label-font-weight);line-height:var(--type-label-line-height);letter-spacing:var(--type-label-letter-spacing)}
+  .type-utility{font-family:var(--type-utility-font-family);font-size:var(--type-utility-font-size);font-weight:var(--type-utility-font-weight);line-height:var(--type-utility-line-height);letter-spacing:var(--type-utility-letter-spacing);text-transform:var(--type-utility-text-transform)}
+  .type-nav{font-family:var(--type-nav-font-family);font-size:var(--type-nav-font-size);font-weight:var(--type-nav-font-weight);line-height:var(--type-nav-line-height);letter-spacing:var(--type-nav-letter-spacing)}
+  .type-product-title{font-family:var(--type-product-title-font-family);font-size:var(--type-product-title-font-size);font-weight:var(--type-product-title-font-weight);line-height:var(--type-product-title-line-height);letter-spacing:var(--type-product-title-letter-spacing)}
+  .type-price{font-family:var(--type-price-font-family);font-size:var(--type-price-font-size);font-weight:var(--type-price-font-weight);line-height:var(--type-price-line-height);letter-spacing:var(--type-price-letter-spacing);font-variant-numeric:tabular-nums}
+  .type-price-lg{font-family:var(--type-price-lg-font-family);font-size:var(--type-price-lg-font-size);font-weight:var(--type-price-lg-font-weight);line-height:var(--type-price-lg-line-height);letter-spacing:var(--type-price-lg-letter-spacing);font-variant-numeric:tabular-nums}
+  .type-validation{font-family:var(--type-validation-font-family);font-size:var(--type-validation-font-size);font-weight:var(--type-validation-font-weight);line-height:var(--type-validation-line-height);letter-spacing:var(--type-validation-letter-spacing)}
+  /* main headings (every h1) are shown in capitals, except the Homepage hero heading, which keeps its own case; h1[class] outranks the .type-* role classes so the tracking applies on every page */
+  h1:not(:where([data-section="Hero Banner"] h1)),h1[class]:not(:where([data-section="Hero Banner"] h1)){text-transform:uppercase;letter-spacing:.04em}
+  /* section headings (every h2) too, except inside rich text the merchant writes (article body, policy text), which keeps its own case */
+  h2:not(:where(#body h2,#body2 h2,#policy-body>section h2)),h2[class]:not(:where(#body h2,#body2 h2,#policy-body>section h2)){text-transform:uppercase;letter-spacing:.04em}
+}

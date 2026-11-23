@@ -1,0 +1,58 @@
+{%- assign perks = section.blocks | where: 'type', 'perk' -%}
+{%- assign email_label = 'sections.newsletter.email_label' | t -%}
+{%- assign nl_state = '' -%}
+<section class="sec bg-subtle text-ink" id="{{ section.settings.anchor | default: 's19' }}">
+  <div class="sec__in py-section">
+    <div class="wrap">
+      <div class="news grid grid-cols-[minmax(0,1fr)] items-center gap-7 lg:grid-cols-12 lg:gap-grid-gap">
+        <div class="news__txt lg:col-[1/span_5]">
+          {%- if section.settings.eyebrow != blank -%}<div class="eyebrow type-overline mb-3"><span>{{ section.settings.eyebrow | escape }}</span></div>{%- endif -%}
+          <h2><span>{{ section.settings.heading | escape }}</span></h2>
+          {%- if section.settings.text != blank -%}<p class="lead mt-4 max-w-[26rem] text-ink-secondary"><span>{{ section.settings.text | escape }}</span></p>{%- endif -%}
+        </div>
+        <div class="news__form lg:col-[7/-1]">
+          {%- form 'customer', id: 'nl-form', class: 'nform m-0 flex w-full flex-col gap-3 sm:flex-row sm:items-end sm:gap-4', novalidate: 'novalidate' -%}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            {%- if form.posted_successfully? -%}{%- assign nl_state = 'ok' -%}{%- elsif form.errors -%}{%- assign nl_state = 'err' -%}{%- endif -%}
+            <label class="nl-input block min-w-0 flex-1" for="nl-email"><span class="news__lbl mb-2 block text-caption font-semibold uppercase tracking-widest text-ink">{{ email_label }}</span><input class="block min-h-12 w-full appearance-none rounded-none border-0 border-b border-ink bg-transparent px-[2px] text-body text-ink [font-family:var(--font-family-body)] placeholder:text-ink-secondary placeholder:opacity-100 focus-visible:outline-offset-4 aria-[invalid=true]:border-status-error" id="nl-email" name="contact[email]" type="email" placeholder="{{ 'sections.newsletter.placeholder' | t }}" autocomplete="email" required aria-describedby="nl-msg nl-legal"{% if nl_state == 'err' %} aria-invalid="true"{% endif %}></label>
+            {% render 'button-editorial', element: 'submit', class: 'hp-btn group min-h-12 flex-none gap-3', label: section.settings.button_label, arrow: true %}
+          {%- endform -%}
+          <p class="news__msg mt-3 min-h-5 text-body-sm leading-normal [&.is-err]:text-status-error [&.is-ok]:text-status-success{% if nl_state == 'ok' %} is-ok{% elsif nl_state == 'err' %} is-err{% endif %}" id="nl-msg" role="status" aria-live="polite" data-ok="{{ 'sections.newsletter.success' | t | escape }}" data-error="{{ 'sections.newsletter.error' | t | escape }}">
+            {%- if nl_state == 'ok' -%}{{ 'sections.newsletter.success' | t }}{%- elsif nl_state == 'err' -%}{{ 'sections.newsletter.error' | t }}{%- endif -%}
+          </p>
+          {%- if perks.size > 0 -%}
+            <ul class="news__perks m-0 mt-2 flex list-none flex-wrap gap-x-6 gap-y-2 p-0 text-body-sm text-ink">
+              {%- for block in perks -%}<li class="inline-flex items-center gap-2" {{ block.shopify_attributes }}>{% render 'icon', name: 'check', class: 'icon size-4 text-brand' %}<span>{{ block.settings.text | escape }}</span></li>{%- endfor -%}
+            </ul>
+          {%- endif -%}
+          {%- if section.settings.legal != blank -%}<small class="mt-4 block border-t border-[color-mix(in_srgb,var(--color-text-primary)_14%,transparent)] pt-4 text-caption leading-normal text-ink-secondary" id="nl-legal"><span>{{ section.settings.legal | escape }}</span></small>{%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Label", "default": "Stay in touch" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Join the list" },
+    { "type": "text", "id": "text", "label": "Text", "default": "Launches, offers and routine tips by email." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Subscribe" },
+    { "type": "text", "id": "legal", "label": "Legal line", "default": "By subscribing you agree to receive emails. Unsubscribe at any time." },
+    { "type": "paragraph", "content": "Uses Shopify's own customer form: new sign-ups are saved as customers tagged newsletter, with email marketing consent handled by Shopify. No app is needed." },
+    { "type": "text", "id": "anchor", "label": "Anchor id", "default": "s19" }
+  ],
+  "blocks": [
+    {
+      "type": "perk",
+      "name": "Perk",
+      "settings": [ { "type": "text", "id": "text", "label": "Text", "default": "New launches first" } ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [ { "name": "Newsletter", "blocks": [ { "type": "perk" }, { "type": "perk", "settings": { "text": "Routine tips" } }, { "type": "perk", "settings": { "text": "Offers by email" } } ] } ]
+}
+{% endschema %}

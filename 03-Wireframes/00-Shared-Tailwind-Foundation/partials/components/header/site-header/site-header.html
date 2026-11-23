@@ -1,0 +1,27 @@
+<header id="site-header" class="sticky top-0 z-sticky border-b border-line bg-page [.nav-open_&]:z-drawer lg:[html_body.mega-open_&]:!bg-page {{extra}}">
+  <div class="mx-auto grid w-full max-w-[calc(var(--container-max)+2*var(--layout-gutter))] grid-cols-[auto_auto_1fr_auto] items-center gap-x-1 px-gutter py-2 max-[359px]:grid-cols-[auto_1fr_auto] max-[359px]:gap-y-2 max-[359px]:pb-3 lg:min-h-[5.25rem] lg:grid-cols-[1fr_auto_1fr] lg:gap-x-grid-gap lg:py-0">
+    @@PARTIAL components/header/menu-button@@
+    @@PARTIAL components/header/search-button placement=mobile label=Search@@
+    @@PARTIAL components/header/logo@@
+    <nav id="nav" aria-label="Main" class="invisible fixed inset-y-0 left-0 z-drawer flex w-full max-w-[26rem] -translate-x-full flex-col gap-3 overflow-y-auto border-r border-line-strong bg-page p-4 transition-transform duration-base [.nav-open_&]:visible [.nav-open_&]:translate-x-0 lg:visible lg:static lg:order-1 lg:w-auto lg:max-w-none lg:translate-x-0 lg:!transform-none lg:flex-row lg:tracking-[var(--type-nav-letter-spacing)] lg:items-center lg:gap-5 xl:gap-7 lg:overflow-visible lg:border-0 lg:bg-transparent lg:p-0">
+      @@PARTIAL components/header/nav-close@@
+      <div class="flex flex-col lg:flex-row lg:gap-7">
+@@PARTIAL components/header/nav-item key=skin name=Skin current={{if nav=skin}}1{{/if}}{{if nav=none}}0{{/if}} @@
+@@PARTIAL components/header/nav-item key=makeup name=Makeup current=0@@
+@@PARTIAL components/header/nav-item key=hair name=Hair current=0@@
+@@PARTIAL components/header/nav-item key=body name=Body current=0@@
+</div>
+      @@PARTIAL components/header/market-selector@@
+    </nav>
+    <div class="flex items-center justify-end gap-3 lg:order-3">
+      @@PARTIAL components/header/search-button placement=desktop role=1 label="Search products" text="Search products"@@
+      <div class="flex gap-[2px]">
+        @@PARTIAL components/header/account-button@@
+        @@PARTIAL components/header/cart-button variant={{cart}}@@
+      </div>
+    </div>
+    @@PARTIAL components/header/search-button placement=bar label="Search products" text="Search products"@@
+  </div>
+<div id="scrim" class="fixed inset-0 z-overlay hidden bg-scrim [.nav-open_&]:block lg:!hidden"></div>
+<div id="mega-scrim" class="absolute inset-x-0 top-full hidden h-screen bg-scrim lg:[.mega-open_&]:block"></div>
+</header>

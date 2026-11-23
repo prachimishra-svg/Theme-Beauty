@@ -1,0 +1,251 @@
+{
+    "name":  "Hero Banner",
+    "wireframeOnly":  [
+                          ".ann annotation block",
+                          "data-section attribute",
+                          "data-c review hooks"
+                      ],
+    "page":  "homepage",
+    "properties":  [
+                       {
+                           "name":  "anchor",
+                           "type":  "TEXT",
+                           "default":  "s03",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "anchor",
+                                           "id":  "anchor",
+                                           "setting":  "text"
+                                       },
+                           "note":  "In-page anchor id"
+                       },
+                       {
+                           "name":  "height",
+                           "type":  "VARIANT",
+                           "default":  "large",
+                           "values":  [
+                                          "large",
+                                          "full"
+                                      ],
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "height",
+                                           "id":  "height",
+                                           "setting":  "select"
+                                       },
+                           "note":  "How tall the hero is"
+                       },
+                       {
+                           "name":  "eyebrow",
+                           "type":  "TEXT",
+                           "default":  "The ritual edit \u0026middot; AW26",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "eyebrow",
+                                           "id":  "eyebrow",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "heading",
+                           "type":  "TEXT",
+                           "default":  "Radiance, \u003cem class=\"italic [font-weight:inherit] text-brand-secondary\"\u003eGently\u003c/em\u003e Nudged.",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "heading",
+                                           "id":  "heading",
+                                           "setting":  "text"
+                                       },
+                           "note":  "Inline rich text with one emphasised word"
+                       },
+                       {
+                           "name":  "text",
+                           "type":  "TEXT",
+                           "default":  "Skin care, makeup, hair and body, chosen to work together.",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "text",
+                                           "id":  "text",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "buttonLabel",
+                           "type":  "TEXT",
+                           "default":  "Shop the edit",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "button_label",
+                                           "id":  "button_label",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "buttonHref",
+                           "type":  "TEXT",
+                           "default":  "#s06",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "button_href",
+                                           "id":  "button_link",
+                                           "setting":  "url"
+                                       }
+                       },
+                       {
+                           "name":  "button2Label",
+                           "type":  "TEXT",
+                           "default":  "Find your routine",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "button2_label",
+                                           "id":  "button_2_label",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "button2Href",
+                           "type":  "TEXT",
+                           "default":  "#s07",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "button2_href",
+                                           "id":  "button_2_link",
+                                           "setting":  "url"
+                                       }
+                       },
+                       {
+                           "name":  "featuredHref",
+                           "type":  "TEXT",
+                           "default":  "#s06",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "featured_href",
+                                           "id":  "featured_url",
+                                           "setting":  "url"
+                                       }
+                       },
+                       {
+                           "name":  "featuredLabel",
+                           "type":  "TEXT",
+                           "default":  "Featured",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "featured_label",
+                                           "id":  "featured_label",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "featuredTitle",
+                           "type":  "TEXT",
+                           "default":  "Face Serum",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "featured_title",
+                                           "id":  "featured_title",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "featuredMeta",
+                           "type":  "TEXT",
+                           "default":  "30 ml \u0026middot; $32.00",
+                           "scope":  "merchant",
+                           "shopify":  {
+                                           "param":  "featured_meta",
+                                           "id":  "featured_meta",
+                                           "setting":  "text"
+                                       }
+                       },
+                       {
+                           "name":  "featuredAria",
+                           "type":  "TEXT",
+                           "default":  "Featured in the campaign: Face Serum, 30 ml, $32.00. Shop now",
+                           "scope":  "parent",
+                           "shopify":  {
+                                           "param":  "featured_aria"
+                                       },
+                           "note":  "Accessible name of the featured card"
+                       }
+                   ],
+    "tokens":  [
+                   "display type",
+                   "overlay",
+                   "spacing"
+               ],
+    "summary":  "The first fold: one campaign image, label, headline, one line, a main button, a text link and a featured product card. Maps to the hero-banner section.",
+    "accessibility":  "Contains the one h1. Main actions are links.",
+    "id":  "hero-banner",
+    "shopifyOnly":  [
+                        {
+                            "id":  "featured_product",
+                            "setting":  "product",
+                            "note":  "Fills the featured card"
+                        }
+                    ],
+    "level":  "main",
+    "status":  "classified (D10 items pending)",
+    "responsive":  "See the three nested parts; the stage height follows the height setting.",
+    "exposes":  [
+                    {
+                        "child":  "components/homepage/hero-content",
+                        "property":  "eyebrow",
+                        "via":  "eyebrow"
+                    },
+                    {
+                        "child":  "components/homepage/hero-content",
+                        "property":  "heading",
+                        "via":  "heading"
+                    },
+                    {
+                        "child":  "components/homepage/hero-content",
+                        "property":  "text",
+                        "via":  "text"
+                    },
+                    {
+                        "child":  "components/homepage/hero-content",
+                        "property":  "buttonLabel",
+                        "via":  "button_label"
+                    },
+                    {
+                        "child":  "components/homepage/hero-content",
+                        "property":  "buttonHref",
+                        "via":  "button_link"
+                    },
+                    {
+                        "child":  "components/homepage/hero-content",
+                        "property":  "button2Label",
+                        "via":  "button_2_label"
+                    },
+                    {
+                        "child":  "components/homepage/hero-content",
+                        "property":  "button2Href",
+                        "via":  "button_2_link"
+                    },
+                    {
+                        "child":  "components/homepage/hero-featured-product",
+                        "property":  "title",
+                        "via":  "featured_title"
+                    },
+                    {
+                        "child":  "components/homepage/hero-featured-product",
+                        "property":  "meta",
+                        "via":  "featured_meta"
+                    },
+                    {
+                        "child":  "components/homepage/hero-featured-product",
+                        "property":  "label",
+                        "via":  "featured_label"
+                    },
+                    {
+                        "child":  "components/homepage/hero-featured-product",
+                        "property":  "href",
+                        "via":  "featured_url"
+                    }
+                ],
+    "children":  [
+                     "components/homepage/hero-media",
+                     "components/homepage/hero-content",
+                     "components/homepage/hero-featured-product"
+                 ]
+}
