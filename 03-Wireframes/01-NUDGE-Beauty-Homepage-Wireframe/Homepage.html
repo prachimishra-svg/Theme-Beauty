@@ -212,6 +212,9 @@
  /* Announcement bar on the homepage is one notch quieter from 1024 px (compact first fold) */
  @media (min-width:1024px){#annbar{min-height:36px;padding-block:0;font-size:12px;letter-spacing:.06em}#annbar button{margin-block:-4px}}
 }
+/* ===== Equal vertical rhythm: every band of the page has the same space above and below its content (the --space-section token), so the gap between any two sections is the same. The two thin strips (benefits, logos) and the full-width comparison no longer sit tighter than the rest. Hero, announcement bar, header and footer keep their own layout. ===== */
+[data-section="Benefits / USP Row"] .sec__in,[data-section^="Logo List"] .sec__in,[data-section="Custom Liquid Section"] .sec__in{padding-block:var(--space-section)}
+[data-section="Before & After"]{padding-block:var(--space-section)}
 </style>
 <style>
 body.embed .rv,body.embed #wp{display:none}
@@ -585,7 +588,7 @@ body.embed .rv,body.embed #wp{display:none}
   var off=[];all('body *').forEach(function(el){if(el.closest('.rv')||el.closest('.rec__track')||el.closest('.rit__track')||el.closest('.sr-only'))return;var r=el.getBoundingClientRect();if(r.right>W+1||r.left<-1)off.push(sel(el)+' ['+Math.round(r.left)+','+Math.round(r.right)+']')});
   out.checks.horizontalOverflow={pass:de.scrollWidth<=W+1&&off.length===0,detail:'scrollWidth='+de.scrollWidth+', viewport='+W+'; elements outside viewport: '+(off.length?off.slice(0,8).join(' | '):'none')};
   var secs=[].slice.call(document.querySelectorAll('section[data-section]')),names=secs.map(function(s){return s.getAttribute('data-section')});
-  var missing=EXPECTED.filter(function(n){return names.indexOf(n)<0}),tiny=secs.filter(function(s){return s.getBoundingClientRect().height<8}).map(function(s){return s.getAttribute('data-section')});
+  var missing=EXPECTED.filter(function(n){return names.indexOf(n)<0}),tiny=secs.filter(function(s){if(s.getBoundingClientRect().height>=8)return false;if(getComputedStyle(s).display==='contents'){var hd=s.querySelector('header');return !(hd&&hd.getBoundingClientRect().height>=8)}return true}).map(function(s){return s.getAttribute('data-section')});
   var ordered=true;EXPECTED.forEach(function(n,i){if(names[i]!==n)ordered=false});
   out.checks.sections={pass:secs.length===EXPECTED.length&&!missing.length&&!tiny.length&&ordered&&new Set(names).size===names.length,detail:secs.length+' of '+EXPECTED.length+' sections present, in workbook order: '+ordered+'; missing: '+(missing.join(', ')||'none')+'; collapsed: '+(tiny.join(', ')||'none')};
   var cm=[];CONTENT.forEach(function(c){var q=c[1].split(',').map(function(x){return '#'+c[0]+' '+x.trim()}).join(',');var n=document.querySelectorAll(q).length;if(n<c[2])cm.push(c[0]+' '+c[1]+' '+n+'/'+c[2])});
