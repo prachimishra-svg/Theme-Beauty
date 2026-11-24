@@ -271,14 +271,13 @@
 [data-section="Hero Banner"] .hero__txt{grid-area:txt;align-self:start;padding-top:var(--space-4);padding-bottom:var(--space-2)}
 [data-section="Hero Banner"] .hero__media{grid-area:stage;height:auto;min-height:0;aspect-ratio:1100/477;width:calc(100% * var(--hero-k,1));margin-inline:auto;margin-top:calc(-1 * var(--hero-overlap))}   /* --hero-k and --hero-overlap are set by the hero script so the whole banner fits the first screen (k = 1 means the full width) */
 [data-section="Hero Banner"] .hero__prod{grid-area:prod}
-/* featured product card, below 1024 px: compact (32 px picture, 16 px name, name and price on one line) */
-[data-section="Hero Banner"] .hero__prod{min-height:48px;gap:var(--space-3);padding-block:var(--space-2)}
-[data-section="Hero Banner"] .hero__prod .hero__pack{width:var(--space-8)}
-[data-section="Hero Banner"] .hero__prod .hero__pb{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:var(--space-2);align-items:baseline}
+/* featured product card, below 1024 px: a compact card floating over the lower left of the picture, on the same left edge as the text, 14 px above the slider dots (the dots keep their place). It leaves the page flow, so it adds no height to the banner. */
+[data-section="Hero Banner"] .hero__prod{position:absolute;z-index:3;left:var(--layout-gutter);bottom:calc(var(--space-3) + 24px + 14px);margin:0;width:min(67%,22.5rem);min-height:0;gap:var(--space-3);padding:var(--space-2) var(--space-3) var(--space-2) var(--space-2);border:1px solid var(--color-brand-accent);background:var(--color-bg-page)}
+[data-section="Hero Banner"] .hero__prod .hero__pack{width:28px}
+[data-section="Hero Banner"] .hero__prod .hero__pb{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:var(--space-2);align-items:baseline;min-width:0}
 [data-section="Hero Banner"] .hero__prod .hero__pb>span:first-child{grid-column:1 / -1;font-size:10px;line-height:12px}
 [data-section="Hero Banner"] .hero__prod .hero__pb>span:nth-child(2){font-size:16px;line-height:20px;white-space:nowrap}
-[data-section="Hero Banner"] .hero__prod .hero__pb>span:nth-child(3){font-size:12px;line-height:20px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.hp-hero-media::after{display:none}
+[data-section="Hero Banner"] .hero__prod .hero__pb>span:nth-child(3){font-size:12px;line-height:20px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.hp-hero-media::after{display:none}
 /* text: smaller and lighter, stepping down with the screen (font families, italic and colours unchanged). Heading 44 / 36 / 32 / 28 px, eyebrow 12 px (10 px on phones) with its rule shortened to match, description 16 px (14 px on phones, always shown), buttons 40 px high. */
 [data-section="Hero Banner"] .hero__txt .eyebrow{margin-bottom:var(--space-2);gap:var(--space-3);font-size:12px;line-height:16px;letter-spacing:.24em;white-space:nowrap;min-width:0}
 [data-section="Hero Banner"] .hero__txt .eyebrow::before{width:var(--space-10)}

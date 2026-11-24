@@ -875,7 +875,6 @@
     + '@property --hero-l{syntax:"<color>";inherits:true;initial-value:#fbf7f7}@property --hero-r{syntax:"<color>";inherits:true;initial-value:#fbf7f7}'
     + '@media (max-width:1023px){.hero:has(.hero__media[data-ix-hs]){background:linear-gradient(90deg,var(--hero-l),var(--hero-r));transition:--hero-l .8s var(--ease-standard,ease),--hero-r .8s var(--ease-standard,ease)}'
     + '.hero__media[data-ix-hs]{background:none}.hero__media[data-ix-hs] .ix-hs{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 22%),linear-gradient(to right,transparent 0,#000 var(--hero-edge,0%),#000 calc(100% - var(--hero-edge,0%)),transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to bottom,transparent 0,#000 22%),linear-gradient(to right,transparent 0,#000 var(--hero-edge,0%),#000 calc(100% - var(--hero-edge,0%)),transparent 100%);mask-composite:intersect}'
-    + '.hero:has(.hero__media[data-ix-hs]) .hero__prod{margin-inline:0;padding-inline:var(--layout-gutter,16px);border-bottom:0;background:linear-gradient(var(--color-border-subtle,#ebd5d8),var(--color-border-subtle,#ebd5d8)) no-repeat center bottom/calc(100% - 2*var(--layout-gutter,16px)) 1px,var(--color-bg-page,#fbf7f7)}'
     + '.hero__media[data-ix-hs] .ix-hs__slide,.hero__media[data-ix-hs] .ix-hs__slide.is-on,.hero__media[data-ix-hs] .ix-hs__slide.ix-init{transform:none!important;transition:opacity .8s var(--ease-standard,ease)}'
     + '.ix-hs__dots{left:50%;right:auto;top:auto;bottom:var(--space-3,12px);transform:translateX(-50%)}}' /* below 1024 px the picture sits under the text and dissolves into it: the hero takes the picture's own top colour, the picture fades in over it, the dots hang at the bottom centre */
     + '@media (min-width:1024px) and (max-width:1279px) and (orientation:landscape){.hero__media[data-ix-hs] .ix-hs-wrap{top:auto;bottom:0;height:auto;aspect-ratio:2.35}.hero__media[data-ix-hs] .ix-hs{-webkit-mask-image:linear-gradient(to top,#000 78%,transparent 100%);mask-image:linear-gradient(to top,#000 78%,transparent 100%)}}'
@@ -914,7 +913,7 @@
       var s = cfg.slides[cur], c = (portraitOn && s.toneP) ? s.toneP : s.toneW; if (!hero || !c) return;
       hero.style.setProperty('--hero-l', c[0]); hero.style.setProperty('--hero-r', c[1]);
     }
-    var portraitOn = false; var txtEl = document.querySelector('[data-section="Hero Banner"] .hero__txt'); if (g.ResizeObserver && txtEl) new g.ResizeObserver(function () { fit(); }).observe(txtEl);
+    var portraitOn = false; var txtEl = document.querySelector('[data-section="Hero Banner"] .hero__txt'); if (g.ResizeObserver && txtEl) new g.ResizeObserver(function () { fit(); }).observe(txtEl); var lastW = 0; if (g.ResizeObserver && hero) new g.ResizeObserver(function () { var nw = hero.clientWidth; if (nw !== lastW) { lastW = nw; fit(); } }).observe(hero);
     /* the upright picture is aimed per slide and per screen: the top of the products is placed just under the buttons (the picture rises behind the text, the products never sit behind it) */
     function aim() {
       if (!portraitOn || !hero) return; var mr = host.getBoundingClientRect(), W = host.clientWidth, H = host.clientHeight, cb = 0; if (!W || !H) return;
@@ -931,7 +930,7 @@
       var txt = sec.querySelector('.hero__txt'), prod = sec.querySelector('.hero__prod'); if (!txt || !prod) return;
       var ar = (getComputedStyle(host).aspectRatio || '').split('/'), ratio = ar.length > 1 ? parseFloat(ar[0]) / parseFloat(ar[1]) : 0.5629; if (!(ratio > 0)) ratio = 0.5629;
       var W = hero.clientWidth, Hf = W / (portraitMQ && portraitMQ.matches ? 900 / 1599 : ratio), root = document.documentElement, chromeH = parseFloat(g.getComputedStyle(root).getPropertyValue('--hero-chrome')) || 120;
-      var A = g.innerHeight - chromeH, T = txt.offsetHeight, P = prod.offsetHeight, top = 0.24, GAP = 32, bf = (portraitMQ && portraitMQ.matches) ? 0.86 : 1;   /* bf: the box shows this share of the picture's height */
+      var A = g.innerHeight - chromeH, T = txt.offsetHeight, P = 0, top = 0.24, GAP = 32, bf = (portraitMQ && portraitMQ.matches) ? 0.86 : 1;   /* bf: the box shows this share of the picture's height */
       var k = Math.max(0.72, Math.min(1, (A - T - P - GAP) / ((bf - top) * Hf))), ov = Math.max(0, top * k * Hf - GAP);
       hero.style.setProperty('--hero-k', k.toFixed(3)); sec.style.setProperty('--hero-overlap', Math.round(ov) + 'px'); hero.style.setProperty('--hero-edge', k < 0.995 ? '9%' : '0%');
     }    function fill(im) { var d = im.__ix; if (!d || d.done) return; d.done = true; if (d.so && d.mob) d.so.srcset = d.mob; if (d.set) im.srcset = d.set; im.src = d.src; }
