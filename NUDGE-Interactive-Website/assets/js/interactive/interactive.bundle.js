@@ -872,11 +872,8 @@
     + '.ix-hs__dot:hover::before{background:color-mix(in srgb,var(--color-brand-primary) 60%,transparent)}'
     + '.ix-hs__dot[aria-current="true"]::before{width:24px;background:var(--color-brand-primary)}'
     + '.ix-hs__dot:focus-visible{outline:2px solid var(--color-brand-primary);outline-offset:1px}'
-    + '@media (max-width:1023px){.hero__media[data-ix-hs] .ix-hs-wrap{height:64%}'
-    + '.hero__media[data-ix-hs] .ix-hs{-webkit-mask-image:linear-gradient(to bottom,#000 58%,transparent 100%);mask-image:linear-gradient(to bottom,#000 58%,transparent 100%)}'
-    + '.ix-hs__dots{right:var(--space-3,12px);bottom:auto;top:var(--space-3,12px)}}'
+    + '@media (max-width:1023px){.ix-hs__dots{left:50%;right:auto;top:auto;bottom:var(--space-3,12px);transform:translateX(-50%)}}' /* below 1024 px the picture sits under the text; the dots hang at the bottom centre of the picture */
     + '@media (min-width:1024px) and (max-width:1279px) and (orientation:landscape){.hero__media[data-ix-hs] .ix-hs-wrap{top:auto;bottom:0;height:auto;aspect-ratio:2.35}.hero__media[data-ix-hs] .ix-hs{-webkit-mask-image:linear-gradient(to top,#000 78%,transparent 100%);mask-image:linear-gradient(to top,#000 78%,transparent 100%)}}'
-    + '@media (max-width:767px) and (orientation:portrait){.hero__media[data-ix-hs]{min-height:min(168vw,700px)}}'
     + '@media (max-width:1279px){.hero__media[data-ix-hs] .ix-hs__slide{object-position:var(--pos-t,var(--pos,66% 30%))}}'
     + '@media (max-width:767px){.hero__media[data-ix-hs] .ix-hs__slide{object-position:var(--pos-m,var(--pos-t,78% 8%))}}'
     + '@media (max-width:767px) and (orientation:portrait){.hero__media[data-ix-hs] .ix-hs__slide[data-portrait]{object-position:var(--pos-p,50% 46%)}}'
@@ -927,6 +924,9 @@
     }
     function tick() { if (!paused && !document.hidden) go(cur + 1); }
     function restart() { clearInterval(timer); if (n > 1 && !reduce) timer = setInterval(tick, interval); }
+    /* the hero below 1024 px fills the first screen under the announcement bar and the header: measure those two and publish the height as --hero-chrome (CSS falls back to 7.5rem) */
+    function chrome() { var a = document.querySelector('[data-section=\"Announcement Bar\"]'), h = document.getElementById('site-header'), t = (a ? a.offsetHeight : 0) + (h ? h.offsetHeight : 0); if (t) document.documentElement.style.setProperty('--hero-chrome', t + 'px'); }
+    chrome(); g.addEventListener('resize', chrome); g.addEventListener('orientationchange', chrome); if (document.fonts && document.fonts.ready) document.fonts.ready.then(chrome);
     host.setAttribute('data-ix-hs-active', '0'); load(1);
     if (cfg.product) { /* the small product picture in the Featured card */
       var th = [].filter.call(document.querySelectorAll('[data-section="Hero Banner"] .img'), function (e) { return e !== host && !host.contains(e); })[0];
