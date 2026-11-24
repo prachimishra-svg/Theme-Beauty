@@ -210,6 +210,15 @@
   :is(#cart-drawer,#ix-cart-drawer) #cd-empty{padding:var(--space-8) 0;gap:var(--space-4)}
 }
 
+/* ---- Empty cart drawer: a calm, centred message with a bag mark, one clear button, then the collection links as wrapped pills (no sideways scrolling, no scrollbar). ---- */
+:is(#cart-drawer,#ix-cart-drawer) #cd-empty{padding:var(--space-8) var(--space-4)}
+:is(#cart-drawer,#ix-cart-drawer) #cd-empty .cd-empty__icon{display:grid;place-items:center;width:var(--space-16);height:var(--space-16);border-radius:var(--radius-pill);background:var(--color-bg-subtle);color:var(--color-brand-primary)}
+:is(#cart-drawer,#ix-cart-drawer) #cd-empty .cd-empty__icon .icon{width:var(--space-8);height:var(--space-8)}
+:is(#cart-drawer,#ix-cart-drawer) #cd-empty #cd-continue{width:100%;max-width:20rem}
+:is(#cart-drawer,#ix-cart-drawer) #cd-empty .cd-empty__label{display:flex;align-items:center;gap:var(--space-3);width:100%;margin-top:var(--space-3);font-size:var(--font-size-caption);letter-spacing:.08em;text-transform:uppercase;color:var(--color-text-secondary)}
+:is(#cart-drawer,#ix-cart-drawer) #cd-empty .cd-empty__label::before,:is(#cart-drawer,#ix-cart-drawer) #cd-empty .cd-empty__label::after{content:"";flex:1;height:1px;background:var(--color-border-subtle)}
+:is(#cart-drawer,#ix-cart-drawer) #cd-empty .chip-row{flex-wrap:wrap;overflow:visible;justify-content:center;gap:var(--space-2) var(--space-3);padding:0}
+
 /* ---- Side menu drawer, below 1024 px: its height follows its content (close icon, the links, the currency selector and 20 px of space below it) instead of filling the screen. It grows when a section opens and shrinks when it closes, and scrolls inside only when the opened content is taller than the screen. The slide-in animation is unchanged. The desktop menu bar is not touched. ---- */
 @media (max-width:1023px){
   #site-header #nav{bottom:auto;height:auto;max-height:100dvh;padding-bottom:20px;border-bottom:1px solid var(--color-border-strong);overflow-y:auto;overscroll-behavior:contain}
@@ -432,10 +441,12 @@ body.embed .rv,body.embed #wp{display:none}
 <div id="cd-up"></div>
 </div>
 <div id="cd-empty" class="flex flex-1 flex-col items-center justify-center gap-5 py-10 text-center" hidden>
+<span class="cd-empty__icon" aria-hidden="true"><svg class="icon" focusable="false"><use href="#icon-bag"></use></svg></span>
 <p class="type-h4 m-0">Your cart is empty</p>
 <p class="m-0 text-ink-secondary">Nothing here yet. Browse the collections to find your next favourite.</p>
 <button class="btn btn-primary" type="button" data-drawer-close id="cd-continue">Continue shopping</button>
-<div class="chip-row max-w-full justify-center" aria-label="Shop by collection"><a class="chip" href="#shop">Best sellers</a><a class="chip" href="#shop">Skin care</a><a class="chip" href="#shop">Makeup</a><a class="chip" href="#shop">Hair</a><a class="chip" href="#shop">Body</a></div>
+<p class="cd-empty__label m-0" id="cd-empty-label">Shop by collection</p>
+<div class="chip-row max-w-full justify-center" role="group" aria-labelledby="cd-empty-label"><a class="chip" href="#shop">Best sellers</a><a class="chip" href="#shop">Skin care</a><a class="chip" href="#shop">Makeup</a><a class="chip" href="#shop">Hair</a><a class="chip" href="#shop">Body</a></div>
 </div>
 </div>
 <div class="drawer-foot flex flex-col gap-3" id="cd-foot">
