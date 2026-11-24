@@ -874,8 +874,9 @@
     + '.ix-hs__dot:focus-visible{outline:2px solid var(--color-brand-primary);outline-offset:1px}'
     + '@property --hero-l{syntax:"<color>";inherits:true;initial-value:#fbf7f7}@property --hero-r{syntax:"<color>";inherits:true;initial-value:#fbf7f7}'
     + '@media (max-width:1023px){.hero:has(.hero__media[data-ix-hs]){background:linear-gradient(90deg,var(--hero-l),var(--hero-r));transition:--hero-l .8s var(--ease-standard,ease),--hero-r .8s var(--ease-standard,ease)}'
-    + '.hero__media[data-ix-hs]{background:none}.hero__media[data-ix-hs] .ix-hs{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 20%);mask-image:linear-gradient(to bottom,transparent 0,#000 20%)}'
+    + '.hero__media[data-ix-hs]{background:none}.hero__media[data-ix-hs] .ix-hs{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 30%);mask-image:linear-gradient(to bottom,transparent 0,#000 30%)}'
     + '.hero:has(.hero__media[data-ix-hs]) .hero__prod{margin-inline:0;padding-inline:var(--layout-gutter,16px);border-bottom:0;background:linear-gradient(var(--color-border-subtle,#ebd5d8),var(--color-border-subtle,#ebd5d8)) no-repeat center bottom/calc(100% - 2*var(--layout-gutter,16px)) 1px,var(--color-bg-page,#fbf7f7)}'
+    + '.hero__media[data-ix-hs] .ix-hs__slide{transform-origin:var(--om,50% 50%);transform:scale(var(--zm,1))}.hero__media[data-ix-hs] .ix-hs__slide.ix-init{transform:scale(var(--zm,1))!important}.hero__media[data-ix-hs] .ix-hs__slide.is-on{transform:scale(calc(var(--zm,1)*1.06))}'
     + '.ix-hs__dots{left:50%;right:auto;top:auto;bottom:var(--space-3,12px);transform:translateX(-50%)}}' /* below 1024 px the picture sits under the text and dissolves into it: the hero takes the picture's own top colour, the picture fades in over it, the dots hang at the bottom centre */
     + '@media (min-width:1024px) and (max-width:1279px) and (orientation:landscape){.hero__media[data-ix-hs] .ix-hs-wrap{top:auto;bottom:0;height:auto;aspect-ratio:2.35}.hero__media[data-ix-hs] .ix-hs{-webkit-mask-image:linear-gradient(to top,#000 78%,transparent 100%);mask-image:linear-gradient(to top,#000 78%,transparent 100%)}}'
     + '@media (max-width:1279px){.hero__media[data-ix-hs] .ix-hs__slide{object-position:var(--pos-t,var(--pos,66% 30%))}}'
@@ -899,6 +900,7 @@
       var im = el('img', 'ix-hs__slide' + (i === 0 ? ' is-on ix-init' : '')), holder = im, so = null; im.alt = s.alt || ('Campaign image ' + (i + 1) + ' of ' + n); im.decoding = 'async'; im.draggable = false;
       if (s.pos) im.style.setProperty('--pos', s.pos); if (s.posTablet) im.style.setProperty('--pos-t', s.posTablet); if (s.posMobile) im.style.setProperty('--pos-m', s.posMobile); if (s.posPortrait) im.style.setProperty('--pos-p', s.posPortrait);
       if (s.mobile) { holder = el('picture', 'ix-hs__pic'); so = el('source'); so.media = PORTRAIT; holder.appendChild(so); holder.appendChild(im); im.setAttribute('data-portrait', ''); }
+      if (s.zoomPortrait) im.setAttribute('data-zp', s.zoomPortrait); if (s.originPortrait) im.setAttribute('data-op', s.originPortrait); if (s.productTop) im.setAttribute('data-pt', s.productTop); im.addEventListener('load', function () { aim(); }); if (s.zoomWide) im.setAttribute('data-zw', s.zoomWide); if (s.originWide) im.setAttribute('data-ow', s.originWide);
       im.__ix = { src: base + s.src, set: s.srcset ? setList(s.srcset) : '', mob: s.mobile ? base + s.mobile : '', so: so };
       im.sizes = '100vw';
       if (i === 0) { im.loading = 'eager'; im.setAttribute('fetchpriority', 'high'); fill(im); } else { im.src = PIXEL; im.setAttribute('aria-hidden', 'true'); } /* later slides hold a 1-pixel placeholder until they are needed, so no empty image is ever on the page */
@@ -907,13 +909,20 @@
     g.requestAnimationFrame(function () { g.requestAnimationFrame(function () { imgs[0].classList.remove('ix-init'); }); }); /* lets the first picture start its slow zoom too */
     var hero = host.closest('.hero') || host.parentElement, portraitMQ = g.matchMedia ? g.matchMedia(PORTRAIT) : null;
     /* an upright phone picture only suits a box that is nearly square or taller (the hero fills the screen); a short wide box uses the wide picture, which shows the whole scene */
-    function usePortrait() { var rr = host.getBoundingClientRect(); return !!(portraitMQ && portraitMQ.matches && rr.height > 0 && rr.width / rr.height < 1.45); }
+    function usePortrait() { return !!(portraitMQ && portraitMQ.matches); }
     function tone() {
       var s = cfg.slides[cur], c = (portraitOn && s.toneP) ? s.toneP : s.toneW; if (!hero || !c) return;
       hero.style.setProperty('--hero-l', c[0]); hero.style.setProperty('--hero-r', c[1]);
     }
     var portraitOn = false;
-    function sources() { var p = usePortrait(); portraitOn = p; imgs.forEach(function (im) { var d = im.__ix; if (d && d.so) { d.so.media = p ? PORTRAIT : 'not all'; } }); tone(); }
+    /* the upright picture is aimed per slide and per screen: the top of the products is placed just under the buttons (the picture rises behind the text, the products never sit behind it) */
+    function aim() {
+      if (!portraitOn || !hero) return; var mr = host.getBoundingClientRect(), W = host.clientWidth, H = host.clientHeight, cb = 0; if (!W || !H) return;
+      [].forEach.call(hero.querySelectorAll('.hero__txt a'), function (a) { cb = Math.max(cb, a.getBoundingClientRect().bottom); });
+      var yT = cb - mr.top + 20;
+      imgs.forEach(function (im) { var top = parseFloat(im.getAttribute('data-pt')); if (!top || !im.naturalWidth || im.naturalWidth < 300) return; var k = Math.max(W / im.naturalWidth, H / im.naturalHeight), dh = im.naturalHeight * k, slack = dh - H; if (slack <= 0) return; var st = Math.min(slack / dh, Math.max(0, top - yT / dh)); im.style.setProperty('--pos-p', '50% ' + (Math.round(st * dh / slack * 1000) / 10) + '%'); });
+    }
+    function sources() { var p = usePortrait(); portraitOn = p; imgs.forEach(function (im) { var d = im.__ix; if (d && d.so) { d.so.media = p ? PORTRAIT : 'not all'; } var z = im.getAttribute(p && d && d.so ? 'data-zp' : 'data-zw'), o = im.getAttribute(p && d && d.so ? 'data-op' : 'data-ow'); if (z) im.style.setProperty('--zm', z); else im.style.removeProperty('--zm'); if (o) im.style.setProperty('--om', o); else im.style.removeProperty('--om'); }); aim(); tone(); }
     function fill(im) { var d = im.__ix; if (!d || d.done) return; d.done = true; if (d.so && d.mob) d.so.srcset = d.mob; if (d.set) im.srcset = d.set; im.src = d.src; }
     function load(i) { var im = imgs[i]; if (im) fill(im); }
     var dots = [];
@@ -933,7 +942,7 @@
       i = (i + n) % n; if (i === cur) { if (user) restart(); return; } load(i); load((i + 1) % n);
       imgs[cur].classList.remove('is-on'); imgs[cur].setAttribute('aria-hidden', 'true'); imgs[i].classList.add('is-on'); imgs[i].removeAttribute('aria-hidden');
       if (dots.length) { dots[cur].setAttribute('aria-current', 'false'); dots[i].setAttribute('aria-current', 'true'); }
-      cur = i; tone(); host.setAttribute('data-ix-hs-active', String(i)); if (user) restart();
+      cur = i; aim(); tone(); host.setAttribute('data-ix-hs-active', String(i)); if (user) restart();
     }
     function tick() { if (!paused && !document.hidden) go(cur + 1); }
     function restart() { clearInterval(timer); if (n > 1 && !reduce) timer = setInterval(tick, interval); }

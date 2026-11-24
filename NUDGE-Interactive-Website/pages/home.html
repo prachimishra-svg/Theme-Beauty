@@ -267,11 +267,13 @@
 /* ===== Hero below 1024 px (phones and tablets): the text block (eyebrow, heading, line, buttons) sits on top, the campaign picture below it, then the featured-product row; the slider dots hang at the bottom centre of the picture. The hero fills the first screen under the announcement bar and the header (--hero-chrome, measured by the script, 7.5rem without it), at most 760 px, so it is never oversized; the picture takes whatever height is left, 224 px at least. Desktop (1024 px and up) is not touched. ===== */
 @media (max-width:1023px){
 [data-section="Hero Banner"] .hero{grid-template-areas:'txt' 'stage' 'prod';grid-template-rows:auto minmax(var(--hero-img-min,224px),1fr) auto;min-height:min(max(calc(100svh - var(--hero-chrome,7.5rem)),0px),760px)}
-[data-section="Hero Banner"] .hero__txt{grid-area:txt;align-self:start;padding-top:var(--space-6);padding-bottom:var(--space-5)}
-[data-section="Hero Banner"] .hero__media{grid-area:stage;height:auto;min-height:0}
+[data-section="Hero Banner"]{--hero-overlap:min(150px,calc(42vw - 12px))}
+[data-section="Hero Banner"] .hero__txt{grid-area:txt;align-self:start;padding-top:var(--space-6);padding-bottom:var(--space-2)}
+[data-section="Hero Banner"] .hero__media{grid-area:stage;height:auto;min-height:0;margin-top:calc(-1 * var(--hero-overlap))}
 [data-section="Hero Banner"] .hero__prod{grid-area:prod}
 .hp-hero-media::after{display:none}
 }
+@media (min-width:768px){[data-section="Hero Banner"]{--hero-overlap:130px}}
 @media (max-width:359px){[data-section="Hero Banner"] .hero__txt h1{font-size:36px;line-height:40px}[data-section="Hero Banner"] .hero__txt .eyebrow{margin-bottom:var(--space-3)}}
 /* ===== Equal vertical rhythm: every band of the page has the same space above and below its content (the --space-section-half token, 40px), so the gap between any two sections is the --space-section token, 80px. The two thin strips (benefits, logos) and the full-width comparison no longer sit tighter than the rest. Hero, announcement bar, header and footer keep their own layout. ===== */
 [data-section="Benefits / USP Row"] .sec__in,[data-section^="Logo List"] .sec__in,[data-section="Custom Liquid Section"] .sec__in{padding-block:var(--space-section-half)}
