@@ -226,9 +226,9 @@
  /* Announcement bar on the homepage is one notch quieter from 1024 px (compact first fold) */
  @media (min-width:1024px){#annbar{min-height:36px;padding-block:0;font-size:12px;letter-spacing:.06em}#annbar button{margin-block:-4px}}
 }
-/* ===== Hero below 1024 px (phones and tablets): the text block (eyebrow, heading, line, buttons) sits on top, the campaign picture below it, then the featured-product row; the slider dots hang at the bottom centre of the picture. The hero fills the first screen under the announcement bar and the header (--hero-chrome, measured by the script, 7.5rem without it), at most 760 px, so it is never oversized; the picture takes whatever height is left, 200 px at least. Desktop (1024 px and up) is not touched. ===== */
+/* ===== Hero below 1024 px (phones and tablets): the text block (eyebrow, heading, line, buttons) sits on top, the campaign picture below it, then the featured-product row; the slider dots hang at the bottom centre of the picture. The hero fills the first screen under the announcement bar and the header (--hero-chrome, measured by the script, 7.5rem without it), at most 760 px, so it is never oversized; the picture takes whatever height is left, 224 px at least. Desktop (1024 px and up) is not touched. ===== */
 @media (max-width:1023px){
-[data-section="Hero Banner"] .hero{grid-template-areas:'txt' 'stage' 'prod';grid-template-rows:auto minmax(var(--hero-img-min,200px),1fr) auto;min-height:min(max(calc(100svh - var(--hero-chrome,7.5rem)),0px),760px)}
+[data-section="Hero Banner"] .hero{grid-template-areas:'txt' 'stage' 'prod';grid-template-rows:auto minmax(var(--hero-img-min,224px),1fr) auto;min-height:min(max(calc(100svh - var(--hero-chrome,7.5rem)),0px),760px)}
 [data-section="Hero Banner"] .hero__txt{grid-area:txt;align-self:start;padding-top:var(--space-6);padding-bottom:var(--space-5)}
 [data-section="Hero Banner"] .hero__media{grid-area:stage;height:auto;min-height:0}
 [data-section="Hero Banner"] .hero__prod{grid-area:prod}

@@ -872,7 +872,11 @@
     + '.ix-hs__dot:hover::before{background:color-mix(in srgb,var(--color-brand-primary) 60%,transparent)}'
     + '.ix-hs__dot[aria-current="true"]::before{width:24px;background:var(--color-brand-primary)}'
     + '.ix-hs__dot:focus-visible{outline:2px solid var(--color-brand-primary);outline-offset:1px}'
-    + '@media (max-width:1023px){.ix-hs__dots{left:50%;right:auto;top:auto;bottom:var(--space-3,12px);transform:translateX(-50%)}}' /* below 1024 px the picture sits under the text; the dots hang at the bottom centre of the picture */
+    + '@property --hero-l{syntax:"<color>";inherits:true;initial-value:#fbf7f7}@property --hero-r{syntax:"<color>";inherits:true;initial-value:#fbf7f7}'
+    + '@media (max-width:1023px){.hero:has(.hero__media[data-ix-hs]){background:linear-gradient(90deg,var(--hero-l),var(--hero-r));transition:--hero-l .8s var(--ease-standard,ease),--hero-r .8s var(--ease-standard,ease)}'
+    + '.hero__media[data-ix-hs]{background:none}.hero__media[data-ix-hs] .ix-hs{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 20%);mask-image:linear-gradient(to bottom,transparent 0,#000 20%)}'
+    + '.hero:has(.hero__media[data-ix-hs]) .hero__prod{margin-inline:0;padding-inline:var(--layout-gutter,16px);border-bottom:0;background:linear-gradient(var(--color-border-subtle,#ebd5d8),var(--color-border-subtle,#ebd5d8)) no-repeat center bottom/calc(100% - 2*var(--layout-gutter,16px)) 1px,var(--color-bg-page,#fbf7f7)}'
+    + '.ix-hs__dots{left:50%;right:auto;top:auto;bottom:var(--space-3,12px);transform:translateX(-50%)}}' /* below 1024 px the picture sits under the text and dissolves into it: the hero takes the picture's own top colour, the picture fades in over it, the dots hang at the bottom centre */
     + '@media (min-width:1024px) and (max-width:1279px) and (orientation:landscape){.hero__media[data-ix-hs] .ix-hs-wrap{top:auto;bottom:0;height:auto;aspect-ratio:2.35}.hero__media[data-ix-hs] .ix-hs{-webkit-mask-image:linear-gradient(to top,#000 78%,transparent 100%);mask-image:linear-gradient(to top,#000 78%,transparent 100%)}}'
     + '@media (max-width:1279px){.hero__media[data-ix-hs] .ix-hs__slide{object-position:var(--pos-t,var(--pos,66% 30%))}}'
     + '@media (max-width:767px){.hero__media[data-ix-hs] .ix-hs__slide{object-position:var(--pos-m,var(--pos-t,78% 8%))}}'
@@ -901,6 +905,15 @@
       box.appendChild(holder); imgs.push(im);
     });    var wrapAll = el('div', 'ix-hs-wrap'); wrapAll.appendChild(box); host.insertBefore(wrapAll, host.firstChild);
     g.requestAnimationFrame(function () { g.requestAnimationFrame(function () { imgs[0].classList.remove('ix-init'); }); }); /* lets the first picture start its slow zoom too */
+    var hero = host.closest('.hero') || host.parentElement, portraitMQ = g.matchMedia ? g.matchMedia(PORTRAIT) : null;
+    /* an upright phone picture only suits a box that is nearly square or taller (the hero fills the screen); a short wide box uses the wide picture, which shows the whole scene */
+    function usePortrait() { var rr = host.getBoundingClientRect(); return !!(portraitMQ && portraitMQ.matches && rr.height > 0 && rr.width / rr.height < 1.45); }
+    function tone() {
+      var s = cfg.slides[cur], c = (portraitOn && s.toneP) ? s.toneP : s.toneW; if (!hero || !c) return;
+      hero.style.setProperty('--hero-l', c[0]); hero.style.setProperty('--hero-r', c[1]);
+    }
+    var portraitOn = false;
+    function sources() { var p = usePortrait(); portraitOn = p; imgs.forEach(function (im) { var d = im.__ix; if (d && d.so) { d.so.media = p ? PORTRAIT : 'not all'; } }); tone(); }
     function fill(im) { var d = im.__ix; if (!d || d.done) return; d.done = true; if (d.so && d.mob) d.so.srcset = d.mob; if (d.set) im.srcset = d.set; im.src = d.src; }
     function load(i) { var im = imgs[i]; if (im) fill(im); }
     var dots = [];
@@ -920,14 +933,14 @@
       i = (i + n) % n; if (i === cur) { if (user) restart(); return; } load(i); load((i + 1) % n);
       imgs[cur].classList.remove('is-on'); imgs[cur].setAttribute('aria-hidden', 'true'); imgs[i].classList.add('is-on'); imgs[i].removeAttribute('aria-hidden');
       if (dots.length) { dots[cur].setAttribute('aria-current', 'false'); dots[i].setAttribute('aria-current', 'true'); }
-      cur = i; host.setAttribute('data-ix-hs-active', String(i)); if (user) restart();
+      cur = i; tone(); host.setAttribute('data-ix-hs-active', String(i)); if (user) restart();
     }
     function tick() { if (!paused && !document.hidden) go(cur + 1); }
     function restart() { clearInterval(timer); if (n > 1 && !reduce) timer = setInterval(tick, interval); }
     /* the hero below 1024 px fills the first screen under the announcement bar and the header: measure those two and publish the height as --hero-chrome (CSS falls back to 7.5rem) */
     function chrome() { var a = document.querySelector('[data-section=\"Announcement Bar\"]'), h = document.getElementById('site-header'), t = (a ? a.offsetHeight : 0) + (h ? h.offsetHeight : 0); if (t) document.documentElement.style.setProperty('--hero-chrome', t + 'px'); }
     chrome(); g.addEventListener('resize', chrome); g.addEventListener('orientationchange', chrome); if (document.fonts && document.fonts.ready) document.fonts.ready.then(chrome);
-    host.setAttribute('data-ix-hs-active', '0'); load(1);
+    host.setAttribute('data-ix-hs-active', '0'); load(1); sources(); g.addEventListener('resize', sources); g.addEventListener('orientationchange', sources); if (g.ResizeObserver) new g.ResizeObserver(function () { sources(); }).observe(host); if (document.fonts && document.fonts.ready) document.fonts.ready.then(sources);
     if (cfg.product) { /* the small product picture in the Featured card */
       var th = [].filter.call(document.querySelectorAll('[data-section="Hero Banner"] .img'), function (e) { return e !== host && !host.contains(e); })[0];
       if (th) { var ti = el('img'); ti.alt = 'Featured product'; ti.decoding = 'async'; ti.src = base + cfg.product; ti.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1'; th.appendChild(ti); th.setAttribute('data-ix-thumb', ''); }

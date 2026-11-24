@@ -4,8 +4,8 @@ window.NUDGE_HERO_SLIDES = {
   "interval": 4000,
   "product": "thumb-product.jpg",
   "slides": [
-    { "src": "hero-1.jpg", "srcset": "hero-1-1100.jpg 1100w, hero-1.jpg 1967w", "mobile": "hero-1-mobile.jpg", "pos": "66% 40%", "posTablet": "92% 50%", "posMobile": "80% 50%", "posPortrait": "50% 28%", "alt": "NUDGE campaign image 1 of 3" },
-    { "src": "hero-2.jpg", "srcset": "hero-2-1100.jpg 1100w, hero-2.jpg 1905w", "mobile": "hero-2-mobile.jpg", "pos": "66% 40%", "posTablet": "92% 50%", "posMobile": "72% 50%", "posPortrait": "50% 100%", "alt": "NUDGE campaign image 2 of 3" },
-    { "src": "hero-3.jpg", "srcset": "hero-3-1100.jpg 1100w, hero-3.jpg 1905w", "mobile": "hero-3-mobile.jpg", "pos": "66% 30%", "posTablet": "80% 40%", "posMobile": "76% 30%", "posPortrait": "50% 100%", "alt": "NUDGE campaign image 3 of 3" }
+    { "src": "hero-1.jpg", "srcset": "hero-1-1100.jpg 1100w, hero-1.jpg 1967w", "mobile": "hero-1-mobile.jpg", "toneP": ["#fde1d7", "#edc5bf"], "toneW": ["#f4d8c8", "#d9af94"], "pos": "66% 40%", "posTablet": "92% 50%", "posMobile": "80% 50%", "posPortrait": "50% 28%", "alt": "NUDGE campaign image 1 of 3" },
+    { "src": "hero-2.jpg", "srcset": "hero-2-1100.jpg 1100w, hero-2.jpg 1905w", "mobile": "hero-2-mobile.jpg", "toneP": ["#f8d9cb", "#ebc4b1"], "toneW": ["#f9ded5", "#e28388"], "pos": "66% 40%", "posTablet": "92% 50%", "posMobile": "72% 50%", "posPortrait": "50% 63%", "alt": "NUDGE campaign image 2 of 3" },
+    { "src": "hero-3.jpg", "srcset": "hero-3-1100.jpg 1100w, hero-3.jpg 1905w", "mobile": "hero-3-mobile.jpg", "toneP": ["#f8dbcf", "#efcabc"], "toneW": ["#fdd9e2", "#c78a87"], "pos": "66% 30%", "posTablet": "80% 40%", "posMobile": "76% 30%", "posPortrait": "50% 58%", "alt": "NUDGE campaign image 3 of 3" }
   ]
 };

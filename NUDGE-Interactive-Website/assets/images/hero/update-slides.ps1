@@ -18,7 +18,19 @@ function New-Small([string]$p, [string]$dest, [int]$w) {
     $ep = New-Object Drawing.Imaging.EncoderParameters(1); $ep.Param[0] = New-Object Drawing.Imaging.EncoderParameter([Drawing.Imaging.Encoder]::Quality, [long]82); $bmp.Save($dest, $jpg, $ep); $bmp.Dispose()
   } finally { $im.Dispose() }
 }
-$items = @(); $i = 0
+# the hero blends the text area into the picture: the band of colour at the top edge of the visible crop is measured here (left and right, because the pictures are lighter on one side) and written as "toneP" (upright phone picture) and "toneW" (wide picture)
+function Get-Tone([string]$p, [double]$start) {
+  $im = [Drawing.Bitmap]::FromFile($p)
+  try {
+    $y0 = [int][Math]::Min($im.Height - 4, [Math]::Max(0, [Math]::Round($start * $im.Height))); $hh = [Math]::Max(3, [int]($im.Height * 0.012)); $out = @()
+    foreach ($rng in @(@(0.04, 0.30), @(0.70, 0.96))) {
+      $x0 = [int]($rng[0] * $im.Width); $x1 = [int]($rng[1] * $im.Width); $r = 0; $g = 0; $b = 0; $n = 0
+      for ($y = $y0; $y -lt [Math]::Min($im.Height, $y0 + $hh); $y += 2) { for ($x = $x0; $x -lt $x1; $x += 6) { $c = $im.GetPixel($x, $y); $r += $c.R; $g += $c.G; $b += $c.B; $n++ } }
+      $out += ('#{0:x2}{1:x2}{2:x2}' -f [int]($r / $n), [int]($g / $n), [int]($b / $n))
+    }
+    return $out
+  } finally { $im.Dispose() }
+}$items = @(); $i = 0
 foreach ($f in $files) {
   $i++; $base = [IO.Path]::GetFileNameWithoutExtension($f.Name); $w = Get-Width $f.FullName; $row = @('"src": "' + $f.Name + '"')
   if ($w -gt 1400 -and $f.Extension -match '^\.jpe?g$') {
@@ -27,6 +39,10 @@ foreach ($f in $files) {
   }
   $mob = Get-ChildItem $here -File | Where-Object { $_.Name -match ('^' + [regex]::Escape($base) + '-mobile\.(jpe?g|png|webp|avif)$') } | Select-Object -First 1
   if ($mob) { $row += '"mobile": "' + $mob.Name + '"' }
+  $fo0 = $null; if ($focus -and $focus.PSObject.Properties[$f.Name]) { $fo0 = $focus.($f.Name) }
+  $ty = 0.0; if ($fo0 -and $fo0.PSObject.Properties['posPortrait']) { $pp = ([string]$fo0.posPortrait).Split(' '); if ($pp.Count -ge 2) { $ty = [double]($pp[1].TrimEnd('%')) / 100.0 * (1 - 0.48) } }   # where the upright crop starts (the crop shows about 48 percent of the picture's height)
+  if ($mob) { $tp = Get-Tone $mob.FullName $ty; $row += '"toneP": ["' + $tp[0] + '", "' + $tp[1] + '"]' }
+  $tw = Get-Tone $f.FullName 0.0; $row += '"toneW": ["' + $tw[0] + '", "' + $tw[1] + '"]'
   if ($focus -and $focus.PSObject.Properties[$f.Name]) { $fo = $focus.($f.Name); foreach ($k in 'pos', 'posTablet', 'posMobile', 'posPortrait') { if ($fo.PSObject.Properties[$k]) { $row += '"' + $k + '": "' + $fo.$k + '"' } } }
   $row += '"alt": "NUDGE campaign image ' + $i + ' of ' + $files.Count + '"'
   $items += '    { ' + ($row -join ', ') + ' }'
