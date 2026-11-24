@@ -40,9 +40,9 @@ foreach ($f in $files) {
   $mob = Get-ChildItem $here -File | Where-Object { $_.Name -match ('^' + [regex]::Escape($base) + '-mobile\.(jpe?g|png|webp|avif)$') } | Select-Object -First 1
   if ($mob) { $row += '"mobile": "' + $mob.Name + '"' }
   $fo0 = $null; if ($focus -and $focus.PSObject.Properties[$f.Name]) { $fo0 = $focus.($f.Name) }
-  $ty = 0.0; if ($fo0 -and $fo0.PSObject.Properties['posPortrait']) { $pp = ([string]$fo0.posPortrait).Split(' '); if ($pp.Count -ge 2) { $ty = [double]$pp[1].TrimEnd('%') / 100.0 * (1 - 0.58) + 0.07 } }   # about where the fade into the text area ends: the upright crop shows about 58 percent of the picture's height; the band is taken a little below its top edge
+  $ty = 0.05   # the pictures are shown whole, so the band is taken just below the top edge
   if ($mob) { $tp = Get-Tone $mob.FullName $ty; $row += '"toneP": ["' + $tp[0] + '", "' + $tp[1] + '"]' }
-  $tw = Get-Tone $f.FullName 0.0; $row += '"toneW": ["' + $tw[0] + '", "' + $tw[1] + '"]'
+  $tw = Get-Tone $f.FullName 0.05; $row += '"toneW": ["' + $tw[0] + '", "' + $tw[1] + '"]'
   if ($focus -and $focus.PSObject.Properties[$f.Name]) { $fo = $focus.($f.Name); foreach ($k in 'pos', 'posTablet', 'posMobile', 'posPortrait', 'zoomPortrait', 'originPortrait', 'zoomWide', 'originWide', 'productTop') { if ($fo.PSObject.Properties[$k]) { $row += '"' + $k + '": "' + $fo.$k + '"' } } }
   $row += '"alt": "NUDGE campaign image ' + $i + ' of ' + $files.Count + '"'
   $items += '    { ' + ($row -join ', ') + ' }'

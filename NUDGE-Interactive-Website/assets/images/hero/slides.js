@@ -4,8 +4,8 @@ window.NUDGE_HERO_SLIDES = {
   "interval": 4000,
   "product": "thumb-product.jpg",
   "slides": [
-    { "src": "hero-1.jpg", "srcset": "hero-1-1100.jpg 1100w, hero-1.jpg 1967w", "mobile": "hero-1-mobile.jpg", "toneP": ["#fbd9cd", "#e9beb8"], "toneW": ["#f4d8c8", "#d9af94"], "pos": "66% 40%", "posTablet": "92% 50%", "posMobile": "80% 50%", "posPortrait": "50% 6%", "zoomPortrait": "1.02", "originPortrait": "50% 55%", "zoomWide": "1.04", "originWide": "70% 60%", "productTop": "0.24", "alt": "NUDGE campaign image 1 of 3" },
-    { "src": "hero-2.jpg", "srcset": "hero-2-1100.jpg 1100w, hero-2.jpg 1905w", "mobile": "hero-2-mobile.jpg", "toneP": ["#fde4d8", "#e6bba9"], "toneW": ["#f9ded5", "#e28388"], "pos": "66% 40%", "posTablet": "92% 50%", "posMobile": "72% 50%", "posPortrait": "50% 36%", "zoomPortrait": "1.02", "originPortrait": "50% 60%", "zoomWide": "1.04", "originWide": "75% 65%", "productTop": "0.38", "alt": "NUDGE campaign image 2 of 3" },
-    { "src": "hero-3.jpg", "srcset": "hero-3-1100.jpg 1100w, hero-3.jpg 1905w", "mobile": "hero-3-mobile.jpg", "toneP": ["#f7dacd", "#eecabc"], "toneW": ["#fdd9e2", "#c78a87"], "pos": "66% 30%", "posTablet": "80% 40%", "posMobile": "76% 30%", "posPortrait": "50% 42%", "zoomPortrait": "1.02", "originPortrait": "62% 55%", "zoomWide": "1.04", "originWide": "80% 55%", "productTop": "0.37", "alt": "NUDGE campaign image 3 of 3" }
+    { "src": "hero-1.jpg", "srcset": "hero-1-1100.jpg 1100w, hero-1.jpg 1967w", "mobile": "hero-1-mobile.jpg", "toneP": ["#fad5c7", "#e2b4ae"], "toneW": ["#f5dbcb", "#e0baa1"], "pos": "66% 40%", "posTablet": "92% 50%", "posMobile": "80% 50%", "posPortrait": "50% 50%", "alt": "NUDGE campaign image 1 of 3" },
+    { "src": "hero-2.jpg", "srcset": "hero-2-1100.jpg 1100w, hero-2.jpg 1905w", "mobile": "hero-2-mobile.jpg", "toneP": ["#f7ddd1", "#deb19c"], "toneW": ["#f9e0d7", "#e38084"], "pos": "66% 40%", "posTablet": "92% 50%", "posMobile": "72% 50%", "posPortrait": "50% 50%", "alt": "NUDGE campaign image 2 of 3" },
+    { "src": "hero-3.jpg", "srcset": "hero-3-1100.jpg 1100w, hero-3.jpg 1905w", "mobile": "hero-3-mobile.jpg", "toneP": ["#f5d5c6", "#e8c2b4"], "toneW": ["#fddae2", "#b47c79"], "pos": "66% 30%", "posTablet": "80% 40%", "posMobile": "76% 30%", "posPortrait": "50% 50%", "alt": "NUDGE campaign image 3 of 3" }
   ]
 };

@@ -1,5 +1,5 @@
 {
-  "hero-1.jpg": { "pos": "66% 40%", "posTablet": "92% 50%", "posMobile": "80% 50%", "posPortrait": "50% 6%", "zoomPortrait": "1.02", "originPortrait": "50% 55%", "productTop": "0.24", "zoomWide": "1.04", "originWide": "70% 60%" },
-  "hero-2.jpg": { "pos": "66% 40%", "posTablet": "92% 50%", "posMobile": "72% 50%", "posPortrait": "50% 36%", "zoomPortrait": "1.02", "originPortrait": "50% 60%", "productTop": "0.38", "zoomWide": "1.04", "originWide": "75% 65%" },
-  "hero-3.jpg": { "pos": "66% 30%", "posTablet": "80% 40%", "posMobile": "76% 30%", "posPortrait": "50% 42%", "zoomPortrait": "1.02", "originPortrait": "62% 55%", "productTop": "0.37", "zoomWide": "1.04", "originWide": "80% 55%" }
+  "hero-1.jpg": { "pos": "66% 40%", "posTablet": "92% 50%", "posMobile": "80% 50%", "posPortrait": "50% 50%" },
+  "hero-2.jpg": { "pos": "66% 40%", "posTablet": "92% 50%", "posMobile": "72% 50%", "posPortrait": "50% 50%" },
+  "hero-3.jpg": { "pos": "66% 30%", "posTablet": "80% 40%", "posMobile": "76% 30%", "posPortrait": "50% 50%" }
 }
