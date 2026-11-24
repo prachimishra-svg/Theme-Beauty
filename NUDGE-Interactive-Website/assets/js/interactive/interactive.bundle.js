@@ -934,7 +934,7 @@
       var ar = (getComputedStyle(host).aspectRatio || '').split('/'), ratio = ar.length > 1 ? parseFloat(ar[0]) / parseFloat(ar[1]) : 0.5629; if (!(ratio > 0)) ratio = 0.5629;
       var W = hero.clientWidth, Hf = W / (portraitMQ && portraitMQ.matches ? 900 / 1599 : ratio), root = document.documentElement, chromeH = parseFloat(g.getComputedStyle(root).getPropertyValue('--hero-chrome')) || 120;
       var A = g.innerHeight - chromeH, T = txt.offsetHeight, P = 0, top = 0.24, GAP = 32, bf = (portraitMQ && portraitMQ.matches) ? 0.86 : 1;   /* bf: the box shows this share of the picture's height */
-      var k = Math.max(0.72, Math.min(1, (A - T - P - GAP) / ((bf - top) * Hf))), ov = Math.max(0, top * k * Hf - GAP);
+      var k = Math.max(0.72, Math.min(1, (A - T - P - GAP) / ((bf - top) * Hf))), ov = Math.max(0, top * k * Hf - 24);   /* the picture rises until its first content sits close under the buttons (GAP above only sizes the picture) */
       hero.style.setProperty('--hero-k', k.toFixed(3)); hero.style.setProperty('--hero-pic-h', Math.round(k * Hf * bf) + 'px'); sec.style.setProperty('--hero-overlap', Math.round(ov) + 'px'); hero.style.setProperty('--hero-edge', k < 0.995 ? '9%' : '0%');
     }    function fill(im) { var d = im.__ix; if (!d || d.done) return; d.done = true; if (d.bg) { var abs = function (u) { return 'url("' + new URL(u, document.baseURI).href + '")'; }; if (d.mob) d.bg.style.setProperty('--bg-p', abs(d.mob)); d.bg.style.setProperty('--bg-w', abs(d.set ? d.set.split(',')[0].trim().split(' ')[0] : d.src)); } if (d.so && d.mob) d.so.srcset = d.mob; if (d.set) im.srcset = d.set; im.src = d.src; }
     function load(i) { var im = imgs[i]; if (im) fill(im); }
