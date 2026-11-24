@@ -209,6 +209,11 @@
   :is(#cart-drawer,#ix-cart-drawer) .drawer-foot .link-standalone{min-height:var(--space-9)}
   :is(#cart-drawer,#ix-cart-drawer) #cd-empty{padding:var(--space-8) 0;gap:var(--space-4)}
 }
+
+/* ---- Side menu drawer, below 1024 px: its height follows its content (close icon, the links, the currency selector and 20 px of space below it) instead of filling the screen. It grows when a section opens and shrinks when it closes, and scrolls inside only when the opened content is taller than the screen. The slide-in animation is unchanged. The desktop menu bar is not touched. ---- */
+@media (max-width:1023px){
+  #site-header #nav{bottom:auto;height:auto;max-height:100dvh;padding-bottom:20px;border-bottom:1px solid var(--color-border-strong);overflow-y:auto;overscroll-behavior:contain}
+}
 </style>
 <style>
 body.embed .rv,body.embed #wp{display:none}
