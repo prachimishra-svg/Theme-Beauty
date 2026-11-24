@@ -171,6 +171,44 @@
   @keyframes mega-in{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
   .mega-panel[data-open]{animation:mega-in var(--duration-base) var(--ease-out)}
 }
+
+/* ---- Cart drawer, below 1024 px (phones and tablets): a compact, orderly layout. Scoped to the cart drawer only (#cart-drawer on the wireframe, #ix-cart-drawer in the interactive site), so the desktop drawer, the Cart page and the other drawers keep their own look. Everything uses Design System tokens. ---- */
+@media (max-width:1023px){
+  #cart-drawer,#ix-cart-drawer{height:100dvh;max-height:100dvh}
+  :is(#cart-drawer,#ix-cart-drawer) .drawer-head{min-height:var(--space-14);padding:0 var(--space-2) 0 var(--space-4);border-bottom:1px solid var(--color-border-subtle)}
+  :is(#cart-drawer,#ix-cart-drawer) .drawer-head h2{display:flex;align-items:baseline;gap:var(--space-2)}
+  :is(#cart-drawer,#ix-cart-drawer) .drawer-body{padding:var(--space-2) var(--space-4) var(--space-4);gap:var(--space-3)}
+  :is(#cart-drawer,#ix-cart-drawer) #cd-cart{gap:var(--space-3)}
+  :is(#cart-drawer,#ix-cart-drawer) .fs{gap:var(--space-2);padding-top:var(--space-2)}
+  :is(#cart-drawer,#ix-cart-drawer) .message{margin-bottom:0}
+  /* product rows: picture, then name and price on one line, variant under the name, quantity and remove on the last line */
+  :is(#cart-drawer,#ix-cart-drawer) .cl{grid-template-columns:var(--space-16) minmax(0,1fr) auto;grid-template-areas:'thumb info price' 'thumb qty qty';column-gap:var(--space-3);row-gap:var(--space-2);align-items:start;padding:var(--space-4) 0;border-top:1px solid var(--color-border-subtle);border-bottom:0}
+  :is(#cart-drawer,#ix-cart-drawer) .cl:first-child{border-top:0;padding-top:var(--space-2)}
+  :is(#cart-drawer,#ix-cart-drawer) .cl__name{min-height:0;margin:0;font-size:var(--font-size-body);line-height:var(--space-6)}
+  :is(#cart-drawer,#ix-cart-drawer) .cl__each{display:none}
+  :is(#cart-drawer,#ix-cart-drawer) .cl [data-lt]{font-weight:var(--font-weight-medium)}
+  :is(#cart-drawer,#ix-cart-drawer) .cl > div:nth-child(3){gap:0;line-height:var(--space-6)}
+  :is(#cart-drawer,#ix-cart-drawer) .cl .price-compare{font-size:var(--font-size-caption);line-height:var(--space-4)}
+  :is(#cart-drawer,#ix-cart-drawer) .cl > div:last-child{display:flex;flex-wrap:nowrap;align-items:center;justify-content:space-between;gap:var(--space-3);align-self:end}
+  :is(#cart-drawer,#ix-cart-drawer) .cl .qty{height:var(--space-9)}
+  :is(#cart-drawer,#ix-cart-drawer) .cl .qty-btn{width:var(--space-9);min-height:0;height:100%}
+  :is(#cart-drawer,#ix-cart-drawer) .cl .qty-input{width:var(--space-8);font-size:var(--font-size-body-sm)}
+  /* Remove: an icon only (the button keeps its "Remove <product>" name for screen readers) */
+  :is(#cart-drawer,#ix-cart-drawer) .cl [data-rm]{position:relative;flex:none;width:var(--space-9);height:var(--space-9);min-height:0;margin-right:calc(-1 * var(--space-2));padding:0;font-size:0;line-height:0;text-decoration:none;color:var(--color-text-secondary)}
+  :is(#cart-drawer,#ix-cart-drawer) .cl [data-rm]::before{content:"";position:absolute;inset:0;margin:auto;width:var(--space-5);height:var(--space-5);background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14M10 11v6M14 11v6'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14M10 11v6M14 11v6'/%3E%3C/svg%3E") center/contain no-repeat}
+  :is(#cart-drawer,#ix-cart-drawer) .cl [data-rm]:hover{color:var(--color-text-primary)}
+  /* "Add to your order" suggestion */
+  :is(#cart-drawer,#ix-cart-drawer) #cd-up h2{font-family:var(--font-family-body);font-size:var(--font-size-caption);line-height:var(--space-4);letter-spacing:.12em;text-transform:uppercase;font-weight:var(--font-weight-medium);color:var(--color-text-secondary)}
+  :is(#cart-drawer,#ix-cart-drawer) .up__row{grid-template-columns:var(--space-12) minmax(0,1fr) auto;gap:var(--space-3);padding:var(--space-3) 0;border-top-color:var(--color-border-subtle)}
+  :is(#cart-drawer,#ix-cart-drawer) .up__row .btn{min-height:var(--space-9);padding-inline:var(--space-4)}
+  /* sticky summary: subtotal, note, Checkout (full width), View cart */
+  :is(#cart-drawer,#ix-cart-drawer) .drawer-foot{gap:var(--space-2);padding:var(--space-4) var(--space-4) max(var(--space-4),env(safe-area-inset-bottom));border-top:1px solid var(--color-border-subtle)}
+  :is(#cart-drawer,#ix-cart-drawer) .drawer-foot > div:first-child > span:first-child{font-size:var(--font-size-body-sm);color:var(--color-text-secondary)}
+  :is(#cart-drawer,#ix-cart-drawer) .drawer-foot > p{line-height:var(--space-4)}
+  :is(#cart-drawer,#ix-cart-drawer) .drawer-foot .btn{margin-top:var(--space-1)}
+  :is(#cart-drawer,#ix-cart-drawer) .drawer-foot .link-standalone{min-height:var(--space-9)}
+  :is(#cart-drawer,#ix-cart-drawer) #cd-empty{padding:var(--space-8) 0;gap:var(--space-4)}
+}
 </style>
 <style type="text/tailwindcss">
 /* ===== Homepage page-level components (everything else on this page is plain Tailwind utilities) ===== */
