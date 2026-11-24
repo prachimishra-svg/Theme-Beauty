@@ -874,7 +874,7 @@
     + '.ix-hs__dot:focus-visible{outline:2px solid var(--color-brand-primary);outline-offset:1px}'
     + '@property --hero-l{syntax:"<color>";inherits:true;initial-value:#fbf7f7}@property --hero-r{syntax:"<color>";inherits:true;initial-value:#fbf7f7}'
     + '@media (max-width:1023px){.hero:has(.hero__media[data-ix-hs]){background:linear-gradient(90deg,var(--hero-l),var(--hero-r));transition:--hero-l .8s var(--ease-standard,ease),--hero-r .8s var(--ease-standard,ease)}'
-    + '.hero__media[data-ix-hs]{background:none}.hero__media[data-ix-hs] .ix-hs{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 22%);mask-image:linear-gradient(to bottom,transparent 0,#000 22%)}'
+    + '.hero__media[data-ix-hs]{background:none}.hero__media[data-ix-hs] .ix-hs{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 22%),linear-gradient(to right,transparent 0,#000 var(--hero-edge,0%),#000 calc(100% - var(--hero-edge,0%)),transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to bottom,transparent 0,#000 22%),linear-gradient(to right,transparent 0,#000 var(--hero-edge,0%),#000 calc(100% - var(--hero-edge,0%)),transparent 100%);mask-composite:intersect}'
     + '.hero:has(.hero__media[data-ix-hs]) .hero__prod{margin-inline:0;padding-inline:var(--layout-gutter,16px);border-bottom:0;background:linear-gradient(var(--color-border-subtle,#ebd5d8),var(--color-border-subtle,#ebd5d8)) no-repeat center bottom/calc(100% - 2*var(--layout-gutter,16px)) 1px,var(--color-bg-page,#fbf7f7)}'
     + '.hero__media[data-ix-hs] .ix-hs__slide,.hero__media[data-ix-hs] .ix-hs__slide.is-on,.hero__media[data-ix-hs] .ix-hs__slide.ix-init{transform:none!important;transition:opacity .8s var(--ease-standard,ease)}'
     + '.ix-hs__dots{left:50%;right:auto;top:auto;bottom:var(--space-3,12px);transform:translateX(-50%)}}' /* below 1024 px the picture sits under the text and dissolves into it: the hero takes the picture's own top colour, the picture fades in over it, the dots hang at the bottom centre */
@@ -914,7 +914,7 @@
       var s = cfg.slides[cur], c = (portraitOn && s.toneP) ? s.toneP : s.toneW; if (!hero || !c) return;
       hero.style.setProperty('--hero-l', c[0]); hero.style.setProperty('--hero-r', c[1]);
     }
-    var portraitOn = false;
+    var portraitOn = false; var txtEl = document.querySelector('[data-section="Hero Banner"] .hero__txt'); if (g.ResizeObserver && txtEl) new g.ResizeObserver(function () { fit(); }).observe(txtEl);
     /* the upright picture is aimed per slide and per screen: the top of the products is placed just under the buttons (the picture rises behind the text, the products never sit behind it) */
     function aim() {
       if (!portraitOn || !hero) return; var mr = host.getBoundingClientRect(), W = host.clientWidth, H = host.clientHeight, cb = 0; if (!W || !H) return;
@@ -923,7 +923,18 @@
       imgs.forEach(function (im) { var top = parseFloat(im.getAttribute('data-pt')); if (!top || !im.naturalWidth || im.naturalWidth < 300) return; var k = Math.max(W / im.naturalWidth, H / im.naturalHeight), dh = im.naturalHeight * k, slack = dh - H; if (slack <= 0) return; var st = Math.min(slack / dh, Math.max(0, top - yT / dh)); im.style.setProperty('--pos-p', '50% ' + (Math.round(st * dh / slack * 1000) / 10) + '%'); });
     }
     function sources() { var p = usePortrait(); portraitOn = p; imgs.forEach(function (im) { var d = im.__ix; if (d && d.so) { d.so.media = p ? PORTRAIT : 'not all'; } var z = im.getAttribute(p && d && d.so ? 'data-zp' : 'data-zw'), o = im.getAttribute(p && d && d.so ? 'data-op' : 'data-ow'); if (z) im.style.setProperty('--zm', z); else im.style.removeProperty('--zm'); if (o) im.style.setProperty('--om', o); else im.style.removeProperty('--om'); }); aim(); tone(); }
-    function fill(im) { var d = im.__ix; if (!d || d.done) return; d.done = true; if (d.so && d.mob) d.so.srcset = d.mob; if (d.set) im.srcset = d.set; im.src = d.src; }
+    /* the banner is sized to the screen: whatever is left under the announcement bar and the header, minus the text block and the featured-product card, is the room for the picture. The picture keeps its proportions and, when the room is short, is shown a little narrower (never below 72 percent of the width); it then rises behind the text by as much as its calm top allows, so the products stay clear of the buttons. */
+    function fit() {
+      var sec = host.closest('[data-section]'), mq = g.matchMedia('(max-width:1023px)');
+      if (!sec || !hero) return;
+      if (!mq.matches) { sec.style.removeProperty('--hero-overlap'); hero.style.removeProperty('--hero-k'); hero.style.removeProperty('--hero-edge'); return; }
+      var txt = sec.querySelector('.hero__txt'), prod = sec.querySelector('.hero__prod'); if (!txt || !prod) return;
+      var ar = (getComputedStyle(host).aspectRatio || '').split('/'), ratio = ar.length > 1 ? parseFloat(ar[0]) / parseFloat(ar[1]) : 0.5629; if (!(ratio > 0)) ratio = 0.5629;
+      var W = hero.clientWidth, Hf = W / (portraitMQ && portraitMQ.matches ? 900 / 1599 : ratio), root = document.documentElement, chromeH = parseFloat(g.getComputedStyle(root).getPropertyValue('--hero-chrome')) || 120;
+      var A = g.innerHeight - chromeH, T = txt.offsetHeight, P = prod.offsetHeight, top = 0.24, GAP = 32, bf = (portraitMQ && portraitMQ.matches) ? 0.86 : 1;   /* bf: the box shows this share of the picture's height */
+      var k = Math.max(0.72, Math.min(1, (A - T - P - GAP) / ((bf - top) * Hf))), ov = Math.max(0, top * k * Hf - GAP);
+      hero.style.setProperty('--hero-k', k.toFixed(3)); sec.style.setProperty('--hero-overlap', Math.round(ov) + 'px'); hero.style.setProperty('--hero-edge', k < 0.995 ? '9%' : '0%');
+    }    function fill(im) { var d = im.__ix; if (!d || d.done) return; d.done = true; if (d.so && d.mob) d.so.srcset = d.mob; if (d.set) im.srcset = d.set; im.src = d.src; }
     function load(i) { var im = imgs[i]; if (im) fill(im); }
     var dots = [];
     if (n > 1) {
@@ -948,7 +959,7 @@
     function restart() { clearInterval(timer); if (n > 1 && !reduce) timer = setInterval(tick, interval); }
     /* the hero below 1024 px fills the first screen under the announcement bar and the header: measure those two and publish the height as --hero-chrome (CSS falls back to 7.5rem) */
     function chrome() { var a = document.querySelector('[data-section=\"Announcement Bar\"]'), h = document.getElementById('site-header'), t = (a ? a.offsetHeight : 0) + (h ? h.offsetHeight : 0); if (t) document.documentElement.style.setProperty('--hero-chrome', t + 'px'); }
-    chrome(); g.addEventListener('resize', chrome); g.addEventListener('orientationchange', chrome); if (document.fonts && document.fonts.ready) document.fonts.ready.then(chrome);
+    chrome(); fit(); g.addEventListener('resize', function () { chrome(); fit(); }); g.addEventListener('orientationchange', function () { chrome(); fit(); }); if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { chrome(); fit(); });
     host.setAttribute('data-ix-hs-active', '0'); load(1); sources(); g.addEventListener('resize', sources); g.addEventListener('orientationchange', sources); if (g.ResizeObserver) new g.ResizeObserver(function () { sources(); }).observe(host); if (document.fonts && document.fonts.ready) document.fonts.ready.then(sources);
     if (cfg.product) { /* the small product picture in the Featured card */
       var th = [].filter.call(document.querySelectorAll('[data-section="Hero Banner"] .img'), function (e) { return e !== host && !host.contains(e); })[0];

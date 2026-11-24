@@ -264,13 +264,20 @@
  /* Announcement bar on the homepage is one notch quieter from 1024 px (compact first fold) */
  @media (min-width:1024px){#annbar{min-height:36px;padding-block:0;font-size:12px;letter-spacing:.06em}#annbar button{margin-block:-4px}}
 }
-/* ===== Hero below 1024 px (phones and tablets): IMAGE FIRST. The campaign picture is shown whole, in its own proportions (no crop, no zoom, no fixed height): phones held upright get the upright picture (900:1599), every other width the wide picture (1100:477). The text block sits on top and the picture rises behind its lower part, into the calm top of the picture, so the products and the model's face are never covered. The banner height follows its content. Desktop (1024 px and up) is not touched. ===== */
+/* ===== Hero below 1024 px (phones and tablets): IMAGE FIRST. The campaign picture is shown in its own proportions (no stretch, no zoom, no fixed height; on upright phones only the calm, empty top or bottom 14 percent is trimmed): phones held upright get the upright picture (900:1599), every other width the wide picture (1100:477). The text block sits on top and the picture rises behind its lower part, into the calm top of the picture, so the products and the model's face are never covered. The banner height follows its content. Desktop (1024 px and up) is not touched. ===== */
 @media (max-width:1023px){
 [data-section="Hero Banner"] .hero{grid-template-areas:'txt' 'stage' 'prod';grid-template-rows:auto auto auto;min-height:0}
 [data-section="Hero Banner"]{--hero-overlap:calc(10.4vw - 20px)}
 [data-section="Hero Banner"] .hero__txt{grid-area:txt;align-self:start;padding-top:var(--space-4);padding-bottom:var(--space-2)}
-[data-section="Hero Banner"] .hero__media{grid-area:stage;height:auto;min-height:0;aspect-ratio:1100/477;margin-top:calc(-1 * var(--hero-overlap))}
+[data-section="Hero Banner"] .hero__media{grid-area:stage;height:auto;min-height:0;aspect-ratio:1100/477;width:calc(100% * var(--hero-k,1));margin-inline:auto;margin-top:calc(-1 * var(--hero-overlap))}   /* --hero-k and --hero-overlap are set by the hero script so the whole banner fits the first screen (k = 1 means the full width) */
 [data-section="Hero Banner"] .hero__prod{grid-area:prod}
+/* featured product card, below 1024 px: compact (32 px picture, 16 px name, name and price on one line) */
+[data-section="Hero Banner"] .hero__prod{min-height:48px;gap:var(--space-3);padding-block:var(--space-2)}
+[data-section="Hero Banner"] .hero__prod .hero__pack{width:var(--space-8)}
+[data-section="Hero Banner"] .hero__prod .hero__pb{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:var(--space-2);align-items:baseline}
+[data-section="Hero Banner"] .hero__prod .hero__pb>span:first-child{grid-column:1 / -1;font-size:10px;line-height:12px}
+[data-section="Hero Banner"] .hero__prod .hero__pb>span:nth-child(2){font-size:16px;line-height:20px;white-space:nowrap}
+[data-section="Hero Banner"] .hero__prod .hero__pb>span:nth-child(3){font-size:12px;line-height:20px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .hp-hero-media::after{display:none}
 /* text: smaller and lighter, stepping down with the screen (font families, italic and colours unchanged). Heading 44 / 36 / 32 / 28 px, eyebrow 12 px (10 px on phones) with its rule shortened to match, description 16 px (14 px on phones, always shown), buttons 40 px high. */
 [data-section="Hero Banner"] .hero__txt .eyebrow{margin-bottom:var(--space-2);gap:var(--space-3);font-size:12px;line-height:16px;letter-spacing:.24em;white-space:nowrap;min-width:0}
@@ -292,7 +299,7 @@
 }
 @media (max-width:767px) and (orientation:portrait){
   [data-section="Hero Banner"]{--hero-overlap:min(calc(42.6vw - 24px),200px)}
-  [data-section="Hero Banner"] .hero__media{aspect-ratio:900/1599}
+  [data-section="Hero Banner"] .hero__media{aspect-ratio:900/1375}   /* 86 percent of the upright picture's height: slide 1 shows its top part, slides 2 and 3 their lower part, so each slide's products start at about the same height under the buttons */
 }
 @media (max-width:429px){[data-section="Hero Banner"] .hero__txt h1{font-size:32px;line-height:36px}}
 @media (max-width:359px){
