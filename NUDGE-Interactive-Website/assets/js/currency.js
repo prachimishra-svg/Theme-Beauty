@@ -12,9 +12,9 @@
   'use strict';
   var MARKETS = [
     { code: 'IN', name: 'India', cur: 'INR', loc: 'en-IN', rate: 83, dec: 0 },
-    { code: 'US', name: 'United States', cur: 'USD', loc: 'en-US', rate: 1, dec: 2 },
-    { code: 'GB', name: 'United Kingdom', cur: 'GBP', loc: 'en-GB', rate: 0.79, dec: 2 },
-    { code: 'EU', name: 'Eurozone', cur: 'EUR', loc: 'en-IE', rate: 0.92, dec: 2 }
+    { code: 'US', name: 'US', cur: 'USD', loc: 'en-US', rate: 1, dec: 2 },
+    { code: 'GB', name: 'UK', cur: 'GBP', loc: 'en-GB', rate: 0.79, dec: 2 },
+    { code: 'EU', name: 'EU', cur: 'EUR', loc: 'en-IE', rate: 0.92, dec: 2 }
   ];
   var KEY = 'nudge-market';
   var ONE = /\$\s?(\d[\d,]*)(?:\.(\d{1,2}))?/;
@@ -75,52 +75,83 @@
     for (var i = 0; i < parts.length; i++) if (parts[i].type === 'currency') return parts[i].value;
     return m.cur;
   }
-  function label(m) { return m.name + ' (' + m.cur + ')'; }
+  function label(m) { return m.cur + ' ' + symbol(m); }   /* compact header label, for example INR ₹; the list rows keep the short country names */
+  function nameFor(m) { return 'Country and currency: ' + m.cur + ' ' + symbol(m) + ' (' + m.name + ')'; }
   function build() {
     var menu = $('market-menu'); if (!menu) return;
     menu.innerHTML = MARKETS.map(function (m) {
       var on = m === cur;
-      return '<button type="button" class="flex min-h-touch w-full items-center justify-between gap-6 rounded-control px-3 text-left text-body-sm text-ink hover:bg-subtle' + (on ? ' font-medium' : '') + '" data-market="' + m.code + '"' + (on ? ' aria-current="true"' : '') + '>' +
+      return '<button type="button" class="flex min-h-touch w-full items-center justify-between gap-5 rounded-control px-3 text-left text-body-sm text-ink hover:bg-subtle' + (on ? ' font-medium' : '') + '" style="cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent" data-market="' + m.code + '"' + (on ? ' aria-current="true"' : '') + '>' +
         '<span>' + m.name + ' <span class="font-regular text-ink-secondary">(' + m.cur + ' ' + symbol(m) + ')</span></span>' +
         (on ? '<svg class="icon size-5 text-brand" aria-hidden="true" focusable="false"><use href="#icon-check"></use></svg>' : '') + '</button>';
     }).join('') +
-      '<p class="m-0 px-3 pb-1 pt-2 text-caption text-ink-secondary">Sample exchange rates for this wireframe. The live theme uses Shopify Markets.</p>' +
       '<span class="sr-only" role="status" id="market-status"></span>';
   }
-  function open(o) {
-    var btn = $('market-btn'), menu = $('market-menu'); if (!btn || !menu) return;
+  /* Open and close with a short fade and lift (170ms; none when the visitor prefers reduced motion). The menu stays in the page (hidden is
+     removed before the fade-in and set again after the fade-out), so it never flickers, and a second click during the fade just reverses it. */
+  var FADE = 170, fadeTimer = 0;
+  function reduced() { return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); }
+  function isOpen() { var b = $('market-btn'); return !!b && b.getAttribute('aria-expanded') === 'true'; }
+  function items() { var m = $('market-menu'); return m ? [].slice.call(m.querySelectorAll('[data-market]')) : []; }
+  function focusItem(el) { if (el) { try { el.focus({ preventScroll: true }); } catch (e) { el.focus(); } } }
+  function open(o, focus) {
+    var btn = $('market-btn'), menu = $('market-menu'); if (!btn || !menu || o === isOpen()) return;
+    clearTimeout(fadeTimer);
+    var d = reduced() ? 0 : FADE, s = menu.style;
     btn.setAttribute('aria-expanded', o ? 'true' : 'false');
-    menu.hidden = !o;
-    if (o) { var f = menu.querySelector('[aria-current]') || menu.querySelector('button'); if (f) f.focus(); }
+    s.transition = d ? 'opacity ' + d + 'ms ease, transform ' + d + 'ms ease' : 'none';
+    if (o) {
+      menu.hidden = false;
+      s.opacity = '0'; s.transform = 'translateY(-4px)'; s.pointerEvents = '';
+      /* a long list scrolls inside the menu (smoothly, and it never scrolls the page behind it) */
+      s.overflowY = 'auto'; s.overscrollBehavior = 'contain'; s.webkitOverflowScrolling = 'touch'; s.scrollBehavior = 'smooth';
+      s.maxHeight = Math.max(144, Math.min(320, window.innerHeight - menu.getBoundingClientRect().top - 16)) + 'px';
+      void menu.offsetWidth;
+      s.opacity = '1'; s.transform = 'none';
+      if (focus) focusItem(menu.querySelector('[aria-current]') || menu.querySelector('[data-market]'));
+    } else {
+      s.opacity = '0'; s.transform = 'translateY(-4px)'; s.pointerEvents = 'none';
+      fadeTimer = setTimeout(function () { menu.hidden = true; s.pointerEvents = ''; }, d);
+    }
   }
   function set(m, silent) {
     cur = m; save(m.code);
     document.documentElement.setAttribute('data-currency', m.cur);
-    var l = $('market-label'); if (l) l.textContent = label(m);
+    var l = $('market-label'); if (l) l.textContent = label(m); var bt = $('market-btn'); if (bt) bt.setAttribute('aria-label', nameFor(m));
     build(); walk(document.body);
     var s = $('market-status'); if (s && !silent) s.textContent = 'Showing prices in ' + m.cur + '.';
     document.dispatchEvent(new CustomEvent('nudge:currency', { detail: { currency: m.cur } }));
   }
   function init() {
-    var btn = $('market-btn'), menu = $('market-menu');
+    var btn = $('market-btn'), menu = $('market-menu'), box = $('market');
     document.documentElement.setAttribute('data-currency', cur.cur);
-    var l = $('market-label'); if (l) l.textContent = label(cur);
+    var l = $('market-label'); if (l) l.textContent = label(cur); var bt0 = $('market-btn'); if (bt0) bt0.setAttribute('aria-label', nameFor(cur));
     build(); walk(document.body);
     mo.observe(document.body, { childList: true, subtree: true, characterData: true });
-    if (!btn || !menu) return;
-    btn.addEventListener('click', function () { open(menu.hidden); });
+    if (!btn || !menu || !box) return;
+    /* the control opens and closes only from its own button, a choice, Escape, Tab or a press outside it */
+    btn.addEventListener('click', function (e) { open(!isOpen(), e.detail === 0); });
     if (q.get('market') === 'open') open(true);
     menu.addEventListener('click', function (e) {
-      var b = e.target.closest('[data-market]'); if (!b) return;
-      set(find(b.getAttribute('data-market'))); open(false); btn.focus();
+      var b = e.target.closest ? e.target.closest('[data-market]') : null; if (!b) return;
+      var m = find(b.getAttribute('data-market')); if (!m) return;
+      if (m !== cur) set(m);
+      open(false); focusItem(btn);
     });
-    document.addEventListener('click', function (e) { if (!menu.hidden && !e.target.closest('#market')) open(false); });
+    /* pointerdown covers mouse, pen and touch before any click, so an outside press closes the menu at once and a press inside never does */
+    document.addEventListener('pointerdown', function (e) { if (isOpen() && !box.contains(e.target)) open(false); }, true);
     document.addEventListener('keydown', function (e) {
-      if (menu.hidden) return;
-      if (e.key === 'Escape') { open(false); btn.focus(); return; }
-      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-        var items = [].slice.call(menu.querySelectorAll('[data-market]')), i = items.indexOf(document.activeElement);
-        e.preventDefault(); items[(i + (e.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length].focus();
+      if (e.target === btn && (e.key === 'ArrowDown' || e.key === 'ArrowUp') && !isOpen()) { e.preventDefault(); open(true, true); return; }
+      if (!isOpen()) return;
+      if (e.key === 'Escape') { e.preventDefault(); open(false); focusItem(btn); return; }
+      if (e.key === 'Tab') { open(false); return; }
+      var list = items(), i = list.indexOf(document.activeElement);
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); focusItem(list[(i + (e.key === 'ArrowDown' ? 1 : -1) + list.length) % list.length]); }
+      else if (e.key === 'Home') { e.preventDefault(); focusItem(list[0]); }
+      else if (e.key === 'End') { e.preventDefault(); focusItem(list[list.length - 1]); }
+      else if (e.key.length === 1 && /\S/.test(e.key)) {
+        var c = e.key.toLowerCase(), n = list.length, k;
+        for (k = 1; k <= n; k++) { var it = list[(i + k + n) % n]; if (it.textContent.trim().toLowerCase().charAt(0) === c) { focusItem(it); break; } }
       }
     });
   }

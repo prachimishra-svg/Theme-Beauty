@@ -12,7 +12,7 @@ tailwind.config = {
       1: 'var(--space-1)', 2: 'var(--space-2)', 3: 'var(--space-3)', 4: 'var(--space-4)', 5: 'var(--space-5)',
       6: 'var(--space-6)', 7: 'var(--space-7)', 8: 'var(--space-8)', 9: 'var(--space-9)', 10: 'var(--space-10)',
       12: 'var(--space-12)', 14: 'var(--space-14)', 16: 'var(--space-16)', 20: 'var(--space-20)', 24: 'var(--space-24)',
-      gutter: 'var(--layout-gutter)', 'grid-gap': 'var(--layout-grid-gap)', section: 'var(--space-section)',
+      gutter: 'var(--layout-gutter)', 'grid-gap': 'var(--layout-grid-gap)', section: 'var(--space-section-half)',
       touch: 'var(--touch-target-min)', 'control-x': 'var(--control-padding-x)', 'control-x-sm': 'var(--control-padding-x-sm)', 'control-x-lg': 'var(--control-padding-x-lg)', qty: 'var(--qty-input-width)'
     },
     colors: {
@@ -40,7 +40,7 @@ tailwind.config = {
       link: { DEFAULT: 'var(--color-link)', hover: 'var(--color-link-hover)' },
       btn: {
         primary: 'var(--color-button-primary-bg)', 'primary-hover': 'var(--color-button-primary-bg-hover)', 'primary-active': 'var(--color-button-primary-bg-active)', 'primary-text': 'var(--color-button-primary-text)',
-        secondary: 'var(--color-button-secondary-border)', 'secondary-hover': 'var(--color-button-secondary-bg-hover)', 'secondary-hover-text': 'var(--color-button-secondary-text-hover)',
+        secondary: 'var(--color-button-secondary-border)', 'secondary-text': 'var(--color-button-secondary-text)', 'secondary-hover': 'var(--color-button-secondary-bg-hover)', 'secondary-hover-text': 'var(--color-button-secondary-text-hover)',
         disabled: 'var(--color-button-disabled-bg)', 'disabled-text': 'var(--color-button-disabled-text)'
       },
       focus: 'var(--color-focus-ring)', scrim: 'var(--color-overlay-scrim)', rating: 'var(--color-rating-star)',
@@ -90,7 +90,7 @@ tailwind.config = {
   try {
     if (/[?&]ix=0(&|$)/.test(location.search)) return;
     var s = document.createElement('style'); s.id = 'ix-hide-review';
-    s.textContent = '.rv,#wp,.ann,section[data-section="Custom Liquid Section"]{display:none!important}';
+    s.textContent = '.rv,#wp,.ann,section[data-section="Custom Liquid Section"],#site-header>div.absolute.bg-ink{display:none!important}';   /* the last selector is the wireframe's "Sticky on scroll" review label */
     document.head.appendChild(s);
     var pm = /[?&]p=([a-z0-9-]+)/.exec(location.search);
     if (pm && pm[1] !== 'tinted-moisturiser' && /\/product\.html$/.test(location.pathname)) { var s2 = document.createElement('style'); s2.id = 'ix-early-pdp'; s2.textContent = 'fieldset:has(#shade-tiles),fieldset:has(#size-opts){display:none!important}'; document.head.appendChild(s2); }

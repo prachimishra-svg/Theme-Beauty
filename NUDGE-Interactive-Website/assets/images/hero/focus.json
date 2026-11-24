@@ -1,0 +1,5 @@
+{
+  "hero-1.jpg": { "pos": "66% 40%", "posTablet": "92% 50%", "posMobile": "80% 50%", "posPortrait": "50% 28%" },
+  "hero-2.jpg": { "pos": "66% 40%", "posTablet": "92% 50%", "posMobile": "72% 50%", "posPortrait": "50% 100%" },
+  "hero-3.jpg": { "pos": "66% 30%", "posTablet": "80% 40%", "posMobile": "76% 30%", "posPortrait": "50% 100%" }
+}

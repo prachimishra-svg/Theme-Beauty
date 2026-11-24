@@ -8,18 +8,20 @@
   NS.base = me && me.src ? me.src : g.location.href;
   NS.log = { nav: [], toasts: [], unresolved: [], unsupported: [], inert: [], opened: [], errors: [] };
   /* the wireframes' reviewer panel (title, Width preview, hover and edit toggles, review notes) and its width-preview dialog are not part of the site: hidden in interactive mode only, nothing is removed from the files */
-  var st = document.getElementById('ix-hide-review') || document.createElement('style'); st.id = 'ix-hide-review'; st.textContent = '.rv,#wp,.ann,section[data-section="Custom Liquid Section"]{display:none!important}'; document.head.appendChild(st);
+  var st = document.getElementById('ix-hide-review');   /* normally already added, before first paint, by the early hook in tailwind.config.js; only add it here if that hook is missing */
+  if (!st) { st = document.createElement('style'); st.id = 'ix-hide-review'; st.textContent = '.rv,#wp,.ann,section[data-section="Custom Liquid Section"],#site-header>div.absolute.bg-ink{display:none!important}'; document.head.appendChild(st); }
   var ROOT = new URL('../', NS.base).href;
   var FILES = ['data/collection-links.js', 'data/plp-raw.js', 'data/products.js', 'data/collections.js', 'data/blog-data.js', 'state/store.js', 'state/cart-state.js', 'state/search-state.js', 'state/wishlist-state.js', 'state/user-state.js',
     'components/notification-system.js', 'components/search-overlay.js', 'components/cart-drawer.js', 'components/breadcrumbs.js', 'components/status-pill.js',
     'routing/routes.js', 'routing/navigation-config.js', 'routing/route-resolver.js',
-    'integrations/homepage-links.js', 'integrations/plp-links.js', 'integrations/pdp-links.js', 'integrations/cart-links.js', 'integrations/blog-links.js', 'integrations/content-links.js'];
+    'integrations/hero-slider.js', 'integrations/announcement-autoplay.js', 'integrations/homepage-links.js', 'integrations/plp-links.js', 'integrations/pdp-links.js', 'integrations/cart-links.js', 'integrations/blog-links.js', 'integrations/content-links.js'];
   var left = FILES.length;
   function init() {
     try {
       NS.resolver.install(); NS.cart.watchHeader(); NS.cart.syncHeader(); NS.statusPill.mount();
       var pg = NS.routes.pageKey(), map = { home: 'home', collection: 'collection', product: 'product', cart: 'cart', drawer: 'drawer', blog: 'blog', article: 'article' };
       (NS.integrations[map[pg] || 'content'] || function () {})();
+      if (NS.integrations.announcement) NS.integrations.announcement(); /* announcement bar autoplay, on every page that has the bar */
       var q = new URLSearchParams(g.location.search).get('q'); if (q && pg !== 'collection') NS.searchOverlay.open(q);
       /* build the overlays while the browser is idle so the first click only reveals them (keeps interaction latency low) */
       (g.requestIdleCallback || function (f) { setTimeout(f, 600); })(function () { try { NS.searchOverlay.prepare(); NS.cartDrawer.prepare(); } catch (e) { NS.log.errors.push(String(e)); } }, { timeout: 2000 });

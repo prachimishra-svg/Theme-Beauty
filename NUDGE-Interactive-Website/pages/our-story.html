@@ -73,7 +73,7 @@
   /* ---- Buttons ---- */
   .btn{@apply inline-flex min-h-control-md select-none items-center justify-center gap-2 rounded-control border border-transparent bg-transparent px-control-x text-center text-ink no-underline transition-colors duration-base;font-family:var(--type-button-font-family);font-size:var(--type-button-font-size);font-weight:var(--type-button-font-weight);line-height:var(--type-button-line-height);letter-spacing:var(--type-button-letter-spacing);text-transform:var(--type-button-text-transform);-webkit-tap-highlight-color:transparent}
   .btn-primary{@apply border-btn-primary bg-btn-primary text-btn-primary-text hover:border-btn-primary-hover hover:bg-btn-primary-hover active:border-btn-primary-active active:bg-btn-primary-active}
-  .btn-secondary{@apply border-btn-secondary text-ink hover:bg-btn-secondary-hover hover:text-btn-secondary-hover-text}
+  .btn-secondary{@apply border-btn-secondary bg-surface text-btn-secondary-text hover:bg-btn-secondary-hover hover:text-btn-secondary-hover-text}
   .btn-secondary:active{opacity:var(--opacity-pressed)}
   .btn-text{@apply min-h-touch px-1 text-link underline decoration-1 underline-offset-[0.35em] hover:text-link-hover hover:decoration-2}
   .btn-sm{@apply relative min-h-control-sm min-w-touch px-control-x-sm}
@@ -256,9 +256,8 @@ body.embed .rv,body.embed #wp{display:none}
   <div class="flex w-full justify-center gap-2 sm:hidden" aria-hidden="true"><i class="ann-dot size-[6px] rounded-pill border border-current bg-current opacity-100"></i><i class="ann-dot size-[6px] rounded-pill border border-current opacity-muted"></i><i class="ann-dot size-[6px] rounded-pill border border-current opacity-muted"></i></div>
 </div>
 <header id="site-header" class="sticky top-0 z-sticky border-b border-line bg-page [.nav-open_&]:z-drawer lg:[html_body.mega-open_&]:!bg-page ">
-  <div class="mx-auto grid w-full max-w-[calc(var(--container-max)+2*var(--layout-gutter))] grid-cols-[auto_auto_1fr_auto] items-center gap-x-1 px-gutter py-2 max-[359px]:grid-cols-[auto_1fr_auto] max-[359px]:gap-y-2 max-[359px]:pb-3 lg:min-h-[5.25rem] lg:grid-cols-[1fr_auto_1fr] lg:gap-x-grid-gap lg:py-0">
+  <div class="mx-auto grid w-full max-w-[calc(var(--container-max)+2*var(--layout-gutter))] grid-cols-[auto_1fr_auto] items-center gap-x-1 px-gutter py-2 lg:min-h-[5.25rem] lg:grid-cols-[1fr_auto_1fr] lg:gap-x-grid-gap lg:py-0">
     <button id="menu-btn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu" class="inline-flex size-touch items-center justify-center text-ink lg:hidden"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-menu"></use></svg></button>
-    <a href="#search" aria-label="Search" class="inline-flex size-touch items-center justify-center text-ink max-[359px]:hidden lg:hidden"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-search"></use></svg></a>
     <a href="#top" aria-label="Store home" class="inline-flex min-h-touch items-center justify-center justify-self-center px-2 text-ink max-[374px]:px-1 lg:order-2"><svg viewBox="0 0 520 100" role="img" aria-label="NUDGE" fill="currentColor" class="block max-w-full h-5 w-auto max-[374px]:h-4 lg:h-6"><path d="M0 14H16V100H0ZM66 0H82V86H66ZM0 14H19L82 86H63Z"/><path d="M106 0H122V62A25 25 0 0 0 172 62V0H188V62A41 41 0 0 1 106 62Z"/><path fill-rule="evenodd" d="M212 0H252A50 50 0 0 1 252 100H212ZM228 16H252A34 34 0 0 1 252 84H228Z"/><path d="M378 42H426V58H378Z"/><path d="M450 0H520V16H466V42H510V58H466V84H520V100H450Z"/><path d="M410.4 25.9A42 42 0 1 0 418 50" fill="none" stroke="currentColor" stroke-width="16"/></svg></a>
     <nav id="nav" aria-label="Main" class="invisible fixed inset-y-0 left-0 z-drawer flex w-full max-w-[26rem] -translate-x-full flex-col gap-3 overflow-y-auto border-r border-line-strong bg-page p-4 transition-transform duration-base [.nav-open_&]:visible [.nav-open_&]:translate-x-0 lg:visible lg:static lg:order-1 lg:w-auto lg:max-w-none lg:translate-x-0 lg:!transform-none lg:flex-row lg:tracking-[var(--type-nav-letter-spacing)] lg:items-center lg:gap-5 xl:gap-7 lg:overflow-visible lg:border-0 lg:bg-transparent lg:p-0">
       <button id="nav-close" type="button" aria-label="Close menu" class="inline-flex min-h-touch min-w-touch items-center justify-center gap-2 self-end px-2 text-body-sm text-ink lg:hidden"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-close"></use></svg><span>Close</span></button>
@@ -344,32 +343,29 @@ body.embed .rv,body.embed #wp{display:none}
 </div></div></div>
 </div>
 </div>
-      <div class="relative self-start" id="market"><button type="button" id="market-btn" aria-haspopup="true" aria-expanded="false" aria-controls="market-menu" class="group inline-flex min-h-touch items-center gap-2 whitespace-nowrap rounded-pill border border-line-strong bg-transparent px-4 text-body-sm text-ink lg:px-3 xl:px-4"><svg class="icon size-[18px]" aria-hidden="true" focusable="false"><use href="#icon-location"></use></svg><span id="market-label">India (INR)</span><svg class="icon size-4 transition-transform duration-fast group-aria-[expanded=true]:rotate-180" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></button><div id="market-menu" role="group" aria-label="Choose country and currency" hidden class="mt-2 w-full min-w-[260px] rounded-control border border-line-strong bg-surface p-2 shadow-md lg:absolute lg:left-0 lg:top-full lg:z-[60] lg:mt-1 lg:w-auto"></div></div>
+      <div class="relative self-start" id="market"><button type="button" id="market-btn" aria-haspopup="true" aria-expanded="false" aria-controls="market-menu" aria-label="Country and currency: INR ₹ (India)" class="group inline-flex min-h-touch items-center gap-1 whitespace-nowrap bg-transparent px-2 text-body-sm text-ink transition-colors duration-fast hover:text-brand"><span id="market-label">INR ₹</span><svg class="icon size-4 transition-transform duration-fast group-aria-[expanded=true]:rotate-180" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"></use></svg></button><div id="market-menu" role="group" aria-label="Choose country and currency" hidden class="mt-2 w-full min-w-[192px] rounded-control border border-line-strong bg-surface p-2 shadow-md lg:absolute lg:left-0 lg:top-full lg:z-[60] lg:mt-1 lg:w-auto"></div></div>
     </nav>
-    <div class="flex items-center justify-end gap-3 lg:order-3">
-      <a href="#search" role="search" aria-label="Search products" class="hidden min-h-touch w-full max-w-[13rem] items-center gap-2 rounded-pill border border-line-strong bg-surface px-4 text-body-sm text-ink-muted no-underline lg:flex"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-search"></use></svg><span>Search products</span></a>
-      <div class="flex gap-[2px]">
-        <a href="#account" aria-label="Account" class="inline-flex min-h-touch min-w-touch items-center justify-center gap-2 whitespace-nowrap px-2 text-body-sm leading-[1.2] text-ink no-underline"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-account"></use></svg><span class="hidden lg:inline">Account</span></a>
-        <a href="#cart" aria-label="Cart, 0 items" class="relative inline-flex min-h-touch min-w-touch items-center justify-center gap-2 whitespace-nowrap px-2 text-ink no-underline"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-bag"></use></svg><span class="hidden lg:inline">Cart</span><b class="cnt h-[18px] min-w-[18px] rounded-pill bg-brand px-1 text-center text-caption leading-[20px] text-ink-on-brand">0</b></a>
-      </div>
+    <div class="flex items-center justify-end lg:order-3">
+      <a href="#search" role="search" aria-label="Search products" class="inline-flex size-touch items-center justify-center text-ink no-underline transition-colors duration-fast hover:text-brand active:scale-95"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-search"></use></svg></a>
+      <a href="#account" aria-label="Account" class="inline-flex size-touch items-center justify-center text-ink no-underline transition-colors duration-fast hover:text-brand active:scale-95"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-account"></use></svg></a>
+      <a href="#cart" aria-label="Cart, 0 items" class="relative inline-flex size-touch items-center justify-center text-ink no-underline transition-colors duration-fast hover:text-brand active:scale-95"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-bag"></use></svg><b class="cnt pointer-events-none absolute right-[2px] top-[4px] h-[18px] min-w-[18px] rounded-pill bg-brand px-1 text-center text-caption leading-[20px] text-ink-on-brand">0</b></a>
     </div>
-    <a href="#search" aria-label="Search products" class="col-span-full hidden min-h-touch items-center gap-2 rounded-pill border border-line-strong bg-surface px-4 text-body-sm text-ink-muted no-underline max-[359px]:flex"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-search"></use></svg><span>Search products</span></a>
   </div>
 <div id="scrim" class="fixed inset-0 z-overlay hidden bg-scrim [.nav-open_&]:block lg:!hidden"></div>
 <div id="mega-scrim" class="absolute inset-x-0 top-full hidden h-screen bg-scrim lg:[.mega-open_&]:block"></div>
 </header>
-<main id="main" class="pb-20 md:pb-24">
-<section class="wrap pt-2" aria-labelledby="story-h" data-section="Intro">
+<main id="main">
+<section class="wrap py-section" aria-labelledby="story-h" data-section="Intro">
 <div class="ann"><b>01 &middot; Begin</b>Title, lede and wide image (T1) &mdash; Essential: a single H1, one sentence that opens the narrative, then a wide image area that sets the tone. The image is a labelled placeholder.<em>Responsive: image keeps a wide ratio on tablet and desktop and a shorter 4:3 box on phones.</em></div>
 <nav class="breadcrumb mb-6" aria-label="Breadcrumb"><ol class="breadcrumb-list"><li class="breadcrumb-item"><a href="#home">Home</a></li><li class="breadcrumb-item"><a href="#about">About us</a></li><li class="breadcrumb-item"><a href="#story" aria-current="page">Our story</a></li></ol></nav>
 <div class="mb-8 flex max-w-text flex-col gap-4 md:mb-12"><p class="type-overline m-0">Our story</p><h1 class="type-h1" id="story-h">How NUDGE began</h1><p class="m-0 text-body-lg text-ink-secondary">[One sentence on the moment or idea that started the brand.]</p></div>
 <div class="relative aspect-[4/3] overflow-hidden md:aspect-[21/9]" role="img" aria-label="Image placeholder: story hero"><div class="ph absolute inset-0"></div><span class="absolute inset-0 grid place-items-center p-4 text-center text-caption text-ink-secondary">Image placeholder: story hero (4:3 on phones, 21:9 from 768 px)</span></div>
 </section>
-<section class="wrap mt-16 md:mt-24" aria-labelledby="note-h" data-section="Opening note">
+<section class="wrap py-section" aria-labelledby="note-h" data-section="Opening note">
 <div class="ann"><b>02 &middot; Open</b>Opening note (T1) &mdash; Essential: a short note in the brand's voice in a reading column. Plain paragraphs, no boxes, so it reads like a letter. Name and role are bracketed.<em>Responsive: single reading column at every width, centred from 768 px.</em></div>
 <div class="mx-auto flex max-w-text flex-col gap-5" id="note"><h2 class="type-h3" id="note-h">Where it started</h2><p class="m-0 text-body-lg text-ink-secondary">[Opening paragraph: the problem the founders saw in skincare.]</p><p class="m-0 text-ink-secondary">[Second paragraph: what they set out to do differently, in plain words.]</p><p class="m-0 type-label">[Name], [role]</p></div>
 </section>
-<section class="wrap mt-16 md:mt-24" aria-labelledby="tl-h" data-section="Timeline">
+<section class="wrap py-section" aria-labelledby="tl-h" data-section="Timeline">
 <div class="ann"><b>03 &middot; Trace</b>Timeline (T1) &mdash; Essential: four milestones in order, each with a year, a heading and two lines. A hairline runs down the list; no icons or numbers beyond the year. The wording is bracketed so no date or fact is invented.<em>Responsive: year above the text on phones; year in a left column from 768 px.</em></div>
 <h2 class="type-h3 mb-8" id="tl-h">The road so far</h2>
 <ol class="m-0 list-none p-0" id="timeline">
@@ -379,11 +375,11 @@ body.embed .rv,body.embed #wp{display:none}
 <li class="grid grid-cols-[minmax(0,1fr)] gap-2 border-y border-line py-6 md:grid-cols-[minmax(0,1fr)_minmax(0,3fr)] md:gap-8 md:py-8"><span class="font-heading text-h3 leading-tight text-brand">[Year]</span><div class="flex max-w-text flex-col gap-2"><h3 class="type-h5">[Milestone four]</h3><p class="m-0 text-ink-secondary">[Two lines on where the brand is today.]</p></div></li>
 </ol>
 </section>
-<section class="wrap mt-16 md:mt-24" aria-label="Quote" data-section="Pull quote">
+<section class="wrap py-section" aria-label="Quote" data-section="Pull quote">
 <div class="ann"><b>04 &middot; Pause</b>Pull quote (T1) &mdash; additional: one line in display type to break the page rhythm and restate the brand idea. Attribution is bracketed.<em>Responsive: centred; the type steps down with the Design System scale.</em></div>
 <figure class="m-0 mx-auto flex max-w-[var(--container-narrow,56rem)] flex-col items-center gap-4 py-8 text-center"><blockquote class="m-0 font-heading text-h2 leading-snug text-ink">[A single sentence that captures the brand idea.]</blockquote><figcaption class="text-body-sm text-ink-secondary">[Name], [role]</figcaption></figure>
 </section>
-<section class="wrap mt-16 md:mt-24" aria-labelledby="next-h" data-section="What comes next">
+<section class="wrap py-section" aria-labelledby="next-h" data-section="What comes next">
 <div class="ann"><b>05 &middot; Continue</b>What comes next (T1) &mdash; Essential: close on the future in one sentence and give two next steps, the shop as the primary button and About us as the secondary. No dead end.<em>Responsive: centred; buttons stack on phones and sit side by side from 600 px.</em></div>
 <div class="flex flex-col items-center gap-5 bg-surface px-6 py-12 text-center md:py-16"><h2 class="type-h3" id="next-h">What comes next</h2><p class="m-0 max-w-text text-ink-secondary">[One sentence on what the brand is working on now.]</p><div class="flex w-full flex-col gap-3 sm:w-auto sm:flex-row"><a class="btn btn-primary" href="#shop">Shop now</a><a class="btn btn-secondary" href="#about">About us</a></div></div>
 </section>

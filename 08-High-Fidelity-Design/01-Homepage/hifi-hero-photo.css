@@ -1,8 +1,0 @@
-/* Hero photograph variant (Homepage-HiFi-hero-photo.html only). Loaded after hifi.css. Desktop uses the photograph full-bleed behind the existing headline, text and buttons (the photo's left half is calm by design).
-   Below 1024 px the hero stacks (photo above, text below), so the photograph is kept in the upper part of the stage and dissolves into the page tone, which keeps the headline off the model's face and hand. */
-[data-slot="hero-campaign"] .hifi-img { object-position: 66% 30%; }
-@media (min-width: 1024px) and (max-width: 1279px) { [data-slot="hero-campaign"] .hifi-img { object-position: 72% 30%; } }
-@media (max-width: 1023px) {
-  [data-slot="hero-campaign"].has-photo { background: var(--color-bg-subtle); }
-  [data-slot="hero-campaign"] .hifi-img { height: 64%; object-position: 78% 8%; -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%); mask-image: linear-gradient(to bottom, #000 70%, transparent 100%); }
-}
