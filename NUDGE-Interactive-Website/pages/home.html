@@ -210,6 +210,16 @@
   :is(#cart-drawer,#ix-cart-drawer) #cd-empty{padding:var(--space-8) 0;gap:var(--space-4)}
 }
 
+/* ---- Floating back-to-top: a round burgundy button at the bottom right, shown after about one screen of scrolling and hidden near the top and while the footer's own Back to top link is on screen. It lifts itself above any fixed bar or widget that would sit on it (sticky Add to bag / Checkout bar, chat, accessibility buttons), by measuring what is really there. Below the drawers and dialogs. ---- */
+.btt{position:fixed;right:max(var(--space-4),env(safe-area-inset-right));bottom:calc(max(var(--space-4),env(safe-area-inset-bottom)) + var(--btt-lift,0px));z-index:var(--z-sticky);display:grid;place-items:center;width:calc(var(--touch-target-min) + var(--space-1));height:calc(var(--touch-target-min) + var(--space-1));padding:0;border:0;border-radius:var(--radius-pill);background:var(--color-brand-primary);color:var(--color-text-inverse);box-shadow:var(--shadow-lg);cursor:pointer;opacity:0;transform:translateY(var(--space-2)) scale(.92);transition:opacity var(--duration-base) var(--ease-standard),transform var(--duration-base) var(--ease-standard),background-color var(--duration-base) var(--ease-standard);-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.btt[hidden]{display:none}
+.btt.is-on{opacity:1;transform:none}
+.btt:not(.is-on){pointer-events:none}
+.btt:hover{background:var(--color-brand-active,var(--color-brand-primary))}
+.btt:focus-visible{outline:2px solid var(--color-brand-primary);outline-offset:2px}
+.btt .icon{width:var(--space-6);height:var(--space-6)}
+@media (prefers-reduced-motion:reduce){.btt{transition:none;transform:none}}
+
 /* ---- Empty cart drawer: a calm, centred message with a bag mark, one clear button, then the collection links as wrapped pills (no sideways scrolling, no scrollbar). ---- */
 :is(#cart-drawer,#ix-cart-drawer) #cd-empty{padding:var(--space-8) var(--space-4)}
 :is(#cart-drawer,#ix-cart-drawer) #cd-empty .cd-empty__icon{display:grid;place-items:center;width:var(--space-16);height:var(--space-16);border-radius:var(--radius-pill);background:var(--color-bg-subtle);color:var(--color-brand-primary)}
@@ -717,6 +727,16 @@ body.embed .rv,body.embed #wp{display:none}
       <a href="#top" class="flex min-h-touch w-full items-center justify-center gap-2 border border-ink-inverse text-ink-inverse no-underline sm:w-auto sm:border-0 sm:px-1 sm:underline"><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-chevron-up"></use></svg><span>Back to top</span></a>
     </div>
   </div>
+  <button type="button" id="btt" class="btt" aria-label="Back to top" hidden><svg class="icon size-6" aria-hidden="true" focusable="false"><use href="#icon-chevron-up"></use></svg></button>
+  <script>(function(){var b=document.getElementById("btt");if(!b||b.__on)return;b.__on=1;var root=document.documentElement,shown=false,tick=0,mqR=window.matchMedia&&window.matchMedia("(prefers-reduced-motion:reduce)");
+function vh(){return window.innerHeight||root.clientHeight}
+function lift(){b.style.setProperty("--btt-lift","0px");var base=parseFloat(getComputedStyle(b).bottom)||16,add=0;for(var n=0;n<4;n++){var r=b.getBoundingClientRect(),pts=[[r.left+r.width/2,r.top+r.height/2],[r.left+4,r.top+4],[r.right-4,r.top+4],[r.left+4,r.bottom-4],[r.right-4,r.bottom-4]],hit=null,hr=null;for(var i=0;i<pts.length&&!hit;i++){var els=document.elementsFromPoint(pts[i][0],pts[i][1]);for(var j=0;j<els.length&&!hit;j++){var e=els[j];if(e===b||b.contains(e)||e===root||e===document.body)continue;for(var a=e;a&&a!==document.body&&a!==root;a=a.parentElement){var cs=getComputedStyle(a);if(cs.position==="fixed"&&cs.visibility!=="hidden"&&cs.pointerEvents!=="none"){var q=a.getBoundingClientRect();if(q.width>0&&q.height>0&&!(q.width>=innerWidth*.9&&q.height>=vh()*.6)){hit=a;hr=q}break}}}}if(!hit)break;var need=vh()-hr.top+12-base;if(need<=add)break;add=need;b.style.setProperty("--btt-lift",add+"px")}}
+function foot(){var l=document.querySelector("footer a[href=\"#top\"]");if(!l)return false;var q=l.getBoundingClientRect();return q.top<vh()&&q.bottom>0}
+function upd(){tick=0;var y=window.pageYOffset||root.scrollTop,h=vh(),want=shown?y>h*.6:y>h;if(want&&foot())want=false;if(want!==shown){shown=want;if(want){b.hidden=false;void b.offsetWidth;b.classList.add("is-on")}else{b.classList.remove("is-on");if(mqR&&mqR.matches)b.hidden=true}}if(want)lift()}
+function sched(){if(!tick)tick=setTimeout(upd,40)}
+b.addEventListener("transitionend",function(e){if(e.target===b&&!shown&&e.propertyName==="opacity")b.hidden=true});
+b.addEventListener("click",function(){var red=mqR&&mqR.matches;window.scrollTo({top:0,behavior:red?"auto":"smooth"});var t=document.getElementById("top")||document.querySelector("header a,header button");if(t){if(!t.hasAttribute("tabindex")&&!/^(A|BUTTON|INPUT)$/.test(t.tagName))t.setAttribute("tabindex","-1");try{t.focus({preventScroll:true})}catch(x){}}});
+window.addEventListener("scroll",sched,{passive:true});window.addEventListener("resize",sched);window.addEventListener("load",sched);if(window.MutationObserver)new MutationObserver(function(ms){for(var i=0;i<ms.length;i++){var t=ms[i].target;if(t!==b&&!b.contains(t)){sched();return}}}).observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:["class","style","hidden"]});setInterval(function(){if(shown)lift()},1500);sched()})()</script>
 </footer></section>
 </main>
 <div id="wp" role="dialog" aria-label="Width preview"><div class="bar2"><b>Viewport:</b><span id="wp-btns"></span><label><input type="checkbox" id="wp-ann"> annotations</label><span id="wp-info"></span><button type="button" id="wp-close">Close</button></div><div class="stage"><div><iframe id="wp-f" title="Page at the chosen width"></iframe></div></div></div>
