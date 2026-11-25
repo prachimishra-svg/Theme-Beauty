@@ -14,7 +14,7 @@
   var CSS = '.cat-pic{display:contents}.cat-photo{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover;object-position:50% 40%}'
     + '.img.has-cat-photo .in{display:none}'
     + '.cat-photo[data-cat="hair"]{object-position:72% 50%}.cat-photo[data-cat="body"]{object-position:88% 50%}'
-    + '@media (min-width:768px){.cat-photo[data-cat="makeup"]{object-position:100% 50%}.cat-photo[data-cat="hair"]{object-position:60% 50%}.cat-photo[data-cat="body"]{object-position:50% 50%}}'
+    + '@media (min-width:768px){.cat-photo[data-cat="makeup"]{object-position:100% 50%}.cat-photo[data-cat="hair"]{object-position:28% 50%}.cat-photo[data-cat="body"]{object-position:50% 50%}}'
     + '@media (min-width:1024px){.cat-photo[data-cat="hair"]{object-position:0% 50%}}';
   function place() {
     if (document.querySelector('script[src*="hifi/hifi.js"]')) return;

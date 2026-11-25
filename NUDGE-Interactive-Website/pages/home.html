@@ -398,32 +398,37 @@
 }
 @media (min-width:600px) and (max-width:1023px){[data-section^="Shop by Concern"] .cr-stack{--cr-w:calc((100% - 2 * var(--space-4) - 28px) / 3)}[data-section^="Shop by Concern"] .cr-stack>.rsteps{--cr-w:calc((100% - 2 * var(--space-3) - 28px) / 3)}}
 @media (prefers-reduced-motion:reduce){[data-section^="Shop by Concern"] .cr-stack>.g--concern,[data-section^="Shop by Concern"] .cr-stack>.rsteps{animation:none}}
-/* ===== Shop by category: one editorial caption style on all four cards. The mosaic (tall Skin care, Makeup and Hair side by side, wide Body, same cells and order) is unchanged and each whole card is still one link. The caption is a compact, content-sized frosted-glass label (ivory rgba(255,248,245,.45), 10px backdrop blur only behind the label, 1px translucent white border, 4px corners, no shadow): the title in the serif face, the description and the underlined "Shop ... ->" link, 12 to 16 px inside the label and 6 px apart. From 1360 px it sits on the picture, bottom left, 16 px from the edges (Hair: top left, because the flower and leaves fill its bottom left); the labels are narrow enough to stay on the clear backdrop and never cover a bottle, tube, jar or the NUDGE name. Below 1360 px a picture is too small to leave clear space, so the same glass label hangs from the lower left edge of its picture (overlapping it by 16 px, over the floor reflection only) and the products stay fully visible. ===== */
-[data-section="Shop by Category"] .tile__cap{--glass:rgba(255,248,245,.45);position:relative;z-index:3;display:block;width:fit-content;max-width:calc(100% - var(--space-3));margin:calc(-1 * var(--space-4)) 0 0 var(--space-3);padding:var(--space-3);background:var(--glass);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.5);border-radius:4px;box-shadow:none}
-@supports not ((backdrop-filter:blur(10px)) or (-webkit-backdrop-filter:blur(10px))){[data-section="Shop by Category"] .tile__cap{--glass:rgba(255,248,245,.84)}}
-@media (min-width:768px){[data-section="Shop by Category"] .tile__cap{padding:var(--space-4)}}
-[data-section="Shop by Category"] .tile__cap .tt{display:block;font-size:20px;line-height:24px;color:var(--color-brand-primary-active)}
-[data-section="Shop by Category"] .tile__cap .sub{display:block;margin-top:6px;font-size:14px;line-height:20px;color:var(--color-text-primary)}
-[data-section="Shop by Category"] .tile__cap .lnk{margin-top:6px;margin-bottom:0;font-size:14px;line-height:20px;color:var(--color-brand-primary-active)}
-@media (max-width:1023px){[data-section="Shop by Category"] .tile__cap .lnk{margin-block:-8px -8px}}
-@media (min-width:1024px){[data-section="Shop by Category"] .tile__cap .lnk{min-height:var(--space-7);white-space:nowrap}}
-@media (min-width:768px) and (max-width:1359px){
-[data-section="Shop by Category"] .g--cat{grid-auto-rows:auto}
-[data-section="Shop by Category"] .g--cat>.tile{display:flex;flex-direction:column;align-items:flex-start}
-[data-section="Shop by Category"] .g--cat>.tile .img{position:relative;inset:auto;height:auto;flex:none;align-self:stretch}
-[data-section="Shop by Category"] .g--cat>.tile:nth-child(1) .img{flex:1 1 auto;min-height:calc(var(--space-16) * 5)}
-[data-section="Shop by Category"] .g--cat>.tile:nth-child(2) .img,[data-section="Shop by Category"] .g--cat>.tile:nth-child(3) .img{aspect-ratio:1.15 / 1}
-[data-section="Shop by Category"] .g--cat>.tile:nth-child(4) .img{aspect-ratio:2.3 / 1}
-[data-section="Shop by Category"] .tile__cap{position:relative}
+/* ===== Shop by category: the caption lives IN the picture, with no box. The mosaic (tall Skin care, Makeup and Hair side by side, wide Body, same cells and order) is unchanged and each whole card is still one link. Two treatments were compared on the real photographs: a borderless frosted glass (any blur still read as a separate pane over these busy surfaces) and a soft localized ivory glow behind the text (it fades out, so it has no edge and reads as light in the photograph). The glow won and is used. It is one fading corner gradient per tile: from 1360 px a radial glow around the caption (bottom left; Hair top left, where the flower fills its bottom left), below 1360 px a smaller corner glow at the bottom left so the text sits on the plinth and floor reflection and not on a bottle or tube. Title in the serif face, description and the underlined "Shop ... ->" link, 6 px apart. ===== */
+[data-section="Shop by Category"] .g--cat>.tile{--glow:rgba(255,248,245,.86);--glow-2:rgba(255,248,245,.5)}
+[data-section="Shop by Category"] .g--cat>.tile::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse 82% 50% at 0 100%,var(--glow) 0,var(--glow-2) 48%,rgba(255,248,245,0) 100%)}
+[data-section="Shop by Category"] .tile__cap{position:absolute;z-index:3;left:var(--space-3);bottom:var(--space-3);top:auto;display:block;width:fit-content;max-width:calc(100% - 2 * var(--space-3));margin:0;padding:0;background:none;border:0;border-radius:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+[data-section="Shop by Category"] .tile__cap .tt{display:block;font-size:18px;line-height:22px;color:var(--color-brand-primary-active)}
+[data-section="Shop by Category"] .tile__cap .sub{display:block;margin-top:6px;font-size:12px;line-height:16px;color:var(--color-text-primary)}
+[data-section="Shop by Category"] .tile__cap .lnk{margin-top:2px;margin-bottom:0;font-size:12px;line-height:16px;color:var(--color-brand-primary-active)}
+@media (max-width:1023px){[data-section="Shop by Category"] .tile__cap .lnk{min-height:var(--space-11,44px);margin-block:-14px -14px}}
+@media (min-width:1024px){[data-section="Shop by Category"] .tile__cap .lnk{min-height:var(--space-7);margin-top:0}}
+@media (min-width:768px){[data-section="Shop by Category"] .tile__cap{left:var(--space-4);bottom:var(--space-4);max-width:calc(100% - 2 * var(--space-4))}}
+/* the two upright tiles (Makeup, Hair): the text stays on the left half so it does not run across the products standing on the right */
+@media (max-width:1359px){[data-section="Shop by Category"] .g--cat>.tile:nth-child(2) .tile__cap{max-width:52%}[data-section="Shop by Category"] .g--cat>.tile:nth-child(3) .tile__cap{max-width:62%}}
+/* tablet: the pictures are small, so each text block keeps to the clear left part of its picture (a percentage of the tile, so it scales) */
+@media (min-width:768px) and (max-width:1359px){[data-section="Shop by Category"] .g--cat>.tile:nth-child(2) .tile__cap{max-width:48%}[data-section="Shop by Category"] .g--cat>.tile:nth-child(3) .tile__cap{max-width:42%}[data-section="Shop by Category"] .g--cat>.tile:nth-child(4) .tile__cap{max-width:30%}[data-section="Shop by Category"] .tile__cap .lnk{white-space:nowrap}}
+@media (min-width:1024px) and (max-width:1359px){
+[data-section="Shop by Category"] .tile__cap .tt{font-size:20px;line-height:24px}
+[data-section="Shop by Category"] .tile__cap .sub,[data-section="Shop by Category"] .tile__cap .lnk{font-size:14px;line-height:20px}
 }
 @media (min-width:1360px){
-[data-section="Shop by Category"] .tile__cap{position:absolute;left:var(--space-4);bottom:var(--space-4);top:auto;z-index:3;margin:0;max-width:calc(100% - 2 * var(--space-4))}
 [data-section="Shop by Category"] .tile__cap .tt{font-size:24px;line-height:28px}
-[data-section="Shop by Category"] .g--cat>.tile:nth-child(2) .tile__cap{max-width:calc(46% - var(--space-4))}[data-section="Shop by Category"] .g--cat>.tile:nth-child(2) .tile__cap .sub{white-space:nowrap}
-[data-section="Shop by Category"] .g--cat>.tile:nth-child(3) .tile__cap{top:var(--space-4);bottom:auto;max-width:calc(var(--space-16) * 2.5)}
+[data-section="Shop by Category"] .tile__cap .sub{font-size:14px;line-height:20px}
+[data-section="Shop by Category"] .tile__cap .lnk{font-size:14px;line-height:20px;white-space:nowrap}
+[data-section="Shop by Category"] .g--cat>.tile:nth-child(1)::after{background:radial-gradient(ellipse 66% 26% at 0 100%,var(--glow) 0,var(--glow-2) 55%,rgba(255,248,245,0) 100%)}
+[data-section="Shop by Category"] .g--cat>.tile:nth-child(2)::after{background:radial-gradient(ellipse 62% 56% at 0 100%,var(--glow) 0,var(--glow-2) 52%,rgba(255,248,245,0) 100%)}
+[data-section="Shop by Category"] .g--cat>.tile:nth-child(3)::after{background:radial-gradient(ellipse 58% 60% at 0 0,var(--glow) 0,var(--glow-2) 52%,rgba(255,248,245,0) 100%)}
+[data-section="Shop by Category"] .g--cat>.tile:nth-child(4)::after{background:radial-gradient(ellipse 34% 66% at 0 100%,var(--glow) 0,var(--glow-2) 52%,rgba(255,248,245,0) 100%)}
+[data-section="Shop by Category"] .g--cat>.tile:nth-child(3) .tile__cap{top:var(--space-4);bottom:auto}
+[data-section="Shop by Category"] .g--cat>.tile:nth-child(2) .tile__cap{max-width:calc(46% - var(--space-4))}
+[data-section="Shop by Category"] .g--cat>.tile:nth-child(2) .tile__cap .sub{white-space:nowrap}
+[data-section="Shop by Category"] .g--cat>.tile:nth-child(3) .tile__cap{max-width:calc(var(--space-16) * 2.5)}
 [data-section="Shop by Category"] .g--cat>.tile:nth-child(4) .tile__cap{max-width:calc(var(--space-16) * 2.875)}
-/* Skin care: its label sits over the stone and the water, so its glass is a little more opaque to read well */
-[data-section="Shop by Category"] .g--cat>.tile:nth-child(1) .tile__cap{--glass:rgba(255,248,245,.64)}
 }/* ===== Equal vertical rhythm: every band of the page has the same space above and below its content (the --space-section-half token, 40px), so the gap between any two sections is the --space-section token, 80px. The two thin strips (benefits, logos) and the full-width comparison no longer sit tighter than the rest. Hero, announcement bar, header and footer keep their own layout. ===== */
 [data-section="Benefits / USP Row"] .sec__in,[data-section^="Logo List"] .sec__in,[data-section="Custom Liquid Section"] .sec__in{padding-block:var(--space-section-half)}
 [data-section="Before & After"]{padding-block:var(--space-section-half)}
