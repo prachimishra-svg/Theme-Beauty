@@ -742,7 +742,7 @@
     if (id.indexOf('collection-') === 0) return coll(id.slice(11)); /* mega menu, footer and tile links: #collection-<handle> */
     switch (id) {
       case 'search': return { action: 'search' };
-      case 'account': return { action: 'unsupported', feature: 'account' };
+      case 'account': case 'my-account': case 'track': return { action: 'unsupported', feature: 'account' };
       case 'cart': case 'bag': return a.closest('#cart-drawer,#ix-cart-drawer') ? '/cart' : { action: 'cart' };
       case 'top': return (t === 'store home' || t === 'home' || /store home/.test(low(a.getAttribute('aria-label'))) || t === 'nudge') ? '/' : null;
       case 'home': return '/';

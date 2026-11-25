@@ -1,4 +1,4 @@
-/* NUDGE desktop mega menu: real photographs in the two cards of every menu (Skin, Makeup, Hair, Body). Plain script; every path is relative to this file, so the folder works shared, offline or published.
+/* NUDGE menus: real photographs in the two cards of every desktop mega menu (Skin, Makeup, Hair, Body), in the four collection tiles of the mobile menu drawer, and the drawer's search field (it opens the site search). Plain script; every path is relative to this file, so the folder works shared, offline or published.
    The cards are matched by menu and position (first card, second card). The pictures are crops of the approved campaign and category photographs, 3:2, with the card title and "Shop now" link underneath as before.
    If a file is missing the card keeps its placeholder. In Shopify these are the image pickers of the two promo blocks in the mega menu. */
 (function () {
@@ -18,6 +18,25 @@
         var im = document.createElement('img'); im.className = 'mega-photo'; im.alt = ''; im.decoding = 'async'; im.loading = 'lazy'; im.src = BASE + f; if (POS[f]) im.style.setProperty('--mp', POS[f]);
         im.onload = function () { box.classList.add('mega-has-photo'); }; im.onerror = function () { im.remove(); box.classList.remove('mega-has-photo'); };
         box.insertBefore(im, box.firstChild);
+      });
+    });
+    /* mobile drawer: the four collection tiles */
+    var TILE = { skin: ['skin-1.jpg', '50% 50%'], makeup: ['makeup-1.jpg', '100% 50%'], hair: ['hair-1.jpg', '70% 50%'], body: ['body-1.jpg', '70% 50%'] };
+    [].forEach.call(document.querySelectorAll('[data-nav-tile]'), function (a) {
+      var spec = TILE[a.getAttribute('data-nav-tile')], box = a.firstElementChild; if (!spec || !box || box.querySelector('.mega-photo')) return;
+      var im = document.createElement('img'); im.className = 'mega-photo'; im.alt = ''; im.decoding = 'async'; im.loading = 'lazy'; im.src = BASE + spec[0]; im.style.setProperty('--mp', spec[1]);
+      im.onerror = function () { im.remove(); }; box.insertBefore(im, box.firstChild);
+    });
+    /* mobile drawer: the search field closes the drawer and opens the site search with what was typed */
+    [].forEach.call(document.querySelectorAll('[data-nav-search]'), function (form) {
+      if (form.__ixs) return; form.__ixs = 1;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault(); var q = (form.querySelector('input') || {}).value || '', NS = window.NudgeSite, close = document.getElementById('nav-close');
+        if (close) close.click();
+        window.setTimeout(function () {
+          if (NS && NS.searchOverlay && NS.searchOverlay.open) NS.searchOverlay.open(q.trim());
+          else { var ic = document.querySelector('#site-header a[role="search"]'); if (ic) ic.click(); }
+        }, 260);
       });
     });
   }
