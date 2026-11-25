@@ -395,13 +395,15 @@
 }
 @media (min-width:600px) and (max-width:1023px){[data-section^="Shop by Concern"] .cr-stack{--cr-w:calc((100% - 2 * var(--space-4) - 28px) / 3)}[data-section^="Shop by Concern"] .cr-stack>.rsteps{--cr-w:calc((100% - 2 * var(--space-3) - 28px) / 3)}}
 @media (prefers-reduced-motion:reduce){[data-section^="Shop by Concern"] .cr-stack>.g--concern,[data-section^="Shop by Concern"] .cr-stack>.rsteps{animation:none}}
-/* ===== Shop by category: one editorial caption style on all four cards. The mosaic (tall Skin care, Makeup and Hair side by side, wide Body, same cells and order) is unchanged and each whole card is still one link. The caption is a compact, content-sized label with a soft blush tint (no white box, no gradient, no blur): the title in the serif face, the description and the underlined "Shop ... ->" link, 12 to 16 px inside the label and 6 px apart. From 1360 px it sits on the picture, bottom left, 16 px from the edges (Hair: top left, because the flower and leaves fill its bottom left); the labels are narrow enough to stay on the clear backdrop and never cover a bottle, tube, jar or the NUDGE name. Below 1360 px a picture is too small to leave clear space, so the same label sits directly under its picture and the products stay fully visible. ===== */
-[data-section="Shop by Category"] .tile__cap{--cap-bg:color-mix(in srgb,var(--color-brand-tint-strong,var(--color-brand-tint)) 90%,transparent);display:block;width:fit-content;max-width:100%;margin-top:var(--space-2);padding:var(--space-3);background:var(--cap-bg)}
+/* ===== Shop by category: one editorial caption style on all four cards. The mosaic (tall Skin care, Makeup and Hair side by side, wide Body, same cells and order) is unchanged and each whole card is still one link. The caption is a compact, content-sized frosted-glass label (ivory rgba(255,248,245,.45), 10px backdrop blur only behind the label, 1px translucent white border, 4px corners, no shadow): the title in the serif face, the description and the underlined "Shop ... ->" link, 12 to 16 px inside the label and 6 px apart. From 1360 px it sits on the picture, bottom left, 16 px from the edges (Hair: top left, because the flower and leaves fill its bottom left); the labels are narrow enough to stay on the clear backdrop and never cover a bottle, tube, jar or the NUDGE name. Below 1360 px a picture is too small to leave clear space, so the same glass label hangs from the lower left edge of its picture (overlapping it by 16 px, over the floor reflection only) and the products stay fully visible. ===== */
+[data-section="Shop by Category"] .tile__cap{--glass:rgba(255,248,245,.45);position:relative;z-index:3;display:block;width:fit-content;max-width:calc(100% - var(--space-3));margin:calc(-1 * var(--space-4)) 0 0 var(--space-3);padding:var(--space-3);background:var(--glass);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.5);border-radius:4px;box-shadow:none}
+@supports not ((backdrop-filter:blur(10px)) or (-webkit-backdrop-filter:blur(10px))){[data-section="Shop by Category"] .tile__cap{--glass:rgba(255,248,245,.84)}}
+@media (min-width:768px){[data-section="Shop by Category"] .tile__cap{padding:var(--space-4)}}
 [data-section="Shop by Category"] .tile__cap .tt{display:block;font-size:20px;line-height:24px;color:var(--color-brand-primary-active)}
 [data-section="Shop by Category"] .tile__cap .sub{display:block;margin-top:6px;font-size:14px;line-height:20px;color:var(--color-text-primary)}
-[data-section="Shop by Category"] .tile__cap .lnk{margin-top:6px;margin-bottom:0;font-size:14px;line-height:20px;white-space:nowrap;color:var(--color-brand-primary-active)}
+[data-section="Shop by Category"] .tile__cap .lnk{margin-top:6px;margin-bottom:0;font-size:14px;line-height:20px;color:var(--color-brand-primary-active)}
 @media (max-width:1023px){[data-section="Shop by Category"] .tile__cap .lnk{margin-block:-8px -8px}}
-@media (min-width:1024px){[data-section="Shop by Category"] .tile__cap .lnk{min-height:var(--space-7)}}
+@media (min-width:1024px){[data-section="Shop by Category"] .tile__cap .lnk{min-height:var(--space-7);white-space:nowrap}}
 @media (min-width:768px) and (max-width:1359px){
 [data-section="Shop by Category"] .g--cat{grid-auto-rows:auto}
 [data-section="Shop by Category"] .g--cat>.tile{display:flex;flex-direction:column;align-items:flex-start}
@@ -409,7 +411,7 @@
 [data-section="Shop by Category"] .g--cat>.tile:nth-child(1) .img{flex:1 1 auto;min-height:calc(var(--space-16) * 5)}
 [data-section="Shop by Category"] .g--cat>.tile:nth-child(2) .img,[data-section="Shop by Category"] .g--cat>.tile:nth-child(3) .img{aspect-ratio:1.15 / 1}
 [data-section="Shop by Category"] .g--cat>.tile:nth-child(4) .img{aspect-ratio:2.3 / 1}
-[data-section="Shop by Category"] .tile__cap{position:static}
+[data-section="Shop by Category"] .tile__cap{position:relative}
 }
 @media (min-width:1360px){
 [data-section="Shop by Category"] .tile__cap{position:absolute;left:var(--space-4);bottom:var(--space-4);top:auto;z-index:3;margin:0;max-width:calc(100% - 2 * var(--space-4))}
@@ -417,6 +419,8 @@
 [data-section="Shop by Category"] .g--cat>.tile:nth-child(2) .tile__cap{max-width:calc(46% - var(--space-4))}[data-section="Shop by Category"] .g--cat>.tile:nth-child(2) .tile__cap .sub{white-space:nowrap}
 [data-section="Shop by Category"] .g--cat>.tile:nth-child(3) .tile__cap{top:var(--space-4);bottom:auto;max-width:calc(var(--space-16) * 2.5)}
 [data-section="Shop by Category"] .g--cat>.tile:nth-child(4) .tile__cap{max-width:calc(var(--space-16) * 2.875)}
+/* Skin care: its label sits over the stone and the water, so its glass is a little more opaque to read well */
+[data-section="Shop by Category"] .g--cat>.tile:nth-child(1) .tile__cap{--glass:rgba(255,248,245,.64)}
 }/* ===== Equal vertical rhythm: every band of the page has the same space above and below its content (the --space-section-half token, 40px), so the gap between any two sections is the --space-section token, 80px. The two thin strips (benefits, logos) and the full-width comparison no longer sit tighter than the rest. Hero, announcement bar, header and footer keep their own layout. ===== */
 [data-section="Benefits / USP Row"] .sec__in,[data-section^="Logo List"] .sec__in,[data-section="Custom Liquid Section"] .sec__in{padding-block:var(--space-section-half)}
 [data-section="Before & After"]{padding-block:var(--space-section-half)}
