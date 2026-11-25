@@ -5,8 +5,8 @@ window.NudgeCart=(function(){
  var FS=50,PH=["ph","ph-b","ph-c"];
  var CAT={
   tm:{name:"Tinted Moisturiser",variant:"Rose · 50 ml",price:32,cmp:0,stock:24,v:0},
-  sr:{name:"Face Serum",variant:"30 ml",price:32,cmp:36,stock:3,v:1},
-  cl:{name:"Face Cleanser",variant:"150 ml",price:18,cmp:0,stock:40,v:2},
+  sr:{name:"Radiance Serum",variant:"30 ml",price:32,cmp:36,stock:3,v:1},
+  cl:{name:"Gentle Cleanser",variant:"150 ml",price:18,cmp:0,stock:40,v:2},
   sp:{name:"Daily Sunscreen",variant:"50 ml",price:26,cmp:0,stock:12,v:0},
   ey:{name:"Eye Cream",variant:"15 ml",price:30,cmp:0,stock:20,v:1},
   bl:{name:"Body Lotion",variant:"200 ml",price:24,cmp:0,stock:30,v:2},

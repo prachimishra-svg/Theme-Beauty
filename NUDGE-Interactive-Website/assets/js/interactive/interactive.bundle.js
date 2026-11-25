@@ -69,16 +69,16 @@
   var NS = g.NudgeSite = g.NudgeSite || {}; NS.data = NS.data || {};
   var ALL=["Dry","Normal","Oily","Combination","Sensitive"];
   var RAW = [
-["Face Cleanser","Cleanser",150,18,0,["Dullness","Texture"],ALL,"Best for: all skin types","Bestseller",4.8,212,[],0,0,1,["Ceramides"]],
+["Gentle Cleanser","Cleanser",150,18,0,["Dullness","Texture"],ALL,"Best for: all skin types","Bestseller",4.8,212,[],0,0,1,["Ceramides"]],
   ["Gel Cleanser","Cleanser",150,20,0,["Breakouts"],["Oily","Combination"],"Best for: oily skin","",4.6,96,[],0,0,0,["Niacinamide"]],
   ["Cream Cleanser","Cleanser",150,20,0,["Dryness","Sensitivity"],["Dry","Sensitive"],"Best for: dry skin","New arrival",0,0,[],0,0,1,["Ceramides","Squalane"]],
   ["Balm Cleanser","Cleanser",100,24,0,["Dryness"],["Dry","Normal"],"Rich balm texture","",4.7,58,[],0,1,0,["Squalane"]],
-  ["Face Serum","Serum",30,32,0,["Dullness","Uneven tone"],["Normal","Combination"],"Best for: dullness","Bestseller",4.9,340,[],3,0,1,["Vitamin C","Niacinamide"]],
+  ["Radiance Serum","Serum",30,32,0,["Dullness","Uneven tone"],["Normal","Combination"],"Best for: dullness","Bestseller",4.9,340,[],3,0,1,["Vitamin C","Niacinamide"]],
   ["Hydrating Serum","Serum",30,30,0,["Dryness"],["Dry","Normal","Sensitive"],"Best for: dry skin","",4.7,141,[],0,0,1,["Hyaluronic acid"]],
   ["Brightening Serum","Serum",30,34,40,["Uneven tone","Dullness"],["Normal","Combination","Oily"],"Best for: uneven tone","",4.5,77,[],0,0,0,["Vitamin C"]],
   ["Calming Serum","Serum",30,32,0,["Sensitivity"],["Sensitive","Dry"],"Best for: sensitive skin","",4.6,64,[],0,0,1,["Niacinamide","Ceramides"]],
   ["Smoothing Serum","Serum",30,36,0,["Texture","Uneven tone"],["Normal","Oily","Combination"],"Best for: texture","",0,0,[],0,0,0,["Peptides"]],
-  ["Moisturiser","Moisturiser",50,28,0,["Dryness"],["Dry","Normal"],"Best for: dry skin","Bestseller",4.8,265,[],0,0,1,["Ceramides","Hyaluronic acid"]],
+  ["Repair Cream","Moisturiser",50,28,0,["Dryness"],["Dry","Normal"],"Best for: dry skin","Bestseller",4.8,265,[],0,0,1,["Ceramides","Hyaluronic acid"]],
   ["Gel Moisturiser","Moisturiser",50,26,0,["Breakouts","Texture"],["Oily","Combination"],"Light gel texture","",4.6,88,[],0,0,0,["Hyaluronic acid","Niacinamide"]],
   ["Overnight Peptide Cream with a Deliberately Long Product Name","Moisturiser",50,34,42,["Dryness","Texture"],["Dry"],"Rich overnight texture","",4.7,52,[],0,0,1,["Peptides","Squalane"]],
   ["Barrier Cream","Moisturiser",50,30,0,["Sensitivity","Dryness"],["Sensitive","Dry"],"Best for: sensitive skin","",4.8,119,[],2,0,0,["Ceramides"]],
@@ -108,8 +108,10 @@
   var NS = g.NudgeSite, D = NS.data;
   function slug(s) { return String(s).toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, ''); }
   var F = D.shadeFamilies, list = [];
+  /* the three products named on the hero pictures keep their original handles (URLs, photo names, links) */
+  var HANDLE_OF = { 'Radiance Serum': 'face-serum', 'Gentle Cleanser': 'face-cleanser', 'Repair Cream': 'moisturiser' };
   D.plpRaw.forEach(function (r, i) {
-    list.push({ handle: slug(r[0]), name: r[0], type: r[1], ml: r[2], size: r[2] + ' ml', price: r[3], compare: r[4], concerns: r[5], skin: r[6], attr: r[7], badge: r[8], rating: r[9], reviews: r[10], shades: r[11].map(function (k) { return F[k][0]; }), low: r[12], sold: !!r[13], ingredients: r[15], group: 'skin', source: 'PLP', order: i });
+    list.push({ handle: HANDLE_OF[r[0]] || slug(r[0]), name: r[0], type: r[1], ml: r[2], size: r[2] + ' ml', price: r[3], compare: r[4], concerns: r[5], skin: r[6], attr: r[7], badge: r[8], rating: r[9], reviews: r[10], shades: r[11].map(function (k) { return F[k][0]; }), low: r[12], sold: !!r[13], ingredients: r[15], group: 'skin', source: 'PLP', order: i });
   });
   [
     { name: 'Lip Colour', type: 'Lip colour', size: '3.5 g', price: 16, group: 'makeup', source: 'Homepage featured collection', badge: 'New', shades: ['Rose', 'Berry', 'Peach', 'Mauve', 'Coral', 'Plum'] },
@@ -635,7 +637,7 @@
       + '<button type="button" data-a="exit" style="all:unset;cursor:pointer;padding:6px 8px;min-height:24px">View this page as plain wireframe</button></div>';
     d.addEventListener('click', function (e) {
       var a = e.target.getAttribute && e.target.getAttribute('data-a'); if (!a) return;
-      if (a === 'sample') { NS.cart.sample(); NS.notify('Sample cart loaded: Tinted Moisturiser, Face Serum, Face Cleanser.', { kind: 'success' }); if (NS.routes.pageKey() === 'cart') g.location.reload(); }
+      if (a === 'sample') { NS.cart.sample(); NS.notify('Sample cart loaded: Tinted Moisturiser, Radiance Serum, Gentle Cleanser.', { kind: 'success' }); if (NS.routes.pageKey() === 'cart') g.location.reload(); }
       if (a === 'reset') { NS.store.reset(); NS.notify('Prototype data cleared (cart, search history).', { kind: 'success' }); if (NS.routes.pageKey() === 'cart') g.location.reload(); }
       if (a === 'exit') { var u = new URL(g.location.href); u.searchParams.set('ix', '0'); g.location.href = u.href; }
       d.open = false;
@@ -717,7 +719,7 @@
   var NS = g.NudgeSite;
   function norm(t) { return String(t || '').replace(/IMAGE PLACEHOLDER\s*\d+:\d+/gi, ' ').replace(/\s+/g, ' ').trim(); }
   function low(t) { return norm(t).toLowerCase(); }
-  /* the longest product name contained in a text ("ProductPackshot ... Face Serum 30 ml" -> face-serum) */
+  /* the longest product name contained in a text ("ProductPackshot ... Radiance Serum 30 ml" -> face-serum) */
   function productIn(text) {
     var t = ' ' + low(text).replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ') + ' ', best = null;
     NS.products.all.forEach(function (p) { var n = ' ' + p.name.toLowerCase().replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim() + ' '; if (t.indexOf(n) > -1 && (!best || p.name.length > best.name.length)) best = p; });

@@ -862,7 +862,7 @@ window.addEventListener("scroll",sched,{passive:true});window.addEventListener("
  $("t-sticky").addEventListener("click",function(){forced=!forced;this.setAttribute("aria-pressed",forced?"true":"false");stickyCheck()});
  /* ---- selling plan: label only; the price effect belongs to the store's selling plans ---- */
  /* ---- complementary products (P7): frequently-bought-together layout ---- */
- var RT=[["Face Cleanser","Cleanser",18,0],["Face Serum","Serum",32,1],["Daily Sunscreen","Sun care",26,2]];
+ var RT=[["Gentle Cleanser","Cleanser",18,0],["Radiance Serum","Serum",32,1],["Daily Sunscreen","Sun care",26,2]];
  $("routine-list").innerHTML=RT.map(function(p,i){return '<li><label class="grid cursor-pointer grid-cols-[auto_var(--space-16)_minmax(0,1fr)_auto] items-center gap-4 border-b border-line py-4"><input class="choice-input m-0" type="checkbox" data-p="'+p[2]+'" checked aria-label="Add '+p[0]+'"><span class="relative aspect-portrait overflow-hidden"><span class="absolute inset-0 '+pm(p[3])+'"></span></span><span><span class="vendor">'+p[1]+'</span><span class="block font-[family-name:var(--type-h4-font-family)] text-body-lg leading-[var(--type-h4-line-height)]">'+p[0]+'</span></span><span class="price"><span class="price-current">'+money(p[2])+'</span></span></label></li>'}).join("");
  function routineSum(){var n=0,t=0;[].forEach.call($("routine-list").querySelectorAll("input"),function(i){if(i.checked){n++;t+=+i.getAttribute("data-p")}});$("routine-n").textContent=n+(n===1?" product":" products")+" selected";$("routine-total").textContent=money(t);$("routine-add").disabled=n===0;return n}
  $("routine-list").addEventListener("change",function(){routineSum();$("routine-msg").hidden=true});routineSum();
