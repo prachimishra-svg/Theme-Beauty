@@ -10,15 +10,20 @@
   var items = [].slice.call(hdr.querySelectorAll('[data-mega]'));
   if (!items.length) return;
   var mq = window.matchMedia('(min-width:1024px)');
-  var lastPointer = 'mouse';
+  var lastPointer = 'mouse', quiet = false;
 
   function linkOf(it) { return it.querySelector('[data-mega-link]'); }
   function panelOf(it) { return it.querySelector('[data-mega-panel]'); }
 
   function setOpen(it, open) {
     if (open) { items.forEach(function (o) { if (o !== it && o.hasAttribute('data-open')) setOpen(o, false); }); }
-    if (open) { it.setAttribute('data-open', ''); panelOf(it).setAttribute('data-open', ''); }
-    else { it.removeAttribute('data-open'); panelOf(it).removeAttribute('data-open'); }
+    var pn = panelOf(it);
+    if (open) { clearTimeout(pn.__ct); pn.removeAttribute('data-closing'); it.setAttribute('data-open', ''); pn.setAttribute('data-open', ''); }
+    else {
+      var was = it.hasAttribute('data-open'); it.removeAttribute('data-open'); pn.removeAttribute('data-open');
+      /* desktop: the panel fades out (about 160 ms) instead of vanishing; skipped for reduced motion */
+      if (was && mq.matches && !(window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches)) { pn.setAttribute('data-closing', ''); clearTimeout(pn.__ct); pn.__ct = setTimeout(function () { pn.removeAttribute('data-closing'); }, 170); }
+    }
     linkOf(it).setAttribute('aria-expanded', open ? 'true' : 'false');
     var any = items.some(function (o) { return o.hasAttribute('data-open'); });
     var on = any && mq.matches;
@@ -69,6 +74,7 @@
     });
 
     it.addEventListener('focusin', function () {
+      if (quiet) return; /* focus handed back to the link by Escape must not reopen the panel */
       if (mq.matches && lastPointer !== 'touch') { clearTimeout(closeTimer); setOpen(it, true); }
     });
     it.addEventListener('focusout', function (e) {
@@ -86,7 +92,7 @@
     if (!openItem) return;
     var had = openItem.contains(document.activeElement);
     closeAll();
-    if (had && mq.matches) linkOf(openItem).focus();
+    if (had && mq.matches) { quiet = true; linkOf(openItem).focus(); quiet = false; }
   });
   document.addEventListener('click', function (e) {
     if (!mq.matches) return;
