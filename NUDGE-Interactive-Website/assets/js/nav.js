@@ -99,6 +99,13 @@
     if (!hdr.contains(e.target) || e.target.id === 'mega-scrim') closeAll();
   });
 
+  /* country and currency: on desktop the selector lives with the account and cart icons (right), not between the menu and the logo; below 1024 px it stays at the end of the drawer. One element, moved, so its script and state keep working. */
+  (function () {
+    var mk = document.getElementById('market'), util = document.getElementById('hdr-util'), nav = document.getElementById('nav'); if (!mk || !util || !nav) return;
+    var home = mk.previousElementSibling;
+    function place() { if (mq.matches) { if (mk.parentNode !== util) util.insertBefore(mk, util.firstChild); mk.classList.add('mk-util'); } else { if (mk.parentNode !== nav) { if (home && home.parentNode === nav) home.insertAdjacentElement('afterend', mk); else nav.appendChild(mk); } mk.classList.remove('mk-util'); } }
+    place(); if (mq.addEventListener) mq.addEventListener('change', place); else mq.addListener(place);
+  })();
   var want = new URLSearchParams(location.search).get('mega');
   if (want) { items.forEach(function (it) { if (it.getAttribute('data-mega') === want) setOpen(it, true); }); }
 })();

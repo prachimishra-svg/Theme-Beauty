@@ -79,7 +79,7 @@
   function nameFor(m) { return 'Country and currency: ' + m.cur + ' ' + symbol(m) + ' (' + m.name + ')'; }
   function build() {
     var menu = $('market-menu'); if (!menu) return;
-    menu.innerHTML = MARKETS.map(function (m) {
+    menu.innerHTML = '<div class="mk-cap">Country and currency</div>' + MARKETS.map(function (m) {
       var on = m === cur;
       return '<button type="button" class="flex min-h-touch w-full items-center justify-between gap-5 rounded-control px-3 text-left text-body-sm text-ink hover:bg-subtle' + (on ? ' font-medium' : '') + '" style="cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent" data-market="' + m.code + '"' + (on ? ' aria-current="true"' : '') + '>' +
         '<span>' + m.name + ' <span class="font-regular text-ink-secondary">(' + m.cur + ' ' + symbol(m) + ')</span></span>' +
