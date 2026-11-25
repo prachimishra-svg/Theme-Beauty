@@ -387,7 +387,30 @@
 }
 @media (min-width:600px) and (max-width:1023px){[data-section^="Shop by Concern"] .cr-stack{--cr-w:calc((100% - 2 * var(--space-4) - 28px) / 3)}[data-section^="Shop by Concern"] .cr-stack>.rsteps{--cr-w:calc((100% - 2 * var(--space-3) - 28px) / 3)}}
 @media (prefers-reduced-motion:reduce){[data-section^="Shop by Concern"] .cr-stack>.g--concern,[data-section^="Shop by Concern"] .cr-stack>.rsteps{animation:none}}
-/* ===== Equal vertical rhythm: every band of the page has the same space above and below its content (the --space-section-half token, 40px), so the gap between any two sections is the --space-section token, 80px. The two thin strips (benefits, logos) and the full-width comparison no longer sit tighter than the rest. Hero, announcement bar, header and footer keep their own layout. ===== */
+/* ===== Shop by category: captions without the white boxes. The mosaic itself (tall Skin care, Makeup and Hair side by side, wide Body, same order and cells) is unchanged. From 1280 px the title, description and "Shop" link sit directly on the picture, left aligned, in the clear space of each photograph (Makeup, Hair and Body on their soft left backdrop, Skin care in a tight chip along the bottom, under the serum), 16 px from the edge and 4 to 8 px apart. Below 1280 px the picture is not wide enough to leave clear space, so the same compact caption sits straight under the picture and the picture keeps its own proportions; the products are never covered. ===== */
+[data-section="Shop by Category"] .tile__cap .tt{font-size:20px;line-height:24px}
+[data-section="Shop by Category"] .tile__cap .sub{margin-top:var(--space-1);font-size:14px;line-height:20px}
+[data-section="Shop by Category"] .tile__cap{padding-top:var(--space-2)}
+@media (min-width:768px) and (max-width:1279px){
+[data-section="Shop by Category"] .g--cat{grid-auto-rows:auto}
+[data-section="Shop by Category"] .g--cat>.tile{display:flex;flex-direction:column}
+[data-section="Shop by Category"] .g--cat>.tile .img{position:relative;inset:auto;height:auto;flex:none}
+[data-section="Shop by Category"] .g--cat>.tile:nth-child(1) .img{flex:1 1 auto;min-height:calc(var(--space-16) * 5)}
+[data-section="Shop by Category"] .g--cat>.tile:nth-child(2) .img,[data-section="Shop by Category"] .g--cat>.tile:nth-child(3) .img{aspect-ratio:1.15 / 1}
+[data-section="Shop by Category"] .g--cat>.tile:nth-child(4) .img{aspect-ratio:2.3 / 1}
+[data-section="Shop by Category"] .tile__cap{position:static;max-width:none;padding:var(--space-2) 0 0;background:none}
+}
+@media (min-width:1280px){
+[data-section="Shop by Category"] .tile__cap{position:absolute;left:var(--space-4);bottom:var(--space-4);top:auto;z-index:3;width:fit-content;max-width:calc(100% - 2 * var(--space-4));padding:0;background:none}
+[data-section="Shop by Category"] .tile__cap .tt{color:var(--color-brand-primary-active)}
+[data-section="Shop by Category"] .tile__cap .sub{color:var(--color-text-primary)}
+[data-section="Shop by Category"] .tile__cap .lnk{min-height:var(--space-7);color:var(--color-brand-primary-active)}
+[data-section="Shop by Category"] .g--cat>.tile:nth-child(2) .tile__cap,[data-section="Shop by Category"] .g--cat>.tile:nth-child(3) .tile__cap{max-width:calc(47% - 1.5 * var(--space-4))}
+[data-section="Shop by Category"] .g--cat>.tile:nth-child(4) .tile__cap{max-width:calc(36% - 1.5 * var(--space-4))}
+/* Makeup, Hair and Body: the clear wall of each photograph is at its top left (the plinth, flower and leaves fill the bottom left), so those captions sit at the top left; Skin care keeps the bottom, under the serum */
+[data-section="Shop by Category"] .g--cat>.tile:nth-child(n+2) .tile__cap{top:var(--space-4);bottom:auto}
+[data-section="Shop by Category"] .g--cat>.tile:nth-child(1) .tile__cap{padding:var(--space-3) var(--space-4);background:var(--color-bg-page);max-width:calc(100% - 2 * var(--space-4))}
+}/* ===== Equal vertical rhythm: every band of the page has the same space above and below its content (the --space-section-half token, 40px), so the gap between any two sections is the --space-section token, 80px. The two thin strips (benefits, logos) and the full-width comparison no longer sit tighter than the rest. Hero, announcement bar, header and footer keep their own layout. ===== */
 [data-section="Benefits / USP Row"] .sec__in,[data-section^="Logo List"] .sec__in,[data-section="Custom Liquid Section"] .sec__in{padding-block:var(--space-section-half)}
 [data-section="Before & After"]{padding-block:var(--space-section-half)}
 </style>
