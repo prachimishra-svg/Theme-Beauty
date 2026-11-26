@@ -1,10 +1,10 @@
-/* NUDGE "Shop our favourites": product photographs per tab. Best sellers: Gentle Cleanser, Radiance Serum, Lip Colour. New launches: Sunscreen. The other cards (Repair Cream, Eye Cream, Mascara, Hair Oil, the Sets) have no photograph yet and keep their placeholders.
+/* NUDGE "Shop our favourites": product photographs per tab. Best sellers: Gentle Cleanser, Radiance Serum, Lip Colour. New launches: Sunscreen, Eye Cream, Mascara, Hair Oil. The Sets have no photographs yet and keep their placeholders.
    800 x 1000 (4:5), the same file on every screen, relative paths (the folder works shared, offline or published). The cards are matched by their title. The tabs reuse the same four cards with other products, so each tab has its own list and a picture is shown only on its own tab.
    A missing file leaves the placeholder. In Shopify these are the product featured images of the Best sellers collection. */
 (function () {
   'use strict';
   var cs = document.currentScript, BASE = cs && cs.getAttribute('src') ? cs.getAttribute('src').replace(/[^\/]*$/, '') : 'assets/images/products/';
-  var MAP = [ { 'gentle cleanser': 'gentle-cleanser.jpg', 'radiance serum': 'radiance-serum.jpg', 'lip colour': 'lip-colour.jpg', 'repair cream': 'repair-cream.jpg' }, { 'sunscreen': 'sunscreen.jpg' }, {} ];   /* per tab: 0 Best sellers, 1 New launches, 2 Sets */
+  var MAP = [ { 'gentle cleanser': 'gentle-cleanser.jpg', 'radiance serum': 'radiance-serum.jpg', 'lip colour': 'lip-colour.jpg', 'repair cream': 'repair-cream.jpg' }, { 'sunscreen': 'sunscreen.jpg', 'eye cream': 'eye-cream.jpg', 'mascara': 'mascara.jpg', 'hair oil': 'hair-oil.jpg' }, {} ];   /* per tab: 0 Best sellers, 1 New launches, 2 Sets */
   var CSS = '.fav-photo{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover}.img.has-fav-photo .in{display:none}';
   function tabOf(sec) { var on = sec.querySelector('.tab.on,.tab[aria-selected="true"]'); return on ? (parseInt(on.getAttribute('data-set'), 10) || 0) : 0; }
   function sync() {
